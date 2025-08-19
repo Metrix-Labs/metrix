@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import type { CLIContext } from '../cli/types';
 import { BuildOptions } from './build';

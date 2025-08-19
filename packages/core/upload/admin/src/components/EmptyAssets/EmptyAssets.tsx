@@ -1,6 +1,6 @@
 // TODO: find a better naming convention for the file that was an index file before
-import { Box, Flex, Typography } from '@metrix/design-system';
-import { EmptyDocuments } from '@metrix/icons/symbols';
+import { Box, Flex, Typography } from '@strapi/design-system';
+import { EmptyDocuments } from '@strapi/icons/symbols';
 
 import { EmptyAssetGrid } from './EmptyAssetGrid';
 

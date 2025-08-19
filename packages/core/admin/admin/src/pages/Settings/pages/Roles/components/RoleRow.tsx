@@ -1,4 +1,4 @@
-import { Box, Flex, IconButton, IconButtonProps, Td, Tr, Typography } from '@metrix/design-system';
+import { Box, Flex, IconButton, IconButtonProps, Td, Tr, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import type { AdminRole } from '../../../../../hooks/useAdminRoles';

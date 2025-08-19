@@ -6,7 +6,7 @@ import {
   Table,
   useQueryParams,
   useTable,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Button,
@@ -21,8 +21,8 @@ import {
   Tr,
   Td,
   Tbody,
-} from '@metrix/design-system';
-import { ArrowsCounterClockwise, CheckCircle, CrossCircle, Pencil } from '@metrix/icons';
+} from '@strapi/design-system';
+import { ArrowsCounterClockwise, CheckCircle, CrossCircle, Pencil } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
 import { styled } from 'styled-components';

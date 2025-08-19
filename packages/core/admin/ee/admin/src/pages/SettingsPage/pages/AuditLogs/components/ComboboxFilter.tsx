@@ -1,4 +1,4 @@
-import { Combobox, ComboboxOption } from '@metrix/design-system';
+import { Combobox, ComboboxOption } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { Filters } from '../../../../../../../../admin/src/components/Filters';

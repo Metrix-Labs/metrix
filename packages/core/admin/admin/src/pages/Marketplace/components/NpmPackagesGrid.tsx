@@ -1,5 +1,5 @@
-import { Box, BoxComponent, Flex, Grid, Typography } from '@metrix/design-system';
-import { EmptyDocuments } from '@metrix/icons/symbols';
+import { Box, BoxComponent, Flex, Grid, Typography } from '@strapi/design-system';
+import { EmptyDocuments } from '@strapi/icons/symbols';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

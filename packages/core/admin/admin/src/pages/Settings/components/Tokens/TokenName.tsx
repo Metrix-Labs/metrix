@@ -1,4 +1,4 @@
-import { Field, TextInput, TextInputProps } from '@metrix/design-system';
+import { Field, TextInput, TextInputProps } from '@strapi/design-system';
 import { MessageDescriptor, useIntl } from 'react-intl';
 
 import { isErrorMessageMessageDescriptor } from '../../utils/forms';

@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/metrix';
+import type { Core } from '@metrixlabs/metrix';
 import type Sentry from '@sentry/node';
 import type createSentryService from '../services/sentry';
 

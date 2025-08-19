@@ -1,5 +1,5 @@
 import { cloneDeep, merge } from 'lodash';
-import { Database } from '@metrix/database';
+import { Database } from '@metrixlabs/database';
 import {
   LoadedContentTypeModel,
   transformContentTypesToModels,

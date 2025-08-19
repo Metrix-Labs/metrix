@@ -1,6 +1,6 @@
 import type { Context } from 'koa';
 
-import { strings, errors } from '@metrix/utils';
+import { strings, errors } from '@metrixlabs/utils';
 import { trim, has } from 'lodash/fp';
 import { getService } from '../utils';
 import {

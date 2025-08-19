@@ -1,6 +1,6 @@
 import type { Knex } from 'knex';
 import { clone, isNil } from 'lodash/fp';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { ILink } from '../../../types';
 

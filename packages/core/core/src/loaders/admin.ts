@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import type { Core, Struct } from '@metrix/types';
+import type { Core, Struct } from '@metrixlabs/types';
 import { getGlobalId } from '../domain/content-type';
 
 export default async function loadAdmin(metrix: Core.Strapi) {

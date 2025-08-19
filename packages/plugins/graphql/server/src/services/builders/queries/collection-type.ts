@@ -1,6 +1,6 @@
 import { extendType, nonNull, list } from 'nexus';
 import type * as Nexus from 'nexus';
-import type { Struct } from '@metrix/types';
+import type { Struct } from '@metrixlabs/types';
 import type { Context } from '../../types';
 
 export default ({ metrix }: Context) => {

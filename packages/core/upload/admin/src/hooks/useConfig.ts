@@ -1,4 +1,4 @@
-import { useTracking, useNotification, useFetchClient } from '@metrix/admin/metrix-admin';
+import { useTracking, useNotification, useFetchClient } from '@metrixlabs/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 import { useMutation, useQuery, UseMutationResult, UseQueryResult } from 'react-query';
 

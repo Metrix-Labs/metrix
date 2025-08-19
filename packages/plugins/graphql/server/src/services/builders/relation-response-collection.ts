@@ -1,6 +1,6 @@
 import { objectType, nonNull } from 'nexus';
 import { defaultTo, prop, pipe } from 'lodash/fp';
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 import type { Context } from '../types';
 
 export default ({ metrix }: Context) => {

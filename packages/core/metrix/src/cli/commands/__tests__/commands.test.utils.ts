@@ -1,5 +1,5 @@
 // TODO: move to a test-utils internal pkg
-import type { Utils } from '@metrix/types';
+import type { Utils } from '@metrixlabs/types';
 
 const expectExit = async (code: number, fn: Utils.Function.Any) => {
   const exit = jest.spyOn(process, 'exit').mockImplementation((number) => {

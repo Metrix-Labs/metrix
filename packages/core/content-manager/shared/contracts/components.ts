@@ -1,6 +1,6 @@
-import type { Struct } from '@metrix/types';
+import type { Struct } from '@metrixlabs/types';
 import type { Configuration, Settings, Metadatas, Layouts } from './content-types';
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 
 export interface Component extends Struct.ComponentSchema {
   isDisplayed: boolean;

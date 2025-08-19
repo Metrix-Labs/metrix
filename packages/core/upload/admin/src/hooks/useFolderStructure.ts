@@ -1,4 +1,4 @@
-import { useFetchClient } from '@metrix/admin/metrix-admin';
+import { useFetchClient } from '@metrixlabs/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 

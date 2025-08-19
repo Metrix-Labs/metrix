@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useTracking, Layouts } from '@metrix/admin/metrix-admin';
+import { useTracking, Layouts } from '@metrixlabs/admin/metrix-admin';
 import {
   IconButton,
   Table,
@@ -12,15 +12,15 @@ import {
   Typography,
   VisuallyHidden,
   useCollator,
-} from '@metrix/design-system';
-import { Pencil } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Pencil } from '@strapi/icons';
 import {
   Page,
   useAPIErrorHandler,
   useNotification,
   useFetchClient,
   useRBAC,
-} from '@metrix/metrix/admin';
+} from '@metrixlabs/metrix/admin';
 import upperFirst from 'lodash/upperFirst';
 import { useIntl } from 'react-intl';
 import { useMutation, useQuery, useQueryClient } from 'react-query';

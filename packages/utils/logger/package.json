@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/logger",
+  "name": "@metrixlabs/logger",
   "version": "5.22.0",
   "description": "Strapi's logger",
   "homepage": "https://strapi.io",

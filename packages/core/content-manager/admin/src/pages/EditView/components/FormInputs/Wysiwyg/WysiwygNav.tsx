@@ -9,7 +9,7 @@ import {
   SingleSelect,
   Field,
   Menu,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 import {
   Bold,
   BulletList,
@@ -27,7 +27,7 @@ import {
   HeadingFour,
   HeadingFive,
   HeadingSix,
-} from '@metrix/icons';
+} from '@strapi/icons';
 import { EditorFromTextArea } from 'codemirror5';
 import { useIntl } from 'react-intl';
 

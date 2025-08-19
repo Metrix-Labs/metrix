@@ -1,6 +1,6 @@
 import { forwardRef, memo } from 'react';
 
-import { Textarea, useComposedRefs, Field } from '@metrix/design-system';
+import { Textarea, useComposedRefs, Field } from '@strapi/design-system';
 
 import { useFocusInputField } from '../../hooks/useFocusInputField';
 import { useField } from '../Form';

@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { env, importDefault } from '@metrix/utils';
+import { env, importDefault } from '@metrixlabs/utils';
 
 const loadJsFile = (file: string) => {
   try {

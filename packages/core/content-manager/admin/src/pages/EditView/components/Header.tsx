@@ -7,7 +7,7 @@ import {
   useNotification,
   useStrapiApp,
   useQueryParams,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Flex,
@@ -16,8 +16,8 @@ import {
   Typography,
   IconButton,
   Dialog,
-} from '@metrix/design-system';
-import { ListPlus, Pencil, Trash, WarningCircle } from '@metrix/icons';
+} from '@strapi/design-system';
+import { ListPlus, Pencil, Trash, WarningCircle } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { useMatch, useNavigate, useParams } from 'react-router-dom';
 

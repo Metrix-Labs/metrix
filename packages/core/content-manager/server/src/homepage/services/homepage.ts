@@ -1,5 +1,5 @@
-import type { Core, Modules, Schema } from '@metrix/types';
-import { contentTypes } from '@metrix/utils';
+import type { Core, Modules, Schema } from '@metrixlabs/types';
+import { contentTypes } from '@metrixlabs/utils';
 
 import type {
   GetCountDocuments,

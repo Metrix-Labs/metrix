@@ -1,6 +1,6 @@
-import type { Core, UID } from '@metrix/types';
+import type { Core, UID } from '@metrixlabs/types';
 
-import { contentTypes, AbstractRouteValidator } from '@metrix/utils';
+import { contentTypes, AbstractRouteValidator } from '@metrixlabs/utils';
 import * as z from 'zod/v4';
 
 /**

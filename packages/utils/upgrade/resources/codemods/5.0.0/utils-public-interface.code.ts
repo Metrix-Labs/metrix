@@ -9,13 +9,13 @@ ESM
 
 Before:
 
-import * as utils from '@metrix/utils';
+import * as utils from '@metrixlabs/utils';
 
 utils.nameToSlug();
 
 After:
 
-import { strings } from '@metrix/utils';
+import { strings } from '@metrixlabs/utils';
 
 strings.nameToSlug();
 
@@ -24,13 +24,13 @@ ESM
 
 Before:
 
-import { nameToSlug } from '@metrix/utils';
+import { nameToSlug } from '@metrixlabs/utils';
 
 nameToSlug();
 
 After:
 
-import { strings } from '@metrix/utils';
+import { strings } from '@metrixlabs/utils';
 
 strings.nameToSlug();
 
@@ -40,13 +40,13 @@ Common JS
 
 Before:
 
-const utils = require('@metrix/utils');
+const utils = require('@metrixlabs/utils');
 
 utils.nameToSlug();
 
 After:
 
-const { strings } = require('@metrix/utils');
+const { strings } = require('@metrixlabs/utils');
 
 strings.nameToSlug();
 
@@ -55,13 +55,13 @@ Common JS
 
 Before:
 
-const { nameToSlug } = require('@metrix/utils');
+const { nameToSlug } = require('@metrixlabs/utils');
 
 nameToSlug();
 
 After:
 
-const { strings } = require('@metrix/utils');
+const { strings } = require('@metrixlabs/utils');
 
 strings.nameToSlug();
 
@@ -108,7 +108,7 @@ const removed = [
 const transformImports = (root: Collection, j: JSCodeshift) => {
   root
     .find(j.ImportDeclaration, {
-      source: { value: '@metrix/utils' },
+      source: { value: '@metrixlabs/utils' },
     })
     .forEach((path) => {
       if (!j.ImportDeclaration.check(path.value)) {
@@ -152,7 +152,7 @@ const transformImports = (root: Collection, j: JSCodeshift) => {
     });
 
   root.find(j.ImportNamespaceSpecifier).forEach((specifierPath) => {
-    if (specifierPath.parent.value.source.value === '@metrix/utils') {
+    if (specifierPath.parent.value.source.value === '@metrixlabs/utils') {
       for (const primitive of Object.keys(changes)) {
         const functions = Object.keys(changes[primitive]);
         functions.forEach((funcName) => {
@@ -193,7 +193,7 @@ const transformImports = (root: Collection, j: JSCodeshift) => {
         callee: {
           name: 'require',
         },
-        arguments: [{ value: '@metrix/utils' }],
+        arguments: [{ value: '@metrixlabs/utils' }],
       },
     })
     .forEach((path) => {

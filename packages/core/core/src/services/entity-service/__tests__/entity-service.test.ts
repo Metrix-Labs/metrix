@@ -1,4 +1,4 @@
-import type { Utils } from '@metrix/types';
+import type { Utils } from '@metrixlabs/types';
 import createEntityService from '../index';
 
 jest.mock('bcryptjs', () => ({ hashSync: () => 'secret-password' }));

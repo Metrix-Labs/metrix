@@ -1,7 +1,7 @@
 import get from 'lodash/get';
 
 import type { AnyAttribute, Component, Components } from '../../../types';
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 
 type ChildComponent = {
   component: UID.Component;

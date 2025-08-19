@@ -1,7 +1,7 @@
 import _ from 'lodash/fp';
 import qs from 'qs';
 import { Ability } from '@casl/ability';
-import { providerFactory } from '@metrix/utils';
+import { providerFactory } from '@metrixlabs/utils';
 
 import {
   createEngineHooks,

@@ -1,5 +1,5 @@
-import { Layouts } from '@metrix/admin/metrix-admin';
-import { Box } from '@metrix/design-system';
+import { Layouts } from '@metrixlabs/admin/metrix-admin';
+import { Box } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 const EmptyAssetCard = styled(Box)`

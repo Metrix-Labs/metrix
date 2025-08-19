@@ -4,6 +4,6 @@
  *  about controller
  */
 
-const { createCoreController } = require('@metrix/metrix').factories;
+const { createCoreController } = require('@metrixlabs/metrix').factories;
 
 module.exports = createCoreController('api::about.about');

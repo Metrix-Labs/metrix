@@ -1,4 +1,4 @@
-import type { Core, Struct } from '@metrix/types';
+import type { Core, Struct } from '@metrixlabs/types';
 import type { OpenAPIV3 } from 'openapi-types';
 
 export interface Config {

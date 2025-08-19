@@ -1,7 +1,7 @@
 /* eslint-disable no-continue */
 import { keyBy, omit } from 'lodash/fp';
 
-import type { UID, Schema } from '@metrix/types';
+import type { UID, Schema } from '@metrixlabs/types';
 
 interface LoadContext {
   oldVersions: { id: string; locale: string }[];

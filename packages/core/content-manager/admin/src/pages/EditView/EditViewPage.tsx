@@ -9,8 +9,8 @@ import {
   useNotification,
   useQueryParams,
   tours,
-} from '@metrix/admin/metrix-admin';
-import { Grid, Main, Tabs, Box } from '@metrix/design-system';
+} from '@metrixlabs/admin/metrix-admin';
+import { Grid, Main, Tabs, Box } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { useLocation, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';

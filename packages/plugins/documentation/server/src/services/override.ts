@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { getPluginsThatNeedDocumentation } from './utils/get-plugins-that-need-documentation';
 import type { PluginConfig } from '../types';

@@ -1,6 +1,6 @@
-import type { Utils } from '@metrix/types';
+import type { Utils } from '@metrixlabs/types';
 
-import { providerFactory } from '@metrix/utils';
+import { providerFactory } from '@metrixlabs/utils';
 import {
   pipe,
   set,

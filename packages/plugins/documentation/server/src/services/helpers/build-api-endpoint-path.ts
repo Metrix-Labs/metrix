@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import * as pathToRegexp from 'path-to-regexp';
 
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import type { OpenAPIV3 } from 'openapi-types';
 
 import pascalCase from './utils/pascal-case';

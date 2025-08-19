@@ -1,4 +1,4 @@
-import { Core } from '@metrix/types';
+import { Core } from '@metrixlabs/types';
 import { AbstractRoutesProvider } from '../../src/routes';
 
 import { routes as fixtures } from '../fixtures';

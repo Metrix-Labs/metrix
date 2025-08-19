@@ -11,8 +11,8 @@ import {
   Typography,
   VisuallyHidden,
   Box,
-} from '@metrix/design-system';
-import { Check, Pencil, ArrowClockwise as Refresh } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Check, Pencil, ArrowClockwise as Refresh } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

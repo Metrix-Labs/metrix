@@ -5,7 +5,7 @@
  *
  */
 
-import { Page } from '@metrix/metrix/admin';
+import { Page } from '@metrixlabs/metrix/admin';
 import { Routes, Route } from 'react-router-dom';
 
 import { HomePage } from './HomePage';

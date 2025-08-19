@@ -1,6 +1,6 @@
 import { isObject } from 'lodash/fp';
-import { errors } from '@metrix/utils';
-import type { Core, Struct, Utils, UID } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core, Struct, Utils, UID } from '@metrixlabs/types';
 import type Koa from 'koa';
 
 interface Options {

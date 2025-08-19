@@ -1,5 +1,5 @@
-import { Data } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import { Data } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 import type { File } from 'formidable';
 import type { GuidedTourCompletedActions } from '../../server/src/services/guided-tour';
 

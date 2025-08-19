@@ -1,7 +1,7 @@
 /* eslint-disable import/no-default-export */
-import { useTracking, Layouts, tours } from '@metrix/admin/metrix-admin';
-import { Box, Button, Flex, Typography } from '@metrix/design-system';
-import { Information, Pencil, Plus } from '@metrix/icons';
+import { useTracking, Layouts, tours } from '@metrixlabs/admin/metrix-admin';
+import { Box, Button, Flex, Typography } from '@strapi/design-system';
+import { Information, Pencil, Plus } from '@strapi/icons';
 import upperFirst from 'lodash/upperFirst';
 import { useIntl } from 'react-intl';
 import { Navigate, useParams } from 'react-router-dom';
@@ -14,7 +14,7 @@ import { getTrad } from '../../utils/getTrad';
 
 import { LinkToCMSettingsView } from './LinkToCMSettingsView';
 
-import type { Internal } from '@metrix/types';
+import type { Internal } from '@metrixlabs/types';
 
 const LayoutsHeaderCustom = styled(Layouts.Header)`
   overflow: hidden;

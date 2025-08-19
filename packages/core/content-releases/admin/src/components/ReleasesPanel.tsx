@@ -1,6 +1,6 @@
-import { useRBAC, useQueryParams } from '@metrix/admin/metrix-admin';
-import { unstable_useDocumentLayout as useDocumentLayout } from '@metrix/content-manager/metrix-admin';
-import { Box, Flex, Typography } from '@metrix/design-system';
+import { useRBAC, useQueryParams } from '@metrixlabs/admin/metrix-admin';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/metrix-admin';
+import { Box, Flex, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { PERMISSIONS } from '../constants';
@@ -9,7 +9,7 @@ import { getTimezoneOffset } from '../utils/time';
 
 import { ReleaseActionMenu } from './ReleaseActionMenu';
 
-import type { PanelComponent, PanelComponentProps } from '@metrix/content-manager/metrix-admin';
+import type { PanelComponent, PanelComponentProps } from '@metrixlabs/content-manager/metrix-admin';
 
 const Panel: PanelComponent = ({
   model,

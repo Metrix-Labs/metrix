@@ -1,6 +1,6 @@
-import { Layouts } from '@metrix/admin/metrix-admin';
-import { Box, Main, Flex, Typography, Grid, LinkButton } from '@metrix/design-system';
-import { ExternalLink, Check, PaperPlane } from '@metrix/icons';
+import { Layouts } from '@metrixlabs/admin/metrix-admin';
+import { Box, Main, Flex, Typography, Grid, LinkButton } from '@strapi/design-system';
+import { ExternalLink, Check, PaperPlane } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import darkIllustration from '../assets/purchase-page-illustration-dark.svg';

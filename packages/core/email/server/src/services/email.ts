@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { objects, template } from '@metrix/utils';
+import { objects, template } from '@metrixlabs/utils';
 
 import type {
   EmailConfig,

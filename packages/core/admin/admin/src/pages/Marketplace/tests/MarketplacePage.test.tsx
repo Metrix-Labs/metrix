@@ -18,8 +18,8 @@ jest.mock('../../../features/AppInfo', () => ({
   useAppInfo: jest.fn(() => ({
     autoReload: true,
     dependencies: {
-      '@metrix/plugin-documentation': '4.2.0',
-      '@metrix/provider-upload-cloudinary': '4.2.0',
+      '@metrixlabs/plugin-documentation': '4.2.0',
+      '@metrixlabs/provider-upload-cloudinary': '4.2.0',
     },
     strapiVersion: '4.1.0',
     useYarn: true,

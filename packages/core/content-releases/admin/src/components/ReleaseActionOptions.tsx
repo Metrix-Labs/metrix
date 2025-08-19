@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { VisuallyHidden, Field, Flex } from '@metrix/design-system';
+import { VisuallyHidden, Field, Flex } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 interface FieldWrapperProps extends Field.Props {

@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/plugin-graphql",
+  "name": "@metrixlabs/plugin-graphql",
   "version": "5.22.0",
   "description": "Adds GraphQL endpoint with default API methods.",
   "repository": {
@@ -68,9 +68,9 @@
     "lodash": "4.17.21",
     "nexus": "1.3.0",
     "pluralize": "8.0.0",
-    "@metrix/design-system": "2.0.0-rc.29",
-    "@metrix/icons": "2.0.0-rc.29",
-    "@metrix/utils": "5.22.0"
+    "@strapi/design-system": "2.0.0-rc.29",
+    "@strapi/icons": "2.0.0-rc.29",
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/graphql-depth-limit": "1.1.5",
@@ -85,15 +85,15 @@
     "styled-components": "6.1.8",
     "tsconfig": "5.22.0",
     "typescript": "5.4.4",
-    "@metrix/metrix": "5.22.0",
-    "@metrix/types": "5.22.0"
+    "@metrixlabs/metrix": "5.22.0",
+    "@metrixlabs/types": "5.22.0"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0",
-    "@metrix/metrix": "^5.0.0"
+    "@metrixlabs/metrix": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

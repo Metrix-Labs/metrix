@@ -151,9 +151,9 @@ async function run(args: string[]): Promise<void> {
     gitInit: true,
     devDependencies: {},
     dependencies: {
-      '@metrix/metrix': version,
-      '@metrix/plugin-users-permissions': version,
-      '@metrix/plugin-cloud': version,
+      '@metrixlabs/metrix': version,
+      '@metrixlabs/plugin-users-permissions': version,
+      '@metrixlabs/plugin-cloud': version,
       // third party
       react: '^18.0.0',
       'react-dom': '^18.0.0',

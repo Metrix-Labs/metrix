@@ -1,10 +1,10 @@
 import type { Context } from 'koa';
 import { castArray, isNil } from 'lodash/fp';
 import { differenceInHours, parseISO } from 'date-fns';
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import constants from '../services/constants';
 import { getService } from '../utils';
-import '@metrix/types';
+import '@metrixlabs/types';
 
 const { UnauthorizedError, ForbiddenError } = errors;
 

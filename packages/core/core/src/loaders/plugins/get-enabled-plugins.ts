@@ -3,8 +3,8 @@ import { dirname, join, resolve } from 'path';
 import { statSync, existsSync } from 'fs';
 import _ from 'lodash';
 import { get, pickBy, defaultsDeep, map, prop, pipe } from 'lodash/fp';
-import { strings } from '@metrix/utils';
-import type { Core } from '@metrix/types';
+import { strings } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 import { getUserPluginsConfig } from './get-user-plugins-config';
 
 interface PluginMeta {
@@ -34,13 +34,13 @@ interface PluginDeclaration {
  *       See admin.ts server controller on the content-manager plugin for more details.
  */
 const INTERNAL_PLUGINS = [
-  '@metrix/content-manager',
-  '@metrix/content-type-builder',
-  '@metrix/email',
-  '@metrix/upload',
-  '@metrix/i18n',
-  '@metrix/content-releases',
-  '@metrix/review-workflows',
+  '@metrixlabs/content-manager',
+  '@metrixlabs/content-type-builder',
+  '@metrixlabs/email',
+  '@metrixlabs/upload',
+  '@metrixlabs/i18n',
+  '@metrixlabs/content-releases',
+  '@metrixlabs/review-workflows',
 ];
 
 const isStrapiPlugin = (info: PluginInfo) => get('metrix.kind', info) === 'plugin';
@@ -94,7 +94,7 @@ export const getEnabledPlugins = async (metrix: Core.Strapi, { client } = { clie
 
     // NOTE: internal plugins should be resolved from the metrix package
     const packageModulePath = require.resolve(packagePath, {
-      paths: [require.resolve('@metrix/metrix/package.json'), process.cwd()],
+      paths: [require.resolve('@metrixlabs/metrix/package.json'), process.cwd()],
     });
 
     const packageInfo = require(packageModulePath);

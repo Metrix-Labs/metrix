@@ -16,7 +16,7 @@ const mock = {
   admin,
 };
 
-jest.mock('@metrix/core', () => {
+jest.mock('@metrixlabs/core', () => {
   const createStrapi = jest.fn(() => mock);
 
   const compileStrapi = jest.fn();

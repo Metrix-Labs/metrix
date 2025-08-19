@@ -1,6 +1,6 @@
 import { isFunction } from 'lodash/fp';
-import { file as fileUtils } from '@metrix/utils';
-import type { Core } from '@metrix/types';
+import { file as fileUtils } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 import { Config, UploadableFile } from '../types';
 

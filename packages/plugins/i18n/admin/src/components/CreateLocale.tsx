@@ -10,7 +10,7 @@ import {
   useAPIErrorHandler,
   useNotification,
   useAuth,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Button,
@@ -25,8 +25,8 @@ import {
   Tabs,
   Typography,
   useId,
-} from '@metrix/design-system';
-import { Check, Plus } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Check, Plus } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import * as yup from 'yup';
 

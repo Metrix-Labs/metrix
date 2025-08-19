@@ -1,7 +1,7 @@
 import get from 'lodash/get';
 
 import type { Middleware } from '@reduxjs/toolkit';
-import type { Store } from '@metrix/admin/metrix-admin';
+import type { Store } from '@metrixlabs/admin/metrix-admin';
 
 const extendCTBAttributeInitialDataMiddleware: () => Middleware<
   object,

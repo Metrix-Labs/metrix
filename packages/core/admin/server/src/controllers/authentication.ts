@@ -1,8 +1,8 @@
 import type { Context, Next } from 'koa';
 import passport from 'koa-passport';
 import compose from 'koa-compose';
-import '@metrix/types';
-import { errors } from '@metrix/utils';
+import '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 import { getService } from '../utils';
 import {
   validateRegistrationInput,

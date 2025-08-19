@@ -4,6 +4,6 @@
  * relation-locale router
  */
 
-const { createCoreRouter } = require('@metrix/metrix').factories;
+const { createCoreRouter } = require('@metrixlabs/metrix').factories;
 
 module.exports = createCoreRouter('api::relation-locale.relation-locale');

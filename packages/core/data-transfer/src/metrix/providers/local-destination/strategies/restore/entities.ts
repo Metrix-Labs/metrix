@@ -1,5 +1,5 @@
 import { Writable } from 'stream';
-import type { Core, UID } from '@metrix/types';
+import type { Core, UID } from '@metrixlabs/types';
 
 import { last } from 'lodash/fp';
 

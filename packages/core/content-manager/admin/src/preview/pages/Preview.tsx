@@ -7,7 +7,7 @@ import {
   createContext,
   Form as FormContext,
   Blocker,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Flex,
@@ -16,8 +16,8 @@ import {
   Portal,
   SingleSelect,
   SingleSelectOption,
-} from '@metrix/design-system';
-import { ArrowLineLeft } from '@metrix/icons';
+} from '@strapi/design-system';
+import { ArrowLineLeft } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { useLocation, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
@@ -36,7 +36,7 @@ import { useGetPreviewUrlQuery } from '../services/preview';
 import { INTERNAL_EVENTS, PUBLIC_EVENTS } from '../utils/constants';
 import { previewScript } from '../utils/previewScript';
 
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * Constants

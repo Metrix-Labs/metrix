@@ -1,5 +1,5 @@
-import type { Core, UID, Modules } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Core, UID, Modules } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 import { isNil } from 'lodash/fp';
 import { ENTITY_ASSIGNEE_ATTRIBUTE } from '../constants/workflows';
 import { getService, getAdminService } from '../utils';

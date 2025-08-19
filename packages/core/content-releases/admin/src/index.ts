@@ -1,4 +1,4 @@
-import { PaperPlane } from '@metrix/icons';
+import { PaperPlane } from '@strapi/icons';
 
 import { ReleaseAction } from './components/ReleaseAction';
 import { ReleaseActionModalForm } from './components/ReleaseActionModal';
@@ -8,12 +8,12 @@ import { PERMISSIONS, PLUGIN_ID } from './constants';
 import { pluginId } from './pluginId';
 import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 
-import type { StrapiApp } from '@metrix/admin/metrix-admin';
+import type { StrapiApp } from '@metrixlabs/admin/metrix-admin';
 import type {
   DocumentActionComponent,
   BulkActionComponent,
-} from '@metrix/content-manager/metrix-admin';
-import type { Plugin } from '@metrix/types';
+} from '@metrixlabs/content-manager/metrix-admin';
+import type { Plugin } from '@metrixlabs/types';
 
 // eslint-disable-next-line import/no-default-export
 const admin: Plugin.Config.AdminInput = {

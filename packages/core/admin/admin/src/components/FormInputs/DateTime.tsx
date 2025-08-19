@@ -1,6 +1,6 @@
 import { forwardRef, memo } from 'react';
 
-import { DateTimePicker, useComposedRefs, Field } from '@metrix/design-system';
+import { DateTimePicker, useComposedRefs, Field } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { useFocusInputField } from '../../hooks/useFocusInputField';

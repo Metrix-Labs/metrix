@@ -1,6 +1,6 @@
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import type * as Nexus from 'nexus';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 const { ValidationError } = errors;
 

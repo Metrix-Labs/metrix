@@ -1,5 +1,5 @@
 import { SerializedError } from '@reduxjs/toolkit';
-import { ApiError, type UnknownApiError } from '@metrix/admin/metrix-admin';
+import { ApiError, type UnknownApiError } from '@metrixlabs/admin/metrix-admin';
 
 interface Query {
   plugins?: Record<string, unknown>;

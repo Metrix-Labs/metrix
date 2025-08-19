@@ -1,4 +1,4 @@
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 
 import type {
   AdminUserCreationPayload,
@@ -6,7 +6,7 @@ import type {
   Pagination,
   SanitizedAdminUser,
 } from './shared';
-import type { Data, Modules } from '@metrix/types';
+import type { Data, Modules } from '@metrixlabs/types';
 
 /**
  * /create - Create an admin user

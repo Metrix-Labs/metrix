@@ -14,8 +14,8 @@ import {
   Typography,
   EmptyStateLayout,
   Dialog,
-} from '@metrix/design-system';
-import { Eye as Show, ArrowClockwise as Reload, Trash } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Eye as Show, ArrowClockwise as Reload, Trash } from '@strapi/icons';
 import {
   ConfirmDialog,
   useRBAC,
@@ -23,7 +23,7 @@ import {
   useAPIErrorHandler,
   useNotification,
   Layouts,
-} from '@metrix/metrix/admin';
+} from '@metrixlabs/metrix/admin';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

@@ -13,8 +13,8 @@ import {
   useFilter,
   LinkButton,
   Dialog,
-} from '@metrix/design-system';
-import { Plus } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Plus } from '@strapi/icons';
 import {
   ConfirmDialog,
   useTracking,
@@ -25,7 +25,7 @@ import {
   useFetchClient,
   useRBAC,
   Layouts,
-} from '@metrix/metrix/admin';
+} from '@metrixlabs/metrix/admin';
 import { useIntl } from 'react-intl';
 import { useMutation, useQuery } from 'react-query';
 import { NavLink } from 'react-router-dom';

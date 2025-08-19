@@ -1,5 +1,5 @@
-import { Box, Button, Dialog, Flex, Link, ProgressBar, Typography } from '@metrix/design-system';
-import { CheckCircle, ChevronRight } from '@metrix/icons';
+import { Box, Button, Dialog, Flex, Link, ProgressBar, Typography } from '@strapi/design-system';
+import { CheckCircle, ChevronRight } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import { styled, useTheme } from 'styled-components';

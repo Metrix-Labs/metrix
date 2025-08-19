@@ -1,4 +1,4 @@
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import { act, renderHook, screen, server } from '@tests/utils';
 import { rest } from 'msw';
 

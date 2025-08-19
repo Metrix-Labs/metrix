@@ -1,6 +1,6 @@
-import * as utils from '@metrix/utils';
+import * as utils from '@metrixlabs/utils';
 import { pick } from 'lodash/fp';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import { getService } from '../utils';
 import { validateCreateLocaleInput, validateUpdateLocaleInput } from '../validation/locales';
 import { formatLocale } from '../domain/locale';

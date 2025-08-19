@@ -1,6 +1,6 @@
 import { defaultsDeep, filter, pipe, map } from 'lodash/fp';
 
-import type { Core, UID } from '@metrix/types';
+import type { Core, UID } from '@metrixlabs/types';
 
 import { getService, getAdminService } from './utils';
 import migrateStageAttribute from './migrations/shorten-stage-attribute';

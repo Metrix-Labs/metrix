@@ -1,4 +1,4 @@
-import { Model } from '@metrix/database';
+import { Model } from '@metrixlabs/database';
 
 export const registry = () => {
   const models: Model[] = [];

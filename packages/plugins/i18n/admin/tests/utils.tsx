@@ -8,7 +8,7 @@ import {
   act,
   screen,
   type RenderOptions,
-} from '@metrix/admin/metrix-admin/test';
+} from '@metrixlabs/admin/metrix-admin/test';
 
 import { PERMISSIONS } from '../src/constants';
 

@@ -1,7 +1,7 @@
 import { createCommand } from 'commander';
 import CLITable from 'cli-table3';
 import chalk from 'chalk';
-import { createStrapi, compileStrapi } from '@metrix/core';
+import { createStrapi, compileStrapi } from '@metrixlabs/core';
 
 import type { StrapiCommand } from '../../types';
 import { runAction } from '../../utils/helpers';

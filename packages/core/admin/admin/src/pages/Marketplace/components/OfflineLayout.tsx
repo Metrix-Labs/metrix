@@ -1,4 +1,4 @@
-import { Box, Flex, Main, Typography } from '@metrix/design-system';
+import { Box, Flex, Main, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { Layouts } from '../../../components/Layouts/Layout';

@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/plugin-users-permissions",
+  "name": "@metrixlabs/plugin-users-permissions",
   "version": "5.22.0",
   "description": "Protect your API with a full-authentication process based on JWT",
   "repository": {
@@ -65,9 +65,9 @@
     "url-join": "4.0.1",
     "yup": "0.32.9",
     "zod": "3.25.67",
-    "@metrix/design-system": "2.0.0-rc.29",
-    "@metrix/icons": "2.0.0-rc.29",
-    "@metrix/utils": "5.22.0"
+    "@strapi/design-system": "2.0.0-rc.29",
+    "@strapi/icons": "2.0.0-rc.29",
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@testing-library/dom": "10.1.0",
@@ -78,14 +78,14 @@
     "react-dom": "18.3.1",
     "react-router-dom": "6.22.3",
     "styled-components": "6.1.8",
-    "@metrix/metrix": "5.22.0"
+    "@metrixlabs/metrix": "5.22.0"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0",
-    "@metrix/metrix": "^5.0.0"
+    "@metrixlabs/metrix": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

@@ -1,6 +1,6 @@
 import { ReactNode, ChangeEvent } from 'react';
 
-import { Field, Textarea } from '@metrix/design-system';
+import { Field, Textarea } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import type { IntlLabel } from '../types';

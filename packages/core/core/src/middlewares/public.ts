@@ -1,6 +1,6 @@
 import { defaultsDeep } from 'lodash/fp';
 import koaStatic from 'koa-static';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 type Config = koaStatic.Options;
 

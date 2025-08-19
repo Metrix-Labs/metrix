@@ -1,6 +1,6 @@
 import { merge, map, difference, uniq } from 'lodash/fp';
-import type { Core } from '@metrix/types';
-import { async } from '@metrix/utils';
+import type { Core } from '@metrixlabs/types';
+import { async } from '@metrixlabs/utils';
 import { getService } from './utils';
 import adminActions from './config/admin-actions';
 import adminConditions from './config/admin-conditions';

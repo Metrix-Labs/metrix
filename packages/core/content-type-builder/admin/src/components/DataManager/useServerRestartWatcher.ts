@@ -1,4 +1,4 @@
-import { useFetchClient } from '@metrix/admin/metrix-admin';
+import { useFetchClient } from '@metrixlabs/admin/metrix-admin';
 
 const TIMEOUT = 'timeout';
 

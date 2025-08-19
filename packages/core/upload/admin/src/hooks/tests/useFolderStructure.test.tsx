@@ -1,13 +1,13 @@
 /* eslint-disable check-file/filename-naming-convention */
-import { useFetchClient } from '@metrix/admin/metrix-admin';
+import { useFetchClient } from '@metrixlabs/admin/metrix-admin';
 import { act, renderHook, waitFor, RenderHookResult } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { useFolderStructure } from '../useFolderStructure';
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useFetchClient: jest.fn().mockReturnValue({
     get: jest.fn().mockResolvedValue({
       data: {

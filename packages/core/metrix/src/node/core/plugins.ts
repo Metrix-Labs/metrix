@@ -2,7 +2,7 @@ import os from 'node:os';
 import path from 'node:path';
 import fs from 'node:fs';
 import camelCase from 'lodash/camelCase';
-import { env } from '@metrix/utils';
+import { env } from '@metrixlabs/utils';
 import { getModule, PackageJson } from './dependencies';
 import { convertModulePathToSystemPath, convertSystemPathToModulePath, loadFile } from './files';
 import type { BaseContext } from '../types';

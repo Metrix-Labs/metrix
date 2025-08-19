@@ -1,4 +1,4 @@
-import type { SanitizedAdminUser } from '@metrix/admin/metrix-admin';
+import type { SanitizedAdminUser } from '@metrixlabs/admin/metrix-admin';
 
 /**
  * Retrieves the display name of an admin panel user

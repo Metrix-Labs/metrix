@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Table, Tbody, Td, Th, Thead, Tr, Typography, useNotifyAT } from '@metrix/design-system';
+import { Table, Tbody, Td, Th, Thead, Tr, Typography, useNotifyAT } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { Layouts } from '../../../components/Layouts/Layout';

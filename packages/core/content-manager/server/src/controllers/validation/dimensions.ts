@@ -1,5 +1,5 @@
-import { errors, yup, validateYupSchema, contentTypes } from '@metrix/utils';
-import type { UID } from '@metrix/types';
+import { errors, yup, validateYupSchema, contentTypes } from '@metrixlabs/utils';
+import type { UID } from '@metrixlabs/types';
 
 interface Options {
   allowMultipleLocales?: boolean;

@@ -1,4 +1,4 @@
-import { FetchError } from '@metrix/admin/metrix-admin';
+import { FetchError } from '@metrixlabs/admin/metrix-admin';
 
 import { getAPIInnerErrors } from '../getAPIInnerErrors';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useForm, InputRenderer, type InputProps } from '@metrix/admin/metrix-admin';
-import { Flex, Grid, Typography, useCollator } from '@metrix/design-system';
+import { useForm, InputRenderer, type InputProps } from '@metrixlabs/admin/metrix-admin';
+import { Flex, Grid, Typography, useCollator } from '@strapi/design-system';
 import { type MessageDescriptor, useIntl } from 'react-intl';
 
 import { useDoc } from '../../../hooks/useDocument';

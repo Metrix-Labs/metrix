@@ -1,5 +1,5 @@
-import { useStrapiApp } from '@metrix/admin/metrix-admin';
-import { DesignSystemProvider } from '@metrix/design-system';
+import { useStrapiApp } from '@metrixlabs/admin/metrix-admin';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
@@ -10,8 +10,8 @@ import { AttributeOptions } from '../AttributeOptions';
 
 import type { IconByType } from '../../AttributeIcon';
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useStrapiApp: jest.fn((_name, getter) =>
     getter({
       customFields: {

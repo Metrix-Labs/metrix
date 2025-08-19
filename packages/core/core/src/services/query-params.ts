@@ -1,5 +1,5 @@
-import { queryParams } from '@metrix/utils';
-import type { Core, UID } from '@metrix/types';
+import { queryParams } from '@metrixlabs/utils';
+import type { Core, UID } from '@metrixlabs/types';
 
 export default (metrix: Core.Strapi) => {
   const { transformQueryParams } = queryParams.createTransformer({

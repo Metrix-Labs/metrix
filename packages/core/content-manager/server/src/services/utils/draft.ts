@@ -1,5 +1,5 @@
 import { castArray } from 'lodash/fp';
-import strapiUtils from '@metrix/utils';
+import strapiUtils from '@metrixlabs/utils';
 
 const { isVisibleAttribute } = strapiUtils.contentTypes;
 /**

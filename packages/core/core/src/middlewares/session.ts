@@ -1,6 +1,6 @@
 import { isEmpty, isArray } from 'lodash/fp';
 import koaSession from 'koa-session';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 const defaultConfig = {
   key: 'koa.sess',

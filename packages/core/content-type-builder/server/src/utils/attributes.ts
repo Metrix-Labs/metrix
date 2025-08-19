@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import utils, { errors } from '@metrix/utils';
-import type { Schema } from '@metrix/types';
+import utils, { errors } from '@metrixlabs/utils';
+import type { Schema } from '@metrixlabs/types';
 
 const { ApplicationError } = errors;
 

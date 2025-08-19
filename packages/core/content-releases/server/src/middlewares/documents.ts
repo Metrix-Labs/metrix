@@ -1,5 +1,5 @@
-import type { Modules, UID } from '@metrix/types';
-import { contentTypes } from '@metrix/utils';
+import type { Modules, UID } from '@metrixlabs/types';
+import { contentTypes } from '@metrixlabs/utils';
 import { RELEASE_MODEL_UID, RELEASE_ACTION_MODEL_UID } from '../constants';
 import { getService, isEntryValid } from '../utils';
 

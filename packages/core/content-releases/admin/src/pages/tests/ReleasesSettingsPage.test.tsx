@@ -1,4 +1,4 @@
-import { useRBAC } from '@metrix/admin/metrix-admin';
+import { useRBAC } from '@metrixlabs/admin/metrix-admin';
 import { render, server, screen, waitFor, fireEvent } from '@tests/utils';
 import { rest } from 'msw';
 
@@ -23,8 +23,8 @@ const mockUseGetReleaseSettingsQuery = jest.fn<ReleaseSettings, []>(() => ({
   isLoading: false,
 }));
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useRBAC: jest.fn(() => ({
     isLoading: false,
     allowedActions: { canRead: false, canUpdate: false },

@@ -1,4 +1,4 @@
-import { Box, BoxComponent, Flex, Typography } from '@metrix/design-system';
+import { Box, BoxComponent, Flex, Typography } from '@strapi/design-system';
 import map from 'lodash/map';
 import tail from 'lodash/tail';
 import { useIntl } from 'react-intl';

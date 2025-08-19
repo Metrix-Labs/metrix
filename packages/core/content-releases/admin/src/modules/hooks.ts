@@ -1,7 +1,7 @@
 import { Dispatch } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
-import type { Store } from '@metrix/admin/metrix-admin';
+import type { Store } from '@metrixlabs/admin/metrix-admin';
 
 type RootState = ReturnType<Store['getState']>;
 

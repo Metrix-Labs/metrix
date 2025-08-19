@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex } from '@metrix/design-system';
+import { Avatar, Box, Flex } from '@strapi/design-system';
 import {
   File as FileIcon,
   FileCsv,
@@ -7,7 +7,7 @@ import {
   FileZip,
   Folder,
   VolumeUp,
-} from '@metrix/icons';
+} from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

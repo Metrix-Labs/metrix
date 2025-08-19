@@ -1,6 +1,6 @@
 import { propEq, identity } from 'lodash/fp';
-import { errors } from '@metrix/utils';
-import type { Core } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 const { ValidationError } = errors;
 

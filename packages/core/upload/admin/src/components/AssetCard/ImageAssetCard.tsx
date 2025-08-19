@@ -1,4 +1,4 @@
-import { CardAsset } from '@metrix/design-system';
+import { CardAsset } from '@strapi/design-system';
 
 import { appendSearchParamsToUrl } from '../../utils';
 

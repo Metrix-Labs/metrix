@@ -1,7 +1,7 @@
 import { prop } from 'lodash/fp';
 import type Koa from 'koa';
-import { contentTypes as contentTypeUtils } from '@metrix/utils';
-import type { Core, Struct } from '@metrix/types';
+import { contentTypes as contentTypeUtils } from '@metrixlabs/utils';
+import type { Core, Struct } from '@metrixlabs/types';
 
 import { transformResponse } from './transform';
 import { createSingleTypeController } from './single-type';

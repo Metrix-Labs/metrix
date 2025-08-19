@@ -24,7 +24,7 @@
     "lint": "eslint ."
   },
   "peerDependencies": {
-    "@metrix/metrix": "workspace:*"
+    "@metrixlabs/metrix": "workspace:*"
   },
   "dependencies": {
     "eslint": "8.50.0",
@@ -32,12 +32,12 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0",
-    "@metrix/design-system": "2.0.0-rc.29",
-    "@metrix/icons": "2.0.0-rc.29"
+    "@strapi/design-system": "2.0.0-rc.29",
+    "@strapi/icons": "2.0.0-rc.29"
   },
   "devDependencies": {
-    "@metrix/sdk-plugin": "^5.2.0",
-    "@metrix/metrix": "workspace:*"
+    "@metrixlabs/sdk-plugin": "^5.2.0",
+    "@metrixlabs/metrix": "workspace:*"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

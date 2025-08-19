@@ -89,7 +89,11 @@
     "rename:text:dry": "node scripts/rename/replace-text.js --dry",
     "rename:text": "node scripts/rename/replace-text.js",
     "rename:code-lite:dry": "node scripts/rename/replace-code-lite.js --dry",
-    "rename:code-lite": "node scripts/rename/replace-code-lite.js"
+    "rename:code-lite": "node scripts/rename/replace-code-lite.js",
+    "rename:revert-external:dry": "node scripts/rename/revert-external-strapi.js --dry",
+    "rename:revert-external": "node scripts/rename/revert-external-strapi.js",
+    "rename:rescope:dry": "node scripts/rename/rescope-internal-to-metrixlabs.js --dry",
+    "rename:rescope": "node scripts/rename/rescope-internal-to-metrixlabs.js"
   },
   "resolutions": {
     "@types/koa": "2.13.4",
@@ -181,7 +185,7 @@
     "yargs": "17.7.2",
     "jscodeshift": "17.1.2",
     "@metrix/admin-test-utils": "workspace:*",
-    "@metrix/eslint-config": "0.2.0",
+    "@strapi/eslint-config": "0.2.0",
     "create-metrix-app": "workspace:*"
   },
   "packageManager": "yarn@4.5.0",

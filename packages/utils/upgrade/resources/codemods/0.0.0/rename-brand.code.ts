@@ -3,8 +3,8 @@ import { Transform, JSCodeshift, Collection } from 'jscodeshift';
 /**
  * Rename Strapi brand tokens to Metrix in code files.
  *
- * - Import/require sources: "@metrix/*" -> "@metrix/*"
- *   Special-case: "@metrix/metrix" -> "@metrix/metrix"
+ * - Import/require sources: "@metrixlabs/*" -> "@metrixlabs/*"
+ *   Special-case: "@metrixlabs/metrix" -> "@metrixlabs/metrix"
  * - Relative import sources containing "/metrix/" segment -> "/metrix/"
  * - Identifier renames (safe subset):
  *   - Any identifier starting with "metrix" -> "metrix" + rest (e.g., strapiFunction -> metrixFunction)
@@ -14,10 +14,10 @@ import { Transform, JSCodeshift, Collection } from 'jscodeshift';
  * - Env vars: process.env.METRIX_* -> process.env.METRIX_*
  */
 
-const PACKAGE_SCOPE_FROM = '@metrix/';
-const PACKAGE_SCOPE_TO = '@metrix/';
-const SPECIAL_FROM = '@metrix/metrix';
-const SPECIAL_TO = '@metrix/metrix';
+const PACKAGE_SCOPE_FROM = '@metrixlabs/';
+const PACKAGE_SCOPE_TO = '@metrixlabs/';
+const SPECIAL_FROM = '@metrixlabs/metrix';
+const SPECIAL_TO = '@metrixlabs/metrix';
 
 const renameImportSource = (value: string): string => {
   if (value === SPECIAL_FROM) return SPECIAL_TO;

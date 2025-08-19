@@ -1,4 +1,4 @@
-import { Flex, Grid, Tooltip, Typography } from '@metrix/design-system';
+import { Flex, Grid, Tooltip, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';

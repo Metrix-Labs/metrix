@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/types",
+  "name": "@metrixlabs/types",
   "version": "5.22.0",
   "description": "Shared typescript types for Strapi internal use",
   "keywords": [
@@ -55,10 +55,10 @@
     "typedoc-github-wiki-theme": "1.1.0",
     "typedoc-plugin-markdown": "3.17.1",
     "zod": "3.25.67",
-    "@metrix/database": "5.22.0",
-    "@metrix/logger": "5.22.0",
-    "@metrix/permissions": "5.22.0",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/database": "5.22.0",
+    "@metrixlabs/logger": "5.22.0",
+    "@metrixlabs/permissions": "5.22.0",
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/jest": "29.5.2",
@@ -71,7 +71,7 @@
     "tsconfig": "5.22.0",
     "typescript": "5.4.4",
     "undici": "6.21.2",
-    "@metrix/ts-zen": "^0.2.0"
+    "@metrixlabs/ts-zen": "^0.2.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

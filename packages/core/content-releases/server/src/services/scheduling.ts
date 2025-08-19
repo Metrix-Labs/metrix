@@ -1,6 +1,6 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import { Release } from '../../../shared/contracts/releases';
 import { getService } from '../utils';
 import { RELEASE_MODEL_UID } from '../constants';

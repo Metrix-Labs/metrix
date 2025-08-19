@@ -1,4 +1,4 @@
-import type { Utils } from '@metrix/types';
+import type { Utils } from '@metrixlabs/types';
 
 import type { Codemod } from '../codemod';
 import type { Report } from '../report';

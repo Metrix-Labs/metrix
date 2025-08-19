@@ -1,5 +1,5 @@
 import { isNil } from 'lodash/fp';
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 import { type Populate, getDeepPopulate, getQueryPopulate } from './utils/populate';
 
 /**

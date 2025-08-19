@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { pick, pipe, has, prop, isNil, cloneDeep, isArray } from 'lodash/fp';
-import { errors, contentTypes as contentTypeUtils } from '@metrix/utils';
+import { errors, contentTypes as contentTypeUtils } from '@metrixlabs/utils';
 import { getService } from '../utils';
 
 const {

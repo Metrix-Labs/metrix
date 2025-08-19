@@ -2,10 +2,10 @@
 /* eslint-disable check-file/filename-naming-convention */
 import * as React from 'react';
 
-import { Page, useTracking, ConfirmDialog, useRBAC, Table } from '@metrix/admin/metrix-admin';
-import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
-import { Flex, IconButton, TFooter, Typography, LinkButton, Dialog } from '@metrix/design-system';
-import { Pencil, Plus, Trash } from '@metrix/icons';
+import { Page, useTracking, ConfirmDialog, useRBAC, Table } from '@metrixlabs/admin/metrix-admin';
+import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
+import { Flex, IconButton, TFooter, Typography, LinkButton, Dialog } from '@strapi/design-system';
+import { Pencil, Plus, Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 

@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import '@metrix/types';
+import '@metrixlabs/types';
 
 import config from './config';
 import bootstrap from './bootstrap';

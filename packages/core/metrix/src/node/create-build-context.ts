@@ -2,8 +2,8 @@ import os from 'node:os';
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import browserslist from 'browserslist';
-import { createStrapi } from '@metrix/core';
-import type { Core, Modules } from '@metrix/types';
+import { createStrapi } from '@metrixlabs/core';
+import type { Core, Modules } from '@metrixlabs/types';
 import type { Server } from 'node:http';
 
 import type { CLIContext } from '../cli/types';

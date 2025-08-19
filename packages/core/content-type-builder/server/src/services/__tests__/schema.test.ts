@@ -1,4 +1,4 @@
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 
 import { updateSchema } from '../schema';
 import type { Schema as CTBSchema } from '../../controllers/validation/schema';

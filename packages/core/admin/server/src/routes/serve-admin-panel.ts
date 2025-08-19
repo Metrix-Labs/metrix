@@ -2,7 +2,7 @@ import type { Context, Next } from 'koa';
 import { resolve, join, extname, basename } from 'path';
 import fse from 'fs-extra';
 import koaStatic from 'koa-static';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 const registerAdminPanelRoute = ({ metrix }: { metrix: Core.Strapi }) => {
   let buildDir = resolve(metrix.dirs.dist.root, 'build');

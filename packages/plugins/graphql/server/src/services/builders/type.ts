@@ -1,7 +1,7 @@
 import { isArray, isString, isUndefined, constant } from 'lodash/fp';
 import { nonNull, list, objectType } from 'nexus';
-import { contentTypes } from '@metrix/utils';
-import type { Struct } from '@metrix/types';
+import { contentTypes } from '@metrixlabs/utils';
+import type { Struct } from '@metrixlabs/types';
 
 import type { Context } from '../types';
 

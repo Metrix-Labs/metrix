@@ -1,4 +1,4 @@
-import { Button, IconButton, IconButtonComponent, IconButtonGroup } from '@metrix/design-system';
+import { Button, IconButton, IconButtonComponent, IconButtonGroup } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 // NAV BUTTONS

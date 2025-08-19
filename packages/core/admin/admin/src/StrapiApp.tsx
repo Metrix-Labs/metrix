@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { darkTheme, lightTheme } from '@metrix/design-system';
-import { Clock, User, TrendUp } from '@metrix/icons';
+import { darkTheme, lightTheme } from '@strapi/design-system';
+import { Clock, User, TrendUp } from '@strapi/icons';
 import invariant from 'invariant';
 import isFunction from 'lodash/isFunction';
 import merge from 'lodash/merge';

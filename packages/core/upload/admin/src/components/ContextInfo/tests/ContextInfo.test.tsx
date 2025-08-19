@@ -1,4 +1,4 @@
-import { DesignSystemProvider } from '@metrix/design-system';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { render } from '@testing-library/react';
 
 import { ContextInfo } from '../ContextInfo';

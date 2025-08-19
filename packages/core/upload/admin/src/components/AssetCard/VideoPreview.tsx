@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, VisuallyHidden } from '@metrix/design-system';
+import { Box, VisuallyHidden } from '@strapi/design-system';
 
 // According to MDN
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/readyState#value

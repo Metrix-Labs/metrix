@@ -1,7 +1,7 @@
-import { compileStrapi, createStrapi } from '@metrix/core';
-import * as openapi from '@metrix/openapi';
+import { compileStrapi, createStrapi } from '@metrixlabs/core';
+import * as openapi from '@metrixlabs/openapi';
 
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import chalk from 'chalk';
 import fse from 'fs-extra';

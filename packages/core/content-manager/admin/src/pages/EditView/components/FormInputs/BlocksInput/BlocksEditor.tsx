@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { createContext, type FieldValue } from '@metrix/admin/metrix-admin';
-import { IconButton, Divider, VisuallyHidden } from '@metrix/design-system';
-import { Expand } from '@metrix/icons';
+import { createContext, type FieldValue } from '@metrixlabs/admin/metrix-admin';
+import { IconButton, Divider, VisuallyHidden } from '@strapi/design-system';
+import { Expand } from '@strapi/icons';
 import { MessageDescriptor, useIntl } from 'react-intl';
 import { Editor, type Descendant, createEditor, Transforms } from 'slate';
 import { withHistory } from 'slate-history';
@@ -26,7 +26,7 @@ import { withImages } from './plugins/withImages';
 import { withLinks } from './plugins/withLinks';
 import { withStrapiSchema } from './plugins/withStrapiSchema';
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * BlocksEditorProvider

@@ -4,7 +4,7 @@ import {
   FlexProps,
   Typography,
   TypographyComponent,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 interface ContentBoxProps {

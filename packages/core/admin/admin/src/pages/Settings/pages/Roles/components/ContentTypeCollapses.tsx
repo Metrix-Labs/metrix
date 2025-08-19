@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Checkbox, Box, BoxComponent, Flex, FlexComponent, Modal } from '@metrix/design-system';
-import { ChevronDown, ChevronUp } from '@metrix/icons';
+import { Checkbox, Box, BoxComponent, Flex, FlexComponent, Modal } from '@strapi/design-system';
+import { ChevronDown, ChevronUp } from '@strapi/icons';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import omit from 'lodash/omit';

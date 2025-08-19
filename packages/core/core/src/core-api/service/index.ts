@@ -1,5 +1,5 @@
-import { contentTypes as contentTypeUtils } from '@metrix/utils';
-import type { Core, Struct } from '@metrix/types';
+import { contentTypes as contentTypeUtils } from '@metrixlabs/utils';
+import type { Core, Struct } from '@metrixlabs/types';
 
 import { createSingleTypeService } from './single-type';
 import { createCollectionTypeService } from './collection-type';

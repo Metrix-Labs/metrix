@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/generators",
+  "name": "@metrixlabs/generators",
   "version": "5.22.0",
   "description": "Interactive API generator.",
   "keywords": [
@@ -55,8 +55,8 @@
     "handlebars": "4.7.7",
     "plop": "4.0.1",
     "pluralize": "8.0.0",
-    "@metrix/typescript-utils": "5.22.0",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/typescript-utils": "5.22.0",
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",

@@ -1,5 +1,5 @@
-import type { Internal } from '@metrix/types';
-import { contentTypes } from '@metrix/utils';
+import type { Internal } from '@metrixlabs/types';
+import { contentTypes } from '@metrixlabs/utils';
 import {
   toSubjectTemplate,
   getValidOptions,

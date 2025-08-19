@@ -1,4 +1,4 @@
-import { Box, BoxComponent, Flex, FlexComponent } from '@metrix/design-system';
+import { Box, BoxComponent, Flex, FlexComponent } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 const Wrapper = styled<BoxComponent>(Box)`

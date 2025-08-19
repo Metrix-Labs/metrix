@@ -1,7 +1,7 @@
 import { prop } from 'lodash/fp';
-import { contentTypes as contentTypesUtils } from '@metrix/utils';
+import { contentTypes as contentTypesUtils } from '@metrixlabs/utils';
 
-import type { Core, Struct } from '@metrix/types';
+import type { Core, Struct } from '@metrixlabs/types';
 import { getService } from '../utils';
 
 export default ({ metrix }: { metrix: Core.Strapi }) => ({

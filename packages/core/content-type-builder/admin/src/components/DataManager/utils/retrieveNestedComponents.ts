@@ -1,5 +1,5 @@
 import type { Components, Component } from '../../../types';
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 
 export type NestedComponent = {
   component: UID.Component;

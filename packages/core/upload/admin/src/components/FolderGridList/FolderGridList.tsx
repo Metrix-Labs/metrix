@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Grid, KeyboardNavigable, Typography } from '@metrix/design-system';
+import { Box, Grid, KeyboardNavigable, Typography } from '@strapi/design-system';
 
 export interface FolderGridListProps {
   children: React.ReactNode;

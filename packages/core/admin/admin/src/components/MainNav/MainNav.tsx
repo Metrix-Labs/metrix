@@ -1,4 +1,4 @@
-import { Flex, FlexComponent, FlexProps } from '@metrix/design-system';
+import { Flex, FlexComponent, FlexProps } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 const MainNavWrapper = styled<FlexComponent<'nav'>>(Flex)`

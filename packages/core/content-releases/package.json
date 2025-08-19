@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/content-releases",
+  "name": "@metrixlabs/content-releases",
   "version": "5.22.0",
   "description": "Strapi plugin for organizing and releasing content",
   "repository": {
@@ -67,11 +67,11 @@
     "react-intl": "6.6.2",
     "react-redux": "8.1.3",
     "yup": "0.32.9",
-    "@metrix/database": "5.22.0",
-    "@metrix/design-system": "2.0.0-rc.29",
-    "@metrix/icons": "2.0.0-rc.29",
-    "@metrix/types": "5.22.0",
-    "@metrix/utils": "5.22.0"
+    "@strapi/design-system": "2.0.0-rc.29",
+    "@strapi/icons": "2.0.0-rc.29",
+    "@metrixlabs/database": "5.22.0",
+    "@metrixlabs/types": "5.22.0",
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@testing-library/dom": "10.1.0",
@@ -86,17 +86,17 @@
     "react-router-dom": "6.22.3",
     "styled-components": "6.1.8",
     "typescript": "5.4.4",
-    "@metrix/admin": "5.22.0",
-    "@metrix/admin-test-utils": "5.22.0",
-    "@metrix/content-manager": "5.22.0"
+    "@metrixlabs/admin": "5.22.0",
+    "@metrixlabs/admin-test-utils": "5.22.0",
+    "@metrixlabs/content-manager": "5.22.0"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0",
-    "@metrix/admin": "^5.0.0",
-    "@metrix/content-manager": "^5.0.0"
+    "@metrixlabs/admin": "^5.0.0",
+    "@metrixlabs/content-manager": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

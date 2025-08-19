@@ -1,9 +1,9 @@
 // TODO: find a better naming convention for the file that was an index file before
 import * as React from 'react';
 
-import { Page, useNotification, useFetchClient, Layouts } from '@metrix/admin/metrix-admin';
-import { Box, Button, Flex, Grid, Toggle, Typography, Field } from '@metrix/design-system';
-import { Check } from '@metrix/icons';
+import { Page, useNotification, useFetchClient, Layouts } from '@metrixlabs/admin/metrix-admin';
+import { Box, Button, Flex, Grid, Toggle, Typography, Field } from '@strapi/design-system';
+import { Check } from '@strapi/icons';
 import isEqual from 'lodash/isEqual';
 import { useIntl } from 'react-intl';
 import { useMutation, useQuery } from 'react-query';

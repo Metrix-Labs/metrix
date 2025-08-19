@@ -154,7 +154,7 @@ export interface SchemaOptions {
  * Using `SchemaPluginOptions` in the schema definition:
  *
  * ```typescript
- * import type { Struct } from '@metrix/types';
+ * import type { Struct } from '@metrixlabs/types';
  *
  * const strapiPluginOptions: Struct.SchemaPluginOptions = {
  *   'plugin-foo': {

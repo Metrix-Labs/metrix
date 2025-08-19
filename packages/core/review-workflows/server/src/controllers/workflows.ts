@@ -1,8 +1,8 @@
 import type { Context } from 'koa';
 import { update, map, property } from 'lodash/fp';
 
-import type { Core } from '@metrix/types';
-import { async } from '@metrix/utils';
+import type { Core } from '@metrixlabs/types';
+import { async } from '@metrixlabs/utils';
 
 import { getService } from '../utils';
 import { validateWorkflowCreate, validateWorkflowUpdate } from '../validation/review-workflows';

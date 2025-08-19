@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/permissions",
+  "name": "@metrixlabs/permissions",
   "version": "5.22.0",
   "description": "Strapi's permission layer.",
   "repository": {
@@ -42,7 +42,7 @@
     "lodash": "4.17.21",
     "qs": "6.11.1",
     "sift": "16.0.1",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "eslint-config-custom": "5.22.0",

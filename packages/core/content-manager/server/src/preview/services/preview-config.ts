@@ -1,7 +1,7 @@
 import { mergeWith } from 'lodash/fp';
 
-import type { Core, UID } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Core, UID } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 
 export type HandlerParams = {
   documentId: string;

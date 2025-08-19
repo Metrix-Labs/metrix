@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { Schema, UID } from '@metrix/types';
-import { yup, validateYupSchema, errors } from '@metrix/utils';
+import { Schema, UID } from '@metrixlabs/types';
+import { yup, validateYupSchema, errors } from '@metrixlabs/utils';
 import { ValidateOptions } from 'yup/lib/types';
 import { TestContext } from 'yup';
 import createModelConfigurationSchema from './model-configuration';

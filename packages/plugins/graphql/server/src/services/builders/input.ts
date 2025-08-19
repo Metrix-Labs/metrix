@@ -1,6 +1,6 @@
 import { inputObjectType, nonNull } from 'nexus';
-import { contentTypes } from '@metrix/utils';
-import type { Struct } from '@metrix/types';
+import { contentTypes } from '@metrixlabs/utils';
+import type { Struct } from '@metrixlabs/types';
 import type { Context } from '../types';
 
 const { isWritableAttribute } = contentTypes;

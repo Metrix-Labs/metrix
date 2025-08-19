@@ -1,4 +1,4 @@
-import { Core } from '@metrix/types';
+import { Core } from '@metrixlabs/types';
 import { getService } from '../utils';
 
 const isContentTypeVisible = (model: any) =>

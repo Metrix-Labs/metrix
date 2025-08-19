@@ -1,4 +1,4 @@
-import { Checkbox, Box, CheckboxProps } from '@metrix/design-system';
+import { Checkbox, Box, CheckboxProps } from '@strapi/design-system';
 
 import { useFolderCard } from '../contexts/FolderCard';
 

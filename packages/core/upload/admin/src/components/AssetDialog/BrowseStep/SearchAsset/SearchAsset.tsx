@@ -1,9 +1,9 @@
 // TODO: find a better naming convention for the file that was an index file before
 import * as React from 'react';
 
-import { useTracking } from '@metrix/admin/metrix-admin';
-import { IconButton, Searchbar, SearchForm } from '@metrix/design-system';
-import { Search } from '@metrix/icons';
+import { useTracking } from '@metrixlabs/admin/metrix-admin';
+import { IconButton, Searchbar, SearchForm } from '@strapi/design-system';
+import { Search } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../../../utils';

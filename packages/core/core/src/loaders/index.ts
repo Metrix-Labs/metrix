@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import loadSrcIndex from './src-index';
 import loadAPIs from './apis';

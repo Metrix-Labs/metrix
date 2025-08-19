@@ -1,4 +1,4 @@
-import { translatedErrors } from '@metrix/metrix/admin';
+import { translatedErrors } from '@metrixlabs/metrix/admin';
 import * as yup from 'yup';
 
 import { getTrad } from '../../../utils';

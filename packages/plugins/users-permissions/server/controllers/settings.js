@@ -1,7 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
-const { ValidationError } = require('@metrix/utils').errors;
+const { ValidationError } = require('@metrixlabs/utils').errors;
 const { getService } = require('../utils');
 const { isValidEmailTemplate } = require('./validation/email-template');
 

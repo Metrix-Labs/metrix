@@ -7,7 +7,7 @@
  */
 
 const _ = require('lodash');
-const utils = require('@metrix/utils');
+const utils = require('@metrixlabs/utils');
 const { getService } = require('../utils');
 const { validateCreateUserBody, validateUpdateUserBody } = require('./validation/user');
 

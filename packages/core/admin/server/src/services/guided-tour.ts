@@ -1,4 +1,4 @@
-import { Core, Internal } from '@metrix/types';
+import { Core, Internal } from '@metrixlabs/types';
 import constants from './constants';
 
 export type GuidedTourRequiredActions = {

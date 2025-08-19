@@ -1,5 +1,5 @@
 import { curry, matchesProperty, pick } from 'lodash/fp';
-import type { Internal, Struct } from '@metrix/types';
+import type { Internal, Struct } from '@metrixlabs/types';
 
 const isOfKind = (kind: unknown) => matchesProperty('kind', kind);
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   useFetchClient,
   unstable_useContentManagerContext as useContentManagerContext,
-} from '@metrix/metrix/admin';
+} from '@metrixlabs/metrix/admin';
 
 function useRelatedTasks() {
   const fetchClient = useFetchClient();

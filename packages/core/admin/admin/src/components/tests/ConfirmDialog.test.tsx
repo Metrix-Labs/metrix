@@ -1,4 +1,4 @@
-import { Dialog } from '@metrix/design-system';
+import { Dialog } from '@strapi/design-system';
 import { render, screen } from '@tests/utils';
 
 import { ConfirmDialog } from '../ConfirmDialog';

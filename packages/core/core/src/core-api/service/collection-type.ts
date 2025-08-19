@@ -1,4 +1,4 @@
-import type { Core, Struct, Modules } from '@metrix/types';
+import type { Core, Struct, Modules } from '@metrixlabs/types';
 
 import {
   getPaginationInfo,

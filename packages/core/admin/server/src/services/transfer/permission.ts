@@ -1,5 +1,5 @@
-import permissions from '@metrix/permissions';
-import { providerFactory } from '@metrix/utils';
+import permissions from '@metrixlabs/permissions';
+import { providerFactory } from '@metrixlabs/utils';
 
 const DEFAULT_TRANSFER_ACTIONS = ['push', 'pull'];
 

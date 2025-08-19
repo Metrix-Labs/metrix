@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@metrix/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 import { schemas } from '../../../../server/src/validation/user';
 
 const ssoUserCreationInputExtension = yup

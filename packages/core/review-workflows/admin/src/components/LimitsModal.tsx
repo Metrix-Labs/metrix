@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Flex, IconButton, Modal, Typography, LinkButton } from '@metrix/design-system';
-import { Cross } from '@metrix/icons';
+import { Box, Flex, IconButton, Modal, Typography, LinkButton } from '@strapi/design-system';
+import { Cross } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

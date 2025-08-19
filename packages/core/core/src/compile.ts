@@ -1,4 +1,4 @@
-import tsUtils from '@metrix/typescript-utils';
+import tsUtils from '@metrixlabs/typescript-utils';
 
 interface Options {
   appDir?: string;

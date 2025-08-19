@@ -1,5 +1,5 @@
-import { useQueryParams, useTracking } from '@metrix/admin/metrix-admin';
-import { ClockCounterClockwise } from '@metrix/icons';
+import { useQueryParams, useTracking } from '@metrixlabs/admin/metrix-admin';
+import { ClockCounterClockwise } from '@strapi/icons';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { useNavigate, useLocation } from 'react-router-dom';

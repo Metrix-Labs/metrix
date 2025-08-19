@@ -1,5 +1,5 @@
-import { Form, useField, InputRenderer, useNotification } from '@metrix/admin/metrix-admin';
-import { Button, Flex, FlexComponent, Grid, Modal } from '@metrix/design-system';
+import { Form, useField, InputRenderer, useNotification } from '@metrixlabs/admin/metrix-admin';
+import { Button, Flex, FlexComponent, Grid, Modal } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 import * as yup from 'yup';

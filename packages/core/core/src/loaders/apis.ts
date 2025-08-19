@@ -1,9 +1,9 @@
 import { join, extname, basename } from 'path';
 import fse, { existsSync } from 'fs-extra';
 import _ from 'lodash';
-import { strings, importDefault } from '@metrix/utils';
+import { strings, importDefault } from '@metrixlabs/utils';
 import { isEmpty } from 'lodash/fp';
-import type { Core, Struct } from '@metrix/types';
+import type { Core, Struct } from '@metrixlabs/types';
 import { getGlobalId, type ContentTypeDefinition } from '../domain/content-type';
 
 interface API {

@@ -8,7 +8,7 @@ import {
   Typography,
   LinkButton,
   FlexProps,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 import { FormattedMessage, type MessageDescriptor } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';

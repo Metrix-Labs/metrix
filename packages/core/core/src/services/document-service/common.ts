@@ -1,4 +1,4 @@
-import type { UID, Modules } from '@metrix/types';
+import type { UID, Modules } from '@metrixlabs/types';
 
 export type RepositoryFactoryMethod = <TContentTypeUID extends UID.ContentType>(
   uid: TContentTypeUID,

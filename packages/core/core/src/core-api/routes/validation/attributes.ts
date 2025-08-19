@@ -5,7 +5,7 @@
  * of incoming data.
  */
 
-import { type Schema, UID } from '@metrix/types';
+import { type Schema, UID } from '@metrixlabs/types';
 
 import {
   relations,
@@ -14,7 +14,7 @@ import {
   maybeWithDefault,
   maybeWithMinMax,
   augmentSchema,
-} from '@metrix/utils';
+} from '@metrixlabs/utils';
 import { z } from 'zod/v4';
 
 import { BOOLEAN_LITERAL_VALUES } from './constants';

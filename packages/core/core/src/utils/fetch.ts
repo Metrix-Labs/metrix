@@ -1,4 +1,4 @@
-import type { Core, Modules } from '@metrix/types';
+import type { Core, Modules } from '@metrixlabs/types';
 import { ProxyAgent } from 'undici';
 
 // TODO: once core Node exposes a stable way to create a ProxyAgent we will use that instead of undici

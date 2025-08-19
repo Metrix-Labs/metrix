@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useTracking } from '@metrix/admin/metrix-admin';
-import { Button, Flex, Grid, KeyboardNavigable, Modal, Typography } from '@metrix/design-system';
+import { useTracking } from '@metrixlabs/admin/metrix-admin';
+import { Button, Flex, Grid, KeyboardNavigable, Modal, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { AssetType } from '../../../constants';

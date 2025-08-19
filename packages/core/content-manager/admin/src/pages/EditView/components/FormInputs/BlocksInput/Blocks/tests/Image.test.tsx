@@ -10,8 +10,8 @@ import { imageBlocks } from '../Image';
 
 import { Wrapper } from './Wrapper';
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useStrapiApp: jest.fn((_name: string, getter: (state: any) => any) =>
     getter({
       components: {

@@ -1,4 +1,4 @@
-import { Flex, FlexComponent } from '@metrix/design-system';
+import { Flex, FlexComponent } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 const CollapseLabel = styled<FlexComponent>(Flex)<{ $isCollapsable: boolean }>`

@@ -1,8 +1,8 @@
 import type { Context, Next } from 'koa';
 import path from 'path';
-import utils from '@metrix/utils';
+import utils from '@metrixlabs/utils';
 import { isString, has, toLower, get } from 'lodash/fp';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 const { RateLimitError } = utils.errors;
 

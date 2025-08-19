@@ -1,5 +1,5 @@
 import { pickBy, has } from 'lodash/fp';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import { createModule, RawModule, Module } from '../domain/module';
 
 type ModuleMap = { [namespace: string]: Module };

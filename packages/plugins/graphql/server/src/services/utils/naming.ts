@@ -1,7 +1,7 @@
 import { camelCase, upperFirst, lowerFirst, pipe, get } from 'lodash/fp';
 import { singular } from 'pluralize';
-import { errors } from '@metrix/utils';
-import type { Struct, Schema } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Struct, Schema } from '@metrixlabs/types';
 import type { Context } from '../types';
 
 const { ApplicationError } = errors;

@@ -1,4 +1,4 @@
-import type { Schema, Internal } from '@metrix/types';
+import type { Schema, Internal } from '@metrixlabs/types';
 
 const createSchemaFromAttributes = (
   uid: Internal.UID.ContentType,

@@ -1,4 +1,4 @@
-import type { Modules } from '@metrix/types';
+import type { Modules } from '@metrixlabs/types';
 import type { MessageDescriptor } from 'react-intl';
 
 /**

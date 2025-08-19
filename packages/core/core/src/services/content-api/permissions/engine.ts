@@ -1,4 +1,4 @@
-import permissions from '@metrix/permissions';
+import permissions from '@metrixlabs/permissions';
 
 type Options = Parameters<typeof permissions.engine.new>[0];
 

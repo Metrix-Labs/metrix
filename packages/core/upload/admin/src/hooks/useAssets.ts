@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useNotification, useFetchClient } from '@metrix/admin/metrix-admin';
-import { useNotifyAT } from '@metrix/design-system';
+import { useNotification, useFetchClient } from '@metrixlabs/admin/metrix-admin';
+import { useNotifyAT } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 

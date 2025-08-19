@@ -1,6 +1,6 @@
 import { pick, isEqual } from 'lodash/fp';
-import type { Logger } from '@metrix/logger';
-import type { Core } from '@metrix/types';
+import type { Logger } from '@metrixlabs/logger';
+import type { Core } from '@metrixlabs/types';
 import { createStrapiFetch } from '../utils/fetch';
 import {
   readLicense,

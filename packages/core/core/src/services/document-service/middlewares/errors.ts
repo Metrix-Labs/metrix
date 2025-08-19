@@ -1,5 +1,5 @@
-import { errors as databaseErrors } from '@metrix/database';
-import { errors } from '@metrix/utils';
+import { errors as databaseErrors } from '@metrixlabs/database';
+import { errors } from '@metrixlabs/utils';
 
 import type { Middleware } from './middleware-manager';
 

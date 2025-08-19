@@ -1,5 +1,5 @@
-import type { Data, Modules } from '@metrix/types';
-import type { errors } from '@metrix/utils';
+import type { Data, Modules } from '@metrixlabs/types';
+import type { errors } from '@metrixlabs/utils';
 import { AdminRole, Permission, SanitizedAdminRole } from './shared';
 
 export type SanitizedPermission = Pick<

@@ -1,4 +1,4 @@
-import { yup, validateYupSchemaSync } from '@metrix/utils';
+import { yup, validateYupSchemaSync } from '@metrixlabs/utils';
 
 const hasPermissionsSchema = yup.object({
   actions: yup.array().of(yup.string()),

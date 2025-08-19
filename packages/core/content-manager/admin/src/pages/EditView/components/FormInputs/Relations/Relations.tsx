@@ -7,7 +7,7 @@ import {
   useNotification,
   useFocusInputField,
   useRBAC,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Combobox,
@@ -24,8 +24,8 @@ import {
   BoxComponent,
   Loader,
   EmptyStateLayout,
-} from '@metrix/design-system';
-import { Cross, Drag, ArrowClockwise, Link as LinkIcon, Plus, WarningCircle } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Cross, Drag, ArrowClockwise, Link as LinkIcon, Plus, WarningCircle } from '@strapi/icons';
 import { generateNKeysBetween } from 'fractional-indexing';
 import pipe from 'lodash/fp/pipe';
 import { getEmptyImage } from 'react-dnd-html5-backend';
@@ -60,7 +60,7 @@ import { useComponent } from '../ComponentContext';
 import { RelationModalRenderer, getCollectionType } from '../Relations/RelationModal';
 
 import type { FindAvailable } from '../../../../../../../shared/contracts/relations';
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 /**
  * Remove a relation, whether it's been already saved or not.

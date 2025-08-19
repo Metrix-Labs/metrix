@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useForm, createRulesEngine } from '@metrix/admin/metrix-admin';
-import { Box, BoxProps, Flex, Grid } from '@metrix/design-system';
+import { useForm, createRulesEngine } from '@metrixlabs/admin/metrix-admin';
+import { Box, BoxProps, Flex, Grid } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

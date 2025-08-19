@@ -13,8 +13,8 @@ import {
   Tabs,
   Badge,
   BaseLink,
-} from '@metrix/design-system';
-import { ExternalLink, CloudUpload, Code } from '@metrix/icons';
+} from '@strapi/design-system';
+import { ExternalLink, CloudUpload, Code } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import { CLIDeployTabs } from '../components/CLIDeployTabs';

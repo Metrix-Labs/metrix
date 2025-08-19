@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { strings } from '@metrix/utils';
+import { strings } from '@metrixlabs/utils';
 import { isIP } from 'node:net';
 
 interface ServerConfig {

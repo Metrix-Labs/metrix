@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   extends: [
-    '@metrix/eslint-config/back/typescript' /*'plugin:@typescript-eslint/recommended-requiring-type-checking'*/,
+    '@metrixlabs/eslint-config/back/typescript' /*'plugin:@typescript-eslint/recommended-requiring-type-checking'*/,
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'eslint-plugin-rxjs'],
@@ -16,7 +16,7 @@ module.exports = {
     'rxjs/finnish': 'error',
     'node/no-unsupported-features/es-syntax': 'off',
     'node/no-missing-import': 'off',
-    // TODO: The following rules from @metrix/eslint-config/back/typescript are disabled because they're causing problems we need to solve or fix
+    // TODO: The following rules from @strapi/eslint-config/back/typescript are disabled because they're causing problems we need to solve or fix
     // to be solved in configuration
     'node/no-unsupported-features/es-syntax': 'off',
     'import/prefer-default-export': 'off',

@@ -3,8 +3,8 @@
  * E.g the default timezone for the release schedule.
  */
 
-import { errors } from '@metrix/utils';
-import type { Utils } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Utils } from '@metrixlabs/types';
 
 export interface Settings {
   defaultTimezone: string | null | undefined;

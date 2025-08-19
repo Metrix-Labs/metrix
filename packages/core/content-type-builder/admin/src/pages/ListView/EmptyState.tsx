@@ -1,5 +1,5 @@
-import { tours } from '@metrix/admin/metrix-admin';
-import { Box, Flex, Typography } from '@metrix/design-system';
+import { tours } from '@metrixlabs/admin/metrix-admin';
+import { Box, Flex, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../utils/getTrad';

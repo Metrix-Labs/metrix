@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import _ from 'lodash';
 import { defaults } from 'lodash/fp';
-import { arrays, errors } from '@metrix/utils';
-import type { Data } from '@metrix/types';
+import { arrays, errors } from '@metrixlabs/utils';
+import type { Data } from '@metrixlabs/types';
 import { createUser, hasSuperAdminRole } from '../domain/user';
 import type {
   AdminUser,

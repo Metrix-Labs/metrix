@@ -1,4 +1,4 @@
-import type { Struct } from '@metrix/types';
+import type { Struct } from '@metrixlabs/types';
 import { createService } from '../index';
 import { CollectionTypeService } from '../collection-type';
 import { SingleTypeService } from '../single-type';

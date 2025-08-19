@@ -13,7 +13,7 @@ import {
   Combobox,
   ComboboxOption,
   Field,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 import { formatISO } from 'date-fns';
 import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 import { Formik, Form, useFormikContext } from 'formik';

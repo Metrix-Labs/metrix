@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useField, useNotification, useForm, createRulesEngine } from '@metrix/admin/metrix-admin';
+import { useField, useNotification, useForm, createRulesEngine } from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Flex,
@@ -10,8 +10,8 @@ import {
   IconButton,
   useComposedRefs,
   BoxComponent,
-} from '@metrix/design-system';
-import { Plus, Drag, Trash } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Plus, Drag, Trash } from '@strapi/icons';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { useIntl } from 'react-intl';
 import { useLocation } from 'react-router-dom';
@@ -31,7 +31,7 @@ import { ComponentProvider, useComponent } from '../ComponentContext';
 import { Initializer } from './Initializer';
 
 import type { ComponentInputProps } from './Input';
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * RepeatableComponent

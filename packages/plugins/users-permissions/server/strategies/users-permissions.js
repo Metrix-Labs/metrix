@@ -1,7 +1,7 @@
 'use strict';
 
 const { castArray, map, every, pipe } = require('lodash/fp');
-const { ForbiddenError, UnauthorizedError } = require('@metrix/utils').errors;
+const { ForbiddenError, UnauthorizedError } = require('@metrixlabs/utils').errors;
 
 const { getService } = require('../utils');
 

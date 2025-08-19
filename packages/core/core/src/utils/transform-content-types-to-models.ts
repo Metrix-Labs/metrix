@@ -1,5 +1,5 @@
-import { type Model, type Identifiers } from '@metrix/database';
-import type { Struct, Schema } from '@metrix/types';
+import { type Model, type Identifiers } from '@metrixlabs/database';
+import type { Struct, Schema } from '@metrixlabs/types';
 import { createId } from '@paralleldrive/cuid2';
 import assert from 'node:assert';
 import _ from 'lodash/fp';

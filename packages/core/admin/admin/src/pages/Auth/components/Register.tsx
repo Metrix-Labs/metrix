@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Grid, Typography, Link } from '@metrix/design-system';
+import { Box, Button, Flex, Grid, Typography, Link } from '@strapi/design-system';
 import omit from 'lodash/omit';
 import { useIntl } from 'react-intl';
 import { NavLink, Navigate, useNavigate, useMatch, useLocation } from 'react-router-dom';

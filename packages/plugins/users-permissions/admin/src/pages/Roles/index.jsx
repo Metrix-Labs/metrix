@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Page } from '@metrix/metrix/admin';
+import { Page } from '@metrixlabs/metrix/admin';
 import { Route, Routes } from 'react-router-dom';
 
 import { PERMISSIONS } from '../../constants';

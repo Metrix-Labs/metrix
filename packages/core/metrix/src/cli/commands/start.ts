@@ -1,7 +1,7 @@
 import { createCommand } from 'commander';
 import fs from 'fs';
-import tsUtils from '@metrix/typescript-utils';
-import { createStrapi } from '@metrix/core';
+import tsUtils from '@metrixlabs/typescript-utils';
+import { createStrapi } from '@metrixlabs/core';
 
 import type { StrapiCommand } from '../types';
 import { runAction } from '../utils/helpers';

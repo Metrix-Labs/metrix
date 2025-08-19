@@ -9,8 +9,8 @@ jest.mock('../../services/homepage', () => ({
 }));
 
 // Mock the useAuth hook
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useAuth: (_consumerName: string, selector: (state: any) => any) =>
     selector({
       user: {

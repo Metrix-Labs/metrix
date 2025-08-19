@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { Flex, FlexProps } from '@metrix/design-system';
-import * as Icons from '@metrix/icons';
-import * as Symbols from '@metrix/icons/symbols';
+import { Flex, FlexProps } from '@strapi/design-system';
+import * as Icons from '@strapi/icons';
+import * as Symbols from '@strapi/icons/symbols';
 
-import type { Struct } from '@metrix/types';
+import type { Struct } from '@metrixlabs/types';
 
 interface ComponentIconProps extends FlexProps {
   showBackground?: boolean;

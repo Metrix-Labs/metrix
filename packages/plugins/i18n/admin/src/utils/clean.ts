@@ -1,4 +1,4 @@
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 type Data = Record<keyof Schema.ContentType['attributes'], any>;
 

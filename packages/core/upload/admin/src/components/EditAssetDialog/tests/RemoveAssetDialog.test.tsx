@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { NotificationsProvider, adminApi } from '@metrix/admin/metrix-admin';
-import { DesignSystemProvider } from '@metrix/design-system';
+import { NotificationsProvider, adminApi } from '@metrixlabs/admin/metrix-admin';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';

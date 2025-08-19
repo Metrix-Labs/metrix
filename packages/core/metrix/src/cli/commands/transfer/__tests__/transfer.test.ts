@@ -1,4 +1,4 @@
-import * as mockDataTransfer from '@metrix/data-transfer';
+import * as mockDataTransfer from '@metrixlabs/data-transfer';
 
 import transferAction from '../action';
 import { expectExit } from '../../__tests__/commands.test.utils';
@@ -32,8 +32,8 @@ jest.mock('../../../utils/data-transfer', () => {
 });
 
 // mock data transfer
-jest.mock('@metrix/data-transfer', () => {
-  const acutal = jest.requireActual('@metrix/data-transfer');
+jest.mock('@metrixlabs/data-transfer', () => {
+  const acutal = jest.requireActual('@metrixlabs/data-transfer');
   return {
     ...acutal,
     metrix: {

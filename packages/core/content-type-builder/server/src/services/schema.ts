@@ -1,7 +1,7 @@
-import utils from '@metrix/utils';
+import utils from '@metrixlabs/utils';
 import { mapValues } from 'lodash/fp';
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 import createBuilder from './schema-builder';
 import { getService } from '../utils';

@@ -4,8 +4,8 @@ import Configstore from 'configstore';
 import semver from 'semver';
 import boxen from 'boxen';
 import chalk from 'chalk';
-import { env } from '@metrix/utils';
-import type { Core } from '@metrix/types';
+import { env } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 import pkg from '../../../package.json';
 

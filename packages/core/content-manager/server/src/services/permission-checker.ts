@@ -1,5 +1,5 @@
-import { async } from '@metrix/utils';
-import type { Core, UID, Modules } from '@metrix/types';
+import { async } from '@metrixlabs/utils';
+import type { Core, UID, Modules } from '@metrixlabs/types';
 
 const ACTIONS = {
   read: 'plugin::content-manager.explorer.read',

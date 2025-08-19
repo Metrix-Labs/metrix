@@ -1,4 +1,4 @@
-import type { Schema, Struct } from '@metrix/types';
+import type { Schema, Struct } from '@metrixlabs/types';
 import { getTypeValidator } from '../types';
 
 describe('Type validators', () => {

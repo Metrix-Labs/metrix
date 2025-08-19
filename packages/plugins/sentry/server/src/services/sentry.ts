@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/metrix';
+import type { Core } from '@metrixlabs/metrix';
 import type { Config } from 'src/config';
 import * as Sentry from '@sentry/node';
 
@@ -21,7 +21,7 @@ const createSentryService = (metrix: Core.Strapi) => {
 
       // Don't init Sentry if no DSN was provided
       if (!config.dsn) {
-        metrix.log.info('@metrix/plugin-sentry is disabled because no Sentry DSN was provided');
+        metrix.log.info('@metrixlabs/plugin-sentry is disabled because no Sentry DSN was provided');
         return this;
       }
 

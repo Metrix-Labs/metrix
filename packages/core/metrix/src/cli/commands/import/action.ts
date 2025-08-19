@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import { isObject } from 'lodash/fp';
 import chalk from 'chalk';
 
@@ -6,7 +6,7 @@ import {
   engine as engineDataTransfer,
   metrix as strapiDataTransfer,
   file as fileDataTransfer,
-} from '@metrix/data-transfer';
+} from '@metrixlabs/data-transfer';
 
 import {
   buildTransferTable,

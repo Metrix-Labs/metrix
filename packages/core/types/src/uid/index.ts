@@ -16,7 +16,7 @@ import type * as Public from '../public';
  * Let's assume we need a function that processes schema irrespective of whether it's ContenType or Component.
  *
  * ```typescript
- * import type { UID } from '@metrix/types';
+ * import type { UID } from '@metrixlabs/types';
  *
  * function processSchema(schemaID: UID.Schema) {
  *     // Implementation goes here...
@@ -45,7 +45,7 @@ export type Schema = ContentType | Component;
  * Here's an example of how to use the `UID.ContentType` type:
  *
  * ```typescript
- * import type { UID } from '@metrix/types';
+ * import type { UID } from '@metrixlabs/types';
  *
  * // Assume we have a function that requires a ContentType UID
  * function fetchSchema(uid: UID.ContentType) {
@@ -74,7 +74,7 @@ export type ContentType = Internal.Registry.Keys<
  * Here's an example of how to use the `UID.Component` type:
  *
  * ```typescript
- * import type { UID } from '@metrix/types';
+ * import type { UID } from '@metrixlabs/types';
  *
  * // Assume we have a function that requires a Component UID
  * function fetchSchema(uid: UID.Component) {

@@ -1,5 +1,5 @@
 import Router from '@koa/router';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { createRouteManager } from './routing';
 

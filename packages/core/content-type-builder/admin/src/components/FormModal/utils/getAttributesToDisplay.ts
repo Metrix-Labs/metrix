@@ -3,7 +3,7 @@ import { getComponentDepth } from '../../../utils/getMaxDepth';
 
 import type { IconByType } from '../../AttributeIcon';
 import type { NestedComponent } from '../../DataManager/utils/retrieveNestedComponents';
-import type { Internal } from '@metrix/types';
+import type { Internal } from '@metrixlabs/types';
 
 export const getAttributesToDisplay = (
   dataTarget = '',

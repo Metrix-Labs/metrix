@@ -1,4 +1,4 @@
-import { providerFactory } from '@metrix/utils';
+import { providerFactory } from '@metrixlabs/utils';
 
 export interface Condition {
   name: string;

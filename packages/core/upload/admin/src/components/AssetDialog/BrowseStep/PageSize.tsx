@@ -1,4 +1,4 @@
-import { Box, Flex, SingleSelectOption, SingleSelect, Typography } from '@metrix/design-system';
+import { Box, Flex, SingleSelectOption, SingleSelect, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 interface PageSizeProps {

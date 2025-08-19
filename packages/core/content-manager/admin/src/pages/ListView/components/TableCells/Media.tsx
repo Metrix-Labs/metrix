@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { Avatar, Flex, Tooltip, Typography, TypographyComponent } from '@metrix/design-system';
+import { Avatar, Flex, Tooltip, Typography, TypographyComponent } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 import { prefixFileUrlWithBackendUrl } from '../../../../utils/urls';
 
-import type { Data } from '@metrix/types';
+import type { Data } from '@metrixlabs/types';
 
 interface MediaFile {
   id?: Data.ID;

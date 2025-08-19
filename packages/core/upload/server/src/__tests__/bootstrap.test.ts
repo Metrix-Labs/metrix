@@ -2,7 +2,7 @@ import { join } from 'path';
 
 import { bootstrap } from '../bootstrap';
 
-jest.mock('@metrix/provider-upload-local', () => ({
+jest.mock('@metrixlabs/provider-upload-local', () => ({
   init() {
     return {
       uploadStream: jest.fn(),

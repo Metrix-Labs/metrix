@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { errors, async } from '@metrix/utils';
+import { errors, async } from '@metrixlabs/utils';
 
 import type { Context } from 'koa';
 

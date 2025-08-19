@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useParams, useLoaderData, useRevalidator } from 'react-router-dom';
 
 // @ts-ignore
-import { Page, Layouts } from '@metrix/admin/metrix-admin';
-import { Grid, Flex, Typography, JSONInput, Box } from '@metrix/design-system';
+import { Page, Layouts } from '@metrixlabs/admin/metrix-admin';
+import { Grid, Flex, Typography, JSONInput, Box } from '@strapi/design-system';
 
 const filterAttributes = (item) => {
   const excludedKeys = ['documentId', 'id', 'createdAt', 'updatedAt', 'publishedAt'];

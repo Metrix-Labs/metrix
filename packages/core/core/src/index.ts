@@ -1,5 +1,5 @@
 import * as qs from 'qs';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import Strapi, { type StrapiOptions } from './Strapi';
 import { destroyOnSignal, resolveWorkingDirectories, createUpdateNotifier } from './utils';

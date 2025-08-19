@@ -1,6 +1,6 @@
-import { errors, async } from '@metrix/utils';
+import { errors, async } from '@metrixlabs/utils';
 
-import type { Core, Internal, Modules, UID, Data } from '@metrix/types';
+import type { Core, Internal, Modules, UID, Data } from '@metrixlabs/types';
 
 import _ from 'lodash/fp';
 

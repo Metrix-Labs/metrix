@@ -2,6 +2,6 @@
  * article service.
  */
 
-import { factories } from '@metrix/metrix';
+import { factories } from '@metrixlabs/metrix';
 
 export default factories.createCoreService('api::article.article');

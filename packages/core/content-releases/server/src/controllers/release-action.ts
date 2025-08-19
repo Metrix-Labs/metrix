@@ -1,6 +1,6 @@
 import type Koa from 'koa';
 
-import { async } from '@metrix/utils';
+import { async } from '@metrixlabs/utils';
 import {
   validateReleaseAction,
   validateReleaseActionUpdateSchema,

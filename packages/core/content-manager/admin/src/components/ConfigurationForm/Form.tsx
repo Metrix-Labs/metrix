@@ -7,8 +7,8 @@ import {
   InputRenderer,
   BackButton,
   Layouts,
-} from '@metrix/admin/metrix-admin';
-import { Button, Divider, Flex, Grid, Main, Typography } from '@metrix/design-system';
+} from '@metrixlabs/admin/metrix-admin';
+import { Button, Divider, Flex, Grid, Main, Typography } from '@strapi/design-system';
 import { generateNKeysBetween } from 'fractional-indexing';
 import pipe from 'lodash/fp/pipe';
 import { useIntl } from 'react-intl';

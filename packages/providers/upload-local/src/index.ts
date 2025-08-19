@@ -2,10 +2,10 @@ import { pipeline } from 'stream';
 import fs, { ReadStream } from 'fs';
 import path from 'path';
 import fse from 'fs-extra';
-import * as utils from '@metrix/utils';
+import * as utils from '@metrixlabs/utils';
 
 // Needed to load global.metrix without having to put @metrix/types in the regular dependencies
-import type {} from '@metrix/types';
+import type {} from '@metrixlabs/types';
 
 interface File {
   name: string;

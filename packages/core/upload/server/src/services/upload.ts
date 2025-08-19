@@ -10,9 +10,9 @@ import {
   contentTypes as contentTypesUtils,
   errors,
   file as fileUtils,
-} from '@metrix/utils';
+} from '@metrixlabs/utils';
 
-import type { Core, UID } from '@metrix/types';
+import type { Core, UID } from '@metrixlabs/types';
 
 import { FILE_MODEL_UID, ALLOWED_WEBHOOK_EVENTS } from '../constants';
 import { getService } from '../utils';

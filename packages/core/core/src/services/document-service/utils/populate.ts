@@ -1,5 +1,5 @@
-import type { UID } from '@metrix/types';
-import { contentTypes } from '@metrix/utils';
+import type { UID } from '@metrixlabs/types';
+import { contentTypes } from '@metrixlabs/utils';
 
 interface Options {
   /**

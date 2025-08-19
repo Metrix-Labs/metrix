@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/provider-email-amazon-ses",
+  "name": "@metrixlabs/provider-email-amazon-ses",
   "version": "5.22.0",
   "description": "Amazon SES provider for strapi email",
   "keywords": [
@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "node-ses": "^3.0.3",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "eslint-config-custom": "5.22.0",

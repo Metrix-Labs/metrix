@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/admin",
+  "name": "@metrixlabs/admin",
   "version": "5.22.0",
   "description": "Strapi Admin",
   "repository": {
@@ -135,12 +135,12 @@
     "use-context-selector": "1.4.1",
     "yup": "0.32.9",
     "zod": "3.25.67",
-    "@metrix/design-system": "2.0.0-rc.29",
-    "@metrix/icons": "2.0.0-rc.29",
-    "@metrix/permissions": "5.22.0",
-    "@metrix/types": "5.22.0",
-    "@metrix/typescript-utils": "5.22.0",
-    "@metrix/utils": "5.22.0"
+    "@strapi/design-system": "2.0.0-rc.29",
+    "@strapi/icons": "2.0.0-rc.29",
+    "@metrixlabs/permissions": "5.22.0",
+    "@metrixlabs/types": "5.22.0",
+    "@metrixlabs/typescript-utils": "5.22.0",
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/codemirror5": "npm:@types/codemirror@^5.60.15",
@@ -168,15 +168,15 @@
     "styled-components": "6.1.8",
     "vite": "5.4.19",
     "vite-plugin-dts": "^4.3.0",
-    "@metrix/admin-test-utils": "5.22.0",
-    "@metrix/data-transfer": "5.22.0"
+    "@metrixlabs/admin-test-utils": "5.22.0",
+    "@metrixlabs/data-transfer": "5.22.0"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0",
-    "@metrix/data-transfer": "^5.0.0"
+    "@metrixlabs/data-transfer": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

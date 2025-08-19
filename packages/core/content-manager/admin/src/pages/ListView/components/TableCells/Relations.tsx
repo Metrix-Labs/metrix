@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Typography, Loader, useNotifyAT, Menu } from '@metrix/design-system';
+import { Typography, Loader, useNotifyAT, Menu } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { useDoc } from '../../../../hooks/useDocument';

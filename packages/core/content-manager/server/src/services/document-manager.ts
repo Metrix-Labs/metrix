@@ -1,7 +1,7 @@
 import { omit, pipe } from 'lodash/fp';
 
-import { contentTypes, errors, pagination } from '@metrix/utils';
-import type { Core, Modules, UID } from '@metrix/types';
+import { contentTypes, errors, pagination } from '@metrixlabs/utils';
+import type { Core, Modules, UID } from '@metrixlabs/types';
 
 import { buildDeepPopulate, getDeepPopulate, getDeepPopulateDraftCount } from './utils/populate';
 import { sumDraftCounts } from './utils/draft';

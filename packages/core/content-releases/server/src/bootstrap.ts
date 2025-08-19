@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import type { Core, UID, Modules } from '@metrix/types';
+import type { Core, UID, Modules } from '@metrixlabs/types';
 
 import { RELEASE_ACTION_MODEL_UID, RELEASE_MODEL_UID, ALLOWED_WEBHOOK_EVENTS } from './constants';
 import { getService } from './utils';

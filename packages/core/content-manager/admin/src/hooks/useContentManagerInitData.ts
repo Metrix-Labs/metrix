@@ -6,8 +6,8 @@ import {
   useNotification,
   useStrapiApp,
   useAPIErrorHandler,
-} from '@metrix/admin/metrix-admin';
-import { useNotifyAT } from '@metrix/design-system';
+} from '@metrixlabs/admin/metrix-admin';
+import { useNotifyAT } from '@strapi/design-system';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 

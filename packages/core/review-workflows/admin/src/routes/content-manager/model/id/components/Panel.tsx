@@ -1,12 +1,12 @@
-import { unstable_useDocumentLayout as useDocumentLayout } from '@metrix/content-manager/metrix-admin';
-import { Flex } from '@metrix/design-system';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/metrix-admin';
+import { Flex } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 
 import { AssigneeSelect } from './AssigneeSelect';
 import { StageSelect } from './StageSelect';
 
-import type { PanelComponent } from '@metrix/content-manager/metrix-admin';
+import type { PanelComponent } from '@metrixlabs/content-manager/metrix-admin';
 
 const Panel: PanelComponent = () => {
   const {

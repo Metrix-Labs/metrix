@@ -1,5 +1,5 @@
-import type { Struct, Modules } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Struct, Modules } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 import { curry, assoc } from 'lodash/fp';
 
 type Transform = (

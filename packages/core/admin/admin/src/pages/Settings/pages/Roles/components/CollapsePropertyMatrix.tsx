@@ -8,8 +8,8 @@ import {
   FlexComponent,
   Typography,
   TypographyComponent,
-} from '@metrix/design-system';
-import { CaretDown } from '@metrix/icons';
+} from '@strapi/design-system';
+import { CaretDown } from '@strapi/icons';
 import get from 'lodash/get';
 import { useIntl } from 'react-intl';
 import { styled, DefaultTheme, css } from 'styled-components';

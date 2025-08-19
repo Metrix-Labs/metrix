@@ -3,8 +3,8 @@
 import _ from 'lodash';
 import { set, omit, pick, prop, isArray, differenceWith, differenceBy, isEqual } from 'lodash/fp';
 
-import { dates, arrays, hooks as hooksUtils, errors } from '@metrix/utils';
-import type { Data } from '@metrix/types';
+import { dates, arrays, hooks as hooksUtils, errors } from '@metrixlabs/utils';
+import type { Data } from '@metrixlabs/types';
 
 import permissionDomain from '../domain/permission';
 import type { AdminUser, AdminRole, Permission } from '../../../shared/contracts/shared';

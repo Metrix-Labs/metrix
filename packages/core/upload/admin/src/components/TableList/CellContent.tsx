@@ -1,4 +1,4 @@
-import { Typography } from '@metrix/design-system';
+import { Typography } from '@strapi/design-system';
 import parseISO from 'date-fns/parseISO';
 import { useIntl } from 'react-intl';
 

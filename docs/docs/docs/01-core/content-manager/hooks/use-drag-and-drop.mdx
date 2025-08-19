@@ -20,7 +20,7 @@ returning an onKeyDown handler to be passed to the component's drag icon button.
 
 :::note
 The following examples assume that you have already set up the `DndProvider` with `HTML5Backend` in your application and
-that you are somewhat familiar with `@metrix/design-system` components.
+that you are somewhat familiar with `@strapi/design-system` components.
 :::
 
 ### Basic usage - Move items on hovering over drop zone
@@ -29,8 +29,8 @@ Below is a basic example usage where we move items immediately and we're not int
 However, we do replace the current item with a placeholder.
 
 ```jsx
-import { Box, Flex, IconButton } from '@metrix/design-system';
-import { Drag } from '@metrix/icons';
+import { Box, Flex, IconButton } from '@strapi/design-system';
+import { Drag } from '@strapi/icons';
 
 import { useDragAndDrop } from 'path/to/hooks';
 import { composeRefs } from 'path/to/utils';
@@ -76,8 +76,8 @@ Below is a basic example usage where we move items immediately without custom pr
 the current item until its dropped and show a drop placeholder instead next to drop target using drag direction.
 
 ```jsx
-import { Box, Flex, IconButton } from '@metrix/design-system';
-import { Drag } from '@metrix/icons';
+import { Box, Flex, IconButton } from '@strapi/design-system';
+import { Drag } from '@strapi/icons';
 
 import { useDragAndDrop } from 'path/to/hooks';
 import { composeRefs } from 'path/to/utils';
@@ -122,8 +122,8 @@ we're using the `getEmptyImage` function from `react-dnd-html5-backend` to rende
 
 ```jsx
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import { Box, Flex, IconButton } from '@metrix/design-system';
-import { Drag } from '@metrix/icons';
+import { Box, Flex, IconButton } from '@strapi/design-system';
+import { Drag } from '@strapi/icons';
 
 import { useDragAndDrop } from 'path/to/hooks';
 import { composeRefs } from 'path/to/utils';

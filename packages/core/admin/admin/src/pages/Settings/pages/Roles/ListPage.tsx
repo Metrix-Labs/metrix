@@ -11,8 +11,8 @@ import {
   Tr,
   Typography,
   VisuallyHidden,
-} from '@metrix/design-system';
-import { Duplicate, Pencil, Plus, Trash } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Duplicate, Pencil, Plus, Trash } from '@strapi/icons';
 import { produce } from 'immer';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';

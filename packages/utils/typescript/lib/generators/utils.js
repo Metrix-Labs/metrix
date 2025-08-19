@@ -8,7 +8,7 @@ const chalk = require('chalk');
 
 const { factory } = ts;
 
-const MODULE_DECLARATION = '@metrix/metrix';
+const MODULE_DECLARATION = '@metrixlabs/metrix';
 const PUBLIC_NAMESPACE = 'Public';
 
 /**

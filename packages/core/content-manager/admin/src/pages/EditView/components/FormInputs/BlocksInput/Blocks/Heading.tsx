@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Typography, TypographyComponent } from '@metrix/design-system';
+import { Typography, TypographyComponent } from '@strapi/design-system';
 import {
   HeadingFive,
   HeadingFour,
@@ -8,7 +8,7 @@ import {
   HeadingSix,
   HeadingThree,
   HeadingTwo,
-} from '@metrix/icons';
+} from '@strapi/icons';
 import { Editor } from 'slate';
 import { styled } from 'styled-components';
 

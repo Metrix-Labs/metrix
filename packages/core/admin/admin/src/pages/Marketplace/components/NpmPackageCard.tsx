@@ -7,9 +7,9 @@ import {
   Button,
   LinkButton,
   TypographyComponent,
-} from '@metrix/design-system';
-import { CheckCircle, ExternalLink, Download, Star, Check, Duplicate } from '@metrix/icons';
-import { GitHub } from '@metrix/icons/symbols';
+} from '@strapi/design-system';
+import { CheckCircle, ExternalLink, Download, Star, Check, Duplicate } from '@strapi/icons';
+import { GitHub } from '@strapi/icons/symbols';
 import pluralize from 'pluralize';
 import { useIntl } from 'react-intl';
 import * as semver from 'semver';

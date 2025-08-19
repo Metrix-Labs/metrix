@@ -1,4 +1,4 @@
-import { Form } from '@metrix/admin/metrix-admin';
+import { Form } from '@metrixlabs/admin/metrix-admin';
 import { render, waitFor, screen, server } from '@tests/utils';
 import { rest } from 'msw';
 

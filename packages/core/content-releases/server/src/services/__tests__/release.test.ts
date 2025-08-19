@@ -1,4 +1,4 @@
-import { queryParams } from '@metrix/utils';
+import { queryParams } from '@metrixlabs/utils';
 
 import createReleaseService from '../release';
 import releaseCT from '../../content-types/release/schema';

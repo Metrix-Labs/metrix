@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Typography } from '@metrix/design-system';
+import { Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { useI18n } from '../hooks/useI18n';

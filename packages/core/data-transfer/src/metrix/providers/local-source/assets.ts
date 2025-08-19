@@ -2,7 +2,7 @@ import { join } from 'path';
 import { Duplex, PassThrough, Readable } from 'stream';
 import { stat, createReadStream, ReadStream } from 'fs-extra';
 import * as webStream from 'stream/web';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import type { IAsset, IFile } from '../../../../types';
 

@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 
-import { Button, Flex, Grid, Modal, Breadcrumbs, Crumb } from '@metrix/design-system';
+import { Button, Flex, Grid, Modal, Breadcrumbs, Crumb } from '@strapi/design-system';
 import { Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

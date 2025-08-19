@@ -1,7 +1,7 @@
 import * as settingsService from '../settings';
 
-jest.mock('@metrix/utils', () => ({
-  ...jest.requireActual('@metrix/utils'),
+jest.mock('@metrixlabs/utils', () => ({
+  ...jest.requireActual('@metrixlabs/utils'),
   traverse: {
     traverseQuerySort: jest.fn((a, b, c) => c),
   },

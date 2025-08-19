@@ -17,9 +17,9 @@ import {
   cloneDeep,
 } from 'lodash/fp';
 
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 
-import { contentTypes, traverseEntity, sanitize, async, traverse } from '@metrix/utils';
+import { contentTypes, traverseEntity, sanitize, async, traverse } from '@metrixlabs/utils';
 import { ADMIN_USER_ALLOWED_FIELDS } from '../../../domain/user';
 
 const {

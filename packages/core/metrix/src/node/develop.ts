@@ -1,10 +1,10 @@
-import * as tsUtils from '@metrix/typescript-utils';
-import { strings } from '@metrix/utils';
+import * as tsUtils from '@metrixlabs/typescript-utils';
+import { strings } from '@metrixlabs/utils';
 import chokidar from 'chokidar';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import cluster from 'node:cluster';
-import { createStrapi } from '@metrix/core';
+import { createStrapi } from '@metrixlabs/core';
 
 import type { CLIContext } from '../cli/types';
 import { checkRequiredDependencies } from './core/dependencies';

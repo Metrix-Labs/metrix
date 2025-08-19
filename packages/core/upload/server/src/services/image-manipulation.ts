@@ -2,7 +2,7 @@ import fs from 'fs';
 import { join } from 'path';
 import sharp from 'sharp';
 import crypto from 'crypto';
-import { strings, file as fileUtils } from '@metrix/utils';
+import { strings, file as fileUtils } from '@metrixlabs/utils';
 
 import { getService } from '../utils';
 

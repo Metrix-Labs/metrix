@@ -1,4 +1,4 @@
-import { lightTheme } from '@metrix/design-system';
+import { lightTheme } from '@strapi/design-system';
 
 const PLUGIN_ID = 'review-workflows';
 /**

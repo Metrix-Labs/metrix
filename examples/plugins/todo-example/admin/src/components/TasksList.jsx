@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Box, Flex, Checkbox, IconButton, Typography } from '@metrix/design-system';
-import { Trash, Pencil } from '@metrix/icons';
+import { Box, Flex, Checkbox, IconButton, Typography } from '@strapi/design-system';
+import { Trash, Pencil } from '@strapi/icons';
 import TaskModal from './TaskModal';
-import { useFetchClient } from '@metrix/metrix/admin';
+import { useFetchClient } from '@metrixlabs/metrix/admin';
 
 const Wrapper = styled(Flex)`
   min-height: 2rem;

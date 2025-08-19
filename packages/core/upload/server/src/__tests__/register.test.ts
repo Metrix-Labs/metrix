@@ -18,7 +18,7 @@ const exampleMiddlewaresConfig = [
   },
 ];
 
-jest.mock('@metrix/provider-upload-local', () => ({
+jest.mock('@metrixlabs/provider-upload-local', () => ({
   init() {
     global.metrix.config.set('middlewares', exampleMiddlewaresConfig);
 

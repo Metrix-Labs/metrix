@@ -1,4 +1,4 @@
-import { Earth } from '@metrix/icons';
+import { Earth } from '@strapi/icons';
 import { render as renderRTL } from '@tests/utils';
 
 import { DynamicZoneLabel, DynamicZoneLabelProps } from '../DynamicZoneLabel';

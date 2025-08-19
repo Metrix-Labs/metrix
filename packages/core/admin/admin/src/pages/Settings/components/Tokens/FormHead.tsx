@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Button, Dialog, Flex, Tooltip } from '@metrix/design-system';
-import { Check, ArrowClockwise, Eye, EyeStriked } from '@metrix/icons';
+import { Button, Dialog, Flex, Tooltip } from '@strapi/design-system';
+import { Check, ArrowClockwise, Eye, EyeStriked } from '@strapi/icons';
 import { MessageDescriptor, useIntl } from 'react-intl';
 
 import { ConfirmDialog } from '../../../../components/ConfirmDialog';
@@ -11,7 +11,7 @@ import { useNotification } from '../../../../features/Notifications';
 import { useAPIErrorHandler } from '../../../../hooks/useAPIErrorHandler';
 import { useRegenerateTokenMutation } from '../../../../services/transferTokens';
 
-import type { Data } from '@metrix/types';
+import type { Data } from '@metrixlabs/types';
 
 interface RegenerateProps {
   onRegenerate?: (newKey: string) => void;

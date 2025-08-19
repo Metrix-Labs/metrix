@@ -8,9 +8,9 @@ import {
   useRBAC,
   Layouts,
   GradientBadge,
-} from '@metrix/admin/metrix-admin';
-import { Button, Typography, Flex, Link, Dialog } from '@metrix/design-system';
-import { ArrowLeft, WarningCircle } from '@metrix/icons';
+} from '@metrixlabs/admin/metrix-admin';
+import { Button, Typography, Flex, Link, Dialog } from '@strapi/design-system';
+import { ArrowLeft, WarningCircle } from '@strapi/icons';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { NavLink, useNavigate, useParams, type To } from 'react-router-dom';
@@ -19,7 +19,7 @@ import { PERMISSIONS } from '../../constants/plugin';
 import { useHistoryContext } from '../pages/History';
 import { useRestoreVersionMutation } from '../services/historyVersion';
 
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 
 interface VersionHeaderProps {
   headerId: string;

@@ -10,8 +10,8 @@ import {
   Portal,
   Field,
   VisuallyHidden,
-} from '@metrix/design-system';
-import { Cross } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Cross } from '@strapi/icons';
 import { Formik, Form } from 'formik';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

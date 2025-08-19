@@ -1,6 +1,6 @@
 /* eslint-disable check-file/filename-naming-convention */
 
-import { Cloud } from '@metrix/icons';
+import { Cloud } from '@strapi/icons';
 
 import { Initializer } from './components/Initializer';
 import { pluginId } from './pluginId';

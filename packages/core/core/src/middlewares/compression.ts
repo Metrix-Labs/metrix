@@ -1,5 +1,5 @@
 import compress from 'koa-compress';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 export type Config = compress.CompressOptions;
 

@@ -1,5 +1,5 @@
 import { map } from 'lodash/fp';
-import type { Data } from '@metrix/types';
+import type { Data } from '@metrixlabs/types';
 
 const entityToResponseEntity = (entity: { id: Data.ID; [key: keyof any]: unknown }) => ({
   id: entity.id,

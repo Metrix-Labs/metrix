@@ -1,5 +1,5 @@
 import { isObject } from 'lodash/fp';
-import { engine as engineDataTransfer, metrix as strapiDataTransfer } from '@metrix/data-transfer';
+import { engine as engineDataTransfer, metrix as strapiDataTransfer } from '@metrixlabs/data-transfer';
 
 import {
   buildTransferTable,

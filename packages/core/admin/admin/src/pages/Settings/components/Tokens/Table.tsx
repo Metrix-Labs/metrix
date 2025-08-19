@@ -8,8 +8,8 @@ import {
   useCollator,
   Dialog,
   LinkButton,
-} from '@metrix/design-system';
-import { Pencil, Trash } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Pencil, Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
@@ -22,7 +22,7 @@ import { Table as TableImpl } from '../../../../components/Table';
 import { useTracking } from '../../../../features/Tracking';
 import { useQueryParams } from '../../../../hooks/useQueryParams';
 
-import type { Data } from '@metrix/types';
+import type { Data } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * Table

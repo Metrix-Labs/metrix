@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import { randomUUID } from 'crypto';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { Transaction, TransactionCallback } from '../../types/utils';
 

@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { yup, strings } from '@metrix/utils';
-import type { Schema } from '@metrix/types';
+import { yup, strings } from '@metrixlabs/utils';
+import type { Schema } from '@metrixlabs/types';
 
 const LIFECYCLES = [
   'beforeCreate',

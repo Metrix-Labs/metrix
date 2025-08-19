@@ -12,9 +12,9 @@
  */
 
 /* eslint-disable no-continue */
-import type { UID } from '@metrix/types';
-import type { Database, Migration } from '@metrix/database';
-import { async, contentTypes } from '@metrix/utils';
+import type { UID } from '@metrixlabs/types';
+import type { Database, Migration } from '@metrixlabs/database';
+import { async, contentTypes } from '@metrixlabs/utils';
 import { createDocumentService } from '../../services/document-service';
 
 type DocumentVersion = { documentId: string; locale: string };

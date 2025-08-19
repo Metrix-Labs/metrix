@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Button, Checkbox, Dialog, Field, Flex, Typography } from '@metrix/design-system';
-import { WarningCircle } from '@metrix/icons';
+import { Button, Checkbox, Dialog, Field, Flex, Typography } from '@strapi/design-system';
+import { WarningCircle } from '@strapi/icons';
 import { MessageDescriptor, useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

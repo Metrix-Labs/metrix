@@ -1,4 +1,4 @@
-import { yup } from '@metrix/utils';
+import { yup } from '@metrixlabs/utils';
 import _ from 'lodash';
 import { snakeCase } from 'lodash/fp';
 import { modelTypes, typeKinds } from '../../services/constants';

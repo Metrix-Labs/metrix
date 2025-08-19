@@ -1,5 +1,5 @@
-import { Flex } from '@metrix/design-system';
-import { PaintBrush } from '@metrix/icons';
+import { Flex } from '@strapi/design-system';
+import { PaintBrush } from '@strapi/icons';
 import { styled } from 'styled-components';
 
 const IconBox = styled(Flex)`

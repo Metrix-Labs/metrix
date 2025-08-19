@@ -1,4 +1,4 @@
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 
 import { getDefaultLocale, isLocalizedContentType } from '../utils/i18n';
 import { mapRelation, traverseEntityRelations } from '../utils/map-relation';

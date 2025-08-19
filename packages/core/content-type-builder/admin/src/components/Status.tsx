@@ -1,4 +1,4 @@
-import { Typography, Badge } from '@metrix/design-system';
+import { Typography, Badge } from '@strapi/design-system';
 
 export const Status = ({ status }: { status: string }) => {
   switch (status) {

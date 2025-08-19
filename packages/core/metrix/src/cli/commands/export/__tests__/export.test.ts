@@ -1,4 +1,4 @@
-import { file as fileDataTransfer } from '@metrix/data-transfer';
+import { file as fileDataTransfer } from '@metrixlabs/data-transfer';
 
 import exportAction from '../action';
 import * as mockUtils from '../../../utils/data-transfer';
@@ -37,8 +37,8 @@ jest.mock('../../../utils/data-transfer', () => {
   };
 });
 
-jest.mock('@metrix/data-transfer', () => {
-  const actual = jest.requireActual('@metrix/data-transfer');
+jest.mock('@metrixlabs/data-transfer', () => {
+  const actual = jest.requireActual('@metrixlabs/data-transfer');
 
   return {
     ...actual,

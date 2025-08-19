@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Cog, ShoppingCart, House } from '@metrix/icons';
+import { Cog, ShoppingCart, House } from '@strapi/icons';
 import cloneDeep from 'lodash/cloneDeep';
 
 import { useTypedSelector } from '../core/store/hooks';

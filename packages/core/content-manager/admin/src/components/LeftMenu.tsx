@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { useQueryParams, SubNav } from '@metrix/admin/metrix-admin';
-import { Divider, Flex, TextInput, useCollator, useFilter } from '@metrix/design-system';
-import { Cross, Search } from '@metrix/icons';
+import { useQueryParams, SubNav } from '@metrixlabs/admin/metrix-admin';
+import { Divider, Flex, TextInput, useCollator, useFilter } from '@strapi/design-system';
+import { Cross, Search } from '@strapi/icons';
 import { parse, stringify } from 'qs';
 import { useIntl } from 'react-intl';
 

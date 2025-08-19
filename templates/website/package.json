@@ -14,9 +14,9 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0",
-    "@metrix/plugin-cloud": "^5.0.0",
-    "@metrix/plugin-graphql": "^5.0.0",
-    "@metrix/plugin-users-permissions": "^5.0.0",
-    "@metrix/metrix": "^5.0.0"
+    "@metrixlabs/plugin-cloud": "^5.0.0",
+    "@metrixlabs/plugin-graphql": "^5.0.0",
+    "@metrixlabs/plugin-users-permissions": "^5.0.0",
+    "@metrixlabs/metrix": "^5.0.0"
   }
 }

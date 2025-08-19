@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@metrix/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 
 export const RELEASE_SCHEMA = yup
   .object()

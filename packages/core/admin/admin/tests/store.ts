@@ -1,4 +1,4 @@
-import { fixtures } from '@metrix/admin-test-utils';
+import { fixtures } from '@metrixlabs/admin-test-utils';
 
 import { getStoredToken } from '../src/reducer';
 

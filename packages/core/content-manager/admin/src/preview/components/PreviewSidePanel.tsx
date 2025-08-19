@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import { useQueryParams, useTracking, useForm } from '@metrix/admin/metrix-admin';
-import { Box, Button, Tooltip, type TooltipProps } from '@metrix/design-system';
+import { useQueryParams, useTracking, useForm } from '@metrixlabs/admin/metrix-admin';
+import { Box, Button, Tooltip, type TooltipProps } from '@strapi/design-system';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
 
 import { useGetPreviewUrlQuery } from '../services/preview';
 
-import type { PanelComponent } from '@metrix/content-manager/metrix-admin';
-import type { UID } from '@metrix/types';
+import type { PanelComponent } from '@metrixlabs/content-manager/metrix-admin';
+import type { UID } from '@metrixlabs/types';
 
 interface ConditionalTooltipProps {
   isShown: boolean;

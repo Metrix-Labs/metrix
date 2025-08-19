@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@metrix/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 import { ALLOWED_SORT_STRINGS } from '../../../constants';
 
 const configSchema = yup.object({

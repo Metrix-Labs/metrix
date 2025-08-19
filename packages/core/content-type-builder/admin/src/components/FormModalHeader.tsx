@@ -3,8 +3,8 @@
  * FormModalHeader
  *
  */
-import { Box, Flex, Breadcrumbs, Crumb, Link, Modal } from '@metrix/design-system';
-import { ArrowLeft } from '@metrix/icons';
+import { Box, Flex, Breadcrumbs, Crumb, Link, Modal } from '@strapi/design-system';
+import { ArrowLeft } from '@strapi/icons';
 import upperFirst from 'lodash/upperFirst';
 import { useIntl } from 'react-intl';
 
@@ -14,7 +14,7 @@ import { AttributeIcon, IconByType } from './AttributeIcon';
 import { useDataManager } from './DataManager/useDataManager';
 import { useFormModalNavigation } from './FormModalNavigation/useFormModalNavigation';
 
-import type { Internal } from '@metrix/types';
+import type { Internal } from '@metrixlabs/types';
 
 interface Header {
   label: string;

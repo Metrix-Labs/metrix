@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex, Typography } from '@metrix/design-system';
+import { Box, Flex, Typography } from '@strapi/design-system';
 import map from 'lodash/map';
 import tail from 'lodash/tail';
 import PropTypes from 'prop-types';

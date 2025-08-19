@@ -1,6 +1,6 @@
-import { policy } from '@metrix/utils';
+import { policy } from '@metrixlabs/utils';
 
-// TODO: TS - Try to make { policy: { createPolicy } } from '@metrix/utils'; work
+// TODO: TS - Try to make { policy: { createPolicy } } from '@metrixlabs/utils'; work
 const { createPolicy } = policy;
 
 /**

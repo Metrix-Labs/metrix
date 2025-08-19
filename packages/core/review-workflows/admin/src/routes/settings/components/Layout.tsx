@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Page, Layouts } from '@metrix/admin/metrix-admin';
-import { Box } from '@metrix/design-system';
+import { Page, Layouts } from '@metrixlabs/admin/metrix-admin';
+import { Box } from '@strapi/design-system';
 import { XYCoord, useDragLayer } from 'react-dnd';
 import { useIntl } from 'react-intl';
 

@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import registerAdminPanelRoute from './routes/serve-admin-panel';
 import adminAuthStrategy from './strategies/admin';
 import apiTokenAuthStrategy from './strategies/api-token';

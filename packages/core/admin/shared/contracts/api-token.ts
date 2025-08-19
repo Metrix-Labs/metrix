@@ -1,5 +1,5 @@
-import { errors } from '@metrix/utils';
-import type { Data } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Data } from '@metrixlabs/types';
 
 export type ApiToken = {
   accessKey: string;

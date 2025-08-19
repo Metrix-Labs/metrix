@@ -1,5 +1,5 @@
 import { map, values, sumBy, pipe, flatMap } from 'lodash/fp';
-import type { Schema, UID } from '@metrix/types';
+import type { Schema, UID } from '@metrixlabs/types';
 
 const getNumberOfConditionalFields = () => {
   const contentTypes: Record<UID.ContentType, Schema.ContentType> = metrix.contentTypes;

@@ -13,7 +13,7 @@ import {
   FormErrors,
   getYupValidationErrors,
   useForm,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 import { ValidationError } from 'yup';
@@ -30,7 +30,7 @@ import { useDocumentLayout } from './useDocumentLayout';
 
 import type { FindOne } from '../../../shared/contracts/collection-types';
 import type { ContentType } from '../../../shared/contracts/content-types';
-import type { Modules } from '@metrix/types';
+import type { Modules } from '@metrixlabs/types';
 
 interface UseDocumentArgs {
   collectionType: string;

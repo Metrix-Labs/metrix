@@ -1,7 +1,7 @@
 import { inputObjectType } from 'nexus';
-import { contentTypes } from '@metrix/utils';
+import { contentTypes } from '@metrixlabs/utils';
 import type * as Nexus from 'nexus';
-import type { Struct, Schema } from '@metrix/types';
+import type { Struct, Schema } from '@metrixlabs/types';
 import type { Context } from '../../types';
 
 export default ({ metrix }: Context) => {

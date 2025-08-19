@@ -1,4 +1,4 @@
-// import type { Core } from '@metrix/metrix';
+// import type { Core } from '@metrixlabs/metrix';
 import { bootstrap } from './bootstrap';
 
 export default {

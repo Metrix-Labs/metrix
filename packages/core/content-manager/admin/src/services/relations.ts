@@ -8,8 +8,8 @@ import {
 
 import { contentManagerApi } from './api';
 
-import type { Modules } from '@metrix/types';
-import type { errors } from '@metrix/utils';
+import type { Modules } from '@metrixlabs/types';
+import type { errors } from '@metrixlabs/utils';
 
 interface RelationResult extends RelResult {
   __temp_key__: string;

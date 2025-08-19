@@ -1,5 +1,5 @@
-import type { errors } from '@metrix/utils';
-import type { Struct, UID } from '@metrix/types';
+import type { errors } from '@metrixlabs/utils';
+import type { Struct, UID } from '@metrixlabs/types';
 
 // Export required to avoid "cannot be named" TS build error
 export interface RecentDocument {

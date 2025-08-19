@@ -4,7 +4,7 @@ import * as Users from '../../../shared/contracts/user';
 
 import { adminApi } from './api';
 
-import type { Data } from '@metrix/types';
+import type { Data } from '@metrixlabs/types';
 
 const usersService = adminApi
   .enhanceEndpoints({

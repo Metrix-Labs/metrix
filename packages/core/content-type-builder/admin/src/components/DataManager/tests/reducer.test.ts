@@ -1,7 +1,7 @@
 import { actions, reducer, initialState } from '../reducer';
 
 import type { AnyAttribute, ContentType, Component } from '../../../types';
-import type { Internal, Schema } from '@metrix/types';
+import type { Internal, Schema } from '@metrixlabs/types';
 
 const testContentType: ContentType = {
   uid: 'api::test.test',

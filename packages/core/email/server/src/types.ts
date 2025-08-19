@@ -1,4 +1,4 @@
-import type { Plugin } from '@metrix/types';
+import type { Plugin } from '@metrixlabs/types';
 
 export interface EmailConfig extends Record<string, unknown> {
   provider: string;

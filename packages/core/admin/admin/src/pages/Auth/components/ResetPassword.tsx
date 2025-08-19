@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Main, Typography, Link } from '@metrix/design-system';
+import { Box, Button, Flex, Main, Typography, Link } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { NavLink, useNavigate, Navigate, useLocation } from 'react-router-dom';
 import * as yup from 'yup';

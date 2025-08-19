@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Flex } from '@metrix/design-system';
+import { Flex } from '@strapi/design-system';
 
 interface ActionLayoutProps {
   endActions?: React.ReactNode;

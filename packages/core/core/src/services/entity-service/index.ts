@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import delegate from 'delegates';
-import { errors as databaseErrors } from '@metrix/database';
+import { errors as databaseErrors } from '@metrixlabs/database';
 import {
   contentTypes as contentTypesUtils,
   errors,
   relations as relationUtils,
-} from '@metrix/utils';
-import type { Database } from '@metrix/database';
-import type { Core, Modules, Utils } from '@metrix/types';
+} from '@metrixlabs/utils';
+import type { Database } from '@metrixlabs/database';
+import type { Core, Modules, Utils } from '@metrixlabs/types';
 
 type Decoratable<T> = T & {
   decorate(

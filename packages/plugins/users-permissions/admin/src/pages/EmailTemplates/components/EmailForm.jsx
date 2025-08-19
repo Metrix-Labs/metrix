@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Button, Grid, Modal, Breadcrumbs, Crumb, VisuallyHidden } from '@metrix/design-system';
-import { Form, InputRenderer } from '@metrix/metrix/admin';
+import { Button, Grid, Modal, Breadcrumbs, Crumb, VisuallyHidden } from '@strapi/design-system';
+import { Form, InputRenderer } from '@metrixlabs/metrix/admin';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

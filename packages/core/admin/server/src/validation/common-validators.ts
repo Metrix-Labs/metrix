@@ -1,4 +1,4 @@
-import { yup } from '@metrix/utils';
+import { yup } from '@metrixlabs/utils';
 import _ from 'lodash';
 import { isEmpty, has, isNil, isArray } from 'lodash/fp';
 import { getService } from '../utils';

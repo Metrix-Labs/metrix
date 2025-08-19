@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash/fp';
 import _ from 'lodash';
-import { yup, contentTypes as contentTypesUtils } from '@metrix/utils';
-import type { Schema } from '@metrix/types';
+import { yup, contentTypes as contentTypesUtils } from '@metrixlabs/utils';
+import type { Schema } from '@metrixlabs/types';
 import { validateContentTypeDefinition } from './validator';
 
 export type ContentTypeDefinition = {

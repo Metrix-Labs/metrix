@@ -1,4 +1,4 @@
-import { useFetchClient } from '@metrix/admin/metrix-admin';
+import { useFetchClient } from '@metrixlabs/admin/metrix-admin';
 import { act, renderHook } from '@tests/utils';
 
 import { useEditFolder } from '../useEditFolder';
@@ -14,8 +14,8 @@ const FOLDER_EDIT_FIXTURE = {
   parent: 1,
 };
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useFetchClient: jest.fn().mockReturnValue({
     put: jest.fn().mockResolvedValue({ name: 'folder-edited' }),
     post: jest.fn().mockResolvedValue({ name: 'folder-created' }),

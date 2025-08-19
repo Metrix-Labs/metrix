@@ -1,6 +1,6 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import { prop } from 'lodash/fp';
-import { async, errors } from '@metrix/utils';
+import { async, errors } from '@metrixlabs/utils';
 import { getService, getAdminService } from '../utils';
 import { STAGE_TRANSITION_UID } from '../constants/workflows';
 

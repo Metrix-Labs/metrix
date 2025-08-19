@@ -1,4 +1,4 @@
-import { Form } from '@metrix/admin/metrix-admin';
+import { Form } from '@metrixlabs/admin/metrix-admin';
 import { screen, render } from '@tests/utils';
 
 import { MediaLibraryInput } from '../MediaLibraryInput';

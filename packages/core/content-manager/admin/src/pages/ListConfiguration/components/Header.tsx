@@ -1,5 +1,5 @@
-import { useForm, BackButton, Layouts } from '@metrix/admin/metrix-admin';
-import { Button } from '@metrix/design-system';
+import { useForm, BackButton, Layouts } from '@metrixlabs/admin/metrix-admin';
+import { Button } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 

@@ -4,7 +4,7 @@ import loadAdmin from '../loaders/admin';
 export default defineProvider({
   init(metrix) {
     // eslint-disable-next-line node/no-missing-require
-    metrix.add('admin', () => require('@metrix/admin/metrix-server'));
+    metrix.add('admin', () => require('@metrixlabs/admin/metrix-server'));
   },
 
   async register(metrix) {

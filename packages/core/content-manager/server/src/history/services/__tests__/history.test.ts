@@ -1,4 +1,4 @@
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 import { HISTORY_VERSION_UID } from '../../constants';
 import { createHistoryService } from '../history';
 

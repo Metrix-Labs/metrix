@@ -3,8 +3,8 @@
  * E.g the page size, the sort.
  */
 
-import { errors } from '@metrix/utils';
-import type { Utils } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Utils } from '@metrixlabs/types';
 
 type SortOrder = 'ASC' | 'DESC';
 

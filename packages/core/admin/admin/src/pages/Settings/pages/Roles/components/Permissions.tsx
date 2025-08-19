@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Tabs } from '@metrix/design-system';
+import { Tabs } from '@strapi/design-system';
 import { produce } from 'immer';
 import cloneDeep from 'lodash/cloneDeep';
 import get from 'lodash/get';

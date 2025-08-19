@@ -1,5 +1,5 @@
 import { has } from 'lodash/fp';
-import type { Struct, UID } from '@metrix/types';
+import type { Struct, UID } from '@metrixlabs/types';
 
 const componentsRegistry = () => {
   const components: Record<UID.Component, Struct.ComponentSchema> = {};

@@ -5,8 +5,8 @@ import path from 'path';
 import { map, values, sumBy, pipe, flatMap, propEq } from 'lodash/fp';
 import _ from 'lodash';
 import { exists } from 'fs-extra';
-import { env } from '@metrix/utils';
-import tsUtils from '@metrix/typescript-utils';
+import { env } from '@metrixlabs/utils';
+import tsUtils from '@metrixlabs/typescript-utils';
 import {
   validateUpdateProjectSettings,
   validateUpdateProjectSettingsFiles,

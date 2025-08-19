@@ -9,7 +9,7 @@ import {
   useField,
   useRBAC,
   FormHelpers,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Button,
   Combobox,
@@ -18,8 +18,8 @@ import {
   Flex,
   Grid,
   Typography,
-} from '@metrix/design-system';
-import { Check } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Check } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import { useTypedSelector } from '../modules/hooks';

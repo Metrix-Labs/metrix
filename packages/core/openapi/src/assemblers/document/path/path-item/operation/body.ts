@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import type { OpenAPIV3_1 } from 'openapi-types';
 
 import type { OperationContext } from '../../../../../types';

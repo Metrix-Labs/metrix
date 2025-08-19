@@ -1,4 +1,4 @@
-import type { Core, Modules } from '@metrix/types';
+import type { Core, Modules } from '@metrixlabs/types';
 
 const createCustomFields = (metrix: Core.Strapi): Modules.CustomFields.CustomFields => {
   return {

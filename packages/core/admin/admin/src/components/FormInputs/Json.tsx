@@ -5,7 +5,7 @@ import {
   useComposedRefs,
   Field,
   JSONInputRef,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 
 import { useFocusInputField } from '../../hooks/useFocusInputField';
 import { useField } from '../Form';

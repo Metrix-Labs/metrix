@@ -1,4 +1,4 @@
-import { Page } from '@metrix/admin/metrix-admin';
+import { Page } from '@metrixlabs/admin/metrix-admin';
 import { Route, Routes } from 'react-router-dom';
 
 import { PERMISSIONS } from '../constants';

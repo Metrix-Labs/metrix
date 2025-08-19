@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 
-import { DesignSystemProvider } from '@metrix/design-system';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 

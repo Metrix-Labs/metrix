@@ -23,7 +23,7 @@ const defaultCWD = '/__unit_tests__';
 const appPackageJSONFile = `{
   "name": "test",
   "version": "1.0.0",
-  "dependencies": { "@metrix/metrix": "${currentStrapiVersion}" }
+  "dependencies": { "@metrixlabs/metrix": "${currentStrapiVersion}" }
 }`;
 
 const pluginPackageJSONFile = `{
@@ -96,14 +96,14 @@ describe('Project', () => {
     test(`Use the @metrix/metrix's package.json version as a fallback fails when no version is installed`, () => {
       vol.fromNestedJSON(
         {
-          'package.json': `{ "name": "test", "version": "1.2.3", "dependencies": { "@metrix/metrix": "^4.0.0" } }`,
+          'package.json': `{ "name": "test", "version": "1.2.3", "dependencies": { "@metrixlabs/metrix": "^4.0.0" } }`,
           src: defaultFiles,
         },
         defaultCWD
       );
 
       expect(() => projectFactory(defaultCWD)).toThrow(
-        `Cannot resolve module "@metrix/metrix" from paths [${defaultCWD}]`
+        `Cannot resolve module "@metrixlabs/metrix" from paths [${defaultCWD}]`
       );
     });
 

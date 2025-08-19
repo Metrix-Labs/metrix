@@ -1,5 +1,5 @@
 import { pick } from 'lodash/fp';
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 
 import type Koa from 'koa';
 import type {} from 'koa-body';

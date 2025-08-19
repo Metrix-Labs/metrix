@@ -1,4 +1,4 @@
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 
 import { curry, assoc } from 'lodash/fp';
 

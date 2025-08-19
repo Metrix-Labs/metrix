@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/provider-email-sendmail",
+  "name": "@metrixlabs/provider-email-sendmail",
   "version": "5.22.0",
   "description": "Sendmail provider for strapi email",
   "keywords": [
@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "sendmail": "^1.6.1",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/sendmail": "1.4.4",

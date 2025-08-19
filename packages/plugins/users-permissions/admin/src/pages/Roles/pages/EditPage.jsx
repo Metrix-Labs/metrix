@@ -9,8 +9,8 @@ import {
   Typography,
   Grid,
   Field,
-} from '@metrix/design-system';
-import { Check } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Check } from '@strapi/icons';
 import {
   Page,
   BackButton,
@@ -18,7 +18,7 @@ import {
   useNotification,
   useFetchClient,
   Layouts,
-} from '@metrix/metrix/admin';
+} from '@metrixlabs/metrix/admin';
 import { Formik, Form } from 'formik';
 import { useIntl } from 'react-intl';
 import { useQuery, useMutation } from 'react-query';

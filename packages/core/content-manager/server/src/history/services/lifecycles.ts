@@ -1,5 +1,5 @@
-import type { Core, Modules, UID } from '@metrix/types';
-import { contentTypes } from '@metrix/utils';
+import type { Core, Modules, UID } from '@metrixlabs/types';
+import { contentTypes } from '@metrixlabs/utils';
 
 import { omit, castArray } from 'lodash/fp';
 

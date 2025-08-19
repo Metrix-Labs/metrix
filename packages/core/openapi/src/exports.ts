@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { DocumentAssemblerFactory } from './assemblers';
 import { DocumentContextFactory } from './context';
@@ -30,7 +30,7 @@ import type { GeneratorOutput } from './generator';
  *
  * @example
  * ```typescript
- * import { generate } from '@metrix/openapi';
+ * import { generate } from '@metrixlabs/openapi';
  *
  * // Assuming 'metrix' is your Strapi instance
  * const output = generate(metrix, { type: 'content-api' });
@@ -39,7 +39,7 @@ import type { GeneratorOutput } from './generator';
  *
  * @example
  * ```typescript
- * import { generate } from '@metrix/openapi';
+ * import { generate } from '@metrixlabs/openapi';
  *
  * // Generate documentation for all route types (default)
  * const output = generate(metrix);

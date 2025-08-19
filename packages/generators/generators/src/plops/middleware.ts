@@ -1,5 +1,5 @@
 import type { NodePlopAPI } from 'plop';
-import tsUtils from '@metrix/typescript-utils';
+import tsUtils from '@metrixlabs/typescript-utils';
 
 import getDestinationPrompts from './prompts/get-destination-prompts';
 import validateInput from './utils/validate-input';

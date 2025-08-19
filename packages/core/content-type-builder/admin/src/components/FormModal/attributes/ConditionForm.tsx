@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { createRulesEngine, ConfirmDialog, type Condition } from '@metrix/admin/metrix-admin';
+import { createRulesEngine, ConfirmDialog, type Condition } from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Flex,
@@ -11,8 +11,8 @@ import {
   SingleSelect,
   SingleSelectOption,
   Dialog,
-} from '@metrix/design-system';
-import { Trash } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 import * as yup from 'yup';

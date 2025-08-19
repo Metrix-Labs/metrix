@@ -1,4 +1,4 @@
-import { Cog } from '@metrix/icons';
+import { Cog } from '@strapi/icons';
 import { render, screen } from '@tests/utils';
 
 import { WidgetRoot } from '../../pages/Home/HomePage';

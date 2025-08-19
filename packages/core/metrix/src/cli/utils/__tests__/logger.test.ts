@@ -1,7 +1,7 @@
-import { type Logger, createLogger } from '@metrix/logger';
+import { type Logger, createLogger } from '@metrixlabs/logger';
 import { formatDiagnostic } from '../data-transfer';
 
-jest.mock('@metrix/logger', () => {
+jest.mock('@metrixlabs/logger', () => {
   const actualWinston = jest.requireActual('winston');
   return {
     ...actualWinston,

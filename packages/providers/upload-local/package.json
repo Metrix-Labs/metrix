@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/provider-upload-local",
+  "name": "@metrixlabs/provider-upload-local",
   "version": "5.22.0",
   "description": "Local provider for strapi upload",
   "keywords": [
@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "fs-extra": "11.2.0",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
@@ -54,7 +54,7 @@
     "eslint-config-custom": "5.22.0",
     "memfs": "4.6.0",
     "tsconfig": "5.22.0",
-    "@metrix/types": "5.22.0"
+    "@metrixlabs/types": "5.22.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

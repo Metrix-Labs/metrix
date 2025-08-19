@@ -1,5 +1,5 @@
-import permissions from '@metrix/permissions';
-import { providerFactory, sanitize, validate } from '@metrix/utils';
+import permissions from '@metrixlabs/permissions';
+import { providerFactory, sanitize, validate } from '@metrixlabs/utils';
 
 import type { Route } from '../core';
 

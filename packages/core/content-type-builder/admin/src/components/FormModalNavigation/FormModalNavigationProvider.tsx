@@ -1,10 +1,10 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { useTracking } from '@metrix/admin/metrix-admin';
+import { useTracking } from '@metrixlabs/admin/metrix-admin';
 
 import { FormModalNavigationContext } from './FormModalNavigationContext';
 
-import type { Internal, Struct } from '@metrix/types';
+import type { Internal, Struct } from '@metrixlabs/types';
 
 type FormModalNavigationProviderProps = {
   children: React.ReactNode;

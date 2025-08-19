@@ -1,6 +1,6 @@
 import { objectType } from 'nexus';
 import { get } from 'lodash/fp';
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 
 import type { Context } from '../../types';
 

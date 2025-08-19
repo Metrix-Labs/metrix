@@ -1,4 +1,4 @@
-import { Button, Tooltip } from '@metrix/design-system';
+import { Button, Tooltip } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 interface ApplyConditionButtonProps {

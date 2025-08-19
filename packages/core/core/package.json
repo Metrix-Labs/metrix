@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/core",
+  "name": "@metrixlabs/core",
   "version": "5.22.0",
   "description": "Core of Strapi",
   "homepage": "https://strapi.io",
@@ -99,14 +99,14 @@
     "undici": "6.21.2",
     "yup": "0.32.9",
     "zod": "3.25.67",
-    "@metrix/admin": "5.22.0",
-    "@metrix/database": "5.22.0",
-    "@metrix/generators": "5.22.0",
-    "@metrix/logger": "5.22.0",
-    "@metrix/permissions": "5.22.0",
-    "@metrix/types": "5.22.0",
-    "@metrix/typescript-utils": "5.22.0",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/admin": "5.22.0",
+    "@metrixlabs/database": "5.22.0",
+    "@metrixlabs/generators": "5.22.0",
+    "@metrixlabs/logger": "5.22.0",
+    "@metrixlabs/permissions": "5.22.0",
+    "@metrixlabs/types": "5.22.0",
+    "@metrixlabs/typescript-utils": "5.22.0",
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@swc/core": "1.9.3",
@@ -131,7 +131,7 @@
     "eslint-config-custom": "5.22.0",
     "supertest": "6.3.3",
     "tsconfig": "5.22.0",
-    "@metrix/ts-zen": "^0.2.0"
+    "@metrixlabs/ts-zen": "^0.2.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

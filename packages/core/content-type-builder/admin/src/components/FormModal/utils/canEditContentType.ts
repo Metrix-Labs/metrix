@@ -3,7 +3,7 @@ import get from 'lodash/get';
 import { getRelationType } from '../../../utils/getRelationType';
 
 import type { AnyAttribute, ContentType } from '../../../types';
-import type { Internal, Struct } from '@metrix/types';
+import type { Internal, Struct } from '@metrixlabs/types';
 
 export type EditableContentTypeSchema = {
   kind: Struct.ContentTypeKind;

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { FormErrors, FormValues } from '@metrix/admin/metrix-admin';
-import { unstable_useDocument } from '@metrix/content-manager/metrix-admin';
-import { Button, LinkButton, Flex, Typography, Popover } from '@metrix/design-system';
-import { CheckCircle, CrossCircle, ArrowsCounterClockwise, CaretDown } from '@metrix/icons';
+import { FormErrors, FormValues } from '@metrixlabs/admin/metrix-admin';
+import { unstable_useDocument } from '@metrixlabs/content-manager/metrix-admin';
+import { Button, LinkButton, Flex, Typography, Popover } from '@strapi/design-system';
+import { CheckCircle, CrossCircle, ArrowsCounterClockwise, CaretDown } from '@strapi/icons';
 import { stringify } from 'qs';
 import { useIntl, MessageDescriptor } from 'react-intl';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ import type {
   ReleaseActionEntry,
   Stage,
 } from '../../../shared/contracts/release-actions';
-import type { Struct } from '@metrix/types';
+import type { Struct } from '@metrixlabs/types';
 
 const StyledPopoverFlex = styled(Flex)`
   width: 100%;

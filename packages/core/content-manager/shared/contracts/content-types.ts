@@ -1,5 +1,5 @@
-import type { Struct } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Struct } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 import { ComponentConfiguration } from './components';
 
 export type Settings = {

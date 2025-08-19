@@ -1,6 +1,6 @@
 import { has } from 'lodash/fp';
 
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 type PluginMap = Record<string, Core.Plugin>;
 

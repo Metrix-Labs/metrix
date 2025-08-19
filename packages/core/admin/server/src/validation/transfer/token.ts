@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@metrix/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 import constants from '../../services/constants';
 
 const transferTokenCreationSchema = yup

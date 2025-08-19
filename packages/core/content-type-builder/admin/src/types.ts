@@ -1,4 +1,4 @@
-import type { Schema, Struct, UID } from '@metrix/types';
+import type { Schema, Struct, UID } from '@metrixlabs/types';
 
 export type IntlLabel = {
   id: string;

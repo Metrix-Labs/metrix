@@ -1,5 +1,5 @@
-import type { Data, Modules } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Data, Modules } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 
 /**
  * POST /i18n/content-manager/actions/get-non-localized-fields - Get the localized fields

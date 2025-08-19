@@ -1,7 +1,7 @@
 import { join } from 'path';
 import type { NodePlopAPI } from 'plop';
 import fs from 'fs-extra';
-import tsUtils from '@metrix/typescript-utils';
+import tsUtils from '@metrixlabs/typescript-utils';
 
 import validateInput from './utils/validate-input';
 

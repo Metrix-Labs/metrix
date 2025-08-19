@@ -1,5 +1,5 @@
-import { Flex, FlexComponent, Typography } from '@metrix/design-system';
-import { Cross, Drag, Pencil } from '@metrix/icons';
+import { Flex, FlexComponent, Typography } from '@strapi/design-system';
+import { Cross, Drag, Pencil } from '@strapi/icons';
 import { styled } from 'styled-components';
 
 interface CardDragPreviewProps {

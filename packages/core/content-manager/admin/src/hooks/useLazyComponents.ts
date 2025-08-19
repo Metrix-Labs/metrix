@@ -1,6 +1,6 @@
 import { ComponentType, useCallback, useEffect, useState } from 'react';
 
-import { StrapiAppContextValue, useStrapiApp } from '@metrix/admin/metrix-admin';
+import { StrapiAppContextValue, useStrapiApp } from '@metrixlabs/admin/metrix-admin';
 
 const componentStore = new Map<string, ComponentType | undefined>();
 

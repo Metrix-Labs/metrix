@@ -1,5 +1,5 @@
-import type { Core, UID } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Core, UID } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 
 import { getService } from '../utils';
 import type { HandlerParams } from './preview-config';

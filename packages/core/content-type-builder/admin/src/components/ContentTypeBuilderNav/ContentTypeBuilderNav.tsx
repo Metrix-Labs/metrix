@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 
-import { ConfirmDialog, SubNav } from '@metrix/admin/metrix-admin';
+import { ConfirmDialog, SubNav } from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   TextInput,
@@ -12,8 +12,8 @@ import {
   VisuallyHidden,
   Dialog,
   IconButton,
-} from '@metrix/design-system';
-import { ArrowClockwise, Cross, More, Search } from '@metrix/icons';
+} from '@strapi/design-system';
+import { ArrowClockwise, Cross, More, Search } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

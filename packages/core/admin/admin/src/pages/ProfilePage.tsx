@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, useNotifyAT, Grid, Typography, FlexProps } from '@metrix/design-system';
-import { Check } from '@metrix/icons';
+import { Box, Button, Flex, useNotifyAT, Grid, Typography, FlexProps } from '@strapi/design-system';
+import { Check } from '@strapi/icons';
 import upperFirst from 'lodash/upperFirst';
 import { useIntl } from 'react-intl';
 import * as yup from 'yup';

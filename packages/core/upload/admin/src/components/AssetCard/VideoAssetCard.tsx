@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, CardAsset, CardTimer } from '@metrix/design-system';
+import { Box, CardAsset, CardTimer } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 import { formatDuration } from '../../utils';

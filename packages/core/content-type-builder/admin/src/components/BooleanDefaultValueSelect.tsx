@@ -1,4 +1,4 @@
-import { Field, SingleSelect, SingleSelectOption } from '@metrix/design-system';
+import { Field, SingleSelect, SingleSelectOption } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { IntlLabel } from '../types';

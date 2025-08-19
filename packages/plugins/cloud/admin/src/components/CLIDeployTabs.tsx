@@ -1,6 +1,6 @@
-import { useClipboard } from '@metrix/admin/metrix-admin';
-import { Box, Typography, Tabs, IconButton, Flex, Tooltip } from '@metrix/design-system';
-import { Duplicate } from '@metrix/icons';
+import { useClipboard } from '@metrixlabs/admin/metrix-admin';
+import { Box, Typography, Tabs, IconButton, Flex, Tooltip } from '@strapi/design-system';
+import { Duplicate } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../utils/getTrad';

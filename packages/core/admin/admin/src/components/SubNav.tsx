@@ -1,7 +1,7 @@
 import { useId, useState } from 'react';
 
-import { Box, SubNav as DSSubNav, Flex, Typography, IconButton } from '@metrix/design-system';
-import { ChevronDown, Plus } from '@metrix/icons';
+import { Box, SubNav as DSSubNav, Flex, Typography, IconButton } from '@strapi/design-system';
+import { ChevronDown, Plus } from '@strapi/icons';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 

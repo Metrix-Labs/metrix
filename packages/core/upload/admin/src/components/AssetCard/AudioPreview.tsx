@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { Box } from '@metrix/design-system';
+import { Box } from '@strapi/design-system';
 
 interface AudioPreviewProps {
   alt: string;

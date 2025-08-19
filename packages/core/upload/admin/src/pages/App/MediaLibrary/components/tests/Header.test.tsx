@@ -1,5 +1,5 @@
-import { useQueryParams } from '@metrix/admin/metrix-admin';
-import { DesignSystemProvider } from '@metrix/design-system';
+import { useQueryParams } from '@metrixlabs/admin/metrix-admin';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -9,8 +9,8 @@ import { Header } from '../Header';
 
 import type { HeaderProps } from '../Header';
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useQueryParams: jest.fn(() => [{ rawQuery: '', query: { folder: 2 } }, jest.fn()]),
 }));
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Grid, Link, Typography } from '@metrix/design-system';
-import { Check, ExternalLink } from '@metrix/icons';
+import { Box, Button, Flex, Grid, Link, Typography } from '@strapi/design-system';
+import { Check, ExternalLink } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 

@@ -10,7 +10,7 @@
 const crypto = require('crypto');
 const _ = require('lodash');
 const { concat, compact, isArray } = require('lodash/fp');
-const utils = require('@metrix/utils');
+const utils = require('@metrixlabs/utils');
 const { getService } = require('../utils');
 const {
   validateCallbackBody,

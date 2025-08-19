@@ -1,4 +1,4 @@
-import type { Internal, Struct } from '@metrix/types';
+import type { Internal, Struct } from '@metrixlabs/types';
 import { get, has } from 'lodash';
 
 import { formatAttributes, replaceTemporaryUIDs } from '../utils/attributes';

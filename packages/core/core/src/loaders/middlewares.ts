@@ -1,7 +1,7 @@
 import { join, extname, basename } from 'path';
 import fse from 'fs-extra';
-import { importDefault } from '@metrix/utils';
-import type { Core } from '@metrix/types';
+import { importDefault } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 import { middlewares as internalMiddlewares } from '../middlewares';
 
 // TODO:: allow folders with index.js inside for bigger policies

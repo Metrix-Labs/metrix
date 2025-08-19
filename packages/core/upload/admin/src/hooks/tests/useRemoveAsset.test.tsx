@@ -1,7 +1,7 @@
 /* eslint-disable check-file/filename-naming-convention */
 import { configureStore } from '@reduxjs/toolkit';
-import { adminApi, NotificationsProvider, useNotification } from '@metrix/admin/metrix-admin';
-import { DesignSystemProvider } from '@metrix/design-system';
+import { adminApi, NotificationsProvider, useNotification } from '@metrixlabs/admin/metrix-admin';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { server } from '@tests/utils';
 import { rest } from 'msw';
@@ -20,8 +20,8 @@ const ASSET_FIXTURE = {
 
 const notificationStatusMock = jest.fn();
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useNotification() {
     return { toggleNotification: notificationStatusMock };
   },

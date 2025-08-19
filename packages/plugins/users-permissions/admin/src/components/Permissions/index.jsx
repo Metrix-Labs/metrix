@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-import { Accordion, Flex } from '@metrix/design-system';
+import { Accordion, Flex } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { useUsersPermissions } from '../../contexts/UsersPermissionsContext';

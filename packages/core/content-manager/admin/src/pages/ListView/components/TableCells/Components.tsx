@@ -1,11 +1,11 @@
-import { Badge, Tooltip, Typography, Menu } from '@metrix/design-system';
+import { Badge, Tooltip, Typography, Menu } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 
 import { CellContentProps } from './CellContent';
 import { CellValue } from './CellValue';
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * SingleComponent

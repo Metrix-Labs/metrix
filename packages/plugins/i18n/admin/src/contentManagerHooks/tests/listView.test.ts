@@ -1,6 +1,6 @@
 import { addColumnToTableHook } from '../listView';
 
-import type { ListFieldLayout, ListLayout } from '@metrix/content-manager/metrix-admin';
+import type { ListFieldLayout, ListLayout } from '@metrixlabs/content-manager/metrix-admin';
 
 describe('addColumnToTableHook', () => {
   const DEFAULT_FIELD: ListFieldLayout = {

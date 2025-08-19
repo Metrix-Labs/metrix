@@ -6,12 +6,12 @@ This codemod transforms @metrix/metrix imports to use the new public interface.
 ESM
 Before:
 
-import metrix from '@metrix/metrix';
+import metrix from '@metrixlabs/metrix';
 metrix();
 
 After:
 
-import { createStrapi } from '@metrix/metrix'; // keeps the default import
+import { createStrapi } from '@metrixlabs/metrix'; // keeps the default import
 createStrapi();
 
 ---
@@ -19,19 +19,19 @@ createStrapi();
 Common JS
 Before:
 
-const metrix = require('@metrix/metrix');
+const metrix = require('@metrixlabs/metrix');
 metrix();
 
 After:
 
-const metrix = require('@metrix/metrix');
+const metrix = require('@metrixlabs/metrix');
 metrix.createStrapi();
 
 */
 
 const transformStrapiImport = (root: Collection, j: JSCodeshift) => {
   root.find(j.ImportDefaultSpecifier).forEach((path) => {
-    if (path.parent.value.source.value === '@metrix/metrix') {
+    if (path.parent.value.source.value === '@metrixlabs/metrix') {
       const newSpecifiers = path.parent.value.specifiers.filter(
         (specifier) => specifier.type !== 'ImportDefaultSpecifier'
       );
@@ -39,7 +39,7 @@ const transformStrapiImport = (root: Collection, j: JSCodeshift) => {
       j(path.parent).replaceWith(
         j.importDeclaration(
           [...newSpecifiers, j.importSpecifier(j.identifier('createStrapi'))],
-          j.literal('@metrix/metrix')
+          j.literal('@metrixlabs/metrix')
         )
       );
 
@@ -55,7 +55,7 @@ const transformRequireImport = (root: Collection, j: JSCodeshift) => {
         callee: {
           name: 'require',
         },
-        arguments: [{ value: '@metrix/metrix' }],
+        arguments: [{ value: '@metrixlabs/metrix' }],
       },
     })
     .forEach((path) => {
@@ -102,12 +102,12 @@ const transformFunctionCalls = (identifier: string, root: Collection, j: JSCodes
  *
  * With ESM imports
  *
- * import metrix from '@metrix/metrix'; => import metrix, { createStrapi } from '@metrix/metrix';
+ * import metrix from '@metrixlabs/metrix'; => import metrix, { createStrapi } from '@metrixlabs/metrix';
  * metrix() => createStrapi()
  *
  * With CJS imports
  *
- * const metrix = require('@metrix/metrix'); => no transform
+ * const metrix = require('@metrixlabs/metrix'); => no transform
  * metrix() => metrix.createStrapi()
  */
 const transform: Transform = (file, api) => {

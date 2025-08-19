@@ -1,1 +1,1 @@
-export * from '@metrix/admin/metrix-admin/test';
+export * from '@metrixlabs/admin/metrix-admin/test';

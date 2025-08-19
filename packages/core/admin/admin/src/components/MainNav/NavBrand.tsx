@@ -1,4 +1,4 @@
-import { Box, Flex, type FlexComponent, VisuallyHidden } from '@metrix/design-system';
+import { Box, Flex, type FlexComponent, VisuallyHidden } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

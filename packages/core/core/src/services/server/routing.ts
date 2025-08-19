@@ -1,7 +1,7 @@
 import Router from '@koa/router';
 import { has } from 'lodash/fp';
-import { yup } from '@metrix/utils';
-import type { Core } from '@metrix/types';
+import { yup } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 import createEndpointComposer from './compose-endpoint';
 

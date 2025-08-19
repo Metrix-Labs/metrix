@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import { sanitize, validate } from '@metrix/utils';
+import { sanitize, validate } from '@metrixlabs/utils';
 
-import type { Core, UID } from '@metrix/types';
+import type { Core, UID } from '@metrixlabs/types';
 
 import instantiatePermissionsUtilities from './permissions';
 

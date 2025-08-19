@@ -1,5 +1,5 @@
-import type { Modules } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Modules } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 
 import { isNil } from 'lodash/fp';
 import { ENTITY_STAGE_ATTRIBUTE } from '../constants/workflows';

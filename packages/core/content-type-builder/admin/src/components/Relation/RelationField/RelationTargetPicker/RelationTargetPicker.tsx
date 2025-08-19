@@ -1,4 +1,4 @@
-import { Menu } from '@metrix/design-system';
+import { Menu } from '@strapi/design-system';
 import { useDispatch } from 'react-redux';
 import { styled } from 'styled-components';
 
@@ -6,7 +6,7 @@ import { isAllowedContentTypesForRelations } from '../../../../utils';
 import { useDataManager } from '../../../DataManager/useDataManager';
 import { actions } from '../../../FormModal/reducer';
 
-import type { Internal, Schema } from '@metrix/types';
+import type { Internal, Schema } from '@metrixlabs/types';
 interface RelationTargetPickerProps {
   oneThatIsCreatingARelationWithAnother: string;
   target: Internal.UID.ContentType;

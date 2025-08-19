@@ -1,5 +1,5 @@
 import { pipe, omit, pick } from 'lodash/fp';
-import type { Core, UID, Utils } from '@metrix/types';
+import type { Core, UID, Utils } from '@metrixlabs/types';
 
 import { createController } from './core-api/controller';
 import { CoreContentTypeRouteValidator } from './core-api/routes/validation';

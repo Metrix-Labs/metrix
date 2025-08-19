@@ -1,6 +1,6 @@
-import { async } from '@metrix/utils';
+import { async } from '@metrixlabs/utils';
 
-import type { Migration, Database } from '@metrix/database';
+import type { Migration, Database } from '@metrixlabs/database';
 
 type Knex = Parameters<Migration['up']>[0];
 

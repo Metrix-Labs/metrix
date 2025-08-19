@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useTracking, useRBAC, useQueryParams } from '@metrix/admin/metrix-admin';
+import { useTracking, useRBAC, useQueryParams } from '@metrixlabs/admin/metrix-admin';
 import {
   Flex,
   IconButton,
@@ -10,8 +10,8 @@ import {
   Typography,
   useCollator,
   LinkButton,
-} from '@metrix/design-system';
-import { Cog, ListPlus } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Cog, ListPlus } from '@strapi/icons';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';

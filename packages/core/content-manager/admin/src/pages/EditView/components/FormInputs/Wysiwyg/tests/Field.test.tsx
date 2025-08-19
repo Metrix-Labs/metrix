@@ -1,4 +1,4 @@
-import { Form } from '@metrix/admin/metrix-admin';
+import { Form } from '@metrixlabs/admin/metrix-admin';
 import { render as renderRTL } from '@tests/utils';
 
 import { Wysiwyg, WysiwygProps } from '../Field';

@@ -1,5 +1,5 @@
 import { Readable } from 'stream';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import type { ILink } from '../../../../types';
 import { createLinkQuery } from '../../queries/link';

@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { mapValues } from 'lodash/fp';
 import andOperator from './and';

@@ -1,4 +1,4 @@
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 // @ts-expect-error - types are not generated for this file
 // eslint-disable-next-line import/no-relative-packages
 import createContext from '../../../../../../../tests/helpers/create-context';

@@ -5,9 +5,9 @@ import punycode from 'punycode/';
 import type { Context } from 'koa';
 import _ from 'lodash';
 
-import { yup, validateYupSchema } from '@metrix/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 
-import type { Modules } from '@metrix/types';
+import type { Modules } from '@metrixlabs/types';
 
 import {
   CreateWebhook,

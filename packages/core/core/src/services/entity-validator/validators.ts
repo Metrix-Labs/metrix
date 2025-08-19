@@ -9,8 +9,8 @@
  * E.g, unique fields must be unique within the same locale.
  */
 import _ from 'lodash';
-import { yup } from '@metrix/utils';
-import type { Schema, Struct, Modules } from '@metrix/types';
+import { yup } from '@metrixlabs/utils';
+import type { Schema, Struct, Modules } from '@metrixlabs/types';
 import { blocksValidator } from './blocks-validator';
 
 import type { ComponentContext } from '.';

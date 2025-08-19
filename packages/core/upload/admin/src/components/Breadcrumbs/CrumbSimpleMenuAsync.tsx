@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useQueryParams } from '@metrix/admin/metrix-admin';
-import { CrumbSimpleMenu, Loader, MenuItem } from '@metrix/design-system';
+import { useQueryParams } from '@metrixlabs/admin/metrix-admin';
+import { CrumbSimpleMenu, Loader, MenuItem } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { useLocation } from 'react-router-dom';
 

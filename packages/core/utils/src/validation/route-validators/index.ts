@@ -9,7 +9,7 @@
  *
  * @example
  * ```typescript
- * import { AbstractRouteValidator, type QueryParam } from '@metrix/utils';
+ * import { AbstractRouteValidator, type QueryParam } from '@metrixlabs/utils';
  * import * as z from 'zod/v4';
  *
  * export class MyPluginRouteValidator extends AbstractRouteValidator {

@@ -9,8 +9,8 @@ import {
   Typography,
   VisuallyHidden,
   Grid,
-} from '@metrix/design-system';
-import { GridFour as GridIcon, List, Pencil, Plus } from '@metrix/icons';
+} from '@strapi/design-system';
+import { GridFour as GridIcon, List, Pencil, Plus } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

@@ -1,4 +1,4 @@
-import { env } from '@metrix/utils';
+import { env } from '@metrixlabs/utils';
 
 import type { Strapi, Router, Controller, Service, Policy, Middleware } from '../core';
 import type { ContentTypeSchema } from '../struct';

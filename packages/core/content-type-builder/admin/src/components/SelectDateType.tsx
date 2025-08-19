@@ -1,4 +1,4 @@
-import { Field, SingleSelect, SingleSelectOption } from '@metrix/design-system';
+import { Field, SingleSelect, SingleSelectOption } from '@strapi/design-system';
 import { PrimitiveType, useIntl } from 'react-intl';
 
 type SelectDateTypeProps = {

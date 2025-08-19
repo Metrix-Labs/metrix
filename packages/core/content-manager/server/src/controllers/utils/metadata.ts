@@ -1,5 +1,5 @@
-import type { UID } from '@metrix/types';
-import { async } from '@metrix/utils';
+import type { UID } from '@metrixlabs/types';
+import { async } from '@metrixlabs/utils';
 
 import { getService } from '../../utils';
 

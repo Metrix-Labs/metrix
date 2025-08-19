@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { has, omit, pipe, assign, curry } from 'lodash/fp';
-import type { Utils, UID, Schema, Data, Modules } from '@metrix/types';
-import { contentTypes as contentTypesUtils, async, errors } from '@metrix/utils';
+import type { Utils, UID, Schema, Data, Modules } from '@metrixlabs/types';
+import { contentTypes as contentTypesUtils, async, errors } from '@metrixlabs/utils';
 
 // type aliases for readability
 type Input<T extends UID.Schema> = Modules.Documents.Params.Data.Input<T>;

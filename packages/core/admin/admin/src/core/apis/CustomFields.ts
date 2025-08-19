@@ -1,7 +1,7 @@
 /* eslint-disable check-file/filename-naming-convention */
 import { ComponentType } from 'react';
 
-import { Internal, Utils } from '@metrix/types';
+import { Internal, Utils } from '@metrixlabs/types';
 import invariant from 'invariant';
 
 import type { MessageDescriptor, PrimitiveType } from 'react-intl';

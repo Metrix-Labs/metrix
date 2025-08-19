@@ -6,8 +6,8 @@
 import { uniqBy, castArray, isNil, isArray, mergeWith } from 'lodash';
 import { has, prop, isObject, isEmpty } from 'lodash/fp';
 import jsonLogic from 'json-logic-js';
-import strapiUtils from '@metrix/utils';
-import type { Modules, UID, Struct, Schema } from '@metrix/types';
+import strapiUtils from '@metrixlabs/utils';
+import type { Modules, UID, Struct, Schema } from '@metrixlabs/types';
 import { Validators, ValidatorMetas } from './validators';
 
 type CreateOrUpdate = 'creation' | 'update';

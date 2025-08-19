@@ -1,6 +1,6 @@
 import React, { forwardRef, memo, useImperativeHandle, useReducer } from 'react';
 
-import { Flex, Grid, Typography } from '@metrix/design-system';
+import { Flex, Grid, Typography } from '@strapi/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

@@ -1,6 +1,6 @@
 import { forwardRef, memo } from 'react';
 
-import { TimePicker, useComposedRefs, Field } from '@metrix/design-system';
+import { TimePicker, useComposedRefs, Field } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { useFocusInputField } from '../../hooks/useFocusInputField';

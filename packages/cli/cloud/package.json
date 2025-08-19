@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/cloud-cli",
+  "name": "@metrixlabs/cloud-cli",
   "version": "5.22.0",
   "description": "Commands to interact with the Strapi Cloud",
   "keywords": [
@@ -66,7 +66,7 @@
     "tar": "6.2.1",
     "xdg-app-paths": "8.3.0",
     "yup": "0.32.9",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/cli-progress": "3.11.5",

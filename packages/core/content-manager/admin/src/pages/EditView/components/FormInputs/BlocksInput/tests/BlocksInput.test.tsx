@@ -1,7 +1,7 @@
 /* eslint-disable testing-library/no-node-access */
 import * as React from 'react';
 
-import { Form } from '@metrix/admin/metrix-admin';
+import { Form } from '@metrixlabs/admin/metrix-admin';
 import { render, screen } from '@tests/utils';
 
 import { BlocksInput } from '../BlocksInput';

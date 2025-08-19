@@ -1,4 +1,4 @@
-import { generateInstallId, env } from '@metrix/utils';
+import { generateInstallId, env } from '@metrixlabs/utils';
 
 export const sendEvent = async (event: string, uuid: string, installId?: any) => {
   const analyticsUrl = env('STRAPI_ANALYTICS_URL', 'https://analytics.metrix.io');

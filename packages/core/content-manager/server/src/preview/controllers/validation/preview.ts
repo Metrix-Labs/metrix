@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 import { pick } from 'lodash/fp';
 
-import type { Core, UID } from '@metrix/types';
-import { validateYupSchema, errors } from '@metrix/utils';
+import type { Core, UID } from '@metrixlabs/types';
+import { validateYupSchema, errors } from '@metrixlabs/utils';
 
 import { Preview } from '../../../../../shared/contracts';
 import type { HandlerParams } from '../../services/preview-config';

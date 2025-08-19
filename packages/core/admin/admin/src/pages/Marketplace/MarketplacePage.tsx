@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Box, Flex, Searchbar, Tabs } from '@metrix/design-system';
-import { ExternalLink } from '@metrix/icons';
-import { GlassesSquare } from '@metrix/icons/symbols';
+import { Box, Flex, Searchbar, Tabs } from '@strapi/design-system';
+import { ExternalLink } from '@strapi/icons';
+import { GlassesSquare } from '@strapi/icons/symbols';
 import { useIntl } from 'react-intl';
 
 import { ContentBox } from '../../components/ContentBox';

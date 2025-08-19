@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useField, useStrapiApp, type InputProps } from '@metrix/admin/metrix-admin';
-import { Field, Flex } from '@metrix/design-system';
+import { useField, useStrapiApp, type InputProps } from '@metrixlabs/admin/metrix-admin';
+import { Field, Flex } from '@strapi/design-system';
 import { EditorFromTextArea } from 'codemirror5';
 
 import { prefixFileUrlWithBackendUrl } from '../../../../../utils/urls';
@@ -12,7 +12,7 @@ import { insertFile } from './utils/utils';
 import { WysiwygFooter } from './WysiwygFooter';
 import { WysiwygNav } from './WysiwygNav';
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 interface WysiwygProps extends Omit<InputProps, 'type'> {
   labelAction?: React.ReactNode;

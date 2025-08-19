@@ -1,5 +1,5 @@
-import { async, errors } from '@metrix/utils';
-import type { Core, UID } from '@metrix/types';
+import { async, errors } from '@metrixlabs/utils';
+import type { Core, UID } from '@metrixlabs/types';
 import { pick } from 'lodash/fp';
 import { getService as getContentManagerService } from '../../utils';
 import { getService } from '../utils';

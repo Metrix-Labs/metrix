@@ -2,7 +2,7 @@
 import { createContext } from 'react';
 
 import type { Component, ContentType } from '../../types';
-import type { Internal, Struct } from '@metrix/types';
+import type { Internal, Struct } from '@metrixlabs/types';
 
 export interface DataManagerContextValue {
   isLoading: boolean;

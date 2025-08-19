@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import type { modules } from '../../../dist';
 
-const STRAPI_I18N_DEP_NAME = '@metrix/plugin-i18n';
+const STRAPI_I18N_DEP_NAME = '@metrixlabs/plugin-i18n';
 const STRAPI_I18N_DEP_PATH = `dependencies.${STRAPI_I18N_DEP_NAME}`;
 
 /**

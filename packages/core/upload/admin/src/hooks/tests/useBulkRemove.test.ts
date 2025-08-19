@@ -1,4 +1,4 @@
-import { useFetchClient } from '@metrix/admin/metrix-admin';
+import { useFetchClient } from '@metrixlabs/admin/metrix-admin';
 import { act, renderHook, screen } from '@tests/utils';
 
 import { BulkDeleteFiles } from '../../../../shared/contracts/files';
@@ -43,8 +43,8 @@ const FIXTURE_FOLDERS = [
   },
 ];
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useFetchClient: jest.fn().mockReturnValue({
     post: jest.fn((url, payload) => {
       const res: BulkDeleteFiles.Response | BulkDeleteFolders.Response = {

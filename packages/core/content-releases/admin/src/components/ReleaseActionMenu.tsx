@@ -6,9 +6,9 @@ import {
   useAuth,
   useRBAC,
   isFetchError,
-} from '@metrix/admin/metrix-admin';
-import { Menu, AccessibleIcon } from '@metrix/design-system';
-import { Cross, More, Pencil } from '@metrix/icons';
+} from '@metrixlabs/admin/metrix-admin';
+import { Menu, AccessibleIcon } from '@strapi/design-system';
+import { Cross, More, Pencil } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';

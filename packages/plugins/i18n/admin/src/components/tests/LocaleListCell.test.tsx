@@ -6,8 +6,8 @@ import { LocaleListCell } from '../LocaleListCell';
  * @note Because the `useDocument` hook access the contentManagerApi, we need to unfortunately mock it.
  * It'd be good to export an FE rendering wrapper that would work for plugins...
  */
-jest.mock('@metrix/content-manager/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/content-manager/metrix-admin'),
+jest.mock('@metrixlabs/content-manager/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/content-manager/metrix-admin'),
   unstable_useDocument: jest.fn(() => ({
     meta: {
       availableLocales: [

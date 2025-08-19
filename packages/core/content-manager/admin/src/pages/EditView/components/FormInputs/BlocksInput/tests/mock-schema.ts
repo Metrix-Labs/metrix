@@ -1,6 +1,6 @@
 /* eslint-disable check-file/filename-naming-convention */
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 const mockImage = {
   url: 'https://via.placeholder.com/300/09f/fff.png',

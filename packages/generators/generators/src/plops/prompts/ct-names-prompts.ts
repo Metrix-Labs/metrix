@@ -1,6 +1,6 @@
 import pluralize from 'pluralize';
 import slugify from '@sindresorhus/slugify';
-import { strings } from '@metrix/utils';
+import { strings } from '@metrixlabs/utils';
 
 interface Answers {
   displayName: string;

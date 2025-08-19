@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/provider-email-mailgun",
+  "name": "@metrixlabs/provider-email-mailgun",
   "version": "5.22.0",
   "description": "Mailgun provider for strapi email plugin",
   "keywords": [
@@ -48,7 +48,7 @@
   "dependencies": {
     "form-data": "^4.0.0",
     "mailgun.js": "10.2.1",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "eslint-config-custom": "5.22.0",

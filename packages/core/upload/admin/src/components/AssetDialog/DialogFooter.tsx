@@ -1,4 +1,4 @@
-import { Button, Modal } from '@metrix/design-system';
+import { Button, Modal } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 interface DialogFooterProps {

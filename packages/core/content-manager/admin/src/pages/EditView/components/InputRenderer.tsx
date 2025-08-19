@@ -5,7 +5,7 @@ import {
   useForm,
   InputRenderer as FormInputRenderer,
   useField,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 
 import { SINGLE_TYPES } from '../../../constants/collections';
@@ -24,7 +24,7 @@ import { UIDInput } from './FormInputs/UID';
 import { Wysiwyg } from './FormInputs/Wysiwyg/Field';
 
 import type { EditFieldLayout } from '../../../hooks/useDocumentLayout';
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 import type { DistributiveOmit } from 'react-redux';
 
 type InputRendererProps = DistributiveOmit<EditFieldLayout, 'size'> & {

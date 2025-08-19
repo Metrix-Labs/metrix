@@ -6,8 +6,8 @@ import {
   useQueryParams,
   useRBAC,
   isFetchError,
-} from '@metrix/admin/metrix-admin';
-import { unstable_useContentManagerContext as useContentManagerContext } from '@metrix/content-manager/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
+import { unstable_useContentManagerContext as useContentManagerContext } from '@metrixlabs/content-manager/metrix-admin';
 import {
   Box,
   Button,
@@ -16,7 +16,7 @@ import {
   SingleSelectOption,
   Modal,
   Field,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 import { Formik, Form } from 'formik';
 import { useIntl } from 'react-intl';
 
@@ -32,8 +32,8 @@ import {
 } from './ReleaseActionModal';
 import { ReleaseActionOptions } from './ReleaseActionOptions';
 
-import type { BulkActionComponent } from '@metrix/content-manager/metrix-admin';
-import type { UID } from '@metrix/types';
+import type { BulkActionComponent } from '@metrixlabs/content-manager/metrix-admin';
+import type { UID } from '@metrixlabs/types';
 
 const getContentPermissions = (subject: string) => {
   const permissions = {

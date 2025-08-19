@@ -1,7 +1,7 @@
 import { pick, getOr } from 'lodash/fp';
-import { contentTypes as contentTypesUtils } from '@metrix/utils';
+import { contentTypes as contentTypesUtils } from '@metrixlabs/utils';
 
-import type { Schema, Struct } from '@metrix/types';
+import type { Schema, Struct } from '@metrixlabs/types';
 
 const dtoFields = [
   'uid',

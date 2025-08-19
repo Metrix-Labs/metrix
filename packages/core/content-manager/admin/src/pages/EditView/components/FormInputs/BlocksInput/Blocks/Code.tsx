@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, SingleSelect, SingleSelectOption } from '@metrix/design-system';
-import { CodeBlock as CodeBlockIcon } from '@metrix/icons';
+import { Box, SingleSelect, SingleSelectOption } from '@strapi/design-system';
+import { CodeBlock as CodeBlockIcon } from '@strapi/icons';
 import * as Prism from 'prismjs';
 import { useIntl } from 'react-intl';
 import { BaseRange, Element, Editor, Node, NodeEntry, Transforms } from 'slate';

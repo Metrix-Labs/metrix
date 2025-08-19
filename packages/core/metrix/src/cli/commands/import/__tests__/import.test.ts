@@ -2,7 +2,7 @@ import {
   engine as engineDataTransfer,
   metrix as strapiDataTransfer,
   file as fileDataTransfer,
-} from '@metrix/data-transfer';
+} from '@metrixlabs/data-transfer';
 
 import importAction from '../action';
 import { expectExit } from '../../__tests__/commands.test.utils';
@@ -32,8 +32,8 @@ jest.mock('../../../utils/data-transfer', () => {
   };
 });
 
-jest.mock('@metrix/data-transfer', () => {
-  const actual = jest.requireActual('@metrix/data-transfer');
+jest.mock('@metrixlabs/data-transfer', () => {
+  const actual = jest.requireActual('@metrixlabs/data-transfer');
 
   return {
     ...actual,

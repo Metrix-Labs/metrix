@@ -1,5 +1,5 @@
 import { toString } from 'lodash/fp';
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 
 const { ApplicationError } = errors;
 

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import type { Context } from 'koa';
 import type {} from 'koa-body';
-import type { Internal } from '@metrix/types';
+import type { Internal } from '@metrixlabs/types';
 import { getService } from '../utils';
 import {
   validateContentTypeInput,

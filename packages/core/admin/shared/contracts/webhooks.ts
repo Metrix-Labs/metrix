@@ -1,5 +1,5 @@
-import { errors } from '@metrix/utils';
-import type { Modules } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Modules } from '@metrixlabs/types';
 
 /**
  * /webhooks - GET all webhooks

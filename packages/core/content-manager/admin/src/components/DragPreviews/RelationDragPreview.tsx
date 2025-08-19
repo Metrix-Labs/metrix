@@ -1,5 +1,5 @@
-import { Box, Flex, IconButton, Typography } from '@metrix/design-system';
-import { Cross, Drag } from '@metrix/icons';
+import { Box, Flex, IconButton, Typography } from '@strapi/design-system';
+import { Cross, Drag } from '@strapi/icons';
 
 import { DocumentStatus } from '../../pages/EditView/components/DocumentStatus';
 import {
@@ -8,7 +8,7 @@ import {
   FlexWrapper,
 } from '../../pages/EditView/components/FormInputs/Relations/Relations';
 
-import type { Data } from '@metrix/types';
+import type { Data } from '@metrixlabs/types';
 
 interface RelationDragPreviewProps {
   status?: string;

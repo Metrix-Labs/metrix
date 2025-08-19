@@ -1,7 +1,7 @@
 import type { Context } from 'koa';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
-import { async, validate } from '@metrix/utils';
+import { async, validate } from '@metrixlabs/utils';
 import { getService } from '../utils';
 import { validateUpdateStageOnEntity, validateLocale } from '../validation/review-workflows';
 import {

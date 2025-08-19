@@ -1,7 +1,7 @@
 'use strict';
 
 const { curry } = require('lodash/fp');
-const { traverseEntity, async } = require('@metrix/utils');
+const { traverseEntity, async } = require('@metrixlabs/utils');
 
 const { removeUserRelationFromRoleEntities } = require('./visitors');
 

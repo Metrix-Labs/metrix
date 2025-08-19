@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import { get, set, has, isString, isNumber, isArray, type PropertyPath } from 'lodash';
 
 type State = {

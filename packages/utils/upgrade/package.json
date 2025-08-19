@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/upgrade",
+  "name": "@metrixlabs/upgrade",
   "version": "5.22.0",
   "description": "CLI to upgrade Strapi applications effortless",
   "keywords": [
@@ -75,14 +75,14 @@
     "semver": "7.5.4",
     "simple-git": "3.21.0",
     "undici": "6.21.2",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
     "@types/jscodeshift": "0.12.0",
     "eslint-config-custom": "5.22.0",
     "rimraf": "5.0.5",
-    "@metrix/types": "5.22.0"
+    "@metrixlabs/types": "5.22.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

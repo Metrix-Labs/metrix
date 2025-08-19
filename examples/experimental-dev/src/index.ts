@@ -1,4 +1,4 @@
-import '@metrix/metrix';
+import '@metrixlabs/metrix';
 
 export default {
   /**

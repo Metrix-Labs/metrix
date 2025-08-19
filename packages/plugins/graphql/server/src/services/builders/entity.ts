@@ -1,6 +1,6 @@
 import { objectType } from 'nexus';
 import { prop, identity, isEmpty } from 'lodash/fp';
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 import type { Context } from '../types';
 

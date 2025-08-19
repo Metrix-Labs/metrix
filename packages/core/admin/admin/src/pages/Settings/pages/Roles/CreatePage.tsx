@@ -10,8 +10,8 @@ import {
   Textarea,
   TextInput,
   Typography,
-} from '@metrix/design-system';
-import { Check } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Check } from '@strapi/icons';
 import { format } from 'date-fns';
 import { Formik, Form, FormikHelpers } from 'formik';
 import { useIntl } from 'react-intl';

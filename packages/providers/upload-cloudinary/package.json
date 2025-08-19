@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/provider-upload-cloudinary",
+  "name": "@metrixlabs/provider-upload-cloudinary",
   "version": "5.22.0",
   "description": "Cloudinary provider for strapi upload",
   "keywords": [
@@ -46,7 +46,7 @@
   "dependencies": {
     "cloudinary": "^1.41.0",
     "into-stream": "^5.1.0",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "eslint-config-custom": "5.22.0",

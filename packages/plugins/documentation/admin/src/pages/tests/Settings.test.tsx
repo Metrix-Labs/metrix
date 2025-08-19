@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@metrix/metrix/admin/test';
+import { fireEvent, render, waitFor } from '@metrixlabs/metrix/admin/test';
 import { rest } from 'msw';
 
 import { server } from '../../../../tests/server';

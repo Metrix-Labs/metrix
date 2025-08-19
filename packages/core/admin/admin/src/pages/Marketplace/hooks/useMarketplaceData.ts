@@ -1,4 +1,4 @@
-import { useNotifyAT } from '@metrix/design-system';
+import { useNotifyAT } from '@strapi/design-system';
 import * as qs from 'qs';
 import { useIntl } from 'react-intl';
 import { useQuery } from 'react-query';

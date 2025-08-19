@@ -1,4 +1,4 @@
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import contentTypesServiceFactory from '../content-types';
 
 const {

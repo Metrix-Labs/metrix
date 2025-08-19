@@ -1,5 +1,5 @@
 import koaIp from 'koa-ip';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 export type Config = koaIp.KoaIPOptions;
 

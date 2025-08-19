@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import { getService } from '../utils';
 import { isSsoLocked } from '../utils/sso-lock';
 

@@ -1,5 +1,5 @@
-import type { UID, Schema } from '@metrix/types';
-import { contentTypes } from '@metrix/utils';
+import type { UID, Schema } from '@metrixlabs/types';
+import { contentTypes } from '@metrixlabs/utils';
 import type { Document } from '../document-manager';
 
 const { isVisibleAttribute } = contentTypes;

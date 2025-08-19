@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/plugin-sentry",
+  "name": "@metrixlabs/plugin-sentry",
   "version": "5.22.0",
   "description": "Send Strapi error events to Sentry",
   "repository": {
@@ -54,22 +54,22 @@
   },
   "dependencies": {
     "@sentry/node": "7.112.2",
-    "@metrix/design-system": "2.0.0-rc.29",
-    "@metrix/icons": "2.0.0-rc.29"
+    "@strapi/design-system": "2.0.0-rc.29",
+    "@strapi/icons": "2.0.0-rc.29"
   },
   "devDependencies": {
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.22.3",
     "styled-components": "6.1.8",
-    "@metrix/metrix": "5.22.0"
+    "@metrixlabs/metrix": "5.22.0"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0",
-    "@metrix/metrix": "^5.0.0"
+    "@metrixlabs/metrix": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

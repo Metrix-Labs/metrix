@@ -1,11 +1,11 @@
-import { DesignSystemProvider } from '@metrix/design-system';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { render as renderTL } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 
 import { FromComputerForm } from '../FromComputerForm';
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   getFetchClient: jest.fn().mockReturnValue({
     get: jest.fn(),
   }),

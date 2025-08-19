@@ -1,6 +1,6 @@
 import { get } from 'lodash/fp';
-import { errors } from '@metrix/utils';
-import type { Core, Struct } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core, Struct } from '@metrixlabs/types';
 import { getService } from '../utils';
 
 const { ApplicationError } = errors;

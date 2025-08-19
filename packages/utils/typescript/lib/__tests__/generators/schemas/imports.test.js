@@ -34,7 +34,7 @@ describe('Imports', () => {
 
       // Module specifier
       expect(def.moduleSpecifier.kind).toBe(ts.SyntaxKind.StringLiteral);
-      expect(def.moduleSpecifier.text).toBe('@metrix/metrix');
+      expect(def.moduleSpecifier.text).toBe('@metrixlabs/metrix');
 
       // Import clause (should be named imports)
       expect(def.importClause.kind).toBe(ts.SyntaxKind.ImportClause);

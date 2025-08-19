@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '@metrix/design-system';
+import { Button } from '@strapi/design-system';
 
 import { registerPreviewRoute } from './preview';
 

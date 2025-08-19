@@ -1,4 +1,4 @@
-import type { Plugin } from '@metrix/types';
+import type { Plugin } from '@metrixlabs/types';
 import { controllers } from './controllers';
 import { services } from './services';
 import { routes } from './routes';

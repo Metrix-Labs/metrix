@@ -10,7 +10,7 @@ import {
   Tr,
   Typography,
   VisuallyHidden,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTranslation } from '../utils/getTranslation';

@@ -1,5 +1,5 @@
 import { unionType } from 'nexus';
-import type { Struct } from '@metrix/types';
+import type { Struct } from '@metrixlabs/types';
 import type { Context } from '../../types';
 
 const registerPolymorphicContentType = (

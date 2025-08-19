@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Form, Layouts, useForm, createRulesEngine } from '@metrix/admin/metrix-admin';
-import { Box, Divider, Flex, Grid, Typography } from '@metrix/design-system';
+import { Form, Layouts, useForm, createRulesEngine } from '@metrixlabs/admin/metrix-admin';
+import { Box, Divider, Flex, Grid, Typography } from '@strapi/design-system';
 import pipe from 'lodash/fp/pipe';
 import { useIntl } from 'react-intl';
 
@@ -19,7 +19,7 @@ import type { Metadatas } from '../../../../shared/contracts/content-types';
 import type { GetInitData } from '../../../../shared/contracts/init';
 import type { ComponentsDictionary, Document } from '../../hooks/useDocument';
 import type { EditFieldLayout } from '../../hooks/useDocumentLayout';
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 const createLayoutFromFields = <T extends EditFieldLayout | UnknownField>(fields: T[]) => {
   return (

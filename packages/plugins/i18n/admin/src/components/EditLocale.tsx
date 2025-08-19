@@ -6,7 +6,7 @@ import {
   Form,
   FormHelpers,
   useAuth,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Button,
@@ -17,8 +17,8 @@ import {
   Tabs,
   Typography,
   useId,
-} from '@metrix/design-system';
-import { Pencil } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Pencil } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import { Locale, UpdateLocale } from '../../../shared/contracts/locales';

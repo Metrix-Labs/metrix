@@ -1,5 +1,5 @@
-import type { Core, Data, UID } from '@metrix/types';
-import { async, contentTypes } from '@metrix/utils';
+import type { Core, Data, UID } from '@metrixlabs/types';
+import { async, contentTypes } from '@metrixlabs/utils';
 
 const hasDraftAndPublish = (uid: UID.CollectionType) => {
   const model = metrix.getModel(uid);

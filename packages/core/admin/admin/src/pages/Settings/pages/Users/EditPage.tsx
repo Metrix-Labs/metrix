@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Grid, Typography } from '@metrix/design-system';
-import { Check } from '@metrix/icons';
+import { Box, Button, Flex, Grid, Typography } from '@strapi/design-system';
+import { Check } from '@strapi/icons';
 import pick from 'lodash/pick';
 import { useIntl } from 'react-intl';
 import { useMatch, useNavigate } from 'react-router-dom';

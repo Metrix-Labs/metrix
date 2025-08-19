@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 export const logger: Core.MiddlewareFactory = (_, { metrix }) => {
   return async (ctx, next) => {

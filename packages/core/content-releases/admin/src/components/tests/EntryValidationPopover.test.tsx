@@ -1,10 +1,10 @@
-import { unstable_useDocument } from '@metrix/content-manager/metrix-admin';
+import { unstable_useDocument } from '@metrixlabs/content-manager/metrix-admin';
 import { render, screen, waitFor } from '@tests/utils';
 import { IntlProvider } from 'react-intl';
 
 import { EntryValidationPopover } from '../EntryValidationPopover';
 
-jest.mock('@metrix/content-manager/metrix-admin', () => ({
+jest.mock('@metrixlabs/content-manager/metrix-admin', () => ({
   unstable_useDocument: jest.fn(),
 }));
 

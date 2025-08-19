@@ -26,9 +26,9 @@ import {
   EmptyStateLayoutProps,
   TableProps,
   RawTdProps,
-} from '@metrix/design-system';
-import { CaretDown } from '@metrix/icons';
-import { EmptyDocuments } from '@metrix/icons/symbols';
+} from '@strapi/design-system';
+import { CaretDown } from '@strapi/icons';
+import { EmptyDocuments } from '@strapi/icons/symbols';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

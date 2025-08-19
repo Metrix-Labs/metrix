@@ -1,4 +1,4 @@
-import { SingleSelectOption, SingleSelect, Typography, Field } from '@metrix/design-system';
+import { SingleSelectOption, SingleSelect, Typography, Field } from '@strapi/design-system';
 import { MessageDescriptor, useIntl } from 'react-intl';
 
 import { getDateOfExpiration } from '../../pages/ApiTokens/EditView/utils/getDateOfExpiration';

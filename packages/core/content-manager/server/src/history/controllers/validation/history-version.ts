@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { validateYupSchema } from '@metrix/utils';
+import { validateYupSchema } from '@metrixlabs/utils';
 
 const historyRestoreVersionSchema = yup
   .object()

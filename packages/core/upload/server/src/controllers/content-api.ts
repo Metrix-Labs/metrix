@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import utils from '@metrix/utils';
+import utils from '@metrixlabs/utils';
 
 import type { Context } from 'koa';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { getService } from '../utils';
 import { FILE_MODEL_UID } from '../constants';

@@ -1,4 +1,4 @@
-import type { Core, Schema } from '@metrix/types';
+import type { Core, Schema } from '@metrixlabs/types';
 import { resolveComponentUID } from '../components';
 
 const baseContentType: Schema.ContentType = {

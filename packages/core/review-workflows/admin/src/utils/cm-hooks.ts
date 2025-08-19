@@ -1,6 +1,6 @@
 import { REVIEW_WORKFLOW_COLUMNS } from '../routes/content-manager/model/constants';
 
-import type { ListFieldLayout, ListLayout } from '@metrix/content-manager/metrix-admin';
+import type { ListFieldLayout, ListLayout } from '@metrixlabs/content-manager/metrix-admin';
 
 /* -------------------------------------------------------------------------------------------------
  * addColumnToTableHook

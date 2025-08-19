@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import { yup, validateYupSchema } from '@metrix/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 
-import type { Struct } from '@metrix/types';
+import type { Struct } from '@metrixlabs/types';
 import { modelTypes, DEFAULT_TYPES } from '../../services/constants';
 import { isValidCategoryName, isValidIcon } from './common';
 import { createSchema } from './model-schema';

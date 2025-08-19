@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import type { GetRecentlyAssignedDocuments } from '../../../../shared/contracts/homepage';
 

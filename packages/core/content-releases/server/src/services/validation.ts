@@ -1,5 +1,5 @@
-import { errors, contentTypes } from '@metrix/utils';
-import type { Core, UID } from '@metrix/types';
+import { errors, contentTypes } from '@metrixlabs/utils';
+import type { Core, UID } from '@metrixlabs/types';
 import type { Release, CreateRelease, UpdateRelease } from '../../../shared/contracts/releases';
 import type { CreateReleaseAction } from '../../../shared/contracts/release-actions';
 import { RELEASE_MODEL_UID } from '../constants';

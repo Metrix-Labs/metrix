@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
-import { Box, Flex, LinkButton, Typography } from '@metrix/design-system';
+import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
+import { Box, Flex, LinkButton, Typography } from '@strapi/design-system';
 import { isAfter, subDays } from 'date-fns';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

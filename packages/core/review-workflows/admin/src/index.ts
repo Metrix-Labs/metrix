@@ -1,4 +1,4 @@
-import { SealCheck } from '@metrix/icons';
+import { SealCheck } from '@strapi/icons';
 
 import { PLUGIN_ID, FEATURE_ID } from './constants';
 import { Header } from './routes/content-manager/model/id/components/Header';
@@ -6,8 +6,8 @@ import { Panel } from './routes/content-manager/model/id/components/Panel';
 import { addColumnToTableHook } from './utils/cm-hooks';
 import { prefixPluginTranslations } from './utils/translations';
 
-import type { StrapiApp, WidgetArgs } from '@metrix/admin/metrix-admin';
-import type { Plugin } from '@metrix/types';
+import type { StrapiApp, WidgetArgs } from '@metrixlabs/admin/metrix-admin';
+import type { Plugin } from '@metrixlabs/types';
 
 const admin: Plugin.Config.AdminInput = {
   register(app: StrapiApp) {

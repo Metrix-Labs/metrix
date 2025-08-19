@@ -1,4 +1,4 @@
-import type { Utils } from '@metrix/types';
+import type { Utils } from '@metrixlabs/types';
 
 import { curry, pipe, merge, set, pick, omit, includes, isArray, prop } from 'lodash/fp';
 

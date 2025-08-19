@@ -1,5 +1,5 @@
-import { SanitizedAdminUser } from '@metrix/admin/metrix-admin';
-import { Box, Flex, Typography } from '@metrix/design-system';
+import { SanitizedAdminUser } from '@metrixlabs/admin/metrix-admin';
+import { Box, Flex, Typography } from '@strapi/design-system';
 
 import { STAGE_COLOR_DEFAULT } from '../../../../constants';
 import { getStageColorByHex } from '../../../../utils/colors';

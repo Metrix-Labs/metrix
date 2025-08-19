@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 import assert from 'assert';
 import { map, isArray, omit, uniq, isNil, difference, isEmpty, isNumber } from 'lodash/fp';
-import { errors } from '@metrix/utils';
-import '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import '@metrixlabs/types';
 import constants from '../constants';
 import { getService } from '../../utils';
 import {

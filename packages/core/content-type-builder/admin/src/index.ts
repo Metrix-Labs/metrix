@@ -1,4 +1,4 @@
-import { Layout } from '@metrix/icons';
+import { Layout } from '@strapi/icons';
 
 import { PERMISSIONS } from './constants';
 import { pluginId } from './pluginId';
@@ -6,7 +6,7 @@ import { reducers } from './reducers';
 import { formsAPI } from './utils/formAPI';
 import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 
-import type { StrapiApp } from '@metrix/admin/metrix-admin';
+import type { StrapiApp } from '@metrixlabs/admin/metrix-admin';
 
 // eslint-disable-next-line import/no-default-export
 export default {

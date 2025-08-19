@@ -1,6 +1,6 @@
 import { isEmpty, isNil } from 'lodash/fp';
 
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 /**
  * Test if the metrix application is considered as initialized (1st user has been created)

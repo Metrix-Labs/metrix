@@ -1,5 +1,5 @@
 import { has, propEq, isNil, isDate, isObject } from 'lodash/fp';
-import type { Struct } from '@metrix/types';
+import type { Struct } from '@metrixlabs/types';
 import type { Context } from '../../types';
 
 // todo[v4]: Find a way to get that dynamically

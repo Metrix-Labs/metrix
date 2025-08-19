@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Page, useNotification, useFetchClient, Layouts } from '@metrix/admin/metrix-admin';
+import { Page, useNotification, useFetchClient, Layouts } from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Button,
@@ -11,8 +11,8 @@ import {
   TextInput,
   Typography,
   Field,
-} from '@metrix/design-system';
-import { Mail } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Mail } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { useQuery, useMutation } from 'react-query';
 import { styled } from 'styled-components';

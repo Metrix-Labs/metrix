@@ -1,5 +1,5 @@
 import { Writable } from 'stream';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import { ProviderTransferError } from '../../../../../errors/providers';
 import { ILink, Transaction } from '../../../../../../types';
 import { createLinkQuery } from '../../../../queries/link';

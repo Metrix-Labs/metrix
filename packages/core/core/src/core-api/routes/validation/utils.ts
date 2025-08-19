@@ -1,5 +1,5 @@
-import { transformUidToValidOpenApiName } from '@metrix/utils';
-import type { Internal } from '@metrix/types';
+import { transformUidToValidOpenApiName } from '@metrixlabs/utils';
+import type { Internal } from '@metrixlabs/types';
 import * as z from 'zod/v4';
 
 /**

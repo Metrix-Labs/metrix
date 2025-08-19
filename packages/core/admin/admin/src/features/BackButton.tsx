@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Link, LinkProps } from '@metrix/design-system';
-import { ArrowLeft } from '@metrix/icons';
+import { Link, LinkProps } from '@strapi/design-system';
+import { ArrowLeft } from '@strapi/icons';
 import { produce } from 'immer';
 import { useIntl } from 'react-intl';
 import { NavLink, type To, useLocation, useNavigate, useNavigationType } from 'react-router-dom';

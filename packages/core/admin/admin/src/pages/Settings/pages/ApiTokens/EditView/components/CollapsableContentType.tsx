@@ -8,8 +8,8 @@ import {
   Flex,
   Grid,
   Typography,
-} from '@metrix/design-system';
-import { Cog } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Cog } from '@strapi/icons';
 import capitalize from 'lodash/capitalize';
 import { useIntl } from 'react-intl';
 import { styled, css } from 'styled-components';

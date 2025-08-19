@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 const getProviderName = () => metrix.config.get('plugin::upload.provider', 'local');
 const isProviderPrivate = async () => metrix.plugin('upload').provider.isPrivate();

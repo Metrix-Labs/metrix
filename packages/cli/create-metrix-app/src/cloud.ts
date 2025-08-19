@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import { cli as cloudCli, services as cloudServices } from '@metrix/cloud-cli';
+import { cli as cloudCli, services as cloudServices } from '@metrixlabs/cloud-cli';
 import parseToChalk from './utils/parse-to-chalk';
 
 interface CloudError {

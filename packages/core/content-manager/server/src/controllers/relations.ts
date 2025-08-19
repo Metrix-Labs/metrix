@@ -1,7 +1,7 @@
 import { prop, uniq, uniqBy, concat, flow, isEmpty } from 'lodash/fp';
 
-import { isOperatorOfType, contentTypes, relations, errors } from '@metrix/utils';
-import type { Data, Modules, UID } from '@metrix/types';
+import { isOperatorOfType, contentTypes, relations, errors } from '@metrixlabs/utils';
+import type { Data, Modules, UID } from '@metrixlabs/types';
 
 import { getService } from '../utils';
 import { validateFindAvailable, validateFindExisting } from './validation/relations';

@@ -10,8 +10,8 @@ import {
   ComboboxProps,
   IconButton,
   Field as DSField,
-} from '@metrix/design-system';
-import { Minus, Plus } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Minus, Plus } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

@@ -1,4 +1,4 @@
-import type { UID, Data, Core } from '@metrix/types';
+import type { UID, Data, Core } from '@metrixlabs/types';
 
 import type { SettingsService } from '../services/settings';
 import type { ReleaseService } from '../services/release';

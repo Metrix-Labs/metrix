@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useQueryParams, Page, createContext, useRBAC } from '@metrix/admin/metrix-admin';
-import { Box, Flex, FocusTrap, Main, Portal, Link } from '@metrix/design-system';
+import { useQueryParams, Page, createContext, useRBAC } from '@metrixlabs/admin/metrix-admin';
+import { Box, Flex, FocusTrap, Main, Portal, Link } from '@strapi/design-system';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { Navigate, useParams, NavLink } from 'react-router-dom';
@@ -26,7 +26,7 @@ import type {
   HistoryVersionDataResponse,
   GetHistoryVersions,
 } from '../../../../shared/contracts/history-versions';
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * HistoryProvider

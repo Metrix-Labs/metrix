@@ -1,4 +1,4 @@
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import controller from '../content-types';
 import ctServiceFactory from '../../services/content-types';
 

@@ -1,6 +1,6 @@
-import { Flex, Loader, Typography } from '@metrix/design-system';
-import { WarningCircle } from '@metrix/icons';
-import { EmptyDocuments, EmptyPermissions } from '@metrix/icons/symbols';
+import { Flex, Loader, Typography } from '@strapi/design-system';
+import { WarningCircle } from '@strapi/icons';
+import { EmptyDocuments, EmptyPermissions } from '@strapi/icons/symbols';
 import { useIntl } from 'react-intl';
 
 /* -------------------------------------------------------------------------------------------------

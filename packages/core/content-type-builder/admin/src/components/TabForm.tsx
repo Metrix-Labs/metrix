@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, Button, Tooltip } from '@metrix/design-system';
+import { Box, Grid, Typography, Button, Tooltip } from '@strapi/design-system';
 import get from 'lodash/get';
 import { useIntl } from 'react-intl';
 

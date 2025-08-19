@@ -1,5 +1,5 @@
 /* eslint-disable check-file/filename-naming-convention */
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import { renderHook, server, waitFor, screen } from '@tests/utils';
 import { rest } from 'msw';
 import { Route, Routes } from 'react-router-dom';

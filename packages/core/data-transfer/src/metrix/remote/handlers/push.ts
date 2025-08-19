@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import { Writable, PassThrough } from 'stream';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import type { TransferFlow, Step } from '../flows';
 import type { TransferStage, IAsset, Protocol } from '../../../../types';

@@ -1,5 +1,5 @@
-import type { Data, UID } from '@metrix/types';
-import { type errors } from '@metrix/utils';
+import type { Data, UID } from '@metrixlabs/types';
+import { type errors } from '@metrixlabs/utils';
 
 /**
  * GET /content-manager/preview/url/:uid

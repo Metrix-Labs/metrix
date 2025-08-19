@@ -1,5 +1,5 @@
-import { useField, createRulesEngine } from '@metrix/admin/metrix-admin';
-import { Box, Flex } from '@metrix/design-system';
+import { useField, createRulesEngine } from '@metrixlabs/admin/metrix-admin';
+import { Box, Flex } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { useDocumentContext } from '../../../../../hooks/useDocumentContext';

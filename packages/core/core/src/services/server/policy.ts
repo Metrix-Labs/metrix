@@ -1,5 +1,5 @@
-import { policy as policyUtils, errors } from '@metrix/utils';
-import type { Core } from '@metrix/types';
+import { policy as policyUtils, errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 const createPolicicesMiddleware = (route: Core.Route, metrix: Core.Strapi) => {
   const policiesConfig = route?.config?.policies ?? [];

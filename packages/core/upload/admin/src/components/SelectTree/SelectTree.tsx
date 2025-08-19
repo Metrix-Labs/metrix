@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box } from '@metrix/design-system';
-import { Cross, CaretDown } from '@metrix/icons';
+import { Box } from '@strapi/design-system';
+import { Cross, CaretDown } from '@strapi/icons';
 import ReactSelect, {
   components,
   GroupBase,

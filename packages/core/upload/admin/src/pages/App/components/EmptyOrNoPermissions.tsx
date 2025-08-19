@@ -1,6 +1,6 @@
-import { Button } from '@metrix/design-system';
-import { Plus } from '@metrix/icons';
-import { EmptyPermissions } from '@metrix/icons/symbols';
+import { Button } from '@strapi/design-system';
+import { Plus } from '@strapi/icons';
+import { EmptyPermissions } from '@strapi/icons/symbols';
 import { useIntl } from 'react-intl';
 
 import { EmptyAssets } from '../../../components/EmptyAssets/EmptyAssets';

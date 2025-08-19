@@ -1,13 +1,13 @@
 import { isObject, isString, isFinite, toNumber } from 'lodash/fp';
 import fs from 'fs-extra';
 import chalk from 'chalk';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import {
   engine as engineDataTransfer,
   metrix as strapiDataTransfer,
   file as fileDataTransfer,
-} from '@metrix/data-transfer';
+} from '@metrixlabs/data-transfer';
 
 import {
   getDefaultExportName,

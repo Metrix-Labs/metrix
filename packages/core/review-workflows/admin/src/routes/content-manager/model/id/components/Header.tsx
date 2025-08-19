@@ -1,5 +1,5 @@
-import { unstable_useDocumentLayout as useDocumentLayout } from '@metrix/content-manager/metrix-admin';
-import { Flex } from '@metrix/design-system';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/metrix-admin';
+import { Flex } from '@strapi/design-system';
 import { useParams } from 'react-router-dom';
 
 import { AssigneeSelect } from './AssigneeSelect';

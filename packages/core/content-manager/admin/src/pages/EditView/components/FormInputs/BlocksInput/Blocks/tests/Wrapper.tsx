@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DesignSystemProvider } from '@metrix/design-system';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { IntlProvider } from 'react-intl';
 import { type Editor, createEditor } from 'slate';
 import { Slate, withReact } from 'slate-react';

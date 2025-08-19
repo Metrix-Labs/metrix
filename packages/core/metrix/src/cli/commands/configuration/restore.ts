@@ -1,8 +1,8 @@
 import { createCommand } from 'commander';
 import fs from 'fs';
 import _ from 'lodash';
-import { createStrapi, compileStrapi } from '@metrix/core';
-import type { Database } from '@metrix/database';
+import { createStrapi, compileStrapi } from '@metrixlabs/core';
+import type { Database } from '@metrixlabs/database';
 
 import type { StrapiCommand } from '../../types';
 import { runAction } from '../../utils/helpers';

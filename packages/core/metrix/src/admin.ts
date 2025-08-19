@@ -1,11 +1,11 @@
-import { RenderAdminArgs, renderAdmin } from '@metrix/admin/metrix-admin';
-import contentTypeBuilder from '@metrix/content-type-builder/metrix-admin';
-import contentManager from '@metrix/content-manager/metrix-admin';
-import email from '@metrix/email/metrix-admin';
-import upload from '@metrix/upload/metrix-admin';
-import i18n from '@metrix/i18n/metrix-admin';
-import contentReleases from '@metrix/content-releases/metrix-admin';
-import reviewWorkflows from '@metrix/review-workflows/metrix-admin';
+import { RenderAdminArgs, renderAdmin } from '@metrixlabs/admin/metrix-admin';
+import contentTypeBuilder from '@metrixlabs/content-type-builder/metrix-admin';
+import contentManager from '@metrixlabs/content-manager/metrix-admin';
+import email from '@metrixlabs/email/metrix-admin';
+import upload from '@metrixlabs/upload/metrix-admin';
+import i18n from '@metrixlabs/i18n/metrix-admin';
+import contentReleases from '@metrixlabs/content-releases/metrix-admin';
+import reviewWorkflows from '@metrixlabs/review-workflows/metrix-admin';
 
 const render = (mountNode: HTMLElement | null, { plugins, ...restArgs }: RenderAdminArgs) => {
   return renderAdmin(mountNode, {
@@ -26,7 +26,7 @@ const render = (mountNode: HTMLElement | null, { plugins, ...restArgs }: RenderA
 export { render as renderAdmin };
 export type { RenderAdminArgs };
 
-export * from '@metrix/admin/metrix-admin';
+export * from '@metrixlabs/admin/metrix-admin';
 
 export {
   unstable_useDocumentLayout,
@@ -34,9 +34,9 @@ export {
   unstable_useDocument,
   unstable_useContentManagerContext,
   useDocumentRBAC,
-} from '@metrix/content-manager/metrix-admin';
+} from '@metrixlabs/content-manager/metrix-admin';
 
 export {
   private_useAutoReloadOverlayBlocker,
   private_AutoReloadOverlayBlockerProvider,
-} from '@metrix/content-type-builder/metrix-admin';
+} from '@metrixlabs/content-type-builder/metrix-admin';

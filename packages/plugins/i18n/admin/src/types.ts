@@ -1,4 +1,4 @@
-import type { Modules } from '@metrix/types';
+import type { Modules } from '@metrixlabs/types';
 
 export interface I18nBaseQuery {
   plugins?: {

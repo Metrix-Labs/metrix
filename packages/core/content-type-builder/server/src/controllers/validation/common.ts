@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-import { yup, strings } from '@metrix/utils';
+import { yup, strings } from '@metrixlabs/utils';
 import _ from 'lodash';
 import { TestConfig } from 'yup';
 

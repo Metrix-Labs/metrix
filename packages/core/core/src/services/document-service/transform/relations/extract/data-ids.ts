@@ -1,7 +1,7 @@
 import { curry } from 'lodash/fp';
 
-import type { UID } from '@metrix/types';
-import { relations } from '@metrix/utils';
+import type { UID } from '@metrixlabs/types';
+import { relations } from '@metrixlabs/utils';
 import { IdMap } from '../../id-map';
 import { getRelationTargetLocale } from '../utils/i18n';
 import { getRelationTargetStatus } from '../utils/dp';

@@ -1,7 +1,7 @@
 import { join, resolve } from 'path';
 import { get } from 'lodash/fp';
 
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import type { StrapiOptions } from '../Strapi';
 
 export type Options = {

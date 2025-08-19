@@ -19,8 +19,8 @@ import {
   TextInput,
   TimePicker,
   Toggle,
-} from '@metrix/design-system';
-import { Eye, EyeStriked } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Eye, EyeStriked } from '@strapi/icons';
 import formatISO from 'date-fns/formatISO';
 import isEqual from 'lodash/isEqual';
 import { type MessageDescriptor, type PrimitiveType, useIntl } from 'react-intl';
@@ -28,7 +28,7 @@ import { type MessageDescriptor, type PrimitiveType, useIntl } from 'react-intl'
 import { parseDateValue } from '../utils/parseDateValue';
 import { handleTimeChange, handleTimeChangeEvent } from '../utils/timeFormat';
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 interface TranslationMessage extends MessageDescriptor {
   values?: Record<string, PrimitiveType>;

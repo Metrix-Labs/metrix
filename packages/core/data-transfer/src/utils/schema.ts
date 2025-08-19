@@ -1,4 +1,4 @@
-import type { Struct, Utils } from '@metrix/types';
+import type { Struct, Utils } from '@metrixlabs/types';
 import { mapValues, pick } from 'lodash/fp';
 
 /**

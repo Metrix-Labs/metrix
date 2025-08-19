@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import { createIdMap } from '../id-map';
 
 const ARTICLE_UID = 'api::article.article';

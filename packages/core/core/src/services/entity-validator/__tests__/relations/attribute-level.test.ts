@@ -1,5 +1,5 @@
-import { errors } from '@metrix/utils';
-import type { Common, EntityService } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Common, EntityService } from '@metrixlabs/types';
 
 import entityValidator from '../..';
 import { models, existentIDs, nonExistentIds } from './utils/relations.testdata';

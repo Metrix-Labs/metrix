@@ -1,5 +1,5 @@
-import { errors } from '@metrix/utils';
-import type { Core, Modules } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core, Modules } from '@metrixlabs/types';
 
 const { ApplicationError } = errors;
 

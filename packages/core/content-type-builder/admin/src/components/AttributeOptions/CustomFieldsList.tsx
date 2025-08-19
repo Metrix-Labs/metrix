@@ -1,5 +1,5 @@
-import { useStrapiApp } from '@metrix/admin/metrix-admin';
-import { Flex, Grid, KeyboardNavigable, Link } from '@metrix/design-system';
+import { useStrapiApp } from '@metrixlabs/admin/metrix-admin';
+import { Flex, Grid, KeyboardNavigable, Link } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../utils';

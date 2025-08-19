@@ -1,5 +1,5 @@
-import type { Core, Data, Modules, Schema } from '@metrix/types';
-import { errors, traverseEntity } from '@metrix/utils';
+import type { Core, Data, Modules, Schema } from '@metrixlabs/types';
+import { errors, traverseEntity } from '@metrixlabs/utils';
 import { omit } from 'lodash/fp';
 
 import { FIELDS_TO_IGNORE, HISTORY_VERSION_UID } from '../constants';

@@ -4,8 +4,8 @@ import {
   Form,
   InputProps,
   useField,
-} from '@metrix/admin/metrix-admin';
-import { Button, Flex, Grid, Modal } from '@metrix/design-system';
+} from '@metrixlabs/admin/metrix-admin';
+import { Button, Flex, Grid, Modal } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import * as yup from 'yup';
 
@@ -18,7 +18,7 @@ import { FieldTypeIcon } from '../FieldTypeIcon';
 import { TEMP_FIELD_NAME } from './Fields';
 
 import type { ConfigurationFormData } from './Form';
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * Constants

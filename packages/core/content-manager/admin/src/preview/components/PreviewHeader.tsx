@@ -7,9 +7,9 @@ import {
   useNotification,
   useQueryParams,
   useStrapiApp,
-} from '@metrix/admin/metrix-admin';
-import { IconButton, Tabs, Typography, Flex } from '@metrix/design-system';
-import { Cross, Link as LinkIcon } from '@metrix/icons';
+} from '@metrixlabs/admin/metrix-admin';
+import { IconButton, Tabs, Typography, Flex } from '@strapi/design-system';
+import { Cross, Link as LinkIcon } from '@strapi/icons';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { Link, type To } from 'react-router-dom';

@@ -1,5 +1,5 @@
 import { createAuditLogsLifecycleService } from '../lifecycles';
-import '@metrix/types';
+import '@metrixlabs/types';
 
 describe('Audit logs service', () => {
   const mockSubscribe = jest.fn();

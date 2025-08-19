@@ -1,4 +1,4 @@
-import { DesignSystemProvider } from '@metrix/design-system';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { render as renderTL } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 

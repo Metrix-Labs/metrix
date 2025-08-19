@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/provider-email-nodemailer",
+  "name": "@metrixlabs/provider-email-nodemailer",
   "version": "5.22.0",
   "description": "Nodemailer provider for Strapi 3",
   "keywords": [

@@ -4,7 +4,7 @@ import { promisify } from 'node:util';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import { webpack } from 'webpack';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import type { BuildContext } from '../create-build-context';
 import { mergeConfigWithUserConfig, resolveDevelopmentConfig } from './config';
 

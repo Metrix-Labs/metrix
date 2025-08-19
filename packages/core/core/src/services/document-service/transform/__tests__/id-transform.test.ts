@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { PRODUCT_UID, CATEGORY_UID, models } from './utils';
 import { transformParamsDocumentId } from '../id-transform';

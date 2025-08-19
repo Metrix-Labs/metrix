@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 import { resolve } from 'path';
 import koaFavicon from 'koa-favicon';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 export type Config = NonNullable<Parameters<typeof koaFavicon>[1]>;
 

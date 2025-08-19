@@ -7,10 +7,10 @@ import {
   createContext,
   Page,
   useQueryParams,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import { useParams } from 'react-router-dom';
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 /**
  * The boolean values indicate the global actions a user can perform on the document.

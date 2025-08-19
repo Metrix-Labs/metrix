@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Flex, Typography, Link } from '@metrix/design-system';
-import { Clock, ArrowClockwise } from '@metrix/icons';
+import { Box, Flex, Typography, Link } from '@strapi/design-system';
+import { Clock, ArrowClockwise } from '@strapi/icons';
 import { createPortal } from 'react-dom';
 import { MessageDescriptor, useIntl } from 'react-intl';
 import { styled, keyframes } from 'styled-components';

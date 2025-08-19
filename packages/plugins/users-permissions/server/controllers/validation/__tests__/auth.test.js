@@ -1,6 +1,6 @@
 'use strict';
 
-const errors = require('@metrix/utils');
+const errors = require('@metrixlabs/utils');
 const auth = require('../../auth');
 
 const mockStrapi = {
@@ -50,9 +50,9 @@ const mockStrapi = {
   getModel: jest.fn(),
 };
 
-jest.mock('@metrix/utils', () => {
+jest.mock('@metrixlabs/utils', () => {
   return {
-    ...jest.requireActual('@metrix/utils'),
+    ...jest.requireActual('@metrixlabs/utils'),
     sanitizeUser: jest.fn((input) => input),
     sanitize: {
       contentAPI: {

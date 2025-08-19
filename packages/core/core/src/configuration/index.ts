@@ -4,8 +4,8 @@ import path from 'path';
 import _ from 'lodash';
 import { omit } from 'lodash/fp';
 import dotenv from 'dotenv';
-import type { Core } from '@metrix/types';
-import { strings } from '@metrix/utils';
+import type { Core } from '@metrixlabs/types';
+import { strings } from '@metrixlabs/utils';
 
 import { getConfigUrls, getAbsoluteAdminUrl, getAbsoluteServerUrl } from './urls';
 import loadConfigDir from './config-loader';

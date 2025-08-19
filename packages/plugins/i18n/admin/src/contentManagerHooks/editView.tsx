@@ -1,14 +1,14 @@
 /* eslint-disable check-file/filename-naming-convention */
 import * as React from 'react';
 
-import { Flex, VisuallyHidden } from '@metrix/design-system';
-import { Earth, EarthStriked } from '@metrix/icons';
+import { Flex, VisuallyHidden } from '@strapi/design-system';
+import { Earth, EarthStriked } from '@strapi/icons';
 import { MessageDescriptor, useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 
 import { getTranslation } from '../utils/getTranslation';
 
-import type { EditFieldLayout, EditLayout } from '@metrix/content-manager/metrix-admin';
+import type { EditFieldLayout, EditLayout } from '@metrixlabs/content-manager/metrix-admin';
 
 interface MutateEditViewArgs {
   layout: EditLayout;

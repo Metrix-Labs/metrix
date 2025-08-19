@@ -1,6 +1,6 @@
 import { intersection, prop } from 'lodash/fp';
-import { relations } from '@metrix/utils';
-import type { Core, Struct } from '@metrix/types';
+import { relations } from '@metrixlabs/utils';
+import type { Core, Struct } from '@metrixlabs/types';
 import type { Configuration } from '../../../shared/contracts/content-types';
 
 const { getRelationalFields } = relations;

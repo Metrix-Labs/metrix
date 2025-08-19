@@ -1,6 +1,6 @@
-import type { Schema, UID } from '@metrix/types';
+import type { Schema, UID } from '@metrixlabs/types';
 
-import { contentTypes } from '@metrix/utils';
+import { contentTypes } from '@metrixlabs/utils';
 import * as z from 'zod/v4';
 
 // eslint-disable-next-line import/no-cycle

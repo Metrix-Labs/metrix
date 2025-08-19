@@ -1,6 +1,6 @@
 import { forwardRef, memo } from 'react';
 
-import { Checkbox, useComposedRefs, Field } from '@metrix/design-system';
+import { Checkbox, useComposedRefs, Field } from '@strapi/design-system';
 
 import { useFocusInputField } from '../../hooks/useFocusInputField';
 import { useField } from '../Form';

@@ -5,8 +5,8 @@ import {
   GraphQLSchema,
   GraphQLFieldResolver,
 } from 'graphql';
-import { errors } from '@metrix/utils';
-import type { Core } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 import { createPoliciesMiddleware } from './policy';
 

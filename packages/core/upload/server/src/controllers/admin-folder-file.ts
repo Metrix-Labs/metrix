@@ -1,4 +1,4 @@
-import { strings } from '@metrix/utils';
+import { strings } from '@metrixlabs/utils';
 
 import type { Context } from 'koa';
 

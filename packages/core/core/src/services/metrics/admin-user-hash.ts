@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 /**
  * Generate an admin user hash

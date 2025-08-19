@@ -1,5 +1,5 @@
-import type { Modules, Data } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Modules, Data } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 
 type PaginationQuery = Modules.EntityService.Params.Pagination.PageNotation;
 

@@ -1,4 +1,4 @@
-import type { Internal, Schema } from '@metrix/types';
+import type { Internal, Schema } from '@metrixlabs/types';
 
 import type { Context } from '../../types';
 

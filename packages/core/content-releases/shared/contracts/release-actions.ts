@@ -1,8 +1,8 @@
-import type { Schema, Modules, UID, Struct } from '@metrix/types';
+import type { Schema, Modules, UID, Struct } from '@metrixlabs/types';
 import type { Release, Pagination } from './releases';
 import type { Entity } from '../types';
 
-import type { errors } from '@metrix/utils';
+import type { errors } from '@metrixlabs/utils';
 
 type ReleaseActionEntryType = 'single-types' | 'collection-types';
 

@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from '@metrix/design-system';
+import { Flex, FlexProps } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 import { useFolderCard } from '../contexts/FolderCard';

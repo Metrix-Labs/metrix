@@ -1,4 +1,4 @@
-import '@metrix/types';
+import '@metrixlabs/types';
 
 export default () => {
   const registry = new Map();

@@ -1,4 +1,4 @@
-import type { Struct } from '@metrix/types';
+import type { Struct } from '@metrixlabs/types';
 import type { OpenAPIV3 } from 'openapi-types';
 
 import getSchemaData from './get-schema-data';

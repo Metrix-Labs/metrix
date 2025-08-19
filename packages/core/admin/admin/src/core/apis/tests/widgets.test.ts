@@ -1,4 +1,4 @@
-import { PuzzlePiece } from '@metrix/icons';
+import { PuzzlePiece } from '@strapi/icons';
 
 import { Widgets, type WidgetArgs } from '../Widgets';
 

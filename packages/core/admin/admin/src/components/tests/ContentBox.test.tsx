@@ -1,5 +1,5 @@
-import { ExternalLink } from '@metrix/icons';
-import { GlassesSquare } from '@metrix/icons/symbols';
+import { ExternalLink } from '@strapi/icons';
+import { GlassesSquare } from '@strapi/icons/symbols';
 import { render as renderRTL, screen } from '@tests/utils';
 
 import { ContentBox, ContentBoxProps } from '../ContentBox';

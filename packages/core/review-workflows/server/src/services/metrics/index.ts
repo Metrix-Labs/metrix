@@ -1,4 +1,4 @@
-import '@metrix/types';
+import '@metrixlabs/types';
 
 export const sendDidCreateStage = async () => {
   metrix.telemetry.send('didCreateStage', {});

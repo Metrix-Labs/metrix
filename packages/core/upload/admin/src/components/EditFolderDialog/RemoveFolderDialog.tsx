@@ -1,5 +1,5 @@
-import { ConfirmDialog } from '@metrix/admin/metrix-admin';
-import { Dialog } from '@metrix/design-system';
+import { ConfirmDialog } from '@metrixlabs/admin/metrix-admin';
+import { Dialog } from '@strapi/design-system';
 
 interface RemoveFolderDialogProps {
   onClose: () => void;

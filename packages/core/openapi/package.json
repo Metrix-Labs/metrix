@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/openapi",
+  "name": "@metrixlabs/openapi",
   "version": "5.22.0",
   "description": "A tool set to help generate and validate API documentation for Strapi projects",
   "homepage": "https://strapi.io",
@@ -62,6 +62,6 @@
   },
   "devDependencies": {
     "@types/debug": "^4",
-    "@metrix/types": "5.22.0"
+    "@metrixlabs/types": "5.22.0"
   }
 }

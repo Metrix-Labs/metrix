@@ -71,16 +71,16 @@ const transform: modules.runner.json.JSONTransform = (file, params) => {
 export default transform;
 
 const renamePackageScope = (name: string): string => {
-  if (name === '@metrix/metrix') return '@metrix/metrix';
-  if (name.startsWith('@metrix/')) return '@metrix/' + name.slice('@metrix/'.length);
+  if (name === '@metrixlabs/metrix') return '@metrixlabs/metrix';
+  if (name.startsWith('@metrixlabs/')) return '@metrixlabs/' + name.slice('@metrixlabs/'.length);
   return name;
 };
 
 const renameCli = (value: string): string => {
   // Replace standalone `metrix` bin invocations and scoped imports
   return value
-    .replaceAll('@metrix/metrix', '@metrix/metrix')
-    .replaceAll('@metrix/', '@metrix/')
+    .replaceAll('@metrixlabs/metrix', '@metrixlabs/metrix')
+    .replaceAll('@metrixlabs/', '@metrixlabs/')
     .replace(/\bstrapi\b/g, 'metrix');
 };
 

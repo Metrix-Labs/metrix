@@ -6,8 +6,8 @@ import {
   useQueryParams,
   useRBAC,
   isFetchError,
-} from '@metrix/admin/metrix-admin';
-import { unstable_useDocumentLayout as useDocumentLayout } from '@metrix/content-manager/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/metrix-admin';
 import {
   Box,
   Button,
@@ -18,9 +18,9 @@ import {
   LinkButton,
   Field,
   Modal,
-} from '@metrix/design-system';
-import { PaperPlane } from '@metrix/icons';
-import { EmptyDocuments } from '@metrix/icons/symbols';
+} from '@strapi/design-system';
+import { PaperPlane } from '@strapi/icons';
+import { EmptyDocuments } from '@strapi/icons/symbols';
 import { useFormik } from 'formik';
 import { useIntl } from 'react-intl';
 import { Link as ReactRouterLink } from 'react-router-dom';
@@ -35,8 +35,8 @@ import { ReleaseActionOptions } from './ReleaseActionOptions';
 import type {
   DocumentActionComponent,
   DocumentActionProps,
-} from '@metrix/content-manager/metrix-admin';
-import type { UID } from '@metrix/types';
+} from '@metrixlabs/content-manager/metrix-admin';
+import type { UID } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * AddActionToReleaseModal

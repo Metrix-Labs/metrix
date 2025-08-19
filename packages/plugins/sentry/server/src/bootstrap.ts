@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/metrix';
+import type { Core } from '@metrixlabs/metrix';
 import initSentryMiddleware from './middlewares/sentry';
 
 export default async ({ metrix }: { metrix: Core.Strapi }) => {

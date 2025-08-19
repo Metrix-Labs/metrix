@@ -9,9 +9,9 @@ import {
   TextInput,
   Typography,
   Field,
-} from '@metrix/design-system';
-import { Check } from '@metrix/icons';
-import { Page, useTracking, useNotification, useFetchClient, Layouts } from '@metrix/metrix/admin';
+} from '@strapi/design-system';
+import { Check } from '@strapi/icons';
+import { Page, useTracking, useNotification, useFetchClient, Layouts } from '@metrixlabs/metrix/admin';
 import { Formik, Form } from 'formik';
 import { useIntl } from 'react-intl';
 import { useMutation } from 'react-query';

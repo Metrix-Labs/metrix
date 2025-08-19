@@ -2,7 +2,7 @@ import parseISO from 'date-fns/parseISO';
 import toString from 'lodash/toString';
 import { useIntl } from 'react-intl';
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 interface CellValueProps {
   type: Schema.Attribute.Kind | 'custom';

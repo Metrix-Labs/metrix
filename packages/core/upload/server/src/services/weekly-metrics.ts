@@ -1,7 +1,7 @@
 import { defaultTo } from 'lodash/fp';
 import { add } from 'date-fns';
 
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { getWeeklyCronScheduleAt } from '../utils/cron';
 import { FOLDER_MODEL_UID, FILE_MODEL_UID } from '../constants';

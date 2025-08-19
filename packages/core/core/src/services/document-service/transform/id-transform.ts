@@ -1,6 +1,6 @@
 import { curry } from 'lodash/fp';
 
-import type { UID, Modules } from '@metrix/types';
+import type { UID, Modules } from '@metrixlabs/types';
 
 import { transformData } from './data';
 import { transformFields } from './fields';

@@ -1,4 +1,4 @@
-import type { UID } from '@metrix/types';
+import type { UID } from '@metrixlabs/types';
 import { LongHandDocument } from './types';
 
 export const isLocalizedContentType = (uid: UID.Schema) => {

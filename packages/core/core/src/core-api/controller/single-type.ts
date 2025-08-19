@@ -1,6 +1,6 @@
 import { isObject } from 'lodash/fp';
-import { errors } from '@metrix/utils';
-import type { Struct, Core, Utils, UID } from '@metrix/types';
+import { errors } from '@metrixlabs/utils';
+import type { Struct, Core, Utils, UID } from '@metrixlabs/types';
 
 interface Options {
   contentType: Struct.SingleTypeSchema;

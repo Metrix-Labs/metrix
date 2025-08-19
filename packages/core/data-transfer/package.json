@@ -1,5 +1,5 @@
 {
-  "name": "@metrix/data-transfer",
+  "name": "@metrixlabs/data-transfer",
   "version": "5.22.0",
   "description": "Data transfer capabilities for Strapi",
   "keywords": [
@@ -56,9 +56,9 @@
     "tar": "6.2.1",
     "tar-stream": "2.2.0",
     "ws": "8.17.1",
-    "@metrix/logger": "5.22.0",
-    "@metrix/types": "5.22.0",
-    "@metrix/utils": "5.22.0"
+    "@metrixlabs/logger": "5.22.0",
+    "@metrixlabs/types": "5.22.0",
+    "@metrixlabs/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
@@ -76,7 +76,7 @@
     "koa": "2.16.1",
     "rimraf": "5.0.5",
     "typescript": "5.4.4",
-    "@metrix/database": "5.22.0"
+    "@metrixlabs/database": "5.22.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

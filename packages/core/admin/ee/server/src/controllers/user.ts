@@ -2,7 +2,7 @@ import type { Context } from 'koa';
 
 import _ from 'lodash';
 import { pick, isNil } from 'lodash/fp';
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import { validateUserCreationInput } from '../validation/user';
 import { validateUserUpdateInput } from '../../../../server/src/validation/user';
 import { getService } from '../utils';

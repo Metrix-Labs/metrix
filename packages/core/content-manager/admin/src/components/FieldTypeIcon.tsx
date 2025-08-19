@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useStrapiApp } from '@metrix/admin/metrix-admin';
-import { Box } from '@metrix/design-system';
+import { useStrapiApp } from '@metrixlabs/admin/metrix-admin';
+import { Box } from '@strapi/design-system';
 import {
   BlocksField,
   BooleanField,
@@ -17,9 +17,9 @@ import {
   RelationField,
   TextField,
   UidField,
-} from '@metrix/icons/symbols';
+} from '@strapi/icons/symbols';
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 const iconByTypes: Record<Schema.Attribute.Kind, React.ReactElement> = {
   biginteger: <NumberField />,

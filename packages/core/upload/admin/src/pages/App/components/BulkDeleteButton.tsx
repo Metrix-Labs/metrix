@@ -1,6 +1,6 @@
-import { ConfirmDialog } from '@metrix/admin/metrix-admin';
-import { Button, Dialog } from '@metrix/design-system';
-import { Trash } from '@metrix/icons';
+import { ConfirmDialog } from '@metrixlabs/admin/metrix-admin';
+import { Button, Dialog } from '@strapi/design-system';
+import { Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import { useBulkRemove } from '../../../hooks/useBulkRemove';

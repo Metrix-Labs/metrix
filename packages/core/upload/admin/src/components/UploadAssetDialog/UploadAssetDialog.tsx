@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Modal } from '@metrix/design-system';
+import { Modal } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { EditAssetContent } from '../EditAssetDialog/EditAssetContent';

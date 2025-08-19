@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { StageSelect } from '../StageSelect';
 
-jest.mock('@metrix/content-manager/metrix-admin', () => ({
+jest.mock('@metrixlabs/content-manager/metrix-admin', () => ({
   unstable_useDocument: jest.fn().mockReturnValue({
     document: {
       documentId: '12345',

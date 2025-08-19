@@ -7,9 +7,9 @@ import {
   useNotification,
   Page,
   Layouts,
-} from '@metrix/admin/metrix-admin';
-import { Button, Dialog, Link } from '@metrix/design-system';
-import { ArrowLeft, Check } from '@metrix/icons';
+} from '@metrixlabs/admin/metrix-admin';
+import { Button, Dialog, Link } from '@strapi/design-system';
+import { ArrowLeft, Check } from '@strapi/icons';
 import isEqual from 'lodash/isEqual';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';

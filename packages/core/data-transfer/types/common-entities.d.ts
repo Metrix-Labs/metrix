@@ -1,5 +1,5 @@
 import type { Readable } from 'stream';
-import type { Schema, Data } from '@metrix/types';
+import type { Schema, Data } from '@metrixlabs/types';
 
 export interface IMetadata {
   metrix?: {

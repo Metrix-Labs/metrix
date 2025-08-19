@@ -1,4 +1,4 @@
-import { buildStrapiCloudCommands as cloudCommands } from '@metrix/cloud-cli';
+import { buildStrapiCloudCommands as cloudCommands } from '@metrixlabs/cloud-cli';
 
 import { command as createAdminUser } from './admin/create-user';
 import { command as resetAdminUserPassword } from './admin/reset-user-password';

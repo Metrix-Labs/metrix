@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import packageInfo from '@metrix/admin/package.json';
-import { Box, Flex, SkipToContent } from '@metrix/design-system';
+import packageInfo from '@metrixlabs/admin/package.json';
+import { Box, Flex, SkipToContent } from '@strapi/design-system';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useIntl } from 'react-intl';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ComboboxOption, Combobox, Field } from '@metrix/design-system';
+import { ComboboxOption, Combobox, Field } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { useDataManager } from './DataManager/useDataManager';

@@ -1,5 +1,5 @@
-import type { UID, Modules } from '@metrix/types';
-import type { errors } from '@metrix/utils';
+import type { UID, Modules } from '@metrixlabs/types';
+import type { errors } from '@metrixlabs/utils';
 
 type Entity = Modules.EntityService.Result<UID.Schema>;
 

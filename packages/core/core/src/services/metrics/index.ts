@@ -3,7 +3,7 @@
  * You can learn more at https://docs.metrix.io/developer-docs/latest/getting-started/usage-information.html
  */
 
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import wrapWithRateLimit from './rate-limiter';
 import createSender from './sender';

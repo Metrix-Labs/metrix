@@ -3,8 +3,8 @@
 import * as React from 'react';
 
 import { ConfigureStoreOptions, configureStore } from '@reduxjs/toolkit';
-import { fixtures } from '@metrix/admin-test-utils';
-import { darkTheme, lightTheme } from '@metrix/design-system';
+import { fixtures } from '@metrixlabs/admin-test-utils';
+import { darkTheme, lightTheme } from '@strapi/design-system';
 import {
   fireEvent,
   renderHook as renderHookRTL,
@@ -173,8 +173,8 @@ const Providers = ({ children, initialEntries, storeConfig, permissions = [] }: 
                                 autoReload
                                 useYarn
                                 dependencies={{
-                                  '@metrix/plugin-documentation': '4.2.0',
-                                  '@metrix/provider-upload-cloudinary': '4.2.0',
+                                  '@metrixlabs/plugin-documentation': '4.2.0',
+                                  '@metrixlabs/provider-upload-cloudinary': '4.2.0',
                                 }}
                                 strapiVersion="4.1.0"
                                 communityEdition

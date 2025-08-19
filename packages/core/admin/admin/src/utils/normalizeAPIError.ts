@@ -2,7 +2,7 @@ import { getPrefixedId } from './getPrefixedId';
 
 import type { ApiError } from '../hooks/useAPIErrorHandler';
 import type { FetchError } from '../utils/getFetchClient';
-import type { errors } from '@metrix/utils';
+import type { errors } from '@metrixlabs/utils';
 
 export interface NormalizeErrorOptions {
   name?: string;

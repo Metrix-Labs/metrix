@@ -1,7 +1,7 @@
 import { Readable } from 'stream';
 import { chain } from 'stream-chain';
 import { set } from 'lodash/fp';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import type { IConfiguration } from '../../../../types';
 

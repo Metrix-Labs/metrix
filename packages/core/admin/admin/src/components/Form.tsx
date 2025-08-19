@@ -7,8 +7,8 @@ import {
   Dialog,
   useCallbackRef,
   useComposedRefs,
-} from '@metrix/design-system';
-import { WarningCircle } from '@metrix/icons';
+} from '@strapi/design-system';
+import { WarningCircle } from '@strapi/icons';
 import { generateNKeysBetween } from 'fractional-indexing';
 import { produce } from 'immer';
 import isEqual from 'lodash/isEqual';

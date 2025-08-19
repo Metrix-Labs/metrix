@@ -1,5 +1,5 @@
-import type { FetchError } from '@metrix/admin/metrix-admin';
-import type { errors } from '@metrix/utils';
+import type { FetchError } from '@metrixlabs/admin/metrix-admin';
+import type { errors } from '@metrixlabs/utils';
 
 type ApiError = InstanceType<(typeof errors)[keyof typeof errors]>;
 

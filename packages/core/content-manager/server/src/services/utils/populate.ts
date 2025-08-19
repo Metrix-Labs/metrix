@@ -1,6 +1,6 @@
 import { merge, isEmpty, set, propEq } from 'lodash/fp';
-import strapiUtils from '@metrix/utils';
-import type { UID, Schema, Modules } from '@metrix/types';
+import strapiUtils from '@metrixlabs/utils';
+import type { UID, Schema, Modules } from '@metrixlabs/types';
 import { getService } from '../../utils';
 
 const { isVisibleAttribute, isScalarAttribute, getDoesAttributeRequireValidation } =

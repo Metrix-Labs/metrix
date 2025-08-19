@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { render, waitFor, type RenderOptions } from '@metrix/metrix/admin/test';
+import { render, waitFor, type RenderOptions } from '@metrixlabs/metrix/admin/test';
 
 import { App } from '../App';
 

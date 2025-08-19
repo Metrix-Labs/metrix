@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useForm, useField, createRulesEngine } from '@metrix/admin/metrix-admin';
+import { useForm, useField, createRulesEngine } from '@metrixlabs/admin/metrix-admin';
 import {
   Accordion,
   Box,
@@ -10,8 +10,8 @@ import {
   useComposedRefs,
   Menu,
   BoxComponent,
-} from '@metrix/design-system';
-import { Drag, More, Trash } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Drag, More, Trash } from '@strapi/icons';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

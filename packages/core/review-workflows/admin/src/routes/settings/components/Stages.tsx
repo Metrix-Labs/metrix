@@ -8,7 +8,7 @@ import {
   useNotification,
   InputRenderer as AdminInputRenderer,
   InputProps,
-} from '@metrix/admin/metrix-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Flex,
@@ -26,8 +26,8 @@ import {
   Menu,
   Field,
   Dialog,
-} from '@metrix/design-system';
-import { Duplicate, Drag, More, EyeStriked } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Duplicate, Drag, More, EyeStriked } from '@strapi/icons';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

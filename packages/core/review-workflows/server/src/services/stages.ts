@@ -1,5 +1,5 @@
-import type { Core, UID } from '@metrix/types';
-import { async, errors } from '@metrix/utils';
+import type { Core, UID } from '@metrixlabs/types';
+import { async, errors } from '@metrixlabs/utils';
 import { map, pick, isEqual } from 'lodash/fp';
 import { STAGE_MODEL_UID, ENTITY_STAGE_ATTRIBUTE, ERRORS } from '../constants/workflows';
 import { WORKFLOW_UPDATE_STAGE } from '../constants/webhook-events';

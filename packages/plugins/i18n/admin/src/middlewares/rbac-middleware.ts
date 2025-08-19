@@ -2,7 +2,7 @@
 import * as qs from 'qs';
 import { matchPath } from 'react-router-dom';
 
-import type { RBACMiddleware } from '@metrix/admin/metrix-admin';
+import type { RBACMiddleware } from '@metrixlabs/admin/metrix-admin';
 
 const localeMiddleware: RBACMiddleware = (ctx) => (next) => (permissions) => {
   const match = matchPath('/content-manager/:collectionType/:model?/:id', ctx.pathname);

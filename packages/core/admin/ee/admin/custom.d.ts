@@ -1,6 +1,6 @@
-import { type StrapiTheme } from '@metrix/design-system';
+import { type StrapiTheme } from '@strapi/design-system';
 
-import type { Modules } from '@metrix/types';
+import type { Modules } from '@metrixlabs/types';
 
 declare module 'styled-components' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { render as renderAdmin } from '@metrix/metrix/admin/test';
+import { render as renderAdmin } from '@metrixlabs/metrix/admin/test';
 import { waitForElementToBeRemoved } from '@testing-library/react';
 import { useLocation } from 'react-router-dom';
 
@@ -15,8 +15,8 @@ jest.mock('cropperjs/dist/cropper.css?raw', () => '', {
   virtual: true,
 });
 
-jest.mock('@metrix/metrix/admin', () => ({
-  ...jest.requireActual('@metrix/metrix/admin'),
+jest.mock('@metrixlabs/metrix/admin', () => ({
+  ...jest.requireActual('@metrixlabs/metrix/admin'),
   useRBAC: jest.fn().mockImplementation(() => ({
     isLoading: false,
     allowedActions: { canRead: true, canUpdate: true, canDelete: true, canCreate: true },

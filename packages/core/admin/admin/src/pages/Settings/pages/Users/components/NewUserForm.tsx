@@ -9,7 +9,7 @@ import {
   Typography,
   Breadcrumbs,
   Crumb,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import * as yup from 'yup';
 
@@ -26,7 +26,7 @@ import { translatedErrors } from '../../../../../utils/translatedErrors';
 import { MagicLinkCE } from './MagicLinkCE';
 import { SelectRoles } from './SelectRoles';
 
-import type { Data } from '@metrix/types';
+import type { Data } from '@metrixlabs/types';
 
 interface ModalFormProps {
   onToggle: () => void;

@@ -1,4 +1,4 @@
-import { Flex } from '@metrix/design-system';
+import { Flex } from '@strapi/design-system';
 
 import { COMPONENT_ICONS } from '../../IconPicker/constants';
 

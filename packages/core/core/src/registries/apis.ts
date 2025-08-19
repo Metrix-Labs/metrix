@@ -1,5 +1,5 @@
 import { has } from 'lodash/fp';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 const apisRegistry = (metrix: Core.Strapi) => {
   const apis: Record<string, unknown> = {};

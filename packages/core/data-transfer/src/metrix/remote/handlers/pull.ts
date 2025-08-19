@@ -1,6 +1,6 @@
 import { Readable } from 'stream';
 import { randomUUID } from 'crypto';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { Handler } from './abstract';
 import { handlerControllerFactory, isDataTransferMessage } from './utils';

@@ -1,4 +1,4 @@
-import { RawTable } from '@metrix/design-system';
+import { RawTable } from '@strapi/design-system';
 import { render } from '@tests/utils';
 
 import { TableRows } from '../TableRows';

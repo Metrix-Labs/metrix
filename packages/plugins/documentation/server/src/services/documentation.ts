@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { produce } from 'immer';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { builApiEndpointPath, buildComponentSchema } from './helpers';
 import { getPluginsThatNeedDocumentation } from './utils/get-plugins-that-need-documentation';

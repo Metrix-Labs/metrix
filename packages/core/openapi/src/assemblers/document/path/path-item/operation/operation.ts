@@ -1,6 +1,6 @@
 import { OpenAPIV3_1, OpenAPIV3 } from 'openapi-types';
 
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { OperationContextFactory } from '../../../../../context';
 import { createDebugger } from '../../../../../utils';

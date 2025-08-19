@@ -11,8 +11,8 @@ import {
   isFetchError,
   Layouts,
   GradientBadge,
-} from '@metrix/admin/metrix-admin';
-import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
+} from '@metrixlabs/admin/metrix-admin';
+import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
 import {
   Alert,
   Badge,
@@ -26,9 +26,9 @@ import {
   Tabs,
   Typography,
   Link,
-} from '@metrix/design-system';
-import { Plus } from '@metrix/icons';
-import { EmptyDocuments } from '@metrix/icons/symbols';
+} from '@strapi/design-system';
+import { Plus } from '@strapi/icons';
+import { EmptyDocuments } from '@strapi/icons/symbols';
 import { format } from 'date-fns';
 import { useIntl } from 'react-intl';
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';

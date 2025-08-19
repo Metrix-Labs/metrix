@@ -1,7 +1,7 @@
 import { groupBy, pick, uniq } from 'lodash/fp';
 
-import { async, contentTypes } from '@metrix/utils';
-import type { Core, UID, Modules } from '@metrix/types';
+import { async, contentTypes } from '@metrixlabs/utils';
+import type { Core, UID, Modules } from '@metrixlabs/types';
 
 import type { DocumentMetadata } from '../../../shared/contracts/collection-types';
 import { getPopulateForValidation } from './utils/populate';

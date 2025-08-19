@@ -1,6 +1,6 @@
-import type { Core, Schema, Data } from '@metrix/types';
+import type { Core, Schema, Data } from '@metrixlabs/types';
 
-import { traverseEntity } from '@metrix/utils';
+import { traverseEntity } from '@metrixlabs/utils';
 import { curry } from 'lodash/fp';
 
 import { getService } from '../../utils';

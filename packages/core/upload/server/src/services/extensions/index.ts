@@ -1,4 +1,4 @@
-import { async } from '@metrix/utils';
+import { async } from '@metrixlabs/utils';
 import { signEntityMedia } from './utils';
 
 const signFileUrlsOnDocumentService = async () => {

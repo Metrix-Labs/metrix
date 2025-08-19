@@ -1,4 +1,4 @@
-import { Modal } from '@metrix/design-system';
+import { Modal } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../../utils';

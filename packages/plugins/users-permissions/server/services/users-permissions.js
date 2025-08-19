@@ -7,7 +7,7 @@ const {
   template: { createStrictInterpolationRegExp },
   errors,
   objects,
-} = require('@metrix/utils');
+} = require('@metrixlabs/utils');
 
 const { getService } = require('../utils');
 

@@ -1,4 +1,4 @@
-import { yup, validateYupSchemaSync } from '@metrix/utils';
+import { yup, validateYupSchemaSync } from '@metrixlabs/utils';
 import validators from './common-validators';
 
 const registerProviderActionSchema = yup

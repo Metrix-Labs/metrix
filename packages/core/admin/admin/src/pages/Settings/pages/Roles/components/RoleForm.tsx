@@ -7,7 +7,7 @@ import {
   Textarea,
   TextInput,
   Typography,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 import { FormikProps } from 'formik';
 import { useIntl } from 'react-intl';
 

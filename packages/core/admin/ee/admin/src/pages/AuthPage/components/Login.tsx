@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Typography } from '@metrix/design-system';
+import { Box, Divider, Flex, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

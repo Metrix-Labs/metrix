@@ -1,4 +1,4 @@
-import { env } from '@metrix/utils';
+import { env } from '@metrixlabs/utils';
 
 export type ConfigParams = {
   env: typeof env;

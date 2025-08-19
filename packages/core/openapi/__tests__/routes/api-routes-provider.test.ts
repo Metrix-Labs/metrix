@@ -1,4 +1,4 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 import { ApiRoutesProvider } from '../../src/routes';
 import { routes as routesFixtures } from '../fixtures';

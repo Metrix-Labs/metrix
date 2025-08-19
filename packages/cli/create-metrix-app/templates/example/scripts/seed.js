@@ -255,7 +255,7 @@ async function importSeedData() {
 }
 
 async function main() {
-  const { createStrapi, compileStrapi } = require('@metrix/metrix');
+  const { createStrapi, compileStrapi } = require('@metrixlabs/metrix');
 
   const appContext = await compileStrapi();
   const app = await createStrapi(appContext).load();

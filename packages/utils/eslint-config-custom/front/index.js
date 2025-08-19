@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@babel/eslint-parser',
-  extends: ['@metrix/eslint-config/front/javascript'],
+  extends: ['@metrixlabs/eslint-config/front/javascript'],
   env: {
     browser: true,
     commonjs: true,

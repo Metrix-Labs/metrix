@@ -1,6 +1,6 @@
 import { normalizeAPIError } from './normalizeAPIError';
 
-import type { FetchError } from '@metrix/admin/metrix-admin';
+import type { FetchError } from '@metrixlabs/admin/metrix-admin';
 import type { MessageDescriptor } from 'react-intl';
 
 type GetAPIInnerErrorsReturn = {

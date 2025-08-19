@@ -1,4 +1,4 @@
-import type { Data } from '@metrix/types';
+import type { Data } from '@metrixlabs/types';
 
 // @TODO: Probably user & role types should be imported from a common package
 interface RoleInfo extends Omit<Entity, 'createdAt' | 'updatedAt'> {

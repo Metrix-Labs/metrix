@@ -1,4 +1,4 @@
-import type { Plugin } from '@metrix/types';
+import type { Plugin } from '@metrixlabs/types';
 
 import { createPreviewService } from './preview';
 import { createPreviewConfigService } from './preview-config';

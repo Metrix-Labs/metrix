@@ -1,4 +1,4 @@
-import { Flex, Typography } from '@metrix/design-system';
+import { Flex, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../../../utils';

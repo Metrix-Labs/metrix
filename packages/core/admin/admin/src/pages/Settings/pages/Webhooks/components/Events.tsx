@@ -13,7 +13,7 @@ import {
   VisuallyHidden,
   Field,
   CheckboxProps,
-} from '@metrix/design-system';
+} from '@strapi/design-system';
 import { MessageDescriptor, useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

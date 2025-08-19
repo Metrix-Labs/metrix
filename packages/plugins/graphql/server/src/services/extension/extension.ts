@@ -1,6 +1,6 @@
 import * as nexus from 'nexus';
 import { merge } from 'lodash/fp';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import type * as Nexus from 'nexus';
 
 import createShadowCRUDManager from './shadow-crud-manager';

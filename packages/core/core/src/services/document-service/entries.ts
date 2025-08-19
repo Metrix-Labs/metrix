@@ -1,5 +1,5 @@
-import type { UID, Modules } from '@metrix/types';
-import { async, errors } from '@metrix/utils';
+import type { UID, Modules } from '@metrixlabs/types';
+import { async, errors } from '@metrixlabs/utils';
 import { assoc, omit } from 'lodash/fp';
 
 import * as components from './components';

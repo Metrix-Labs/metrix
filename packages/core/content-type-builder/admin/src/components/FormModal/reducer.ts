@@ -10,7 +10,7 @@ import { createComponentUid } from './utils/createUid';
 import { customFieldDefaultOptionsReducer } from './utils/customFieldDefaultOptionsReducer';
 import { shouldPluralizeName, shouldPluralizeTargetAttribute } from './utils/relations';
 
-import type { Schema, UID } from '@metrix/types';
+import type { Schema, UID } from '@metrixlabs/types';
 
 export type State = {
   formErrors: Record<string, any>;

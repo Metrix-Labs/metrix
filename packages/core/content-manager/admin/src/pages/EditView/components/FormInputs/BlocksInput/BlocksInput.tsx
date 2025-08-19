@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { useField, type InputProps } from '@metrix/admin/metrix-admin';
-import { Field, Flex } from '@metrix/design-system';
+import { useField, type InputProps } from '@metrixlabs/admin/metrix-admin';
+import { Field, Flex } from '@strapi/design-system';
 
 import { BlocksEditor } from './BlocksEditor';
 
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 interface BlocksInputProps extends Omit<InputProps, 'type'> {
   labelAction?: React.ReactNode;

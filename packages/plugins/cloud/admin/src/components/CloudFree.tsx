@@ -1,5 +1,5 @@
-import { Box, Flex, Typography } from '@metrix/design-system';
-import { Check } from '@metrix/icons';
+import { Box, Flex, Typography } from '@strapi/design-system';
+import { Check } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../utils/getTrad';

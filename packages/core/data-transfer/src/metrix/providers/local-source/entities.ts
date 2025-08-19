@@ -1,5 +1,5 @@
 import { Readable, Transform } from 'stream';
-import type { Core, Struct } from '@metrix/types';
+import type { Core, Struct } from '@metrixlabs/types';
 
 import * as shared from '../../queries';
 import { IEntity } from '../../../../types';

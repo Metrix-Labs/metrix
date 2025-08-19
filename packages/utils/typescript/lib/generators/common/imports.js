@@ -26,7 +26,7 @@ module.exports = {
       factory.createImportDeclaration(
         undefined,
         factory.createImportClause(true, undefined, factory.createNamedImports(formattedImports)),
-        factory.createStringLiteral('@metrix/metrix'),
+        factory.createStringLiteral('@metrixlabs/metrix'),
         undefined
       ),
     ];

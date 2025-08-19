@@ -1,4 +1,4 @@
-export * from '@metrix/core';
+export * from '@metrixlabs/core';
 
-export type * from '@metrix/types';
+export type * from '@metrixlabs/types';
 export type * from './cli/types';

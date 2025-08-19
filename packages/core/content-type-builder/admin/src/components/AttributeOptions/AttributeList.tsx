@@ -1,4 +1,4 @@
-import { Flex, Grid, KeyboardNavigable } from '@metrix/design-system';
+import { Flex, Grid, KeyboardNavigable } from '@strapi/design-system';
 
 import { IconByType } from '../AttributeIcon';
 

@@ -1,5 +1,5 @@
-import { Box, Flex } from '@metrix/design-system';
-import { File, FilePdf } from '@metrix/icons';
+import { Box, Flex } from '@strapi/design-system';
+import { File, FilePdf } from '@strapi/icons';
 import { styled } from 'styled-components';
 
 import { AssetType } from '../../../constants';

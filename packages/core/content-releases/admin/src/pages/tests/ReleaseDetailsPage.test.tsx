@@ -1,4 +1,4 @@
-import { useRBAC } from '@metrix/admin/metrix-admin';
+import { useRBAC } from '@metrixlabs/admin/metrix-admin';
 import { within } from '@testing-library/react';
 import { render, server, screen } from '@tests/utils';
 import { rest } from 'msw';
@@ -11,16 +11,16 @@ import { mockReleaseDetailsPageData } from './mockReleaseDetailsPageData';
 /**
  * Mocking the useDocument hook to avoid validation errors for testing
  */
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useRBAC: jest.fn(() => ({
     isLoading: false,
     allowedActions: { canUpdate: true, canDelete: true, canPublish: true },
   })),
 }));
 
-jest.mock('@metrix/content-manager/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/content-manager/metrix-admin'),
+jest.mock('@metrixlabs/content-manager/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/content-manager/metrix-admin'),
   unstable_useDocument: jest.fn().mockReturnValue({ validate: jest.fn().mockReturnValue({}) }),
 }));
 

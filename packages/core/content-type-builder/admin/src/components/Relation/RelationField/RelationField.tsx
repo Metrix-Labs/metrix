@@ -1,11 +1,11 @@
-import { Box, Divider, Flex, Typography } from '@metrix/design-system';
+import { Box, Divider, Flex, Typography } from '@strapi/design-system';
 
 import { getTrad } from '../../../utils/getTrad';
 import { GenericInput } from '../../GenericInputs';
 
 import { RelationTargetPicker } from './RelationTargetPicker/RelationTargetPicker';
 
-import type { Internal } from '@metrix/types';
+import type { Internal } from '@metrixlabs/types';
 
 interface RelationFormBoxProps {
   disabled?: boolean;

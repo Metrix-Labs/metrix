@@ -7,8 +7,8 @@ import {
   useTracking,
   useQueryParams,
   useAdminUsers,
-} from '@metrix/admin/metrix-admin';
-import { Combobox, ComboboxOption, useCollator } from '@metrix/design-system';
+} from '@metrixlabs/admin/metrix-admin';
+import { Combobox, ComboboxOption, useCollator } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 
 import { CREATOR_FIELDS } from '../../../constants/attributes';

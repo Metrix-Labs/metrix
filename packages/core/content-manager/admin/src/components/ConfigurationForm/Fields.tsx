@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useDroppable, DndContext, UniqueIdentifier, DragOverlay } from '@dnd-kit/core';
 import { arrayMove, SortableContext, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { useField, useForm } from '@metrix/admin/metrix-admin';
+import { useField, useForm } from '@metrixlabs/admin/metrix-admin';
 import {
   Modal,
   Box,
@@ -14,8 +14,8 @@ import {
   Typography,
   Link,
   Menu,
-} from '@metrix/design-system';
-import { Cog, Cross, Drag, Pencil, Plus } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Cog, Cross, Drag, Pencil, Plus } from '@strapi/icons';
 import { generateNKeysBetween as generateNKeysBetweenImpl } from 'fractional-indexing';
 import { produce } from 'immer';
 import { useIntl } from 'react-intl';

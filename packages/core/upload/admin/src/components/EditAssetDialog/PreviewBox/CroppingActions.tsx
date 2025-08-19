@@ -1,5 +1,5 @@
-import { Flex, FocusTrap, IconButton, Menu } from '@metrix/design-system';
-import { Check, Cross } from '@metrix/icons';
+import { Flex, FocusTrap, IconButton, Menu } from '@strapi/design-system';
+import { Check, Cross } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { styled, useTheme } from 'styled-components';
 

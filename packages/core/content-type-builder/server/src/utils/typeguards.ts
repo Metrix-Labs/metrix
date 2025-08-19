@@ -1,4 +1,4 @@
-import type { Schema } from '@metrix/types';
+import type { Schema } from '@metrixlabs/types';
 
 export const hasDefaultAttribute = (
   attribute: Schema.Attribute.AnyAttribute

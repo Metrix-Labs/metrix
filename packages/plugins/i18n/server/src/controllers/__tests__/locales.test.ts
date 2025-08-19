@@ -1,4 +1,4 @@
-import { errors, sanitize } from '@metrix/utils';
+import { errors, sanitize } from '@metrixlabs/utils';
 import controller from '../locales';
 import localeModel from '../../content-types/locale';
 

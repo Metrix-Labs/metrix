@@ -1,6 +1,6 @@
 import { join } from 'path';
-import { strings, errors } from '@metrix/utils';
-import type { Struct } from '@metrix/types';
+import { strings, errors } from '@metrixlabs/utils';
+import type { Struct } from '@metrixlabs/types';
 import createBuilder from './schema-builder';
 
 type Infos = {

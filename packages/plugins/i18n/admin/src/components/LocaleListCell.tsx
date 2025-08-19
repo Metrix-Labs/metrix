@@ -1,5 +1,5 @@
-import { Box, Flex, Popover, Typography, useCollator, Button } from '@metrix/design-system';
-import { CaretDown } from '@metrix/icons';
+import { Box, Flex, Popover, Typography, useCollator, Button } from '@strapi/design-system';
+import { CaretDown } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import { Locale } from '../../../shared/contracts/locales';

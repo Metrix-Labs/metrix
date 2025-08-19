@@ -1,5 +1,5 @@
 import { isEmpty, pick, pipe, propOr, isEqual } from 'lodash/fp';
-import { traverse } from '@metrix/utils';
+import { traverse } from '@metrixlabs/utils';
 import qs from 'qs';
 import { isSortable, getDefaultMainField, getSortableAttributes } from './attributes';
 

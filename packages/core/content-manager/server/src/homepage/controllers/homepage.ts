@@ -1,6 +1,6 @@
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 import * as yup from 'yup';
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import type { GetRecentDocuments, GetCountDocuments } from '../../../../shared/contracts/homepage';
 
 const createHomepageController = () => {

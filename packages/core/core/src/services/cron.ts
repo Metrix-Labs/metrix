@@ -1,6 +1,6 @@
 import { Job, Spec } from 'node-schedule';
 import { isFunction } from 'lodash/fp';
-import type { Core } from '@metrix/types';
+import type { Core } from '@metrixlabs/types';
 
 interface JobSpec {
   job: Job;

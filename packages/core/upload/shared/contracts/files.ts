@@ -1,4 +1,4 @@
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 
 type SortOrder = 'ASC' | 'DESC';
 

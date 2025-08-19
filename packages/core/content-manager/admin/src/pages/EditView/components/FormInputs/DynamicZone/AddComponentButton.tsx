@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Button, Flex, Typography, TypographyComponent } from '@metrix/design-system';
-import { PlusCircle } from '@metrix/icons';
+import { Button, Flex, Typography, TypographyComponent } from '@strapi/design-system';
+import { PlusCircle } from '@strapi/icons';
 import { styled } from 'styled-components';
 
 interface AddComponentButtonProps {

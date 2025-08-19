@@ -1,5 +1,5 @@
-import type { Core, UID, Struct } from '@metrix/types';
-import type { Model } from '@metrix/database';
+import type { Core, UID, Struct } from '@metrixlabs/types';
+import type { Model } from '@metrixlabs/database';
 import { ProviderTransferError } from '../../../../../errors/providers';
 import * as queries from '../../../../queries';
 

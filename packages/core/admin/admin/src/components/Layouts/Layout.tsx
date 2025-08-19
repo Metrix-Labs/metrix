@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box } from '@metrix/design-system';
+import { Box } from '@strapi/design-system';
 import { styled } from 'styled-components';
 
 import { ActionLayout } from './ActionLayout';

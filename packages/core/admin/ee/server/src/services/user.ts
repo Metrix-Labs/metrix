@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { pipe, map, castArray, toNumber } from 'lodash/fp';
-import { arrays, errors } from '@metrix/utils';
+import { arrays, errors } from '@metrixlabs/utils';
 import { hasSuperAdminRole } from '../../../../server/src/domain/user';
 import constants from '../../../../server/src/services/constants';
 import { getService } from '../utils';

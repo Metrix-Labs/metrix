@@ -1,5 +1,5 @@
-import { Box, Main, Flex, Typography, Grid, LinkButton } from '@metrix/design-system';
-import { ExternalLink, Check, Lock } from '@metrix/icons';
+import { Box, Main, Flex, Typography, Grid, LinkButton } from '@strapi/design-system';
+import { ExternalLink, Check, Lock } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
 import { Layouts } from '../../../components/Layouts/Layout';

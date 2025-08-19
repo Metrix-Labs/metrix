@@ -6,8 +6,8 @@ import {
   Typography,
   Link,
   TypographyComponent,
-} from '@metrix/design-system';
-import { Duplicate, WarningCircle } from '@metrix/icons';
+} from '@strapi/design-system';
+import { Duplicate, WarningCircle } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { useRouteError } from 'react-router-dom';
 import { styled } from 'styled-components';

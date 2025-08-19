@@ -1,4 +1,4 @@
-import { errors } from '@metrix/utils';
+import { errors } from '@metrixlabs/utils';
 import { omit } from 'lodash/fp';
 // @ts-expect-error - types are not generated for this file
 // eslint-disable-next-line import/no-relative-packages

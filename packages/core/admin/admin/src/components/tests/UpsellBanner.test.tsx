@@ -1,10 +1,10 @@
-import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
+import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
 import { render, screen } from '@tests/utils';
 
 import { useGetLicenseTrialTimeLeftQuery } from '../../../src/services/admin';
 import { UpsellBanner } from '../UpsellBanner';
 
-jest.mock('@metrix/admin/metrix-admin/ee', () => ({
+jest.mock('@metrixlabs/admin/metrix-admin/ee', () => ({
   useLicenseLimits: jest.fn(() => ({
     license: {
       isTrial: true,

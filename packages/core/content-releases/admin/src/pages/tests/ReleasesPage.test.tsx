@@ -8,8 +8,8 @@ import { ReleasesPage } from '../ReleasesPage';
 
 import { mockReleasesPageData } from './mockReleasesPageData';
 
-jest.mock('@metrix/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrix/admin/metrix-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useLicenseLimits: jest.fn().mockReturnValue({
     isLoading: false,
     isError: false,

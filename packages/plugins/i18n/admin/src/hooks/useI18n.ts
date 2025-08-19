@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useAuth } from '@metrix/admin/metrix-admin';
-import { unstable_useDocument as useDocument } from '@metrix/content-manager/metrix-admin';
+import { useAuth } from '@metrixlabs/admin/metrix-admin';
+import { unstable_useDocument as useDocument } from '@metrixlabs/content-manager/metrix-admin';
 import { useParams } from 'react-router-dom';
 
 import { doesPluginOptionsHaveI18nLocalized } from '../utils/fields';

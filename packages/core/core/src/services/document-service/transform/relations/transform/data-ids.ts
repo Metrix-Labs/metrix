@@ -1,7 +1,7 @@
 import { curry } from 'lodash/fp';
 
-import type { UID } from '@metrix/types';
-import { errors, relations } from '@metrix/utils';
+import type { UID } from '@metrixlabs/types';
+import { errors, relations } from '@metrixlabs/utils';
 
 import { ID, LongHandDocument } from '../utils/types';
 import { IdMap } from '../../id-map';

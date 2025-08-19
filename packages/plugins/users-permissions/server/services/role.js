@@ -1,7 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
-const { NotFoundError } = require('@metrix/utils').errors;
+const { NotFoundError } = require('@metrixlabs/utils').errors;
 const { getService } = require('../utils');
 
 module.exports = ({ metrix }) => ({

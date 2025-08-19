@@ -1,4 +1,4 @@
-import { Box, SingleSelectOption, SingleSelect, BoxComponent } from '@metrix/design-system';
+import { Box, SingleSelectOption, SingleSelect, BoxComponent } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

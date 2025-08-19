@@ -1,8 +1,8 @@
 /* eslint-disable check-file/filename-naming-convention */
 import { useState } from 'react';
 
-import { Layouts } from '@metrix/admin/metrix-admin';
-import { render, screen } from '@metrix/admin/metrix-admin/test';
+import { Layouts } from '@metrixlabs/admin/metrix-admin';
+import { render, screen } from '@metrixlabs/admin/metrix-admin/test';
 import { userEvent } from '@testing-library/user-event';
 
 import { useDataManager } from '../../DataManager/useDataManager';

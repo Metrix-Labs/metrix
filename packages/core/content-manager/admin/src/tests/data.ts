@@ -1,4 +1,4 @@
-import { Permission } from '@metrix/admin/metrix-admin';
+import { Permission } from '@metrixlabs/admin/metrix-admin';
 
 import type { ComponentsDictionary, Schema } from '../hooks/useDocument';
 

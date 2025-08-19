@@ -1,5 +1,5 @@
-import { Flex, Tooltip, Typography, Link, Grid } from '@metrix/design-system';
-import { ExternalLink, WarningCircle } from '@metrix/icons';
+import { Flex, Tooltip, Typography, Link, Grid } from '@strapi/design-system';
+import { ExternalLink, WarningCircle } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 

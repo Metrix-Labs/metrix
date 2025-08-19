@@ -1,5 +1,5 @@
 import { prop } from 'lodash/fp';
-import { yup, validateYupSchema } from '@metrix/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 
 import { isoLocales } from '../constants';
 

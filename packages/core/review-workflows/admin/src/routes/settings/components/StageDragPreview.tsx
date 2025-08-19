@@ -1,5 +1,5 @@
-import { Flex, Typography } from '@strapi/design-system';
-import { CaretDown } from '@strapi/icons';
+import { Flex, Typography } from '@metrix/design-system';
+import { CaretDown } from '@metrix/icons';
 
 interface StageDragPreviewType {
   name: string | null;

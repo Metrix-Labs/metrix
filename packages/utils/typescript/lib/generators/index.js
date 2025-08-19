@@ -16,7 +16,7 @@ const GENERATORS = {
 /**
  * @typedef GenerateConfig
  *
- * @property {object} strapi
+ * @property {object} metrix
  * @property {boolean} pwd
  * @property {object} [artifacts]
  * @property {boolean} [artifacts.contentTypes]
@@ -37,13 +37,13 @@ const GENERATORS = {
  * @param {GenerateConfig} [config]
  */
 const generate = async (config = {}) => {
-  const { pwd, rootDir = TYPES_ROOT_DIR, strapi, artifacts = {}, logger: loggerConfig } = config;
+  const { pwd, rootDir = TYPES_ROOT_DIR, metrix, artifacts = {}, logger: loggerConfig } = config;
   const reports = {};
   const logger = createLogger(loggerConfig);
   const psTimer = timer().start();
 
   const registryPwd = path.join(pwd, rootDir, GENERATED_OUT_DIR);
-  const generatorConfig = { strapi, pwd: registryPwd, logger };
+  const generatorConfig = { metrix, pwd: registryPwd, logger };
 
   const returnWithMessage = () => {
     const nbWarnings = chalk.yellow(`${logger.warnings} warning(s)`);

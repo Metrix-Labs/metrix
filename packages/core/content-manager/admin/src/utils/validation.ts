@@ -1,11 +1,11 @@
-import { translatedErrors } from '@strapi/admin/strapi-admin';
+import { translatedErrors } from '@metrix/admin/metrix-admin';
 import pipe from 'lodash/fp/pipe';
 import * as yup from 'yup';
 
 import { DOCUMENT_META_FIELDS } from '../constants/attributes';
 
 import type { ComponentsDictionary, Schema } from '../hooks/useDocument';
-import type { Schema as SchemaUtils } from '@strapi/types';
+import type { Schema as SchemaUtils } from '@metrix/types';
 import type { ObjectShape } from 'yup/lib/object';
 
 type AnySchema =

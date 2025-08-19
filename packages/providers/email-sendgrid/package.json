@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/provider-email-sendgrid",
+  "name": "@metrix/provider-email-sendgrid",
   "version": "5.22.0",
   "description": "Sendgrid provider for strapi email",
   "keywords": [
@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "8.1.3",
-    "@strapi/utils": "5.22.0"
+    "@metrix/utils": "5.22.0"
   },
   "devDependencies": {
     "eslint-config-custom": "5.22.0",

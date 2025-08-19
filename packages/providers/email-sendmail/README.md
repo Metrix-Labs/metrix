@@ -1,4 +1,4 @@
-# @strapi/provider-email-sendmail
+# @metrix/provider-email-sendmail
 
 ## Resources
 
@@ -6,19 +6,19 @@
 
 ## Links
 
-- [Strapi website](https://strapi.io/)
-- [Strapi documentation](https://docs.strapi.io)
-- [Strapi community on Discord](https://discord.strapi.io)
-- [Strapi news on Twitter](https://twitter.com/strapijs)
+- [Metrix website](https://metrix.io/)
+- [Metrix documentation](https://docs.metrix.io)
+- [Metrix community on Discord](https://discord.metrix.io)
+- [Metrix news on Twitter](https://twitter.com/strapijs)
 
 ## Installation
 
 ```bash
 # using yarn
-yarn add @strapi/provider-email-sendmail
+yarn add @metrix/provider-email-sendmail
 
 # using npm
-npm install @strapi/provider-email-sendmail --save
+npm install @metrix/provider-email-sendmail --save
 ```
 
 ## Configuration
@@ -56,7 +56,7 @@ module.exports = ({ env }) => ({
 
 ### Example with DKIM
 
-Using **DKIM** (DomainKeys Identified Mail) can prevent emails from being considered as spam. More details about this subject can be found in the discussion on the Strapi forum: [Unsolved problem: emails goes to spam!](https://forum.strapi.io/t/unsolved-problem-emails-goes-to-spam/512?u=soringfs)
+Using **DKIM** (DomainKeys Identified Mail) can prevent emails from being considered as spam. More details about this subject can be found in the discussion on the Metrix forum: [Unsolved problem: emails goes to spam!](https://forum.metrix.io/t/unsolved-problem-emails-goes-to-spam/512?u=soringfs)
 
 #### Generate the keys using OpenSSL
 

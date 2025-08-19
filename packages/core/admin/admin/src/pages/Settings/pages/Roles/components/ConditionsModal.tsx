@@ -10,7 +10,7 @@ import {
   Typography,
   Breadcrumbs,
   Crumb,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 import { produce } from 'immer';
 import get from 'lodash/get';
 import groupBy from 'lodash/groupBy';

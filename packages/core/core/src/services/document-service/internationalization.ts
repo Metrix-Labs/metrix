@@ -1,5 +1,5 @@
-import type { Struct, Modules } from '@strapi/types';
-import { errors } from '@strapi/utils';
+import type { Struct, Modules } from '@metrix/types';
+import { errors } from '@metrix/utils';
 import { curry, assoc } from 'lodash/fp';
 
 type Transform = (
@@ -13,11 +13,11 @@ type AsyncTransform = (
 ) => Promise<Modules.Documents.Params.All>;
 
 const getDefaultLocale = async (): Promise<string> => {
-  return strapi.plugin('i18n').service('locales').getDefaultLocale();
+  return metrix.plugin('i18n').service('locales').getDefaultLocale();
 };
 
 const defaultLocale: AsyncTransform = async (contentType, params) => {
-  if (!strapi.plugin('i18n').service('content-types').isLocalizedContentType(contentType)) {
+  if (!metrix.plugin('i18n').service('content-types').isLocalizedContentType(contentType)) {
     return params;
   }
 
@@ -34,7 +34,7 @@ const defaultLocale: AsyncTransform = async (contentType, params) => {
 const localeToLookup: Transform = (contentType, params) => {
   if (
     !params.locale ||
-    !strapi.plugin('i18n').service('content-types').isLocalizedContentType(contentType)
+    !metrix.plugin('i18n').service('content-types').isLocalizedContentType(contentType)
   ) {
     return params;
   }
@@ -55,7 +55,7 @@ const localeToLookup: Transform = (contentType, params) => {
  * Add locale lookup query to the params
  */
 const multiLocaleToLookup: Transform = (contentType, params) => {
-  if (!strapi.plugin('i18n').service('content-types').isLocalizedContentType(contentType)) {
+  if (!metrix.plugin('i18n').service('content-types').isLocalizedContentType(contentType)) {
     return params;
   }
 
@@ -74,7 +74,7 @@ const multiLocaleToLookup: Transform = (contentType, params) => {
  * Translate locale status parameter into the data that will be saved
  */
 const localeToData: Transform = (contentType, params) => {
-  if (!strapi.plugin('i18n').service('content-types').isLocalizedContentType(contentType)) {
+  if (!metrix.plugin('i18n').service('content-types').isLocalizedContentType(contentType)) {
     return params;
   }
 
@@ -102,13 +102,13 @@ const copyNonLocalizedFields = async (
   dataToCreate: Record<string, any>
 ): Promise<Record<string, any>> => {
   // Check if this is a localized content type and if i18n plugin is available
-  const i18nService = strapi.plugin('i18n')?.service('content-types');
+  const i18nService = metrix.plugin('i18n')?.service('content-types');
   if (!i18nService?.isLocalizedContentType(contentType)) {
     return dataToCreate;
   }
 
   // Find an existing entry for the same document to copy unlocalized fields from
-  const existingEntry = await strapi.db.query(contentType.uid).findOne({
+  const existingEntry = await metrix.db.query(contentType.uid).findOne({
     where: { documentId },
     // Prefer published entry, but fall back to any entry
     orderBy: { publishedAt: 'desc' },

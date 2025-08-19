@@ -1,5 +1,5 @@
 {
-  "name": "strapi",
+  "name": "metrix",
   "private": true,
   "bugs": {
     "url": "https://github.com/strapi/strapi/issues"
@@ -79,7 +79,17 @@
     "test:unit": "jest --config jest.config.js",
     "test:unit:update": "jest --config jest.config.js -u",
     "test:unit:all": "nx run-many --target=test:unit --nx-ignore-cycles",
-    "test:unit:watch": "run test:unit --watch"
+    "test:unit:watch": "run test:unit --watch",
+    "rename:fs:dry": "node scripts/rename/rename-metrix-to-metrix.js --dry",
+    "rename:fs": "node scripts/rename/rename-metrix-to-metrix.js",
+    "rename:code:dry": "node scripts/rename/run-code-codemod.js --dry",
+    "rename:code": "node scripts/rename/run-code-codemod.js",
+    "rename:json:dry": "node scripts/rename/update-json.js --dry",
+    "rename:json": "node scripts/rename/update-json.js",
+    "rename:text:dry": "node scripts/rename/replace-text.js --dry",
+    "rename:text": "node scripts/rename/replace-text.js",
+    "rename:code-lite:dry": "node scripts/rename/replace-code-lite.js --dry",
+    "rename:code-lite": "node scripts/rename/replace-code-lite.js"
   },
   "resolutions": {
     "@types/koa": "2.13.4",
@@ -102,8 +112,6 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "15.3.0",
     "@rollup/plugin-swc": "0.4.0",
-    "@strapi/admin-test-utils": "workspace:*",
-    "@strapi/eslint-config": "0.2.0",
     "@swc-node/register": "~1.9.1",
     "@swc/cli": "0.3.10",
     "@swc/core": "1.4.8",
@@ -120,7 +128,6 @@
     "chokidar": "3.6.0",
     "coffee": "5.5.1",
     "core-js": "3.36.0",
-    "create-strapi-app": "workspace:*",
     "cross-env": "7.0.3",
     "dotenv": "16.4.5",
     "eslint": "8.50.0",
@@ -171,7 +178,11 @@
     "ts-jest": "29.1.0",
     "typescript": "5.4.4",
     "yalc": "1.0.0-pre.53",
-    "yargs": "17.7.2"
+    "yargs": "17.7.2",
+    "jscodeshift": "17.1.2",
+    "@metrix/admin-test-utils": "workspace:*",
+    "@metrix/eslint-config": "0.2.0",
+    "create-metrix-app": "workspace:*"
   },
   "packageManager": "yarn@4.5.0",
   "engines": {

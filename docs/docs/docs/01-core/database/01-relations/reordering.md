@@ -7,7 +7,7 @@ tags:
   - reordering
 ---
 
-Strapi allows you to reorder a relation list.
+Metrix allows you to reorder a relation list.
 
 <img src="/img/database/reordering.png" alt="An example of reordering in the CM" />
 
@@ -51,7 +51,7 @@ Where a restaurant has many categories:
 
 ## How to reorder relations in the DB layer
 
-See more on [Strapi Docs](https://docs.strapi.io/dev-docs/api/rest/relations#connect)
+See more on [Metrix Docs](https://docs.metrix.io/dev-docs/api/rest/relations#connect)
 
 The database layer should receive a payload shown below:
 

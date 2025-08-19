@@ -1,4 +1,4 @@
-import { yup } from '@strapi/utils';
+import { yup } from '@metrix/utils';
 import _ from 'lodash';
 import { isEmpty, has, isNil, isArray } from 'lodash/fp';
 import { getService } from '../utils';
@@ -37,7 +37,7 @@ export const roles = yup.array(yup.strapiID()).min(1);
 const isAPluginName = yup
   .string()
   .test('is-a-plugin-name', 'is not a plugin name', function (value) {
-    return [undefined, 'admin', ...Object.keys(strapi.plugins)].includes(value)
+    return [undefined, 'admin', ...Object.keys(metrix.plugins)].includes(value)
       ? true
       : this.createError({ path: this.path, message: `${this.path} is not an existing plugin` });
   });
@@ -46,7 +46,7 @@ export const arrayOfConditionNames = yup
   .array()
   .of(yup.string())
   .test('is-an-array-of-conditions', 'is not a plugin name', function (value) {
-    const ids = strapi.service('admin::permission').conditionProvider.keys();
+    const ids = metrix.service('admin::permission').conditionProvider.keys();
     return _.isUndefined(value) || _.difference(value, ids).length === 0
       ? true
       : this.createError({ path: this.path, message: `contains conditions that don't exist` });

@@ -1,5 +1,5 @@
 import { eq } from 'lodash/fp';
-import { hooks } from '@strapi/utils';
+import { hooks } from '@metrix/utils';
 import type { Action } from '../../../domain/action';
 
 export type SectionOptions = {

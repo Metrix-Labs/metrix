@@ -1,5 +1,5 @@
-import permissions from '@strapi/permissions';
-import { providerFactory, sanitize, validate } from '@strapi/utils';
+import permissions from '@metrix/permissions';
+import { providerFactory, sanitize, validate } from '@metrix/utils';
 
 import type { Route } from '../core';
 

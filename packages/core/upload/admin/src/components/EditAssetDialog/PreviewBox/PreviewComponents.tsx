@@ -1,5 +1,5 @@
 // TODO: find a better naming convention for the file that was an index file before
-import { Badge, Box, Flex } from '@strapi/design-system';
+import { Badge, Box, Flex } from '@metrix/design-system';
 import { styled } from 'styled-components';
 
 export const RelativeBox = styled(Box)`

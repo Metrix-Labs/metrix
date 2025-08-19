@@ -25,8 +25,8 @@ import {
   TextInput,
   TextInputProps,
   Typography,
-} from '@strapi/design-system';
-import { PlusCircle, Plus, ArrowClockwise } from '@strapi/icons';
+} from '@metrix/design-system';
+import { PlusCircle, Plus, ArrowClockwise } from '@metrix/icons';
 import axios, { AxiosError } from 'axios';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

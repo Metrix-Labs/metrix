@@ -1,4 +1,4 @@
-import { Box, Flex, Typography } from '@strapi/design-system';
+import { Box, Flex, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { Wrapper } from './Styles';

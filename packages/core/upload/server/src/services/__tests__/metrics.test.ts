@@ -26,7 +26,7 @@ describe('metrics', () => {
     ])('folders: %s, assets: %s => %s', async (folderLevels, assetsNumber, expectedResults) => {
       const count = jest.fn(() => Promise.resolve(assetsNumber));
       const raw = jest.fn(() => '');
-      const strapi = {
+      const metrix = {
         getModel() {
           return {
             collectionName: () => 'upload_folders',
@@ -51,9 +51,9 @@ describe('metrics', () => {
           },
         },
       } as any;
-      strapi.db.connection = { raw };
+      metrix.db.connection = { raw };
 
-      const { computeMetrics } = metricsService({ strapi });
+      const { computeMetrics } = metricsService({ metrix });
 
       const results = await computeMetrics();
       const [assetNumber, maxDepth, averageDepth, folderNumber, averageDeviationDepth] =

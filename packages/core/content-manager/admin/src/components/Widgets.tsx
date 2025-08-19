@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Widget, useTracking, useGetCountDocumentsQuery } from '@strapi/admin/strapi-admin';
+import { Widget, useTracking, useGetCountDocumentsQuery } from '@metrix/admin/metrix-admin';
 import {
   Box,
   Flex,
@@ -11,8 +11,8 @@ import {
   Tr,
   Typography,
   Portal,
-} from '@strapi/design-system';
-import { Pencil } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Pencil } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
 import { styled, DefaultTheme } from 'styled-components';

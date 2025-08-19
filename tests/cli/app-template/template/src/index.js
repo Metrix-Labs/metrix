@@ -7,7 +7,7 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/* { strapi } */) {},
+  register(/* { metrix } */) {},
 
   /**
    * An asynchronous bootstrap function that runs before
@@ -16,21 +16,21 @@ module.exports = {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  async bootstrap({ strapi }) {
-    strapi.service('api::config.config').rateLimitEnable(false);
-    strapi.service('api::config.config').adminAutoOpenEnable(false);
+  async bootstrap({ metrix }) {
+    metrix.service('api::config.config').rateLimitEnable(false);
+    metrix.service('api::config.config').adminAutoOpenEnable(false);
 
-    await createTestTransferToken(strapi);
+    await createTestTransferToken(metrix);
   },
 };
 
 /**
  * Make sure the test transfer token exists in the database
- * @param {Strapi.Strapi} strapi
+ * @param {Strapi.Strapi} metrix
  * @returns {Promise<void>}
  */
-const createTestTransferToken = async (strapi) => {
-  const { token: transferTokenService } = strapi.service('admin::transfer');
+const createTestTransferToken = async (metrix) => {
+  const { token: transferTokenService } = metrix.service('admin::transfer');
 
   const accessKeyHash = transferTokenService.hash(CUSTOM_TRANSFER_TOKEN_ACCESS_KEY);
   const exists = await transferTokenService.exists({ accessKey: accessKeyHash });

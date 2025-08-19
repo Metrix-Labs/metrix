@@ -1,4 +1,4 @@
-import { lightTheme } from '@strapi/design-system';
+import { lightTheme } from '@metrix/design-system';
 import { DefaultTheme } from 'styled-components';
 
 const STAGE_COLORS: Record<string, string> = {

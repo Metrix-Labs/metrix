@@ -1,4 +1,4 @@
-import type { Plugin } from '@strapi/types';
+import type { Plugin } from '@metrix/types';
 
 import { routes } from './routes';
 import { controllers } from './controllers';
@@ -12,7 +12,7 @@ import { getService } from './utils';
 const getFeature = (): Partial<Plugin.LoadedPlugin> => {
   return {
     register() {
-      const config = getService(strapi, 'preview-config');
+      const config = getService(metrix, 'preview-config');
       config.validate();
       config.register();
     },

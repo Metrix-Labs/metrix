@@ -11,7 +11,7 @@ const entityId = 1;
 
 Case: basic call
 
-strapi.entityService.findOne(uid, entityId, {
+metrix.entityService.findOne(uid, entityId, {
   fields: ["id", "name", "description"],
   populate: ["author", "comments"],
   publicationState: "preview",
@@ -26,7 +26,7 @@ const objectParam_2 = {
   publicationState: "preview",
 };
 
-strapi.entityService.findOne(uid, entityId, objectParam_2);
+metrix.entityService.findOne(uid, entityId, objectParam_2);
 
 Case: using a variable declared somewhere else with a spread element
 
@@ -36,7 +36,7 @@ const objectParam_3 = {
   publicationState: "preview",
 };
 
-strapi.entityService.findOne(uid, entityId, {
+metrix.entityService.findOne(uid, entityId, {
   ...objectParam_3,
 });
 
@@ -54,7 +54,7 @@ const objectParam_4 = {
   ...objectParam_4_1,
 };
 
-strapi.entityService.findOne(uid, entityId, {
+metrix.entityService.findOne(uid, entityId, {
   ...objectParam_4,
 });
 
@@ -70,7 +70,7 @@ const objectParam_5 = [
   },
 ];
 
-strapi.entityService.findOne(...objectParam_5);
+metrix.entityService.findOne(...objectParam_5);
 
 Case: using a variable declared somewhere else with a partial spread array
 
@@ -83,7 +83,7 @@ const objectParam_6 = [
   },
 ];
 
-strapi.entityService.findOne(uid, ...objectParam_6);
+metrix.entityService.findOne(uid, ...objectParam_6);
 
 Case: using a variable declared somewhere else with a partial & nested spread arrays
 
@@ -97,7 +97,7 @@ const objectParam_7_1 = [
 
 const objectParam_7 = [entityId, ...objectParam_7_1];
 
-strapi.entityService.findOne(uid, ...objectParam_7);
+metrix.entityService.findOne(uid, ...objectParam_7);
 
 Case: using a variable declared somewhere else with a partial & nested spread arrays & objects
 
@@ -114,7 +114,7 @@ const objectParam_8 = [
   },
 ];
 
-strapi.entityService.findOne(uid, ...objectParam_8);
+metrix.entityService.findOne(uid, ...objectParam_8);
 
 
 Case: some sort of mix of all the above
@@ -129,7 +129,7 @@ const objectParam_9 = {
   ...objectParam_9_1,
 };
 
-strapi.entityService.findOne(uid, ...[entityId, [objectParam_9]]);
+metrix.entityService.findOne(uid, ...[entityId, [objectParam_9]]);
 
 Case:  even more complex
 
@@ -140,32 +140,32 @@ const objectParam_10_1 = {
 const objectParam_10_2 = [uid, ...[12], ...[objectParam_10_1]];
 const objectParam_10 = [...objectParam_10_2];
 
-strapi.entityService.findOne(...[...objectParam_10]);
+metrix.entityService.findOne(...[...objectParam_10]);
 
 Case: find, create, update, delete with entityId as first argument
 
-strapi.entityService.findMany(uid, {
+metrix.entityService.findMany(uid, {
   fields: ["id", "name", "description"],
   populate: ["author", "comments"],
   publicationState: "preview",
 });
 
-strapi.entityService.create(uid, {
+metrix.entityService.create(uid, {
   data: {
     name: "John Doe",
     age: 30,
   },
 });
 
-strapi.entityService.update(uid, entityId, {
+metrix.entityService.update(uid, entityId, {
   data: {
     name: "John Doe",
     age: 30,
   },
 });
 
-strapi.entityService.delete(uid, entityId);
-strapi.entityService.findOne(uid, entityId);
+metrix.entityService.delete(uid, entityId);
+metrix.entityService.findOne(uid, entityId);
 
 */
 
@@ -306,7 +306,7 @@ const transform: Transform = (file, api) => {
           type: 'MemberExpression',
           object: {
             type: 'Identifier',
-            name: 'strapi',
+            name: 'metrix',
           },
           property: {
             type: 'Identifier',
@@ -420,7 +420,7 @@ const transform: Transform = (file, api) => {
 
       return j.callExpression(
         j.memberExpression(
-          j.callExpression(j.memberExpression(j.identifier('strapi'), j.identifier('documents')), [
+          j.callExpression(j.memberExpression(j.identifier('metrix'), j.identifier('documents')), [
             docUID,
           ]),
           path.value.callee.property

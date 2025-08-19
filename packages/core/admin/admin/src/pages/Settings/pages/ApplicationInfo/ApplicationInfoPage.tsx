@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Grid, Link, Typography } from '@strapi/design-system';
-import { Check, ExternalLink } from '@strapi/icons';
+import { Box, Button, Flex, Grid, Link, Typography } from '@metrix/design-system';
+import { Check, ExternalLink } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 
@@ -156,14 +156,14 @@ const ApplicationInfoPage = () => {
                     <Typography variant="sigma" textColor="neutral600" tag="dt">
                       {formatMessage({
                         id: 'Settings.application.strapiVersion',
-                        defaultMessage: 'strapi version',
+                        defaultMessage: 'metrix version',
                       })}
                     </Typography>
                     <Flex gap={3} direction="column" alignItems="start" tag="dd">
                       <Typography>v{strapiVersion}</Typography>
                       {shouldUpdateStrapi && (
                         <Link
-                          href={`https://github.com/strapi/strapi/releases/tag/${latestStrapiReleaseTag}`}
+                          href={`https://github.com/metrix/metrix/releases/tag/${latestStrapiReleaseTag}`}
                           endIcon={<ExternalLink />}
                         >
                           {formatMessage({
@@ -192,7 +192,7 @@ const ApplicationInfoPage = () => {
                           { communityEdition }
                         )}
                       </Typography>
-                      <Link href="https://strapi.io/pricing-self-hosted" endIcon={<ExternalLink />}>
+                      <Link href="https://metrix.io/pricing-self-hosted" endIcon={<ExternalLink />}>
                         {formatMessage({
                           id: 'Settings.application.link-pricing',
                           defaultMessage: 'See all pricing plans',

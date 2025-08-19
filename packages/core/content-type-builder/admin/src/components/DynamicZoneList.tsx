@@ -1,7 +1,7 @@
 import { ComponentType, useState } from 'react';
 
-import { Box, Flex, Typography } from '@strapi/design-system';
-import { Plus } from '@strapi/icons';
+import { Box, Flex, Typography } from '@metrix/design-system';
+import { Plus } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 
@@ -12,7 +12,7 @@ import { ComponentList } from './ComponentList';
 import { ComponentRow } from './ComponentRow';
 import { useDataManager } from './DataManager/useDataManager';
 
-import type { Internal, Struct } from '@strapi/types';
+import type { Internal, Struct } from '@metrix/types';
 
 interface DynamicZoneListProps {
   addComponent: (name?: string) => void;

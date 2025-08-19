@@ -15,7 +15,7 @@ import {
   Layouts,
   useTable,
   tours,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import {
   Button,
   Flex,
@@ -23,9 +23,9 @@ import {
   ButtonProps,
   Box,
   EmptyStateLayout,
-} from '@strapi/design-system';
-import { Plus } from '@strapi/icons';
-import { EmptyDocuments } from '@strapi/icons/symbols';
+} from '@metrix/design-system';
+import { Plus } from '@metrix/icons';
+import { EmptyDocuments } from '@metrix/icons/symbols';
 import isEqual from 'lodash/isEqual';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
@@ -55,7 +55,7 @@ import { TableActions } from './components/TableActions';
 import { CellContent } from './components/TableCells/CellContent';
 import { ViewSettingsMenu } from './components/ViewSettingsMenu';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrix/types';
 
 const { INJECT_COLUMN_IN_TABLE } = HOOKS;
 

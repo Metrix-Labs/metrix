@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { Field, TextInput } from '@strapi/design-system';
+import { Field, TextInput } from '@metrix/design-system';
 import pluralize from 'pluralize';
 import { useIntl } from 'react-intl';
 

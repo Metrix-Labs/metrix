@@ -1,16 +1,16 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import { set, isString, map, get } from 'lodash/fp';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrix/utils';
 import { WORKFLOW_MODEL_UID, WORKFLOW_POPULATE } from '../constants/workflows';
 import { getService } from '../utils';
 import { getWorkflowContentTypeFilter } from '../utils/review-workflows';
 import workflowsContentTypesFactory from './workflow-content-types';
 
-const processFilters = ({ strapi }: { strapi: Core.Strapi }, filters: any = {}) => {
+const processFilters = ({ metrix }: { metrix: Core.Strapi }, filters: any = {}) => {
   const processedFilters = { ...filters };
 
   if (isString(filters.contentTypes)) {
-    processedFilters.contentTypes = getWorkflowContentTypeFilter({ strapi }, filters.contentTypes);
+    processedFilters.contentTypes = getWorkflowContentTypeFilter({ metrix }, filters.contentTypes);
   }
 
   return processedFilters;
@@ -26,10 +26,10 @@ const processPopulate = (populate: any) => {
   return populate;
 };
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
-  const workflowsContentTypes = workflowsContentTypesFactory({ strapi });
-  const workflowValidator = getService('validation', { strapi });
-  const metrics = getService('workflow-metrics', { strapi });
+export default ({ metrix }: { metrix: Core.Strapi }) => {
+  const workflowsContentTypes = workflowsContentTypesFactory({ metrix });
+  const workflowValidator = getService('validation', { metrix });
+  const metrics = getService('workflow-metrics', { metrix });
 
   return {
     /**
@@ -39,16 +39,16 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
      * @returns {Promise<object[]>} - List of workflows that match the user's filters.
      */
     async find(opts: any = {}) {
-      const filters = processFilters({ strapi }, opts.filters);
+      const filters = processFilters({ metrix }, opts.filters);
       const populate = processPopulate(opts.populate);
 
-      const query = strapi.get('query-params').transform(WORKFLOW_MODEL_UID, {
+      const query = metrix.get('query-params').transform(WORKFLOW_MODEL_UID, {
         ...opts,
         filters,
         populate,
       });
 
-      return strapi.db.query(WORKFLOW_MODEL_UID).findMany(query);
+      return metrix.db.query(WORKFLOW_MODEL_UID).findMany(query);
     },
 
     /**
@@ -60,9 +60,9 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     findById(id: any, opts: { populate?: any } = {}) {
       const populate = processPopulate(opts.populate);
 
-      const query = strapi.get('query-params').transform(WORKFLOW_MODEL_UID, { populate });
+      const query = metrix.get('query-params').transform(WORKFLOW_MODEL_UID, { populate });
 
-      return strapi.db.query(WORKFLOW_MODEL_UID).findOne({
+      return metrix.db.query(WORKFLOW_MODEL_UID).findOne({
         ...query,
         where: { id },
       });
@@ -80,9 +80,9 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       workflowValidator.validateWorkflowStages(opts.data.stages);
       await workflowValidator.validateWorkflowCount(1);
 
-      return strapi.db.transaction(async () => {
+      return metrix.db.transaction(async () => {
         // Create stages
-        const stages = await getService('stages', { strapi }).createMany(opts.data.stages);
+        const stages = await getService('stages', { metrix }).createMany(opts.data.stages);
         const mapIds = map(get('id'));
 
         createOpts = set('data.stages', mapIds(stages), createOpts);
@@ -107,14 +107,14 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
         }
 
         // Create Workflow
-        const createdWorkflow = await strapi.db
+        const createdWorkflow = await metrix.db
           .query(WORKFLOW_MODEL_UID)
-          .create(strapi.get('query-params').transform(WORKFLOW_MODEL_UID, createOpts));
+          .create(metrix.get('query-params').transform(WORKFLOW_MODEL_UID, createOpts));
 
         metrics.sendDidCreateWorkflow(createdWorkflow.id, !!opts.data.stageRequiredToPublishName);
 
         if (opts.data.stageRequiredToPublishName) {
-          await strapi
+          await metrix
             .plugin('content-releases')
             .service('release-action')
             .validateActionsByContentTypes(opts.data.contentTypes);
@@ -132,14 +132,14 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
      * @throws {ApplicationError} - If the supplied stage ID does not belong to the workflow.
      */
     async update(workflow: any, opts: any) {
-      const stageService = getService('stages', { strapi });
+      const stageService = getService('stages', { metrix });
       let updateOpts = { ...opts, populate: { ...WORKFLOW_POPULATE } };
       let updatedStages: any = [];
       let updatedStageIds: any;
 
       await workflowValidator.validateWorkflowCount();
 
-      return strapi.db.transaction(async () => {
+      return metrix.db.transaction(async () => {
         // Update stages
         if (opts.data.stages) {
           workflowValidator.validateWorkflowStages(opts.data.stages);
@@ -186,15 +186,15 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
 
         metrics.sendDidEditWorkflow(workflow.id, !!opts.data.stageRequiredToPublishName);
 
-        const query = strapi.get('query-params').transform(WORKFLOW_MODEL_UID, updateOpts);
+        const query = metrix.get('query-params').transform(WORKFLOW_MODEL_UID, updateOpts);
 
         // Update Workflow
-        const updatedWorkflow = await strapi.db.query(WORKFLOW_MODEL_UID).update({
+        const updatedWorkflow = await metrix.db.query(WORKFLOW_MODEL_UID).update({
           ...query,
           where: { id: workflow.id },
         });
 
-        await strapi
+        await metrix
           .plugin('content-releases')
           .service('release-action')
           .validateActionsByContentTypes([
@@ -214,7 +214,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
      * @returns
      */
     async delete(workflow: any, opts: any) {
-      const stageService = getService('stages', { strapi });
+      const stageService = getService('stages', { metrix });
 
       const workflowCount = await this.count();
 
@@ -222,7 +222,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
         throw new errors.ApplicationError('Can not delete the last workflow');
       }
 
-      return strapi.db.transaction(async () => {
+      return metrix.db.transaction(async () => {
         // Delete stages
         await stageService.deleteMany(workflow.stages);
 
@@ -232,15 +232,15 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
           destContentTypes: [],
         });
 
-        const query = strapi.get('query-params').transform(WORKFLOW_MODEL_UID, opts);
+        const query = metrix.get('query-params').transform(WORKFLOW_MODEL_UID, opts);
 
         // Delete Workflow
-        const deletedWorkflow = await strapi.db.query(WORKFLOW_MODEL_UID).delete({
+        const deletedWorkflow = await metrix.db.query(WORKFLOW_MODEL_UID).delete({
           ...query,
           where: { id: workflow.id },
         });
 
-        await strapi
+        await metrix
           .plugin('content-releases')
           .service('release-action')
           .validateActionsByContentTypes(workflow.contentTypes);
@@ -253,7 +253,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
      * @returns {Promise<number>} - Total count of workflows.
      */
     count() {
-      return strapi.db.query(WORKFLOW_MODEL_UID).count();
+      return metrix.db.query(WORKFLOW_MODEL_UID).count();
     },
 
     /**
@@ -279,7 +279,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     async _getAssignedWorkflows(uid: any, opts = {}) {
       return this.find({
         ...opts,
-        filters: { contentTypes: getWorkflowContentTypeFilter({ strapi }, uid) },
+        filters: { contentTypes: getWorkflowContentTypeFilter({ metrix }, uid) },
       });
     },
 

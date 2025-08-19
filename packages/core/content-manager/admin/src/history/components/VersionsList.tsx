@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useQueryParams } from '@strapi/admin/strapi-admin';
-import { Box, Flex, Typography } from '@strapi/design-system';
+import { useQueryParams } from '@metrix/admin/metrix-admin';
+import { Box, Flex, Typography } from '@metrix/design-system';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';

@@ -1,8 +1,8 @@
-import type { Schema, Modules, UID, Struct } from '@strapi/types';
+import type { Schema, Modules, UID, Struct } from '@metrix/types';
 import type { Release, Pagination } from './releases';
 import type { Entity } from '../types';
 
-import type { errors } from '@strapi/utils';
+import type { errors } from '@metrix/utils';
 
 type ReleaseActionEntryType = 'single-types' | 'collection-types';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/core",
+  "name": "@metrix/core",
   "version": "5.22.0",
   "description": "Core of Strapi",
   "homepage": "https://strapi.io",
@@ -56,14 +56,6 @@
     "@koa/cors": "5.0.0",
     "@koa/router": "12.0.2",
     "@paralleldrive/cuid2": "2.2.2",
-    "@strapi/admin": "5.22.0",
-    "@strapi/database": "5.22.0",
-    "@strapi/generators": "5.22.0",
-    "@strapi/logger": "5.22.0",
-    "@strapi/permissions": "5.22.0",
-    "@strapi/types": "5.22.0",
-    "@strapi/typescript-utils": "5.22.0",
-    "@strapi/utils": "5.22.0",
     "bcryptjs": "2.4.3",
     "boxen": "5.1.2",
     "chalk": "4.1.2",
@@ -106,10 +98,17 @@
     "typescript": "5.4.4",
     "undici": "6.21.2",
     "yup": "0.32.9",
-    "zod": "3.25.67"
+    "zod": "3.25.67",
+    "@metrix/admin": "5.22.0",
+    "@metrix/database": "5.22.0",
+    "@metrix/generators": "5.22.0",
+    "@metrix/logger": "5.22.0",
+    "@metrix/permissions": "5.22.0",
+    "@metrix/types": "5.22.0",
+    "@metrix/typescript-utils": "5.22.0",
+    "@metrix/utils": "5.22.0"
   },
   "devDependencies": {
-    "@strapi/ts-zen": "^0.2.0",
     "@swc/core": "1.9.3",
     "@types/bcryptjs": "2.4.3",
     "@types/configstore": "5.0.1",
@@ -131,7 +130,8 @@
     "@types/statuses": "2.0.1",
     "eslint-config-custom": "5.22.0",
     "supertest": "6.3.3",
-    "tsconfig": "5.22.0"
+    "tsconfig": "5.22.0",
+    "@metrix/ts-zen": "^0.2.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

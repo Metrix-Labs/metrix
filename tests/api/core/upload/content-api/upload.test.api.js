@@ -5,12 +5,12 @@ const path = require('path');
 
 // Helpers.
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createContentAPIRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
 const data = { dogs: [] };
-let strapi;
+let metrix;
 let rq;
 
 const dogModel = {
@@ -68,12 +68,12 @@ describe('Upload plugin', () => {
       .addComponent(todoComponent)
       .addContentType(todoListModel)
       .build();
-    strapi = await createStrapiInstance();
-    rq = createContentAPIRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = createContentAPIRequest({ metrix });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -178,7 +178,7 @@ describe('Upload plugin', () => {
         },
       });
 
-      const dogEntity = await strapi.db.query('api::dog.dog').create({
+      const dogEntity = await metrix.db.query('api::dog.dog').create({
         data: {
           profilePicture: res.body[0].id,
         },
@@ -200,8 +200,8 @@ describe('Upload plugin', () => {
         })
       );
 
-      await strapi.db.query('api::dog.dog').delete({ where: { id: dogEntity.id } });
-      await strapi.db
+      await metrix.db.query('api::dog.dog').delete({ where: { id: dogEntity.id } });
+      await metrix.db
         .query('plugin::upload.file')
         .delete({ where: { id: dogEntity.profilePicture.id } });
     });
@@ -214,7 +214,7 @@ describe('Upload plugin', () => {
     beforeAll(async () => {
       await Promise.all(
         data.dogs.map((dog) => {
-          return strapi.entityService.delete('api::dog.dog', dog.data.id);
+          return metrix.entityService.delete('api::dog.dog', dog.data.id);
         })
       );
 

@@ -9,8 +9,8 @@ import {
   MultiSelectProps,
   Popover,
   Flex,
-} from '@strapi/design-system';
-import { Cross, Filter } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Cross, Filter } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import type { Categories, Collections, FilterTypes } from '../hooks/useMarketplaceData';

@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import { createIdMap } from '../id-map';
 
 const ARTICLE_UID = 'api::article.article';
@@ -23,7 +23,7 @@ describe('Extract document ids from relation data', () => {
   } as Record<string, jest.Mock>;
 
   beforeAll(() => {
-    global.strapi = {
+    global.metrix = {
       db: {
         query: jest.fn((uid) => ({ findMany: findManyQueries[uid] })),
       },
@@ -34,7 +34,7 @@ describe('Extract document ids from relation data', () => {
   });
 
   it('Load single document id', async () => {
-    const idMap = createIdMap({ strapi: global.strapi });
+    const idMap = createIdMap({ metrix: global.metrix });
 
     const documentId = 'Article1';
     const locale = 'en';
@@ -52,7 +52,7 @@ describe('Extract document ids from relation data', () => {
   });
 
   it('Load with no locale', async () => {
-    const idMap = createIdMap({ strapi: global.strapi });
+    const idMap = createIdMap({ metrix: global.metrix });
 
     const documentId = 'Article1';
     const keyFields = { uid: ARTICLE_UID, documentId, status: 'draft', locale: null } as const;
@@ -67,7 +67,7 @@ describe('Extract document ids from relation data', () => {
   });
 
   it('Load multiple document ids from different UIDs', async () => {
-    const idMap = createIdMap({ strapi: global.strapi });
+    const idMap = createIdMap({ metrix: global.metrix });
 
     const articleDocumentId = 'Article1';
     const categoryDocumentId = 'Category1';
@@ -96,7 +96,7 @@ describe('Extract document ids from relation data', () => {
   });
 
   it('Load different locales of the same document id', async () => {
-    const idMap = createIdMap({ strapi: global.strapi });
+    const idMap = createIdMap({ metrix: global.metrix });
 
     const documentId = 'Article1';
     const enLocale = 'en';

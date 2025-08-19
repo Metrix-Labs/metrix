@@ -10,8 +10,8 @@ import webhookEvents from './constants/webhook-events';
  */
 
 async function initDefaultWorkflow() {
-  const workflowsService = getService('workflows', { strapi });
-  const stagesService = getService('stages', { strapi });
+  const workflowsService = getService('workflows', { metrix });
+  const stagesService = getService('stages', { metrix });
 
   const wfCount = await workflowsService.count();
   const stagesCount = await stagesService.count();
@@ -35,7 +35,7 @@ async function initDefaultWorkflow() {
  */
 const registerWebhookEvents = async () =>
   Object.entries(webhookEvents).forEach(([eventKey, event]) =>
-    strapi.get('webhookStore').addAllowedEvent(eventKey, event)
+    metrix.get('webhookStore').addAllowedEvent(eventKey, event)
   );
 
 export default async (args: any) => {
@@ -52,7 +52,7 @@ export default async (args: any) => {
 
   // Document service middleware
   const docsMiddlewares = getService('document-service-middlewares');
-  strapi.documents.use(docsMiddlewares.assignStageOnCreate);
-  strapi.documents.use(docsMiddlewares.handleStageOnUpdate);
-  strapi.documents.use(docsMiddlewares.checkStageBeforePublish);
+  metrix.documents.use(docsMiddlewares.assignStageOnCreate);
+  metrix.documents.use(docsMiddlewares.handleStageOnUpdate);
+  metrix.documents.use(docsMiddlewares.checkStageBeforePublish);
 };

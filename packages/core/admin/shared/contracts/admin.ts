@@ -1,5 +1,5 @@
-import { Data } from '@strapi/types';
-import { errors } from '@strapi/utils';
+import { Data } from '@metrix/types';
+import { errors } from '@metrix/utils';
 import type { File } from 'formidable';
 import type { GuidedTourCompletedActions } from '../../server/src/services/guided-tour';
 

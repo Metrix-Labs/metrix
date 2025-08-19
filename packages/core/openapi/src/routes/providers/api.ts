@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import { createDebugger } from '../../utils';
 
 import { AbstractRoutesProvider } from './abstract';

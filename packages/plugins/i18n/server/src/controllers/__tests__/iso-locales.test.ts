@@ -4,7 +4,7 @@ describe('ISO locales', () => {
   test('listIsoLocales', () => {
     const isoLocales = [{ code: 'af', name: 'Afrikaans (af)' }];
     const getIsoLocales = jest.fn(() => isoLocales);
-    global.strapi = {
+    global.metrix = {
       plugins: {
         i18n: {
           services: {

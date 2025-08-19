@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 import type { Timer } from '../utils';
 
@@ -21,14 +21,14 @@ export interface ContextOutput<T> {
 
 export interface Context<T = unknown> {
   routes: Core.Route[];
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
   timer: Timer;
   registries: ContextRegistries;
   output: ContextOutput<T>;
 }
 
 export type PartialContext<T> = Partial<Pick<Context<T>, 'timer' | 'registries'>> &
-  Required<Pick<Context<T>, 'strapi' | 'routes'>>;
+  Required<Pick<Context<T>, 'metrix' | 'routes'>>;
 
 export interface ContextFactory<T> {
   create(context: PartialContext<T>, defaultValue: T): Context<T>;

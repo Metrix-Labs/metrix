@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/plugin-cloud",
+  "name": "@metrix/plugin-cloud",
   "version": "5.22.0",
   "description": "Instructions to deploy your local project to Strapi Cloud",
   "license": "MIT",
@@ -34,34 +34,34 @@
     "build:types": "run -T run-p build:types:admin",
     "build:types:admin": "run -T tsc -p admin/tsconfig.build.json --emitDeclarationOnly",
     "clean": "run -T rimraf ./dist",
-    "develop": "strapi-plugin watch",
+    "develop": "metrix-plugin watch",
     "lint": "run -T eslint .",
     "test:ts:front": "run -T tsc -p admin/tsconfig.json",
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
-    "@strapi/design-system": "2.0.0-rc.29",
-    "@strapi/icons": "2.0.0-rc.29",
-    "react-intl": "6.6.2"
+    "react-intl": "6.6.2",
+    "@metrix/design-system": "2.0.0-rc.29",
+    "@metrix/icons": "2.0.0-rc.29"
   },
   "devDependencies": {
-    "@strapi/admin": "5.22.0",
-    "@strapi/strapi": "5.22.0",
     "eslint-config-custom": "5.22.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.22.3",
     "styled-components": "6.1.8",
     "tsconfig": "5.22.0",
-    "typescript": "5.4.4"
+    "typescript": "5.4.4",
+    "@metrix/admin": "5.22.0",
+    "@metrix/metrix": "5.22.0"
   },
   "peerDependencies": {
-    "@strapi/admin": "^5.0.0",
-    "@strapi/strapi": "^5.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "@metrix/admin": "^5.0.0",
+    "@metrix/metrix": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

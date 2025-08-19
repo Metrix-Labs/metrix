@@ -6,19 +6,19 @@ const path = require('path');
 const authStrategy = require('./strategies/users-permissions');
 const sanitizers = require('./utils/sanitize/sanitizers');
 
-module.exports = ({ strapi }) => {
-  strapi.get('auth').register('content-api', authStrategy);
-  strapi.sanitizers.add('content-api.output', sanitizers.defaultSanitizeOutput);
+module.exports = ({ metrix }) => {
+  metrix.get('auth').register('content-api', authStrategy);
+  metrix.sanitizers.add('content-api.output', sanitizers.defaultSanitizeOutput);
 
-  if (strapi.plugin('graphql')) {
-    require('./graphql')({ strapi });
+  if (metrix.plugin('graphql')) {
+    require('./graphql')({ metrix });
   }
 
-  if (strapi.plugin('documentation')) {
+  if (metrix.plugin('documentation')) {
     const specPath = path.join(__dirname, '../../documentation/content-api.yaml');
     const spec = fs.readFileSync(specPath, 'utf8');
 
-    strapi
+    metrix
       .plugin('documentation')
       .service('override')
       .registerOverride(spec, {

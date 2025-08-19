@@ -1,5 +1,5 @@
-import { Box, Main, Flex, Typography, Grid, LinkButton } from '@strapi/design-system';
-import { ExternalLink, Check, ClockCounterClockwise } from '@strapi/icons';
+import { Box, Main, Flex, Typography, Grid, LinkButton } from '@metrix/design-system';
+import { ExternalLink, Check, ClockCounterClockwise } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { Layouts } from '../../../components/Layouts/Layout';
@@ -94,7 +94,7 @@ const PurchaseContentHistory = () => {
                 <Flex gap={2} marginTop={7}>
                   <LinkButton
                     variant="default"
-                    href="https://strapi.io/pricing-self-hosted?utm_campaign=In-Product-CTA&utm_source=Content-History"
+                    href="https://metrix.io/pricing-self-hosted?utm_campaign=In-Product-CTA&utm_source=Content-History"
                   >
                     {formatMessage({
                       id: 'Settings.page.purchase.upgrade.cta',
@@ -104,7 +104,7 @@ const PurchaseContentHistory = () => {
                   <LinkButton
                     variant="tertiary"
                     endIcon={<ExternalLink />}
-                    href="https://strapi.io/features/content-history?utm_campaign=In-Product-CTA&utm_source=Content-History"
+                    href="https://metrix.io/features/content-history?utm_campaign=In-Product-CTA&utm_source=Content-History"
                   >
                     {formatMessage({
                       id: 'Settings.page.purchase.learn-more.cta',

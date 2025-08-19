@@ -2,7 +2,7 @@ import { isNil, get } from 'lodash/fp';
 import { getService } from '../utils';
 import { FOLDER_MODEL_UID, API_UPLOAD_FOLDER_BASE_NAME } from '../constants';
 
-const getStore = () => strapi.store({ type: 'plugin', name: 'upload', key: 'api-folder' });
+const getStore = () => metrix.store({ type: 'plugin', name: 'upload', key: 'api-folder' });
 
 const createApiUploadFolder = async () => {
   let name = API_UPLOAD_FOLDER_BASE_NAME;
@@ -30,7 +30,7 @@ const getAPIUploadFolder = async () => {
   const folderId = get('id', storeValue);
 
   const folder = folderId
-    ? await strapi.db.query(FOLDER_MODEL_UID).findOne({ where: { id: folderId } })
+    ? await metrix.db.query(FOLDER_MODEL_UID).findOne({ where: { id: folderId } })
     : null;
 
   return isNil(folder) ? createApiUploadFolder() : folder;

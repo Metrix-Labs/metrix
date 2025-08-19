@@ -1,6 +1,6 @@
 import { nameToSlug } from '../../../utils/nameToSlug';
 
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrix/types';
 
 const createUid = (name: string): Internal.UID.ContentType => {
   const modelName = nameToSlug(name);

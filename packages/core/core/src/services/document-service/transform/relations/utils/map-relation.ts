@@ -1,7 +1,7 @@
 /* eslint-disable node/no-callback-literal */
 import { isObject, curry, isNil } from 'lodash/fp';
 
-import { traverseEntity, async } from '@strapi/utils';
+import { traverseEntity, async } from '@metrix/utils';
 
 import { Relation } from './types';
 

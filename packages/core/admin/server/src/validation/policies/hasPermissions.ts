@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrix/utils';
 
 const hasPermissionsSchema = yup.object({
   actions: yup.array().of(

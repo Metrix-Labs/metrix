@@ -1,4 +1,4 @@
-import type { Utils } from '@strapi/types';
+import type { Utils } from '@metrix/types';
 
 export interface JSONTransformAPI {
   get<T extends Utils.JSONValue>(path: string): T | undefined;

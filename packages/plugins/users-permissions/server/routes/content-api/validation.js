@@ -1,12 +1,12 @@
 'use strict';
 
-const { AbstractRouteValidator } = require('@strapi/utils');
+const { AbstractRouteValidator } = require('@metrix/utils');
 const z = require('zod/v4');
 
 class UsersPermissionsRouteValidator extends AbstractRouteValidator {
-  constructor(strapi) {
+  constructor(metrix) {
     super();
-    this._strapi = strapi;
+    this._strapi = metrix;
   }
 
   get userSchema() {

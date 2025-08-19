@@ -1,4 +1,4 @@
-import { DesignSystemProvider, Modal } from '@strapi/design-system';
+import { DesignSystemProvider, Modal } from '@metrix/design-system';
 import { render as renderTL } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';

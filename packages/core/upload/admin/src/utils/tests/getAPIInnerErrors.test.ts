@@ -1,4 +1,4 @@
-import { FetchError } from '@strapi/admin/strapi-admin';
+import { FetchError } from '@metrix/admin/metrix-admin';
 
 import { getAPIInnerErrors } from '../getAPIInnerErrors';
 

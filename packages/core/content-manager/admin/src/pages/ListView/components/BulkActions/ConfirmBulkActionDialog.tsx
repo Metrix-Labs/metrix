@@ -5,9 +5,9 @@ import {
   useNotification,
   useAPIErrorHandler,
   useQueryParams,
-} from '@strapi/admin/strapi-admin';
-import { Button, Flex, Dialog, Typography } from '@strapi/design-system';
-import { Check, WarningCircle } from '@strapi/icons';
+} from '@metrix/admin/metrix-admin';
+import { Button, Flex, Dialog, Typography } from '@metrix/design-system';
+import { Check, WarningCircle } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { useDoc } from '../../../../hooks/useDocument';

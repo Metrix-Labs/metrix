@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Flex, Grid, Main, Typography } from '@strapi/design-system';
-import { PuzzlePiece } from '@strapi/icons';
+import { Box, Flex, Grid, Main, Typography } from '@metrix/design-system';
+import { PuzzlePiece } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ import { FreeTrialEndedModal } from './components/FreeTrialEndedModal';
 import { FreeTrialWelcomeModal } from './components/FreeTrialWelcomeModal';
 
 import type { WidgetWithUID } from '../../core/apis/Widgets';
-import type { WidgetType } from '@strapi/admin/strapi-admin';
+import type { WidgetType } from '@metrix/admin/metrix-admin';
 
 /* -------------------------------------------------------------------------------------------------
  * WidgetRoot

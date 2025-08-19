@@ -45,7 +45,7 @@ describe('useAdminRoles', () => {
 
     expect(result.current.roles).toStrictEqual([
       expect.objectContaining({
-        code: 'strapi-editor',
+        code: 'metrix-editor',
         id: 1,
         params: {
           filters: 'param',

@@ -11,7 +11,7 @@ import {
   CardTitle,
   Flex,
   Typography,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 
@@ -135,7 +135,7 @@ export const UploadingAssetCard = ({
               ? {
                   id: getTrad(`apiError.${error.message}`),
                   defaultMessage: error.message,
-                  /* See issue: https://github.com/strapi/strapi/issues/13867
+                  /* See issue: https://github.com/metrix/metrix/issues/13867
              A proxy might return an error, before the request reaches Strapi
              and therefore we need to handle errors gracefully.
           */

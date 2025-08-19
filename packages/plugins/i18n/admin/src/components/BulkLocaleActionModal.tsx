@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { FormErrors, Table, useTable } from '@strapi/admin/strapi-admin';
-import { Box, Typography, IconButton, Flex, Tooltip, Status, Modal } from '@strapi/design-system';
-import { Pencil, CheckCircle, CrossCircle, ArrowsCounterClockwise } from '@strapi/icons';
+import { FormErrors, Table, useTable } from '@metrix/admin/metrix-admin';
+import { Box, Typography, IconButton, Flex, Tooltip, Status, Modal } from '@metrix/design-system';
+import { Pencil, CheckCircle, CrossCircle, ArrowsCounterClockwise } from '@metrix/icons';
 import { stringify } from 'qs';
 import { type MessageDescriptor, useIntl, PrimitiveType } from 'react-intl';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ import { capitalize } from '../utils/strings';
 
 import { LocaleStatus } from './CMHeaderActions';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrix/types';
 
 type Status = Modules.Documents.Params.PublicationStatus.Kind | 'modified';
 

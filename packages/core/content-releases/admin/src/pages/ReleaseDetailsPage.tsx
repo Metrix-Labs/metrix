@@ -14,7 +14,7 @@ import {
   isFetchError,
   useStrapiApp,
   Layouts,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import {
   Button,
   Flex,
@@ -30,9 +30,9 @@ import {
   Dialog,
   SimpleMenu,
   Menu,
-} from '@strapi/design-system';
-import { More, Pencil, Trash } from '@strapi/icons';
-import { EmptyDocuments } from '@strapi/icons/symbols';
+} from '@metrix/design-system';
+import { More, Pencil, Trash } from '@metrix/icons';
+import { EmptyDocuments } from '@metrix/icons/symbols';
 import format from 'date-fns/format';
 import { utcToZonedTime } from 'date-fns-tz';
 import { useIntl } from 'react-intl';

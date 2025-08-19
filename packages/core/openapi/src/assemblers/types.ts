@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 import type { DocumentContext, OperationContext, PathContext, PathItemContext } from '../types';
 

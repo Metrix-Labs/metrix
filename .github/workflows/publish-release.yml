@@ -25,7 +25,7 @@ jobs:
   publish:
     name: 'Publish'
     runs-on: ubuntu-latest
-    if: github.repository == 'strapi/strapi'
+    if: github.repository == 'metrix/metrix'
     steps:
       - uses: actions/create-github-app-token@v1
         id: app-token

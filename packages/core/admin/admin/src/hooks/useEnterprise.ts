@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { useCallbackRef } from '@strapi/design-system';
+import { useCallbackRef } from '@metrix/design-system';
 
 function isEnterprise() {
-  return window.strapi.isEE;
+  return window.metrix.isEE;
 }
 
 export interface UseEnterpriseOptions<TCEData, TEEData, TDefaultValue, TCombinedValue> {

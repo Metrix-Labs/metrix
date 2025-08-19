@@ -8,12 +8,12 @@ jest.mock('fs-extra', () => ({
 }));
 
 describe('Strapi fs utils', () => {
-  const strapi = {
+  const metrix = {
     dirs: { dist: { root: '/tmp' }, app: { root: '/tmp' } },
   };
 
   test('Provides new functions', () => {
-    const strapiFS = fs(strapi);
+    const strapiFS = fs(metrix);
 
     expect(strapiFS.writeAppFile).toBeInstanceOf(Function);
     expect(strapiFS.writePluginFile).toBeInstanceOf(Function);
@@ -21,7 +21,7 @@ describe('Strapi fs utils', () => {
 
   describe('Write App File', () => {
     test('Makes sure the path exists and writes', async () => {
-      const strapiFS = fs(strapi);
+      const strapiFS = fs(metrix);
 
       const content = '';
 
@@ -32,7 +32,7 @@ describe('Strapi fs utils', () => {
     });
 
     test('Normalize the path to avoid relative access to folders in parent directories', async () => {
-      const strapiFS = fs(strapi);
+      const strapiFS = fs(metrix);
 
       const content = '';
 
@@ -43,7 +43,7 @@ describe('Strapi fs utils', () => {
     });
 
     test('Works with array path', async () => {
-      const strapiFS = fs(strapi);
+      const strapiFS = fs(metrix);
 
       const content = '';
 
@@ -59,7 +59,7 @@ describe('Strapi fs utils', () => {
 
   describe('Write Plugin File', () => {
     test('Scopes the writes in the extensions folder', async () => {
-      const strapiFS = fs(strapi);
+      const strapiFS = fs(metrix);
 
       const content = '';
 

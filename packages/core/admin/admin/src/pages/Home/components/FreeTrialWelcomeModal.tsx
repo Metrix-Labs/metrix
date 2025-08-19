@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Box, Button, Flex, Modal, Typography } from '@strapi/design-system';
-import { Cross } from '@strapi/icons';
+import { Box, Button, Flex, Modal, Typography } from '@metrix/design-system';
+import { Cross } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import styled from 'styled-components';
 

@@ -4,6 +4,6 @@
  * shop controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const { createCoreController } = require('@metrix/metrix').factories;
 
 module.exports = createCoreController('api::shop.shop');

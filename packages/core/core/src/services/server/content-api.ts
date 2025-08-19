@@ -1,13 +1,13 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import { createAPI } from './api';
 
-const createContentAPI = (strapi: Core.Strapi) => {
+const createContentAPI = (metrix: Core.Strapi) => {
   const opts = {
-    prefix: strapi.config.get('api.rest.prefix', '/api'),
+    prefix: metrix.config.get('api.rest.prefix', '/api'),
     type: 'content-api',
   };
 
-  return createAPI(strapi, opts);
+  return createAPI(metrix, opts);
 };
 
 export { createContentAPI };

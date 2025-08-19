@@ -1,4 +1,4 @@
-import { translatedErrors } from '@strapi/strapi/admin';
+import { translatedErrors } from '@metrix/metrix/admin';
 import * as yup from 'yup';
 
 // eslint-disable-next-line prefer-regex-literals

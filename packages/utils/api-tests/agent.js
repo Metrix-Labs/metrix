@@ -5,13 +5,13 @@ const qs = require('qs');
 const request = require('supertest');
 const { createUtils } = require('./utils');
 
-const createAgent = (strapi, initialState = {}) => {
+const createAgent = (metrix, initialState = {}) => {
   const state = clone(initialState);
-  const utils = createUtils(strapi);
+  const utils = createUtils(metrix);
 
   const agent = (options) => {
     const { method, url, body, formData, qs: queryString, headers } = options;
-    const supertestAgent = request.agent(strapi.server.httpServer);
+    const supertestAgent = request.agent(metrix.server.httpServer);
 
     if (has('token', state)) {
       supertestAgent.auth(state.token, { type: 'bearer' });

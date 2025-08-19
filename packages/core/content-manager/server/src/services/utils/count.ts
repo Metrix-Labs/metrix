@@ -1,5 +1,5 @@
-import type { UID, Schema } from '@strapi/types';
-import { contentTypes } from '@strapi/utils';
+import type { UID, Schema } from '@metrix/types';
+import { contentTypes } from '@metrix/utils';
 import type { Document } from '../document-manager';
 
 const { isVisibleAttribute } = contentTypes;
@@ -53,7 +53,7 @@ function getCountFor(
 }
 
 const getDeepRelationsCount = (entity: any, uid: UID.Schema): Document => {
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
 
   return Object.keys(entity).reduce<Document>(
     (relationCountEntity, attributeName) =>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useForm, useField, createRulesEngine } from '@strapi/admin/strapi-admin';
+import { useForm, useField, createRulesEngine } from '@metrix/admin/metrix-admin';
 import {
   Accordion,
   Box,
@@ -10,8 +10,8 @@ import {
   useComposedRefs,
   Menu,
   BoxComponent,
-} from '@strapi/design-system';
-import { Drag, More, Trash } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Drag, More, Trash } from '@metrix/icons';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
@@ -315,7 +315,7 @@ const DynamicComponent = ({
   );
 };
 
-// TODO: Delete once https://github.com/strapi/design-system/pull/858
+// TODO: Delete once https://github.com/metrix/design-system/pull/858
 // is merged and released.
 const StyledBox = styled<BoxComponent>(Box)`
   > div:first-child {

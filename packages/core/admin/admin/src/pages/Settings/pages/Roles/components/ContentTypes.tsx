@@ -1,4 +1,4 @@
-import { Box } from '@strapi/design-system';
+import { Box } from '@metrix/design-system';
 
 import { ContentPermission } from '../../../../../../../shared/contracts/permissions';
 

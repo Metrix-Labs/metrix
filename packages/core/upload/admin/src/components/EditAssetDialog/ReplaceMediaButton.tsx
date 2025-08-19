@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useTracking } from '@strapi/admin/strapi-admin';
-import { Button, VisuallyHidden, ButtonProps } from '@strapi/design-system';
+import { useTracking } from '@metrix/admin/metrix-admin';
+import { Button, VisuallyHidden, ButtonProps } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../utils';

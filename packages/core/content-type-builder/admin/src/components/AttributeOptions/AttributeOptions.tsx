@@ -4,7 +4,7 @@
  *
  */
 
-import { Divider, Flex, Modal, Tabs, Typography } from '@strapi/design-system';
+import { Divider, Flex, Modal, Tabs, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../utils';

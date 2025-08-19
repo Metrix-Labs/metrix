@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box } from '@strapi/design-system';
+import { Box } from '@metrix/design-system';
 import { DragLayerMonitor, XYCoord, useDragLayer } from 'react-dnd';
 
 function getStyle(

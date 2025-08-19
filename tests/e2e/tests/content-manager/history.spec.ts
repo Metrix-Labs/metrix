@@ -4,7 +4,7 @@ import { resetFiles } from '../../utils/file-reset';
 import { waitForRestart } from '../../utils/restart';
 import { sharedSetup } from '../../utils/setup';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const AUTHOR_CREATE_URL =
   /\/admin\/content-manager\/collection-types\/api::author.author\/create(\?.*)?/;

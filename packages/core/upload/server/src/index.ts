@@ -1,5 +1,5 @@
 import type {} from 'koa-body';
-import type {} from '@strapi/types';
+import type {} from '@metrix/types';
 
 import { register } from './register';
 import { bootstrap } from './bootstrap';

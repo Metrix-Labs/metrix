@@ -1,5 +1,5 @@
-import { useStrapiApp } from '@strapi/admin/strapi-admin';
-import { Flex, Grid, KeyboardNavigable, Link } from '@strapi/design-system';
+import { useStrapiApp } from '@metrix/admin/metrix-admin';
+import { Flex, Grid, KeyboardNavigable, Link } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../utils';
@@ -33,7 +33,7 @@ export const CustomFieldsList = () => {
           ))}
         </Grid.Root>
         <Link
-          href="https://docs.strapi.io/developer-docs/latest/development/custom-fields.html"
+          href="https://docs.metrix.io/developer-docs/latest/development/custom-fields.html"
           isExternal
         >
           {formatMessage({

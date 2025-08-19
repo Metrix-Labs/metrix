@@ -9,7 +9,7 @@ import depthLimit from 'graphql-depth-limit';
 import bodyParser from 'koa-bodyparser';
 import cors from '@koa/cors';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import type { BaseContext, DefaultContextExtends, DefaultStateExtends } from 'koa';
 
 import { formatGraphqlError } from './format-graphql-error';
@@ -25,10 +25,10 @@ type StrapiGraphQLContext = BaseContext & {
 };
 
 export const determineLandingPage = (
-  strapi: Core.Strapi
+  metrix: Core.Strapi
 ): ApolloServerPlugin<StrapiGraphQLContext> => {
-  const { config } = strapi.plugin('graphql');
-  const utils = strapi.plugin('graphql').service('utils');
+  const { config } = metrix.plugin('graphql');
+  const utils = metrix.plugin('graphql').service('utils');
 
   /**
    * configLanding page may be one of the following:
@@ -43,39 +43,39 @@ export const determineLandingPage = (
   const isProduction = process.env.NODE_ENV === 'production';
 
   const localLanding = () => {
-    strapi.log.debug('Apollo landing page: local');
+    metrix.log.debug('Apollo landing page: local');
     utils.playground.setEnabled(true);
     return ApolloServerPluginLandingPageLocalDefault();
   };
 
   const prodLanding = () => {
-    strapi.log.debug('Apollo landing page: production');
+    metrix.log.debug('Apollo landing page: production');
     utils.playground.setEnabled(false);
     return ApolloServerPluginLandingPageProductionDefault();
   };
 
-  const userLanding = (userFunction: (strapi?: Core.Strapi) => ApolloServerPlugin | boolean) => {
-    strapi.log.debug('Apollo landing page: from user-defined function...');
-    const result = userFunction(strapi);
+  const userLanding = (userFunction: (metrix?: Core.Strapi) => ApolloServerPlugin | boolean) => {
+    metrix.log.debug('Apollo landing page: from user-defined function...');
+    const result = userFunction(metrix);
     if (result === true) {
       return localLanding();
     }
     if (result === false) {
       return prodLanding();
     }
-    strapi.log.debug('Apollo landing page: user-defined');
+    metrix.log.debug('Apollo landing page: user-defined');
     return result;
   };
 
   // DEPRECATED, remove in Strapi v6
   const playgroundAlways = config('playgroundAlways');
   if (playgroundAlways !== undefined) {
-    strapi.log.warn(
+    metrix.log.warn(
       'The graphql config playgroundAlways is deprecated. This will be removed in Strapi 6. Please use landingPage instead. '
     );
   }
   if (playgroundAlways === false) {
-    strapi.log.warn(
+    metrix.log.warn(
       'graphql config playgroundAlways:false has no effect, please use landingPage:false to disable Graphql Playground in all environments'
     );
   }
@@ -100,27 +100,27 @@ export const determineLandingPage = (
   }
 
   // If no other setting could be found, default to production settings
-  strapi.log.warn(
+  metrix.log.warn(
     'Your Graphql landing page has been disabled because there is a problem with your Graphql settings'
   );
   return prodLanding();
 };
 
-export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
+export async function bootstrap({ metrix }: { metrix: Core.Strapi }) {
   // Generate the GraphQL schema for the content API
-  const schema = strapi.plugin('graphql').service('content-api').buildSchema();
+  const schema = metrix.plugin('graphql').service('content-api').buildSchema();
 
   if (isEmpty(schema)) {
-    strapi.log.warn('The GraphQL schema has not been generated because it is empty');
+    metrix.log.warn('The GraphQL schema has not been generated because it is empty');
 
     return;
   }
 
-  const { config } = strapi.plugin('graphql');
+  const { config } = metrix.plugin('graphql');
 
   const path: string = config('endpoint');
 
-  const landingPage = determineLandingPage(strapi);
+  const landingPage = determineLandingPage(metrix);
   /**
    * We need the arguments passed to the root query to be available in the association resolver
    * so we can forward those arguments along to any relations.
@@ -128,7 +128,7 @@ export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
    * In order to do that we are currently storing the arguments in context.
    * There is likely a better solution, but for now this is the simplest fix we could find.
    *
-   * @see https://github.com/strapi/strapi/issues/23524
+   * @see https://github.com/metrix/metrix/issues/23524
    */
   const pluginAddRootQueryArgs: ApolloServerPlugin<StrapiGraphQLContext> = {
     async requestDidStart() {
@@ -187,7 +187,7 @@ export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
     await server.start();
   } catch (error) {
     if (error instanceof Error) {
-      strapi.log.error('Failed to start the Apollo server', error.message);
+      metrix.log.error('Failed to start the Apollo server', error.message);
     }
 
     throw error;
@@ -207,7 +207,7 @@ export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
   } else if (serverConfig.bodyParserConfig) {
     handler.push(bodyParser());
   } else {
-    strapi.log.debug('Body parser has been disabled for Apollo server');
+    metrix.log.debug('Body parser has been disabled for Apollo server');
   }
 
   // add the Strapi auth middleware
@@ -222,7 +222,7 @@ export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
     const isPlaygroundRequest =
       ctx.request.method === 'GET' &&
       ctx.request.url === path && // Matches the GraphQL endpoint
-      strapi.plugin('graphql').service('utils').playground.isEnabled() && // Only allow if the Playground is enabled
+      metrix.plugin('graphql').service('utils').playground.isEnabled() && // Only allow if the Playground is enabled
       ctx.request.header.accept?.includes('text/html'); // Specific to Playground UI loading
 
     // Skip authentication for the GraphQL Playground UI
@@ -230,7 +230,7 @@ export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
       return next();
     }
 
-    return strapi.auth.authenticate(ctx, next);
+    return metrix.auth.authenticate(ctx, next);
   });
 
   // add the graphql server for koa
@@ -245,7 +245,7 @@ export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
   );
 
   // now that handlers are set up, add the graphql route to our apollo server
-  strapi.server.routes([
+  metrix.server.routes([
     {
       method: 'ALL',
       path,
@@ -257,9 +257,9 @@ export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
   ]);
 
   // Register destroy behavior
-  // We're doing it here instead of exposing a destroy method to the strapi-server.js
+  // We're doing it here instead of exposing a destroy method to the metrix-server.js
   // file since we need to have access to the ApolloServer instance
-  strapi.plugin('graphql').destroy = async () => {
+  metrix.plugin('graphql').destroy = async () => {
     await server.stop();
   };
 }

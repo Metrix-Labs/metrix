@@ -1,5 +1,5 @@
-import { Tag } from '@strapi/design-system';
-import { Cross } from '@strapi/icons';
+import { Tag } from '@metrix/design-system';
+import { Cross } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import type { FilterStructure } from './FilterList';

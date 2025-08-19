@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Button, ButtonProps } from '@strapi/design-system';
-import { Mail } from '@strapi/icons';
+import { Button, ButtonProps } from '@metrix/design-system';
+import { Mail } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 interface CreateActionCEProps extends Pick<ButtonProps, 'onClick'> {}

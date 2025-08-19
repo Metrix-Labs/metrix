@@ -1,10 +1,10 @@
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
+import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
 import { render, screen } from '@tests/utils';
 
 import { useGetLicenseTrialTimeLeftQuery } from '../../../src/services/admin';
 import { UpsellBanner } from '../UpsellBanner';
 
-jest.mock('@strapi/admin/strapi-admin/ee', () => ({
+jest.mock('@metrix/admin/metrix-admin/ee', () => ({
   useLicenseLimits: jest.fn(() => ({
     license: {
       isTrial: true,
@@ -51,7 +51,7 @@ describe('UpsellBanner', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Upgrade now' })).toHaveAttribute(
       'href',
-      'https://strapi.chargebeeportal.com'
+      'https://metrix.chargebeeportal.com'
     );
     expect(screen.getByRole('link', { name: 'Upgrade now' })).toHaveAttribute('target', '_blank');
   });
@@ -98,7 +98,7 @@ describe('UpsellBanner', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Keep Growth plan' })).toHaveAttribute(
       'href',
-      'https://strapi.chargebeeportal.com'
+      'https://metrix.chargebeeportal.com'
     );
     expect(screen.getByRole('link', { name: 'Keep Growth plan' })).toHaveAttribute(
       'target',

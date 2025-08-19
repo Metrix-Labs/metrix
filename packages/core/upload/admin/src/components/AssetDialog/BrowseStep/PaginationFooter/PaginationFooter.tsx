@@ -12,8 +12,8 @@
  * 1, ...., 7, `8`, 9, 10
  * 1, ... 6, `7`, 8, 9, 10
  */
-import { Typography, VisuallyHidden } from '@strapi/design-system';
-import { ChevronLeft, ChevronRight } from '@strapi/icons';
+import { Typography, VisuallyHidden } from '@metrix/design-system';
+import { ChevronLeft, ChevronRight } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled, css } from 'styled-components';
 

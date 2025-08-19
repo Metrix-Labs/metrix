@@ -1,10 +1,10 @@
 import { curry, matchesProperty, pick } from 'lodash/fp';
-import type { Internal, Struct } from '@strapi/types';
+import type { Internal, Struct } from '@metrix/types';
 
 const isOfKind = (kind: unknown) => matchesProperty('kind', kind);
 
 const resolveContentType = (uid: Internal.UID.ContentType): Struct.ContentTypeSchema => {
-  return strapi.contentTypes[uid];
+  return metrix.contentTypes[uid];
 };
 
 const isNotInSubjects = (subjects: any) => (uid: unknown) =>

@@ -1,4 +1,4 @@
-import { Flex, Grid, Tooltip, Typography } from '@strapi/design-system';
+import { Flex, Grid, Tooltip, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
@@ -84,7 +84,7 @@ interface SSOProviderButtonProps {
 const SSOProviderButton = ({ provider }: SSOProviderButtonProps) => {
   return (
     <Tooltip label={provider.displayName}>
-      <SSOButton href={`${window.strapi.backendURL}/admin/connect/${provider.uid}`}>
+      <SSOButton href={`${window.metrix.backendURL}/admin/connect/${provider.uid}`}>
         {provider.icon ? (
           <img src={provider.icon} aria-hidden alt="" height="32px" />
         ) : (

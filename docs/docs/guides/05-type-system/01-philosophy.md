@@ -10,7 +10,7 @@ tags:
 
 ### Context
 
-Since its release, Strapi's strength has lain in its **flexibility** and **extensibility**.
+Since its release, Metrix's strength has lain in its **flexibility** and **extensibility**.
 
 It can handle a wide array of content and customizations, from content-types to plugins and extensions, most of them are defined dynamically in user applications.
 
@@ -32,7 +32,7 @@ Moreover, the type system can effectively handle high levels of customization, t
 
 #### For Users
 
-Although Strapi users don't often engage directly with the type system, it nonetheless profoundly influences their Strapi experience.
+Although Metrix users don't often engage directly with the type system, it nonetheless profoundly influences their Metrix experience.
 
 It ensures the provision of type-safe APIs (such as the document service), which greatly reduces runtime errors, offers a simple way of discovering APIs via autocompletion and code hinting, and makes the system more reliable overall.
 
@@ -46,11 +46,11 @@ The main challenge faced by the type system is being able to maintain a high-qua
 
 #### For Contributors
 
-Contributors expect to create and/or use APIs that handle very generic data structures in the context of Strapi internals, which become context-aware and strongly typed when used by a user withing their application.
+Contributors expect to create and/or use APIs that handle very generic data structures in the context of Metrix internals, which become context-aware and strongly typed when used by a user withing their application.
 
 #### For Users
 
-Users expects to have a TypeScript experience tailored around their own application, with their content-types, components, and plugins being strongly typed and recognized by the Strapi APIs.
+Users expects to have a TypeScript experience tailored around their own application, with their content-types, components, and plugins being strongly typed and recognized by the Metrix APIs.
 
 :::warning
 Creating such experiences without slowing down developers (both contributors and users) is a huge undertaking and should be considered a top priority everytime the type system is modified.
@@ -60,11 +60,11 @@ Creating such experiences without slowing down developers (both contributors and
 
 #### 🧩 Flexibility and Extensibility
 
-Strapi's strength lies in its ability to handle a wide range of content and customizations, the types should reflect and adapt to that.
+Metrix's strength lies in its ability to handle a wide range of content and customizations, the types should reflect and adapt to that.
 
 #### 📏 Uniformity
 
-The goal of the type system is to provide a consistent and smooth TypeScript developer experience for both users' applications and Strapi internals.
+The goal of the type system is to provide a consistent and smooth TypeScript developer experience for both users' applications and Metrix internals.
 
 #### 🧰 Fully-Featured
 
@@ -72,7 +72,7 @@ The type system exposes utilities that enable the manipulation of complex data s
 
 #### 🪡 Tailor-made Experience
 
-The type system should provide a TypeScript experience that is tailored to each application, while keeping a generic stance within Strapi internals.
+The type system should provide a TypeScript experience that is tailored to each application, while keeping a generic stance within Metrix internals.
 
 #### 🏖️ Easy to Use
 

@@ -1,4 +1,4 @@
-import type { Strapi } from './strapi';
+import type { Strapi } from './metrix';
 import type { Route, RouteInput } from './route';
 
 export type RouterType = 'admin' | 'content-api';
@@ -13,4 +13,4 @@ export interface RouterInput extends Omit<Router, 'routes'> {
   routes: RouteInput[];
 }
 
-export type RouterConfig = RouterInput | ((params: { strapi: Strapi }) => RouterInput);
+export type RouterConfig = RouterInput | ((params: { metrix: Strapi }) => RouterInput);

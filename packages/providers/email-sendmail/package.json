@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/provider-email-sendmail",
+  "name": "@metrix/provider-email-sendmail",
   "version": "5.22.0",
   "description": "Sendmail provider for strapi email",
   "keywords": [
@@ -43,8 +43,8 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
-    "@strapi/utils": "5.22.0",
-    "sendmail": "^1.6.1"
+    "sendmail": "^1.6.1",
+    "@metrix/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/sendmail": "1.4.4",

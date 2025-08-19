@@ -1,4 +1,4 @@
-import { providerFactory } from '@strapi/utils';
+import { providerFactory } from '@metrix/utils';
 
 export interface Condition {
   name: string;
@@ -12,7 +12,7 @@ export default (options = {}) => {
     ...provider,
 
     async register(condition: Condition) {
-      if (strapi.isLoaded) {
+      if (metrix.isLoaded) {
         throw new Error(`You can't register new conditions outside the bootstrap function.`);
       }
 

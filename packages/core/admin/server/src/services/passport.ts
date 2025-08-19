@@ -11,26 +11,26 @@ const authEventsMapper = {
 
 const valueIsFunctionType = ([, value]: [any, any]) => isFunction(value);
 const keyIsValidEventName = ([key]: any) => {
-  return Object.keys(strapi.service('admin::passport').authEventsMapper).includes(key);
+  return Object.keys(metrix.service('admin::passport').authEventsMapper).includes(key);
 };
 
-const getPassportStrategies = () => [createLocalStrategy(strapi)] as Strategy[];
+const getPassportStrategies = () => [createLocalStrategy(metrix)] as Strategy[];
 
 const registerAuthEvents = () => {
   // @ts-expect-error - TODO: migrate auth service to TS
-  const { events = {} } = strapi.config.get('admin.auth', {});
-  const { authEventsMapper } = strapi.service('admin::passport');
+  const { events = {} } = metrix.config.get('admin.auth', {});
+  const { authEventsMapper } = metrix.service('admin::passport');
 
   const eventList = Object.entries(events).filter(keyIsValidEventName).filter(valueIsFunctionType);
 
   for (const [eventName, handler] of eventList) {
     // TODO - TS: ensure the handler is an EventHub.Listener
-    strapi.eventHub.on(authEventsMapper[eventName], handler as any);
+    metrix.eventHub.on(authEventsMapper[eventName], handler as any);
   }
 };
 
 const init = () => {
-  strapi
+  metrix
     .service('admin::passport')
     .getPassportStrategies()
     .forEach((strategy: Strategy) => passport.use(strategy));

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { useNotification, useAPIErrorHandler, useQueryParams } from '@strapi/admin/strapi-admin';
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
-import { unstable_useDocument } from '@strapi/content-manager/strapi-admin';
+import { useNotification, useAPIErrorHandler, useQueryParams } from '@metrix/admin/metrix-admin';
+import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
+import { unstable_useDocument } from '@metrix/content-manager/metrix-admin';
 import {
   SingleSelect,
   type SingleSelectProps,
@@ -13,7 +13,7 @@ import {
   Typography,
   VisuallyHidden,
   Tooltip,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ import { getStageColorByHex } from '../../../../../utils/colors';
 
 import { STAGE_ATTRIBUTE_NAME } from './constants';
 
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrix/types';
 
 /* -------------------------------------------------------------------------------------------------
  * LimitModals

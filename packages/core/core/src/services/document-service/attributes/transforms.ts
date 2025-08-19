@@ -1,5 +1,5 @@
 import { getOr, toNumber, isString } from 'lodash/fp';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 import bcrypt from 'bcryptjs';
 
 type Transforms = {

@@ -1,7 +1,7 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 import executeCERegister from '../../../server/src/register';
 
-export default async ({ strapi }: { strapi: Core.Strapi }) => {
-  await executeCERegister({ strapi });
+export default async ({ metrix }: { metrix: Core.Strapi }) => {
+  await executeCERegister({ metrix });
 };

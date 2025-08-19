@@ -10,7 +10,7 @@ import type { Database } from '..';
 
 export type * from './types';
 
-const debug = createDebug('strapi::database');
+const debug = createDebug('metrix::database');
 
 export interface SchemaProvider {
   builder: ReturnType<typeof createSchemaBuilder>;

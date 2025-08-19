@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 import type { OpenAPIV3 } from 'openapi-types';
-import type { Core, Struct } from '@strapi/types';
+import type { Core, Struct } from '@metrix/types';
 
 import cleanSchemaAttributes from './utils/clean-schema-attributes';
 import loopContentTypeNames from './utils/loop-content-type-names';

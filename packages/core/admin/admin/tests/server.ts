@@ -9,7 +9,7 @@ export const server: SetupServer = setupServer(
     /**
      * TRACKING
      */
-    rest.post('https://analytics.strapi.io/api/v2/track', (req, res, ctx) => {
+    rest.post('https://analytics.metrix.io/api/v2/track', (req, res, ctx) => {
       return res(ctx.status(200));
     }),
     /**
@@ -23,12 +23,12 @@ export const server: SetupServer = setupServer(
           data: [
             {
               id: 1,
-              code: 'strapi-editor',
+              code: 'metrix-editor',
               name: 'Editor',
             },
             {
               id: 2,
-              code: 'strapi-author',
+              code: 'metrix-author',
               name: 'Author',
             },
           ],
@@ -41,7 +41,7 @@ export const server: SetupServer = setupServer(
         ctx.json({
           data: {
             id: 1,
-            code: 'strapi-editor',
+            code: 'metrix-editor',
             params: {
               filters: req.url.searchParams.get('filters'),
             },
@@ -99,8 +99,8 @@ export const server: SetupServer = setupServer(
             lastname: 'Doe',
             emai: 'test@testing.com',
             roles: [
-              { id: 1, code: 'strapi-editor', name: 'Editor' },
-              { id: 2, code: 'strapi-super-admin', name: 'Super Admin' },
+              { id: 1, code: 'metrix-editor', name: 'Editor' },
+              { id: 2, code: 'metrix-super-admin', name: 'Super Admin' },
             ],
             params: {
               some: req.url.searchParams.get('some'),
@@ -304,7 +304,7 @@ export const server: SetupServer = setupServer(
           data: {
             firstname: 'Token firstname',
             lastname: 'Token lastname',
-            email: 'test+register-token@strapi.io',
+            email: 'test+register-token@metrix.io',
           },
         })
       );
@@ -432,7 +432,7 @@ export const server: SetupServer = setupServer(
      * MARKETPLACE
      *
      */
-    rest.get('https://market-api.strapi.io/providers', (req, res, ctx) => {
+    rest.get('https://market-api.metrix.io/providers', (req, res, ctx) => {
       const { collections = [], search = '' } = qs.parse(req.url.searchParams.toString()) as {
         collections: Array<keyof MockData['marketplace']['providers']>;
         search: string;
@@ -469,7 +469,7 @@ export const server: SetupServer = setupServer(
 
       return res(ctx.status(200), ctx.json(filteredResponse));
     }),
-    rest.get('https://market-api.strapi.io/plugins', (req, res, ctx) => {
+    rest.get('https://market-api.metrix.io/plugins', (req, res, ctx) => {
       const {
         collections = [],
         categories = [],
@@ -527,7 +527,7 @@ export const server: SetupServer = setupServer(
      * NPS SURVEY
      *
      */
-    rest.post('https://analytics.strapi.io/submit-nps', (req, res, ctx) => {
+    rest.post('https://analytics.metrix.io/submit-nps', (req, res, ctx) => {
       return res(ctx.status(200));
     }),
     /**
@@ -680,7 +680,7 @@ export const server: SetupServer = setupServer(
                       id: 1,
                       name: 'Super Admin',
                       description: 'Super Admins can access and manage all features and settings.',
-                      code: 'strapi-super-admin',
+                      code: 'metrix-super-admin',
                     },
                   ],
                 },
@@ -713,7 +713,7 @@ export const server: SetupServer = setupServer(
                       name: 'Editor',
                       description:
                         'Editors can manage and publish contents including those of other users.',
-                      code: 'strapi-editor',
+                      code: 'metrix-editor',
                     },
                   ],
                 },
@@ -757,7 +757,7 @@ export const server: SetupServer = setupServer(
                   id: 1,
                   name: 'Super Admin',
                   description: 'Super Admins can access and manage all features and settings.',
-                  code: 'strapi-super-admin',
+                  code: 'metrix-super-admin',
                 },
               ],
             },

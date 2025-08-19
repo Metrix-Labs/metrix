@@ -1,5 +1,5 @@
-import type { Internal } from '@strapi/types';
-import { contentTypes } from '@strapi/utils';
+import type { Internal } from '@metrix/types';
+import { contentTypes } from '@metrix/utils';
 import {
   toSubjectTemplate,
   getValidOptions,
@@ -121,7 +121,7 @@ const buildNode = (model: any, attributeName: string, attribute: any) => {
   }
 
   if (attribute.type === 'component') {
-    const component = strapi.components[attribute.component];
+    const component = metrix.components[attribute.component];
     return { ...node, children: buildDeepAttributesCollection(component) };
   }
 

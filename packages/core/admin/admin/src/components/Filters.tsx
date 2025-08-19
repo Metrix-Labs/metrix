@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Popover, Tag } from '@strapi/design-system';
-import { Plus, Filter as FilterIcon, Cross } from '@strapi/icons';
+import { Box, Button, Flex, Popover, Tag } from '@metrix/design-system';
+import { Plus, Filter as FilterIcon, Cross } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import {
@@ -20,7 +20,7 @@ import { createContext } from './Context';
 import { Form, InputProps } from './Form';
 import { InputRenderer } from './FormInputs/Renderer';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 /* -------------------------------------------------------------------------------------------------
  * Root

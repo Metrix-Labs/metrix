@@ -1,8 +1,8 @@
 import { resolve } from 'path';
 import { statSync, existsSync } from 'fs';
-import { yup, importDefault } from '@strapi/utils';
+import { yup, importDefault } from '@metrix/utils';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 const srcSchema = yup
   .object()
@@ -17,12 +17,12 @@ const validateSrcIndex = (srcIndex: unknown) => {
   return srcSchema.validateSync(srcIndex, { strict: true, abortEarly: false });
 };
 
-export default (strapi: Core.Strapi) => {
-  if (!existsSync(strapi.dirs.dist.src)) {
+export default (metrix: Core.Strapi) => {
+  if (!existsSync(metrix.dirs.dist.src)) {
     return;
   }
 
-  const pathToSrcIndex = resolve(strapi.dirs.dist.src, 'index.js');
+  const pathToSrcIndex = resolve(metrix.dirs.dist.src, 'index.js');
   if (!existsSync(pathToSrcIndex) || statSync(pathToSrcIndex).isDirectory()) {
     return {};
   }
@@ -33,11 +33,11 @@ export default (strapi: Core.Strapi) => {
     validateSrcIndex(srcIndex);
   } catch (e) {
     if (e instanceof yup.ValidationError) {
-      strapi.stopWithError({ message: `Invalid file \`./src/index.js\`: ${e.message}` });
+      metrix.stopWithError({ message: `Invalid file \`./src/index.js\`: ${e.message}` });
     }
 
     throw e;
   }
 
-  strapi.app = srcIndex;
+  metrix.app = srcIndex;
 };

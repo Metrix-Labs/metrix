@@ -1,5 +1,5 @@
-import type { Core, UID } from '@strapi/types';
-import { async, errors } from '@strapi/utils';
+import type { Core, UID } from '@metrix/types';
+import { async, errors } from '@metrix/utils';
 import { map, pick, isEqual } from 'lodash/fp';
 import { STAGE_MODEL_UID, ENTITY_STAGE_ATTRIBUTE, ERRORS } from '../constants/workflows';
 import { WORKFLOW_UPDATE_STAGE } from '../constants/webhook-events';
@@ -9,21 +9,21 @@ const { ApplicationError, ValidationError } = errors;
 const sanitizedStageFields = ['id', 'name', 'workflow', 'color'];
 const sanitizeStageFields = pick(sanitizedStageFields);
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
-  const metrics = getService('workflow-metrics', { strapi });
-  const stagePermissionsService = getService('stage-permissions', { strapi });
-  const workflowValidator = getService('validation', { strapi });
+export default ({ metrix }: { metrix: Core.Strapi }) => {
+  const metrics = getService('workflow-metrics', { metrix });
+  const stagePermissionsService = getService('stage-permissions', { metrix });
+  const workflowValidator = getService('validation', { metrix });
 
   return {
     find({ workflowId, populate }: any) {
-      return strapi.db.query(STAGE_MODEL_UID).findMany({
+      return metrix.db.query(STAGE_MODEL_UID).findMany({
         where: { workflow: workflowId },
         populate,
       });
     },
 
     findById(id: string | number, { populate }: any = {}) {
-      return strapi.db.query(STAGE_MODEL_UID).findOne({
+      return metrix.db.query(STAGE_MODEL_UID).findOne({
         where: { id },
         populate,
       });
@@ -34,7 +34,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
 
       const stages = await Promise.all(
         stagesList.map((stage: any) =>
-          strapi.db.query(STAGE_MODEL_UID).create({
+          metrix.db.query(STAGE_MODEL_UID).create({
             data: sanitizeStageFields(stage),
             ...params,
           })
@@ -63,7 +63,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
         );
 
         // Update stage with the new permissions
-        await strapi.db.query(STAGE_MODEL_UID).update({
+        await metrix.db.query(STAGE_MODEL_UID).update({
           where: { id: stageId },
           data: {
             permissions: permissions.flat().map((p: any) => p.id),
@@ -93,7 +93,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
         stagePermissions = permissions.flat().map((p: any) => p.id);
       }
 
-      const stage = await strapi.db.query(STAGE_MODEL_UID).update({
+      const stage = await metrix.db.query(STAGE_MODEL_UID).update({
         where: { id: stageId },
         data: {
           ...destStage,
@@ -110,7 +110,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       // Unregister all permissions related to this stage id
       await this.deleteStagePermissions([stage]);
 
-      const deletedStage = await strapi.db.query(STAGE_MODEL_UID).delete({
+      const deletedStage = await metrix.db.query(STAGE_MODEL_UID).delete({
         where: { id: stage.id },
       });
 
@@ -122,7 +122,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     async deleteMany(stages: any) {
       await this.deleteStagePermissions(stages);
 
-      return strapi.db.query(STAGE_MODEL_UID).deleteMany({
+      return metrix.db.query(STAGE_MODEL_UID).deleteMany({
         where: { id: { $in: stages.map((s: any) => s.id) } },
       });
     },
@@ -142,7 +142,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
         };
       }
 
-      return strapi.db.query(STAGE_MODEL_UID).count(opts);
+      return metrix.db.query(STAGE_MODEL_UID).count(opts);
     },
 
     async replaceStages(srcStages: any, destStages: any, contentTypesToMigrate = []) {
@@ -151,7 +151,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       assertAtLeastOneStageRemain(srcStages || [], { created, deleted });
 
       // Update stages and assign entity stages
-      return strapi.db.transaction(async ({ trx }) => {
+      return metrix.db.transaction(async ({ trx }) => {
         // Create the new stages
         const createdStages = await this.createMany(created, { fields: ['id'] });
         // Put all the newly created stages ids
@@ -217,7 +217,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
         throw new ApplicationError(`Selected stage does not exist`);
       }
 
-      const entity = await strapi.documents(model).update({
+      const entity = await metrix.documents(model).update({
         documentId,
         locale,
         // Stage doesn't have DP or i18n enabled, connecting it through the `id`
@@ -229,8 +229,8 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       // Update the `updated_at` field of the entity, so that the `status` is not considered `Modified`
       // NOTE: `updatedAt` is a protected attribute that can not be modified directly from the query layer
       //        hence the knex query builder is used here.
-      const { tableName } = strapi.db.metadata.get(model);
-      await strapi.db
+      const { tableName } = metrix.db.metadata.get(model);
+      await metrix.db
         .connection(tableName)
         .where({ id: entityToUpdate.id })
         .update({
@@ -257,17 +257,17 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
      * @returns
      */
     async updateEntitiesStage(contentTypeUID: any, { fromStageId, toStageId }: any) {
-      const { attributes, tableName } = strapi.db.metadata.get(contentTypeUID) as any;
+      const { attributes, tableName } = metrix.db.metadata.get(contentTypeUID) as any;
       const joinTable = attributes[ENTITY_STAGE_ATTRIBUTE].joinTable;
       const joinColumn = joinTable.joinColumn.name;
       const invJoinColumn = joinTable.inverseJoinColumn.name;
 
       await workflowValidator.validateWorkflowCount();
 
-      return strapi.db.transaction(async ({ trx }) => {
+      return metrix.db.transaction(async ({ trx }) => {
         // Update all already existing links to the new stage
         if (fromStageId === undefined) {
-          return strapi.db
+          return metrix.db
             .getConnection()
             .from(joinTable.name)
             .update({ [invJoinColumn]: toStageId })
@@ -275,7 +275,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
         }
 
         // Update all links from the specified stage to the new stage
-        const selectStatement = strapi.db
+        const selectStatement = metrix.db
           .getConnection()
           .select({ [joinColumn]: 't1.id', [invJoinColumn]: toStageId })
           .from(`${tableName} as t1`)
@@ -284,10 +284,10 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
           .toSQL();
 
         // Insert rows for all entries of the content type that have the specified stage
-        return strapi.db
+        return metrix.db
           .getConnection(joinTable.name)
           .insert(
-            strapi.db.connection.raw(
+            metrix.db.connection.raw(
               `(${joinColumn}, ${invJoinColumn})  ${selectStatement.sql}`,
               selectStatement.bindings
             )
@@ -302,12 +302,12 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
      * @returns
      */
     async deleteAllEntitiesStage(contentTypeUID: any) {
-      const { attributes } = strapi.db.metadata.get(contentTypeUID) as any;
+      const { attributes } = metrix.db.metadata.get(contentTypeUID) as any;
       const joinTable = attributes[ENTITY_STAGE_ATTRIBUTE].joinTable;
 
       // Delete all stage links for the content type
-      return strapi.db.transaction(async ({ trx }) =>
-        strapi.db.getConnection().from(joinTable.name).delete().transacting(trx)
+      return metrix.db.transaction(async ({ trx }) =>
+        metrix.db.getConnection().from(joinTable.name).delete().transacting(trx)
       );
     },
   };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useCollator } from '@strapi/design-system';
+import { useCollator } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { GetRolesParams, useGetRolesQuery } from '../services/users';

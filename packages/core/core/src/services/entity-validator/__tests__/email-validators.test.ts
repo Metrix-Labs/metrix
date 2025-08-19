@@ -1,5 +1,5 @@
-import strapiUtils, { errors } from '@strapi/utils';
-import type { Schema } from '@strapi/types';
+import strapiUtils, { errors } from '@metrix/utils';
+import type { Schema } from '@metrix/types';
 import { Validators } from '../validators';
 
 describe('Email validator', () => {

@@ -1,4 +1,4 @@
-import { Field, MultiSelectNested } from '@strapi/design-system';
+import { Field, MultiSelectNested } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../utils';
@@ -7,7 +7,7 @@ import { findAttribute } from '../utils/findAttribute';
 import { useDataManager } from './DataManager/useDataManager';
 
 import type { Component } from '../types';
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrix/types';
 
 type SelectComponentsProps = {
   dynamicZoneTarget: string;

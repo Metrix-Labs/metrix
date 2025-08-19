@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Flex, IconButton, Link, Tbody, Td, Tr, Typography } from '@strapi/design-system';
-import { Pencil, Trash } from '@strapi/icons';
+import { Flex, IconButton, Link, Tbody, Td, Tr, Typography } from '@metrix/design-system';
+import { Pencil, Trash } from '@metrix/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { useNavigate, NavLink } from 'react-router-dom';

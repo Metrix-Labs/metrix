@@ -7,7 +7,7 @@ const folderPathRegex = new RegExp(`^/${folderUID}/[0-9]*$`, 'i');
 describe('folder', () => {
   describe('setPathIdAndPath', () => {
     beforeAll(() => {
-      global.strapi = {
+      global.metrix = {
         db: {
           queryBuilder: () => ({
             max: () => ({

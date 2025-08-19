@@ -1,7 +1,7 @@
 import { ComponentType, SVGProps } from 'react';
 
-import { useStrapiApp } from '@strapi/admin/strapi-admin';
-import { Box } from '@strapi/design-system';
+import { useStrapiApp } from '@metrix/admin/metrix-admin';
+import { Box } from '@metrix/design-system';
 import {
   BooleanField,
   CollectionType,
@@ -20,7 +20,7 @@ import {
   TextField,
   UidField,
   BlocksField,
-} from '@strapi/icons/symbols';
+} from '@metrix/icons/symbols';
 import { styled } from 'styled-components';
 
 const iconByTypes: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {

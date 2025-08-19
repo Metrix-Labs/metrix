@@ -8,7 +8,7 @@ import {
   useFetchClient,
   useAuth,
   adminApi,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import groupBy from 'lodash/groupBy';
 import isEqual from 'lodash/isEqual';
 import mapValues from 'lodash/mapValues';
@@ -29,7 +29,7 @@ import { retrieveSpecificInfoFromComponents } from './utils/retrieveSpecificInfo
 
 import type { ContentTypes, ContentType, Components } from '../../types';
 import type { FormAPI } from '../../utils/formAPI';
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrix/types';
 
 interface DataManagerProviderProps {
   children: React.ReactNode;

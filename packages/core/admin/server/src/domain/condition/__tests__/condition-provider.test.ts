@@ -16,7 +16,7 @@ const providerMethods = [
 
 describe('Condition Provider', () => {
   beforeEach(() => {
-    global.strapi = {
+    global.metrix = {
       isLoaded: false,
     } as any;
   });
@@ -54,8 +54,8 @@ describe('Condition Provider', () => {
         expect(condition).toMatchObject(expected);
       });
 
-      test(`Can't register a condition if strapi is loaded`, async () => {
-        global.strapi.isLoaded = true;
+      test(`Can't register a condition if metrix is loaded`, async () => {
+        global.metrix.isLoaded = true;
 
         const attributes: any = {
           name: 'foobar',

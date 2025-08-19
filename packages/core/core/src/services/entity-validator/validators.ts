@@ -9,8 +9,8 @@
  * E.g, unique fields must be unique within the same locale.
  */
 import _ from 'lodash';
-import { yup } from '@strapi/utils';
-import type { Schema, Struct, Modules } from '@strapi/types';
+import { yup } from '@metrix/utils';
+import type { Schema, Struct, Modules } from '@metrix/types';
 import { blocksValidator } from './blocks-validator';
 
 import type { ComponentContext } from '.';
@@ -239,7 +239,7 @@ const addUniqueValidator = <T extends yup.AnySchema>(
     };
 
     // The validation should pass if there is no other record found from the query
-    return !(await strapi.db.query(queryUid).findOne({ where: queryWhere }));
+    return !(await metrix.db.query(queryUid).findOne({ where: queryWhere }));
   };
 
   const validateUniqueFieldWithinDynamicZoneComponent = async (
@@ -320,7 +320,7 @@ const addUniqueValidator = <T extends yup.AnySchema>(
       query.where.locale = options.locale;
     }
 
-    const parentModelQueryResult = await strapi.db
+    const parentModelQueryResult = await metrix.db
       .query(componentContext.parentContent.model.uid)
       .findMany(query);
 
@@ -388,7 +388,7 @@ const addUniqueValidator = <T extends yup.AnySchema>(
     }
 
     // The validation should pass if there is no other record found from the query
-    return !(await strapi.db
+    return !(await metrix.db
       .query(model.uid)
       .findOne({ where: scalarAttributeWhere, select: ['id'] }));
   });

@@ -4,8 +4,8 @@
  *
  */
 
-import { Box, Flex, Typography } from '@strapi/design-system';
-import { Sparkle } from '@strapi/icons';
+import { Box, Flex, Typography } from '@metrix/design-system';
+import { Sparkle } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../utils/getTrad';

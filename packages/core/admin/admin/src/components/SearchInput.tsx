@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { IconButton, Searchbar, SearchForm } from '@strapi/design-system';
-import { Search as SearchIcon } from '@strapi/icons';
+import { IconButton, Searchbar, SearchForm } from '@metrix/design-system';
+import { Search as SearchIcon } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { TrackingEvent, useTracking } from '../features/Tracking';

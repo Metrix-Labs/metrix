@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import { differenceWith, isEqual } from 'lodash/fp';
 
 export interface PersistedTable {
@@ -19,12 +19,12 @@ const transformTableName = (table: string | PersistedTable) => {
 /**
  * Finds all tables in the database matching the regular expression
  * @param {Object} ctx
- * @param {Strapi} ctx.strapi
+ * @param {Strapi} ctx.metrix
  * @param {RegExp} regex
  * @returns {Promise<string[]>}
  */
-export async function findTables({ strapi }: { strapi: Core.Strapi }, regex: any) {
-  const tables = await strapi.db.dialect.schemaInspector.getTables();
+export async function findTables({ metrix }: { metrix: Core.Strapi }, regex: any) {
+  const tables = await metrix.db.dialect.schemaInspector.getTables();
   return tables.filter((tableName: string) => regex.test(tableName));
 }
 
@@ -32,10 +32,10 @@ export async function findTables({ strapi }: { strapi: Core.Strapi }, regex: any
  * Add tables name to the reserved tables in core store
  */
 async function addPersistTables(
-  { strapi }: { strapi: Core.Strapi },
+  { metrix }: { metrix: Core.Strapi },
   tableNames: Array<string | PersistedTable>
 ) {
-  const persistedTables = await getPersistedTables({ strapi });
+  const persistedTables = await getPersistedTables({ metrix });
   const tables = tableNames.map(transformTableName);
 
   // Get new tables to be persisted, remove tables if they already were persisted
@@ -53,7 +53,7 @@ async function addPersistTables(
 
   // @ts-expect-error lodash types
   tablesToPersist.push(...notPersistedTableNames);
-  await strapi.store.set({
+  await metrix.store.set({
     type: 'core',
     key: 'persisted_tables',
     value: tablesToPersist,
@@ -63,13 +63,13 @@ async function addPersistTables(
 /**
  * Get all reserved table names from the core store
  * @param {Object} ctx
- * @param {Strapi} ctx.strapi
+ * @param {Strapi} ctx.metrix
  * @param {RegExp} regex
  * @returns {Promise<string[]>}
  */
 
-async function getPersistedTables({ strapi }: { strapi: Core.Strapi }) {
-  const persistedTables: any = await strapi.store.get({
+async function getPersistedTables({ metrix }: { metrix: Core.Strapi }) {
+  const persistedTables: any = await metrix.store.get({
     type: 'core',
     key: 'persisted_tables',
   });
@@ -80,15 +80,15 @@ async function getPersistedTables({ strapi }: { strapi: Core.Strapi }) {
 /**
  * Set all reserved table names in the core store
  * @param {Object} ctx
- * @param {Strapi} ctx.strapi
+ * @param {Strapi} ctx.metrix
  * @param {Array<string|{ table: string; dependsOn?: Array<{ table: string;}> }>} tableNames
  * @returns {Promise<void>}
  */
 async function setPersistedTables(
-  { strapi }: { strapi: Core.Strapi },
+  { metrix }: { metrix: Core.Strapi },
   tableNames: Array<string | PersistedTable>
 ) {
-  await strapi.store.set({
+  await metrix.store.set({
     type: 'core',
     key: 'persisted_tables',
     value: tableNames,
@@ -103,9 +103,9 @@ async function setPersistedTables(
 
 export const persistTablesWithPrefix = async (tableNamePrefix: string) => {
   const tableNameRegex = new RegExp(`^${tableNamePrefix}.*`);
-  const tableNames = await findTables({ strapi }, tableNameRegex);
+  const tableNames = await findTables({ metrix }, tableNameRegex);
 
-  await addPersistTables({ strapi }, tableNames);
+  await addPersistTables({ metrix }, tableNames);
 };
 
 /**
@@ -115,7 +115,7 @@ export const persistTablesWithPrefix = async (tableNamePrefix: string) => {
  */
 export const removePersistedTablesWithSuffix = async (tableNameSuffix: string) => {
   const tableNameRegex = new RegExp(`.*${tableNameSuffix}$`);
-  const persistedTables = await getPersistedTables({ strapi });
+  const persistedTables = await getPersistedTables({ metrix });
 
   const filteredPersistedTables = persistedTables.filter((table: any) => {
     return !tableNameRegex.test(table.name);
@@ -125,14 +125,14 @@ export const removePersistedTablesWithSuffix = async (tableNameSuffix: string) =
     return;
   }
 
-  await setPersistedTables({ strapi }, filteredPersistedTables);
+  await setPersistedTables({ metrix }, filteredPersistedTables);
 };
 
 /**
  * Add tables to the reserved tables in core store
  */
 export const persistTables = async (tables: Array<string | PersistedTable>) => {
-  await addPersistTables({ strapi }, tables);
+  await addPersistTables({ metrix }, tables);
 };
 
 export default {

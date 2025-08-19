@@ -1,6 +1,6 @@
 import fse from 'fs-extra';
 
-import type { Utils } from '@strapi/types';
+import type { Utils } from '@metrix/types';
 
 export const readJSON = async (path: string): Promise<Utils.JSONValue> => {
   const buffer = await fse.readFile(path);

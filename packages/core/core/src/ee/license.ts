@@ -1,9 +1,9 @@
 import fs from 'fs';
 import { join, resolve } from 'path';
 import crypto from 'crypto';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
-import { generateInstallId } from '@strapi/utils';
+import { generateInstallId } from '@metrix/utils';
 
 interface LicenseInfo {
   type: 'bronze' | 'silver' | 'gold';
@@ -28,7 +28,7 @@ const DEFAULT_FEATURES = {
   ],
 };
 
-const LICENSE_REGISTRY_URI = 'https://license.strapi.io';
+const LICENSE_REGISTRY_URI = 'https://license.metrix.io';
 
 const publicKey = fs.readFileSync(resolve(__dirname, '../../resources/key.pub'));
 
@@ -91,13 +91,13 @@ const throwError = () => {
 };
 
 const fetchLicense = async (
-  { strapi }: { strapi: Core.Strapi },
+  { metrix }: { metrix: Core.Strapi },
   key: string,
   projectId: string
 ) => {
-  const { installId: installIdFromPackageJson } = strapi.config;
+  const { installId: installIdFromPackageJson } = metrix.config;
 
-  const response = await strapi
+  const response = await metrix
     .fetch(`${LICENSE_REGISTRY_URI}/api/licenses/validate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

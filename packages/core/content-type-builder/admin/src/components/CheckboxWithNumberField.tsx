@@ -1,4 +1,4 @@
-import { Box, Checkbox, Field, Flex, NumberInput, TextInput } from '@strapi/design-system';
+import { Box, Checkbox, Field, Flex, NumberInput, TextInput } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { IntlLabel } from '../types';

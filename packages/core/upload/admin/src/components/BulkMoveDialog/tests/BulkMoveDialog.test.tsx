@@ -1,5 +1,5 @@
-import { NotificationsProvider } from '@strapi/admin/strapi-admin';
-import { DesignSystemProvider, Modal } from '@strapi/design-system';
+import { NotificationsProvider } from '@metrix/admin/metrix-admin';
+import { DesignSystemProvider, Modal } from '@metrix/design-system';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';

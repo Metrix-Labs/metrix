@@ -1,5 +1,5 @@
-import { Box, BoxComponent, ButtonProps, Flex, Typography } from '@strapi/design-system';
-import { PlusCircle } from '@strapi/icons';
+import { Box, BoxComponent, ButtonProps, Flex, Typography } from '@metrix/design-system';
+import { PlusCircle } from '@metrix/icons';
 import { styled } from 'styled-components';
 
 export const AddStage = ({ children, ...props }: ButtonProps) => {

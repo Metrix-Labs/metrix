@@ -1,6 +1,6 @@
 /* eslint-disable check-file/filename-naming-convention */
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 const mockImage = {
   url: 'https://via.placeholder.com/300/09f/fff.png',
@@ -73,7 +73,7 @@ const blocksData: Schema.Attribute.BlocksValue = [
     children: [
       {
         type: 'link',
-        url: 'https://strapi.io',
+        url: 'https://metrix.io',
         children: [{ type: 'text', text: 'This paragraph is just a link' }],
       },
     ],
@@ -97,7 +97,7 @@ const blocksData: Schema.Attribute.BlocksValue = [
       },
       {
         type: 'link',
-        url: 'https://strapi.io',
+        url: 'https://metrix.io',
         children: [
           {
             type: 'text',
@@ -175,7 +175,7 @@ const blocksData: Schema.Attribute.BlocksValue = [
         children: [
           {
             type: 'link',
-            url: 'https://strapi.io',
+            url: 'https://metrix.io',
             children: [
               {
                 type: 'text',

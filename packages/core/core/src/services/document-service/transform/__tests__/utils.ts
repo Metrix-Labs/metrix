@@ -1,4 +1,4 @@
-import type { Schema, Internal } from '@strapi/types';
+import type { Schema, Internal } from '@metrix/types';
 
 const createSchemaFromAttributes = (
   uid: Internal.UID.ContentType,

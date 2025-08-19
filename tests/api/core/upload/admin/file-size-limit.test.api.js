@@ -5,11 +5,11 @@ const path = require('path');
 const _ = require('lodash/fp');
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 
 const dogModel = {
@@ -27,14 +27,14 @@ const dogModel = {
 describe('Upload', () => {
   beforeAll(async () => {
     await builder.addContentType(dogModel).build();
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
-    strapi.config.set('plugin::upload.sizeLimit', 1000);
+    metrix.config.set('plugin::upload.sizeLimit', 1000);
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -44,7 +44,7 @@ describe('Upload', () => {
       const res = await rq({
         method: 'POST',
         url: '/upload',
-        formData: { files: fs.createReadStream(path.join(__dirname, '../utils/strapi.png')) },
+        formData: { files: fs.createReadStream(path.join(__dirname, '../utils/metrix.png')) },
       });
       expect(res.statusCode).toBe(413);
     });

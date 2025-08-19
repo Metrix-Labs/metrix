@@ -6,8 +6,8 @@ import {
   InputRenderer as FormInputRenderer,
   useField,
   Form,
-} from '@strapi/admin/strapi-admin';
-import { Alert, Box, Field, Flex, Link, Tooltip, Typography } from '@strapi/design-system';
+} from '@metrix/admin/metrix-admin';
+import { Alert, Box, Field, Flex, Link, Tooltip, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
@@ -38,7 +38,7 @@ import { getRemaingFieldsLayout } from './VersionContent';
 import type { EditFieldLayout } from '../../hooks/useDocumentLayout';
 import type { RelationsFieldProps } from '../../pages/EditView/components/FormInputs/Relations/Relations';
 import type { RelationResult } from '../../services/relations';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 import type { DistributiveOmit } from 'react-redux';
 
 const StyledAlert = styled(Alert).attrs({ closeLabel: 'Close', onClose: () => {}, shadow: 'none' })`

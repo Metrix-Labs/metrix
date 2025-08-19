@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrix/utils';
 
 import { get } from 'lodash/fp';
 
@@ -7,7 +7,7 @@ const validateGetNonLocalizedAttributesSchema = yup
   .shape({
     model: yup.string().required(),
     id: yup.mixed().when('model', {
-      is: (model: any) => get('kind', strapi.contentType(model)) === 'singleType',
+      is: (model: any) => get('kind', metrix.contentType(model)) === 'singleType',
       then: yup.strapiID().nullable(),
       otherwise: yup.strapiID().required(),
     }),

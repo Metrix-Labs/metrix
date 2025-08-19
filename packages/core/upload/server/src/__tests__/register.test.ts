@@ -3,14 +3,14 @@ import { register } from '../register';
 
 const exampleMiddlewaresConfig = [
   {
-    name: 'strapi::security',
+    name: 'metrix::security',
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', 'https://exampledomain.global.strapi.io'],
-          'media-src': ["'self'", 'data:', 'blob:', 'https://exampledomain.global.strapi.io'],
+          'img-src': ["'self'", 'data:', 'blob:', 'https://exampledomain.global.metrix.io'],
+          'media-src': ["'self'", 'data:', 'blob:', 'https://exampledomain.global.metrix.io'],
           upgradeInsecureRequests: null,
         },
       },
@@ -18,9 +18,9 @@ const exampleMiddlewaresConfig = [
   },
 ];
 
-jest.mock('@strapi/provider-upload-local', () => ({
+jest.mock('@metrix/provider-upload-local', () => ({
   init() {
-    global.strapi.config.set('middlewares', exampleMiddlewaresConfig);
+    global.metrix.config.set('middlewares', exampleMiddlewaresConfig);
 
     return {
       uploadStream: jest.fn(),
@@ -34,7 +34,7 @@ describe('Upload plugin register function', () => {
   test('The upload plugin registers the /upload route', async () => {
     const registerRoute = jest.fn();
 
-    global.strapi = {
+    global.metrix = {
       dirs: { app: { root: process.cwd() }, static: { public: join(process.cwd(), 'public') } },
       plugins: { upload: {} },
       server: { app: { on: jest.fn() }, routes: registerRoute },
@@ -45,7 +45,7 @@ describe('Upload plugin register function', () => {
       },
     } as any;
 
-    await register({ strapi });
+    await register({ metrix });
 
     expect(registerRoute).toHaveBeenCalledTimes(1);
   });
@@ -53,7 +53,7 @@ describe('Upload plugin register function', () => {
   test('Strapi config can programatically be extended by providers', async () => {
     const setConfig = jest.fn();
 
-    global.strapi = {
+    global.metrix = {
       dirs: { app: { root: process.cwd() }, static: { public: join(process.cwd(), 'public') } },
       plugins: { upload: {} },
       server: { app: { on: jest.fn() }, routes: jest.fn() },
@@ -64,7 +64,7 @@ describe('Upload plugin register function', () => {
       },
     } as any;
 
-    await register({ strapi });
+    await register({ metrix });
 
     expect(setConfig).toHaveBeenCalledWith('middlewares', exampleMiddlewaresConfig);
   });

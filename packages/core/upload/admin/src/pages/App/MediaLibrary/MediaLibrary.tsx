@@ -8,7 +8,7 @@ import {
   useTracking,
   useQueryParams,
   Layouts,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import {
   Checkbox,
   Box,
@@ -18,8 +18,8 @@ import {
   Typography,
   VisuallyHidden,
   Grid,
-} from '@strapi/design-system';
-import { Cog, GridFour as GridIcon, List, Pencil } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Cog, GridFour as GridIcon, List, Pencil } from '@metrix/icons';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { Link as ReactRouterLink, useNavigate, useLocation } from 'react-router-dom';

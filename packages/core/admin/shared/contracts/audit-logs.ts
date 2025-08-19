@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrix/utils';
 import { Entity, Pagination, SanitizedAdminUser } from './shared';
 
 // displayName seems to be used only for audit logs

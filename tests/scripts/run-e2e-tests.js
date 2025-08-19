@@ -224,10 +224,10 @@ module.exports = config
               await fs.writeFile(pathToPlaywrightConfig, configFileTemplate);
 
               // Store the filesystem state with git so it can be reset between tests
-              // TODO: if we have a large test test suite, it might be worth it to run a `strapi start` and then shutdown here to generate documentation and types only once and save unneccessary server restarts from those files being cleared every time
+              // TODO: if we have a large test test suite, it might be worth it to run a `metrix start` and then shutdown here to generate documentation and types only once and save unneccessary server restarts from those files being cleared every time
               console.log('Initializing git');
 
-              const gitUser = ['-c', 'user.name=Strapi CLI', '-c', 'user.email=test@strapi.io'];
+              const gitUser = ['-c', 'user.name=Strapi CLI', '-c', 'user.email=test@metrix.io'];
 
               await execa('git', [...gitUser, 'init'], {
                 stdio: 'inherit',
@@ -253,7 +253,7 @@ module.exports = config
                 cwd: testAppPath,
                 env: {
                   PORT: port,
-                  STRAPI_DISABLE_EE: !process.env.STRAPI_LICENSE,
+                  STRAPI_DISABLE_EE: !process.env.METRIX_LICENSE,
                 },
                 detached: true, // This is important for CI
               });
@@ -356,7 +356,7 @@ module.exports = config
                     PORT: port,
                     HOST: '127.0.0.1',
                     TEST_APP_PATH: testAppPath,
-                    STRAPI_DISABLE_EE: !process.env.STRAPI_LICENSE,
+                    STRAPI_DISABLE_EE: !process.env.METRIX_LICENSE,
                   },
                 }
               );

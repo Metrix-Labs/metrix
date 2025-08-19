@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 interface Event {
   action: string;
@@ -29,9 +29,9 @@ const getSanitizedUser = (user: any) => {
 
 /**
  * @description
- * Manages audit logs interaction with the database. Accessible via strapi.get('audit-logs')
+ * Manages audit logs interaction with the database. Accessible via metrix.get('audit-logs')
  */
-const createAuditLogsService = (strapi: Core.Strapi) => {
+const createAuditLogsService = (metrix: Core.Strapi) => {
   return {
     async saveEvent(event: Event) {
       const { userId, ...rest } = event;
@@ -39,16 +39,16 @@ const createAuditLogsService = (strapi: Core.Strapi) => {
       const auditLog: Log = { ...rest, user: userId };
 
       // Save to database
-      await strapi.db?.query('admin::audit-log').create({ data: auditLog });
+      await metrix.db?.query('admin::audit-log').create({ data: auditLog });
 
       return this;
     },
 
     async findMany(query: unknown) {
-      const { results, pagination } = await strapi.db?.query('admin::audit-log').findPage({
+      const { results, pagination } = await metrix.db?.query('admin::audit-log').findPage({
         populate: ['user'],
         select: ['action', 'date', 'payload'],
-        ...strapi.get('query-params').transform('admin::audit-log', query),
+        ...metrix.get('query-params').transform('admin::audit-log', query),
       });
 
       const sanitizedResults = results.map((result: any) => {
@@ -66,7 +66,7 @@ const createAuditLogsService = (strapi: Core.Strapi) => {
     },
 
     async findOne(id: unknown) {
-      const result: any = await strapi.db?.query('admin::audit-log').findOne({
+      const result: any = await metrix.db?.query('admin::audit-log').findOne({
         where: { id },
         populate: ['user'],
         select: ['action', 'date', 'payload'],
@@ -84,7 +84,7 @@ const createAuditLogsService = (strapi: Core.Strapi) => {
     },
 
     deleteExpiredEvents(expirationDate: Date) {
-      return strapi.db?.query('admin::audit-log').deleteMany({
+      return metrix.db?.query('admin::audit-log').deleteMany({
         where: {
           date: {
             $lt: expirationDate.toISOString(),

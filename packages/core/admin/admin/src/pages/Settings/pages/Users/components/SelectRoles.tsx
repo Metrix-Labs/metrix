@@ -1,5 +1,5 @@
-import { Field, MultiSelect, MultiSelectOption } from '@strapi/design-system';
-import { Loader as LoadingIcon } from '@strapi/icons';
+import { Field, MultiSelect, MultiSelectOption } from '@metrix/design-system';
+import { Loader as LoadingIcon } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled, keyframes } from 'styled-components';
 

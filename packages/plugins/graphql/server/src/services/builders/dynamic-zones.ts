@@ -1,20 +1,20 @@
 import { Kind, valueFromASTUntyped } from 'graphql';
 import { omit } from 'lodash/fp';
 import { unionType, scalarType } from 'nexus';
-import { errors } from '@strapi/utils';
-import type { Internal, Schema } from '@strapi/types';
+import { errors } from '@metrix/utils';
+import type { Internal, Schema } from '@metrix/types';
 
 import type { Context } from '../types';
 
 const { ApplicationError } = errors;
 
-export default ({ strapi }: Context) => {
+export default ({ metrix }: Context) => {
   const buildTypeDefinition = (name: string, components: Internal.UID.Component[]) => {
-    const { ERROR_TYPE_NAME } = strapi.plugin('graphql').service('constants');
+    const { ERROR_TYPE_NAME } = metrix.plugin('graphql').service('constants');
     const isEmpty = components.length === 0;
 
     const componentsTypeNames = components.map((componentUID) => {
-      const component = strapi.components[componentUID];
+      const component = metrix.components[componentUID];
 
       if (!component) {
         throw new ApplicationError(
@@ -33,7 +33,7 @@ export default ({ strapi }: Context) => {
           return ERROR_TYPE_NAME;
         }
 
-        return strapi.components[obj.__component].globalId;
+        return metrix.components[obj.__component].globalId;
       },
 
       definition(t) {
@@ -44,14 +44,14 @@ export default ({ strapi }: Context) => {
 
   const buildInputDefinition = (name: string, components: Internal.UID.Component[]) => {
     const parseData = (value: any) => {
-      const component = Object.values(strapi.components).find(
+      const component = Object.values(metrix.components).find(
         (component) => component.globalId === value.__typename
       );
 
       if (!component) {
         throw new ApplicationError(
           `Component not found. expected one of: ${components
-            .map((uid) => strapi.components[uid].globalId)
+            .map((uid) => metrix.components[uid].globalId)
             .join(', ')}`
         );
       }

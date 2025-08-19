@@ -1,4 +1,4 @@
-import { SingleSelectOption, SingleSelect, SingleSelectProps, Field } from '@strapi/design-system';
+import { SingleSelectOption, SingleSelect, SingleSelectProps, Field } from '@metrix/design-system';
 import { MessageDescriptor, useIntl } from 'react-intl';
 
 import { isErrorMessageMessageDescriptor } from '../../utils/forms';

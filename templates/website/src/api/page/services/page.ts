@@ -2,6 +2,6 @@
  * page service.
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from '@metrix/metrix';
 
 export default factories.createCoreService('api::page.page');

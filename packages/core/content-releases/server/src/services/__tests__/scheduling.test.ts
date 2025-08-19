@@ -29,7 +29,7 @@ describe('Scheduling service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const schedulingService = createSchedulingService({ strapi: strapiMock });
+      const schedulingService = createSchedulingService({ metrix: strapiMock });
       expect(() => schedulingService.set('1', new Date())).rejects.toThrow(
         'No release found for id 1'
       );
@@ -49,7 +49,7 @@ describe('Scheduling service', () => {
       const newJobDate = new Date(oldJobDate.getTime() + 1000);
 
       // @ts-expect-error Ignore missing properties
-      const schedulingService = createSchedulingService({ strapi: strapiMock });
+      const schedulingService = createSchedulingService({ metrix: strapiMock });
       const scheduledJobs = await schedulingService.set('1', oldJobDate);
       expect(scheduledJobs.size).toBe(1);
       expect(strapiMock.cron.add).toHaveBeenCalledTimes(1);
@@ -75,7 +75,7 @@ describe('Scheduling service', () => {
       const date = new Date();
 
       // @ts-expect-error Ignore missing properties
-      const schedulingService = createSchedulingService({ strapi: strapiMock });
+      const schedulingService = createSchedulingService({ metrix: strapiMock });
       const scheduledJobs = await schedulingService.set('1', date);
       expect(scheduledJobs.size).toBe(1);
       expect(strapiMock.cron.add).toHaveBeenCalledTimes(1);
@@ -96,7 +96,7 @@ describe('Scheduling service', () => {
       const date = new Date();
 
       // @ts-expect-error Ignore missing properties
-      const schedulingService = createSchedulingService({ strapi: strapiMock });
+      const schedulingService = createSchedulingService({ metrix: strapiMock });
       const scheduledJobs = await schedulingService.set('1', date);
       expect(scheduledJobs.size).toBe(1);
       expect(strapiMock.cron.add).toHaveBeenCalledTimes(1);
@@ -123,7 +123,7 @@ describe('Scheduling service', () => {
       const date = new Date();
 
       // @ts-expect-error Ignore missing properties
-      const schedulingService = createSchedulingService({ strapi: strapiMock });
+      const schedulingService = createSchedulingService({ metrix: strapiMock });
       await schedulingService.set('1', date);
       expect(schedulingService.getAll().size).toBe(1);
     });
@@ -144,7 +144,7 @@ describe('Scheduling service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const schedulingService = createSchedulingService({ strapi: strapiMock });
+      const schedulingService = createSchedulingService({ metrix: strapiMock });
       const scheduledJobs = await schedulingService.syncFromDatabase();
       expect(scheduledJobs.size).toBe(1);
       expect(strapiMock.cron.add).toHaveBeenCalledTimes(1);

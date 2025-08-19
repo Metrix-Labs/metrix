@@ -1,24 +1,24 @@
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createRequest, createAuthRequest } = require('api-tests/request');
 const { createTestBuilder } = require('api-tests/builder');
 
 // Test a simple default API with no relations
 describe('Simple Test GraphQL Users API End to End', () => {
-  let strapi;
+  let metrix;
   let rq;
   let graphqlQuery;
   const user = {
     username: 'User 1',
-    email: 'user1@strapi.io',
+    email: 'user1@metrix.io',
     password: 'test1234',
   };
   const data = {};
 
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createRequest({ metrix });
 
     graphqlQuery = (body) => {
       return rq({
@@ -30,7 +30,7 @@ describe('Simple Test GraphQL Users API End to End', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   describe('Test register and login', () => {
@@ -192,13 +192,13 @@ describe('Simple Test GraphQL Users API End to End', () => {
 describe('Advanced Test GraphQL Users API End to End', () => {
   const builder = createTestBuilder();
 
-  let strapi;
+  let metrix;
   let rq;
   let authReq;
   let graphqlQuery;
   const user = {
     username: 'User 2',
-    email: 'user2@strapi.io',
+    email: 'user2@metrix.io',
     password: 'test1234',
   };
   const component = {
@@ -215,10 +215,10 @@ describe('Advanced Test GraphQL Users API End to End', () => {
   const data = {};
 
   const restart = async () => {
-    await strapi.destroy();
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
-    authReq = await createAuthRequest({ strapi });
+    await metrix.destroy();
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
+    authReq = await createAuthRequest({ metrix });
 
     graphqlQuery = (body) => {
       return rq({
@@ -232,9 +232,9 @@ describe('Advanced Test GraphQL Users API End to End', () => {
   beforeAll(async () => {
     await builder.addComponent(component).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createRequest({ strapi });
-    authReq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createRequest({ metrix });
+    authReq = await createAuthRequest({ metrix });
 
     graphqlQuery = (body) => {
       return rq({
@@ -246,7 +246,7 @@ describe('Advanced Test GraphQL Users API End to End', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

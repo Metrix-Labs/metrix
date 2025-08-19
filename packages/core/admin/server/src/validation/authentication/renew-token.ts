@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrix/utils';
 
 const renewToken = yup.object().shape({ token: yup.string().required() }).required().noUnknown();
 

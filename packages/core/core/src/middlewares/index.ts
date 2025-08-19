@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import { compression } from './compression';
 import { cors } from './cors';
 import { errors } from './errors';

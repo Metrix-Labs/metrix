@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CarouselInput, CarouselSlide } from '@strapi/design-system';
+import { CarouselInput, CarouselSlide } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../../utils/getTrad';

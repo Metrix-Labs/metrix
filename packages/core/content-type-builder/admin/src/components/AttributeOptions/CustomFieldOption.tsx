@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { StrapiAppContextValue } from '@strapi/admin/strapi-admin';
-import { Box, Flex, Typography } from '@strapi/design-system';
+import { StrapiAppContextValue } from '@metrix/admin/metrix-admin';
+import { Box, Flex, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { AttributeIcon, IconByType } from '../AttributeIcon';

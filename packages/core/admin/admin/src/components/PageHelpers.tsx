@@ -8,9 +8,9 @@ import {
   Loader,
   Main,
   MainProps,
-} from '@strapi/design-system';
-import { WarningCircle } from '@strapi/icons';
-import { EmptyPermissions, EmptyDocuments } from '@strapi/icons/symbols';
+} from '@metrix/design-system';
+import { WarningCircle } from '@metrix/icons';
+import { EmptyPermissions, EmptyDocuments } from '@metrix/icons/symbols';
 import { useIntl } from 'react-intl';
 
 import { useAuth, Permission } from '../features/Auth';

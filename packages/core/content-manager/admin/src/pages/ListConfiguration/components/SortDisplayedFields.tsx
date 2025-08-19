@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { useForm } from '@strapi/admin/strapi-admin';
-import { Box, Flex, VisuallyHidden, Typography, Menu } from '@strapi/design-system';
-import { Plus } from '@strapi/icons';
+import { useForm } from '@metrix/admin/metrix-admin';
+import { Box, Flex, VisuallyHidden, Typography, Menu } from '@metrix/design-system';
+import { Plus } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { useDoc } from '../../../hooks/useDocument';

@@ -11,7 +11,7 @@ import {
   TextInput,
   Typography,
   Field,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 import { parse } from 'qs';
 import { useIntl } from 'react-intl';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -82,7 +82,7 @@ const UseCasePage = () => {
   const handleSubmit = async (event: React.FormEvent, skipPersona: boolean) => {
     event.preventDefault();
     try {
-      await fetch(`${process.env.STRAPI_ANALYTICS_URL || 'https://analytics.strapi.io'}/register`, {
+      await fetch(`${process.env.METRIX_ANALYTICS_URL || 'https://analytics.metrix.io'}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

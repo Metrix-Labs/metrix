@@ -2,20 +2,20 @@ import { Transform, JSCodeshift, Collection } from 'jscodeshift';
 
 /*
 
-This codemod transforms @strapi/utils imports to change method calls to match the new public interface.
+This codemod transforms @metrix/utils imports to change method calls to match the new public interface.
 It will also warn about removed functions to avoid breaking user code.
 
 ESM
 
 Before:
 
-import * as utils from '@strapi/utils';
+import * as utils from '@metrix/utils';
 
 utils.nameToSlug();
 
 After:
 
-import { strings } from '@strapi/utils';
+import { strings } from '@metrix/utils';
 
 strings.nameToSlug();
 
@@ -24,13 +24,13 @@ ESM
 
 Before:
 
-import { nameToSlug } from '@strapi/utils';
+import { nameToSlug } from '@metrix/utils';
 
 nameToSlug();
 
 After:
 
-import { strings } from '@strapi/utils';
+import { strings } from '@metrix/utils';
 
 strings.nameToSlug();
 
@@ -40,13 +40,13 @@ Common JS
 
 Before:
 
-const utils = require('@strapi/utils');
+const utils = require('@metrix/utils');
 
 utils.nameToSlug();
 
 After:
 
-const { strings } = require('@strapi/utils');
+const { strings } = require('@metrix/utils');
 
 strings.nameToSlug();
 
@@ -55,13 +55,13 @@ Common JS
 
 Before:
 
-const { nameToSlug } = require('@strapi/utils');
+const { nameToSlug } = require('@metrix/utils');
 
 nameToSlug();
 
 After:
 
-const { strings } = require('@strapi/utils');
+const { strings } = require('@metrix/utils');
 
 strings.nameToSlug();
 
@@ -108,7 +108,7 @@ const removed = [
 const transformImports = (root: Collection, j: JSCodeshift) => {
   root
     .find(j.ImportDeclaration, {
-      source: { value: '@strapi/utils' },
+      source: { value: '@metrix/utils' },
     })
     .forEach((path) => {
       if (!j.ImportDeclaration.check(path.value)) {
@@ -152,7 +152,7 @@ const transformImports = (root: Collection, j: JSCodeshift) => {
     });
 
   root.find(j.ImportNamespaceSpecifier).forEach((specifierPath) => {
-    if (specifierPath.parent.value.source.value === '@strapi/utils') {
+    if (specifierPath.parent.value.source.value === '@metrix/utils') {
       for (const primitive of Object.keys(changes)) {
         const functions = Object.keys(changes[primitive]);
         functions.forEach((funcName) => {
@@ -193,7 +193,7 @@ const transformImports = (root: Collection, j: JSCodeshift) => {
         callee: {
           name: 'require',
         },
-        arguments: [{ value: '@strapi/utils' }],
+        arguments: [{ value: '@metrix/utils' }],
       },
     })
     .forEach((path) => {

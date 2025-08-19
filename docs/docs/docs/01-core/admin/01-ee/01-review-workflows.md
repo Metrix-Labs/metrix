@@ -14,7 +14,7 @@ tags:
 The review workflow feature is only available in the Enterprise Edition.
 That is why, in part, it is completely decoupled from the code of the Community Edition.
 
-The purpose of this feature is to allow users to assign a tag to the various entities of their Strapi project. This tag is called a 'stage' and is available within what we will call a workflow.
+The purpose of this feature is to allow users to assign a tag to the various entities of their Metrix project. This tag is called a 'stage' and is available within what we will call a workflow.
 
 ## Detailed backend design
 
@@ -53,7 +53,7 @@ This code is separated into several elements:
 
 #### strapi_workflows
 
-This content type stores the workflow information and is responsible for holding all the information about stages and their order. In MVP, only one workflow is stored inside the Strapi database.
+This content type stores the workflow information and is responsible for holding all the information about stages and their order. In MVP, only one workflow is stored inside the Metrix database.
 
 #### strapi_workflows_stages
 
@@ -133,7 +133,7 @@ The Review Workflow feature of the Enterprise Edition includes several services 
 
 #### review-workflows
 
-This service is used during the bootstrap and register phases of Strapi. Its primary responsibility is to migrate data on entities as needed and add the stage field to the entity schemas.
+This service is used during the bootstrap and register phases of Metrix. Its primary responsibility is to migrate data on entities as needed and add the stage field to the entity schemas.
 
 #### workflows
 
@@ -165,12 +165,12 @@ This service is used to ensure the feature is working as expected and validate t
 
 ## Alternatives
 
-The Review Workflow feature is currently included as a core feature within the Strapi repository. However, there has been discussion about potentially moving it to a plugin in the future. While no decision has been made on this subject yet, it is possible that it may happen at some point in the future.
+The Review Workflow feature is currently included as a core feature within the Metrix repository. However, there has been discussion about potentially moving it to a plugin in the future. While no decision has been made on this subject yet, it is possible that it may happen at some point in the future.
 
 ## Resources
 
-- https://docs.strapi.io/user-docs/settings/review-workflows
-- https://docs.strapi.io/user-docs/content-type-builder/creating-new-content-type#creating-a-new-content-type
-- https://docs.strapi.io/user-docs/users-roles-permissions/configuring-administrator-roles#plugins-and-settings
+- https://docs.metrix.io/user-docs/settings/review-workflows
+- https://docs.metrix.io/user-docs/content-type-builder/creating-new-content-type#creating-a-new-content-type
+- https://docs.metrix.io/user-docs/users-roles-permissions/configuring-administrator-roles#plugins-and-settings
 - [Content Manager Review Workflows](../../content-manager/02-review-workflows.mdx)
 - [Content Type Builder Review Workflows](../../content-type-builder/01-review-workflows.mdx)

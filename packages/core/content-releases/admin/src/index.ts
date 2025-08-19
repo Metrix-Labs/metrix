@@ -1,4 +1,4 @@
-import { PaperPlane } from '@strapi/icons';
+import { PaperPlane } from '@metrix/icons';
 
 import { ReleaseAction } from './components/ReleaseAction';
 import { ReleaseActionModalForm } from './components/ReleaseActionModal';
@@ -8,12 +8,12 @@ import { PERMISSIONS, PLUGIN_ID } from './constants';
 import { pluginId } from './pluginId';
 import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 
-import type { StrapiApp } from '@strapi/admin/strapi-admin';
+import type { StrapiApp } from '@metrix/admin/metrix-admin';
 import type {
   DocumentActionComponent,
   BulkActionComponent,
-} from '@strapi/content-manager/strapi-admin';
-import type { Plugin } from '@strapi/types';
+} from '@metrix/content-manager/metrix-admin';
+import type { Plugin } from '@metrix/types';
 
 // eslint-disable-next-line import/no-default-export
 const admin: Plugin.Config.AdminInput = {
@@ -26,7 +26,7 @@ const admin: Plugin.Config.AdminInput = {
      */
     app.createHook('ContentReleases/pages/ReleaseDetails/add-locale-in-releases');
 
-    if (window.strapi.features.isEnabled('cms-content-releases')) {
+    if (window.metrix.features.isEnabled('cms-content-releases')) {
       app.addMenuLink({
         to: `plugins/${pluginId}`,
         icon: PaperPlane,
@@ -114,8 +114,8 @@ const admin: Plugin.Config.AdminInput = {
         },
       ]);
     } else if (
-      !window.strapi.features.isEnabled('cms-content-releases') &&
-      window.strapi?.flags?.promoteEE
+      !window.metrix.features.isEnabled('cms-content-releases') &&
+      window.metrix?.flags?.promoteEE
     ) {
       app.addSettingsLink('global', {
         id: pluginId,

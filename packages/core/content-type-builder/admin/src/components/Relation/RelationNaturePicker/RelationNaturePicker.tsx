@@ -1,4 +1,4 @@
-import { Flex, KeyboardNavigable, Typography } from '@strapi/design-system';
+import { Flex, KeyboardNavigable, Typography } from '@metrix/design-system';
 import {
   ManyToMany,
   ManyToOne,
@@ -6,7 +6,7 @@ import {
   OneToMany,
   OneToOne,
   OneWay,
-} from '@strapi/icons';
+} from '@metrix/icons';
 import get from 'lodash/get';
 import truncate from 'lodash/truncate';
 import pluralize from 'pluralize';

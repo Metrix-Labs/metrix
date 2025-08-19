@@ -10,8 +10,8 @@ import {
   Tooltip,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
-import { Search, Trash } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Search, Trash } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

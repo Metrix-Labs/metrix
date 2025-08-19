@@ -7,7 +7,7 @@ const defaultLimit = 20;
 describe('Pagination service', () => {
   describe('With maxLimit set globally', () => {
     beforeAll(() => {
-      global.strapi = {
+      global.metrix = {
         config: {
           get(path, defaultValue) {
             return _.get(this, path, defaultValue);
@@ -137,11 +137,11 @@ describe('Pagination service', () => {
     });
   });
 
-  // Setting global strapi api conf
+  // Setting global metrix api conf
 
   describe('With maxLimit undefined', () => {
     beforeAll(() => {
-      global.strapi = {
+      global.metrix = {
         config: {
           get(path, defaultValue) {
             return _.get(this, path, defaultValue);

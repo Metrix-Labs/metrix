@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Flex, Loader, Main, Typography, Link } from '@strapi/design-system';
+import { Box, Button, Divider, Flex, Loader, Main, Typography, Link } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
@@ -17,7 +17,7 @@ const Providers = () => {
   const navigate = useNavigate();
   const { formatMessage } = useIntl();
   const { isLoading, data: providers = [] } = useGetProvidersQuery(undefined, {
-    skip: !window.strapi.features.isEnabled(window.strapi.features.SSO),
+    skip: !window.metrix.features.isEnabled(window.metrix.features.SSO),
   });
 
   const handleClick = () => {
@@ -25,7 +25,7 @@ const Providers = () => {
   };
 
   if (
-    !window.strapi.features.isEnabled(window.strapi.features.SSO) ||
+    !window.metrix.features.isEnabled(window.metrix.features.SSO) ||
     (!isLoading && providers.length === 0)
   ) {
     return <Navigate to="/auth/login" />;
@@ -66,7 +66,7 @@ const Providers = () => {
               <DividerFull />
             </Flex>
             <Button fullWidth size="L" onClick={handleClick}>
-              {formatMessage({ id: 'Auth.form.button.login.strapi' })}
+              {formatMessage({ id: 'Auth.form.button.login.metrix' })}
             </Button>
           </Flex>
         </LayoutContent>

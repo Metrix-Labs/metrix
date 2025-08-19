@@ -7,34 +7,34 @@ describe('user email hash', () => {
   test('should create a hash from admin user email', () => {
     const state = {
       user: {
-        email: 'testemail@strapi.io',
+        email: 'testemail@metrix.io',
       },
     };
 
     const ctx = createContext({}, { state });
 
-    const strapi = {
+    const metrix = {
       requestContext: {
         get: jest.fn(() => ctx),
       },
     };
 
-    const hash = crypto.createHash('sha256').update('testemail@strapi.io').digest('hex');
+    const hash = crypto.createHash('sha256').update('testemail@metrix.io').digest('hex');
 
-    const userId = generateAdminUserHash(strapi as any);
+    const userId = generateAdminUserHash(metrix as any);
     expect(userId).toBe(hash);
   });
 
   test('should return empty string if user is not available on ctx', () => {
     const ctx = createContext({}, {});
 
-    const strapi = {
+    const metrix = {
       requestContext: {
         get: jest.fn(() => ctx),
       },
     };
 
-    const userId = generateAdminUserHash(strapi as any);
+    const userId = generateAdminUserHash(metrix as any);
     expect(userId).toBe('');
   });
 });

@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import utils, { errors } from '@strapi/utils';
-import type { Schema } from '@strapi/types';
+import utils, { errors } from '@metrix/utils';
+import type { Schema } from '@metrix/types';
 
 const { ApplicationError } = errors;
 
@@ -74,7 +74,7 @@ export const replaceTemporaryUIDs = (uidMap: any) => (schema: any) => {
           return acc;
         }
 
-        if (!_.has(strapi.components, attr.component)) {
+        if (!_.has(metrix.components, attr.component)) {
           throw new ApplicationError('component.notFound');
         }
       }
@@ -88,7 +88,7 @@ export const replaceTemporaryUIDs = (uidMap: any) => (schema: any) => {
           components: attr.components.map((value: any) => {
             if (_.has(uidMap, value)) return uidMap[value];
 
-            if (!_.has(strapi.components, value)) {
+            if (!_.has(metrix.components, value)) {
               throw new ApplicationError('component.notFound');
             }
 

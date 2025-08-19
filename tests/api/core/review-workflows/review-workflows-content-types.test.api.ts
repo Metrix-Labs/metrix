@@ -1,6 +1,6 @@
 'use strict';
 
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import { createTestBuilder } from 'api-tests/builder';
 import { describeOnCondition } from 'api-tests/utils';
@@ -10,7 +10,7 @@ import {
   ENTITY_STAGE_ATTRIBUTE,
 } from '../../../../packages/core/review-workflows/server/src/constants/workflows';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const baseWorkflow = {
   name: 'testWorkflow',
@@ -65,7 +65,7 @@ describeOnCondition(edition === 'EE')('Review workflows - Content Types', () => 
   const builder = createTestBuilder();
 
   const requests = { admin: null };
-  let strapi;
+  let metrix;
 
   const createWorkflow = async (data) => {
     const name = `workflow-${Math.random().toString(36)}`;
@@ -118,8 +118,8 @@ describeOnCondition(edition === 'EE')('Review workflows - Content Types', () => 
   beforeAll(async () => {
     await builder.addContentTypes([productModel, articleModel, dogModel]).build();
 
-    strapi = await createStrapiInstance();
-    requests.admin = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    requests.admin = await createAuthRequest({ metrix });
 
     // Create products
     await Promise.all([
@@ -141,7 +141,7 @@ describeOnCondition(edition === 'EE')('Review workflows - Content Types', () => 
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -420,7 +420,7 @@ describeOnCondition(edition === 'EE')('Review workflows - Content Types', () => 
     // Depends on the previous test
     test('Should list workflows filtered by CT even with similar names (plugin::my-plugin.my-ct and plugin::my-plugin.my-ct2)', async () => {
       // Manually update workflow to have a similar CT name
-      await strapi.db.query(WORKFLOW_MODEL_UID).update({
+      await metrix.db.query(WORKFLOW_MODEL_UID).update({
         where: { id: workflow1.id },
         data: { contentTypes: [`${productUID}-2`] },
       });
@@ -431,7 +431,7 @@ describeOnCondition(edition === 'EE')('Review workflows - Content Types', () => 
       expect(workflows[0]).toMatchObject({ id: workflow2.id });
 
       // To avoid breaking other tests
-      await strapi.db.query(WORKFLOW_MODEL_UID).update({
+      await metrix.db.query(WORKFLOW_MODEL_UID).update({
         where: { id: workflow1.id },
         data: { contentTypes: [] },
       });

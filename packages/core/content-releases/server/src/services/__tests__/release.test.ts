@@ -1,4 +1,4 @@
-import { queryParams } from '@strapi/utils';
+import { queryParams } from '@metrix/utils';
 
 import createReleaseService from '../release';
 import releaseCT from '../../content-types/release/schema';
@@ -64,7 +64,7 @@ const baseStrapiMock = {
     if (name === 'query-params') {
       const transformer = queryParams.createTransformer({
         getModel(name: string) {
-          return strapi.getModel(name as any);
+          return metrix.getModel(name as any);
         },
       });
 
@@ -96,14 +96,14 @@ const baseStrapiMock = {
   }),
 };
 
-global.strapi = {
+global.metrix = {
   getModel: jest.fn().mockReturnValue(releaseCT),
 } as any;
 
 const mockUser = {
   id: 1,
   username: 'user',
-  email: 'user@strapi.io',
+  email: 'user@metrix.io',
   firstname: 'John',
   isActive: true,
   blocked: false,
@@ -132,7 +132,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       const mockReleaseArgs = {
         name: 'Release name',
@@ -155,7 +155,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       const mockReleaseArgs = {
         name: 'Release name',
@@ -177,7 +177,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       const mockReleaseArgs = {
         name: 'Release name',
@@ -204,7 +204,7 @@ describe('Release service', () => {
         },
       } as any;
 
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       const mockReleaseArgs = {
         name: 'Release name',
@@ -229,7 +229,7 @@ describe('Release service', () => {
         },
       } as any;
 
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       const mockReleaseArgs = {
         name: 'Release name',
@@ -248,7 +248,7 @@ describe('Release service', () => {
       mockExecute.mockReturnValueOnce(null);
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: baseStrapiMock });
+      const releaseService = createReleaseService({ metrix: baseStrapiMock });
 
       expect(() => releaseService.publish(1)).rejects.toThrow('No release found for id 1');
     });
@@ -257,7 +257,7 @@ describe('Release service', () => {
       mockExecute.mockReturnValueOnce({ id: 1, releasedAt: new Date() });
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: baseStrapiMock });
+      const releaseService = createReleaseService({ metrix: baseStrapiMock });
 
       expect(() => releaseService.publish(1)).rejects.toThrow('Release already published');
     });
@@ -276,7 +276,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       expect(() => releaseService.publish(1)).rejects.toThrow('No entries to publish');
     });
@@ -332,7 +332,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       // We mock the calls to findOne to get singleType entries info
       findOne.mockReturnValueOnce({
@@ -382,7 +382,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       const release = await releaseService.delete(1);
 
@@ -402,7 +402,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       expect(() => releaseService.delete(1)).rejects.toThrow('No release found for id 1');
     });
@@ -418,7 +418,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       expect(() => releaseService.delete(1)).rejects.toThrow('Release already published');
     });
@@ -436,7 +436,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       await releaseService.delete(1);
 
@@ -456,7 +456,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       await releaseService.delete(1);
 
@@ -478,7 +478,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       const mockReleaseArgs = {
         name: 'Release name',
@@ -508,7 +508,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       const mockReleaseArgs = {
         name: 'Release name',
@@ -534,7 +534,7 @@ describe('Release service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseService = createReleaseService({ strapi: strapiMock });
+      const releaseService = createReleaseService({ metrix: strapiMock });
 
       const mockReleaseArgs = {
         name: 'Release name',

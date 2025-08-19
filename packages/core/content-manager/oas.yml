@@ -1,13 +1,13 @@
 openapi: 3.0.2
 info:
-  title: Strapi Content Manager API
+  title: Metrix Content Manager API
   version: 1.0.0
 servers:
   - url: http://localhost:1337
     description: Local server
 externalDocs:
-  url: https://docs.strapi.io
-  description: Strapi documentation
+  url: https://docs.metrix.io
+  description: Metrix documentation
 paths:
   /content-manager/content-types:
     get:

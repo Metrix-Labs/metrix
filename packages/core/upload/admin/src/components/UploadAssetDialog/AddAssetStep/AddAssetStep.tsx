@@ -1,4 +1,4 @@
-import { Box, Divider, Modal, Tabs } from '@strapi/design-system';
+import { Box, Divider, Modal, Tabs } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../../utils';

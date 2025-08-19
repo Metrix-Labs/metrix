@@ -4,11 +4,11 @@ const {
   file: {
     providers: { createLocalFileSourceProvider },
   },
-  strapi: {
+  metrix: {
     providers: { createRemoteStrapiDestinationProvider },
   },
   engine: { createTransferEngine },
-} = require('@strapi/data-transfer');
+} = require('@metrix/data-transfer');
 
 /**
  * Reset the DB and import data from a DTS dataset
@@ -42,7 +42,7 @@ const createSourceProvider = (filePath) =>
   });
 
 const createDestinationProvider = () => {
-  // TODO: When possible, use the local strapi destination provider instead
+  // TODO: When possible, use the local metrix destination provider instead
   //       For this we need to wait to have access to a Strapi instance
   return createRemoteStrapiDestinationProvider({
     url: new URL(`http://127.0.0.1:${process.env.PORT ?? 1337}/admin`),

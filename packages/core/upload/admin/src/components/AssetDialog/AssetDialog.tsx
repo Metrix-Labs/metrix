@@ -1,8 +1,8 @@
 // TODO: find a better naming convention for the file that was an index file before
 import * as React from 'react';
 
-import { Page } from '@strapi/admin/strapi-admin';
-import { Badge, Button, Divider, Flex, Loader, Modal, Tabs } from '@strapi/design-system';
+import { Page } from '@metrix/admin/metrix-admin';
+import { Badge, Button, Divider, Flex, Loader, Modal, Tabs } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

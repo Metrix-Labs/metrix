@@ -3,8 +3,8 @@ import { dirname, join, resolve } from 'path';
 import { statSync, existsSync } from 'fs';
 import _ from 'lodash';
 import { get, pickBy, defaultsDeep, map, prop, pipe } from 'lodash/fp';
-import { strings } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { strings } from '@metrix/utils';
+import type { Core } from '@metrix/types';
 import { getUserPluginsConfig } from './get-user-plugins-config';
 
 interface PluginMeta {
@@ -34,16 +34,16 @@ interface PluginDeclaration {
  *       See admin.ts server controller on the content-manager plugin for more details.
  */
 const INTERNAL_PLUGINS = [
-  '@strapi/content-manager',
-  '@strapi/content-type-builder',
-  '@strapi/email',
-  '@strapi/upload',
-  '@strapi/i18n',
-  '@strapi/content-releases',
-  '@strapi/review-workflows',
+  '@metrix/content-manager',
+  '@metrix/content-type-builder',
+  '@metrix/email',
+  '@metrix/upload',
+  '@metrix/i18n',
+  '@metrix/content-releases',
+  '@metrix/review-workflows',
 ];
 
-const isStrapiPlugin = (info: PluginInfo) => get('strapi.kind', info) === 'plugin';
+const isStrapiPlugin = (info: PluginInfo) => get('metrix.kind', info) === 'plugin';
 
 const validatePluginName = (pluginName: string) => {
   if (!strings.isKebabCase(pluginName)) {
@@ -72,7 +72,7 @@ const toDetailedDeclaration = (declaration: boolean | PluginDeclaration) => {
       try {
         pathToPlugin = dirname(require.resolve(declaration.resolve));
       } catch (e) {
-        pathToPlugin = resolve(strapi.dirs.app.root, declaration.resolve);
+        pathToPlugin = resolve(metrix.dirs.app.root, declaration.resolve);
 
         if (!existsSync(pathToPlugin) || !statSync(pathToPlugin).isDirectory()) {
           throw new Error(`${declaration.resolve} couldn't be resolved`);
@@ -86,29 +86,29 @@ const toDetailedDeclaration = (declaration: boolean | PluginDeclaration) => {
   return detailedDeclaration;
 };
 
-export const getEnabledPlugins = async (strapi: Core.Strapi, { client } = { client: false }) => {
+export const getEnabledPlugins = async (metrix: Core.Strapi, { client } = { client: false }) => {
   const internalPlugins: PluginMetas = {};
 
   for (const dep of INTERNAL_PLUGINS) {
     const packagePath = join(dep, 'package.json');
 
-    // NOTE: internal plugins should be resolved from the strapi package
+    // NOTE: internal plugins should be resolved from the metrix package
     const packageModulePath = require.resolve(packagePath, {
-      paths: [require.resolve('@strapi/strapi/package.json'), process.cwd()],
+      paths: [require.resolve('@metrix/metrix/package.json'), process.cwd()],
     });
 
     const packageInfo = require(packageModulePath);
 
-    validatePluginName(packageInfo.strapi.name);
-    internalPlugins[packageInfo.strapi.name] = {
+    validatePluginName(packageInfo.metrix.name);
+    internalPlugins[packageInfo.metrix.name] = {
       ...toDetailedDeclaration({ enabled: true, resolve: packageModulePath, isModule: client }),
-      info: packageInfo.strapi,
+      info: packageInfo.metrix,
       packageInfo,
     };
   }
 
   const installedPlugins: PluginMetas = {};
-  const dependencies = strapi.config.get('info.dependencies', {});
+  const dependencies = metrix.config.get('info.dependencies', {});
 
   for (const dep of Object.keys(dependencies)) {
     const packagePath = join(dep, 'package.json');
@@ -120,11 +120,11 @@ export const getEnabledPlugins = async (strapi: Core.Strapi, { client } = { clie
     }
 
     if (isStrapiPlugin(packageInfo)) {
-      validatePluginName(packageInfo.strapi.name);
-      installedPlugins[packageInfo.strapi.name] = {
+      validatePluginName(packageInfo.metrix.name);
+      installedPlugins[packageInfo.metrix.name] = {
         ...toDetailedDeclaration({ enabled: true, resolve: packagePath, isModule: client }),
         info: {
-          ...packageInfo.strapi,
+          ...packageInfo.metrix,
           packageName: packageInfo.name,
         },
         packageInfo,
@@ -151,7 +151,7 @@ export const getEnabledPlugins = async (strapi: Core.Strapi, { client } = { clie
       const packageInfo = require(packagePath);
 
       if (isStrapiPlugin(packageInfo)) {
-        declaredPlugins[pluginName].info = packageInfo.strapi || {};
+        declaredPlugins[pluginName].info = packageInfo.metrix || {};
         declaredPlugins[pluginName].packageInfo = packageInfo;
       }
     }

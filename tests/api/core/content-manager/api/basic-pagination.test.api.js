@@ -2,12 +2,12 @@
 
 const { omit } = require('lodash/fp');
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createTestBuilder } = require('api-tests/builder');
 const { createAuthRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 
 const product = {
@@ -59,8 +59,8 @@ describe('CM API - Pagination', () => {
   beforeAll(async () => {
     await builder.addContentType(product).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     await Promise.all([
       createProduct({ name: 'Product 1' }),
@@ -72,7 +72,7 @@ describe('CM API - Pagination', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash/fp';
 import _ from 'lodash';
-import { yup, contentTypes as contentTypesUtils } from '@strapi/utils';
-import type { Schema } from '@strapi/types';
+import { yup, contentTypes as contentTypesUtils } from '@metrix/utils';
+import type { Schema } from '@metrix/types';
 import { validateContentTypeDefinition } from './validator';
 
 export type ContentTypeDefinition = {
@@ -91,7 +91,7 @@ const addFirstPublishedAt = (schema: Schema.ContentType) => {
   // Note: As an expertimental feature, we are okay if this data is deleted if this feature is
   // switched off. Once "preserve_attributes" come into play, this will be updated.
   if (isEnabled) {
-    strapi.log.warn(`Experimental feature enabled: firstPublishedAt on ${schema.collectionName}`);
+    metrix.log.warn(`Experimental feature enabled: firstPublishedAt on ${schema.collectionName}`);
     schema.attributes[FIRST_PUBLISHED_AT_ATTRIBUTE] = {
       type: 'datetime',
       configurable: false,

@@ -4,7 +4,7 @@ import type {} from 'koa-session';
 import type { Config } from '../types';
 
 export default async (ctx: Koa.Context, next: Koa.Next) => {
-  const pluginStore = strapi.store({ type: 'plugin', name: 'documentation' });
+  const pluginStore = metrix.store({ type: 'plugin', name: 'documentation' });
 
   const config = (await pluginStore.get({ key: 'config' })) as Config;
 
@@ -15,7 +15,7 @@ export default async (ctx: Koa.Context, next: Koa.Next) => {
   if (!ctx.session || !ctx.session.documentation || !ctx.session.documentation.logged) {
     const querystring = ctx.querystring ? `?${ctx.querystring}` : '';
 
-    return ctx.redirect(`${strapi.config.server.url}/documentation/login${querystring}`);
+    return ctx.redirect(`${metrix.config.server.url}/documentation/login${querystring}`);
   }
 
   // Execute the action.

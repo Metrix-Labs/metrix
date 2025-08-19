@@ -3,27 +3,27 @@ import { createWebhookStore, webhookModel } from '../services/webhook-store';
 import createWebhookRunner from '../services/webhook-runner';
 
 export default defineProvider({
-  init(strapi) {
-    strapi.get('models').add(webhookModel);
+  init(metrix) {
+    metrix.get('models').add(webhookModel);
 
-    strapi.add('webhookStore', () => createWebhookStore({ db: strapi.db }));
-    strapi.add('webhookRunner', () =>
+    metrix.add('webhookStore', () => createWebhookStore({ db: metrix.db }));
+    metrix.add('webhookRunner', () =>
       createWebhookRunner({
-        eventHub: strapi.eventHub,
-        logger: strapi.log,
-        configuration: strapi.config.get('server.webhooks', {}),
-        fetch: strapi.fetch,
+        eventHub: metrix.eventHub,
+        logger: metrix.log,
+        configuration: metrix.config.get('server.webhooks', {}),
+        fetch: metrix.fetch,
       })
     );
   },
-  async bootstrap(strapi) {
-    const webhooks = await strapi.get('webhookStore').findWebhooks();
+  async bootstrap(metrix) {
+    const webhooks = await metrix.get('webhookStore').findWebhooks();
     if (!webhooks) {
       return;
     }
 
     for (const webhook of webhooks) {
-      strapi.get('webhookRunner').add(webhook);
+      metrix.get('webhookRunner').add(webhook);
     }
   },
 });

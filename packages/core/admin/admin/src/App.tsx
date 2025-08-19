@@ -15,11 +15,11 @@ import type { Store } from './core/store/configure';
 import type { StrapiApp } from './StrapiApp';
 
 interface AppProps {
-  strapi: StrapiApp;
+  metrix: StrapiApp;
   store: Store;
 }
 
-const App = ({ strapi, store }: AppProps) => {
+const App = ({ metrix, store }: AppProps) => {
   useEffect(() => {
     const language = localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) || 'en';
 
@@ -29,7 +29,7 @@ const App = ({ strapi, store }: AppProps) => {
   }, []);
 
   return (
-    <Providers strapi={strapi} store={store}>
+    <Providers metrix={metrix} store={store}>
       <Suspense fallback={<Page.Loading />}>
         <Outlet />
       </Suspense>

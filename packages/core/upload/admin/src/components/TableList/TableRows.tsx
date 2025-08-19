@@ -1,5 +1,5 @@
-import { Checkbox, Flex, IconButton, Tbody, Td, Tr } from '@strapi/design-system';
-import { Eye, Pencil } from '@strapi/icons';
+import { Checkbox, Flex, IconButton, Tbody, Td, Tr } from '@metrix/design-system';
+import { Eye, Pencil } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 

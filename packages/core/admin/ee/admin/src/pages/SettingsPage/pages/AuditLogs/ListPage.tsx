@@ -1,5 +1,5 @@
-import { Flex, IconButton, Typography } from '@strapi/design-system';
-import { Eye } from '@strapi/icons';
+import { Flex, IconButton, Typography } from '@metrix/design-system';
+import { Eye } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { Filters } from '../../../../../../../admin/src/components/Filters';

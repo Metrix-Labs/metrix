@@ -1,24 +1,24 @@
-# Strapi plugin Sentry
+# Metrix plugin Sentry
 
-The official plugin to track Strapi errors with Sentry.
+The official plugin to track Metrix errors with Sentry.
 
 ## Features
 
-- Initialize a Sentry instance when your Strapi app starts
+- Initialize a Sentry instance when your Metrix app starts
 - Send errors encountered in your application's end API to Sentry
 - Attach useful metadata to Sentry events, to help you with debugging
 - Expose a global Sentry service
 
 ## Installation
 
-To install this plugin, you need to add an NPM dependency to your Strapi application.
+To install this plugin, you need to add an NPM dependency to your Metrix application.
 
 ```sh
 # Using Yarn
-yarn add @strapi/plugin-sentry
+yarn add @metrix/plugin-sentry
 
 # Or using NPM
-npm install @strapi/plugin-sentry
+npm install @metrix/plugin-sentry
 ```
 
 ## Configuration
@@ -52,7 +52,7 @@ module.exports = ({ env }) => ({
 You can access a Sentry service throughout your app.
 
 ```js
-const sentryService = strapi.plugin('sentry').service('sentry');
+const sentryService = metrix.plugin('sentry').service('sentry');
 ```
 
 This service exposes the following methods:
@@ -68,10 +68,10 @@ try {
   // Your code here
 } catch (error) {
   // Either send a simple error
-  strapi.plugin('sentry').service('sentry').sendError(error);
+  metrix.plugin('sentry').service('sentry').sendError(error);
 
   // Or send an error with a customized Sentry scope
-  strapi
+  metrix
     .plugin('sentry')
     .service('sentry')
     .sendError(error, (scope, sentryInstance) => {
@@ -89,15 +89,15 @@ Use it if you need direct access to the Sentry instance, which should already al
 **Example**
 
 ```js
-const sentryInstance = strapi.plugin('sentry').service('sentry').getInstance();
+const sentryInstance = metrix.plugin('sentry').service('sentry').getInstance();
 ```
 
 ## Disabling for non-production environments
 
-If the `dsn` property is set to a nil value (`null` or `undefined`) while `enabled` is true, the Sentry plugin will be available to use in the running Strapi instance, but the service will not actually send errors to Sentry. That allows you to write code that runs on every environment without additional checks, but only send errors to Sentry in production.
+If the `dsn` property is set to a nil value (`null` or `undefined`) while `enabled` is true, the Sentry plugin will be available to use in the running Metrix instance, but the service will not actually send errors to Sentry. That allows you to write code that runs on every environment without additional checks, but only send errors to Sentry in production.
 
-When you start Strapi with a nil `dsn` config property, the plugin will print a warning:  
-`info: @strapi/plugin-sentry is disabled because no Sentry DSN was provided`
+When you start Metrix with a nil `dsn` config property, the plugin will print a warning:  
+`info: @metrix/plugin-sentry is disabled because no Sentry DSN was provided`
 
 You can make use of that by using the `env` utility to set the `dsn` config property depending on the environment.
 
@@ -121,7 +121,7 @@ module.exports = ({ env }) => ({
 
 ## Disabling altogether
 
-Like every other plugin, you can also disable this plugin in the plugins configuration file. This will cause `strapi.plugins('sentry')` to return undefined.
+Like every other plugin, you can also disable this plugin in the plugins configuration file. This will cause `metrix.plugins('sentry')` to return undefined.
 
 **Example**
 

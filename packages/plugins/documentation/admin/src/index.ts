@@ -1,4 +1,4 @@
-import { Information } from '@strapi/icons';
+import { Information } from '@metrix/icons';
 
 import { PERMISSIONS } from './constants';
 import { pluginId } from './pluginId';

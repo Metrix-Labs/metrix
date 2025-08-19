@@ -1,12 +1,12 @@
 import { join, extname, basename } from 'path';
 import fse from 'fs-extra';
-import { importDefault } from '@strapi/utils';
+import { importDefault } from '@metrix/utils';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 // TODO:: allow folders with index.js inside for bigger policies
-export default async function loadPolicies(strapi: Core.Strapi) {
-  const dir = strapi.dirs.dist.policies;
+export default async function loadPolicies(metrix: Core.Strapi) {
+  const dir = metrix.dirs.dist.policies;
 
   if (!(await fse.pathExists(dir))) {
     return;
@@ -25,5 +25,5 @@ export default async function loadPolicies(strapi: Core.Strapi) {
     }
   }
 
-  strapi.get('policies').add(`global::`, policies);
+  metrix.get('policies').add(`global::`, policies);
 }

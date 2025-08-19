@@ -1,19 +1,19 @@
 import { join, extname, basename } from 'path';
 import fse from 'fs-extra';
-import { importDefault } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { importDefault } from '@metrix/utils';
+import type { Core } from '@metrix/types';
 import { middlewares as internalMiddlewares } from '../middlewares';
 
 // TODO:: allow folders with index.js inside for bigger policies
-export default async function loadMiddlewares(strapi: Core.Strapi) {
-  const localMiddlewares = await loadLocalMiddlewares(strapi);
+export default async function loadMiddlewares(metrix: Core.Strapi) {
+  const localMiddlewares = await loadLocalMiddlewares(metrix);
 
-  strapi.get('middlewares').add(`global::`, localMiddlewares);
-  strapi.get('middlewares').add(`strapi::`, internalMiddlewares);
+  metrix.get('middlewares').add(`global::`, localMiddlewares);
+  metrix.get('middlewares').add(`metrix::`, internalMiddlewares);
 }
 
-const loadLocalMiddlewares = async (strapi: Core.Strapi) => {
-  const dir = strapi.dirs.dist.middlewares;
+const loadLocalMiddlewares = async (metrix: Core.Strapi) => {
+  const dir = metrix.dirs.dist.middlewares;
 
   if (!(await fse.pathExists(dir))) {
     return {};

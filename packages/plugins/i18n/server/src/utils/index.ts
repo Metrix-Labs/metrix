@@ -17,12 +17,12 @@ type S = {
 };
 
 const getCoreStore = () => {
-  return strapi.store({ type: 'plugin', name: 'i18n' });
+  return metrix.store({ type: 'plugin', name: 'i18n' });
 };
 
 // retrieve a local service
 const getService = <T extends keyof S>(name: T): ReturnType<S[T]> => {
-  return strapi.plugin('i18n').service(name);
+  return metrix.plugin('i18n').service(name);
 };
 
 export { getService, getCoreStore };

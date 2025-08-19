@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { IconButton, Flex, Box, Typography, Button } from '@strapi/design-system';
-import { Duplicate, Key } from '@strapi/icons';
+import { IconButton, Flex, Box, Typography, Button } from '@metrix/design-system';
+import { Duplicate, Key } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

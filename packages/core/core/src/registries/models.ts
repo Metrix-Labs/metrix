@@ -1,4 +1,4 @@
-import { Model } from '@strapi/database';
+import { Model } from '@metrix/database';
 
 export const registry = () => {
   const models: Model[] = [];

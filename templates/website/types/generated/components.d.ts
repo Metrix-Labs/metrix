@@ -1,4 +1,4 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type { Struct, Schema } from '@metrix/metrix';
 
 export interface MetaMetadata extends Struct.ComponentSchema {
   collectionName: 'components_meta_metadata';
@@ -335,7 +335,7 @@ export interface ElementsFeatureColumn extends Struct.ComponentSchema {
   };
 }
 
-declare module '@strapi/strapi' {
+declare module '@metrix/metrix' {
   export module Public {
     export interface ComponentSchemas {
       'meta.metadata': MetaMetadata;

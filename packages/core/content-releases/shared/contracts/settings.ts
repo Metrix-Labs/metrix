@@ -3,8 +3,8 @@
  * E.g the default timezone for the release schedule.
  */
 
-import { errors } from '@strapi/utils';
-import type { Utils } from '@strapi/types';
+import { errors } from '@metrix/utils';
+import type { Utils } from '@metrix/types';
 
 export interface Settings {
   defaultTimezone: string | null | undefined;

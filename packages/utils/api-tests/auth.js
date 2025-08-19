@@ -3,7 +3,7 @@
 const { createRequest } = require('./request');
 
 const auth = {
-  email: 'admin@strapi.io',
+  email: 'admin@metrix.io',
   firstname: 'admin',
   lastname: 'admin',
   password: 'Password123',

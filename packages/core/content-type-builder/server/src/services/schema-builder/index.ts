@@ -1,7 +1,7 @@
 import { join } from 'path';
 import _ from 'lodash';
 
-import { errors } from '@strapi/utils';
+import { errors } from '@metrix/utils';
 import createSchemaHandler from './schema-handler';
 import createComponentBuilder from './component-builder';
 import createContentTypeBuilder from './content-type-builder';
@@ -10,27 +10,27 @@ import createContentTypeBuilder from './content-type-builder';
  * Creates a content type schema builder instance
  */
 export default function createBuilder() {
-  const components = Object.values(strapi.components).map((componentInput) => ({
+  const components = Object.values(metrix.components).map((componentInput) => ({
     category: componentInput.category,
     modelName: componentInput.modelName,
     plugin: componentInput.modelName,
     uid: componentInput.uid,
     filename: componentInput.__filename__,
-    dir: join(strapi.dirs.app.components, componentInput.category),
+    dir: join(metrix.dirs.app.components, componentInput.category),
     schema: componentInput.__schema__,
     config: componentInput.config,
   }));
 
-  const contentTypes = Object.values<any>(strapi.contentTypes).map((contentTypeInput) => {
+  const contentTypes = Object.values<any>(metrix.contentTypes).map((contentTypeInput) => {
     const dir = contentTypeInput.plugin
       ? join(
-          strapi.dirs.app.extensions,
+          metrix.dirs.app.extensions,
           contentTypeInput.plugin,
           'content-types',
           contentTypeInput.info.singularName
         )
       : join(
-          strapi.dirs.app.api,
+          metrix.dirs.app.api,
           contentTypeInput.apiName,
           'content-types',
           contentTypeInput.info.singularName
@@ -156,15 +156,15 @@ function createSchemaBuilder({ components, contentTypes }: SchemaBuilderOptions)
 
       return Promise.all(schemas.map((schema) => schema.flush()))
         .catch((error) => {
-          strapi.log.error('Error writing schema files');
-          strapi.log.error(error);
+          metrix.log.error('Error writing schema files');
+          metrix.log.error(error);
           return this.rollback();
         })
         .catch((error) => {
-          strapi.log.error(
+          metrix.log.error(
             'Error rolling back schema files. You might need to fix your files manually'
           );
-          strapi.log.error(error);
+          metrix.log.error(error);
 
           throw new errors.ApplicationError('Invalid schema edition');
         });

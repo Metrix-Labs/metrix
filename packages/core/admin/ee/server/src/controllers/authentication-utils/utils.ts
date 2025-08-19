@@ -6,10 +6,10 @@ const PROVIDER_URLS_MAP = {
   error: PROVIDER_REDIRECT_ERROR,
 };
 
-export const getAdminStore = async () => strapi.store({ type: 'core', name: 'admin' });
+export const getAdminStore = async () => metrix.store({ type: 'core', name: 'admin' });
 
 export const getPrefixedRedirectUrls = () => {
-  const { url: adminUrl } = strapi.config.get('admin') as any;
+  const { url: adminUrl } = metrix.config.get('admin') as any;
   const prefixUrl = (url: string) => `${adminUrl || '/admin'}${url}`;
 
   return mapValues(prefixUrl, PROVIDER_URLS_MAP);

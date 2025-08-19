@@ -6,7 +6,7 @@ jest.mock('../../../../../hooks/useAdminRoles', () => ({
   useAdminRoles: jest.fn(() => ({
     roles: [
       {
-        code: 'strapi-super-admin',
+        code: 'metrix-super-admin',
         created_at: '2021-08-24T14:37:20.384Z',
         description: 'Super Admins can access and manage all features and settings.',
         id: 1,

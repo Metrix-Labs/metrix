@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
-import { errors, file } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { errors, file } from '@metrix/utils';
+import type { Core } from '@metrix/types';
 
 import registerUploadMiddleware from './middlewares/upload';
 import spec from '../../documentation/content-api.json';
@@ -13,18 +13,18 @@ const { bytesToHumanReadable, kbytesToBytes } = file;
 /**
  * Register upload plugin
  */
-export async function register({ strapi }: { strapi: Core.Strapi }) {
-  strapi.plugin('upload').provider = createProvider(strapi.config.get<Config>('plugin::upload'));
+export async function register({ metrix }: { metrix: Core.Strapi }) {
+  metrix.plugin('upload').provider = createProvider(metrix.config.get<Config>('plugin::upload'));
 
-  await registerUploadMiddleware({ strapi });
+  await registerUploadMiddleware({ metrix });
 
-  if (strapi.plugin('graphql')) {
+  if (metrix.plugin('graphql')) {
     const { installGraphqlExtension } = await import('./graphql.js');
-    installGraphqlExtension({ strapi });
+    installGraphqlExtension({ metrix });
   }
 
-  if (strapi.plugin('documentation')) {
-    strapi
+  if (metrix.plugin('documentation')) {
+    metrix
       .plugin('documentation')
       .service('override')
       .registerOverride(spec, {
@@ -42,7 +42,7 @@ const createProvider = (config: Config) => {
 
   let modulePath;
   try {
-    modulePath = require.resolve(`@strapi/provider-upload-${providerName}`);
+    modulePath = require.resolve(`@metrix/provider-upload-${providerName}`);
   } catch (error) {
     if (
       typeof error === 'object' &&

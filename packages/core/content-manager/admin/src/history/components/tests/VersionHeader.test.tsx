@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import { type HistoryContextValue, HistoryProvider } from '../../pages/History';
 import { VersionHeader } from '../VersionHeader';
 
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrix/types';
 
 const render = (
   context: Partial<HistoryContextValue>,

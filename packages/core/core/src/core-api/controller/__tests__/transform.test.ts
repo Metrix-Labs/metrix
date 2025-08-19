@@ -1,4 +1,4 @@
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 import * as transforms from '../transform';
 
 describe('Transforms', () => {
@@ -46,7 +46,7 @@ describe('Transforms', () => {
       },
     };
 
-    global.strapi = {
+    global.metrix = {
       contentType() {
         return undefined;
       },
@@ -187,7 +187,7 @@ describe('Transforms', () => {
       },
     };
 
-    global.strapi = {
+    global.metrix = {
       contentType() {
         return undefined;
       },
@@ -233,7 +233,7 @@ describe('Transforms', () => {
       },
     };
 
-    global.strapi = {
+    global.metrix = {
       contentType() {
         return undefined;
       },
@@ -281,7 +281,7 @@ describe('Transforms', () => {
       },
     };
 
-    global.strapi = {
+    global.metrix = {
       contentType() {
         return {
           attributes: {
@@ -342,7 +342,7 @@ describe('Transforms', () => {
       },
     };
 
-    global.strapi = {
+    global.metrix = {
       contentType() {
         return undefined;
       },
@@ -393,7 +393,7 @@ describe('Transforms', () => {
       },
     };
 
-    global.strapi = {
+    global.metrix = {
       contentType() {
         return undefined;
       },

@@ -1,6 +1,6 @@
-import type { Utils } from '@strapi/types';
+import type { Utils } from '@metrix/types';
 
-import { providerFactory } from '@strapi/utils';
+import { providerFactory } from '@metrix/utils';
 import {
   pipe,
   set,

@@ -1,4 +1,4 @@
-import { Status, StatusProps, Typography } from '@strapi/design-system';
+import { Status, StatusProps, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { capitalise } from '../../../utils/strings';

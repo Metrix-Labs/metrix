@@ -1,9 +1,9 @@
 // TODO: find a better naming convention for the file that was an index file before
 import * as React from 'react';
 
-import { useTracking } from '@strapi/admin/strapi-admin';
-import { Flex, IconButton } from '@strapi/design-system';
-import { Crop as Resize, Download as DownloadIcon, Trash } from '@strapi/icons';
+import { useTracking } from '@metrix/admin/metrix-admin';
+import { Flex, IconButton } from '@metrix/design-system';
+import { Crop as Resize, Download as DownloadIcon, Trash } from '@metrix/icons';
 import cropperjscss from 'cropperjs/dist/cropper.css?raw';
 import { useIntl } from 'react-intl';
 import { createGlobalStyle } from 'styled-components';

@@ -6,8 +6,8 @@ import {
   Typography,
   Link,
   TypographyComponent,
-} from '@strapi/design-system';
-import { Duplicate, WarningCircle } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Duplicate, WarningCircle } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { useRouteError } from 'react-router-dom';
 import { styled } from 'styled-components';
@@ -68,7 +68,7 @@ ${error.stack}
                         isExternal
                         // hack to get rid of the current endIcon, which should be removable by using `null`.
                         endIcon
-                        href="https://github.com/strapi/strapi/issues/new?assignees=&labels=&projects=&template=BUG_REPORT.md"
+                        href="https://github.com/metrix/metrix/issues/new?assignees=&labels=&projects=&template=BUG_REPORT.md"
                       >{`Strapi's GitHub`}</Link>
                     ),
                   }

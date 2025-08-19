@@ -1,4 +1,4 @@
-import { Accordion, Box } from '@strapi/design-system';
+import { Accordion, Box } from '@metrix/design-system';
 
 import { ContentApiPermission } from '../../../../../../../../shared/contracts/content-api/permissions';
 

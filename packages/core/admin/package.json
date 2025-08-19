@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/admin",
+  "name": "@metrix/admin",
   "version": "5.22.0",
   "description": "Strapi Admin",
   "repository": {
@@ -84,12 +84,6 @@
     "@radix-ui/react-context": "1.0.1",
     "@radix-ui/react-toolbar": "1.0.4",
     "@reduxjs/toolkit": "1.9.7",
-    "@strapi/design-system": "2.0.0-rc.29",
-    "@strapi/icons": "2.0.0-rc.29",
-    "@strapi/permissions": "5.22.0",
-    "@strapi/types": "5.22.0",
-    "@strapi/typescript-utils": "5.22.0",
-    "@strapi/utils": "5.22.0",
     "@testing-library/dom": "10.1.0",
     "@testing-library/react": "15.0.7",
     "@testing-library/user-event": "14.5.2",
@@ -140,11 +134,15 @@
     "typescript": "5.4.4",
     "use-context-selector": "1.4.1",
     "yup": "0.32.9",
-    "zod": "3.25.67"
+    "zod": "3.25.67",
+    "@metrix/design-system": "2.0.0-rc.29",
+    "@metrix/icons": "2.0.0-rc.29",
+    "@metrix/permissions": "5.22.0",
+    "@metrix/types": "5.22.0",
+    "@metrix/typescript-utils": "5.22.0",
+    "@metrix/utils": "5.22.0"
   },
   "devDependencies": {
-    "@strapi/admin-test-utils": "5.22.0",
-    "@strapi/data-transfer": "5.22.0",
     "@types/codemirror5": "npm:@types/codemirror@^5.60.15",
     "@types/fs-extra": "11.0.4",
     "@types/invariant": "2.2.36",
@@ -169,14 +167,16 @@
     "react-router-dom": "6.22.3",
     "styled-components": "6.1.8",
     "vite": "5.4.19",
-    "vite-plugin-dts": "^4.3.0"
+    "vite-plugin-dts": "^4.3.0",
+    "@metrix/admin-test-utils": "5.22.0",
+    "@metrix/data-transfer": "5.22.0"
   },
   "peerDependencies": {
-    "@strapi/data-transfer": "^5.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "@metrix/data-transfer": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

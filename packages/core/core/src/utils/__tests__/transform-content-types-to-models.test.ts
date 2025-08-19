@@ -1,5 +1,5 @@
 import { cloneDeep, merge } from 'lodash';
-import { Database } from '@strapi/database';
+import { Database } from '@metrix/database';
 import {
   LoadedContentTypeModel,
   transformContentTypesToModels,

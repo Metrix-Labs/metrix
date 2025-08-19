@@ -1,7 +1,7 @@
 /**
- * These were imported from `@strapi/types` but if we do that
+ * These were imported from `@metrix/types` but if we do that
  * it becomes a circular dependency. This is the source of truth,
- * they're re-exported from `@strapi/types` for convenience.
+ * they're re-exported from `@metrix/types` for convenience.
  */
 import type { Subject } from '@casl/ability';
 

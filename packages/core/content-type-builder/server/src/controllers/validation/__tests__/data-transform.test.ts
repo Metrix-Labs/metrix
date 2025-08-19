@@ -1,4 +1,4 @@
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrix/types';
 import { removeEmptyDefaults, removeDeletedUIDTargetFields } from '../data-transform';
 
 describe('Data transform', () => {

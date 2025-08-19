@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrix/utils';
 import validators from '../common-validators';
 
 const forgotPasswordSchema = yup

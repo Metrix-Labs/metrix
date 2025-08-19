@@ -10,8 +10,8 @@ import {
   Portal,
   Field,
   VisuallyHidden,
-} from '@strapi/design-system';
-import { Cross } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Cross } from '@metrix/icons';
 import { Formik, Form } from 'formik';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
@@ -70,7 +70,7 @@ const checkIfShouldShowSurvey = (settings: NpsSurveySettings) => {
   const { enabled, lastResponseDate, firstDismissalDate, lastDismissalDate } = settings;
 
   // This function goes through all the cases where we'd want to not show the survey:
-  // 1. If the survey is disabled by strapi, abort mission, don't bother checking the other settings.
+  // 1. If the survey is disabled by metrix, abort mission, don't bother checking the other settings.
   // 2. If the survey is disabled by user, abort mission, don't bother checking the other settings.
   // 3. If the user has already responded to the survey, check if enough time has passed since the last response.
   // 4. If the user has dismissed the survey twice or more before, check if enough time has passed since the last dismissal.
@@ -82,8 +82,8 @@ const checkIfShouldShowSurvey = (settings: NpsSurveySettings) => {
   // For users who had created an account before the NPS feature was introduced,
   // we assume that they would have enabled the NPS feature if they had the chance.
 
-  // Global strapi disable for NSP.
-  if (window.strapi.flags.nps === false) {
+  // Global metrix disable for NSP.
+  if (window.metrix.flags.nps === false) {
     return false;
   }
 
@@ -188,11 +188,11 @@ const NpsSurvey = () => {
         comment: npsSurveyFeedback,
         environment: currentEnvironment,
         version: strapiVersion ?? undefined,
-        license: window.strapi.projectType,
-        isHostedOnStrapiCloud: process.env.STRAPI_HOSTING === 'strapi.cloud',
+        license: window.metrix.projectType,
+        isHostedOnStrapiCloud: process.env.METRIX_HOSTING === 'metrix.cloud',
       };
       const res = await fetch(
-        `${process.env.STRAPI_ANALYTICS_URL || 'https://analytics.strapi.io'}/submit-nps`,
+        `${process.env.METRIX_ANALYTICS_URL || 'https://analytics.metrix.io'}/submit-nps`,
         {
           method: 'POST',
           headers: {

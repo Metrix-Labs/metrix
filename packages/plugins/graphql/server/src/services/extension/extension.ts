@@ -1,6 +1,6 @@
 import * as nexus from 'nexus';
 import { merge } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import type * as Nexus from 'nexus';
 
 import createShadowCRUDManager from './shadow-crud-manager';
@@ -14,7 +14,7 @@ export type Configuration = {
 };
 
 export type ConfigurationFactory = (options: {
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
   nexus: typeof nexus;
   typeRegistry: object;
 }) => Configuration;
@@ -35,7 +35,7 @@ const getDefaultState = (): Extension => ({
   plugins: [],
 });
 
-const createExtension = ({ strapi }: { strapi: Core.Strapi }) => {
+const createExtension = ({ metrix }: { metrix: Core.Strapi }) => {
   const configs: Array<Configuration | ConfigurationFactory> = [];
 
   return {
@@ -55,7 +55,7 @@ const createExtension = ({ strapi }: { strapi: Core.Strapi }) => {
      */
     generate({ typeRegistry }: { typeRegistry: object }) {
       const resolveConfig = (config: Configuration | ConfigurationFactory): Configuration => {
-        return typeof config === 'function' ? config({ strapi, nexus, typeRegistry }) : config;
+        return typeof config === 'function' ? config({ metrix, nexus, typeRegistry }) : config;
       };
 
       // Evaluate & merge every registered configuration object, then return the result

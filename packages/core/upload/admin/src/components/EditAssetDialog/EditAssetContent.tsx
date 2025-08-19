@@ -5,7 +5,7 @@
  */
 import * as React from 'react';
 
-import { useTracking } from '@strapi/admin/strapi-admin';
+import { useTracking } from '@metrix/admin/metrix-admin';
 import {
   Button,
   Field,
@@ -15,7 +15,7 @@ import {
   Modal,
   TextInput,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 import { Form, Formik } from 'formik';
 import isEqual from 'lodash/isEqual';
 import { useIntl } from 'react-intl';

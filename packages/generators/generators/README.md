@@ -1,6 +1,6 @@
-# @strapi/generators
+# @metrix/generators
 
-This package contains strapi code generators available through the CLI or programmatically.
+This package contains metrix code generators available through the CLI or programmatically.
 
 ## API Reference
 

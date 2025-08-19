@@ -1,1 +1,1 @@
-# strapi-plugin-todo-example
+# metrix-plugin-todo-example

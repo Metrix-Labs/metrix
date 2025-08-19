@@ -1,7 +1,7 @@
 import formData from 'form-data';
 import Mailgun from 'mailgun.js';
 
-describe('@strapi/provider-email-mailgun', () => {
+describe('@metrix/provider-email-mailgun', () => {
   describe('Mailgun', () => {
     it('successfully creates a new Mailgun client', () => {
       const defaults = {

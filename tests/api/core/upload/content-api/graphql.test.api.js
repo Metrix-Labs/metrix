@@ -3,19 +3,19 @@
 const fs = require('fs');
 const path = require('path');
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
-let strapi;
+let metrix;
 let rq;
 
 const data = {};
 
 describe('Upload plugin end to end tests', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
+    metrix = await createStrapiInstance();
     rq = await createAuthRequest({
-      strapi,
+      metrix,
     });
 
     const res = await rq({
@@ -31,7 +31,7 @@ describe('Upload plugin end to end tests', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   test('Update file information', async () => {

@@ -9,7 +9,7 @@
 const _ = require('lodash');
 const jwt = require('jsonwebtoken');
 
-module.exports = ({ strapi }) => ({
+module.exports = ({ metrix }) => ({
   getToken(ctx) {
     let token;
 
@@ -29,10 +29,10 @@ module.exports = ({ strapi }) => ({
   },
 
   issue(payload, jwtOptions = {}) {
-    _.defaults(jwtOptions, strapi.config.get('plugin::users-permissions.jwt'));
+    _.defaults(jwtOptions, metrix.config.get('plugin::users-permissions.jwt'));
     return jwt.sign(
       _.clone(payload.toJSON ? payload.toJSON() : payload),
-      strapi.config.get('plugin::users-permissions.jwtSecret'),
+      metrix.config.get('plugin::users-permissions.jwtSecret'),
       jwtOptions
     );
   },
@@ -41,7 +41,7 @@ module.exports = ({ strapi }) => ({
     return new Promise((resolve, reject) => {
       jwt.verify(
         token,
-        strapi.config.get('plugin::users-permissions.jwtSecret'),
+        metrix.config.get('plugin::users-permissions.jwtSecret'),
         {},
         (err, tokenPayload = {}) => {
           if (err) {

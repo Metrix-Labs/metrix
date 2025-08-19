@@ -7,15 +7,15 @@ import {
   Button,
   LinkButton,
   TypographyComponent,
-} from '@strapi/design-system';
-import { CheckCircle, ExternalLink, Download, Star, Check, Duplicate } from '@strapi/icons';
-import { GitHub } from '@strapi/icons/symbols';
+} from '@metrix/design-system';
+import { CheckCircle, ExternalLink, Download, Star, Check, Duplicate } from '@metrix/icons';
+import { GitHub } from '@metrix/icons/symbols';
 import pluralize from 'pluralize';
 import { useIntl } from 'react-intl';
 import * as semver from 'semver';
 import { styled } from 'styled-components';
 
-import StrapiLogo from '../../../assets/images/logo-strapi-2022.svg';
+import StrapiLogo from '../../../assets/images/logo-metrix-2022.svg';
 import { AppInfoContextValue } from '../../../features/AppInfo';
 import { useNotification } from '../../../features/Notifications';
 import { useTracking } from '../../../features/Tracking';
@@ -61,7 +61,7 @@ const NpmPackageCard = ({
     defaultMessage: 'Made by Strapi',
   });
 
-  const npmPackageHref = `https://market.strapi.io/${pluralize.plural(npmPackageType)}/${
+  const npmPackageHref = `https://market.metrix.io/${pluralize.plural(npmPackageType)}/${
     attributes.slug
   }`;
 

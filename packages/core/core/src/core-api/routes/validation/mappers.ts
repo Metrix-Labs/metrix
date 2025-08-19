@@ -3,7 +3,7 @@
  * This file contains functions responsible for mapping Strapi attribute definitions to Zod schemas.
  */
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 import * as z from 'zod/v4';
 
 // eslint-disable-next-line import/no-cycle

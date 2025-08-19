@@ -39,7 +39,7 @@ const transform: Transform = (file, api) => {
  * MIGRATION GUIDE:
  *
  * For a thorough guide on migrating your lifecycles to document service middlewares, please refer to the following link:
- * [Document Services Middlewares Migration Guide](https://docs.strapi.io/dev-docs/migration/v4-to-v5/breaking-changes/lifecycle-hooks-document-service)
+ * [Document Services Middlewares Migration Guide](https://docs.metrix.io/dev-docs/migration/v4-to-v5/breaking-changes/lifecycle-hooks-document-service)
  *
  * IMPORTANT:
  *

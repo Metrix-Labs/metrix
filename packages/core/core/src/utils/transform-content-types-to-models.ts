@@ -1,11 +1,11 @@
-import { type Model, type Identifiers } from '@strapi/database';
-import type { Struct, Schema } from '@strapi/types';
+import { type Model, type Identifiers } from '@metrix/database';
+import type { Struct, Schema } from '@metrix/types';
 import { createId } from '@paralleldrive/cuid2';
 import assert from 'node:assert';
 import _ from 'lodash/fp';
 
 /**
- * Because strapi/database models don't know about things like components or dynamic zones, we use this file to convert them
+ * Because metrix/database models don't know about things like components or dynamic zones, we use this file to convert them
  * to a relations format that it recognizes
  *
  * Therefore we have to keep an additional set of helpers/extensions to the database naming methods
@@ -63,7 +63,7 @@ export type LoadedContentTypeModel = Struct.ContentTypeSchema &
   Required<Pick<Struct.ContentTypeSchema, 'collectionName' | 'uid' | 'modelName'>> &
   Pick<Model, 'lifecycles'>;
 
-// Transforms an attribute (particularly for relation types) into the format that strapi/database accepts
+// Transforms an attribute (particularly for relation types) into the format that metrix/database accepts
 export const transformAttribute = (
   name: string,
   attribute: Schema.Attribute.AnyAttribute,

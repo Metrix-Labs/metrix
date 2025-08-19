@@ -1,6 +1,6 @@
-import type { Core, UID } from '@strapi/types';
+import type { Core, UID } from '@metrix/types';
 
-import { contentTypes, AbstractRouteValidator } from '@strapi/utils';
+import { contentTypes, AbstractRouteValidator } from '@metrix/utils';
 import * as z from 'zod/v4';
 
 /**
@@ -33,12 +33,12 @@ export abstract class AbstractCoreRouteValidator<
   /**
    * Protected constructor for initializing the class with the provided Strapi instance and unique identifier (UID).
    *
-   * @param strapi The Strapi instance to be used.
+   * @param metrix The Strapi instance to be used.
    * @param uid The unique identifier for the instance.
    */
-  public constructor(strapi: Core.Strapi, uid: T) {
+  public constructor(metrix: Core.Strapi, uid: T) {
     super();
-    this._strapi = strapi;
+    this._strapi = metrix;
     this._uid = uid;
   }
 

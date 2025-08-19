@@ -1,5 +1,5 @@
 import { merge } from 'lodash/fp';
-import { async } from '@strapi/utils';
+import { async } from '@metrix/utils';
 
 import type { Context } from 'koa';
 
@@ -15,7 +15,7 @@ export default {
 
     const defaultQuery = { populate: { folder: true } };
 
-    const pm = strapi.service('admin::permission').createPermissionsManager({
+    const pm = metrix.service('admin::permission').createPermissionsManager({
       ability: userAbility,
       action: ACTIONS.read,
       model: FILE_MODEL_UID,

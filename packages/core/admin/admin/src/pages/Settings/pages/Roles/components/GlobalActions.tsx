@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Checkbox, Box, Flex, Typography } from '@strapi/design-system';
+import { Checkbox, Box, Flex, Typography } from '@metrix/design-system';
 import get from 'lodash/get';
 import { useIntl } from 'react-intl';
 

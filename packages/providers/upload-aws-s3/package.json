@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/provider-upload-aws-s3",
+  "name": "@metrix/provider-upload-aws-s3",
   "version": "5.22.0",
   "description": "AWS S3 provider for strapi upload",
   "keywords": [

@@ -1,6 +1,6 @@
-import { useClipboard } from '@strapi/admin/strapi-admin';
-import { Box, Typography, Tabs, IconButton, Flex, Tooltip } from '@strapi/design-system';
-import { Duplicate } from '@strapi/icons';
+import { useClipboard } from '@metrix/admin/metrix-admin';
+import { Box, Typography, Tabs, IconButton, Flex, Tooltip } from '@metrix/design-system';
+import { Duplicate } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../utils/getTrad';
@@ -51,9 +51,9 @@ const CLIDeployTabs = () => {
             <Box padding={4}>
               <Flex direction="row" justifyContent="space-between" alignItems="center">
                 <Typography tag="code" textColor="neutral800">
-                  yarn strapi deploy
+                  yarn metrix deploy
                 </Typography>
-                <CopyCommandButton command="yarn strapi deploy" />
+                <CopyCommandButton command="yarn metrix deploy" />
               </Flex>
             </Box>
           </Box>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Flex, Menu, VisuallyHidden, Avatar, Typography, Badge } from '@strapi/design-system';
+import { Flex, Menu, VisuallyHidden, Avatar, Typography, Badge } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';

@@ -26,7 +26,7 @@ const STORAGE_KEYS = {
 };
 
 const THEME_LOCAL_STORAGE_KEY = 'STRAPI_THEME';
-const LANGUAGE_LOCAL_STORAGE_KEY = 'strapi-admin-language';
+const LANGUAGE_LOCAL_STORAGE_KEY = 'metrix-admin-language';
 
 export const getStoredToken = (): string | null => {
   const fromLocalStorage = localStorage.getItem(STORAGE_KEYS.TOKEN);

@@ -1,10 +1,10 @@
 import { prop } from 'lodash/fp';
-import { contentTypes as contentTypesUtils } from '@strapi/utils';
+import { contentTypes as contentTypesUtils } from '@metrix/utils';
 
-import type { Core, Struct } from '@strapi/types';
+import type { Core, Struct } from '@metrix/types';
 import { getService } from '../utils';
 
-export default ({ strapi }: { strapi: Core.Strapi }) => ({
+export default ({ metrix }: { metrix: Core.Strapi }) => ({
   canConfigureContentType({
     userAbility,
     contentType,
@@ -91,6 +91,6 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       },
     ];
 
-    await strapi.service('admin::permission').actionProvider.registerMany(actions);
+    await metrix.service('admin::permission').actionProvider.registerMany(actions);
   },
 });

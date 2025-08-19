@@ -1,4 +1,4 @@
-# @strapi/provider-email-nodemailer
+# @metrix/provider-email-nodemailer
 
 ## Resources
 
@@ -6,19 +6,19 @@
 
 ## Links
 
-- [Strapi website](https://strapi.io/)
-- [Strapi documentation](https://docs.strapi.io)
-- [Strapi community on Discord](https://discord.strapi.io)
-- [Strapi news on Twitter](https://twitter.com/strapijs)
+- [Metrix website](https://metrix.io/)
+- [Metrix documentation](https://docs.metrix.io)
+- [Metrix community on Discord](https://discord.metrix.io)
+- [Metrix news on Twitter](https://twitter.com/strapijs)
 
 ## Installation
 
 ```bash
 # using yarn
-yarn add @strapi/provider-email-nodemailer
+yarn add @metrix/provider-email-nodemailer
 
 # using npm
-npm install @strapi/provider-email-nodemailer --save
+npm install @metrix/provider-email-nodemailer --save
 ```
 
 ## Example
@@ -113,10 +113,10 @@ module.exports = ({ env }) => ({
 
 > :warning: The Shipper Email (or defaultfrom) may also need to be changed in the `Email Templates` tab on the admin panel for emails to send properly
 
-To send an email from anywhere inside Strapi:
+To send an email from anywhere inside Metrix:
 
 ```js
-await strapi.plugin('email').service('email').send({
+await metrix.plugin('email').service('email').send({
   to: 'someone@example.com',
   from: 'someone2@example.com',
   subject: 'Hello world',

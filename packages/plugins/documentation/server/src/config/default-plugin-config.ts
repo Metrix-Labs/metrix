@@ -17,14 +17,14 @@ export const defaultConfig: PluginConfig = {
       url: 'https://www.apache.org/licenses/LICENSE-2.0.html',
     },
   },
-  'x-strapi-config': {
+  'x-metrix-config': {
     plugins: null,
     mutateDocumentation: null,
   },
   servers: [],
   externalDocs: {
     description: 'Find out more',
-    url: 'https://docs.strapi.io/developer-docs/latest/getting-started/introduction.html',
+    url: 'https://docs.metrix.io/developer-docs/latest/getting-started/introduction.html',
   },
   security: [
     {

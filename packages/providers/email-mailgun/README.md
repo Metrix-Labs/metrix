@@ -1,4 +1,4 @@
-# @strapi/provider-email-mailgun
+# @metrix/provider-email-mailgun
 
 ## Resources
 
@@ -6,19 +6,19 @@
 
 ## Links
 
-- [Strapi website](https://strapi.io/)
-- [Strapi documentation](https://docs.strapi.io)
-- [Strapi community on Discord](https://discord.strapi.io)
-- [Strapi news on Twitter](https://twitter.com/strapijs)
+- [Metrix website](https://metrix.io/)
+- [Metrix documentation](https://docs.metrix.io)
+- [Metrix community on Discord](https://discord.metrix.io)
+- [Metrix news on Twitter](https://twitter.com/strapijs)
 
 ## Installation
 
 ```bash
 # using yarn
-yarn add @strapi/provider-email-mailgun
+yarn add @metrix/provider-email-mailgun
 
 # using npm
-npm install @strapi/provider-email-mailgun --save
+npm install @metrix/provider-email-mailgun --save
 ```
 
 ## Configuration

@@ -1,5 +1,5 @@
-import type { Data, UID } from '@strapi/types';
-import { type errors } from '@strapi/utils';
+import type { Data, UID } from '@metrix/types';
+import { type errors } from '@metrix/utils';
 
 /**
  * GET /content-manager/preview/url/:uid

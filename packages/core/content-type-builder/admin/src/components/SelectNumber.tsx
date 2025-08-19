@@ -1,4 +1,4 @@
-import { SingleSelectOption, SingleSelect, Field } from '@strapi/design-system';
+import { SingleSelectOption, SingleSelect, Field } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 type SelectNumberProps = {

@@ -2,7 +2,7 @@ import _ from 'lodash/fp';
 import fse from 'fs-extra';
 // eslint-disable-next-line node/no-unpublished-import
 import SwaggerParser from '@apidevtools/swagger-parser';
-import { apis, plugins, components, contentTypes } from '../__mocks__/mock-strapi-data';
+import { apis, plugins, components, contentTypes } from '../__mocks__/mock-metrix-data';
 import documentation from '../documentation';
 import override from '../override';
 import { defaultConfig } from '../../config/default-plugin-config';
@@ -35,18 +35,18 @@ jest.mock('fs-extra', () => ({
 
 describe('Documentation plugin | Documentation service', () => {
   beforeAll(() => {
-    global.strapi = mockStrapiInstance;
-    global.strapi.contentType = jest.fn((uid) => {
+    global.metrix = mockStrapiInstance;
+    global.metrix.contentType = jest.fn((uid) => {
       // Only deal with mocked data, return empty attributes for unmocked relations
-      if (!global.strapi.contentTypes[uid]) return { attributes: {} };
+      if (!global.metrix.contentTypes[uid]) return { attributes: {} };
 
-      return global.strapi.contentTypes[uid];
+      return global.metrix.contentTypes[uid];
     }) as any;
 
-    global.strapi.plugins.documentation = {
+    global.metrix.plugins.documentation = {
       service: jest.fn((name) => {
         const mockServices = {
-          override: override({ strapi: global.strapi }),
+          override: override({ metrix: global.metrix }),
         } as any;
 
         return mockServices[name];
@@ -55,17 +55,17 @@ describe('Documentation plugin | Documentation service', () => {
   });
 
   afterAll(() => {
-    // Teardown the mocked strapi instance
-    global.strapi = {} as any;
+    // Teardown the mocked metrix instance
+    global.metrix = {} as any;
   });
 
   afterEach(() => {
-    // Reset the mocked strapi config
-    global.strapi.config.get = () => defaultConfig as any;
+    // Reset the mocked metrix config
+    global.metrix.config.get = () => defaultConfig as any;
   });
 
   it('generates a valid openapi schema', async () => {
-    const docService = documentation({ strapi: global.strapi });
+    const docService = documentation({ metrix: global.metrix });
     await docService.generateFullDoc();
     const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
       jest.mocked(fse.writeJson).mock.calls.length - 1
@@ -79,7 +79,7 @@ describe('Documentation plugin | Documentation service', () => {
   });
 
   it('generates the correct response component schema for a single type', async () => {
-    const docService = documentation({ strapi: global.strapi });
+    const docService = documentation({ metrix: global.metrix });
     await docService.generateFullDoc();
     const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
       jest.mocked(fse.writeJson).mock.calls.length - 1
@@ -101,7 +101,7 @@ describe('Documentation plugin | Documentation service', () => {
   });
 
   it('generates the correct response component schema for a collection type', async () => {
-    const docService = documentation({ strapi: global.strapi });
+    const docService = documentation({ metrix: global.metrix });
     await docService.generateFullDoc();
     const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
       jest.mocked(fse.writeJson).mock.calls.length - 1
@@ -135,7 +135,7 @@ describe('Documentation plugin | Documentation service', () => {
 
   describe('Determines the plugins that need documentation', () => {
     it('generates documentation for the default plugins if the user provided nothing in the config', async () => {
-      const docService = documentation({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
 
       await docService.generateFullDoc();
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
@@ -143,41 +143,41 @@ describe('Documentation plugin | Documentation service', () => {
       ];
       const mockFinalDoc = lastMockCall[1];
 
-      expect(mockFinalDoc['x-strapi-config'].plugins).toEqual(['upload', 'users-permissions']);
+      expect(mockFinalDoc['x-metrix-config'].plugins).toEqual(['upload', 'users-permissions']);
     });
 
     it("generates documentation only for plugins in the user's config", async () => {
-      global.strapi.config.get = () =>
+      global.metrix.config.get = () =>
         ({
           ...defaultConfig,
-          'x-strapi-config': { ...defaultConfig['x-strapi-config'], plugins: ['upload'] },
+          'x-metrix-config': { ...defaultConfig['x-metrix-config'], plugins: ['upload'] },
         }) as any;
 
-      const docService = documentation({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
 
       await docService.generateFullDoc();
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
         jest.mocked(fse.writeJson).mock.calls.length - 1
       ];
       const mockFinalDoc = lastMockCall[1];
-      expect(mockFinalDoc['x-strapi-config'].plugins).toEqual(['upload']);
+      expect(mockFinalDoc['x-metrix-config'].plugins).toEqual(['upload']);
     });
 
     it('does not generate documentation for any plugins', async () => {
-      global.strapi.config.get = () =>
+      global.metrix.config.get = () =>
         ({
           ...defaultConfig,
-          'x-strapi-config': { ...defaultConfig['x-strapi-config'], plugins: [] },
+          'x-metrix-config': { ...defaultConfig['x-metrix-config'], plugins: [] },
         }) as any;
 
-      const docService = documentation({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
 
       await docService.generateFullDoc();
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
         jest.mocked(fse.writeJson).mock.calls.length - 1
       ];
       const mockFinalDoc = lastMockCall[1];
-      expect(mockFinalDoc['x-strapi-config'].plugins).toEqual([]);
+      expect(mockFinalDoc['x-metrix-config'].plugins).toEqual([]);
     });
   });
 
@@ -199,7 +199,7 @@ describe('Documentation plugin | Documentation service', () => {
             url: 'custom https://www.apache.org/licenses/LICENSE-2.0.html',
           },
         },
-        'x-strapi-config': {
+        'x-metrix-config': {
           path: 'custom-documentation',
           plugins: [],
         },
@@ -218,8 +218,8 @@ describe('Documentation plugin | Documentation service', () => {
         ],
       };
 
-      global.strapi.config.get = () => ({ ...userConfig }) as any;
-      const docService = documentation({ strapi: global.strapi });
+      global.metrix.config.get = () => ({ ...userConfig }) as any;
+      const docService = documentation({ metrix: global.metrix });
       await docService.generateFullDoc();
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
         jest.mocked(fse.writeJson).mock.calls.length - 1
@@ -228,21 +228,21 @@ describe('Documentation plugin | Documentation service', () => {
       // The generation data is dynamically added, it cannot be modified by the user
       const { 'x-generation-date': generationConfig, ...mockFinalDocInfo } = mockFinalDoc.info;
       expect(mockFinalDocInfo).toEqual(userConfig.info);
-      expect(mockFinalDoc['x-strapi-config']).toEqual(userConfig['x-strapi-config']);
+      expect(mockFinalDoc['x-metrix-config']).toEqual(userConfig['x-metrix-config']);
       expect(mockFinalDoc.externalDocs).toEqual(userConfig.externalDocs);
       expect(mockFinalDoc.security).toEqual(userConfig.security);
       expect(mockFinalDoc.webhooks).toEqual(userConfig.webhooks);
       expect(mockFinalDoc.servers).toEqual(userConfig.servers);
     });
 
-    it("does not apply an override if the plugin providing the override isn't specified in the x-strapi-config.plugins", async () => {
-      global.strapi.config.get = () =>
+    it("does not apply an override if the plugin providing the override isn't specified in the x-metrix-config.plugins", async () => {
+      global.metrix.config.get = () =>
         ({
           ...defaultConfig,
-          'x-strapi-config': { ...defaultConfig['x-strapi-config'], plugins: [] },
+          'x-metrix-config': { ...defaultConfig['x-metrix-config'], plugins: [] },
         }) as any;
-      const docService = documentation({ strapi: global.strapi });
-      const overrideService = override({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
+      const overrideService = override({ metrix: global.metrix });
 
       overrideService.registerOverride(
         {
@@ -268,7 +268,7 @@ describe('Documentation plugin | Documentation service', () => {
     });
 
     it('overrides (extends) Tags', async () => {
-      const overrideService = override({ strapi: global.strapi });
+      const overrideService = override({ metrix: global.metrix });
       // Simulate override from users-permissions plugin
       overrideService.registerOverride(
         {
@@ -284,7 +284,7 @@ describe('Documentation plugin | Documentation service', () => {
         { pluginOrigin: 'upload' }
       );
       // Use the override service in the documentation service
-      global.strapi.plugins.documentation = {
+      global.metrix.plugins.documentation = {
         service: jest.fn((name) => {
           const mockServices = {
             override: overrideService,
@@ -293,7 +293,7 @@ describe('Documentation plugin | Documentation service', () => {
           return mockServices[name];
         }),
       } as any;
-      const docService = documentation({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
       await docService.generateFullDoc();
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
         jest.mocked(fse.writeJson).mock.calls.length - 1
@@ -304,7 +304,7 @@ describe('Documentation plugin | Documentation service', () => {
     });
 
     it('overrides (replaces existing or adds new) Paths', async () => {
-      const overrideService = override({ strapi: global.strapi });
+      const overrideService = override({ metrix: global.metrix });
       // Simulate override from upload plugin
       overrideService.registerOverride(
         {
@@ -325,7 +325,7 @@ describe('Documentation plugin | Documentation service', () => {
         } as any,
         { pluginOrigin: 'upload' }
       );
-      global.strapi.plugins.documentation = {
+      global.metrix.plugins.documentation = {
         service: jest.fn((name) => {
           const mockServices = {
             override: overrideService,
@@ -335,7 +335,7 @@ describe('Documentation plugin | Documentation service', () => {
         }),
       } as any;
 
-      const docService = documentation({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
       await docService.generateFullDoc();
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
         jest.mocked(fse.writeJson).mock.calls.length - 1
@@ -348,7 +348,7 @@ describe('Documentation plugin | Documentation service', () => {
     });
 
     it('overrides (replaces existing or adds new) Components', async () => {
-      const overrideService = override({ strapi: global.strapi });
+      const overrideService = override({ metrix: global.metrix });
       // Simulate override from upload plugin
       overrideService.registerOverride(
         {
@@ -373,7 +373,7 @@ describe('Documentation plugin | Documentation service', () => {
         },
         { pluginOrigin: 'upload' }
       );
-      global.strapi.plugins.documentation = {
+      global.metrix.plugins.documentation = {
         service: jest.fn((name) => {
           const mockServices = {
             override: overrideService,
@@ -382,7 +382,7 @@ describe('Documentation plugin | Documentation service', () => {
           return mockServices[name];
         }),
       } as any;
-      const docService = documentation({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
       await docService.generateFullDoc();
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
         jest.mocked(fse.writeJson).mock.calls.length - 1
@@ -397,7 +397,7 @@ describe('Documentation plugin | Documentation service', () => {
       );
     });
     it('overrides only the specified version', async () => {
-      const overrideService = override({ strapi: global.strapi });
+      const overrideService = override({ metrix: global.metrix });
       // Simulate override from upload plugin
       overrideService.registerOverride(
         {
@@ -438,7 +438,7 @@ describe('Documentation plugin | Documentation service', () => {
         },
         { pluginOrigin: 'upload' }
       );
-      global.strapi.plugins.documentation = {
+      global.metrix.plugins.documentation = {
         service: jest.fn((name) => {
           const mockServices = {
             override: overrideService,
@@ -447,7 +447,7 @@ describe('Documentation plugin | Documentation service', () => {
           return mockServices[name];
         }),
       } as any;
-      const docService = documentation({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
       await docService.generateFullDoc('2.0.0');
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
         jest.mocked(fse.writeJson).mock.calls.length - 1
@@ -459,11 +459,11 @@ describe('Documentation plugin | Documentation service', () => {
       expect(mockFinalDoc.components.schemas.ShouldAlsoBeAdded).toBeDefined();
     });
     it('excludes apis and plugins from generation', async () => {
-      const overrideService = override({ strapi: global.strapi });
+      const overrideService = override({ metrix: global.metrix });
 
       overrideService.excludeFromGeneration('kitchensink');
 
-      global.strapi.plugins.documentation = {
+      global.metrix.plugins.documentation = {
         service: jest.fn((name) => {
           const mockServices = {
             override: overrideService,
@@ -473,7 +473,7 @@ describe('Documentation plugin | Documentation service', () => {
         }),
       } as any;
 
-      const docService = documentation({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
       await docService.generateFullDoc();
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
         jest.mocked(fse.writeJson).mock.calls.length - 1
@@ -488,11 +488,11 @@ describe('Documentation plugin | Documentation service', () => {
       ).toBeUndefined();
     });
     it("applies a user's mutateDocumentation function", async () => {
-      global.strapi.config.get = () =>
+      global.metrix.config.get = () =>
         ({
           ...defaultConfig,
-          'x-strapi-config': {
-            ...defaultConfig['x-strapi-config'],
+          'x-metrix-config': {
+            ...defaultConfig['x-metrix-config'],
             mutateDocumentation(draft: any) {
               draft.paths['/kitchensinks'] = {
                 get: { responses: { 200: { description: 'test' } } },
@@ -500,7 +500,7 @@ describe('Documentation plugin | Documentation service', () => {
             },
           },
         }) as any;
-      const docService = documentation({ strapi: global.strapi });
+      const docService = documentation({ metrix: global.metrix });
       await docService.generateFullDoc();
       const lastMockCall = jest.mocked(fse.writeJson).mock.calls[
         jest.mocked(fse.writeJson).mock.calls.length - 1

@@ -1,6 +1,6 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
-export const createReloader = (strapi: Core.Strapi) => {
+export const createReloader = (metrix: Core.Strapi) => {
   const state = {
     shouldReload: 0,
     isWatching: true,
@@ -14,7 +14,7 @@ export const createReloader = (strapi: Core.Strapi) => {
       return;
     }
 
-    if (strapi.config.get('autoReload')) {
+    if (metrix.config.get('autoReload')) {
       process.send?.('reload');
     }
   }

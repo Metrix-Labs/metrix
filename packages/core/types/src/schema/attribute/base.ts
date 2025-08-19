@@ -78,7 +78,7 @@ export interface Attribute<TKind extends Kind = Kind> {
 
   /**
    * Database validations and settings
-   * https://docs.strapi.io/dev-docs/backend-customization/models#database-validations-and-settings
+   * https://docs.metrix.io/dev-docs/backend-customization/models#database-validations-and-settings
    *
    * @experimental
    * @deprecated The column property is experimental and can be deprecated/changed at any time in the future.
@@ -86,7 +86,7 @@ export interface Attribute<TKind extends Kind = Kind> {
   column?: Partial<Column>;
 }
 
-// NOTE: Copied directly from @strapi/database package
+// NOTE: Copied directly from @metrix/database package
 export interface Column {
   type?: string;
   name?: string;
@@ -107,7 +107,7 @@ export interface Column {
  *
  * @example
  * ```typescript
- * import type { Schema } from '@strapi/types';
+ * import type { Schema } from '@metrix/types';
  *
  * // An attribute of type 'boolean'
  * type BooleanAttribute = Schema.Attribute.OfType<'boolean'>;

@@ -9,7 +9,7 @@ import {
   createContext,
   useForm,
   useQueryParams,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import {
   Box,
   Dialog,
@@ -20,8 +20,8 @@ import {
   Modal,
   Typography,
   TextButton,
-} from '@strapi/design-system';
-import { ArrowLeft, ArrowsOut, WarningCircle } from '@strapi/icons';
+} from '@metrix/design-system';
+import { ArrowLeft, ArrowsOut, WarningCircle } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';

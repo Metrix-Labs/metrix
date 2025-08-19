@@ -8,7 +8,7 @@ import { controllers } from './controllers';
 import { routes } from './routes';
 
 const getPlugin = () => {
-  if (strapi.ee.features.isEnabled('cms-content-releases')) {
+  if (metrix.ee.features.isEnabled('cms-content-releases')) {
     return {
       register,
       bootstrap,

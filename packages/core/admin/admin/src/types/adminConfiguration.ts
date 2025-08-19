@@ -1,4 +1,4 @@
-import type { Schema, Struct } from '@strapi/types';
+import type { Schema, Struct } from '@metrix/types';
 
 /* -------------------------------------------------------------------------------------------------
  * Configuration – This should be exported from the Content Manager plugin.

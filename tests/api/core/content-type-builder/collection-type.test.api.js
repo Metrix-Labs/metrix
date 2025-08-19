@@ -4,19 +4,19 @@
 
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const modelsUtils = require('api-tests/models');
 const { createTestBuilder } = require('api-tests/builder');
 const { kebabCase } = require('lodash/fp');
 
-let strapi;
+let metrix;
 let rq;
 
 const restart = async () => {
-  await strapi.destroy();
-  strapi = await createStrapiInstance();
-  rq = await createAuthRequest({ strapi });
+  await metrix.destroy();
+  metrix = await createStrapiInstance();
+  rq = await createAuthRequest({ metrix });
 };
 
 const builder = createTestBuilder();
@@ -41,8 +41,8 @@ const localTestData = {
 describe('Content Type Builder - Content types', () => {
   beforeAll(async () => {
     await builder.addContentType(localTestData.models.dog).build();
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterEach(async () => {
@@ -59,10 +59,10 @@ describe('Content Type Builder - Content types', () => {
       'api::my-3-space.my-3-space',
     ];
 
-    await modelsUtils.cleanupModels(modelsUIDs, { strapi });
-    await modelsUtils.deleteContentTypes(modelsUIDs, { strapi });
+    await modelsUtils.cleanupModels(modelsUIDs, { metrix });
+    await modelsUtils.deleteContentTypes(modelsUIDs, { metrix });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -206,7 +206,7 @@ describe('Content Type Builder - Content types', () => {
       }
     );
 
-    test.each(['strapi', '_strapi', '__strapi'])(
+    test.each(['metrix', '_strapi', '__strapi'])(
       'Cannot use %s prefix for content type name',
       async (prefix) => {
         const res = await rq({
@@ -233,7 +233,7 @@ describe('Content Type Builder - Content types', () => {
               errors: [
                 {
                   message:
-                    'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, strapi*, _strapi*, __strapi*',
+                    'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, metrix*, _strapi*, __strapi*',
                   name: 'ValidationError',
                   path: ['contentType', 'attributes', prefix],
                   value: {
@@ -242,17 +242,17 @@ describe('Content Type Builder - Content types', () => {
                 },
                 {
                   message:
-                    'Content Type name cannot be one of boolean, date, date_time, time, upload, document, then, strapi*, _strapi*, __strapi*',
+                    'Content Type name cannot be one of boolean, date, date_time, time, upload, document, then, metrix*, _strapi*, __strapi*',
                   name: 'ValidationError',
                   path: ['contentType', 'singularName'],
-                  value: 'strapi-singular',
+                  value: 'metrix-singular',
                 },
                 {
                   message:
-                    'Content Type name cannot be one of boolean, date, date_time, time, upload, document, then, strapi*, _strapi*, __strapi*',
+                    'Content Type name cannot be one of boolean, date, date_time, time, upload, document, then, metrix*, _strapi*, __strapi*',
                   name: 'ValidationError',
                   path: ['contentType', 'pluralName'],
-                  value: 'strapi-plural',
+                  value: 'metrix-plural',
                 },
               ],
             },

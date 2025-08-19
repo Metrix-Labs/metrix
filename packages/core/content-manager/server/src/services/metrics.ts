@@ -1,11 +1,11 @@
 import { intersection, prop } from 'lodash/fp';
-import { relations } from '@strapi/utils';
-import type { Core, Struct } from '@strapi/types';
+import { relations } from '@metrix/utils';
+import type { Core, Struct } from '@metrix/types';
 import type { Configuration } from '../../../shared/contracts/content-types';
 
 const { getRelationalFields } = relations;
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
+export default ({ metrix }: { metrix: Core.Strapi }) => {
   const sendDidConfigureListView = async (
     contentType: Struct.ContentTypeSchema,
     configuration: Configuration
@@ -29,7 +29,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     }
 
     try {
-      await strapi.telemetry.send('didConfigureListView', data);
+      await metrix.telemetry.send('didConfigureListView', data);
     } catch (e) {
       // silence
     }

@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 #### Why?
 
-The Strapi Type System is designed to provide developers with a fully customizable experience.
+The Metrix Type System is designed to provide developers with a fully customizable experience.
 
 It's engineered to adapt and modify its type definitions automatically according to the context of each application and associated resources.
 
@@ -42,7 +42,7 @@ Every resource comes with its own registry that has a set of rules acting as the
 
 Because every registry can be augmented (publicly exported), developers have the freedom to inject their own definitions.
 
-Doing so allows Strapi APIs to respond in a way that aligns with the developers' custom definitions.
+Doing so allows Metrix APIs to respond in a way that aligns with the developers' custom definitions.
 
 :::info[Did you know?]
 The `Schema` and `UID` namespaces rely solely on public registries to infer their type definitions.
@@ -70,7 +70,7 @@ flowchart TB;
   end
 
   %% Type System
-  subgraph TypesPackage["@strapi/types"]
+  subgraph TypesPackage["@metrix/types"]
     %% Nodes
     TypeSystem["Type System"]
     Types{{Types}}
@@ -84,14 +84,14 @@ flowchart TB;
     Registries -- "exports" ----> ContentTypeRegistry
   end
 
-  %% Strapi
-  subgraph StrapiPackage["@strapi/strapi"]
+  %% Metrix
+  subgraph StrapiPackage["@metrix/metrix"]
     %% Nodes
-    Strapi["Strapi"]
+    Metrix["Metrix"]
     APIs[["APIs"]]
 
     %% Links
-    Strapi -- "exports" --> APIs
+    Metrix -- "exports" --> APIs
     APIs -- "uses" --> Types
   end
 
@@ -112,8 +112,8 @@ It should accept:
 - Content-type UIDs as keys
 - Content-type schemas as values
 
-```ts title="@strapi/types/public/registries.ts"
-import type { Internal, Struct } from '@strapi/types';
+```ts title="@metrix/types/public/registries.ts"
+import type { Internal, Struct } from '@metrix/types';
 
 export interface ContentTypeSchemas {
   [key: Internal.UID.ContentType]: Struct.ContentTypeSchema;
@@ -130,8 +130,8 @@ We use low level types to define our index (`Internal`/`Struct`) to keep it as g
 
 To define `UID.ContentType`, we extract every key (`Internal.Registry.Keys`) from the public content-type registry (`Public.ContentTypeSchemas`) that matches with the base definition of a content-type UID (`Internal.UID.ContentType`).
 
-```ts title="@strapi/types/uid.ts"
-import type { Internal, Public } from '@strapi/types';
+```ts title="@metrix/types/uid.ts"
+import type { Internal, Public } from '@metrix/types';
 
 export type ContentType = Internal.Registry.Keys<
   Public.ContentTypeSchemas,
@@ -151,8 +151,8 @@ To declare `Schema.ContentType`, we simply query the content-type schema registr
 Since `UID.ContentType` (`TUID`) is [dynamically built based on actual keys](#uidcontenttype), we know for sure that there will be a valid corresponding schema in the registry.
 :::
 
-```ts title="@strapi/types/schema.ts"
-import type { UID, Public } from '@strapi/types';
+```ts title="@metrix/types/schema.ts"
+import type { UID, Public } from '@metrix/types';
 
 export type ContentType<TUID extends UID.ContentType> = Public.ContentTypeSchemas[TUID];
 ```
@@ -161,8 +161,8 @@ export type ContentType<TUID extends UID.ContentType> = Public.ContentTypeSchema
 
 To create types for a dynamic API (_aka one that reacts to its context_), simply use dynamic type definitions such as `UID`, `Data` or `Schema`.
 
-```ts title="@strapi/core/document-service.ts"
-import type { Data, UID } from '@strapi/types';
+```ts title="@metrix/core/document-service.ts"
+import type { Data, UID } from '@metrix/types';
 
 export type findOne<TUID extends UID.ContentType>(uid: TUID): Data.ContentType<TUID>;
 ```
@@ -175,12 +175,12 @@ Remember to use dynamic type definitions (`UID`, `Data`, `Schema`) and not stati
 Registries are **indexed**, which means that:
 
 - **When augmented** (_e.g. in users' applications_), they'll return **strongly typed values** that correspond to the defined types.
-- **When empty** (_e.g. in Strapi codebase_), they'll return **generic low level types** based on their index definition.
+- **When empty** (_e.g. in Metrix codebase_), they'll return **generic low level types** based on their index definition.
 
 <Tabs>
   <TabItem value="augmented" label="Augmented">
     ```ts
-    import type { UID } from '@strapi/types';
+    import type { UID } from '@metrix/types';
 
     const uid: UID.ContentType;
     // ^ 'api::article.article' | 'admin::user'
@@ -189,10 +189,10 @@ Registries are **indexed**, which means that:
   </TabItem>
   <TabItem value="empty" label="Empty">
     ```ts
-    import type { UID } from '@strapi/types';
+    import type { UID } from '@metrix/types';
 
     const uid: UID.ContentType;
-    // ^ `admin::${string}` | `api::${string}.${string}` | `plugin::${string}.${string}` | `strapi::${string}`
+    // ^ `admin::${string}` | `api::${string}.${string}` | `plugin::${string}.${string}` | `metrix::${string}`
     ```
 
   </TabItem>
@@ -206,13 +206,13 @@ Registries are **indexed**, which means that:
 It's possible to manually augment the public registries to create tailor-made experiences.
 
 ```ts title="my-app/index.d.ts"
-import type { Struct } from '@strapi/strapi';
+import type { Struct } from '@metrix/metrix';
 
 interface ApiArticleArticle extends Struct.ContentTypeSchema {
   // ...
 }
 
-declare module '@strapi/strapi' {
+declare module '@metrix/metrix' {
   export module Public {
     export interface ContentTypeSchemas {
       'api::article.article': ApiArticleArticle;
@@ -224,14 +224,14 @@ declare module '@strapi/strapi' {
 This will force every type that depends on the `Public.ContentTypeSchemas` registry to recognize `'api::article.article'` as the only valid UID and `ApiArticleArticle` the only valid schema.
 
 :::note
-In the context of a Strapi application, developers are strongly encouraged to use types exported by `@strapi/strapi` and not `@strapi/types`.
+In the context of a Metrix application, developers are strongly encouraged to use types exported by `@metrix/metrix` and not `@metrix/types`.
 
-This is to allow having both an internal (`@strapi/types`) and a public (`@strapi/strapi`) types API.
+This is to allow having both an internal (`@metrix/types`) and a public (`@metrix/metrix`) types API.
 :::
 
 ###### Automated Augmentation
 
-To ease the registries augmentation, Strapi offers an automated way of generating types and extending the registries.
+To ease the registries augmentation, Metrix offers an automated way of generating types and extending the registries.
 
 The process will generate type definitions based on the user application state (`schemas`), then augment the registry using the created types.
 
@@ -240,7 +240,7 @@ The process will generate type definitions based on the user application state (
     Generate the types once.
 
 ```shell title="my-app/"
-yarn strapi ts:generate-types
+yarn metrix ts:generate-types
 ```
 
   </TabItem>
@@ -259,7 +259,7 @@ yarn develop
 The generated types will automatically augment the corresponding registries.
 
 ```ts title="my-app/types/generated/contentTypes.d.ts"
-import type { Struct } from '@strapi/strapi';
+import type { Struct } from '@metrix/metrix';
 
 interface ApiArticleArticle extends Struct.ContentTypeSchema {
   // ...
@@ -269,7 +269,7 @@ interface AdminUser extends Struct.ContentTypeSchema {
   // ...
 }
 
-declare module '@strapi/strapi' {
+declare module '@metrix/metrix' {
   export module Public {
     export interface ContentTypeSchemas {
       'api::article.article': ApiArticleArticle;
@@ -290,21 +290,21 @@ When coupling everything together, the end result is a TypeScript developer expe
 ```ts title="my-app/src/index.ts"
 export default () => ({
   bootstrap() {
-    strapi.findOne('ap');
+    metrix.findOne('ap');
     //                ^ TypeScript will autocomplete with "api::article.article"
 
-    strapi.findOne('ad');
+    metrix.findOne('ad');
     //                ^ TypeScript will autocomplete with "admin::user"
 
-    strapi.findOne('api::blog.blog');
+    metrix.findOne('api::blog.blog');
     //                ^ Error, TypeScript will complain
   }
 })
 ```
 </TabItem>
-<TabItem value="strapi" label="Strapi Codebase">
-```ts title="@strapi/strapi/document-service.ts"
-import type { UID } from '@strapi/types';
+<TabItem value="metrix" label="Metrix Codebase">
+```ts title="@metrix/metrix/document-service.ts"
+import type { UID } from '@metrix/types';
 
 export const findOne<TUID extends UID.ContentType>(uid: TUID) {
   // ...

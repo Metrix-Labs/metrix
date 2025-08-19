@@ -1,1 +1,1 @@
-# Strapi plugin
+# Metrix plugin

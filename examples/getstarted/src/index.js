@@ -7,7 +7,7 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register({ strapi }) {},
+  register({ metrix }) {},
 
   /**
    * An asynchronous bootstrap function that runs before
@@ -16,7 +16,7 @@ module.exports = {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  async bootstrap({ strapi }) {},
+  async bootstrap({ metrix }) {},
 
   /**
    * An asynchronous destroy function that runs before
@@ -24,5 +24,5 @@ module.exports = {
    *
    * This gives you an opportunity to gracefully stop services you run.
    */
-  destroy({ strapi }) {},
+  destroy({ metrix }) {},
 };

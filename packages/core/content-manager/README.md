@@ -1,4 +1,4 @@
-# Strapi Content Manager
+# Metrix Content Manager
 
 ## Description
 

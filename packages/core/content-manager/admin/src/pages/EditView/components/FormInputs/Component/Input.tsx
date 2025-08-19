@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { InputProps, useField } from '@strapi/admin/strapi-admin';
-import { Field, Flex, IconButton } from '@strapi/design-system';
-import { Trash } from '@strapi/icons';
+import { InputProps, useField } from '@metrix/admin/metrix-admin';
+import { Field, Flex, IconButton } from '@metrix/design-system';
+import { Trash } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { useDocumentContext } from '../../../../../hooks/useDocumentContext';

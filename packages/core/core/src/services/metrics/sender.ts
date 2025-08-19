@@ -3,9 +3,9 @@ import path from 'path';
 import _ from 'lodash';
 import isDocker from 'is-docker';
 import ciEnv from 'ci-info';
-import tsUtils from '@strapi/typescript-utils';
-import { env, generateInstallId } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import tsUtils from '@metrix/typescript-utils';
+import { env, generateInstallId } from '@metrix/utils';
+import type { Core } from '@metrix/types';
 import { generateAdminUserHash } from './admin-user-hash';
 
 export interface Payload {
@@ -26,10 +26,10 @@ const defaultQueryOpts = {
 };
 
 /**
- * Add properties from the package.json strapi key in the metadata
+ * Add properties from the package.json metrix key in the metadata
  */
-const addPackageJsonStrapiMetadata = (metadata: Record<string, unknown>, strapi: Core.Strapi) => {
-  const { packageJsonStrapi = {} } = strapi.config;
+const addPackageJsonStrapiMetadata = (metadata: Record<string, unknown>, metrix: Core.Strapi) => {
+  const { packageJsonStrapi = {} } = metrix.config;
 
   _.defaults(metadata, packageJsonStrapi);
 };
@@ -37,16 +37,16 @@ const addPackageJsonStrapiMetadata = (metadata: Record<string, unknown>, strapi:
 /**
  * Create a send function for event with all the necessary metadata
  */
-export default (strapi: Core.Strapi): Sender => {
-  const { uuid, installId: installIdFromPackageJson } = strapi.config;
+export default (metrix: Core.Strapi): Sender => {
+  const { uuid, installId: installIdFromPackageJson } = metrix.config;
 
   const installId = generateInstallId(uuid, installIdFromPackageJson);
 
-  const serverRootPath = strapi.dirs.app.root;
-  const adminRootPath = path.join(strapi.dirs.app.root, 'src', 'admin');
+  const serverRootPath = metrix.dirs.app.root;
+  const adminRootPath = path.join(metrix.dirs.app.root, 'src', 'admin');
 
   const anonymousUserProperties = {
-    environment: strapi.config.environment,
+    environment: metrix.config.environment,
     os: os.type(),
     osPlatform: os.platform(),
     osArch: os.arch(),
@@ -57,17 +57,17 @@ export default (strapi: Core.Strapi): Sender => {
   const anonymousGroupProperties = {
     docker: process.env.DOCKER || isDocker(),
     isCI: ciEnv.isCI,
-    version: strapi.config.get('info.strapi'),
+    version: metrix.config.get('info.metrix'),
     useTypescriptOnServer: tsUtils.isUsingTypeScriptSync(serverRootPath),
     useTypescriptOnAdmin: tsUtils.isUsingTypeScriptSync(adminRootPath),
     projectId: uuid,
-    isHostedOnStrapiCloud: env('STRAPI_HOSTING', null) === 'strapi.cloud',
+    isHostedOnStrapiCloud: env('STRAPI_HOSTING', null) === 'metrix.cloud',
   };
 
-  addPackageJsonStrapiMetadata(anonymousGroupProperties, strapi);
+  addPackageJsonStrapiMetadata(anonymousGroupProperties, metrix);
 
   return async (event: string, payload: Payload = {}, opts = {}) => {
-    const userId = generateAdminUserHash(strapi);
+    const userId = generateAdminUserHash(metrix);
 
     const reqParams = {
       method: 'POST',
@@ -79,7 +79,7 @@ export default (strapi: Core.Strapi): Sender => {
         userProperties: userId ? { ...anonymousUserProperties, ...payload.userProperties } : {},
         groupProperties: {
           ...anonymousGroupProperties,
-          projectType: strapi.EE ? 'Enterprise' : 'Community',
+          projectType: metrix.EE ? 'Enterprise' : 'Community',
           ...payload.groupProperties,
         },
       }),
@@ -87,8 +87,8 @@ export default (strapi: Core.Strapi): Sender => {
     };
 
     try {
-      const analyticsUrl = env('STRAPI_ANALYTICS_URL', 'https://analytics.strapi.io');
-      const res = await strapi.fetch(`${analyticsUrl}/api/v2/track`, reqParams);
+      const analyticsUrl = env('STRAPI_ANALYTICS_URL', 'https://analytics.metrix.io');
+      const res = await metrix.fetch(`${analyticsUrl}/api/v2/track`, reqParams);
       return res.ok;
     } catch (err) {
       return false;

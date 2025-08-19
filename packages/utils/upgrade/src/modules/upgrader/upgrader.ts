@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import semver from 'semver';
-import { packageManager } from '@strapi/utils';
+import { packageManager } from '@metrix/utils';
 
 import { createJSONTransformAPI, saveJSON } from '../json';
 import { constants as projectConstants } from '../project';
@@ -279,7 +279,7 @@ export class Upgrader implements UpgraderInterface {
 
     const strapiDependencies: DependenciesEntries = [];
 
-    // Find all @strapi/* packages matching the current Strapi version
+    // Find all @metrix/* packages matching the current Strapi version
     for (const [name, version] of Object.entries(dependencies)) {
       const isScopedStrapiPackage = name.startsWith(projectConstants.SCOPED_STRAPI_PACKAGE_PREFIX);
       const isOnCurrentStrapiVersion = isValidSemVer(version) && version === strapiVersion.raw;

@@ -1,10 +1,10 @@
 import { extendType, nonNull, list } from 'nexus';
 import type * as Nexus from 'nexus';
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrix/types';
 import type { Context } from '../../types';
 
-export default ({ strapi }: Context) => {
-  const { service: getService } = strapi.plugin('graphql');
+export default ({ metrix }: Context) => {
+  const { service: getService } = metrix.plugin('graphql');
 
   const { naming } = getService('utils');
   const { transformArgs, getContentTypeArgs } = getService('builders').utils;
@@ -75,7 +75,7 @@ export default ({ strapi }: Context) => {
       type: typeName,
 
       extensions: {
-        strapi: {
+        metrix: {
           contentType,
         },
       },
@@ -109,7 +109,7 @@ export default ({ strapi }: Context) => {
       type: nonNull(list(typeName)),
 
       extensions: {
-        strapi: {
+        metrix: {
           contentType,
         },
       },
@@ -145,7 +145,7 @@ export default ({ strapi }: Context) => {
       type: responseCollectionTypeName,
 
       extensions: {
-        strapi: {
+        metrix: {
           contentType,
         },
       },

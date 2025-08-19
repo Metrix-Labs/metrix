@@ -1,4 +1,4 @@
-import type { Core, UID } from '@strapi/types';
+import type { Core, UID } from '@metrix/types';
 
 import { Preview } from '../../../../shared/contracts';
 
@@ -16,12 +16,12 @@ const createPreviewController = () => {
       const query = ctx.request.query as Preview.GetPreviewUrl.Request['query'];
 
       // Validate the request parameters
-      const params = await validatePreviewUrl(strapi, uid, query);
+      const params = await validatePreviewUrl(metrix, uid, query);
 
       // TODO: Permissions to preview content
 
       // Get the preview URL by using the user-defined config handler
-      const previewService = getService(strapi, 'preview');
+      const previewService = getService(metrix, 'preview');
       const url = await previewService.getPreviewUrl(uid, params);
 
       // If no url is found, set status to 204

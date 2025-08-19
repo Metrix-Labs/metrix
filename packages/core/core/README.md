@@ -1,1 +1,1 @@
-# `@strapi/core`
+# `@metrix/core`

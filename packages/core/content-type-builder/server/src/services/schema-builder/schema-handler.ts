@@ -1,5 +1,5 @@
 import path from 'path';
-import type { Internal, Struct } from '@strapi/types';
+import type { Internal, Struct } from '@metrix/types';
 import fse from 'fs-extra';
 import _ from 'lodash';
 

@@ -1,6 +1,6 @@
 /* eslint-disable check-file/filename-naming-convention */
 
-import { Cloud } from '@strapi/icons';
+import { Cloud } from '@metrix/icons';
 
 import { Initializer } from './components/Initializer';
 import { pluginId } from './pluginId';
@@ -11,7 +11,7 @@ const pluginName = 'Deploy';
 // eslint-disable-next-line import/no-default-export
 export default {
   register(app: any) {
-    const { backendURL } = window.strapi;
+    const { backendURL } = window.metrix;
 
     // Only add the plugin menu link and registering it if the project is on development (localhost).
     if (backendURL?.includes('localhost')) {

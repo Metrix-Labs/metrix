@@ -9,7 +9,7 @@ describe('Token', () => {
   describe('token options', () => {
     test('Has defaults', () => {
       const getFn = jest.fn(() => ({}));
-      global.strapi = {
+      global.metrix = {
         config: {
           get: getFn,
         },
@@ -28,7 +28,7 @@ describe('Token', () => {
       };
 
       const getFn = jest.fn(() => config);
-      global.strapi = {
+      global.metrix = {
         config: {
           get: getFn,
         },
@@ -54,7 +54,7 @@ describe('Token', () => {
       };
 
       const getFn = jest.fn(() => config);
-      global.strapi = {
+      global.metrix = {
         config: {
           get: getFn,
         },
@@ -74,7 +74,7 @@ describe('Token', () => {
 
   describe('createJwtToken', () => {
     test('Returns a jwt token', () => {
-      global.strapi = {
+      global.metrix = {
         config: {
           get() {
             return {
@@ -91,7 +91,7 @@ describe('Token', () => {
     });
 
     test('Token payload does not leak user infos', () => {
-      global.strapi = {
+      global.metrix = {
         config: {
           get() {
             return {
@@ -123,7 +123,7 @@ describe('Token', () => {
     });
 
     test('Fails if the token was not generated with the same secret', () => {
-      global.strapi = {
+      global.metrix = {
         config: {
           get() {
             return {
@@ -136,7 +136,7 @@ describe('Token', () => {
       const user = { id: 1 };
       const token = createJwtToken(user);
 
-      global.strapi = {
+      global.metrix = {
         config: {
           get() {
             return {
@@ -152,7 +152,7 @@ describe('Token', () => {
     });
 
     test('Fails if the token has expired', async () => {
-      global.strapi = {
+      global.metrix = {
         config: {
           get() {
             return {
@@ -176,7 +176,7 @@ describe('Token', () => {
     });
 
     test('Returns payload if token is valid', async () => {
-      global.strapi = {
+      global.metrix = {
         config: {
           get() {
             return {

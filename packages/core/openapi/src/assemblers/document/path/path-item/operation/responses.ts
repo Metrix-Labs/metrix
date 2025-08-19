@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import type { OpenAPIV3_1 } from 'openapi-types';
 import type { Assembler } from '../../../..';
 import type { OperationContext } from '../../../../../types';

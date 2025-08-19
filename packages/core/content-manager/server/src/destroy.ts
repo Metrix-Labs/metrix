@@ -1,8 +1,8 @@
-import type { Plugin } from '@strapi/types';
+import type { Plugin } from '@metrix/types';
 import history from './history';
 
-const destroy: Plugin.LoadedPlugin['destroy'] = async ({ strapi }) => {
-  await history.destroy?.({ strapi });
+const destroy: Plugin.LoadedPlugin['destroy'] = async ({ metrix }) => {
+  await history.destroy?.({ metrix });
 };
 
 export default destroy;

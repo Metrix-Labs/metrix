@@ -5,11 +5,11 @@ const {
   file: {
     providers: { createLocalFileSourceProvider },
   },
-  strapi: {
+  metrix: {
     providers: { createRemoteStrapiDestinationProvider },
   },
   engine: { createTransferEngine },
-} = require('@strapi/data-transfer');
+} = require('@metrix/data-transfer');
 
 interface RestoreConfiguration {
   coreStore: boolean;
@@ -18,7 +18,7 @@ interface RestoreConfiguration {
 /**
  * Reset the DB and import data from a DTS backup
  * This function ensures we keep all admin user's and roles in the DB
- * see: https://docs.strapi.io/developer-docs/latest/developer-resources/data-management.html
+ * see: https://docs.metrix.io/developer-docs/latest/developer-resources/data-management.html
  */
 export const resetDatabaseAndImportDataFromPath = async (
   file: string,

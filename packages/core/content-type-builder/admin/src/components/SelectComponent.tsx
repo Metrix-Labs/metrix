@@ -1,4 +1,4 @@
-import { SingleSelectOption, SingleSelect, Field } from '@strapi/design-system';
+import { SingleSelectOption, SingleSelect, Field } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { MAX_COMPONENT_DEPTH } from '../constants';
@@ -6,7 +6,7 @@ import { getChildrenMaxDepth, getComponentDepth } from '../utils/getMaxDepth';
 
 import { useDataManager } from './DataManager/useDataManager';
 
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrix/types';
 interface Option {
   uid: string;
   label: string;

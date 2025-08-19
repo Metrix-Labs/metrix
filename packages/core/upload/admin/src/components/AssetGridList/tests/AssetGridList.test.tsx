@@ -1,4 +1,4 @@
-import { DesignSystemProvider } from '@strapi/design-system';
+import { DesignSystemProvider } from '@metrix/design-system';
 import { render as renderTL } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ jest.mock('react-intl', () => ({
 const data = [
   {
     id: 1,
-    name: 'strapi-cover_1fabc982ce.png',
+    name: 'metrix-cover_1fabc982ce.png',
     alternativeText: '',
     caption: '',
     width: 1066,

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrix/utils';
 import authService from '../auth';
 
 const { validatePassword, hashPassword, checkCredentials, forgotPassword, resetPassword } =
@@ -10,7 +10,7 @@ describe('Auth', () => {
     test('Fails on not found user, without leaking not found info', async () => {
       const findOne = jest.fn(() => Promise.resolve());
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -18,7 +18,7 @@ describe('Auth', () => {
         },
       } as any;
 
-      const input = { email: 'test@strapi.io', password: 'pcw123' };
+      const input = { email: 'test@metrix.io', password: 'pcw123' };
       const res = await checkCredentials(input);
 
       expect(findOne).toHaveBeenCalledWith({ where: { email: input.email } });
@@ -30,13 +30,13 @@ describe('Auth', () => {
         id: 1,
         firstname: '',
         lastname: '',
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
         password: await hashPassword('test-password'),
       };
 
       const findOne = jest.fn(() => Promise.resolve(user));
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -44,7 +44,7 @@ describe('Auth', () => {
         },
       } as any;
 
-      const input = { email: 'test@strapi.io', password: 'wrong-password' };
+      const input = { email: 'test@metrix.io', password: 'wrong-password' };
       const res = await checkCredentials(input);
 
       expect(findOne).toHaveBeenCalledWith({ where: { email: input.email } });
@@ -56,14 +56,14 @@ describe('Auth', () => {
         id: 1,
         firstname: '',
         lastname: '',
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
         isActive,
         password: await hashPassword('test-password'),
       };
 
       const findOne = jest.fn(() => Promise.resolve(user));
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -71,7 +71,7 @@ describe('Auth', () => {
         },
       } as any;
 
-      const input = { email: 'test@strapi.io', password: 'test-password' };
+      const input = { email: 'test@metrix.io', password: 'test-password' };
       const res = await checkCredentials(input);
 
       expect(findOne).toHaveBeenCalledWith({ where: { email: input.email } });
@@ -83,14 +83,14 @@ describe('Auth', () => {
         id: 1,
         firstname: '',
         lastname: '',
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
         isActive: true,
         password: await hashPassword('test-password'),
       };
 
       const findOne = jest.fn(() => Promise.resolve(user));
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -98,7 +98,7 @@ describe('Auth', () => {
         },
       } as any;
 
-      const input = { email: 'test@strapi.io', password: 'test-password' };
+      const input = { email: 'test@metrix.io', password: 'test-password' };
       const res = await checkCredentials(input);
 
       expect(findOne).toHaveBeenCalledWith({ where: { email: input.email } });
@@ -129,7 +129,7 @@ describe('Auth', () => {
     test('Only run the process for active users', async () => {
       const findOne = jest.fn(() => Promise.resolve());
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -137,7 +137,7 @@ describe('Auth', () => {
         },
       } as any;
 
-      const input = { email: 'test@strapi.io' };
+      const input = { email: 'test@metrix.io' };
       await forgotPassword(input);
 
       expect(findOne).toHaveBeenCalledWith({ where: { email: input.email, isActive: true } });
@@ -147,7 +147,7 @@ describe('Auth', () => {
       const findOne = jest.fn(() => Promise.resolve());
       const send = jest.fn(() => Promise.resolve());
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -162,7 +162,7 @@ describe('Auth', () => {
         },
       } as any;
 
-      const input = { email: 'test@strapi.io' };
+      const input = { email: 'test@metrix.io' };
       await forgotPassword(input);
 
       expect(findOne).toHaveBeenCalled();
@@ -172,7 +172,7 @@ describe('Auth', () => {
     test('Will assign a new reset token', async () => {
       const user = {
         id: 1,
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
       };
       const resetPasswordToken = '123';
 
@@ -188,7 +188,7 @@ describe('Auth', () => {
         admin: { url: '/admin' },
       };
 
-      global.strapi = {
+      global.metrix = {
         config: {
           ...config,
           get(path: any, def: any) {
@@ -215,7 +215,7 @@ describe('Auth', () => {
     test('Will call the send service', async () => {
       const user = {
         id: 1,
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
       };
       const resetPasswordToken = '123';
 
@@ -232,7 +232,7 @@ describe('Auth', () => {
         },
       };
 
-      global.strapi = {
+      global.metrix = {
         config: {
           ...config,
           get(path: any, def: any) {
@@ -267,7 +267,7 @@ describe('Auth', () => {
       const resetPasswordToken = '123';
       const findOne = jest.fn(() => Promise.resolve());
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -290,7 +290,7 @@ describe('Auth', () => {
       const resetPasswordToken = '123';
       const findOne = jest.fn(() => Promise.resolve());
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -314,7 +314,7 @@ describe('Auth', () => {
       const findOne = jest.fn(() => Promise.resolve(user));
       const updateById = jest.fn(() => Promise.resolve());
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };

@@ -1,8 +1,8 @@
 import type { Context, Next } from 'koa';
 import passport from 'koa-passport';
 import compose from 'koa-compose';
-import '@strapi/types';
-import { errors } from '@strapi/utils';
+import '@metrix/types';
+import { errors } from '@metrix/utils';
 import { getService } from '../utils';
 import {
   validateRegistrationInput,
@@ -30,7 +30,7 @@ export default {
     (ctx: Context, next: Next) => {
       return passport.authenticate('local', { session: false }, (err, user, info) => {
         if (err) {
-          strapi.eventHub.emit('admin.auth.error', { error: err, provider: 'local' });
+          metrix.eventHub.emit('admin.auth.error', { error: err, provider: 'local' });
           // if this is a recognized error, allow it to bubble up to user
           if (err.details?.code === 'LOGIN_NOT_ALLOWED') {
             throw err;
@@ -41,7 +41,7 @@ export default {
         }
 
         if (!user) {
-          strapi.eventHub.emit('admin.auth.error', {
+          metrix.eventHub.emit('admin.auth.error', {
             error: new Error(info.message),
             provider: 'local',
           });
@@ -52,7 +52,7 @@ export default {
         query.user = user;
 
         const sanitizedUser = getService('user').sanitizeUser(user);
-        strapi.eventHub.emit('admin.auth.success', { user: sanitizedUser, provider: 'local' });
+        metrix.eventHub.emit('admin.auth.success', { user: sanitizedUser, provider: 'local' });
 
         return next();
       })(ctx, next);
@@ -142,7 +142,7 @@ export default {
       roles: superAdminRole ? [superAdminRole.id] : [],
     });
 
-    strapi.telemetry.send('didCreateFirstAdmin');
+    metrix.telemetry.send('didCreateFirstAdmin');
 
     ctx.body = {
       data: {
@@ -179,7 +179,7 @@ export default {
 
   logout(ctx: Context) {
     const sanitizedUser = getService('user').sanitizeUser(ctx.state.user);
-    strapi.eventHub.emit('admin.logout', { user: sanitizedUser });
+    metrix.eventHub.emit('admin.logout', { user: sanitizedUser });
     ctx.body = { data: {} };
   },
 };

@@ -1,4 +1,4 @@
-import type { Schema, UID } from '@strapi/types';
+import type { Schema, UID } from '@metrix/types';
 import getNumberOfConditionalFields from '../conditional-fields';
 
 const mockStrapi = {
@@ -6,7 +6,7 @@ const mockStrapi = {
   components: {} as Record<UID.Component, Schema.Component>,
 };
 
-(global as any).strapi = mockStrapi;
+(global as any).metrix = mockStrapi;
 
 describe('getNumberOfConditionalFields', () => {
   beforeEach(() => {

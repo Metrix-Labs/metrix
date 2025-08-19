@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Box, Divider, Flex, TFooterProps, Typography } from '@strapi/design-system';
+import { Box, Divider, Flex, TFooterProps, Typography } from '@metrix/design-system';
 import { styled } from 'styled-components';
 
 const IconBox = styled(Box)`

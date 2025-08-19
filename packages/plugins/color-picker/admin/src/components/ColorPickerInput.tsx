@@ -8,9 +8,9 @@ import {
   Popover,
   Typography,
   useComposedRefs,
-} from '@strapi/design-system';
-import { CaretDown } from '@strapi/icons';
-import { type InputProps, useField } from '@strapi/strapi/admin';
+} from '@metrix/design-system';
+import { CaretDown } from '@metrix/icons';
+import { type InputProps, useField } from '@metrix/metrix/admin';
 import { HexColorPicker } from 'react-colorful';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

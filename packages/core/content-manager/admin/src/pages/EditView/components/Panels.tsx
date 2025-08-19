@@ -4,8 +4,8 @@ import {
   useQueryParams,
   useStrapiApp,
   DescriptionComponentRenderer,
-} from '@strapi/admin/strapi-admin';
-import { Flex, Typography } from '@strapi/design-system';
+} from '@metrix/admin/metrix-admin';
+import { Flex, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { useMatch } from 'react-router-dom';
 

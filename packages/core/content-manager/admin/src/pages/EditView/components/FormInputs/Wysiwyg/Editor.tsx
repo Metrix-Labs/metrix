@@ -6,7 +6,7 @@ import { styled } from 'styled-components';
 import { PreviewWysiwyg } from './PreviewWysiwyg';
 import { newlineAndIndentContinueMarkdownList } from './utils/continueList';
 
-import type { FieldValue, InputProps } from '@strapi/admin/strapi-admin';
+import type { FieldValue, InputProps } from '@metrix/admin/metrix-admin';
 
 import 'codemirror5/addon/display/placeholder';
 

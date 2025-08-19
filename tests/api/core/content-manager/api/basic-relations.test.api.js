@@ -1,10 +1,10 @@
 'use strict';
 
 const { createAuthRequest } = require('api-tests/request');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createTestBuilder } = require('api-tests/builder');
 
-let strapi;
+let metrix;
 let rq;
 const builder = createTestBuilder();
 
@@ -124,17 +124,17 @@ describe('CM API', () => {
           .addFixtures(collector.singularName, collectorFixtures)
           .build();
 
-        strapi = await createStrapiInstance();
-        rq = await createAuthRequest({ strapi });
+        metrix = await createStrapiInstance();
+        rq = await createAuthRequest({ metrix });
 
-        strapi.config.set('server.webhooks.populateRelations', populateRelations);
+        metrix.config.set('server.webhooks.populateRelations', populateRelations);
 
-        data.collectors = await builder.sanitizedFixturesFor(collector.singularName, strapi);
-        data.stamps = await builder.sanitizedFixturesFor(stamp.singularName, strapi);
+        data.collectors = await builder.sanitizedFixturesFor(collector.singularName, metrix);
+        data.stamps = await builder.sanitizedFixturesFor(stamp.singularName, metrix);
       });
 
       afterAll(async () => {
-        await strapi.destroy();
+        await metrix.destroy();
         await builder.cleanup();
       });
 

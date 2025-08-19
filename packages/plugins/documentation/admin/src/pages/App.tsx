@@ -14,8 +14,8 @@ import {
   Typography,
   EmptyStateLayout,
   Dialog,
-} from '@strapi/design-system';
-import { Eye as Show, ArrowClockwise as Reload, Trash } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Eye as Show, ArrowClockwise as Reload, Trash } from '@metrix/icons';
 import {
   ConfirmDialog,
   useRBAC,
@@ -23,7 +23,7 @@ import {
   useAPIErrorHandler,
   useNotification,
   Layouts,
-} from '@strapi/strapi/admin';
+} from '@metrix/metrix/admin';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 
@@ -258,10 +258,10 @@ const createDocumentationHref = (path: string) => {
   }
 
   if (path.startsWith('/')) {
-    return `${window.strapi.backendURL}${path}`;
+    return `${window.metrix.backendURL}${path}`;
   }
 
-  return `${window.strapi.backendURL}/${path}`;
+  return `${window.metrix.backendURL}/${path}`;
 };
 
 export { App };

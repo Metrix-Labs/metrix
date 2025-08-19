@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Grid, Typography } from '@strapi/design-system';
-import { Check } from '@strapi/icons';
+import { Box, Button, Flex, Grid, Typography } from '@metrix/design-system';
+import { Check } from '@metrix/icons';
 import pick from 'lodash/pick';
 import { useIntl } from 'react-intl';
 import { useMatch, useNavigate } from 'react-router-dom';
@@ -333,7 +333,7 @@ const LAYOUT = [
       name: 'email',
       placeholder: {
         id: 'Auth.form.email.placeholder',
-        defaultMessage: 'e.g. kai.doe@strapi.io',
+        defaultMessage: 'e.g. kai.doe@metrix.io',
       },
       type: 'email' as const,
       size: 6,

@@ -1,4 +1,4 @@
-import { Flex, DesignSystemProvider, Typography } from '@strapi/design-system';
+import { Flex, DesignSystemProvider, Typography } from '@metrix/design-system';
 import { render } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { MemoryRouter, LinkProps } from 'react-router-dom';

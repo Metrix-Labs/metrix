@@ -1,4 +1,4 @@
-import type { Struct, Utils } from '@strapi/types';
+import type { Struct, Utils } from '@metrix/types';
 import { mapValues, pick } from 'lodash/fp';
 
 /**

@@ -1,5 +1,5 @@
-import { LinkButton } from '@strapi/design-system';
-import { Upload } from '@strapi/icons';
+import { LinkButton } from '@metrix/design-system';
+import { Upload } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { Layouts } from '../../../components/Layouts/Layout';
@@ -33,7 +33,7 @@ const PageHeader = ({ isOnline, npmPackageType = 'plugin' }: PageHeaderProps) =>
           <LinkButton
             startIcon={<Upload />}
             variant="tertiary"
-            href={`https://market.strapi.io/submit-${npmPackageType}`}
+            href={`https://market.metrix.io/submit-${npmPackageType}`}
             onClick={() => trackUsage(tracking)}
             isExternal
           >

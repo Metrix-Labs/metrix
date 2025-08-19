@@ -5,7 +5,7 @@ import {
 import { COLLECTION_TYPES } from '../../constants/collections';
 import { contentManagerApi } from '../../services/api';
 
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrix/types';
 
 interface RestoreVersion extends RestoreHistoryVersion.Request {
   documentId: Data.ID;

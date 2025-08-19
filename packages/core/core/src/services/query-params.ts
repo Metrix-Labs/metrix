@@ -1,9 +1,9 @@
-import { queryParams } from '@strapi/utils';
-import type { Core, UID } from '@strapi/types';
+import { queryParams } from '@metrix/utils';
+import type { Core, UID } from '@metrix/types';
 
-export default (strapi: Core.Strapi) => {
+export default (metrix: Core.Strapi) => {
   const { transformQueryParams } = queryParams.createTransformer({
-    getModel: (uid: string) => strapi.getModel(uid as UID.Schema),
+    getModel: (uid: string) => metrix.getModel(uid as UID.Schema),
   });
 
   return {

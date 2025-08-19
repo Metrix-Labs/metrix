@@ -15,7 +15,7 @@ import {
   type UseKeyboardDragAndDropCallbacks,
 } from './useKeyboardDragAndDrop';
 
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrix/types';
 
 const DIRECTIONS = {
   UPWARD: 'upward',

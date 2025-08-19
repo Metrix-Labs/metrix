@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import { useTable, useQueryParams } from '@strapi/admin/strapi-admin';
-import { ListFieldLayout, ListLayout } from '@strapi/content-manager/strapi-admin';
-import { Box, Popover, Typography, Button, Link } from '@strapi/design-system';
-import { CaretDown } from '@strapi/icons';
+import { useTable, useQueryParams } from '@metrix/admin/metrix-admin';
+import { ListFieldLayout, ListLayout } from '@metrix/content-manager/metrix-admin';
+import { Box, Popover, Typography, Button, Link } from '@metrix/design-system';
+import { CaretDown } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { useGetMappedEntriesInReleasesQuery } from '../services/release';
 
-import type { Modules, UID } from '@strapi/types';
+import type { Modules, UID } from '@metrix/types';
 
 /* -------------------------------------------------------------------------------------------------
  * useReleasesList

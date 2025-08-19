@@ -1,6 +1,6 @@
-import { Layouts } from '@strapi/admin/strapi-admin';
-import { Box, Main, Flex, Typography, Grid, LinkButton } from '@strapi/design-system';
-import { ExternalLink, Check, PaperPlane } from '@strapi/icons';
+import { Layouts } from '@metrix/admin/metrix-admin';
+import { Box, Main, Flex, Typography, Grid, LinkButton } from '@metrix/design-system';
+import { ExternalLink, Check, PaperPlane } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import darkIllustration from '../assets/purchase-page-illustration-dark.svg';
@@ -95,7 +95,7 @@ const PurchaseContentReleases = () => {
                 <Flex gap={2} marginTop={7}>
                   <LinkButton
                     variant="default"
-                    href="https://strapi.io/pricing-self-hosted?utm_campaign=In-Product-CTA&utm_source=Releases"
+                    href="https://metrix.io/pricing-self-hosted?utm_campaign=In-Product-CTA&utm_source=Releases"
                   >
                     {formatMessage({
                       id: 'Settings.page.purchase.upgrade.cta',
@@ -105,7 +105,7 @@ const PurchaseContentReleases = () => {
                   <LinkButton
                     variant="tertiary"
                     endIcon={<ExternalLink />}
-                    href="https://strapi.io/features/releases?utm_campaign=In-Product-CTA&utm_source=Releases"
+                    href="https://metrix.io/features/releases?utm_campaign=In-Product-CTA&utm_source=Releases"
                   >
                     {formatMessage({
                       id: 'Settings.page.purchase.learn-more.cta',

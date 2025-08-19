@@ -1,8 +1,8 @@
 import { forwardRef, memo, useState } from 'react';
 
-import { ConfirmDialog } from '@strapi/admin/strapi-admin';
-import { Box, Flex, IconButton, Typography, Link, Badge, Dialog } from '@strapi/design-system';
-import { ChevronDown, Drag, Lock, Pencil, Trash } from '@strapi/icons';
+import { ConfirmDialog } from '@metrix/admin/metrix-admin';
+import { Box, Flex, IconButton, Typography, Link, Badge, Dialog } from '@metrix/design-system';
+import { ChevronDown, Drag, Lock, Pencil, Trash } from '@metrix/icons';
 import get from 'lodash/get';
 import upperFirst from 'lodash/upperFirst';
 import { useIntl } from 'react-intl';
@@ -25,7 +25,7 @@ import { StatusBadge } from './Status';
 
 import type { AnyAttribute, Component, ContentType } from '../types';
 import type { DraggableAttributes, DraggableSyntheticListeners } from '@dnd-kit/core';
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrix/types';
 
 export const GridWrapper = styled(Flex)<{ $isOverlay?: boolean; $isDragging?: boolean }>`
   justify-content: space-between;

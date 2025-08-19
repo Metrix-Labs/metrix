@@ -1,19 +1,19 @@
-import type { Core, Struct } from '@strapi/types';
+import type { Core, Struct } from '@metrix/types';
 import type { TypeRegistry } from '../../type-registry';
 
 const registerCollectionType = (
   contentType: Struct.CollectionTypeSchema,
   {
     registry,
-    strapi,
+    metrix,
     builders,
   }: {
     registry: TypeRegistry;
-    strapi: Core.Strapi;
+    metrix: Core.Strapi;
     builders: any;
   }
 ) => {
-  const { service: getService } = strapi.plugin('graphql');
+  const { service: getService } = metrix.plugin('graphql');
 
   const { naming } = getService('utils');
   const { KINDS } = getService('constants');

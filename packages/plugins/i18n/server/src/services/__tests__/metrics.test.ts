@@ -5,7 +5,7 @@ const { isLocalizedContentType } = contentTypeService();
 
 describe('Metrics', () => {
   test('sendDidInitializeEvent', async () => {
-    global.strapi = {
+    global.metrix = {
       contentTypes: {
         withI18n: {
           pluginOptions: {
@@ -43,7 +43,7 @@ describe('Metrics', () => {
 
     await sendDidInitializeEvent();
 
-    expect(strapi.telemetry.send).toHaveBeenCalledWith('didInitializeI18n', {
+    expect(metrix.telemetry.send).toHaveBeenCalledWith('didInitializeI18n', {
       groupProperties: {
         numberOfContentTypes: 1,
       },
@@ -51,7 +51,7 @@ describe('Metrics', () => {
   });
 
   test('sendDidUpdateI18nLocalesEvent', async () => {
-    global.strapi = {
+    global.metrix = {
       contentTypes: {
         withI18n: {
           pluginOptions: {
@@ -89,7 +89,7 @@ describe('Metrics', () => {
 
     await sendDidUpdateI18nLocalesEvent();
 
-    expect(strapi.telemetry.send).toHaveBeenCalledWith('didUpdateI18nLocales', {
+    expect(metrix.telemetry.send).toHaveBeenCalledWith('didUpdateI18nLocales', {
       groupProperties: {
         numberOfLocales: 3,
       },

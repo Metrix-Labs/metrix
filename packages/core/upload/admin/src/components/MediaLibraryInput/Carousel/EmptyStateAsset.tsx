@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Flex, Typography } from '@strapi/design-system';
-import { PlusCircle as PicturePlus } from '@strapi/icons';
+import { Flex, Typography } from '@metrix/design-system';
+import { PlusCircle as PicturePlus } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

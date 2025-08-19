@@ -7,7 +7,7 @@ import { NoJavascript } from './NoJavascript';
 const globalStyles = `
   html,
   body,
-  #strapi {
+  #metrix {
     height: 100%;
   }
   body {
@@ -36,7 +36,7 @@ const DefaultDocument = ({ entryPath }: DefaultDocumentProps) => {
         <style>{globalStyles}</style>
       </head>
       <body>
-        <div id="strapi" />
+        <div id="metrix" />
         <NoJavascript />
         {entryPath ? <script type="module" src={entryPath} /> : null}
       </body>

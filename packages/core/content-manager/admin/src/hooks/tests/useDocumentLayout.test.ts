@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrix/utils';
 import { renderHook, screen, server, waitFor } from '@tests/utils';
 import { rest } from 'msw';
 

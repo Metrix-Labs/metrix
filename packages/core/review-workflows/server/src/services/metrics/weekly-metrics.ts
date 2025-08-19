@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import { flow, map, sum, size, mean, max, defaultTo } from 'lodash/fp';
 import { add } from 'date-fns';
 import { getService } from '../../utils';
@@ -8,17 +8,17 @@ const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
 const getWeeklyCronScheduleAt = (date: Date) =>
   `${date.getSeconds()} ${date.getMinutes()} ${date.getHours()} * * ${date.getDay()}`;
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
-  const metrics = getService('workflow-metrics', { strapi });
-  const workflowsService = getService('workflows', { strapi });
+export default ({ metrix }: { metrix: Core.Strapi }) => {
+  const metrics = getService('workflow-metrics', { metrix });
+  const workflowsService = getService('workflows', { metrix });
 
   const getMetricsStoreValue = async () => {
-    const value = await strapi.store.get({ type: 'plugin', name: 'ee', key: 'metrics' });
+    const value = await metrix.store.get({ type: 'plugin', name: 'ee', key: 'metrics' });
     return defaultTo({}, value);
   };
 
   const setMetricsStoreValue = (value: unknown) =>
-    strapi.store.set({ type: 'plugin', name: 'ee', key: 'metrics', value });
+    metrix.store.set({ type: 'plugin', name: 'ee', key: 'metrics', value });
 
   return {
     async computeMetrics() {
@@ -70,7 +70,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     async registerCron() {
       const weeklySchedule = await this.ensureWeeklyStoredCronSchedule();
 
-      strapi.cron.add({
+      metrix.cron.add({
         reviewWorkflowsWeekly: {
           task: this.sendMetrics.bind(this),
           options: weeklySchedule,

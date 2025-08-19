@@ -1,9 +1,9 @@
-# strapi-utils
+# metrix-utils
 
-[![npm version](https://img.shields.io/npm/v/@strapi/utils.svg)](https://www.npmjs.org/package/@strapi/utils)
-[![npm downloads](https://img.shields.io/npm/dm/@strapi/utils.svg)](https://www.npmjs.org/package/@strapi/utils)
+[![npm version](https://img.shields.io/npm/v/@metrix/utils.svg)](https://www.npmjs.org/package/@metrix/utils)
+[![npm downloads](https://img.shields.io/npm/dm/@metrix/utils.svg)](https://www.npmjs.org/package/@metrix/utils)
 
-Shared utilities between Strapi packages.
+Shared utilities between Metrix packages.
 
 ## Resources
 
@@ -11,6 +11,6 @@ Shared utilities between Strapi packages.
 
 ## Links
 
-- [Strapi website](https://strapi.io/)
-- [Strapi community on Slack](https://slack.strapi.io)
-- [Strapi news on Twitter](https://twitter.com/strapijs)
+- [Metrix website](https://metrix.io/)
+- [Metrix community on Slack](https://slack.metrix.io)
+- [Metrix news on Twitter](https://twitter.com/strapijs)

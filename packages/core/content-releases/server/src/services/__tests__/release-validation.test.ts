@@ -19,7 +19,7 @@ describe('Release Validation service', () => {
   describe('validateEntryData', () => {
     it('throws an error if the content type does not exist', () => {
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: baseStrapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: baseStrapiMock });
 
       expect(() =>
         releaseValidationService.validateEntryData('api::plop.plop', 'collection-types', '1')
@@ -34,7 +34,7 @@ describe('Release Validation service', () => {
         }),
       };
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       expect(() =>
         releaseValidationService.validateEntryData('api::category.category', 'collection-types')
@@ -54,7 +54,7 @@ describe('Release Validation service', () => {
         }),
       };
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       expect(() =>
         releaseValidationService.validateEntryData('api::category.category', '')
@@ -80,7 +80,7 @@ describe('Release Validation service', () => {
         },
       };
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       const mockReleaseAction: CreateReleaseAction.Request['body'] = {
         entryDocumentId: '1',
@@ -117,7 +117,7 @@ describe('Release Validation service', () => {
         },
       };
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       const mockReleaseAction: CreateReleaseAction.Request['body'] = {
         entryDocumentId: '1',
@@ -145,7 +145,7 @@ describe('Release Validation service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       expect(() => releaseValidationService.validatePendingReleasesLimit()).rejects.toThrow(
         'You have reached the maximum number of pending releases'
@@ -163,7 +163,7 @@ describe('Release Validation service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       await expect(releaseValidationService.validatePendingReleasesLimit()).resolves.not.toThrow();
     });
@@ -187,7 +187,7 @@ describe('Release Validation service', () => {
         },
       };
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       expect(() => releaseValidationService.validatePendingReleasesLimit()).rejects.toThrow(
         'You have reached the maximum number of pending releases'
@@ -214,7 +214,7 @@ describe('Release Validation service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       await expect(releaseValidationService.validatePendingReleasesLimit()).resolves.not.toThrow();
     });
@@ -238,7 +238,7 @@ describe('Release Validation service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       await expect(
         releaseValidationService.validateUniqueNameForPendingRelease('release1')
@@ -256,7 +256,7 @@ describe('Release Validation service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: strapiMock });
 
       await expect(
         releaseValidationService.validateUniqueNameForPendingRelease('release1')
@@ -275,7 +275,7 @@ describe('Release Validation service', () => {
 
     it('should throw an error if the scheduledAt date is in the past', () => {
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: baseStrapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: baseStrapiMock });
 
       expect(() =>
         releaseValidationService.validateScheduledAtIsLaterThanNow(new Date('2020-01-01'))
@@ -284,7 +284,7 @@ describe('Release Validation service', () => {
 
     it('should pass if the scheduledAt date is in the future', () => {
       // @ts-expect-error Ignore missing properties
-      const releaseValidationService = createReleaseValidationService({ strapi: baseStrapiMock });
+      const releaseValidationService = createReleaseValidationService({ metrix: baseStrapiMock });
 
       expect(() =>
         releaseValidationService.validateScheduledAtIsLaterThanNow(new Date('2022-01-01'))

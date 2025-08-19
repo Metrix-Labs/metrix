@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Divider, Flex, FlexComponent, useCollator } from '@strapi/design-system';
-import { Lightning } from '@strapi/icons';
+import { Divider, Flex, FlexComponent, useCollator } from '@metrix/design-system';
+import { Lightning } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { type To, useLocation } from 'react-router-dom';
 import { styled } from 'styled-components';

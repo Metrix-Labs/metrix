@@ -1,4 +1,4 @@
-import { Box } from '@strapi/design-system';
+import { Box } from '@metrix/design-system';
 
 const RequiredSign = () => (
   <Box color="danger700" paddingLeft={1}>

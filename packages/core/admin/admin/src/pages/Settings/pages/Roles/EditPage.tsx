@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Main } from '@strapi/design-system';
-import { Check } from '@strapi/icons';
+import { Box, Button, Flex, Main } from '@metrix/design-system';
+import { Check } from '@metrix/icons';
 import { Formik, FormikHelpers } from 'formik';
 import { useIntl } from 'react-intl';
 import { Navigate, useMatch } from 'react-router-dom';
@@ -117,7 +117,7 @@ const EditPage = () => {
         return;
       }
 
-      if (role.code !== 'strapi-super-admin' && permissionsToSend) {
+      if (role.code !== 'metrix-super-admin' && permissionsToSend) {
         const updateRes = await updateRolePermissions({
           id: res.data.id,
           permissions: permissionsToSend,
@@ -157,7 +157,7 @@ const EditPage = () => {
     }
   };
 
-  const isFormDisabled = !isRoleLoading && role.code === 'strapi-super-admin';
+  const isFormDisabled = !isRoleLoading && role.code === 'metrix-super-admin';
 
   if (isLoadingPermissionsLayout || isRoleLoading || isLoadingPermissions || !permissionsLayout) {
     return <Page.Loading />;
@@ -193,7 +193,7 @@ const EditPage = () => {
                   <Button
                     type="submit"
                     startIcon={<Check />}
-                    disabled={role.code === 'strapi-super-admin'}
+                    disabled={role.code === 'metrix-super-admin'}
                     loading={isSubmitting}
                   >
                     {formatMessage({

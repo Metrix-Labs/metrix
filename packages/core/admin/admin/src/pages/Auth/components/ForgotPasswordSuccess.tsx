@@ -1,4 +1,4 @@
-import { Box, Flex, Main, Typography, Link } from '@strapi/design-system';
+import { Box, Flex, Main, Typography, Link } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 

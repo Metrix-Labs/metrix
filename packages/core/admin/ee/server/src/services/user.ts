@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { pipe, map, castArray, toNumber } from 'lodash/fp';
-import { arrays, errors } from '@strapi/utils';
+import { arrays, errors } from '@metrix/utils';
 import { hasSuperAdminRole } from '../../../../server/src/domain/user';
 import constants from '../../../../server/src/services/constants';
 import { getService } from '../utils';
@@ -26,7 +26,7 @@ const updateEEDisabledUsersList = async (id: string, input: any) => {
 
   if (user.isActive !== input.isActive) {
     const newDisabledUsersList = disabledUsers.filter((user: any) => user.id !== Number(id));
-    await strapi.store.set({
+    await metrix.store.set({
       type: 'ee',
       key: 'disabled_users',
       value: newDisabledUsersList,
@@ -51,7 +51,7 @@ const removeFromEEDisabledUsersList = async (ids: unknown) => {
   }
 
   const newDisabledUsersList = disabledUsers.filter((user: any) => !idsToCheck.includes(user.id));
-  await strapi.store.set({
+  await metrix.store.set({
     type: 'ee',
     key: 'disabled_users',
     value: newDisabledUsersList,
@@ -88,7 +88,7 @@ const updateById = async (id: any, attributes: any) => {
   if (_.has(attributes, 'password')) {
     const hashedPassword = await getService('auth').hashPassword(attributes.password);
 
-    const updatedUser = await strapi.db.query('admin::user').update({
+    const updatedUser = await metrix.db.query('admin::user').update({
       where: { id },
       data: {
         ...attributes,
@@ -97,12 +97,12 @@ const updateById = async (id: any, attributes: any) => {
       populate: ['roles'],
     });
 
-    strapi.eventHub.emit('user.update', { user: sanitizeUser(updatedUser) });
+    metrix.eventHub.emit('user.update', { user: sanitizeUser(updatedUser) });
 
     return updatedUser;
   }
 
-  const updatedUser = await strapi.db.query('admin::user').update({
+  const updatedUser = await metrix.db.query('admin::user').update({
     where: { id },
     data: attributes,
     populate: ['roles'],
@@ -111,7 +111,7 @@ const updateById = async (id: any, attributes: any) => {
   await updateEEDisabledUsersList(id, attributes);
 
   if (updatedUser) {
-    strapi.eventHub.emit('user.update', { user: sanitizeUser(updatedUser) });
+    metrix.eventHub.emit('user.update', { user: sanitizeUser(updatedUser) });
   }
 
   return updatedUser;
@@ -123,7 +123,7 @@ const updateById = async (id: any, attributes: any) => {
  */
 const deleteById = async (id: unknown) => {
   // Check at least one super admin remains
-  const userToDelete = await strapi.db.query('admin::user').findOne({
+  const userToDelete = await metrix.db.query('admin::user').findOne({
     where: { id },
     populate: ['roles'],
   });
@@ -141,13 +141,13 @@ const deleteById = async (id: unknown) => {
     }
   }
 
-  const deletedUser = await strapi.db
+  const deletedUser = await metrix.db
     .query('admin::user')
     .delete({ where: { id }, populate: ['roles'] });
 
   await removeFromEEDisabledUsersList(id);
 
-  strapi.eventHub.emit('user.delete', { user: sanitizeUser(deletedUser) });
+  metrix.eventHub.emit('user.delete', { user: sanitizeUser(deletedUser) });
 
   return deletedUser;
 };
@@ -159,7 +159,7 @@ const deleteById = async (id: unknown) => {
 const deleteByIds = async (ids: any) => {
   // Check at least one super admin remains
   const superAdminRole = await getService('role').getSuperAdminWithUsersCount();
-  const nbOfSuperAdminToDelete = await strapi.db.query('admin::user').count({
+  const nbOfSuperAdminToDelete = await metrix.db.query('admin::user').count({
     where: {
       id: ids,
       roles: { id: superAdminRole.id },
@@ -172,7 +172,7 @@ const deleteByIds = async (ids: any) => {
 
   const deletedUsers = [];
   for (const id of ids) {
-    const deletedUser = await strapi.db.query('admin::user').delete({
+    const deletedUser = await metrix.db.query('admin::user').delete({
       where: { id },
       populate: ['roles'],
     });
@@ -182,7 +182,7 @@ const deleteByIds = async (ids: any) => {
 
   await removeFromEEDisabledUsersList(ids);
 
-  strapi.eventHub.emit('user.delete', {
+  metrix.eventHub.emit('user.delete', {
     users: deletedUsers.map((deletedUser) => sanitizeUser(deletedUser)),
   });
 
@@ -217,11 +217,11 @@ const sanitizeUser = (user: any) => {
  * Find one user
  */
 const findOne = async (id: any, populate = ['roles']) => {
-  return strapi.db.query('admin::user').findOne({ where: { id }, populate });
+  return metrix.db.query('admin::user').findOne({ where: { id }, populate });
 };
 
 const getCurrentActiveUserCount = async () => {
-  return strapi.db.query('admin::user').count({ where: { isActive: true } });
+  return metrix.db.query('admin::user').count({ where: { isActive: true } });
 };
 
 export default {

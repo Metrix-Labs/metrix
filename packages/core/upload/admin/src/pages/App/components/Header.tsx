@@ -1,6 +1,6 @@
-import { useQueryParams, Layouts } from '@strapi/admin/strapi-admin';
-import { Button, Flex, Link } from '@strapi/design-system';
-import { ArrowLeft, Plus } from '@strapi/icons';
+import { useQueryParams, Layouts } from '@metrix/admin/metrix-admin';
+import { Button, Flex, Link } from '@metrix/design-system';
+import { ArrowLeft, Plus } from '@metrix/icons';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { useLocation, NavLink } from 'react-router-dom';

@@ -11,7 +11,7 @@ const Preview = lazy(() =>
 // Pre-fetch the preview data before the route renders
 const previewLoader = async ({ params }) => {
   const { apiName, documentId, locale, status, collectionType } = params;
-  const apiToken = process.env.STRAPI_ADMIN_API_TOKEN;
+  const apiToken = process.env.METRIX_ADMIN_API_TOKEN;
 
   if (!documentId) {
     throw new Error('Document ID is required');

@@ -1,6 +1,6 @@
 import { forwardRef, memo } from 'react';
 
-import { Toggle, useComposedRefs, Field } from '@strapi/design-system';
+import { Toggle, useComposedRefs, Field } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { useFocusInputField } from '../../hooks/useFocusInputField';

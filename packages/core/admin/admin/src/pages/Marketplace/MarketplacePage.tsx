@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Box, Flex, Searchbar, Tabs } from '@strapi/design-system';
-import { ExternalLink } from '@strapi/icons';
-import { GlassesSquare } from '@strapi/icons/symbols';
+import { Box, Flex, Searchbar, Tabs } from '@metrix/design-system';
+import { ExternalLink } from '@metrix/icons';
+import { GlassesSquare } from '@metrix/icons/symbols';
 import { useIntl } from 'react-intl';
 
 import { ContentBox } from '../../components/ContentBox';
@@ -245,7 +245,7 @@ const MarketplacePage = () => {
             </Pagination.Root>
             <Box paddingTop={8}>
               <a
-                href="https://strapi.canny.io/plugin-requests"
+                href="https://metrix.canny.io/plugin-requests"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 style={{ textDecoration: 'none' }}

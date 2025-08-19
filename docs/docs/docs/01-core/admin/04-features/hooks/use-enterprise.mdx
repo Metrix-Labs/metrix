@@ -7,7 +7,7 @@ tags:
   - users
 ---
 
-A hook that returns either community or enterprise-edition data-structures based on the global `window.strapi.isEE` flag.
+A hook that returns either community or enterprise-edition data-structures based on the global `window.metrix.isEE` flag.
 
 ## Usage
 
@@ -33,7 +33,7 @@ console.log(data); // { a: 1, b: 1 }
 
 ### `defaultValue`
 
-By default the hook returns `null` if `window.strapi.isEE` is true and the enterprise data structure is not yet loaded. Customizing
+By default the hook returns `null` if `window.metrix.isEE` is true and the enterprise data structure is not yet loaded. Customizing
 this value can help implementing various loading scenarios:
 
 ```

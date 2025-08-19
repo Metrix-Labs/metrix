@@ -1,4 +1,4 @@
-import { Box } from '@strapi/design-system';
+import { Box } from '@metrix/design-system';
 import { styled } from 'styled-components';
 
 export const ComponentRow = styled(Box)<{

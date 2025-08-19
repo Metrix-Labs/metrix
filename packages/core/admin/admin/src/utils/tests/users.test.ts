@@ -89,7 +89,7 @@ describe('users', () => {
         firstname: 'Test',
         isActive: true,
         blocked: false,
-        email: 'testemail@strapi.io',
+        email: 'testemail@metrix.io',
         preferedLanguage: 'en',
         roles: [],
         createdAt: '2021-07-06T08:00:00.000Z',

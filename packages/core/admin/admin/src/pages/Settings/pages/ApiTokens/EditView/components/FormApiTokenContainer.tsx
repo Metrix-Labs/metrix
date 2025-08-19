@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex, Grid, Typography } from '@strapi/design-system';
+import { Box, Flex, Grid, Typography } from '@metrix/design-system';
 import { FormikErrors } from 'formik';
 import { useIntl } from 'react-intl';
 

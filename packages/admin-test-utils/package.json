@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/admin-test-utils",
+  "name": "@metrix/admin-test-utils",
   "version": "5.22.0",
   "private": true,
   "description": "Test utilities for the Strapi administration panel",

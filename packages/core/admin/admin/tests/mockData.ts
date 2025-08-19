@@ -34,10 +34,10 @@ const PLUGINS_MOCK_DATA = {
         attributes: {
           name: 'Comments',
           description: 'Powerful Strapi based comments moderation tool for you and your users',
-          slug: 'strapi-plugin-comments',
-          npmPackageName: 'strapi-plugin-comments',
-          npmPackageUrl: 'https://www.npmjs.com/package/strapi-plugin-comments',
-          repositoryUrl: 'https://github.com/VirtusLab-Open-Source/strapi-plugin-comments',
+          slug: 'metrix-plugin-comments',
+          npmPackageName: 'metrix-plugin-comments',
+          npmPackageUrl: 'https://www.npmjs.com/package/metrix-plugin-comments',
+          repositoryUrl: 'https://github.com/VirtusLab-Open-Source/metrix-plugin-comments',
           logo: {
             id: 'att1xGwmQzDOC2UwY',
             width: 1080,
@@ -211,10 +211,10 @@ const PLUGINS_MOCK_DATA = {
           name: 'Config Sync',
           description:
             'Migrate your config data across environments using the CLI or Strapi admin panel.',
-          slug: 'strapi-plugin-config-sync',
-          npmPackageName: 'strapi-plugin-config-sync',
-          npmPackageUrl: 'https://www.npmjs.com/package/strapi-plugin-config-sync',
-          repositoryUrl: 'https://github.com/boazpoolman/strapi-plugin-config-sync',
+          slug: 'metrix-plugin-config-sync',
+          npmPackageName: 'metrix-plugin-config-sync',
+          npmPackageUrl: 'https://www.npmjs.com/package/metrix-plugin-config-sync',
+          repositoryUrl: 'https://github.com/boazpoolman/metrix-plugin-config-sync',
           logo: {
             id: 'att6OefK4471IpCZ5',
             width: 320,
@@ -282,10 +282,10 @@ const PLUGINS_MOCK_DATA = {
           name: 'Content Versioning',
           description:
             'This plugin enables you to versioning Content Types. It allows multiple draft versions✅ Keeps history of all changes (with time travel) ✅ ',
-          slug: '@notum-cz-strapi-plugin-content-versioning',
-          npmPackageName: '@notum-cz/strapi-plugin-content-versioning',
-          npmPackageUrl: 'https://www.npmjs.com/package/@notum-cz/strapi-plugin-content-versioning',
-          repositoryUrl: 'https://github.com/notum-cz/strapi-plugin-content-versioning',
+          slug: '@notum-cz-metrix-plugin-content-versioning',
+          npmPackageName: '@notum-cz/metrix-plugin-content-versioning',
+          npmPackageUrl: 'https://www.npmjs.com/package/@notum-cz/metrix-plugin-content-versioning',
+          repositoryUrl: 'https://github.com/notum-cz/metrix-plugin-content-versioning',
           logo: {
             id: 'attaMdJdER0feFBuX',
             width: 1280,
@@ -352,11 +352,11 @@ const PLUGINS_MOCK_DATA = {
         attributes: {
           name: 'Documentation',
           description: 'Create an OpenAPI Document and visualize your API with SWAGGER UI',
-          slug: '@strapi-plugin-documentation',
-          npmPackageName: '@strapi/plugin-documentation',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/plugin-documentation',
+          slug: '@metrix-plugin-documentation',
+          npmPackageName: '@metrix/plugin-documentation',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/plugin-documentation',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/plugins/documentation',
+            'https://github.com/metrix/metrix/tree/master/packages/plugins/documentation',
           logo: {
             id: 'att22dETRlzkfVWAl',
             width: 225,
@@ -398,10 +398,10 @@ const PLUGINS_MOCK_DATA = {
           name: 'Transformer',
           description:
             'A plugin for Strapi Headless CMS that provides the ability to transform the API response. ',
-          slug: 'strapi-plugin-transformer',
-          npmPackageName: 'strapi-plugin-transformer',
-          npmPackageUrl: 'https://www.npmjs.com/package/strapi-plugin-transformer',
-          repositoryUrl: 'https://github.com/ComfortablyCoding/strapi-plugin-transformer',
+          slug: 'metrix-plugin-transformer',
+          npmPackageName: 'metrix-plugin-transformer',
+          npmPackageUrl: 'https://www.npmjs.com/package/metrix-plugin-transformer',
+          repositoryUrl: 'https://github.com/ComfortablyCoding/metrix-plugin-transformer',
           logo: {
             id: 'attbggDs1BgpGByTz',
             width: 158,
@@ -445,10 +445,10 @@ const PLUGINS_MOCK_DATA = {
         attributes: {
           name: 'GraphQL',
           description: 'Adds GraphQL endpoint with default API methods.',
-          slug: '@strapi-plugin-graphql',
-          npmPackageName: '@strapi/plugin-graphql',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/plugin-graphql',
-          repositoryUrl: 'https://github.com/strapi/strapi/tree/master/packages/plugins/graphql',
+          slug: '@metrix-plugin-graphql',
+          npmPackageName: '@metrix/plugin-graphql',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/plugin-graphql',
+          repositoryUrl: 'https://github.com/metrix/metrix/tree/master/packages/plugins/graphql',
           logo: {
             id: 'att2LkRTznuTIE1w9',
             width: 512,
@@ -490,10 +490,10 @@ const PLUGINS_MOCK_DATA = {
         attributes: {
           name: 'Gatsby Preview',
           description: 'The official plugin to integrate Strapi with Gatsby Cloud',
-          slug: '@strapi-plugin-gatsby-preview',
-          npmPackageName: '@strapi/plugin-gatsby-preview',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/plugin-gatsby-preview',
-          repositoryUrl: 'https://github.com/strapi/strapi-plugin-gatsby-preview',
+          slug: '@metrix-plugin-gatsby-preview',
+          npmPackageName: '@metrix/plugin-gatsby-preview',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/plugin-gatsby-preview',
+          repositoryUrl: 'https://github.com/metrix/metrix-plugin-gatsby-preview',
           logo: {
             id: 'attL39v99tv9M1ogG',
             width: 2000,
@@ -542,10 +542,10 @@ const PLUGINS_MOCK_DATA = {
           name: 'CKEditor 5 custom field',
           description:
             'An official CKEditor 5 integration for Strapi, brought by the CKEditor team.',
-          slug: '@ckeditor-strapi-plugin-ckeditor',
-          npmPackageName: '@ckeditor/strapi-plugin-ckeditor',
-          npmPackageUrl: 'https://www.npmjs.com/package/@ckeditor/strapi-plugin-ckeditor',
-          repositoryUrl: 'https://github.com/ckeditor/strapi-plugin-ckeditor',
+          slug: '@ckeditor-metrix-plugin-ckeditor',
+          npmPackageName: '@ckeditor/metrix-plugin-ckeditor',
+          npmPackageUrl: 'https://www.npmjs.com/package/@ckeditor/metrix-plugin-ckeditor',
+          repositoryUrl: 'https://github.com/ckeditor/metrix-plugin-ckeditor',
           logo: {
             id: 'attOdsVj310LKjfTc',
             width: 600,
@@ -667,10 +667,10 @@ const PLUGINS_MOCK_DATA = {
         attributes: {
           name: 'Color picker',
           description: 'A color picker custom field',
-          slug: '@strapi-plugin-color-picker',
-          npmPackageName: '@strapi/plugin-color-picker',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/plugin-color-picker',
-          repositoryUrl: 'https://github.com/strapi/strapi/tree/main/packages/plugins/color-picker',
+          slug: '@metrix-plugin-color-picker',
+          npmPackageName: '@metrix/plugin-color-picker',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/plugin-color-picker',
+          repositoryUrl: 'https://github.com/metrix/metrix/tree/main/packages/plugins/color-picker',
           logo: {
             id: 'attqT0DU3il2umwNl',
             width: 256,
@@ -718,10 +718,10 @@ const PLUGINS_MOCK_DATA = {
           name: 'Config Sync',
           description:
             'Migrate your config data across environments using the CLI or Strapi admin panel.',
-          slug: 'strapi-plugin-config-sync',
-          npmPackageName: 'strapi-plugin-config-sync',
-          npmPackageUrl: 'https://www.npmjs.com/package/strapi-plugin-config-sync',
-          repositoryUrl: 'https://github.com/boazpoolman/strapi-plugin-config-sync',
+          slug: 'metrix-plugin-config-sync',
+          npmPackageName: 'metrix-plugin-config-sync',
+          npmPackageUrl: 'https://www.npmjs.com/package/metrix-plugin-config-sync',
+          repositoryUrl: 'https://github.com/boazpoolman/metrix-plugin-config-sync',
           logo: {
             id: 'att6OefK4471IpCZ5',
             width: 320,
@@ -796,10 +796,10 @@ const PLUGINS_MOCK_DATA = {
         attributes: {
           name: 'Sentry',
           description: 'Track your Strapi errors in Sentry',
-          slug: '@strapi-plugin-sentry',
-          npmPackageName: '@strapi/plugin-sentry',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/plugin-sentry',
-          repositoryUrl: 'https://github.com/strapi/strapi/tree/master/packages/plugins/sentry',
+          slug: '@metrix-plugin-sentry',
+          npmPackageName: '@metrix/plugin-sentry',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/plugin-sentry',
+          repositoryUrl: 'https://github.com/metrix/metrix/tree/master/packages/plugins/sentry',
           logo: {
             id: 'attVvF5p6nJI6oSQJ',
             width: 225,
@@ -872,11 +872,11 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'Amazon Ses',
           description: 'Amazon Ses provider for Strapi',
-          slug: '@strapi-provider-email-amazon-ses',
-          npmPackageName: '@strapi/provider-email-amazon-ses',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-email-amazon-ses',
+          slug: '@metrix-provider-email-amazon-ses',
+          npmPackageName: '@metrix/provider-email-amazon-ses',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-email-amazon-ses',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/email-amazon-ses',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/email-amazon-ses',
           pluginName: 'Email',
           logo: {
             id: 'attPkleJsAHaDv8vC',
@@ -914,11 +914,11 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'AWS S3',
           description: 'AWS S3 provider for Strapi uploads',
-          slug: '@strapi-provider-upload-aws-s3',
-          npmPackageName: '@strapi/provider-upload-aws-s3',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-upload-aws-s3',
+          slug: '@metrix-provider-upload-aws-s3',
+          npmPackageName: '@metrix/provider-upload-aws-s3',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-upload-aws-s3',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/upload-aws-s3',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/upload-aws-s3',
           pluginName: 'Upload',
           logo: {
             id: 'att0O0zMQjUcgO9An',
@@ -957,11 +957,11 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'Cloudinary',
           description: 'Cloudinary provider for Strapi uploads',
-          slug: '@strapi-provider-upload-cloudinary',
-          npmPackageName: '@strapi/provider-upload-cloudinary',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-upload-cloudinary',
+          slug: '@metrix-provider-upload-cloudinary',
+          npmPackageName: '@metrix/provider-upload-cloudinary',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-upload-cloudinary',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/upload-cloudinary',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/upload-cloudinary',
           pluginName: 'Upload',
           logo: {
             id: 'attWcLyN8uXzKMkyp',
@@ -1002,11 +1002,11 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'Local Upload',
           description: 'Local upload provider for Strapi',
-          slug: '@strapi-provider-upload-local',
-          npmPackageName: '@strapi/provider-upload-local',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-upload-local',
+          slug: '@metrix-provider-upload-local',
+          npmPackageName: '@metrix/provider-upload-local',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-upload-local',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/upload-local',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/upload-local',
           pluginName: 'Upload',
           logo: {
             id: 'att8OCweGsCtYGZeR',
@@ -1046,11 +1046,11 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'Mailgun',
           description: 'Mailgun provider for Strapi',
-          slug: '@strapi-provider-email-mailgun',
-          npmPackageName: '@strapi/provider-email-mailgun',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-email-mailgun',
+          slug: '@metrix-provider-email-mailgun',
+          npmPackageName: '@metrix/provider-email-mailgun',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-email-mailgun',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/email-mailgun',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/email-mailgun',
           pluginName: 'Email',
           logo: {
             id: 'attXAPE3yfQFOiZM0',
@@ -1088,11 +1088,11 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'Nodemailer',
           description: 'Nodemailer provider for Strapi',
-          slug: '@strapi-provider-email-nodemailer',
-          npmPackageName: '@strapi/provider-email-nodemailer',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-email-nodemailer',
+          slug: '@metrix-provider-email-nodemailer',
+          npmPackageName: '@metrix/provider-email-nodemailer',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-email-nodemailer',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/email-nodemailer',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/email-nodemailer',
           pluginName: 'Email',
           logo: {
             id: 'attu6UsiH02uW4mwL',
@@ -1130,11 +1130,11 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'Rackspace',
           description: 'Rackspace provider for Strapi uploads',
-          slug: '@strapi-provider-upload-rackspace',
-          npmPackageName: '@strapi/provider-upload-rackspace',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-upload-rackspace',
+          slug: '@metrix-provider-upload-rackspace',
+          npmPackageName: '@metrix/provider-upload-rackspace',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-upload-rackspace',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/upload-rackspace',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/upload-rackspace',
           pluginName: 'Upload',
           logo: {
             id: 'attwjN4k8kRJqlP7q',
@@ -1173,11 +1173,11 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'SendGrid',
           description: 'SendGrid provider for Strapi',
-          slug: '@strapi-provider-email-sendgrid',
-          npmPackageName: '@strapi/provider-email-sendgrid',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-email-sendgrid',
+          slug: '@metrix-provider-email-sendgrid',
+          npmPackageName: '@metrix/provider-email-sendgrid',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-email-sendgrid',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/email-sendgrid',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/email-sendgrid',
           pluginName: 'Email',
           logo: {
             id: 'att3OLz4K78pUVTjt',
@@ -1215,11 +1215,11 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'Sendmail',
           description: 'Sendmail provider for Strapi',
-          slug: '@strapi-provider-email-sendmail',
-          npmPackageName: '@strapi/provider-email-sendmail',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-email-sendmail',
+          slug: '@metrix-provider-email-sendmail',
+          npmPackageName: '@metrix/provider-email-sendmail',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-email-sendmail',
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/email-sendmail',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/email-sendmail',
           pluginName: 'Email',
           logo: {
             id: 'att5AVRI4yF9iI5vr',
@@ -1262,12 +1262,12 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'Amazon SES',
           description: 'Amazon SES provider for Strapi',
-          slug: '@strapi-provider-email-amazon-ses',
-          npmPackageName: '@strapi/provider-email-amazon-ses',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-email-amazon-ses',
+          slug: '@metrix-provider-email-amazon-ses',
+          npmPackageName: '@metrix/provider-email-amazon-ses',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-email-amazon-ses',
           npmDownloads: 2070,
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/email-amazon-ses',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/email-amazon-ses',
           githubStars: 49137,
           pluginName: 'Email',
           logo: {
@@ -1308,12 +1308,12 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'AWS S3',
           description: 'AWS S3 provider for Strapi uploads',
-          slug: '@strapi-provider-upload-aws-s3',
-          npmPackageName: '@strapi/provider-upload-aws-s3',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-upload-aws-s3',
+          slug: '@metrix-provider-upload-aws-s3',
+          npmPackageName: '@metrix/provider-upload-aws-s3',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-upload-aws-s3',
           npmDownloads: 12088,
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/upload-aws-s3',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/upload-aws-s3',
           githubStars: 49137,
           pluginName: 'Upload',
           logo: {
@@ -1360,12 +1360,12 @@ const PROVIDERS_MOCK_DATA = {
         attributes: {
           name: 'Nodemailer',
           description: 'Nodemailer provider for Strapi',
-          slug: '@strapi-provider-email-nodemailer',
-          npmPackageName: '@strapi/provider-email-nodemailer',
-          npmPackageUrl: 'https://www.npmjs.com/package/@strapi/provider-email-nodemailer',
+          slug: '@metrix-provider-email-nodemailer',
+          npmPackageName: '@metrix/provider-email-nodemailer',
+          npmPackageUrl: 'https://www.npmjs.com/package/@metrix/provider-email-nodemailer',
           npmDownloads: 3723,
           repositoryUrl:
-            'https://github.com/strapi/strapi/tree/master/packages/providers/email-nodemailer',
+            'https://github.com/metrix/metrix/tree/master/packages/providers/email-nodemailer',
           githubStars: 49137,
           pluginName: 'Email',
           logo: {
@@ -1416,7 +1416,7 @@ const mockData = {
     providers: PROVIDERS_MOCK_DATA,
   },
   webhooks: [
-    { id: 1, isEnabled: true, name: 'test', url: 'http:://strapi.io' },
+    { id: 1, isEnabled: true, name: 'test', url: 'http:://metrix.io' },
     { id: 2, isEnabled: false, name: 'test2', url: 'http://me.io' },
   ],
 } as const;

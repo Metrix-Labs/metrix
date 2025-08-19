@@ -1,5 +1,5 @@
-import { CarouselActions, IconButton } from '@strapi/design-system';
-import { Pencil, Plus, Trash } from '@strapi/icons';
+import { CarouselActions, IconButton } from '@metrix/design-system';
+import { Pencil, Plus, Trash } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { getTrad, prefixFileUrlWithBackendUrl } from '../../../utils';

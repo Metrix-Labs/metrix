@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { NotificationsProvider, adminApi } from '@strapi/admin/strapi-admin';
-import { DesignSystemProvider } from '@strapi/design-system';
+import { NotificationsProvider, adminApi } from '@metrix/admin/metrix-admin';
+import { DesignSystemProvider } from '@metrix/design-system';
 import { within, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -10,8 +10,8 @@ import { useEditFolder } from '../../../hooks/useEditFolder';
 import { useMediaLibraryPermissions } from '../../../hooks/useMediaLibraryPermissions';
 import { EditFolderDialog, EditFolderDialogProps } from '../EditFolderDialog';
 
-jest.mock('@strapi/admin/strapi-admin', () => ({
-  ...jest.requireActual('@strapi/admin/strapi-admin'),
+jest.mock('@metrix/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrix/admin/metrix-admin'),
   useFetchClient: jest.fn().mockReturnValue({
     put: jest.fn().mockImplementation(() => {}),
   }),

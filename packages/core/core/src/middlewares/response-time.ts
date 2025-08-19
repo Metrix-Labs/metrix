@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 export const responseTime: Core.MiddlewareFactory = () => {
   return async (ctx, next) => {

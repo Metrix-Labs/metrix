@@ -2,7 +2,7 @@ import path from 'path';
 import _ from 'lodash';
 import fse from 'fs-extra';
 
-import { importDefault } from '@strapi/utils';
+import { importDefault } from '@metrix/utils';
 import { glob } from 'glob';
 import { filePathToPropPath } from './filepath-to-prop-path';
 

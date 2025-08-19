@@ -7,7 +7,7 @@ import {
   useAPIErrorHandler,
   useQueryParams,
   tours,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import {
   Button,
   Dialog,
@@ -18,8 +18,8 @@ import {
   VisuallyHidden,
   Menu,
   ButtonProps,
-} from '@strapi/design-system';
-import { Cross, More, WarningCircle } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Cross, More, WarningCircle } from '@metrix/icons';
 import mapValues from 'lodash/fp/mapValues';
 import get from 'lodash/get';
 import merge from 'lodash/merge';

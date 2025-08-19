@@ -1,4 +1,4 @@
-import type { validate } from '@strapi/utils';
+import type { validate } from '@metrix/utils';
 
 export interface ValidatorsRegistry {
   get(path: string): validate.Validator[];

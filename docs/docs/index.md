@@ -3,19 +3,19 @@ sidebar_position: 1
 sidebar_label: Introduction
 ---
 
-# Strapi contributor documentation
+# Metrix contributor documentation
 
-Welcome to the Strapi Contributor documentation.
+Welcome to the Metrix Contributor documentation.
 
 :::caution
-No single Strapi squad “owns” the contributor documentation, it's a collective effort.
+No single Metrix squad “owns” the contributor documentation, it's a collective effort.
 :::
 
 This documentation site is a constant WIP so please, continue to add and improve these docs. These are not “user-facing” docs,
 they're related directly to the codebase for both internal and external engineers written with that in mind they explain
 technical concepts but also hold documentation for hooks, utils etc.
 
-If you don’t plan to make any contributions to [strapi/strapi](https://github.com/strapi/strapi), you probably shouldn’t read and use the present documentation, and [docs.strapi.io](https://docs.strapi.io) might be a better fit for your use case.
+If you don’t plan to make any contributions to [metrix/metrix](https://github.com/metrix/metrix), you probably shouldn’t read and use the present documentation, and [docs.metrix.io](https://docs.metrix.io) might be a better fit for your use case.
 
 ## Structure
 
@@ -27,11 +27,11 @@ This is where you'll probably want to start off. We have our contributing guides
 
 ### Docs
 
-Within the docs section we have a multitude of both technical and conceptual documentation diving deep into particular parts of the Strapi monorepo that may not make as much sense as just reading the code, like ["Relations reordering in the database"](/docs/core/database/relations/reordering). There's also usage documentation for various pieces of code such as the [useDragAndDrop](/docs/core/content-manager/hooks/use-drag-and-drop) hook.
+Within the docs section we have a multitude of both technical and conceptual documentation diving deep into particular parts of the Metrix monorepo that may not make as much sense as just reading the code, like ["Relations reordering in the database"](/docs/core/database/relations/reordering). There's also usage documentation for various pieces of code such as the [useDragAndDrop](/docs/core/content-manager/hooks/use-drag-and-drop) hook.
 
 ### API Reference
 
-An advanced deep dive into some of the core driving classes of Strapi with explanations on the methods & parameters available on commonly exposed classes as well as examples to compliment them for easier understanding.
+An advanced deep dive into some of the core driving classes of Metrix with explanations on the methods & parameters available on commonly exposed classes as well as examples to compliment them for easier understanding.
 
 ### RFCs
 

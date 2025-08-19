@@ -117,7 +117,7 @@ const hasDraftAndPublish = (model: Model) =>
   _.get(model, 'options.draftAndPublish', false) === true;
 
 const hasFirstPublishedAtField = (model: Model) =>
-  strapi.config.get('features.future.experimental_firstPublishedAt', false) &&
+  metrix.config.get('features.future.experimental_firstPublishedAt', false) &&
   hasDraftAndPublish(model);
 
 const isDraft = <T extends object>(data: T, model: Model) =>
@@ -147,7 +147,7 @@ const isKind = (kind: Kind) => (model: Model) => model.kind === kind;
 
 const getStoredPrivateAttributes = (model: Model) =>
   union(
-    (strapi?.config?.get('api.responses.privateAttributes', []) ?? []) as Array<string>,
+    (metrix?.config?.get('api.responses.privateAttributes', []) ?? []) as Array<string>,
     getOr([], 'options.privateAttributes', model)
   );
 

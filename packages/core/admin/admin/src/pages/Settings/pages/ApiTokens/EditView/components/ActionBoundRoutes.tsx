@@ -1,4 +1,4 @@
-import { Grid, Flex, Typography } from '@strapi/design-system';
+import { Grid, Flex, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { useApiTokenPermissions } from '../apiTokenPermissions';

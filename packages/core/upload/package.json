@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/upload",
+  "name": "@metrix/upload",
   "version": "5.22.0",
   "description": "Makes it easy to upload images and files to your Strapi Application.",
   "license": "SEE LICENSE IN LICENSE",
@@ -62,10 +62,6 @@
   "dependencies": {
     "@mux/mux-player-react": "3.1.0",
     "@reduxjs/toolkit": "1.9.7",
-    "@strapi/design-system": "2.0.0-rc.29",
-    "@strapi/icons": "2.0.0-rc.29",
-    "@strapi/provider-upload-local": "5.22.0",
-    "@strapi/utils": "5.22.0",
     "byte-size": "8.1.1",
     "cropperjs": "1.6.1",
     "date-fns": "2.30.0",
@@ -85,11 +81,13 @@
     "react-select": "5.8.0",
     "sharp": "0.33.5",
     "yup": "0.32.9",
-    "zod": "3.25.67"
+    "zod": "3.25.67",
+    "@metrix/design-system": "2.0.0-rc.29",
+    "@metrix/icons": "2.0.0-rc.29",
+    "@metrix/provider-upload-local": "5.22.0",
+    "@metrix/utils": "5.22.0"
   },
   "devDependencies": {
-    "@strapi/admin": "5.22.0",
-    "@strapi/types": "5.22.0",
     "@testing-library/dom": "10.1.0",
     "@testing-library/react": "15.0.7",
     "@testing-library/user-event": "14.5.2",
@@ -105,14 +103,16 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.22.3",
-    "styled-components": "6.1.8"
+    "styled-components": "6.1.8",
+    "@metrix/admin": "5.22.0",
+    "@metrix/types": "5.22.0"
   },
   "peerDependencies": {
-    "@strapi/admin": "^5.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "@metrix/admin": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

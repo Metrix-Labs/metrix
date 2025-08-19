@@ -1,5 +1,5 @@
-import type { UID, Utils, Modules, Core } from '@strapi/types';
-import { sanitize } from '@strapi/utils';
+import type { UID, Utils, Modules, Core } from '@metrix/types';
+import { sanitize } from '@metrix/utils';
 
 import { getDeepPopulate } from './utils/populate';
 
@@ -20,26 +20,26 @@ type EventName = Utils.Object.Values<typeof EVENTS>;
  * It will populate the entry if it is not a delete event.
  * So the event payload will contain the full entry.
  */
-const createEventManager = (strapi: Core.Strapi, uid: UID.Schema) => {
+const createEventManager = (metrix: Core.Strapi, uid: UID.Schema) => {
   const populate = getDeepPopulate(uid, {});
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
 
   const emitEvent = async (eventName: EventName, entry: Modules.Documents.AnyDocument) => {
     // There is no need to populate the entry if it has been deleted
     let populatedEntry = entry;
     if (![EVENTS.ENTRY_DELETE, EVENTS.ENTRY_UNPUBLISH].includes(eventName)) {
-      populatedEntry = await strapi.db.query(uid).findOne({ where: { id: entry.id }, populate });
+      populatedEntry = await metrix.db.query(uid).findOne({ where: { id: entry.id }, populate });
     }
 
     const sanitizedEntry = await sanitize.sanitizers.defaultSanitizeOutput(
       {
         schema: model,
-        getModel: (uid) => strapi.getModel(uid as UID.Schema),
+        getModel: (uid) => metrix.getModel(uid as UID.Schema),
       },
       populatedEntry
     );
 
-    await strapi.eventHub.emit(eventName, {
+    await metrix.eventHub.emit(eventName, {
       model: model.modelName,
       uid: model.uid,
       entry: sanitizedEntry,
@@ -48,11 +48,11 @@ const createEventManager = (strapi: Core.Strapi, uid: UID.Schema) => {
 
   return {
     /**
-     * strapi.db.query might reuse the transaction used in the doc service request,
+     * metrix.db.query might reuse the transaction used in the doc service request,
      * so this is executed after that transaction is committed.
      */
     emitEvent(eventName: EventName, entry: Modules.Documents.AnyDocument) {
-      strapi.db.transaction(({ onCommit }) => {
+      metrix.db.transaction(({ onCommit }) => {
         onCommit(() => emitEvent(eventName, entry));
       });
     },

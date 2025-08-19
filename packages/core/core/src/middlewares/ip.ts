@@ -1,5 +1,5 @@
 import koaIp from 'koa-ip';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 export type Config = koaIp.KoaIPOptions;
 

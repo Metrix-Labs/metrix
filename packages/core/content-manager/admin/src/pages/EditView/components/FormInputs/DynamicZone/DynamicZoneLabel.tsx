@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex, Typography } from '@strapi/design-system';
+import { Box, Flex, Typography } from '@metrix/design-system';
 
 interface DynamicZoneLabelProps {
   label?: React.ReactNode;

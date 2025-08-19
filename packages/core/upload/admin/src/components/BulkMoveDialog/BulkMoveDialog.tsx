@@ -1,4 +1,4 @@
-import { Button, Flex, Grid, Field, Loader, Modal, Typography } from '@strapi/design-system';
+import { Button, Flex, Grid, Field, Loader, Modal, Typography } from '@metrix/design-system';
 import { Form, Formik, FormikErrors } from 'formik';
 import isEmpty from 'lodash/isEmpty';
 import { useIntl } from 'react-intl';
@@ -11,7 +11,7 @@ import { SelectTree } from '../SelectTree/SelectTree';
 
 import type { Folder } from '../../../../shared/contracts/folders';
 import type { OptionSelectTree } from '../SelectTree/SelectTree';
-import type { FetchError } from '@strapi/admin/strapi-admin';
+import type { FetchError } from '@metrix/admin/metrix-admin';
 
 type InitialFormData = {
   destination:

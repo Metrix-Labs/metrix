@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex } from '@strapi/design-system';
+import { Box, Flex } from '@metrix/design-system';
 
 const PaginationContext = React.createContext({ activePage: 1, pageCount: 1 });
 export const usePagination = () => React.useContext(PaginationContext);

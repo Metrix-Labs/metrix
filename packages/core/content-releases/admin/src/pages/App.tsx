@@ -1,4 +1,4 @@
-import { Page } from '@strapi/admin/strapi-admin';
+import { Page } from '@metrix/admin/metrix-admin';
 import { Route, Routes } from 'react-router-dom';
 
 import { PERMISSIONS } from '../constants';

@@ -1,4 +1,4 @@
-import { DesignSystemProvider } from '@strapi/design-system';
+import { DesignSystemProvider } from '@metrix/design-system';
 import { act, render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 

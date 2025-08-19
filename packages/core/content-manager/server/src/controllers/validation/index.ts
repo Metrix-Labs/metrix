@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { Schema, UID } from '@strapi/types';
-import { yup, validateYupSchema, errors } from '@strapi/utils';
+import { Schema, UID } from '@metrix/types';
+import { yup, validateYupSchema, errors } from '@metrix/utils';
 import { ValidateOptions } from 'yup/lib/types';
 import { TestContext } from 'yup';
 import createModelConfigurationSchema from './model-configuration';
@@ -46,7 +46,7 @@ const checkUIDAvailabilityInputSchema = yup.object({
 });
 
 const validateUIDField = (contentTypeUID: any, field: any) => {
-  const model = strapi.contentTypes[contentTypeUID];
+  const model = metrix.contentTypes[contentTypeUID];
 
   if (!model) {
     throw new ValidationError('ContentType not found');
@@ -83,7 +83,7 @@ const validateCheckUIDAvailabilityInput = (body: {
   const options: ValidateOptions<{ regex?: string }> = {};
 
   const contentType =
-    body.contentTypeUID in strapi.contentTypes ? strapi.contentTypes[body.contentTypeUID] : null;
+    body.contentTypeUID in metrix.contentTypes ? metrix.contentTypes[body.contentTypeUID] : null;
 
   if (
     contentType?.attributes[body.field] &&

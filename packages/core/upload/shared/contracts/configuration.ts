@@ -3,8 +3,8 @@
  * E.g the page size, the sort.
  */
 
-import { errors } from '@strapi/utils';
-import type { Utils } from '@strapi/types';
+import { errors } from '@metrix/utils';
+import type { Utils } from '@metrix/types';
 
 type SortOrder = 'ASC' | 'DESC';
 

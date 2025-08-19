@@ -1,4 +1,4 @@
-import { Accordion } from '@strapi/design-system';
+import { Accordion } from '@metrix/design-system';
 import { render as renderRTL } from '@tests/utils';
 
 import { ComponentCategory, ComponentCategoryProps } from '../ComponentCategory';

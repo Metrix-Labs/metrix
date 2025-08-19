@@ -1,4 +1,4 @@
-import '@strapi/types';
+import '@metrix/types';
 
 import { DocumentManagerService } from 'src/services/document-manager';
 import DocumentMetadata from 'src/services/document-metadata';
@@ -10,7 +10,7 @@ type Services = {
 };
 
 const getService = <TName extends keyof Services>(name: TName): ReturnType<Services[TName]> => {
-  return strapi.plugin('content-manager').service(name as string);
+  return metrix.plugin('content-manager').service(name as string);
 };
 
 export { getService };

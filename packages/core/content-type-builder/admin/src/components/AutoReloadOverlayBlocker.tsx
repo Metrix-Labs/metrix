@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Flex, Typography, Link } from '@strapi/design-system';
-import { Clock, ArrowClockwise } from '@strapi/icons';
+import { Box, Flex, Typography, Link } from '@metrix/design-system';
+import { Clock, ArrowClockwise } from '@metrix/icons';
 import { createPortal } from 'react-dom';
 import { MessageDescriptor, useIntl } from 'react-intl';
 import { styled, keyframes } from 'styled-components';
@@ -154,7 +154,7 @@ const Blocker = ({ displayedIcon, description, title, isOpen }: BlockerProps) =>
             </IconBox>
           )}
           <Box marginTop={2}>
-            <Link href="https://docs.strapi.io" isExternal>
+            <Link href="https://docs.metrix.io" isExternal>
               {formatMessage({
                 id: 'global.documentation',
                 defaultMessage: 'Read the documentation',

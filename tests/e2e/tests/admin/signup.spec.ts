@@ -74,7 +74,7 @@ test.describe('Sign Up', () => {
     await expect(page.getByText('Passwords do not match')).toBeVisible();
   });
 
-  test('a user should be able to signup when the strapi instance starts fresh', async ({
+  test('a user should be able to signup when the metrix instance starts fresh', async ({
     page,
   }) => {
     await page.getByRole('button', { name: "Let's start" }).click();

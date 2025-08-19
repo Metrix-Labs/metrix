@@ -4,8 +4,8 @@ import path from 'path';
 import _ from 'lodash';
 import { omit } from 'lodash/fp';
 import dotenv from 'dotenv';
-import type { Core } from '@strapi/types';
-import { strings } from '@strapi/utils';
+import type { Core } from '@metrix/types';
+import { strings } from '@metrix/utils';
 
 import { getConfigUrls, getAbsoluteAdminUrl, getAbsoluteServerUrl } from './urls';
 import loadConfigDir from './config-loader';
@@ -59,12 +59,12 @@ export const loadConfiguration = (opts: StrapiOptions) => {
     launchedAt: Date.now(),
     autoReload,
     environment: process.env.NODE_ENV,
-    uuid: _.get(pkgJSON, 'strapi.uuid'),
-    installId: _.get(pkgJSON, 'strapi.installId'),
-    packageJsonStrapi: _.omit(_.get(pkgJSON, 'strapi', {}), 'uuid'),
+    uuid: _.get(pkgJSON, 'metrix.uuid'),
+    installId: _.get(pkgJSON, 'metrix.installId'),
+    packageJsonStrapi: _.omit(_.get(pkgJSON, 'metrix', {}), 'uuid'),
     info: {
       ...pkgJSON,
-      strapi: strapiVersion,
+      metrix: strapiVersion,
     },
     admin: {
       serveAdminPanel,

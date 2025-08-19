@@ -4,19 +4,19 @@ import { rest } from 'msw';
 import { ProfilePage } from '../ProfilePage';
 
 describe('Profile page', () => {
-  const originalIsEnabled = window.strapi.features.isEnabled;
-  const originalIsEE = window.strapi.isEE;
+  const originalIsEnabled = window.metrix.features.isEnabled;
+  const originalIsEE = window.metrix.isEE;
 
   beforeAll(() => {
-    window.strapi.isEE = true;
-    window.strapi.features.isEnabled = () => true;
+    window.metrix.isEE = true;
+    window.metrix.features.isEnabled = () => true;
 
     window.localStorage.setItem('jwtToken', JSON.stringify('token'));
   });
 
   afterAll(() => {
-    window.strapi.isEE = originalIsEE;
-    window.strapi.features.isEnabled = originalIsEnabled;
+    window.metrix.isEE = originalIsEE;
+    window.metrix.features.isEnabled = originalIsEnabled;
   });
 
   beforeEach(() => {

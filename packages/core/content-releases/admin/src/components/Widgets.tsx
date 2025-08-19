@@ -1,6 +1,6 @@
-import { useTracking, Widget } from '@strapi/admin/strapi-admin';
-import { Badge, Box, IconButton, Table, Tbody, Td, Tr, Typography } from '@strapi/design-system';
-import { Pencil } from '@strapi/icons';
+import { useTracking, Widget } from '@metrix/admin/metrix-admin';
+import { Badge, Box, IconButton, Table, Tbody, Td, Tr, Typography } from '@metrix/design-system';
+import { Pencil } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';

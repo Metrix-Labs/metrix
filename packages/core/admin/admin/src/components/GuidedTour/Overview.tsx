@@ -1,5 +1,5 @@
-import { Box, Button, Dialog, Flex, Link, ProgressBar, Typography } from '@strapi/design-system';
-import { CheckCircle, ChevronRight } from '@strapi/icons';
+import { Box, Button, Dialog, Flex, Link, ProgressBar, Typography } from '@metrix/design-system';
+import { CheckCircle, ChevronRight } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import { styled, useTheme } from 'styled-components';
@@ -111,7 +111,7 @@ const TASK_CONTENT = [
         id: 'tours.overview.strapiCloud.link',
         defaultMessage: 'Read documentation',
       },
-      to: 'https://docs.strapi.io/cloud/intro',
+      to: 'https://docs.metrix.io/cloud/intro',
     },
     title: {
       id: 'tours.overview.strapiCloud.label',

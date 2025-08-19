@@ -1,17 +1,17 @@
 /**
- * The features service is responsible for managing features within strapi,
+ * The features service is responsible for managing features within metrix,
  * including interacting with the feature configuration file to know
  * which are enabled and disabled.
  */
 
-import type { Core, Modules } from '@strapi/types';
+import type { Core, Modules } from '@metrix/types';
 
 type FeatureName = keyof Modules.Features.FeaturesConfig['future'];
 
-const createFeaturesService = (strapi: Core.Strapi): Modules.Features.FeaturesService => {
+const createFeaturesService = (metrix: Core.Strapi): Modules.Features.FeaturesService => {
   const service: Modules.Features.FeaturesService = {
     get config() {
-      return strapi.config.get<Modules.Features.FeaturesService['config']>('features');
+      return metrix.config.get<Modules.Features.FeaturesService['config']>('features');
     },
     future: {
       isEnabled(futureFlagName: string): boolean {

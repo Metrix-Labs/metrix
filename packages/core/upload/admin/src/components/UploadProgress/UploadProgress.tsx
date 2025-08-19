@@ -1,6 +1,6 @@
 // TODO: find a better naming convention for the file that was an index file before
-import { Flex, ProgressBar, Typography } from '@strapi/design-system';
-import { Cross } from '@strapi/icons';
+import { Flex, ProgressBar, Typography } from '@metrix/design-system';
+import { Cross } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

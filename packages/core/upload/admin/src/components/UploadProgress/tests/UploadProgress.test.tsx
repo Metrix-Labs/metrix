@@ -1,5 +1,5 @@
 // TODO: find a better naming convention for the file that was an index file before
-import { DesignSystemProvider } from '@strapi/design-system';
+import { DesignSystemProvider } from '@metrix/design-system';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';

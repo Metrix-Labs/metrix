@@ -1,4 +1,4 @@
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 type Data = Record<keyof Schema.ContentType['attributes'], any>;
 

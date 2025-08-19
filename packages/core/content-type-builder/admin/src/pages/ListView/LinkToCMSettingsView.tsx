@@ -1,8 +1,8 @@
 import { memo } from 'react';
 
-import { type Permission, useRBAC } from '@strapi/admin/strapi-admin';
-import { Button } from '@strapi/design-system';
-import { ListPlus } from '@strapi/icons';
+import { type Permission, useRBAC } from '@metrix/admin/metrix-admin';
+import { Button } from '@metrix/design-system';
+import { ListPlus } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';

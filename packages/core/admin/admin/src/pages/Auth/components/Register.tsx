@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Grid, Typography, Link } from '@strapi/design-system';
+import { Box, Button, Flex, Grid, Typography, Link } from '@metrix/design-system';
 import omit from 'lodash/omit';
 import { useIntl } from 'react-intl';
 import { NavLink, Navigate, useNavigate, useMatch, useLocation } from 'react-router-dom';
@@ -458,7 +458,7 @@ const Register = ({ hasAdmin }: RegisterProps) => {
                     },
                     {
                       terms: (
-                        <A target="_blank" href="https://strapi.io/terms" rel="noreferrer">
+                        <A target="_blank" href="https://metrix.io/terms" rel="noreferrer">
                           {formatMessage({
                             id: 'Auth.privacy-policy-agreement.terms',
                             defaultMessage: 'terms',
@@ -466,7 +466,7 @@ const Register = ({ hasAdmin }: RegisterProps) => {
                         </A>
                       ),
                       policy: (
-                        <A target="_blank" href="https://strapi.io/privacy" rel="noreferrer">
+                        <A target="_blank" href="https://metrix.io/privacy" rel="noreferrer">
                           {formatMessage({
                             id: 'Auth.privacy-policy-agreement.policy',
                             defaultMessage: 'policy',

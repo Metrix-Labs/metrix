@@ -7,8 +7,8 @@ import {
   Dialog,
   useCallbackRef,
   useComposedRefs,
-} from '@strapi/design-system';
-import { WarningCircle } from '@strapi/icons';
+} from '@metrix/design-system';
+import { WarningCircle } from '@metrix/icons';
 import { generateNKeysBetween } from 'fractional-indexing';
 import { produce } from 'immer';
 import isEqual from 'lodash/isEqual';
@@ -199,7 +199,7 @@ const Form = React.forwardRef<HTMLFormElement, FormProps>(
        * rendered before we try to focus on the first
        */
       const ref = setTimeout(() => {
-        const [firstError] = formRef.current.querySelectorAll('[data-strapi-field-error]');
+        const [firstError] = formRef.current.querySelectorAll('[data-metrix-field-error]');
 
         if (firstError) {
           const errorId = firstError.getAttribute('id');

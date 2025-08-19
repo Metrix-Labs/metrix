@@ -1,4 +1,4 @@
-import type { sanitize } from '@strapi/utils';
+import type { sanitize } from '@metrix/utils';
 
 export interface SanitizersRegistry {
   get(path: string): sanitize.Sanitizer[];

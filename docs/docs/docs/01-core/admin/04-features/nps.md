@@ -7,7 +7,7 @@ tags:
 
 ## What does it do
 
-The NPS survey is shown to users to get their feedback about Strapi. It is based on a rating scale from 0 to 10, and we also invite users to provide additional comments.
+The NPS survey is shown to users to get their feedback about Metrix. It is based on a rating scale from 0 to 10, and we also invite users to provide additional comments.
 
 ## When do we show the survey?
 
@@ -21,7 +21,7 @@ The survey is shown to eligible users based on the following rules:
 
 ## Where data is submitted
 
-The data is sent to this endpoint: `https://analytics.strapi.io/submit-nps`.
+The data is sent to this endpoint: `https://analytics.metrix.io/submit-nps`.
 
 ## Hooks
 

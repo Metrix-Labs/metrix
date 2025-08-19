@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = ({ nexus, strapi }) => {
+module.exports = ({ nexus, metrix }) => {
   const { nonNull } = nexus;
 
   return {
@@ -17,7 +17,7 @@ module.exports = ({ nexus, strapi }) => {
 
       koaContext.params = { role: args.id };
 
-      await strapi.plugin('users-permissions').controller('role').deleteRole(koaContext);
+      await metrix.plugin('users-permissions').controller('role').deleteRole(koaContext);
 
       return { ok: true };
     },

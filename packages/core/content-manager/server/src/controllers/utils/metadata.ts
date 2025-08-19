@@ -1,5 +1,5 @@
-import type { UID } from '@strapi/types';
-import { async } from '@strapi/utils';
+import type { UID } from '@metrix/types';
+import { async } from '@metrix/utils';
 
 import { getService } from '../../utils';
 

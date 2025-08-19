@@ -1,5 +1,5 @@
-import { Box, Flex, Typography } from '@strapi/design-system';
-import { Cross } from '@strapi/icons';
+import { Box, Flex, Typography } from '@metrix/design-system';
+import { Cross } from '@metrix/icons';
 import get from 'lodash/get';
 import { styled } from 'styled-components';
 
@@ -7,7 +7,7 @@ import { useDataManager } from '../DataManager/useDataManager';
 
 import { ComponentIcon } from './ComponentIcon';
 
-import type { Internal, Struct } from '@strapi/types';
+import type { Internal, Struct } from '@metrix/types';
 
 interface ComponentCardProps {
   component: string;

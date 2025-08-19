@@ -5,8 +5,8 @@
  *
  */
 import { configureStore } from '@reduxjs/toolkit';
-import { adminApi, NotificationsProvider } from '@strapi/admin/strapi-admin';
-import { DesignSystemProvider } from '@strapi/design-system';
+import { adminApi, NotificationsProvider } from '@metrix/admin/metrix-admin';
+import { DesignSystemProvider } from '@metrix/design-system';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';

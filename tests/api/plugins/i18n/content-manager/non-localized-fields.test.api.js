@@ -1,6 +1,6 @@
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const { createTestBuilder } = require('api-tests/builder');
 const { set } = require('lodash/fp');
@@ -8,7 +8,7 @@ const { set } = require('lodash/fp');
 const modelsUtils = require('api-tests/models');
 const { cloneDeep } = require('lodash');
 
-let strapi;
+let metrix;
 let rq;
 
 const categoryModel = {
@@ -204,15 +204,15 @@ describe('i18n', () => {
 
     await modelsUtils.modifyComponent(compo(true));
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterAll(async () => {
     // Delete all locales that have been created
-    await strapi.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
+    await metrix.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -271,7 +271,7 @@ describe('i18n', () => {
 
         // Expect all locales to be updates, both draft and published versions
         for (const locale of allLocaleCodes) {
-          const localeRes = await strapi.db.query('api::category.category').findOne({
+          const localeRes = await metrix.db.query('api::category.category').findOne({
             where: {
               documentId,
               publishedAt: null,
@@ -301,7 +301,7 @@ describe('i18n', () => {
 
         // Expect all locales to be updates, both draft and published versions
         for (const locale of allLocaleCodes) {
-          const localeRes = await strapi.db.query('api::category.category').findOne({
+          const localeRes = await metrix.db.query('api::category.category').findOne({
             where: {
               documentId,
               publishedAt: null,
@@ -325,7 +325,7 @@ describe('i18n', () => {
 
         // Expect all locales to be updates, both draft and published versions
         for (const locale of allLocaleCodes) {
-          const localeRes = await strapi.db.query('api::category.category').findOne({
+          const localeRes = await metrix.db.query('api::category.category').findOne({
             where: {
               documentId,
               publishedAt: null,
@@ -408,7 +408,7 @@ describe('i18n', () => {
           }
 
           for (const locale of allLocaleCodes) {
-            const localeRes = await strapi.db.query('api::category.category').findOne({
+            const localeRes = await metrix.db.query('api::category.category').findOne({
               where: {
                 documentId,
                 publishedAt: null,
@@ -519,7 +519,7 @@ describe('i18n', () => {
             }
 
             for (const locale of allLocaleCodes) {
-              const localeRes = await strapi.db.query('api::category.category').findOne({
+              const localeRes = await metrix.db.query('api::category.category').findOne({
                 where: {
                   documentId,
                   publishedAt: null,

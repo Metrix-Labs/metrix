@@ -8,7 +8,7 @@ import {
   useAPIErrorHandler,
   useQueryParams,
   useFocusInputField,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import {
   Field,
   Flex,
@@ -16,8 +16,8 @@ import {
   TextInput,
   Typography,
   useComposedRefs,
-} from '@strapi/design-system';
-import { CheckCircle, WarningCircle, Loader, ArrowClockwise } from '@strapi/icons';
+} from '@metrix/design-system';
+import { CheckCircle, WarningCircle, Loader, ArrowClockwise } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { useMatch } from 'react-router-dom';
 import { styled, keyframes } from 'styled-components';
@@ -33,7 +33,7 @@ import {
 import { buildValidParams } from '../../../../utils/api';
 
 import type { CheckUIDAvailability } from '../../../../../../shared/contracts/uid';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 /* -------------------------------------------------------------------------------------------------
  * InputUID

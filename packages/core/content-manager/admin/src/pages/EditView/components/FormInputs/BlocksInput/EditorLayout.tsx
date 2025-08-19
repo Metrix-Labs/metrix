@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Flex, IconButton, FlexComponent, Modal } from '@strapi/design-system';
-import { Collapse } from '@strapi/icons';
+import { Flex, IconButton, FlexComponent, Modal } from '@metrix/design-system';
+import { Collapse } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { css, styled } from 'styled-components';
 

@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrix/utils';
 
 const providerOptionsUpdateSchema = yup.object().shape({
   autoRegister: yup.boolean().required(),
@@ -11,7 +11,7 @@ const providerOptionsUpdateSchema = yup.object().shape({
       if (roleId === null) {
         return true;
       }
-      return strapi.service('admin::role').exists({ id: roleId });
+      return metrix.service('admin::role').exists({ id: roleId });
     }),
   ssoLockedRoles: yup
     .array()
@@ -23,7 +23,7 @@ const providerOptionsUpdateSchema = yup.object().shape({
           'is-valid-role',
           'You must submit a valid role for the SSO Locked roles',
           (roleId) => {
-            return strapi.service('admin::role').exists({ id: roleId });
+            return metrix.service('admin::role').exists({ id: roleId });
           }
         )
     ),

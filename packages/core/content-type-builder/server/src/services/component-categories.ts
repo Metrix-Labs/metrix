@@ -1,6 +1,6 @@
 import { join } from 'path';
-import { strings, errors } from '@strapi/utils';
-import type { Struct } from '@strapi/types';
+import { strings, errors } from '@metrix/utils';
+import type { Struct } from '@metrix/types';
 import createBuilder from './schema-builder';
 
 type Infos = {
@@ -39,7 +39,7 @@ export const editCategory = async (name: string, infos: Infos) => {
     // only edit the components in this specific category
     if (component.category !== name) return;
 
-    component.setUID(newUID).setDir(join(strapi.dirs.app.components, newName));
+    component.setUID(newUID).setDir(join(metrix.dirs.app.components, newName));
 
     builder.components.forEach((compo: WorkingComponent) => {
       compo.updateComponent(oldUID, newUID);
@@ -78,7 +78,7 @@ export const deleteCategory = async (name: string) => {
  * Checks if a category exists
  */
 const categoryExists = (name: string) => {
-  const matchingIndex = Object.values(strapi.components).findIndex(
+  const matchingIndex = Object.values(metrix.components).findIndex(
     (component) => component.category === name
   );
 

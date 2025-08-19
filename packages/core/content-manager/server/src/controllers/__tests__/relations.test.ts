@@ -37,7 +37,7 @@ describe.skip('Relations', () => {
   }));
 
   beforeAll(() => {
-    global.strapi = {
+    global.metrix = {
       getModel: jest.fn((uid) => {
         return contentTypes[uid];
       }),
@@ -119,7 +119,7 @@ describe.skip('Relations', () => {
 
       await relations.findAvailable(ctx);
 
-      expect(strapi.entityService.findPage).toHaveBeenCalledWith(
+      expect(metrix.entityService.findPage).toHaveBeenCalledWith(
         'target',
         expect.objectContaining({
           sort: 'myField',
@@ -139,7 +139,7 @@ describe.skip('Relations', () => {
     });
 
     test('Replace mainField by id when mainField is not listable', async () => {
-      global.strapi.plugins['content-manager'].services[
+      global.metrix.plugins['content-manager'].services[
         'permission-checker'
       ].create.mockReturnValue({
         can: {
@@ -174,7 +174,7 @@ describe.skip('Relations', () => {
 
       await relations.findAvailable(ctx);
 
-      expect(strapi.entityService.findPage).toHaveBeenCalledWith(
+      expect(metrix.entityService.findPage).toHaveBeenCalledWith(
         'targetWithHidden',
         expect.objectContaining({
           sort: 'id',
@@ -196,7 +196,7 @@ describe.skip('Relations', () => {
 
   describe('findExisting', () => {
     test('Query mainField when mainField is listable', async () => {
-      global.strapi.plugins['content-manager'].services[
+      global.metrix.plugins['content-manager'].services[
         'permission-checker'
       ].create.mockReturnValue({
         can: {
@@ -276,7 +276,7 @@ describe.skip('Relations', () => {
 
       await relations.findExisting(ctx);
 
-      expect(strapi.entityService.findPage).toHaveBeenCalledWith(
+      expect(metrix.entityService.findPage).toHaveBeenCalledWith(
         'targetWithHidden',
         expect.objectContaining({
           fields: ['id', 'publishedAt', 'documentId'],
@@ -287,7 +287,7 @@ describe.skip('Relations', () => {
     });
 
     test.skip('Replace mainField by id when mainField is not accessible with RBAC', async () => {
-      global.strapi.plugins['content-manager'].services['permission-checker'].create
+      global.metrix.plugins['content-manager'].services['permission-checker'].create
         .mockReturnValueOnce({
           cannot: {
             read: jest.fn().mockReturnValue(false),
@@ -321,7 +321,7 @@ describe.skip('Relations', () => {
 
       await relations.findExisting(ctx);
 
-      expect(strapi.entityService.findPage).toHaveBeenCalledWith(
+      expect(metrix.entityService.findPage).toHaveBeenCalledWith(
         'targetWithHidden',
         expect.objectContaining({
           fields: ['id', 'publishedAt', 'documentId'],
@@ -347,7 +347,7 @@ describe.skip('Relations', () => {
   });
 
   test('Replace mainField by id when mainField is not accessible with RBAC', async () => {
-    global.strapi.plugins['content-manager'].services['permission-checker'].create
+    global.metrix.plugins['content-manager'].services['permission-checker'].create
       .mockReturnValueOnce({
         can: {
           read: jest.fn().mockReturnValue(true),
@@ -387,7 +387,7 @@ describe.skip('Relations', () => {
 
     await relations.findExisting(ctx);
 
-    expect(strapi.entityService.load).toHaveBeenCalledWith(
+    expect(metrix.entityService.load).toHaveBeenCalledWith(
       'main',
       { id: 1 },
       'relationWithHidden',

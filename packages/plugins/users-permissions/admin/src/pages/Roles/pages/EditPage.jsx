@@ -9,8 +9,8 @@ import {
   Typography,
   Grid,
   Field,
-} from '@strapi/design-system';
-import { Check } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Check } from '@metrix/icons';
 import {
   Page,
   BackButton,
@@ -18,7 +18,7 @@ import {
   useNotification,
   useFetchClient,
   Layouts,
-} from '@strapi/strapi/admin';
+} from '@metrix/metrix/admin';
 import { Formik, Form } from 'formik';
 import { useIntl } from 'react-intl';
 import { useQuery, useMutation } from 'react-query';
@@ -105,7 +105,7 @@ export const EditPage = () => {
               primaryAction={
                 !isLoadingPlugins ? (
                   <Button
-                    disabled={role.code === 'strapi-super-admin'}
+                    disabled={role.code === 'metrix-super-admin'}
                     type="submit"
                     loading={mutation.isLoading}
                     startIcon={<Check />}

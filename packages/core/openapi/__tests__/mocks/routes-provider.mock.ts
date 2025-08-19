@@ -1,4 +1,4 @@
-import { Core } from '@strapi/types';
+import { Core } from '@metrix/types';
 import { AbstractRoutesProvider } from '../../src/routes';
 
 import { routes as fixtures } from '../fixtures';

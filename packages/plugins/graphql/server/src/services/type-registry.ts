@@ -1,5 +1,5 @@
 import { isFunction } from 'lodash/fp';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrix/utils';
 
 const { ApplicationError } = errors;
 

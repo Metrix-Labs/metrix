@@ -1,13 +1,13 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import { prop } from 'lodash/fp';
-import { async, errors } from '@strapi/utils';
+import { async, errors } from '@metrix/utils';
 import { getService, getAdminService } from '../utils';
 import { STAGE_TRANSITION_UID } from '../constants/workflows';
 
 const { ApplicationError } = errors;
 const validActions = [STAGE_TRANSITION_UID];
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
+export default ({ metrix }: { metrix: Core.Strapi }) => {
   const roleService = getAdminService('role');
   const permissionService = getAdminService('permission');
 
@@ -36,7 +36,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       await permissionService.deleteByIds(permissionIds);
     },
     can(action: any, fromStage: any) {
-      const requestState = strapi.requestContext.get()?.state;
+      const requestState = metrix.requestContext.get()?.state;
 
       if (!requestState) {
         return false;
@@ -44,7 +44,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
 
       // Override permissions for super admin
       const userRoles = requestState.user?.roles;
-      if (userRoles?.some((role: any) => role.code === 'strapi-super-admin')) {
+      if (userRoles?.some((role: any) => role.code === 'metrix-super-admin')) {
         return true;
       }
 

@@ -1,4 +1,4 @@
-import { Images } from '@strapi/icons';
+import { Images } from '@metrix/icons';
 
 import pluginPkg from '../../package.json';
 
@@ -10,10 +10,10 @@ import { getTrad, prefixPluginTranslations } from './utils';
 
 import type { MediaLibraryDialogProps } from './components/MediaLibraryDialog/MediaLibraryDialog';
 import type { MediaLibraryInputProps } from './components/MediaLibraryInput/MediaLibraryInput';
-import type { StrapiApp } from '@strapi/admin/strapi-admin';
-import type { Plugin } from '@strapi/types';
+import type { StrapiApp } from '@metrix/admin/metrix-admin';
+import type { Plugin } from '@metrix/types';
 
-const name = pluginPkg.strapi.name;
+const name = pluginPkg.metrix.name;
 
 const admin: Plugin.Config.AdminInput = {
   register(app: StrapiApp) {

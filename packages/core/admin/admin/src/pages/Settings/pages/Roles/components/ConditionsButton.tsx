@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, BoxComponent, Button, ButtonProps } from '@strapi/design-system';
-import { Cog } from '@strapi/icons';
+import { Box, BoxComponent, Button, ButtonProps } from '@metrix/design-system';
+import { Cog } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

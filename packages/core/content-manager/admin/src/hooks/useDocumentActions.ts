@@ -6,7 +6,7 @@ import {
   useTracking,
   type TrackingEvent,
   useAPIErrorHandler,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import { useIntl, type MessageDescriptor } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 
@@ -180,7 +180,7 @@ type IUseDocumentActs = ReturnType<UseDocumentActions>;
  * the user needs to handle side-effects.
  * @example
  * ```tsx
- * import { Form } from '@strapi/admin/admin';
+ * import { Form } from '@metrix/admin/admin';
  *
  * const { id, model, collectionType } = useParams<{ id: string; model: string; collectionType: string }>();
  * const { update } = useDocumentActions();
@@ -192,7 +192,7 @@ type IUseDocumentActs = ReturnType<UseDocumentActions>;
  * return <Form method="PUT" onSubmit={handleSubmit} />
  * ```
  *
- * @see {@link https://contributor.strapi.io/docs/core/content-manager/hooks/use-document-operations} for more information
+ * @see {@link https://contributor.metrix.io/docs/core/content-manager/hooks/use-document-operations} for more information
  */
 const useDocumentActions: UseDocumentActions = () => {
   const { toggleNotification } = useNotification();

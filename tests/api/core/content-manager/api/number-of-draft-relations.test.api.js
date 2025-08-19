@@ -1,11 +1,11 @@
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createTestBuilder } = require('api-tests/builder');
 const { createAuthRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 const categories = {
   published: [],
@@ -136,8 +136,8 @@ describe('CM API - Number of draft relations', () => {
       .addContentTypes([productModel])
       .build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     const {
       body: {
@@ -192,9 +192,9 @@ describe('CM API - Number of draft relations', () => {
 
   afterAll(async () => {
     // Delete all locales that have been created
-    await strapi.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
+    await metrix.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -444,8 +444,8 @@ describe('CM API - Number of draft relations', () => {
 
   test('Correctly count the number of draft relations across multiple locales and document IDs', async () => {
     // Reset the database and create new data for this test
-    await strapi.query(UID_PRODUCT).deleteMany({});
-    await strapi.query(UID_CATEGORY).deleteMany({});
+    await metrix.query(UID_PRODUCT).deleteMany({});
+    await metrix.query(UID_CATEGORY).deleteMany({});
 
     // Create multiple new categories and products
     const categories = await Promise.all([

@@ -1,5 +1,5 @@
-import { errors } from '@strapi/utils';
-import type { Data } from '@strapi/types';
+import { errors } from '@metrix/utils';
+import type { Data } from '@metrix/types';
 
 export type ApiToken = {
   accessKey: string;

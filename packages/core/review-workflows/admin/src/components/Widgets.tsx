@@ -1,7 +1,7 @@
-import { Widget, useTracking } from '@strapi/admin/strapi-admin';
-import { DocumentStatus, RelativeTime } from '@strapi/content-manager/strapi-admin';
-import { Box, IconButton, Table, Tbody, Td, Tr, Typography } from '@strapi/design-system';
-import { Pencil } from '@strapi/icons';
+import { Widget, useTracking } from '@metrix/admin/metrix-admin';
+import { DocumentStatus, RelativeTime } from '@metrix/content-manager/metrix-admin';
+import { Box, IconButton, Table, Tbody, Td, Tr, Typography } from '@metrix/design-system';
+import { Pencil } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { Link, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';

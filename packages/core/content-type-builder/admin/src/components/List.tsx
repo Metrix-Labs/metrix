@@ -14,10 +14,10 @@ import {
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import { SortableContext, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { useTracking } from '@strapi/admin/strapi-admin';
-import { Box, Button, EmptyStateLayout } from '@strapi/design-system';
-import { Plus } from '@strapi/icons';
-import { EmptyDocuments } from '@strapi/icons/symbols';
+import { useTracking } from '@metrix/admin/metrix-admin';
+import { Box, Button, EmptyStateLayout } from '@metrix/design-system';
+import { Plus } from '@metrix/icons';
+import { EmptyDocuments } from '@metrix/icons/symbols';
 import { createPortal } from 'react-dom';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
@@ -30,7 +30,7 @@ import { NestedTFooter, TFooter } from './Footers';
 import { useFormModalNavigation } from './FormModalNavigation/useFormModalNavigation';
 
 import type { Component, ContentType } from '../types';
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrix/types';
 
 export const ListGrid = styled(Box)`
   white-space: nowrap;

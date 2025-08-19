@@ -4,9 +4,9 @@
 
 import createdDebugger from 'debug';
 import _ from 'lodash';
-import type { Logger } from '@strapi/logger';
+import type { Logger } from '@metrix/logger';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrix/types';
 import WorkerQueue from './worker-queue';
 import type { EventHub } from './event-hub';
 import type { Fetch } from '../utils/fetch';
@@ -31,7 +31,7 @@ interface Event {
 
 type Listener = (info: Record<string, unknown>) => Promise<void>;
 
-const debug = createdDebugger('strapi:webhook');
+const debug = createdDebugger('metrix:webhook');
 
 const defaultConfiguration: Config = {
   defaultHeaders: {},

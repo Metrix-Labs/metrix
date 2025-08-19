@@ -1,11 +1,11 @@
-import { Box } from '@strapi/design-system';
+import { Box } from '@metrix/design-system';
 import get from 'lodash/get';
 
 import { ComponentRow } from './ComponentRow';
 import { useDataManager } from './DataManager/useDataManager';
 import { List } from './List';
 
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrix/types';
 
 interface ComponentListProps {
   component: UID.Component;

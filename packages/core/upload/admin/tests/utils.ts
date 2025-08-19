@@ -6,6 +6,6 @@ import {
   fireEvent,
   screen,
   server,
-} from '@strapi/admin/strapi-admin/test';
+} from '@metrix/admin/metrix-admin/test';
 
 export { render, renderHook, waitFor, server, act, fireEvent, screen };

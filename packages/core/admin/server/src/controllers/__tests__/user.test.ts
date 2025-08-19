@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrix/utils';
 // @ts-expect-error - types are not generated for this file
 // eslint-disable-next-line import/no-relative-packages
 import createContext from '../../../../../../../tests/helpers/create-context';
@@ -17,7 +17,7 @@ describe('User Controller', () => {
       const exists = jest.fn(() => Promise.resolve(true));
       const ctx = createContext({ body }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             user: {
@@ -46,7 +46,7 @@ describe('User Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body }, { created }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             user: {
@@ -74,7 +74,7 @@ describe('User Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body: camelCaseBody }, { created }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             user: {
@@ -113,7 +113,7 @@ describe('User Controller', () => {
       const sanitizeUser = jest.fn((user) => user);
       const ctx = createContext({ params: { id: user.id } }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             user: { findOne, sanitizeUser },
@@ -134,7 +134,7 @@ describe('User Controller', () => {
       const findOne = jest.fn(() => Promise.resolve(null));
       const ctx = createContext({ params: { id: fakeId } }, { notFound }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             user: { findOne },
@@ -191,7 +191,7 @@ describe('User Controller', () => {
         validateQuery() {},
       }));
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             user: { findPage, sanitizeUser },
@@ -234,7 +234,7 @@ describe('User Controller', () => {
         validateQuery() {},
       }));
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             user: { findPage, sanitizeUser },
@@ -270,7 +270,7 @@ describe('User Controller', () => {
 
       const ctx = createContext({ params: { id: fakeId }, body }, { notFound }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             user: { updateById },
@@ -308,7 +308,7 @@ describe('User Controller', () => {
 
       const ctx = createContext({ params: { id: user.id }, body }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             user: { updateById, sanitizeUser },

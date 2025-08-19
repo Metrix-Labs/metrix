@@ -1,13 +1,13 @@
 import { pickBy, has } from 'lodash/fp';
-import type { Core, UID } from '@strapi/types';
+import type { Core, UID } from '@metrix/types';
 import { addNamespace, hasNamespace } from './namespace';
 
-export type ServiceFactory = (params: { strapi: Core.Strapi }) => Core.Service | Core.Service;
+export type ServiceFactory = (params: { metrix: Core.Strapi }) => Core.Service | Core.Service;
 export type ServiceFactoryMap = Record<string, ServiceFactory>;
 export type ServiceMap = Record<string, Core.Service>;
 export type ServiceExtendFn = (service: Core.Service) => Core.Service;
 
-const servicesRegistry = (strapi: Core.Strapi) => {
+const servicesRegistry = (metrix: Core.Strapi) => {
   const services: ServiceFactoryMap = {};
   const instantiatedServices: ServiceMap = {};
 
@@ -29,7 +29,7 @@ const servicesRegistry = (strapi: Core.Strapi) => {
 
       const service = services[uid];
       if (service) {
-        instantiatedServices[uid] = typeof service === 'function' ? service({ strapi }) : service;
+        instantiatedServices[uid] = typeof service === 'function' ? service({ metrix }) : service;
         return instantiatedServices[uid];
       }
     },

@@ -38,7 +38,7 @@ const parseFilesData = async (files: UpdateProjectSettings.Request['files']) => 
       const getStream = () => fs.createReadStream(file.filepath);
 
       // Add formated data for the upload provider
-      formatedFilesData[inputName] = await strapi
+      formatedFilesData[inputName] = await metrix
         .plugin('upload')
         .service('upload')
         .formatFileInfo({
@@ -50,7 +50,7 @@ const parseFilesData = async (files: UpdateProjectSettings.Request['files']) => 
       // Add image dimensions
       Object.assign(
         formatedFilesData[inputName]!,
-        await strapi.plugin('upload').service('image-manipulation').getDimensions({ getStream })
+        await metrix.plugin('upload').service('image-manipulation').getDimensions({ getStream })
       );
 
       // Add file path, and stream
@@ -59,7 +59,7 @@ const parseFilesData = async (files: UpdateProjectSettings.Request['files']) => 
         tmpPath: file.filepath,
         // TODO
         // @ts-expect-error define the correct return type
-        provider: strapi.config.get('plugin::upload').provider,
+        provider: metrix.config.get('plugin::upload').provider,
       });
     })
   );
@@ -68,7 +68,7 @@ const parseFilesData = async (files: UpdateProjectSettings.Request['files']) => 
 };
 
 const getProjectSettings = async (): Promise<GetProjectSettings.Response> => {
-  const store = strapi.store({ type: 'core', name: 'admin' });
+  const store = metrix.store({ type: 'core', name: 'admin' });
 
   // Returns an object with file inputs names as key and null as value
   const defaultProjectSettings = PROJECT_SETTINGS_FILE_INPUTS.reduce((prev: any, cur: any) => {
@@ -106,7 +106,7 @@ const uploadFiles = async (files: LogoFiles = {}) => {
   return Promise.all(
     Object.values(files)
       .filter((file) => file?.stream instanceof fs.ReadStream)
-      .map((file) => strapi.plugin('upload').provider.uploadStream(file))
+      .map((file) => metrix.plugin('upload').provider.uploadStream(file))
   );
 };
 
@@ -134,13 +134,13 @@ const deleteOldFiles = async ({ previousSettings, newSettings }: any) => {
       // Skip if the file was not uploaded with the current provider
       // TODO
       // @ts-expect-error define the correct return type
-      if (strapi.config.get('plugin::upload').provider !== previousSettings[inputName].provider) {
+      if (metrix.config.get('plugin::upload').provider !== previousSettings[inputName].provider) {
         return;
       }
 
       // There was a previous file and an new file was uploaded
       // Remove the previous file
-      strapi.plugin('upload').provider.delete(previousSettings[inputName]);
+      metrix.plugin('upload').provider.delete(previousSettings[inputName]);
     })
   );
 };
@@ -150,7 +150,7 @@ type LogoFiles = { [K in keyof FormattedFiles]: FormattedFiles[K] | null };
 const updateProjectSettings = async (
   newSettings: Omit<UpdateProjectSettings.Request['body'], 'menuLogo' | 'authLogo'> & LogoFiles
 ) => {
-  const store = strapi.store({ type: 'core', name: 'admin' });
+  const store = metrix.store({ type: 'core', name: 'admin' });
   const previousSettings = (await store.get({ key: 'project-settings' })) as any;
   const files = pick(newSettings, PROJECT_SETTINGS_FILE_INPUTS);
 

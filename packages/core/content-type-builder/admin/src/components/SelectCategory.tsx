@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ComboboxOption, Combobox, Field } from '@strapi/design-system';
+import { ComboboxOption, Combobox, Field } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { useDataManager } from './DataManager/useDataManager';
@@ -49,7 +49,7 @@ export const SelectCategory = ({
       <Field.Label>{label}</Field.Label>
       <Combobox
         // TODO: re-enable category edits, renaming categories of already existing components currently breaks other functionality
-        // See https://github.com/strapi/strapi/issues/20356
+        // See https://github.com/metrix/metrix/issues/20356
         disabled={!isCreating && !dynamicZoneTarget}
         onChange={handleChange}
         onCreateOption={handleCreateOption}

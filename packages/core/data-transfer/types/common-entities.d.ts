@@ -1,8 +1,8 @@
 import type { Readable } from 'stream';
-import type { Schema, Data } from '@strapi/types';
+import type { Schema, Data } from '@metrix/types';
 
 export interface IMetadata {
-  strapi?: {
+  metrix?: {
     version?: string;
   };
 

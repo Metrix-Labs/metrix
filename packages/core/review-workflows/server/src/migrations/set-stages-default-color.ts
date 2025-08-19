@@ -10,7 +10,7 @@ async function migrateReviewWorkflowStagesColor({ oldContentTypes, contentTypes 
 
   // Add the default stage color if color attribute was added
   if (!hadColor && hasColor) {
-    await strapi.db.query(STAGE_MODEL_UID).updateMany({
+    await metrix.db.query(STAGE_MODEL_UID).updateMany({
       data: {
         color: STAGE_DEFAULT_COLOR,
       },

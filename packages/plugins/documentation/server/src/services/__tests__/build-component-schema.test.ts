@@ -1,7 +1,7 @@
 import _ from 'lodash/fp';
 import buildComponentSchema from '../helpers/build-component-schema';
 
-const strapi = {
+const metrix = {
   plugins: {
     'users-permissions': {
       contentTypes: {
@@ -41,13 +41,13 @@ const strapi = {
 
 describe('Documentation plugin | Build component schema', () => {
   beforeEach(() => {
-    // Reset the mocked strapi instance
-    global.strapi = _.cloneDeep(strapi);
+    // Reset the mocked metrix instance
+    global.metrix = _.cloneDeep(metrix);
   });
 
   afterAll(() => {
-    // Teardown the mocked strapi instance
-    global.strapi = {} as any;
+    // Teardown the mocked metrix instance
+    global.metrix = {} as any;
   });
 
   it('builds the Response schema', () => {
@@ -121,10 +121,10 @@ describe('Documentation plugin | Build component schema', () => {
   });
 
   it('builds the ResponseList schema', () => {
-    (global.strapi.plugins['users-permissions'].routes as any)['content-api'].routes = [
+    (global.metrix.plugins['users-permissions'].routes as any)['content-api'].routes = [
       { method: 'GET', path: '/test', handler: 'test.find' },
     ];
-    global.strapi.apis.restaurant.routes.restaurant.routes = [
+    global.metrix.apis.restaurant.routes.restaurant.routes = [
       { method: 'GET', path: '/test', handler: 'test.find' },
     ] as any;
 
@@ -268,10 +268,10 @@ describe('Documentation plugin | Build component schema', () => {
   });
 
   it('builds the Request schema', () => {
-    (global.strapi.plugins['users-permissions'].routes as any)['content-api'].routes = [
+    (global.metrix.plugins['users-permissions'].routes as any)['content-api'].routes = [
       { method: 'POST', path: '/test', handler: 'test.create' },
     ];
-    global.strapi.apis.restaurant.routes.restaurant.routes = [
+    global.metrix.apis.restaurant.routes.restaurant.routes = [
       { method: 'POST', path: '/test', handler: 'test.create' },
     ] as any;
 

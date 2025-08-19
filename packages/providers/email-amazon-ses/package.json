@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/provider-email-amazon-ses",
+  "name": "@metrix/provider-email-amazon-ses",
   "version": "5.22.0",
   "description": "Amazon SES provider for strapi email",
   "keywords": [
@@ -44,8 +44,8 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
-    "@strapi/utils": "5.22.0",
-    "node-ses": "^3.0.3"
+    "node-ses": "^3.0.3",
+    "@metrix/utils": "5.22.0"
   },
   "devDependencies": {
     "eslint-config-custom": "5.22.0",

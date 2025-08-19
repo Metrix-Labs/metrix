@@ -1,4 +1,4 @@
-import { type Filters, useField } from '@strapi/admin/strapi-admin';
+import { type Filters, useField } from '@metrix/admin/metrix-admin';
 import {
   Flex,
   Loader,
@@ -6,7 +6,7 @@ import {
   SingleSelectOption,
   SingleSelectProps,
   Typography,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 

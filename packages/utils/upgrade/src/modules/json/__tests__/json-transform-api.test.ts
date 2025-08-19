@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash/fp';
 
-import type { Utils } from '@strapi/types';
+import type { Utils } from '@metrix/types';
 
 import { createJSONTransformAPI } from '../transform-api';
 

@@ -7,10 +7,10 @@ import {
   createContext,
   Page,
   useQueryParams,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import { useParams } from 'react-router-dom';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 /**
  * The boolean values indicate the global actions a user can perform on the document.

@@ -29,7 +29,7 @@ describe('Webhooks | ListPage', () => {
     await waitForElementToBeRemoved(() => queryByText('Loading content.'));
 
     await waitFor(async () => {
-      expect(getByText('http:://strapi.io')).toBeInTheDocument();
+      expect(getByText('http:://metrix.io')).toBeInTheDocument();
     });
   });
 
@@ -45,14 +45,14 @@ describe('Webhooks | ListPage', () => {
     const { getByText } = render(<ListPage />);
 
     await waitFor(() => {
-      expect(getByText('http:://strapi.io')).toBeInTheDocument();
+      expect(getByText('http:://metrix.io')).toBeInTheDocument();
     });
   });
 
   it('should delete all webhooks', async () => {
     const { getByText, user, getByRole, findByText } = render(<ListPage />);
     await waitFor(() => {
-      getByText('http:://strapi.io');
+      getByText('http:://metrix.io');
     });
 
     fireEvent.click(getByRole('checkbox', { name: 'Select all entries' }));
@@ -82,7 +82,7 @@ describe('Webhooks | ListPage', () => {
   it('should delete a single webhook', async () => {
     const { findByText, user, findByRole, findAllByRole, queryByText } = render(<ListPage />);
 
-    await findByText('http:://strapi.io');
+    await findByText('http:://metrix.io');
 
     const deleteButtons = await findAllByRole('button', { name: /delete webhook/i });
     await user.click(deleteButtons[0]);
@@ -103,13 +103,13 @@ describe('Webhooks | ListPage', () => {
     await user.click(confirmButton);
     await findByText('http://me.io');
 
-    await waitFor(() => expect(queryByText('http:://strapi.io')).not.toBeInTheDocument());
+    await waitFor(() => expect(queryByText('http:://metrix.io')).not.toBeInTheDocument());
   });
 
   it('should disable a webhook', async () => {
     const { getByText, getAllByRole, user } = render(<ListPage />);
     await waitFor(() => {
-      getByText('http:://strapi.io');
+      getByText('http:://metrix.io');
     });
 
     const enableSwitches = getAllByRole('switch', { name: /status/i });

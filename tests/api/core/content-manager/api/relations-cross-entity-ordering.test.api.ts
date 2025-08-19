@@ -1,11 +1,11 @@
 'use strict';
 
 import { createTestBuilder } from 'api-tests/builder';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import modelsUtils from 'api-tests/models';
 
-let strapi;
+let metrix;
 let rq;
 const data = {
   products: [],
@@ -139,8 +139,8 @@ describe('Relations', () => {
 
     await modelsUtils.modifyComponent(compo(true));
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     const createdProduct1 = await createEntry('product', { name: 'Skate' }, []);
     const createdProduct2 = await createEntry('product', { name: 'Candle' }, []);
@@ -155,7 +155,7 @@ describe('Relations', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -201,7 +201,7 @@ describe('Relations', () => {
         []
       );
 
-      const updatedShop2 = await strapi.db.query('api::shop.shop').findOne({
+      const updatedShop2 = await metrix.db.query('api::shop.shop').findOne({
         where: { documentId: shops[1].data.documentId },
         populate: populateShop,
       });

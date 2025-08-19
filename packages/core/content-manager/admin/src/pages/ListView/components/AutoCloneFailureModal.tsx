@@ -1,5 +1,5 @@
-import { Box, Flex, Typography } from '@strapi/design-system';
-import { ChevronRight } from '@strapi/icons';
+import { Box, Flex, Typography } from '@metrix/design-system';
+import { ChevronRight } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { getTranslation } from '../../../utils/translations';

@@ -1,14 +1,14 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 export const getAdminService = (
   name: string,
-  { strapi }: { strapi: Core.Strapi } = { strapi: global.strapi }
+  { metrix }: { metrix: Core.Strapi } = { metrix: global.metrix }
 ) => {
-  return strapi.service(`admin::${name}`);
+  return metrix.service(`admin::${name}`);
 };
 
-export const getService = (name: string, { strapi } = { strapi: global.strapi }) => {
-  return strapi.plugin('review-workflows').service(name);
+export const getService = (name: string, { metrix } = { metrix: global.metrix }) => {
+  return metrix.plugin('review-workflows').service(name);
 };
 
 export default {

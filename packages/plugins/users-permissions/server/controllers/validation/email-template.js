@@ -3,7 +3,7 @@
 const { trim } = require('lodash/fp');
 const {
   template: { createLooseInterpolationRegExp, createStrictInterpolationRegExp },
-} = require('@strapi/utils');
+} = require('@metrix/utils');
 
 const invalidPatternsRegexes = [
   // Ignore "evaluation" patterns: <% ... %>

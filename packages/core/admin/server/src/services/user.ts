@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import _ from 'lodash';
 import { defaults } from 'lodash/fp';
-import { arrays, errors } from '@strapi/utils';
-import type { Data } from '@strapi/types';
+import { arrays, errors } from '@metrix/utils';
+import type { Data } from '@metrix/types';
 import { createUser, hasSuperAdminRole } from '../domain/user';
 import type {
   AdminUser,
@@ -53,13 +53,13 @@ const create = async (
 
   const user = createUser(userInfo);
 
-  const createdUser = await strapi.db
+  const createdUser = await metrix.db
     .query('admin::user')
     .create({ data: user, populate: ['roles'] });
 
   getService('metrics').sendDidInviteUser();
 
-  strapi.eventHub.emit('user.create', { user: sanitizeUser(createdUser) });
+  metrix.eventHub.emit('user.create', { user: sanitizeUser(createdUser) });
 
   return createdUser;
 };
@@ -96,7 +96,7 @@ const updateById = async (
   if (_.has(attributes, 'password')) {
     const hashedPassword = await getService('auth').hashPassword(attributes.password!);
 
-    const updatedUser = await strapi.db.query('admin::user').update({
+    const updatedUser = await metrix.db.query('admin::user').update({
       where: { id },
       data: {
         ...attributes,
@@ -105,19 +105,19 @@ const updateById = async (
       populate: ['roles'],
     });
 
-    strapi.eventHub.emit('user.update', { user: sanitizeUser(updatedUser) });
+    metrix.eventHub.emit('user.update', { user: sanitizeUser(updatedUser) });
 
     return updatedUser;
   }
 
-  const updatedUser = await strapi.db.query('admin::user').update({
+  const updatedUser = await metrix.db.query('admin::user').update({
     where: { id },
     data: attributes,
     populate: ['roles'],
   });
 
   if (updatedUser) {
-    strapi.eventHub.emit('user.update', { user: sanitizeUser(updatedUser) });
+    metrix.eventHub.emit('user.update', { user: sanitizeUser(updatedUser) });
   }
 
   return updatedUser;
@@ -129,7 +129,7 @@ const updateById = async (
  * @param password - new password
  */
 const resetPasswordByEmail = async (email: string, password: string) => {
-  const user = await strapi.db
+  const user = await metrix.db
     .query('admin::user')
     .findOne({ where: { email }, populate: ['roles'] });
 
@@ -170,7 +170,7 @@ const isFirstSuperAdminUser = async (userId: Data.ID): Promise<boolean> => {
 
   if (!currentUser || !hasSuperAdminRole(currentUser)) return false;
 
-  const [oldestUser] = await strapi.db.query('admin::user').findMany({
+  const [oldestUser] = await metrix.db.query('admin::user').findMany({
     populate: {
       roles: {
         where: {
@@ -191,7 +191,7 @@ const isFirstSuperAdminUser = async (userId: Data.ID): Promise<boolean> => {
  * @param attributes A partial user object
  */
 const exists = async (attributes = {} as unknown): Promise<boolean> => {
-  return (await strapi.db.query('admin::user').count({ where: attributes })) > 0;
+  return (await metrix.db.query('admin::user').count({ where: attributes })) > 0;
 };
 
 /**
@@ -202,7 +202,7 @@ const exists = async (attributes = {} as unknown): Promise<boolean> => {
 const findRegistrationInfo = async (
   registrationToken: string
 ): Promise<Pick<AdminUser, 'email' | 'firstname' | 'lastname'> | undefined> => {
-  const user = await strapi.db.query('admin::user').findOne({ where: { registrationToken } });
+  const user = await metrix.db.query('admin::user').findOne({ where: { registrationToken } });
 
   if (!user) {
     return undefined;
@@ -224,7 +224,7 @@ const register = async ({
   registrationToken: string;
   userInfo: Partial<AdminUser>;
 }) => {
-  const matchingUser = await strapi.db
+  const matchingUser = await metrix.db
     .query('admin::user')
     .findOne({ where: { registrationToken } });
 
@@ -245,7 +245,7 @@ const register = async ({
  * Find one user
  */
 const findOne = async (id: Data.ID, populate = ['roles']) => {
-  return strapi.db.query('admin::user').findOne({ where: { id }, populate });
+  return metrix.db.query('admin::user').findOne({ where: { id }, populate });
 };
 
 /**
@@ -255,7 +255,7 @@ const findOne = async (id: Data.ID, populate = ['roles']) => {
  * @returns
  */
 const findOneByEmail = async (email: string, populate = []) => {
-  return strapi.db.query('admin::user').findOne({
+  return metrix.db.query('admin::user').findOne({
     where: { email: { $eqi: email } },
     populate,
   });
@@ -265,11 +265,11 @@ const findOneByEmail = async (email: string, populate = []) => {
  * @param params
  */
 const findPage = async (params = {}): Promise<unknown> => {
-  const query = strapi
+  const query = metrix
     .get('query-params')
     .transform('admin::user', defaults({ populate: ['roles'] }, params));
 
-  return strapi.db.query('admin::user').findPage(query);
+  return metrix.db.query('admin::user').findPage(query);
 };
 
 /** Delete a user
@@ -277,7 +277,7 @@ const findPage = async (params = {}): Promise<unknown> => {
  */
 const deleteById = async (id: Data.ID): Promise<AdminUser | null> => {
   // Check at least one super admin remains
-  const userToDelete: AdminUser | null = await strapi.db.query('admin::user').findOne({
+  const userToDelete: AdminUser | null = await metrix.db.query('admin::user').findOne({
     where: { id },
     populate: ['roles'],
   });
@@ -295,11 +295,11 @@ const deleteById = async (id: Data.ID): Promise<AdminUser | null> => {
     }
   }
 
-  const deletedUser = await strapi.db
+  const deletedUser = await metrix.db
     .query('admin::user')
     .delete({ where: { id }, populate: ['roles'] });
 
-  strapi.eventHub.emit('user.delete', { user: sanitizeUser(deletedUser) });
+  metrix.eventHub.emit('user.delete', { user: sanitizeUser(deletedUser) });
 
   return deletedUser;
 };
@@ -310,7 +310,7 @@ const deleteById = async (id: Data.ID): Promise<AdminUser | null> => {
 const deleteByIds = async (ids: (string | number)[]): Promise<AdminUser[]> => {
   // Check at least one super admin remains
   const superAdminRole = await getService('role').getSuperAdminWithUsersCount();
-  const nbOfSuperAdminToDelete = await strapi.db.query('admin::user').count({
+  const nbOfSuperAdminToDelete = await metrix.db.query('admin::user').count({
     where: {
       id: ids,
       roles: { id: superAdminRole.id },
@@ -323,7 +323,7 @@ const deleteByIds = async (ids: (string | number)[]): Promise<AdminUser[]> => {
 
   const deletedUsers = [] as AdminUser[];
   for (const id of ids) {
-    const deletedUser = await strapi.db.query('admin::user').delete({
+    const deletedUser = await metrix.db.query('admin::user').delete({
       where: { id },
       populate: ['roles'],
     });
@@ -331,7 +331,7 @@ const deleteByIds = async (ids: (string | number)[]): Promise<AdminUser[]> => {
     deletedUsers.push(deletedUser);
   }
 
-  strapi.eventHub.emit('user.delete', {
+  metrix.eventHub.emit('user.delete', {
     users: deletedUsers.map((deletedUser) => sanitizeUser(deletedUser)),
   });
 
@@ -341,7 +341,7 @@ const deleteByIds = async (ids: (string | number)[]): Promise<AdminUser[]> => {
 /** Count the users that don't have any associated roles
  */
 const countUsersWithoutRole = async (): Promise<number> => {
-  return strapi.db.query('admin::user').count({
+  return metrix.db.query('admin::user').count({
     where: {
       roles: {
         id: { $null: true },
@@ -355,14 +355,14 @@ const countUsersWithoutRole = async (): Promise<number> => {
  * @param params params used for the query
  */
 const count = async (where = {}): Promise<number> => {
-  return strapi.db.query('admin::user').count({ where });
+  return metrix.db.query('admin::user').count({ where });
 };
 
 /**
  * Assign some roles to several users
  */
 const assignARoleToAll = async (roleId: Data.ID): Promise<void> => {
-  const users = await strapi.db.query('admin::user').findMany({
+  const users = await metrix.db.query('admin::user').findMany({
     select: ['id'],
     where: {
       roles: { id: { $null: true } },
@@ -371,7 +371,7 @@ const assignARoleToAll = async (roleId: Data.ID): Promise<void> => {
 
   await Promise.all(
     users.map((user) => {
-      return strapi.db.query('admin::user').update({
+      return metrix.db.query('admin::user').update({
         where: { id: user.id },
         data: { roles: [roleId] },
       });
@@ -385,14 +385,14 @@ const displayWarningIfUsersDontHaveRole = async (): Promise<void> => {
   const count = await countUsersWithoutRole();
 
   if (count > 0) {
-    strapi.log.warn(`Some users (${count}) don't have any role.`);
+    metrix.log.warn(`Some users (${count}) don't have any role.`);
   }
 };
 
 /** Returns an array of interface languages currently used by users
  */
 const getLanguagesInUse = async (): Promise<string[]> => {
-  const users = await strapi.db.query('admin::user').findMany({ select: ['preferedLanguage'] });
+  const users = await metrix.db.query('admin::user').findMany({ select: ['preferedLanguage'] });
 
   return users.map((user) => user.preferedLanguage || 'en');
 };

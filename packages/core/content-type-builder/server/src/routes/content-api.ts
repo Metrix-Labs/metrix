@@ -1,7 +1,7 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import * as z from 'zod/v4';
 
-const ctUIDRegexp = /^((strapi|admin)::[\w-]+|(api|plugin)::[\w-]+\.[\w-]+)$/;
+const ctUIDRegexp = /^((metrix|admin)::[\w-]+|(api|plugin)::[\w-]+\.[\w-]+)$/;
 const componentUIDRegexp = /^[\w-]+\.[\w-]+$/;
 
 const baseAttributeSchema = z.object({

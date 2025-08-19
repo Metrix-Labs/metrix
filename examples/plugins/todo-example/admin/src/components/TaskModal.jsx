@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Modal, Typography, Button, TextInput } from '@strapi/design-system';
+import { Modal, Typography, Button, TextInput } from '@metrix/design-system';
 import {
   unstable_useContentManagerContext as useContentManagerContext,
   useFetchClient,
-} from '@strapi/strapi/admin';
+} from '@metrix/metrix/admin';
 
 const TaskModal = ({ handleClose, refetchTasks, task = null, action, isOpen }) => {
   const [name, setName] = React.useState(task?.name ?? '');

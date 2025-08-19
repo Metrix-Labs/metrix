@@ -1,12 +1,12 @@
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createTestBuilder } = require('api-tests/builder');
 const { createAuthRequest } = require('api-tests/request');
 const { testInTransaction } = require('../../../utils');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let formatDocument;
 
 const PRODUCT_UID = 'api::product.product';
@@ -74,11 +74,11 @@ const product = {
 };
 
 const getProduct = async (documentId, locale, status) => {
-  return strapi.documents(PRODUCT_UID).findOne({ documentId, locale, status });
+  return metrix.documents(PRODUCT_UID).findOne({ documentId, locale, status });
 };
 
 const createProduct = async (identifier, locale, status) => {
-  return strapi.documents(PRODUCT_UID).create({
+  return metrix.documents(PRODUCT_UID).create({
     data: {
       name: `prod-${identifier}-${locale}-${status}`,
       features: {
@@ -91,7 +91,7 @@ const createProduct = async (identifier, locale, status) => {
 };
 
 const createProductLocale = async (documentId, locale, status) => {
-  return strapi.documents(PRODUCT_UID).update({
+  return metrix.documents(PRODUCT_UID).update({
     documentId,
     locale,
     data: {
@@ -106,7 +106,7 @@ const createProductLocale = async (documentId, locale, status) => {
 };
 
 const createProductQuery = async (id, locale, status, data = {}) => {
-  await strapi.db.query(PRODUCT_UID).create({
+  await metrix.db.query(PRODUCT_UID).create({
     data: {
       documentId: id,
       name: `prod-${id}-${locale}-${status}`,
@@ -124,14 +124,14 @@ describe('CM API - Document metadata', () => {
   beforeAll(async () => {
     await builder.addComponent(featuresCompo).addContentType(product).build();
 
-    strapi = await createStrapiInstance();
+    metrix = await createStrapiInstance();
     formatDocument = (...props) =>
-      strapi
+      metrix
         .plugin('content-manager')
         .service('document-metadata')
         .formatDocumentWithMetadata(...props);
 
-    rq = await createAuthRequest({ strapi });
+    rq = await createAuthRequest({ metrix });
 
     await rq({
       method: 'POST',
@@ -145,7 +145,7 @@ describe('CM API - Document metadata', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -166,7 +166,7 @@ describe('CM API - Document metadata', () => {
 
     const draftProduct = await createProduct(identifier, 'en', 'draft');
 
-    await strapi.documents(PRODUCT_UID).publish(draftProduct);
+    await metrix.documents(PRODUCT_UID).publish(draftProduct);
 
     const { data, meta } = await formatDocument(PRODUCT_UID, draftProduct, {});
 
@@ -192,7 +192,7 @@ describe('CM API - Document metadata', () => {
       const identifier = 'product-available-status-published';
       const draftProduct = await createProduct(identifier, 'en', 'draft');
       const publishedProduct = (
-        await strapi.documents(PRODUCT_UID).publish(draftProduct)
+        await metrix.documents(PRODUCT_UID).publish(draftProduct)
       ).entries.at(0);
 
       const { meta } = await formatDocument(PRODUCT_UID, publishedProduct, {});
@@ -332,7 +332,7 @@ describe('CM API - Document metadata', () => {
 
     const draftProduct = await createProduct(identifier, 'en', 'draft');
 
-    const publishedProduct = (await strapi.documents(PRODUCT_UID).publish(draftProduct)).entries.at(
+    const publishedProduct = (await metrix.documents(PRODUCT_UID).publish(draftProduct)).entries.at(
       0
     );
 

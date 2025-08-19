@@ -1,6 +1,6 @@
 /* eslint-disable no-confusing-arrow */
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 const shouldPluralizeName = (nature: Schema.Attribute.RelationKind.Any) =>
   ['manyToMany', 'oneToMany', 'manyWay'].includes(nature) ? 2 : 1;

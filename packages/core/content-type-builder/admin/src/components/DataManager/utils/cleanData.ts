@@ -11,7 +11,7 @@ import type {
   ContentType,
   AnyAttribute,
 } from '../../../types';
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrix/types';
 
 const sortContentType = (types: ContentTypes) => {
   return sortBy(

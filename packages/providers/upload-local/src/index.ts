@@ -2,10 +2,10 @@ import { pipeline } from 'stream';
 import fs, { ReadStream } from 'fs';
 import path from 'path';
 import fse from 'fs-extra';
-import * as utils from '@strapi/utils';
+import * as utils from '@metrix/utils';
 
-// Needed to load global.strapi without having to put @strapi/types in the regular dependencies
-import type {} from '@strapi/types';
+// Needed to load global.metrix without having to put @metrix/types in the regular dependencies
+import type {} from '@metrix/types';
 
 interface File {
   name: string;
@@ -51,7 +51,7 @@ export default {
     }
 
     // Ensure uploads folder exists
-    const uploadPath = path.resolve(strapi.dirs.static.public, UPLOADS_FOLDER_NAME);
+    const uploadPath = path.resolve(metrix.dirs.static.public, UPLOADS_FOLDER_NAME);
     if (!fse.pathExistsSync(uploadPath)) {
       throw new Error(
         `The upload folder (${uploadPath}) doesn't exist or is not accessible. Please make sure it exists.`

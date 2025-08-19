@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Grid, TextInput } from '@strapi/design-system';
-import { Check, Play as Publish } from '@strapi/icons';
+import { Box, Button, Flex, Grid, TextInput } from '@metrix/design-system';
+import { Check, Play as Publish } from '@metrix/icons';
 import { IntlShape, useIntl } from 'react-intl';
 import * as yup from 'yup';
 
@@ -16,7 +16,7 @@ import { EventTableCE } from './EventsTable';
 import { HeadersInput } from './HeadersInput';
 import { TriggerContainer } from './TriggerContainer';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrix/types';
 
 interface WebhookFormValues {
   name: Modules.WebhookStore.Webhook['name'];

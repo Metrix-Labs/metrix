@@ -2,7 +2,7 @@ import { convertCustomFieldType } from '../convert-custom-field-type';
 
 describe('format attributes', () => {
   it('replaces type customField with the underlying data type', () => {
-    global.strapi = {
+    global.metrix = {
       // mock container.get('custom-fields')
       get: jest.fn(() => ({
         // mock container.get('custom-fields').get(uid)
@@ -35,10 +35,10 @@ describe('format attributes', () => {
       },
     } as any;
 
-    convertCustomFieldType(global.strapi);
+    convertCustomFieldType(global.metrix);
 
     const expected = {
-      ...global.strapi,
+      ...global.metrix,
       contentTypes: {
         test: {
           attributes: {
@@ -61,6 +61,6 @@ describe('format attributes', () => {
       },
     };
 
-    expect(global.strapi).toEqual(expected);
+    expect(global.metrix).toEqual(expected);
   });
 });

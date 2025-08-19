@@ -1,4 +1,4 @@
-import { useNotifyAT } from '@strapi/design-system';
+import { useNotifyAT } from '@metrix/design-system';
 import * as qs from 'qs';
 import { useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
@@ -7,7 +7,7 @@ import { useNotification } from '../../../features/Notifications';
 
 import type { MarketplacePageQuery, NpmPackageType, TabQuery } from '../MarketplacePage';
 
-const MARKETPLACE_API_URL = 'https://market-api.strapi.io';
+const MARKETPLACE_API_URL = 'https://market-api.metrix.io';
 
 interface UseMarketplaceDataParams {
   npmPackageType: NpmPackageType;

@@ -1,13 +1,13 @@
 'use strict';
 
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import { describeOnCondition } from 'api-tests/utils';
 import { createTestBuilder } from 'api-tests/builder';
 
 import { CreateRelease } from '../../../../packages/core/content-releases/shared/contracts/releases';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const productUID = 'api::product.product';
 const productModel = {
@@ -30,7 +30,7 @@ const productModel = {
 
 describeOnCondition(edition === 'EE')('Content Releases API', () => {
   const builder = createTestBuilder();
-  let strapi;
+  let metrix;
   let rq;
   let validEntries = [];
   let invalidEntries = [];
@@ -87,8 +87,8 @@ describeOnCondition(edition === 'EE')('Content Releases API', () => {
 
   beforeAll(async () => {
     await builder.addContentType(productModel).build();
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
@@ -112,7 +112,7 @@ describeOnCondition(edition === 'EE')('Content Releases API', () => {
   afterAll(async () => {
     jest.useRealTimers();
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

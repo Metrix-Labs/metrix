@@ -10,7 +10,7 @@ const urlJoin = require('url-join');
 
 const { getService } = require('../utils');
 
-module.exports = ({ strapi }) => {
+module.exports = ({ metrix }) => {
   /**
    * Helper to get profiles
    *
@@ -20,7 +20,7 @@ module.exports = ({ strapi }) => {
   const getProfile = async (provider, query) => {
     const accessToken = query.access_token || query.code || query.oauth_token;
 
-    const providers = await strapi
+    const providers = await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'grant' })
       .get();
 
@@ -59,11 +59,11 @@ module.exports = ({ strapi }) => {
       throw new Error('Email was not available.');
     }
 
-    const users = await strapi.db.query('plugin::users-permissions.user').findMany({
+    const users = await metrix.db.query('plugin::users-permissions.user').findMany({
       where: { email },
     });
 
-    const advancedSettings = await strapi
+    const advancedSettings = await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'advanced' })
       .get();
 
@@ -82,7 +82,7 @@ module.exports = ({ strapi }) => {
     }
 
     // Retrieve default role.
-    const defaultRole = await strapi.db
+    const defaultRole = await metrix.db
       .query('plugin::users-permissions.role')
       .findOne({ where: { type: advancedSettings.default_role } });
 
@@ -95,7 +95,7 @@ module.exports = ({ strapi }) => {
       confirmed: true,
     };
 
-    const createdUser = await strapi.db
+    const createdUser = await metrix.db
       .query('plugin::users-permissions.user')
       .create({ data: newUser });
 
@@ -103,9 +103,9 @@ module.exports = ({ strapi }) => {
   };
 
   const buildRedirectUri = (provider = '') => {
-    const apiPrefix = strapi.config.get('api.rest.prefix');
+    const apiPrefix = metrix.config.get('api.rest.prefix');
     return urlJoin(
-      strapi.config.get('server.absoluteUrl'),
+      metrix.config.get('server.absoluteUrl'),
       apiPrefix,
       'connect',
       provider,

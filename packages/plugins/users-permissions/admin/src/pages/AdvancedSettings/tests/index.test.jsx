@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { render, waitFor } from '@strapi/strapi/admin/test';
+import { render, waitFor } from '@metrix/metrix/admin/test';
 
 import { AdvancedSettingsPage } from '../index';
 
@@ -11,8 +11,8 @@ jest.mock('cropperjs/dist/cropper.css?raw', () => '', {
   virtual: true,
 });
 
-jest.mock('@strapi/strapi/admin', () => ({
-  ...jest.requireActual('@strapi/strapi/admin'),
+jest.mock('@metrix/metrix/admin', () => ({
+  ...jest.requireActual('@metrix/metrix/admin'),
   useRBAC: jest.fn().mockImplementation(() => ({
     isLoading: false,
     allowedActions: { canUpdate: true },

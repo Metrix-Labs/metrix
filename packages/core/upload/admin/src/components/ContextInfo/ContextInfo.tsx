@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Typography } from '@strapi/design-system';
+import { Box, Flex, Grid, Typography } from '@metrix/design-system';
 
 interface ContextInfoProps {
   blocks: { label: string; value: string | number | null }[];

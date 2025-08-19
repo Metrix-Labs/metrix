@@ -58,7 +58,7 @@ It has the following structure
     "version": "1.0.0" // change this line to create a new version
     ...
   },
-  "x-strapi-config": {
+  "x-metrix-config": {
     "showGeneratedFiles": true // Do not change this line at the moment...
   },
   "servers": {}, // Your servers config (it will be automated)

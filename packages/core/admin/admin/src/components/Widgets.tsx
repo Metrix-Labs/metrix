@@ -1,6 +1,6 @@
-import { useAuth } from '@strapi/admin/strapi-admin';
-import { Avatar, Badge, Box, Flex, Typography } from '@strapi/design-system';
-import { Earth, Images, User, Key, Files, Layout, Graph, Webhooks } from '@strapi/icons';
+import { useAuth } from '@metrix/admin/metrix-admin';
+import { Avatar, Badge, Box, Flex, Typography } from '@metrix/design-system';
+import { Earth, Images, User, Key, Files, Layout, Graph, Webhooks } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';

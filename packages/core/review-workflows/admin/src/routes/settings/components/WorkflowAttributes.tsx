@@ -1,4 +1,4 @@
-import { InputRenderer, useField, useForm } from '@strapi/admin/strapi-admin';
+import { InputRenderer, useField, useForm } from '@metrix/admin/metrix-admin';
 import {
   Field,
   Grid,
@@ -9,7 +9,7 @@ import {
   useCollator,
   SingleSelect,
   SingleSelectOption,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

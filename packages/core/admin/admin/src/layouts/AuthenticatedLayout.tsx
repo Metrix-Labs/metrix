@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import packageInfo from '@strapi/admin/package.json';
-import { Box, Flex, SkipToContent } from '@strapi/design-system';
+import packageInfo from '@metrix/admin/package.json';
+import { Box, Flex, SkipToContent } from '@metrix/design-system';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useIntl } from 'react-intl';
@@ -37,7 +37,7 @@ const AdminLayout = () => {
 
   React.useEffect(() => {
     if (showReleaseNotification) {
-      fetch('https://api.github.com/repos/strapi/strapi/releases/latest')
+      fetch('https://api.github.com/repos/metrix/metrix/releases/latest')
         .then(async (res) => {
           if (!res.ok) {
             return;

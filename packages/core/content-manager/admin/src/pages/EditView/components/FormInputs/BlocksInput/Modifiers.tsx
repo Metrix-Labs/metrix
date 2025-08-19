@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Typography, TypographyComponent } from '@strapi/design-system';
-import { Bold, Italic, Underline, StrikeThrough, Code } from '@strapi/icons';
+import { Typography, TypographyComponent } from '@metrix/design-system';
+import { Bold, Italic, Underline, StrikeThrough, Code } from '@metrix/icons';
 import { type MessageDescriptor } from 'react-intl';
 import { Editor, Text, Transforms } from 'slate';
 import { styled, css } from 'styled-components';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Typography } from '@strapi/design-system';
-import { BulletList, NumberList } from '@strapi/icons';
+import { Typography } from '@metrix/design-system';
+import { BulletList, NumberList } from '@metrix/icons';
 import { type Text, Editor, Node, Transforms, Path } from 'slate';
 import { type RenderElementProps, ReactEditor } from 'slate-react';
 import { styled, type CSSProperties, css } from 'styled-components';

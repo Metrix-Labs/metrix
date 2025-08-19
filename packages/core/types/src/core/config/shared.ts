@@ -1,4 +1,4 @@
-import { env } from '@strapi/utils';
+import { env } from '@metrix/utils';
 
 export type ConfigParams = {
   env: typeof env;

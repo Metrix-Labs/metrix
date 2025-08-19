@@ -1,4 +1,4 @@
-import { Box, Grid, SingleSelectOption, SingleSelect, Field } from '@strapi/design-system';
+import { Box, Grid, SingleSelectOption, SingleSelect, Field } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { pageSizes, sortOptions } from '../../../../constants';

@@ -1,4 +1,4 @@
-import { CheckCircle, Feather, Pencil, PuzzlePiece } from '@strapi/icons';
+import { CheckCircle, Feather, Pencil, PuzzlePiece } from '@metrix/icons';
 
 import { PLUGIN_ID } from './constants/plugin';
 import { ContentManagerPlugin } from './content-manager';
@@ -8,7 +8,7 @@ import { previewAdmin } from './preview';
 import { routes } from './router';
 import { prefixPluginTranslations } from './utils/translations';
 
-import type { WidgetArgs } from '@strapi/admin/strapi-admin';
+import type { WidgetArgs } from '@metrix/admin/metrix-admin';
 
 // NOTE: we have to preload it to ensure chunks will have it available as global
 import 'prismjs';

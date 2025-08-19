@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Typography } from '@strapi/design-system';
+import { Box, Divider, Flex, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 
@@ -14,11 +14,11 @@ const DividerFull = styled(Divider)`
 const LoginEE = (loginProps: LoginProps) => {
   const { formatMessage } = useIntl();
   const { isLoading, data: providers = [] } = useGetProvidersQuery(undefined, {
-    skip: !window.strapi.features.isEnabled(window.strapi.features.SSO),
+    skip: !window.metrix.features.isEnabled(window.metrix.features.SSO),
   });
 
   if (
-    !window.strapi.features.isEnabled(window.strapi.features.SSO) ||
+    !window.metrix.features.isEnabled(window.metrix.features.SSO) ||
     (!isLoading && providers.length === 0)
   ) {
     return <Login {...loginProps} />;

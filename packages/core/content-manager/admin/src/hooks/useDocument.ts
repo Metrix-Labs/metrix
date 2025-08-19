@@ -13,7 +13,7 @@ import {
   FormErrors,
   getYupValidationErrors,
   useForm,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 import { ValidationError } from 'yup';
@@ -30,7 +30,7 @@ import { useDocumentLayout } from './useDocumentLayout';
 
 import type { FindOne } from '../../../shared/contracts/collection-types';
 import type { ContentType } from '../../../shared/contracts/content-types';
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrix/types';
 
 interface UseDocumentArgs {
   collectionType: string;
@@ -104,7 +104,7 @@ type UseDocument = (
  * }
  * ```
  *
- * @see {@link https://contributor.strapi.io/docs/core/content-manager/hooks/use-document} for more information
+ * @see {@link https://contributor.metrix.io/docs/core/content-manager/hooks/use-document} for more information
  */
 const useDocument: UseDocument = (args, opts) => {
   const { toggleNotification } = useNotification();

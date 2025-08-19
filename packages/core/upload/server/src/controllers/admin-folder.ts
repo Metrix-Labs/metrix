@@ -10,7 +10,7 @@ export default {
   async findOne(ctx: Context) {
     const { id } = ctx.params;
 
-    const permissionsManager = strapi.service('admin::permission').createPermissionsManager({
+    const permissionsManager = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: FOLDER_MODEL_UID,
     });
@@ -18,8 +18,8 @@ export default {
     await permissionsManager.validateQuery(ctx.query);
     const query = await permissionsManager.sanitizeQuery(ctx.query);
 
-    const { results } = await strapi.db.query(FOLDER_MODEL_UID).findPage(
-      strapi.get('query-params').transform(
+    const { results } = await metrix.db.query(FOLDER_MODEL_UID).findPage(
+      metrix.get('query-params').transform(
         FOLDER_MODEL_UID,
         defaultsDeep(
           {
@@ -48,7 +48,7 @@ export default {
   },
 
   async find(ctx: Context) {
-    const permissionsManager = strapi.service('admin::permission').createPermissionsManager({
+    const permissionsManager = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: FOLDER_MODEL_UID,
     });
@@ -56,8 +56,8 @@ export default {
     await permissionsManager.validateQuery(ctx.query);
     const query = await permissionsManager.sanitizeQuery(ctx.query);
 
-    const results = await strapi.db.query(FOLDER_MODEL_UID).findMany(
-      strapi.get('query-params').transform(
+    const results = await metrix.db.query(FOLDER_MODEL_UID).findMany(
+      metrix.get('query-params').transform(
         FOLDER_MODEL_UID,
         defaultsDeep(
           {
@@ -89,7 +89,7 @@ export default {
 
     const folder = await folderService.create(body, { user });
 
-    const permissionsManager = strapi.service('admin::permission').createPermissionsManager({
+    const permissionsManager = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: FOLDER_MODEL_UID,
     });
@@ -104,7 +104,7 @@ export default {
     const { user } = ctx.state;
     const { body } = ctx.request;
 
-    const permissionsManager = strapi.service('admin::permission').createPermissionsManager({
+    const permissionsManager = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: FOLDER_MODEL_UID,
     });

@@ -241,7 +241,7 @@ jobs:
         uses: trunk-io/analytics-uploader@v1
         with:
           junit-paths: test-apps/junit-reports/*.xml
-          org-slug: strapi
+          org-slug: metrix
           token: ${{ secrets.TRUNK_API_TOKEN }}
         continue-on-error: true
 
@@ -252,7 +252,7 @@ jobs:
     name: '[EE] e2e (browser: ${{ matrix.project }}) (shard: ${{ matrix.shard }})'
     runs-on: ubuntu-latest
     env:
-      STRAPI_LICENSE: ${{ secrets.strapiLicense }}
+      METRIX_LICENSE: ${{ secrets.strapiLicense }}
     strategy:
       fail-fast: false # remove once tests aren't flaky
       matrix:
@@ -292,7 +292,7 @@ jobs:
         uses: trunk-io/analytics-uploader@v1
         with:
           junit-paths: test-apps/junit-reports/*.xml
-          org-slug: strapi
+          org-slug: metrix
           token: ${{ secrets.TRUNK_API_TOKEN }}
         continue-on-error: true
 
@@ -334,8 +334,8 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: strapi
-          POSTGRES_PASSWORD: strapi
+          POSTGRES_USER: metrix
+          POSTGRES_PASSWORD: metrix
           POSTGRES_DB: strapi_test
         # Set health checks to wait until postgres has started
         options: >-
@@ -358,7 +358,7 @@ jobs:
         uses: ./.github/actions/run-build
       - uses: ./.github/actions/run-api-tests
         with:
-          dbOptions: '--dbclient=postgres --dbhost=localhost --dbport=5432 --dbname=strapi_test --dbusername=strapi --dbpassword=strapi'
+          dbOptions: '--dbclient=postgres --dbhost=localhost --dbport=5432 --dbname=strapi_test --dbusername=metrix --dbpassword=metrix'
           jestOptions: '--shard=${{ matrix.shard }}'
 
   api_ce_mysql:
@@ -374,9 +374,9 @@ jobs:
       mysql:
         image: bitnami/mysql:latest
         env:
-          MYSQL_ROOT_PASSWORD: strapi
-          MYSQL_USER: strapi
-          MYSQL_PASSWORD: strapi
+          MYSQL_ROOT_PASSWORD: metrix
+          MYSQL_USER: metrix
+          MYSQL_PASSWORD: metrix
           MYSQL_DATABASE: strapi_test
         options: >-
           --health-cmd="mysqladmin ping"
@@ -397,7 +397,7 @@ jobs:
         uses: ./.github/actions/run-build
       - uses: ./.github/actions/run-api-tests
         with:
-          dbOptions: '--dbclient=mysql --dbhost=localhost --dbport=3306 --dbname=strapi_test --dbusername=strapi --dbpassword=strapi'
+          dbOptions: '--dbclient=mysql --dbhost=localhost --dbport=3306 --dbname=strapi_test --dbusername=metrix --dbpassword=metrix'
           jestOptions: '--shard=${{ matrix.shard }}'
 
   api_ce_sqlite:
@@ -430,7 +430,7 @@ jobs:
     name: '[EE] API Integration (postgres, node: ${{ matrix.node }}, shard: ${{ matrix.shard }})'
     if: (needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.api == 'true') && needs.conditions.outputs.is_local == 'true'
     env:
-      STRAPI_LICENSE: ${{ secrets.strapiLicense }}
+      METRIX_LICENSE: ${{ secrets.strapiLicense }}
     strategy:
       matrix:
         node: [20, 22]
@@ -439,8 +439,8 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: strapi
-          POSTGRES_PASSWORD: strapi
+          POSTGRES_USER: metrix
+          POSTGRES_PASSWORD: metrix
           POSTGRES_DB: strapi_test
         # Set health checks to wait until postgres has started
         options: >-
@@ -463,7 +463,7 @@ jobs:
         uses: ./.github/actions/run-build
       - uses: ./.github/actions/run-api-tests
         with:
-          dbOptions: '--dbclient=postgres --dbhost=localhost --dbport=5432 --dbname=strapi_test --dbusername=strapi --dbpassword=strapi'
+          dbOptions: '--dbclient=postgres --dbhost=localhost --dbport=5432 --dbname=strapi_test --dbusername=metrix --dbpassword=metrix'
           runEE: true
           jestOptions: '--shard=${{ matrix.shard }}'
 
@@ -473,7 +473,7 @@ jobs:
     name: '[EE] API Integration (mysql:latest, package: mysql2, node: ${{ matrix.node }}, shard: ${{ matrix.shard }})'
     if: (needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.api == 'true') && needs.conditions.outputs.is_local == 'true'
     env:
-      STRAPI_LICENSE: ${{ secrets.strapiLicense }}
+      METRIX_LICENSE: ${{ secrets.strapiLicense }}
     strategy:
       matrix:
         node: [20, 22]
@@ -482,9 +482,9 @@ jobs:
       mysql:
         image: bitnami/mysql:latest
         env:
-          MYSQL_ROOT_PASSWORD: strapi
-          MYSQL_USER: strapi
-          MYSQL_PASSWORD: strapi
+          MYSQL_ROOT_PASSWORD: metrix
+          MYSQL_USER: metrix
+          MYSQL_PASSWORD: metrix
           MYSQL_DATABASE: strapi_test
         options: >-
           --health-cmd="mysqladmin ping"
@@ -505,7 +505,7 @@ jobs:
         uses: ./.github/actions/run-build
       - uses: ./.github/actions/run-api-tests
         with:
-          dbOptions: '--dbclient=mysql --dbhost=localhost --dbport=3306 --dbname=strapi_test --dbusername=strapi --dbpassword=strapi'
+          dbOptions: '--dbclient=mysql --dbhost=localhost --dbport=3306 --dbname=strapi_test --dbusername=metrix --dbpassword=metrix'
           runEE: true
           jestOptions: '--shard=${{ matrix.shard }}'
 
@@ -515,7 +515,7 @@ jobs:
     name: '[EE] API Integration (sqlite, client: better-sqlite3, node: ${{ matrix.node }}, shard: ${{ matrix.shard }})'
     if: (needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.api == 'true') && needs.conditions.outputs.is_local == 'true'
     env:
-      STRAPI_LICENSE: ${{ secrets.strapiLicense }}
+      METRIX_LICENSE: ${{ secrets.strapiLicense }}
     strategy:
       matrix:
         node: [20, 22]

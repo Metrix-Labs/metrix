@@ -1,7 +1,7 @@
 import { isArray, isString, isUndefined, constant } from 'lodash/fp';
 import { nonNull, list, objectType } from 'nexus';
-import { contentTypes } from '@strapi/utils';
-import type { Struct } from '@strapi/types';
+import { contentTypes } from '@metrix/utils';
+import type { Struct } from '@metrix/types';
 
 import type { Context } from '../types';
 
@@ -14,8 +14,8 @@ export type TypeBuildersOptions = {
 };
 
 export default (context: Context) => {
-  const { strapi } = context;
-  const getGraphQLService = strapi.plugin('graphql').service;
+  const { metrix } = context;
+  const getGraphQLService = metrix.plugin('graphql').service;
 
   const extension = getGraphQLService('extension');
 
@@ -56,12 +56,12 @@ export default (context: Context) => {
       localBuilder = localBuilder.list;
     }
 
-    const targetComponent = strapi.getModel(attribute.component);
+    const targetComponent = metrix.getModel(attribute.component);
 
     const resolve = buildComponentResolver({
       contentTypeUID: contentType.uid,
       attributeName,
-      strapi,
+      metrix,
     });
 
     const args = getContentTypeArgs(targetComponent, {
@@ -138,12 +138,12 @@ export default (context: Context) => {
       return;
     }
 
-    const fileContentType = strapi.contentTypes[fileUID];
+    const fileContentType = metrix.contentTypes[fileUID];
 
     const resolve = buildAssociationResolver({
       contentTypeUID: contentType.uid,
       attributeName,
-      strapi,
+      metrix,
     });
 
     const args = attribute.multiple
@@ -202,7 +202,7 @@ export default (context: Context) => {
     const resolve = buildAssociationResolver({
       contentTypeUID: contentType.uid,
       attributeName,
-      strapi,
+      metrix,
     });
 
     // If there is no specific target specified, then use the GenericMorph type
@@ -242,10 +242,10 @@ export default (context: Context) => {
     const resolve = buildAssociationResolver({
       contentTypeUID: contentType.uid,
       attributeName,
-      strapi,
+      metrix,
     });
 
-    const targetContentType = strapi.getModel(attribute.target);
+    const targetContentType = metrix.getModel(attribute.target);
 
     const typeName = naming.getTypeName(targetContentType);
 
@@ -333,7 +333,7 @@ export default (context: Context) => {
           if (
             modelType !== 'component' &&
             isNotDisabled(contentType)('id') &&
-            strapi.plugin('graphql').config('v4CompatibilityMode', false)
+            metrix.plugin('graphql').config('v4CompatibilityMode', false)
           ) {
             t.nonNull.id('id', {
               deprecation: 'Use `documentId` instead',
@@ -348,7 +348,7 @@ export default (context: Context) => {
             t.nonNull.id('documentId');
           }
 
-          if (strapi.plugin('graphql').config('v4CompatibilityMode', false)) {
+          if (metrix.plugin('graphql').config('v4CompatibilityMode', false)) {
             t.nonNull.field('attributes', {
               deprecation: 'Use root level fields instead',
               type: name,

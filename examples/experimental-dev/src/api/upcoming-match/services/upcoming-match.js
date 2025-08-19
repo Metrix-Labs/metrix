@@ -4,6 +4,6 @@
  * upcoming-match service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@metrix/metrix').factories;
 
 module.exports = createCoreService('api::upcoming-match.upcoming-match');

@@ -16,7 +16,7 @@ const willRegisterPermission = (context: any) => {
   const { permission, condition, user } = context;
   const { subject, properties } = permission;
 
-  const isSuperAdmin = strapi.service('admin::role').hasSuperAdminRole(user);
+  const isSuperAdmin = metrix.service('admin::role').hasSuperAdminRole(user);
 
   if (isSuperAdmin) {
     return;
@@ -30,7 +30,7 @@ const willRegisterPermission = (context: any) => {
     return;
   }
 
-  const ct = strapi.contentTypes[subject];
+  const ct = metrix.contentTypes[subject];
 
   // If the subject exists but isn't localized, ignore the permission
   if (!isLocalizedContentType(ct)) {
@@ -50,7 +50,7 @@ const willRegisterPermission = (context: any) => {
 };
 
 const registerI18nPermissionsHandlers = () => {
-  const { engine } = strapi.service('admin::permission');
+  const { engine } = metrix.service('admin::permission');
 
   engine.hooks['before-register.permission'].register(willRegisterPermission);
 };

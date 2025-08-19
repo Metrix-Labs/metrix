@@ -6,7 +6,7 @@ import {
   Badge,
   BadgeProps,
   AccessibleIcon,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 import { NavLink as RouterLink, LinkProps } from 'react-router-dom';
 import { styled } from 'styled-components';
 /* -------------------------------------------------------------------------------------------------

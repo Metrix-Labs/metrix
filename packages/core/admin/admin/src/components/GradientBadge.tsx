@@ -1,5 +1,5 @@
-import { Badge, Flex, Typography } from '@strapi/design-system';
-import { Lightning } from '@strapi/icons';
+import { Badge, Flex, Typography } from '@metrix/design-system';
+import { Lightning } from '@metrix/icons';
 import { styled } from 'styled-components';
 
 const GradientBadge = styled(Badge)`

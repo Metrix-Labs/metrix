@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Flex, Typography } from '@strapi/design-system';
-import { ChevronDown, ChevronUp } from '@strapi/icons';
+import { Flex, Typography } from '@metrix/design-system';
+import { ChevronDown, ChevronUp } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { components, OptionProps as ReactSelectOptionProps } from 'react-select';
 import { styled } from 'styled-components';

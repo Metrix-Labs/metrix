@@ -14,8 +14,8 @@ import {
   Flex,
   IconButton,
   Typography,
-} from '@strapi/design-system';
-import { Pencil, Trash } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Pencil, Trash } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

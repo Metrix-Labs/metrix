@@ -1,13 +1,13 @@
 import http from 'http';
 import type { Socket } from 'net';
 import Koa from 'koa';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 export interface Server extends http.Server {
   destroy: () => Promise<void>;
 }
 
-const createHTTPServer = (strapi: Core.Strapi, koaApp: Koa): Server => {
+const createHTTPServer = (metrix: Core.Strapi, koaApp: Koa): Server => {
   const connections = new Set<Socket>();
 
   // lazy creation of the request listener
@@ -20,7 +20,7 @@ const createHTTPServer = (strapi: Core.Strapi, koaApp: Koa): Server => {
     return handler(req, res);
   };
 
-  const options = strapi.config.get<http.ServerOptions>('server.http.serverOptions', {});
+  const options = metrix.config.get<http.ServerOptions>('server.http.serverOptions', {});
 
   const server: http.Server = http.createServer(options, listener);
 
@@ -35,10 +35,10 @@ const createHTTPServer = (strapi: Core.Strapi, koaApp: Koa): Server => {
   // handle port in use cleanly
   server.on('error', (err) => {
     if ('code' in err && 'port' in err && err.code === 'EADDRINUSE') {
-      return strapi.stopWithError(`The port ${err.port} is already used by another application.`);
+      return metrix.stopWithError(`The port ${err.port} is already used by another application.`);
     }
 
-    strapi.log.error(err);
+    metrix.log.error(err);
   });
 
   const destroy = async () => {

@@ -4,9 +4,9 @@ const IV_LENGTH = 16; // 16 bytes for AES-GCM IV
 const ENCRYPTION_VERSION = 'v1';
 
 const getHashedKey = (): Buffer | null => {
-  const rawKey: string = strapi.config.get('admin.secrets.encryptionKey');
+  const rawKey: string = metrix.config.get('admin.secrets.encryptionKey');
   if (!rawKey) {
-    strapi.log.warn('Encryption key is missing from config');
+    metrix.log.warn('Encryption key is missing from config');
     return null;
   }
 
@@ -64,7 +64,7 @@ const decrypt = (encryptedValue: string) => {
 
     return decrypted;
   } catch (err) {
-    strapi.log.warn(
+    metrix.log.warn(
       '[decrypt] Unable to decrypt value — encryption key may have changed or data is corrupted.'
     );
     return null;

@@ -1,11 +1,11 @@
 import crypto from 'crypto';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 /**
  * Generate an admin user hash
  */
-const generateAdminUserHash = (strapi: Core.Strapi) => {
-  const ctx = strapi?.requestContext?.get();
+const generateAdminUserHash = (metrix: Core.Strapi) => {
+  const ctx = metrix?.requestContext?.get();
 
   if (!ctx?.state?.user?.email) {
     return '';

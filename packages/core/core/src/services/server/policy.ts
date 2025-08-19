@@ -1,15 +1,15 @@
-import { policy as policyUtils, errors } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { policy as policyUtils, errors } from '@metrix/utils';
+import type { Core } from '@metrix/types';
 
-const createPolicicesMiddleware = (route: Core.Route, strapi: Core.Strapi) => {
+const createPolicicesMiddleware = (route: Core.Route, metrix: Core.Strapi) => {
   const policiesConfig = route?.config?.policies ?? [];
-  const resolvedPolicies = strapi.get('policies').resolve(policiesConfig, route.info);
+  const resolvedPolicies = metrix.get('policies').resolve(policiesConfig, route.info);
 
   const policiesMiddleware: Core.MiddlewareHandler = async (ctx, next) => {
     const context = policyUtils.createPolicyContext('koa', ctx);
 
     for (const { handler, config } of resolvedPolicies) {
-      const result = await handler(context, config, { strapi });
+      const result = await handler(context, config, { metrix });
 
       if (![true, undefined].includes(result)) {
         throw new errors.PolicyError();

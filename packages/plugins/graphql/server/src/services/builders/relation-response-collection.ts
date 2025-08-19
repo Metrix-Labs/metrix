@@ -1,10 +1,10 @@
 import { objectType, nonNull } from 'nexus';
 import { defaultTo, prop, pipe } from 'lodash/fp';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 import type { Context } from '../types';
 
-export default ({ strapi }: Context) => {
-  const { naming } = strapi.plugin('graphql').service('utils');
+export default ({ metrix }: Context) => {
+  const { naming } = metrix.plugin('graphql').service('utils');
 
   return {
     /**
@@ -24,7 +24,7 @@ export default ({ strapi }: Context) => {
             resolve: pipe(prop('nodes'), defaultTo([])),
           });
 
-          if (strapi.plugin('graphql').config('v4CompatibilityMode', false)) {
+          if (metrix.plugin('graphql').config('v4CompatibilityMode', false)) {
             t.nonNull.list.field('data', {
               deprecation: 'Use `nodes` field instead',
               type: nonNull(typeName),

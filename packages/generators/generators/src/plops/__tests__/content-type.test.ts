@@ -105,7 +105,7 @@ describe('Content Type Generator', () => {
        * testContentType controller
        */
 
-      const { createCoreController } = require('@strapi/strapi').factories;
+      const { createCoreController } = require('@metrix/metrix').factories;
 
       module.exports = createCoreController('api::testContentType.testContentType');
       "
@@ -117,7 +117,7 @@ describe('Content Type Generator', () => {
        * testContentType router
        */
 
-      const { createCoreRouter } = require('@strapi/strapi').factories;
+      const { createCoreRouter } = require('@metrix/metrix').factories;
 
       module.exports = createCoreRouter('api::testContentType.testContentType');
       "
@@ -129,7 +129,7 @@ describe('Content Type Generator', () => {
        * testContentType service
        */
 
-      const { createCoreService } = require('@strapi/strapi').factories;
+      const { createCoreService } = require('@metrix/metrix').factories;
 
       module.exports = createCoreService('api::testContentType.testContentType');
       "

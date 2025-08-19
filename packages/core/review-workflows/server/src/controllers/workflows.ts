@@ -1,8 +1,8 @@
 import type { Context } from 'koa';
 import { update, map, property } from 'lodash/fp';
 
-import type { Core } from '@strapi/types';
-import { async } from '@strapi/utils';
+import type { Core } from '@metrix/types';
+import { async } from '@metrix/utils';
 
 import { getService } from '../utils';
 import { validateWorkflowCreate, validateWorkflowUpdate } from '../validation/review-workflows';
@@ -10,12 +10,12 @@ import { WORKFLOW_MODEL_UID, WORKFLOW_POPULATE } from '../constants/workflows';
 
 /**
  *
- * @param { Core.Strapi } strapi - Strapi instance
+ * @param { Core.Strapi } metrix - Strapi instance
  * @param userAbility
  * @return { PermissionChecker }
  */
-function getWorkflowsPermissionChecker({ strapi }: { strapi: Core.Strapi }, userAbility: unknown) {
-  return strapi
+function getWorkflowsPermissionChecker({ metrix }: { metrix: Core.Strapi }, userAbility: unknown) {
+  return metrix
     .plugin('content-manager')
     .service('permission-checker')
     .create({ userAbility, model: WORKFLOW_MODEL_UID });
@@ -44,7 +44,7 @@ export default {
   async create(ctx: Context) {
     const { body, query } = ctx.request;
     const { sanitizeCreateInput, sanitizeOutput, sanitizedQuery } = getWorkflowsPermissionChecker(
-      { strapi },
+      { metrix },
       ctx.state.userAbility
     );
     const { populate } = await sanitizedQuery.create(query);
@@ -73,7 +73,7 @@ export default {
     const { body, query } = ctx.request;
     const workflowService = getService('workflows');
     const { sanitizeUpdateInput, sanitizeOutput, sanitizedQuery } = getWorkflowsPermissionChecker(
-      { strapi },
+      { metrix },
       ctx.state.userAbility
     );
     const { populate } = await sanitizedQuery.update(query);
@@ -112,7 +112,7 @@ export default {
     const { query } = ctx.request;
     const workflowService = getService('workflows');
     const { sanitizeOutput, sanitizedQuery } = getWorkflowsPermissionChecker(
-      { strapi },
+      { metrix },
       ctx.state.userAbility
     );
     const { populate } = await sanitizedQuery.delete(query);
@@ -139,7 +139,7 @@ export default {
     const { query } = ctx.request;
     const workflowService = getService('workflows');
     const { sanitizeOutput, sanitizedQuery } = getWorkflowsPermissionChecker(
-      { strapi },
+      { metrix },
       ctx.state.userAbility
     );
     const { populate, filters, sort } = await sanitizedQuery.read(query);

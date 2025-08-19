@@ -5,7 +5,7 @@ import { To } from 'react-router-dom';
 
 import { Permission } from '../../../../shared/contracts/shared';
 
-import type { Internal, Utils } from '@strapi/types';
+import type { Internal, Utils } from '@metrix/types';
 import type { MessageDescriptor } from 'react-intl';
 
 type WidgetUID = Utils.String.Suffix<
@@ -15,7 +15,7 @@ type WidgetUID = Utils.String.Suffix<
 >;
 
 type WidgetArgs = {
-  icon?: typeof import('@strapi/icons').PuzzlePiece;
+  icon?: typeof import('@metrix/icons').PuzzlePiece;
   title: MessageDescriptor;
   link?: {
     label: MessageDescriptor;

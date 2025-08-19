@@ -4,6 +4,6 @@
  * relation-locale service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@metrix/metrix').factories;
 
 module.exports = createCoreService('api::relation-locale.relation-locale');

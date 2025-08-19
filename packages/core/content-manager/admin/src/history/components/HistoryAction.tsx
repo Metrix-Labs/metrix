@@ -1,5 +1,5 @@
-import { useQueryParams, useTracking } from '@strapi/admin/strapi-admin';
-import { ClockCounterClockwise } from '@strapi/icons';
+import { useQueryParams, useTracking } from '@metrix/admin/metrix-admin';
+import { ClockCounterClockwise } from '@metrix/icons';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -14,7 +14,7 @@ const HistoryAction: DocumentActionComponent = ({ model, document }) => {
   const { pathname } = useLocation();
   const pluginsQueryParams = stringify({ plugins: query.plugins }, { encode: false });
 
-  if (!window.strapi.features.isEnabled('cms-content-history')) {
+  if (!window.metrix.features.isEnabled('cms-content-history')) {
     return null;
   }
 

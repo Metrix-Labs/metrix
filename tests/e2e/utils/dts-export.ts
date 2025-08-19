@@ -1,14 +1,14 @@
-import type { Core } from '@strapi/strapi';
+import type { Core } from '@metrix/metrix';
 
-import dts from '@strapi/data-transfer';
-import { createStrapi } from '@strapi/strapi';
+import dts from '@metrix/data-transfer';
+import { createStrapi } from '@metrix/metrix';
 import { ALLOWED_CONTENT_TYPES } from '../constants';
 
 const {
   file: {
     providers: { createLocalFileDestinationProvider },
   },
-  strapi: {
+  metrix: {
     providers: { createLocalStrapiSourceProvider },
   },
   engine: { createTransferEngine },
@@ -22,9 +22,9 @@ export const exportData = async (): Promise<void> => {
     process.exit(1);
   }
 
-  const strapi = await createStrapiInstance();
+  const metrix = await createStrapiInstance();
 
-  const source = createSourceProvider(strapi);
+  const source = createSourceProvider(metrix);
   const destination = createDestinationProvider(args[0]);
 
   const engine = createTransferEngine(source, destination, {
@@ -67,10 +67,10 @@ export const exportData = async (): Promise<void> => {
   process.exit(0);
 };
 
-const createSourceProvider = (strapi: Core.Strapi) =>
+const createSourceProvider = (metrix: Core.Strapi) =>
   createLocalStrapiSourceProvider({
     async getStrapi() {
-      return strapi;
+      return metrix;
     },
   });
 

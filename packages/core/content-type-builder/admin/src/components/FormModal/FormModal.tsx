@@ -6,8 +6,8 @@ import {
   useTracking,
   useNotification,
   ConfirmDialog,
-} from '@strapi/admin/strapi-admin';
-import { Button, Divider, Flex, Modal, Tabs, Box, Typography, Dialog } from '@strapi/design-system';
+} from '@metrix/admin/metrix-admin';
+import { Button, Divider, Flex, Modal, Tabs, Box, Typography, Dialog } from '@metrix/design-system';
 import get from 'lodash/get';
 import has from 'lodash/has';
 import isEqual from 'lodash/isEqual';
@@ -59,7 +59,7 @@ import { getAttributesToDisplay } from './utils/getAttributesToDisplay';
 import { getFormInputNames } from './utils/getFormInputNames';
 
 import type { ContentType } from '../../types';
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrix/types';
 
 const FormComponent = styled.form`
   overflow: auto;

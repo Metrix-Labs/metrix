@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import type { OpenAPIV3_1 } from 'openapi-types';
 import type { Assembler } from '../../../..';
 
@@ -62,7 +62,7 @@ export class OperationParametersAssembler implements Assembler.Operation {
 
       // In Strapi, query params are always interpreted as query strings, which isn't supported by the specification
       // TODO: Make that configurable somehow
-      Object.assign(param, { 'x-strapi-serialize': 'querystring' });
+      Object.assign(param, { 'x-metrix-serialize': 'querystring' });
 
       queryParams.push(param);
     }

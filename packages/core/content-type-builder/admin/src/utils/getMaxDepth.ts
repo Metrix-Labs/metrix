@@ -1,6 +1,6 @@
 import type { ComponentWithChildren } from '../components/DataManager/utils/retrieveComponentsThatHaveComponents';
 import type { NestedComponent } from '../components/DataManager/utils/retrieveNestedComponents';
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrix/types';
 
 const findComponent = <T extends { component: Internal.UID.Component }>(
   componentUid: Internal.UID.Schema,

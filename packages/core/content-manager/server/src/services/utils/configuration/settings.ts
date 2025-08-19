@@ -1,5 +1,5 @@
 import { isEmpty, pick, pipe, propOr, isEqual } from 'lodash/fp';
-import { traverse } from '@strapi/utils';
+import { traverse } from '@metrix/utils';
 import qs from 'qs';
 import { isSortable, getDefaultMainField, getSortableAttributes } from './attributes';
 
@@ -35,7 +35,7 @@ async function isValidDefaultSort(schema: any, value: any) {
 
   const sanitizedValue = await traverse.traverseQuerySort(
     omitNonSortableAttributes,
-    { schema, getModel: strapi.getModel.bind(strapi) },
+    { schema, getModel: metrix.getModel.bind(metrix) },
     parsedValue
   );
 

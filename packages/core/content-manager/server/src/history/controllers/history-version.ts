@@ -1,5 +1,5 @@
-import { async, errors } from '@strapi/utils';
-import type { Core, UID } from '@strapi/types';
+import { async, errors } from '@metrix/utils';
+import type { Core, UID } from '@metrix/types';
 import { pick } from 'lodash/fp';
 import { getService as getContentManagerService } from '../../utils';
 import { getService } from '../utils';
@@ -33,11 +33,11 @@ const getValidPagination = ({ page, pageSize }: { page: any; pageSize: any }) =>
   return { page: pageNumber, pageSize: pageSizeNumber };
 };
 
-const createHistoryVersionController = ({ strapi }: { strapi: Core.Strapi }) => {
+const createHistoryVersionController = ({ metrix }: { metrix: Core.Strapi }) => {
   return {
     async findMany(ctx) {
       const contentTypeUid = ctx.query.contentType as UID.ContentType;
-      const isSingleType = strapi.getModel(contentTypeUid)?.kind === 'singleType';
+      const isSingleType = metrix.getModel(contentTypeUid)?.kind === 'singleType';
 
       if (isSingleType && !contentTypeUid) {
         throw new errors.ForbiddenError('contentType is required');
@@ -63,7 +63,7 @@ const createHistoryVersionController = ({ strapi }: { strapi: Core.Strapi }) => 
       const query: HistoryVersions.GetHistoryVersions.Request['query'] =
         await permissionChecker.sanitizeQuery(ctx.query);
 
-      const { results, pagination } = await getService(strapi, 'history').findVersionsPage({
+      const { results, pagination } = await getService(metrix, 'history').findVersionsPage({
         query: {
           ...query,
           ...getValidPagination({ page: query.page, pageSize: query.pageSize }),
@@ -104,7 +104,7 @@ const createHistoryVersionController = ({ strapi }: { strapi: Core.Strapi }) => 
         throw new errors.ForbiddenError();
       }
 
-      const restoredDocument = await getService(strapi, 'history').restoreVersion(
+      const restoredDocument = await getService(metrix, 'history').restoreVersion(
         request.params.versionId
       );
 

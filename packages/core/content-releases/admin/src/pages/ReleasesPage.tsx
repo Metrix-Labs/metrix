@@ -11,8 +11,8 @@ import {
   isFetchError,
   Layouts,
   GradientBadge,
-} from '@strapi/admin/strapi-admin';
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
+} from '@metrix/admin/metrix-admin';
+import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
 import {
   Alert,
   Badge,
@@ -26,9 +26,9 @@ import {
   Tabs,
   Typography,
   Link,
-} from '@strapi/design-system';
-import { Plus } from '@strapi/icons';
-import { EmptyDocuments } from '@strapi/icons/symbols';
+} from '@metrix/design-system';
+import { Plus } from '@metrix/icons';
+import { EmptyDocuments } from '@metrix/icons/symbols';
 import { format } from 'date-fns';
 import { useIntl } from 'react-intl';
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';
@@ -317,7 +317,7 @@ const ReleasesPage = () => {
             <StyledAlert
               marginBottom={6}
               action={
-                <Link href="https://strapi.io/pricing-cloud" isExternal>
+                <Link href="https://metrix.io/pricing-cloud" isExternal>
                   {formatMessage({
                     id: 'content-releases.pages.Releases.max-limit-reached.action',
                     defaultMessage: 'Explore plans',

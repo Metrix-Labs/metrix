@@ -6,8 +6,8 @@
 
 import { SyntheticEvent } from 'react';
 
-import { Button, Flex } from '@strapi/design-system';
-import { Plus } from '@strapi/icons';
+import { Button, Flex } from '@metrix/design-system';
+import { Plus } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../utils';

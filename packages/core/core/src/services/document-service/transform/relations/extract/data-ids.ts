@@ -1,7 +1,7 @@
 import { curry } from 'lodash/fp';
 
-import type { UID } from '@strapi/types';
-import { relations } from '@strapi/utils';
+import type { UID } from '@metrix/types';
+import { relations } from '@metrix/utils';
 import { IdMap } from '../../id-map';
 import { getRelationTargetLocale } from '../utils/i18n';
 import { getRelationTargetStatus } from '../utils/dp';
@@ -88,7 +88,7 @@ const extractDataIds = (idMap: IdMap, data: Record<string, any>, source: Options
         return relation;
       }, value as any);
     },
-    { schema: strapi.getModel(source.uid), getModel: strapi.getModel.bind(strapi) },
+    { schema: metrix.getModel(source.uid), getModel: metrix.getModel.bind(metrix) },
     data
   );
 };

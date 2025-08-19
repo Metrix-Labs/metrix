@@ -1,4 +1,4 @@
-import { House, Lock } from '@strapi/icons';
+import { House, Lock } from '@metrix/icons';
 import { screen, render as renderRTL } from '@tests/utils';
 
 import { NavLink } from '../NavLink';

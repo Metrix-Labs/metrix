@@ -13,8 +13,8 @@ import {
   SingleSelectOption,
   Popover,
   SingleSelect,
-} from '@strapi/design-system';
-import { Plus } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Plus } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { FilterValueInput } from './FilterValueInput';

@@ -1,5 +1,5 @@
 import { Readable } from 'stream';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 import type { ITransferEngine, ISourceProvider, IDestinationProvider } from '../../types';
 
 /**
@@ -50,7 +50,7 @@ export const getContentTypes = (): {
 });
 
 /**
- * Factory to get default strapi models test values
+ * Factory to get default metrix models test values
  */
 export const getStrapiModels = () => {
   return [{ uid: 'model::foo' }, { uid: 'model::bar' }];
@@ -111,10 +111,10 @@ export const destinationStages = [
 ];
 
 /**
- * Update the global store with the given strapi value
+ * Update the global store with the given metrix value
  */
-export const setGlobalStrapi = (strapi: Core.Strapi): void => {
-  (global as unknown as Global).strapi = strapi;
+export const setGlobalStrapi = (metrix: Core.Strapi): void => {
+  (global as unknown as Global).metrix = metrix;
 };
 
 /**

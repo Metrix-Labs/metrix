@@ -13,10 +13,10 @@ import { NotificationConfig, useNotification } from '../../../../admin/src/featu
 
 import { useLicenseLimits } from './useLicenseLimits';
 
-const STORAGE_KEY_PREFIX = 'strapi-notification-seat-limit';
+const STORAGE_KEY_PREFIX = 'metrix-notification-seat-limit';
 
-const BILLING_SELF_HOSTED_URL = 'https://strapi.io/billing/request-seats';
-const MANAGE_SEATS_URL = 'https://strapi.io/billing/manage-seats';
+const BILLING_SELF_HOSTED_URL = 'https://metrix.io/billing/request-seats';
+const MANAGE_SEATS_URL = 'https://metrix.io/billing/manage-seats';
 
 export const useLicenseLimitNotification = () => {
   const { formatMessage } = useIntl();

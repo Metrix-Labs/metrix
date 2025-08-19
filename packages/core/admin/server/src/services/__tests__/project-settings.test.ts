@@ -12,7 +12,7 @@ jest.mock('fs', () => ({
 
 const storeSet = jest.fn();
 const providerDelete = jest.fn();
-global.strapi = {
+global.metrix = {
   dirs: {
     public: 'publicDir',
   },

@@ -1,12 +1,12 @@
 /// <reference types="vite/client" />
 
-import { type StrapiTheme } from '@strapi/design-system';
+import { type StrapiTheme } from '@metrix/design-system';
 import { type BaseEditor } from 'slate';
 import { type HistoryEditor } from 'slate-history';
 import { type ReactEditor } from 'slate-react';
 
 import type { LinkEditor } from './src/pages/EditView/components/FormInputs/BlocksInput/plugins/withLinks';
-import type { Schema, Modules } from '@strapi/types';
+import type { Schema, Modules } from '@metrix/types';
 
 declare module 'styled-components' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -47,6 +47,6 @@ interface BrowserStrapi {
 
 declare global {
   interface Window {
-    strapi: BrowserStrapi;
+    metrix: BrowserStrapi;
   }
 }

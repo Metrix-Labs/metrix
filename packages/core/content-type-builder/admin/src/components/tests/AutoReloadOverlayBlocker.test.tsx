@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DesignSystemProvider } from '@strapi/design-system';
+import { DesignSystemProvider } from '@metrix/design-system';
 import { act, screen, renderHook } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 

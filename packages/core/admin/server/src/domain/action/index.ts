@@ -1,4 +1,4 @@
-import type { Utils } from '@strapi/types';
+import type { Utils } from '@metrix/types';
 
 import { curry, pipe, merge, set, pick, omit, includes, isArray, prop } from 'lodash/fp';
 

@@ -1,4 +1,4 @@
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import { createTestBuilder } from 'api-tests/builder';
 
@@ -42,7 +42,7 @@ const singleTypeModel = {
 
 describe('Preview', () => {
   const builder = createTestBuilder();
-  let strapi;
+  let metrix;
   let rq;
   let singleTypeEntry;
 
@@ -71,8 +71,8 @@ describe('Preview', () => {
   beforeAll(async () => {
     await builder.addContentTypes([collectionTypeModel, singleTypeModel]).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     // Update the single type to create an initial history version
     singleTypeEntry = await updateEntry({
@@ -85,7 +85,7 @@ describe('Preview', () => {
     });
 
     // Configure the preview URL handler
-    strapi.config.set('admin.preview', {
+    metrix.config.set('admin.preview', {
       enabled: true,
       config: {
         handler: (uid, { documentId, locale, status }) => {
@@ -96,7 +96,7 @@ describe('Preview', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

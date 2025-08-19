@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, useNotifyAT, Grid, Typography, FlexProps } from '@strapi/design-system';
-import { Check } from '@strapi/icons';
+import { Box, Button, Flex, useNotifyAT, Grid, Typography, FlexProps } from '@metrix/design-system';
+import { Check } from '@metrix/icons';
 import upperFirst from 'lodash/upperFirst';
 import { useIntl } from 'react-intl';
 import * as yup from 'yup';
@@ -104,7 +104,7 @@ const ProfilePage = () => {
     data: dataSSO,
     error,
   } = useIsSSOLockedQuery(undefined, {
-    skip: !(window.strapi.isEE && window.strapi.features.isEnabled('sso')),
+    skip: !(window.metrix.isEE && window.metrix.features.isEnabled('sso')),
   });
 
   React.useEffect(() => {
@@ -333,7 +333,7 @@ const PreferencesSection = ({ localeNames }: PreferencesSectionProps) => {
                   color="primary600"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://docs.strapi.io/developer-docs/latest/development/admin-customization.html#locales"
+                  href="https://docs.metrix.io/developer-docs/latest/development/admin-customization.html#locales"
                 >
                   {formatMessage({
                     id: 'Settings.profile.form.section.experience.here',

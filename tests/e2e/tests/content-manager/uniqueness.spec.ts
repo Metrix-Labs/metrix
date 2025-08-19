@@ -27,7 +27,7 @@ test.describe('Uniqueness', () => {
   const SCALAR_FIELDS: Field[] = [
     { name: 'uniqueString', value: 'unique' },
     { name: 'uniqueNumber', value: '10' },
-    { name: 'uniqueEmail', value: 'test@strapi.io' },
+    { name: 'uniqueEmail', value: 'test@metrix.io' },
     { name: 'uniqueDate', value: '01/01/2024', role: 'combobox' },
     { name: 'UID', value: 'unique' },
   ];
@@ -55,7 +55,7 @@ test.describe('Uniqueness', () => {
     },
     {
       name: 'ComponentEmail',
-      value: 'test@strapi.io',
+      value: 'test@metrix.io',
       component: { isSingle: true },
     },
   ];
@@ -83,7 +83,7 @@ test.describe('Uniqueness', () => {
     },
     {
       name: 'ComponentEmail',
-      value: 'test@strapi.io',
+      value: 'test@metrix.io',
       component: { isSingle: false },
     },
   ];

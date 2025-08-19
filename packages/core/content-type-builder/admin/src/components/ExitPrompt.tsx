@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import { ConfirmDialog } from '@strapi/admin/strapi-admin';
-import { Dialog } from '@strapi/design-system';
+import { ConfirmDialog } from '@metrix/admin/metrix-admin';
+import { Dialog } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { useBlocker } from 'react-router-dom';
 

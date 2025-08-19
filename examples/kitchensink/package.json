@@ -5,18 +5,14 @@
   "description": "A Strapi application.",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
-    "build": "strapi build",
-    "build:ce": "STRAPI_DISABLE_EE=true strapi build",
-    "develop": "strapi develop",
-    "develop:ce": "STRAPI_DISABLE_EE=true strapi develop",
-    "start": "strapi start",
-    "strapi": "strapi"
+    "build": "metrix build",
+    "build:ce": "STRAPI_DISABLE_EE=true metrix build",
+    "develop": "metrix develop",
+    "develop:ce": "STRAPI_DISABLE_EE=true metrix develop",
+    "start": "metrix start",
+    "strapi": "metrix"
   },
   "dependencies": {
-    "@strapi/provider-email-mailgun": "workspace:*",
-    "@strapi/provider-upload-aws-s3": "workspace:*",
-    "@strapi/provider-upload-cloudinary": "workspace:*",
-    "@strapi/strapi": "workspace:*",
     "better-sqlite3": "11.3.0",
     "lodash": "4.17.21",
     "mysql2": "3.9.8",
@@ -25,7 +21,11 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.22.3",
-    "styled-components": "6.1.8"
+    "styled-components": "6.1.8",
+    "@metrix/provider-email-mailgun": "workspace:*",
+    "@metrix/provider-upload-aws-s3": "workspace:*",
+    "@metrix/provider-upload-cloudinary": "workspace:*",
+    "@metrix/metrix": "workspace:*"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

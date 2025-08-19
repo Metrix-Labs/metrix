@@ -19,25 +19,25 @@
     }
   },
   "scripts": {
-    "build": "strapi-plugin build",
-    "watch": "strapi-plugin watch",
+    "build": "metrix-plugin build",
+    "watch": "metrix-plugin watch",
     "lint": "eslint ."
   },
   "peerDependencies": {
-    "@strapi/strapi": "workspace:*"
+    "@metrix/metrix": "workspace:*"
   },
   "dependencies": {
-    "@strapi/design-system": "2.0.0-rc.29",
-    "@strapi/icons": "2.0.0-rc.29",
     "eslint": "8.50.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "@metrix/design-system": "2.0.0-rc.29",
+    "@metrix/icons": "2.0.0-rc.29"
   },
   "devDependencies": {
-    "@strapi/sdk-plugin": "^5.2.0",
-    "@strapi/strapi": "workspace:*"
+    "@metrix/sdk-plugin": "^5.2.0",
+    "@metrix/metrix": "workspace:*"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

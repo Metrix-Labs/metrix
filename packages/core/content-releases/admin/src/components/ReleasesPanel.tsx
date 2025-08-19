@@ -1,6 +1,6 @@
-import { useRBAC, useQueryParams } from '@strapi/admin/strapi-admin';
-import { unstable_useDocumentLayout as useDocumentLayout } from '@strapi/content-manager/strapi-admin';
-import { Box, Flex, Typography } from '@strapi/design-system';
+import { useRBAC, useQueryParams } from '@metrix/admin/metrix-admin';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrix/content-manager/metrix-admin';
+import { Box, Flex, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { PERMISSIONS } from '../constants';
@@ -9,7 +9,7 @@ import { getTimezoneOffset } from '../utils/time';
 
 import { ReleaseActionMenu } from './ReleaseActionMenu';
 
-import type { PanelComponent, PanelComponentProps } from '@strapi/content-manager/strapi-admin';
+import type { PanelComponent, PanelComponentProps } from '@metrix/content-manager/metrix-admin';
 
 const Panel: PanelComponent = ({
   model,
@@ -53,7 +53,7 @@ const Panel: PanelComponent = ({
   };
 
   // Project is not EE or contentType does not have draftAndPublish enabled
-  if (!window.strapi.isEE || !options?.draftAndPublish || !canRead) {
+  if (!window.metrix.isEE || !options?.draftAndPublish || !canRead) {
     return null;
   }
 

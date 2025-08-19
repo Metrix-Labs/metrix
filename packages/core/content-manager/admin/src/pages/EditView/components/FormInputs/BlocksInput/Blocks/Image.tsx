@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { useStrapiApp } from '@strapi/admin/strapi-admin';
-import { Box, Flex, FlexComponent } from '@strapi/design-system';
-import { Image as Picture } from '@strapi/icons';
+import { useStrapiApp } from '@metrix/admin/metrix-admin';
+import { Box, Flex, FlexComponent } from '@metrix/design-system';
+import { Image as Picture } from '@metrix/icons';
 import { type Element, Transforms, Editor } from 'slate';
 import { useFocused, type RenderElementProps, useSelected } from 'slate-react';
 import { styled, css } from 'styled-components';
@@ -11,7 +11,7 @@ import { prefixFileUrlWithBackendUrl } from '../../../../../../utils/urls';
 import { useBlocksEditorContext, type BlocksStore } from '../BlocksEditor';
 import { type Block } from '../utils/types';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 const ImageWrapper = styled<FlexComponent>(Flex)<{ $isFocused?: boolean }>`
   transition-property: box-shadow;

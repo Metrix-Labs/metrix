@@ -18,7 +18,7 @@ describe('diffSchemas', () => {
 
     diffSchemas = schemaDiff.diff.bind(schemaDiff);
 
-    global.strapi = {
+    global.metrix = {
       store: {
         get: () => [],
       },
@@ -1181,7 +1181,7 @@ describe('diffSchemas', () => {
       foreignKeys: [],
     };
 
-    global.strapi = {
+    global.metrix = {
       store: {
         get: async () => [testTables[0].name, 'table2'],
       },

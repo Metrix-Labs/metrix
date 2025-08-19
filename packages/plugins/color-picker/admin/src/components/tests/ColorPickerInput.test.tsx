@@ -1,5 +1,5 @@
-import { DesignSystemProvider } from '@strapi/design-system';
-import { Form } from '@strapi/strapi/admin';
+import { DesignSystemProvider } from '@metrix/design-system';
+import { Form } from '@metrix/metrix/admin';
 import { render as renderRTL } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';

@@ -14,7 +14,7 @@ import { createComponentCollectionName } from './utils/createCollectionName';
 import { Attribute, getUsedAttributeNames, SchemaData } from './utils/getUsedAttributeNames';
 
 import type { ContentType } from '../../../types';
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrix/types';
 
 export type SchemaParams = {
   schemaAttributes: any;

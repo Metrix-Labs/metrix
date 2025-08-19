@@ -1,4 +1,4 @@
-import { adminApi } from '@strapi/admin/strapi-admin';
+import { adminApi } from '@metrix/admin/metrix-admin';
 
 const contentManagerApi = adminApi.enhanceEndpoints({
   addTagTypes: [

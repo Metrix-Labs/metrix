@@ -18,7 +18,7 @@ const fixtures = [
 describe('Action', () => {
   describe('getAllowedActionsForRole', () => {
     test('returns every action if role is not provided', async () => {
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             permission: {
@@ -41,7 +41,7 @@ describe('Action', () => {
       const findOneRoleMock = jest.fn(() => ({ code: 'custom-code ' }));
       const roleId = '1';
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             role: {
@@ -69,7 +69,7 @@ describe('Action', () => {
       const findOneRoleMock = jest.fn(() => ({ code: AUTHOR_CODE }));
       const roleId = '1';
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             role: {

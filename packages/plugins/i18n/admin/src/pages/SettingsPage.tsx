@@ -6,9 +6,9 @@ import {
   useNotification,
   useRBAC,
   Layouts,
-} from '@strapi/admin/strapi-admin';
-import { EmptyStateLayout } from '@strapi/design-system';
-import { EmptyDocuments } from '@strapi/icons/symbols';
+} from '@metrix/admin/metrix-admin';
+import { EmptyStateLayout } from '@metrix/design-system';
+import { EmptyDocuments } from '@metrix/icons/symbols';
 import { useIntl } from 'react-intl';
 
 import { CreateLocale } from '../components/CreateLocale';

@@ -3,7 +3,7 @@ import {
   useFetchClient,
   FetchResponse,
   adminApi,
-} from '@strapi/admin/strapi-admin';
+} from '@metrix/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 import { useMutation, useQueryClient, UseMutationResult } from 'react-query';
 import { useDispatch } from 'react-redux';

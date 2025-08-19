@@ -1,12 +1,12 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 import { FILE_MODEL_UID } from './constants';
 
 const FILE_INFO_INPUT_TYPE_NAME = 'FileInfoInput';
 
-export const installGraphqlExtension = ({ strapi }: { strapi: Core.Strapi }) => {
-  const { service: getGraphQLService, config: graphQLConfig } = strapi.plugin('graphql');
-  const { service: getUploadService } = strapi.plugin('upload');
+export const installGraphqlExtension = ({ metrix }: { metrix: Core.Strapi }) => {
+  const { service: getGraphQLService, config: graphQLConfig } = metrix.plugin('graphql');
+  const { service: getUploadService } = metrix.plugin('upload');
 
   const isShadowCRUDEnabled = graphQLConfig('shadowCRUD', true);
 
@@ -19,7 +19,7 @@ export const installGraphqlExtension = ({ strapi }: { strapi: Core.Strapi }) => 
 
   const { getTypeName } = getGraphQLService('utils').naming;
 
-  const fileModel = strapi.getModel(FILE_MODEL_UID);
+  const fileModel = metrix.getModel(FILE_MODEL_UID);
   const fileTypeName = getTypeName(fileModel);
   /**
    * Register Upload's types, queries & mutations to the content API using the GraphQL extension API

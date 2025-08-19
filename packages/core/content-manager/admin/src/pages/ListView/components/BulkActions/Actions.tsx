@@ -5,9 +5,9 @@ import {
   DescriptionComponentRenderer,
   useTable,
   useQueryParams,
-} from '@strapi/admin/strapi-admin';
-import { Box, ButtonProps, Flex, Typography } from '@strapi/design-system';
-import { WarningCircle } from '@strapi/icons';
+} from '@metrix/admin/metrix-admin';
+import { Box, ButtonProps, Flex, Typography } from '@metrix/design-system';
+import { WarningCircle } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { useDocumentRBAC } from '../../../../features/DocumentRBAC';

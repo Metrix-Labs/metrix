@@ -1,4 +1,4 @@
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 import entityValidator from '..';
 
 describe('Entity validator', () => {
@@ -20,7 +20,7 @@ describe('Entity validator', () => {
   describe('Published input', () => {
     describe('General Errors', () => {
       let model: Schema.ContentType;
-      global.strapi = {
+      global.metrix = {
         errors: {
           badRequest: jest.fn(),
         },
@@ -176,7 +176,7 @@ describe('Entity validator', () => {
 
     describe('String validator', () => {
       test('Throws on min length not respected', async () => {
-        global.strapi = {
+        global.metrix = {
           errors: {
             badRequest: jest.fn(),
           },
@@ -341,7 +341,7 @@ describe('Entity validator', () => {
   describe('Draft input', () => {
     describe('General Errors', () => {
       it('Throws a badRequest error on invalid input', async () => {
-        global.strapi = {
+        global.metrix = {
           errors: {
             badRequest: jest.fn(),
           },
@@ -480,7 +480,7 @@ describe('Entity validator', () => {
           },
         };
 
-        global.strapi = {
+        global.metrix = {
           errors: {
             badRequest: jest.fn(),
           },

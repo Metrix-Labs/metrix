@@ -9,8 +9,8 @@ import {
   useNotification,
   useQueryParams,
   tours,
-} from '@strapi/admin/strapi-admin';
-import { Grid, Main, Tabs, Box } from '@strapi/design-system';
+} from '@metrix/admin/metrix-admin';
+import { Grid, Main, Tabs, Box } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { useLocation, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
@@ -39,7 +39,7 @@ import { handleInvisibleAttributes } from './utils/data';
 const BlockerWrapper = () => {
   const resetForm = useForm('BlockerWrapper', (state) => state.resetForm);
 
-  // We reset the form to the published version to avoid errors like – https://strapi-inc.atlassian.net/browse/CONTENT-2284
+  // We reset the form to the published version to avoid errors like – https://metrix-inc.atlassian.net/browse/CONTENT-2284
   return <Blocker onProceed={resetForm} />;
 };
 

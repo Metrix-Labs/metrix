@@ -1,4 +1,4 @@
-import { env } from '@strapi/utils';
+import { env } from '@metrix/utils';
 
 import type { Strapi, Router, Controller, Service, Policy, Middleware } from '../core';
 import type { ContentTypeSchema } from '../struct';
@@ -27,9 +27,9 @@ export type LoadedPlugin = {
     default: Record<string, unknown> | ((opts: { env: typeof env }) => Record<string, unknown>);
     validator: (config: Record<string, unknown>) => void;
   };
-  bootstrap: ({ strapi }: { strapi: Strapi }) => void | Promise<void>;
-  destroy: ({ strapi }: { strapi: Strapi }) => void | Promise<void>;
-  register: ({ strapi }: { strapi: Strapi }) => void | Promise<void>;
+  bootstrap: ({ metrix }: { metrix: Strapi }) => void | Promise<void>;
+  destroy: ({ metrix }: { metrix: Strapi }) => void | Promise<void>;
+  register: ({ metrix }: { metrix: Strapi }) => void | Promise<void>;
   routes: Record<string, Router>;
   controllers: Record<string, Controller>;
   services: Record<string, Service>;

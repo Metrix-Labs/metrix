@@ -5,9 +5,9 @@ import {
   useNotification,
   useStrapiApp,
   useQueryParams,
-} from '@strapi/admin/strapi-admin';
-import { Button, LinkButton, Modal } from '@strapi/design-system';
-import { Duplicate, Pencil } from '@strapi/icons';
+} from '@metrix/admin/metrix-admin';
+import { Button, LinkButton, Modal } from '@metrix/design-system';
+import { Duplicate, Pencil } from '@metrix/icons';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
 import { NavLink, useNavigate } from 'react-router-dom';

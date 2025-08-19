@@ -1,7 +1,7 @@
 import { isNil } from 'lodash/fp';
 
-import { contentTypes } from '@strapi/utils';
-import type { UID } from '@strapi/types';
+import { contentTypes } from '@metrix/utils';
+import type { UID } from '@metrix/types';
 
 import { LongHandDocument } from './types';
 
@@ -16,8 +16,8 @@ export const getRelationTargetStatus = (
   }
 ): Status[] => {
   // Ignore if the target content type does not have draft and publish enabled
-  const targetContentType = strapi.getModel(opts.targetUid);
-  const sourceContentType = strapi.getModel(opts.sourceUid);
+  const targetContentType = metrix.getModel(opts.targetUid);
+  const sourceContentType = metrix.getModel(opts.sourceUid);
 
   const targetHasDP = contentTypes.hasDraftAndPublish(targetContentType);
   const sourceHasDP = contentTypes.hasDraftAndPublish(sourceContentType);

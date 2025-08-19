@@ -12,7 +12,7 @@ import {
   renderHook as renderHookAdmin,
   type RenderOptions,
   fireEvent,
-} from '@strapi/admin/strapi-admin/test';
+} from '@metrix/admin/metrix-admin/test';
 
 import { reducer } from '../src/modules/reducers';
 

@@ -1,4 +1,4 @@
-import { useNotification } from '@strapi/admin/strapi-admin';
+import { useNotification } from '@metrix/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../utils';

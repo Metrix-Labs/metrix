@@ -5,7 +5,7 @@
 'use strict';
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const { createUtils } = require('api-tests/utils');
 
@@ -31,11 +31,11 @@ let rq1;
 let rq2;
 let user1;
 let user2;
-let strapi;
+let metrix;
 let utils;
 
 const createEntry = async (data) => {
-  return strapi.db.query('api::nonvisible.nonvisible').create({
+  return metrix.db.query('api::nonvisible.nonvisible').create({
     data,
   });
 };
@@ -55,29 +55,29 @@ describe.skip('Test non visible fields', () => {
   beforeAll(async () => {
     await builder.addContentType(ct).build();
 
-    strapi = await createStrapiInstance();
-    utils = createUtils(strapi);
+    metrix = await createStrapiInstance();
+    utils = createUtils(metrix);
 
     const userInfo = {
-      email: 'test@strapi.io',
+      email: 'test@metrix.io',
       firstname: 'test',
-      lastname: 'strapi',
+      lastname: 'metrix',
       registrationToken: 'foobar',
       roles: [await utils.getSuperAdminRole()],
     };
 
     user1 = await utils.createUser(userInfo);
-    user2 = await utils.createUser({ ...userInfo, email: 'test2@strapi.io' });
+    user2 = await utils.createUser({ ...userInfo, email: 'test2@metrix.io' });
 
-    rq1 = await createAuthRequest({ strapi, userInfo: user1 });
-    rq2 = await createAuthRequest({ strapi, userInfo: user2 });
+    rq1 = await createAuthRequest({ metrix, userInfo: user1 });
+    rq2 = await createAuthRequest({ metrix, userInfo: user2 });
 
     await createEntry({ field: 'entry1', createdBy: user1.id, updatedBy: user1.id });
     await createEntry({ field: 'entry2', createdBy: user2.id, updatedBy: user2.id });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

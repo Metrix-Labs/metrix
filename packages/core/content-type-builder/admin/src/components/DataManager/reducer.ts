@@ -16,7 +16,7 @@ import type {
   Status,
   AnyAttribute,
 } from '../../types';
-import type { Internal, Schema, Struct, UID } from '@strapi/types';
+import type { Internal, Schema, Struct, UID } from '@metrix/types';
 
 export interface DataManagerStateType {
   components: Components;

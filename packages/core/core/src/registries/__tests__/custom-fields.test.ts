@@ -1,8 +1,8 @@
 import customFieldsRegistry from '../custom-fields';
 
-const strapi = {
+const metrix = {
   plugins: { plugintest: 'foo' },
-  plugin: jest.fn((plugin) => strapi.plugins[plugin]),
+  plugin: jest.fn((plugin) => metrix.plugins[plugin]),
 };
 
 describe('Custom fields registry', () => {
@@ -14,7 +14,7 @@ describe('Custom fields registry', () => {
         type: 'text',
       };
 
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
       customFields.add(mockCF);
 
       const expected = {
@@ -29,7 +29,7 @@ describe('Custom fields registry', () => {
         type: 'text',
       };
 
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
       customFields.add(mockCF);
 
       const expected = {
@@ -43,7 +43,7 @@ describe('Custom fields registry', () => {
         type: 'test',
       };
 
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
 
       expect(() => customFields.add(mockCF)).toThrowError(
         `Custom fields require a 'name' and 'type' key`
@@ -55,7 +55,7 @@ describe('Custom fields registry', () => {
         name: 'test',
       };
 
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
 
       expect(() => customFields.add(mockCF)).toThrowError(
         `Custom fields require a 'name' and 'type' key`
@@ -68,7 +68,7 @@ describe('Custom fields registry', () => {
         type: 'text',
       };
 
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
 
       expect(() => customFields.add(mockCF)).toThrowError(
         `Custom field name: 'test.boom' is not a valid object key`
@@ -81,7 +81,7 @@ describe('Custom fields registry', () => {
         type: 'geojson',
       };
 
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
 
       expect(() => customFields.add(mockCF)).toThrowError(
         `Custom field type: 'geojson' is not a valid Strapi type`
@@ -94,7 +94,7 @@ describe('Custom fields registry', () => {
         type: 'text',
       };
 
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
 
       expect(() => customFields.add({ ...mockCF, inputSize: 'small' })).toThrowError(
         `inputSize should be an object with 'default' and 'isResizable' keys`
@@ -117,7 +117,7 @@ describe('Custom fields registry', () => {
         type: 'text',
       };
 
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
 
       customFields.add(mockCF);
       expect(() => customFields.add(mockCF)).toThrowError(
@@ -133,14 +133,14 @@ describe('Custom fields registry', () => {
         type: 'text',
       };
 
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
       customFields.add(mockCF);
 
       expect(customFields.get('plugin::plugintest.test')).toEqual(mockCF);
     });
 
     it('throws when a custom field is not registered', () => {
-      const customFields = customFieldsRegistry(strapi);
+      const customFields = customFieldsRegistry(metrix);
 
       expect(() => customFields.get('plugin::plugintest.test')).toThrowError(
         `Could not find Custom Field: plugin::plugintest.test`

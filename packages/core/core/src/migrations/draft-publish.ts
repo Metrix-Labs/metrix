@@ -1,5 +1,5 @@
-import { contentTypes as contentTypesUtils, async } from '@strapi/utils';
-import type { Schema } from '@strapi/types';
+import { contentTypes as contentTypesUtils, async } from '@metrix/utils';
+import type { Schema } from '@metrix/types';
 
 import { getBatchToDiscard } from './database/5.0.0-discard-drafts';
 
@@ -22,7 +22,7 @@ const enableDraftAndPublish = async ({ oldContentTypes, contentTypes }: Input) =
   }
 
   // run the after content types migrations
-  return strapi.db.transaction(async (trx) => {
+  return metrix.db.transaction(async (trx) => {
     for (const uid in contentTypes) {
       if (!oldContentTypes[uid]) {
         continue;
@@ -37,7 +37,7 @@ const enableDraftAndPublish = async ({ oldContentTypes, contentTypes }: Input) =
         contentTypesUtils.hasDraftAndPublish(contentType)
       ) {
         const discardDraft = async (entry: { documentId: string; locale: string }) =>
-          strapi
+          metrix
             .documents(uid as any)
             // Discard draft by referencing the documentId and locale
             .discardDraft({ documentId: entry.documentId, locale: entry.locale });
@@ -46,7 +46,7 @@ const enableDraftAndPublish = async ({ oldContentTypes, contentTypes }: Input) =
          * Load a batch of entries (batched to prevent loading millions of rows at once ),
          * and discard them using the document service.
          */
-        for await (const batch of getBatchToDiscard({ db: strapi.db, trx, uid })) {
+        for await (const batch of getBatchToDiscard({ db: metrix.db, trx, uid })) {
           await async.map(batch, discardDraft, { concurrency: 10 });
         }
       }
@@ -72,7 +72,7 @@ const disableDraftAndPublish = async ({ oldContentTypes, contentTypes }: Input) 
       contentTypesUtils.hasDraftAndPublish(oldContentType) &&
       !contentTypesUtils.hasDraftAndPublish(contentType)
     ) {
-      await strapi.db?.queryBuilder(uid).delete().where({ published_at: null }).execute();
+      await metrix.db?.queryBuilder(uid).delete().where({ published_at: null }).execute();
     }
   }
 };

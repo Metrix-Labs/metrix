@@ -1,4 +1,4 @@
-import type { Permission as StrapiPermission } from '@strapi/admin/strapi-admin';
+import type { Permission as StrapiPermission } from '@metrix/admin/metrix-admin';
 
 export const PLUGIN_ID = 'content-releases';
 

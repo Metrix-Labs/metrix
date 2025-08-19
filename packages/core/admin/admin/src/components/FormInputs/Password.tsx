@@ -1,7 +1,7 @@
 import { forwardRef, memo, useState } from 'react';
 
-import { TextInput, useComposedRefs, Field } from '@strapi/design-system';
-import { Eye, EyeStriked } from '@strapi/icons';
+import { TextInput, useComposedRefs, Field } from '@metrix/design-system';
+import { Eye, EyeStriked } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { useFocusInputField } from '../../hooks/useFocusInputField';

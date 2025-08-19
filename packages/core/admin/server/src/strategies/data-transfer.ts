@@ -1,6 +1,6 @@
 import type { Context } from 'koa';
 import { differenceInHours, parseISO } from 'date-fns';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrix/utils';
 import { castArray, isNil } from 'lodash/fp';
 
 import { getService } from '../utils';
@@ -56,7 +56,7 @@ export const authenticate = async (ctx: Context) => {
   // @ts-expect-error - FIXME: verify lastUsedAt is defined
   const hoursSinceLastUsed = differenceInHours(currentDate, parseISO(transferToken.lastUsedAt));
   if (hoursSinceLastUsed >= 1) {
-    await strapi.db.query('admin::api-token').update({
+    await metrix.db.query('admin::api-token').update({
       where: { id: transferToken.id },
       data: { lastUsedAt: currentDate },
     });

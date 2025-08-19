@@ -1,4 +1,4 @@
-# Strapi built-in admin panel
+# Metrix built-in admin panel
 
 ## Description
 
@@ -10,7 +10,7 @@ You can read the contribution guide [here](../../../CONTRIBUTING.md)
 
 ### Setup
 
-Create a new Strapi project: `strapi new myApp`.
+Create a new Metrix project: `metrix new myApp`.
 
 Go in your project: `cd myApp`.
 

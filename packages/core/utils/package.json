@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/utils",
+  "name": "@metrix/utils",
   "version": "5.22.0",
   "description": "Shared utilities for the Strapi packages",
   "keywords": [

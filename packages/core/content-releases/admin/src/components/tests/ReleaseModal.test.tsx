@@ -6,13 +6,13 @@ import { ReleaseModal } from '../ReleaseModal';
 
 describe('ReleaseModal', () => {
   beforeAll(() => {
-    window.strapi.future = {
+    window.metrix.future = {
       isEnabled: () => true,
     };
   });
 
   afterAll(() => {
-    window.strapi.future = {
+    window.metrix.future = {
       isEnabled: () => false,
     };
   });

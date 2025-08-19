@@ -9,8 +9,8 @@ import {
   Tr,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
-import { CaretDown, CaretUp } from '@strapi/icons';
+} from '@metrix/design-system';
+import { CaretDown, CaretUp } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { tableHeaders } from '../../constants';

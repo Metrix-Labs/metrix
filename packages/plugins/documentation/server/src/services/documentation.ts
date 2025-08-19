@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { produce } from 'immer';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 import { builApiEndpointPath, buildComponentSchema } from './helpers';
 import { getPluginsThatNeedDocumentation } from './utils/get-plugins-that-need-documentation';
@@ -17,8 +17,8 @@ export type Version = {
 
 export type DocumentationService = ReturnType<typeof createService>;
 
-const createService = ({ strapi }: { strapi: Core.Strapi }) => {
-  const config = strapi.config.get('plugin::documentation') as PluginConfig;
+const createService = ({ metrix }: { metrix: Core.Strapi }) => {
+  const config = metrix.config.get('plugin::documentation') as PluginConfig;
   const pluginsThatNeedDocumentation = getPluginsThatNeedDocumentation(config);
   const overrideService = getService('override');
 
@@ -28,7 +28,7 @@ const createService = ({ strapi }: { strapi: Core.Strapi }) => {
     },
 
     getFullDocumentationPath() {
-      return path.join(strapi.dirs.app.extensions, 'documentation', 'documentation');
+      return path.join(metrix.dirs.app.extensions, 'documentation', 'documentation');
     },
 
     getDocumentationVersions(): Version[] {
@@ -58,7 +58,7 @@ const createService = ({ strapi }: { strapi: Core.Strapi }) => {
      * Returns settings stored in core-store
      */
     async getDocumentationAccess() {
-      const { restrictedAccess } = (await strapi.store!({
+      const { restrictedAccess } = (await metrix.store!({
         environment: '',
         type: 'plugin',
         name: 'documentation',
@@ -70,10 +70,10 @@ const createService = ({ strapi }: { strapi: Core.Strapi }) => {
 
     getApiDocumentationPath(api: { name: string; getter: string }) {
       if (api.getter === 'plugin') {
-        return path.join(strapi.dirs.app.extensions, api.name, 'documentation');
+        return path.join(metrix.dirs.app.extensions, api.name, 'documentation');
       }
 
-      return path.join(strapi.dirs.app.api, api.name, 'documentation');
+      return path.join(metrix.dirs.app.api, api.name, 'documentation');
     },
 
     async deleteDocumentation(version: string) {
@@ -90,15 +90,15 @@ const createService = ({ strapi }: { strapi: Core.Strapi }) => {
         return {
           name: plugin,
           getter: 'plugin',
-          ctNames: Object.keys(strapi.plugin(plugin).contentTypes),
+          ctNames: Object.keys(metrix.plugin(plugin).contentTypes),
         };
       });
 
-      const apisToDocument = Object.keys(strapi.apis).map((api) => {
+      const apisToDocument = Object.keys(metrix.apis).map((api) => {
         return {
           name: api,
           getter: 'api',
-          ctNames: Object.keys(strapi.api(api).contentTypes),
+          ctNames: Object.keys(metrix.api(api).contentTypes),
         };
       });
 
@@ -120,8 +120,8 @@ const createService = ({ strapi }: { strapi: Core.Strapi }) => {
       const generatedDocumentation = await produce(config, async (draft) => {
         if (draft.servers?.length === 0) {
           // When no servers found set the defaults
-          const serverUrl = strapi.config.get('server.absoluteUrl');
-          const apiPath = strapi.config.get('api.rest.prefix');
+          const serverUrl = metrix.config.get('server.absoluteUrl');
+          const apiPath = metrix.config.get('api.rest.prefix');
           draft.servers = [
             {
               url: `${serverUrl}${apiPath}`,
@@ -137,10 +137,10 @@ const createService = ({ strapi }: { strapi: Core.Strapi }) => {
         // Set the generated date
         draft.info['x-generation-date'] = new Date().toISOString();
         // Set the plugins that need documentation
-        draft['x-strapi-config'].plugins = pluginsThatNeedDocumentation;
+        draft['x-metrix-config'].plugins = pluginsThatNeedDocumentation;
 
         // Delete the mutateDocumentation key from the config so it doesn't end up in the spec
-        delete draft['x-strapi-config'].mutateDocumentation;
+        delete draft['x-metrix-config'].mutateDocumentation;
 
         // Generate the documentation for each api and update the generatedDocumentation
         for (const api of apisThatNeedGeneratedDocumentation) {
@@ -200,7 +200,7 @@ const createService = ({ strapi }: { strapi: Core.Strapi }) => {
 
       // Escape hatch, allow the user to provide a mutateDocumentation function that can alter any part of
       // the generated documentation before it is written to the file system
-      const userMutatesDocumentation = config['x-strapi-config'].mutateDocumentation;
+      const userMutatesDocumentation = config['x-metrix-config'].mutateDocumentation;
 
       const finalDocumentation = userMutatesDocumentation
         ? produce(generatedDocumentation, userMutatesDocumentation)

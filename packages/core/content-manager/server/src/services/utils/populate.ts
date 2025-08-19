@@ -1,6 +1,6 @@
 import { merge, isEmpty, set, propEq } from 'lodash/fp';
-import strapiUtils from '@strapi/utils';
-import type { UID, Schema, Modules } from '@strapi/types';
+import strapiUtils from '@metrix/utils';
+import type { UID, Schema, Modules } from '@metrix/types';
 import { getService } from '../../utils';
 
 const { isVisibleAttribute, isScalarAttribute, getDoesAttributeRequireValidation } =
@@ -15,7 +15,7 @@ const isRelation = propEq('type', 'relation');
 const isComponent = propEq('type', 'component');
 const isDynamicZone = propEq('type', 'dynamiczone');
 
-// TODO: Import from @strapi/types when it's available there
+// TODO: Import from @metrix/types when it's available there
 type Model = Parameters<typeof isVisibleAttribute>[0];
 export type Populate = Modules.EntityService.Params.Populate.Any<UID.Schema>;
 
@@ -161,7 +161,7 @@ const getDeepPopulate = (
     return {};
   }
 
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
 
   if (!model) {
     return {};
@@ -195,7 +195,7 @@ const getDeepPopulate = (
  * @param level - Current level of nested call
  */
 const getPopulateForValidation = (uid: UID.Schema): Record<string, any> => {
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
   if (!model) {
     return {};
   }
@@ -276,7 +276,7 @@ const getPopulateForValidation = (uid: UID.Schema): Record<string, any> => {
  * @returns result.hasRelations
  */
 const getDeepPopulateDraftCount = (uid: UID.Schema) => {
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
   let hasRelations = false;
 
   const populate = Object.keys(model.attributes).reduce((populateAcc: any, attributeName) => {
@@ -367,7 +367,7 @@ const getQueryPopulate = async (uid: UID.Schema, query: object): Promise<Populat
         populateQuery = set(populatePath, {}, populateQuery);
       }
     },
-    { schema: strapi.getModel(uid), getModel: strapi.getModel.bind(strapi) },
+    { schema: metrix.getModel(uid), getModel: metrix.getModel.bind(metrix) },
     query
   );
 

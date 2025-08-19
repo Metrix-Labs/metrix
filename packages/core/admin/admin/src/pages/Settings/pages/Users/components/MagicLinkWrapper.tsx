@@ -1,5 +1,5 @@
-import { IconButton } from '@strapi/design-system';
-import { Duplicate } from '@strapi/icons';
+import { IconButton } from '@metrix/design-system';
+import { Duplicate } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { ContentBox } from '../../../../../components/ContentBox';

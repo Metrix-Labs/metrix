@@ -7,20 +7,20 @@ tags:
   - concepts
 ---
 
-The schema is the primary data structure leveraged within the Strapi Type System, defining how content is structured and managed in the application.
+The schema is the primary data structure leveraged within the Metrix Type System, defining how content is structured and managed in the application.
 
 It serves several key functions:
 
-- **Representation**: At its core, a schema outlines and defines the structure of Strapi content. This is useful when dealing with features that need access to low level schema properties (_e.g. attributes, plugin options, etc..._).
+- **Representation**: At its core, a schema outlines and defines the structure of Metrix content. This is useful when dealing with features that need access to low level schema properties (_e.g. attributes, plugin options, etc..._).
 
 - **Inference**: The schema allows inferring and configuring numerous other types. This includes entities like `ContentType` or `Component`, among others.
 
 ### Scope
 
-Schema types represent **loaded** schemas in the context of a Strapi server application and should be used accordingly.
+Schema types represent **loaded** schemas in the context of a Metrix server application and should be used accordingly.
 
 :::caution
-Database models and raw schema definitions (_aka schemas before being loaded by the Strapi server_) are **not** the same types and can't be used interchangeably.
+Database models and raw schema definitions (_aka schemas before being loaded by the Metrix server_) are **not** the same types and can't be used interchangeably.
 :::
 
 ### Sub-Types
@@ -39,7 +39,7 @@ flowchart TB;
 
 ### Properties
 
-Schema types contain useful information that helps other types know how to interact with the Strapi content.
+Schema types contain useful information that helps other types know how to interact with the Metrix content.
 
 This is facilitated through multiple properties.
 
@@ -77,11 +77,11 @@ When designing public APIs (and in most other scenarios), it's advised to use th
 Schema definitions exported from the `Schema` namespace are targeting the dynamic types found in the public schema registries, and will dynamically adapt to the current context while extending the base Schema types.
 
 :::info
-If the public registries are empty (_e.g. types are not generated yet, not in the context of a Strapi application, ..._), schema types will fallback to their low-level definitions.
+If the public registries are empty (_e.g. types are not generated yet, not in the context of a Metrix application, ..._), schema types will fallback to their low-level definitions.
 :::
 
 ```typescript
-import type { Schema } from '@strapi/strapi';
+import type { Schema } from '@metrix/metrix';
 
 declare const schema: Schema.Schema;
 declare const contentType: Schema.ContentType;
@@ -108,14 +108,14 @@ processComponentSchema(component); // ✅
 
 </TabItem>
 <TabItem value="internal" label="Internal">
-Schema definitions exported from the `Struct` namespace defines the low level type representation of Strapi schemas.
+Schema definitions exported from the `Struct` namespace defines the low level type representation of Metrix schemas.
 
 :::caution
 Those types can be useful when you want to validate other types against the base ones, but realistically, the public Schema types should almost always be preferred.
 :::
 
 ```typescript
-import type { Struct } from '@strapi/strapi';
+import type { Struct } from '@metrix/metrix';
 
 declare const schema: Struct.Schema;
 declare const contentType: Struct.ContentTypeSchema;

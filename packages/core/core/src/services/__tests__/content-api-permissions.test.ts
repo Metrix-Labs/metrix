@@ -21,16 +21,16 @@ describe('Content API - Permissions', () => {
 
   describe('Get Actions Map', () => {
     test('When no API are defined, it should return an empty object', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
-      const contentAPI = createContentAPI(global.strapi);
+      const contentAPI = createContentAPI(global.metrix);
       const actionsMap = contentAPI.permissions.getActionsMap();
 
       expect(actionsMap).toEqual({});
     });
 
     test('When no controller are defined for an API, it should ignore the API', () => {
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         apis: {
           foo: {},
@@ -38,7 +38,7 @@ describe('Content API - Permissions', () => {
         },
       } as any;
 
-      const contentAPI = createContentAPI(global.strapi);
+      const contentAPI = createContentAPI(global.metrix);
       const actionsMap = contentAPI.permissions.getActionsMap();
 
       expect(actionsMap).toEqual({});
@@ -48,7 +48,7 @@ describe('Content API - Permissions', () => {
       const actionC = () => {};
       Object.assign(actionC, { [Symbol.for('__type__')]: ['admin-api'] });
 
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         apis: {
           foo: {
@@ -63,7 +63,7 @@ describe('Content API - Permissions', () => {
         },
       } as any;
 
-      const contentAPI = createContentAPI(global.strapi);
+      const contentAPI = createContentAPI(global.metrix);
       const actionsMap = contentAPI.permissions.getActionsMap();
 
       expect(actionsMap).toEqual({
@@ -72,7 +72,7 @@ describe('Content API - Permissions', () => {
     });
 
     test('Creates and populate a map of actions from APIs and plugins', () => {
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         apis: {
           foo: {
@@ -124,7 +124,7 @@ describe('Content API - Permissions', () => {
         },
       } as any;
 
-      const contentAPI = createContentAPI(global.strapi);
+      const contentAPI = createContentAPI(global.metrix);
       const actionsMap = contentAPI.permissions.getActionsMap();
 
       expect(actionsMap).toEqual({
@@ -144,7 +144,7 @@ describe('Content API - Permissions', () => {
 
   describe('Register Actions', () => {
     beforeEach(() => {
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         apis: {
           foo: {
@@ -173,7 +173,7 @@ describe('Content API - Permissions', () => {
     });
 
     test('The action provider should holds every action from APIs and plugins', async () => {
-      const contentAPI = createContentAPI(global.strapi);
+      const contentAPI = createContentAPI(global.metrix);
 
       await contentAPI.permissions.registerActions();
 
@@ -214,7 +214,7 @@ describe('Content API - Permissions', () => {
     });
 
     test('Call registerActions twice should throw a duplicate error', async () => {
-      const contentAPI = createContentAPI(global.strapi);
+      const contentAPI = createContentAPI(global.metrix);
 
       await contentAPI.permissions.registerActions();
 
@@ -225,10 +225,10 @@ describe('Content API - Permissions', () => {
   });
 
   describe('Providers', () => {
-    test('You should not be able to register action once strapi is loaded', () => {
-      global.strapi.isLoaded = true;
+    test('You should not be able to register action once metrix is loaded', () => {
+      global.metrix.isLoaded = true;
 
-      const contentAPI = createContentAPI(global.strapi);
+      const contentAPI = createContentAPI(global.metrix);
 
       // Actions
       expect(() =>
@@ -249,25 +249,25 @@ describe('Content API - Permissions', () => {
 
   describe('Engine', () => {
     test('Engine warns when registering an unknown action', async () => {
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         log: {
           debug: jest.fn(),
         },
       } as any;
 
-      const contentAPI = createContentAPI(global.strapi);
+      const contentAPI = createContentAPI(global.metrix);
 
       const ability = await contentAPI.permissions.engine.generateAbility([{ action: 'foo' }]);
 
       expect(ability.rules).toHaveLength(0);
-      expect(global.strapi.log.debug).toHaveBeenCalledWith(
+      expect(global.metrix.log.debug).toHaveBeenCalledWith(
         `Unknown action "foo" supplied when registering a new permission`
       );
     });
 
     test('Engine filter out invalid action when generating an ability', async () => {
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         log: {
           debug: jest.fn(),
@@ -282,7 +282,7 @@ describe('Content API - Permissions', () => {
         },
       } as any;
 
-      const contentAPI = createContentAPI(global.strapi);
+      const contentAPI = createContentAPI(global.metrix);
 
       await contentAPI.permissions.registerActions();
 
@@ -299,8 +299,8 @@ describe('Content API - Permissions', () => {
         },
       ]);
 
-      expect(global.strapi.log.debug).toHaveBeenCalledTimes(1);
-      expect(global.strapi.log.debug).toHaveBeenCalledWith(
+      expect(global.metrix.log.debug).toHaveBeenCalledTimes(1);
+      expect(global.metrix.log.debug).toHaveBeenCalledWith(
         `Unknown action "foo" supplied when registering a new permission`
       );
     });

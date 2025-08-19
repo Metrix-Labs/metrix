@@ -2,7 +2,7 @@
 
 import { createTestBuilder } from 'api-tests/builder';
 import { createAuthRequest } from 'api-tests/request';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 
 const articleUid = 'api::article.article';
 const articleModel = {
@@ -106,14 +106,14 @@ const globalModel = {
  */
 describe('Homepage API', () => {
   const builder = createTestBuilder();
-  let strapi;
+  let metrix;
   let rq;
 
   describe('Recent Documents', () => {
     beforeAll(async () => {
       await builder.addContentTypes([articleModel, globalModel, tagModel, authorModel]).build();
-      strapi = await createStrapiInstance();
-      rq = await createAuthRequest({ strapi });
+      metrix = await createStrapiInstance();
+      rq = await createAuthRequest({ metrix });
     });
 
     it('requires action param', async () => {
@@ -136,12 +136,12 @@ describe('Homepage API', () => {
      */
     it('finds the most recently updated documents', async () => {
       // Create a global document so we can update it later
-      const globalDoc = await strapi.documents(globalUid).create({
+      const globalDoc = await metrix.documents(globalUid).create({
         data: {
           siteName: 'a cool site name',
         },
       });
-      await strapi.documents(globalUid).publish({
+      await metrix.documents(globalUid).publish({
         documentId: globalDoc.documentId,
       });
 
@@ -153,7 +153,7 @@ describe('Homepage API', () => {
       for (let i = 0; i < 9; i++) {
         if (i % 3 === 0) {
           // When index is 0, 3, 6
-          await strapi.documents(articleUid).create({
+          await metrix.documents(articleUid).create({
             data: {
               title: `Article ${i}`,
               content: [{ type: 'paragraph', children: [{ type: 'text', text: 'Hello world' }] }],
@@ -161,7 +161,7 @@ describe('Homepage API', () => {
           });
         } else if (i % 3 === 1) {
           // When index is 1, 4, 7
-          await strapi.documents(globalUid).update({
+          await metrix.documents(globalUid).update({
             documentId: globalDoc.documentId,
             status: 'draft',
             data: {
@@ -170,7 +170,7 @@ describe('Homepage API', () => {
           });
         } else {
           // When index is 2, 5, 8
-          await strapi.documents(authorUid).create({
+          await metrix.documents(authorUid).create({
             data: {
               name: `author-${i}`,
             },
@@ -209,39 +209,39 @@ describe('Homepage API', () => {
      */
     it('finds the most recently published documents', async () => {
       // Create draft and publish documents
-      const article = await strapi.documents(articleUid).create({
+      const article = await metrix.documents(articleUid).create({
         data: {
           title: 'The Paperback Writer',
         },
       });
-      const tag = await strapi.documents(tagUid).create({
+      const tag = await metrix.documents(tagUid).create({
         data: {
           slug: 'Tag 1',
         },
       });
       // Create non draft and publish document
-      const author = await strapi.documents(authorUid).create({
+      const author = await metrix.documents(authorUid).create({
         data: {
           name: 'Paul McCartney',
         },
       });
 
       // Publish the article
-      await strapi.documents(articleUid).publish({
+      await metrix.documents(articleUid).publish({
         documentId: article.documentId,
       });
       // Update published document to create a 'modified' status
-      await strapi.documents(articleUid).update({
+      await metrix.documents(articleUid).update({
         documentId: article.documentId,
         data: {
           title: 'Paperback Writer',
         },
       });
-      await strapi.documents(tagUid).publish({
+      await metrix.documents(tagUid).publish({
         documentId: tag.documentId,
       });
       // Update the author (won't be included in the response)
-      await strapi.documents(authorUid).update({
+      await metrix.documents(authorUid).update({
         documentId: author.documentId,
         data: {
           name: 'John Lennon',
@@ -264,7 +264,7 @@ describe('Homepage API', () => {
     });
 
     afterAll(async () => {
-      await strapi.destroy();
+      await metrix.destroy();
       await builder.cleanup();
     });
   });
@@ -272,8 +272,8 @@ describe('Homepage API', () => {
   describe('Count Documents', () => {
     beforeAll(async () => {
       await builder.addContentTypes([articleModel, globalModel, tagModel, authorModel]).build();
-      strapi = await createStrapiInstance();
-      rq = await createAuthRequest({ strapi });
+      metrix = await createStrapiInstance();
+      rq = await createAuthRequest({ metrix });
     });
 
     /**
@@ -283,22 +283,22 @@ describe('Homepage API', () => {
     it('returns the count of draft, modified and published documents', async () => {
       // Create draft, modified and published documents
       // Draft article
-      await strapi.documents(articleUid).create({
+      await metrix.documents(articleUid).create({
         data: {
           title: 'The Paperback Writer',
         },
       });
 
       // Modified tag
-      const tagModified = await strapi.documents(tagUid).create({
+      const tagModified = await metrix.documents(tagUid).create({
         data: {
           slug: 'Tag 1',
         },
       });
-      await strapi.documents(tagUid).publish({
+      await metrix.documents(tagUid).publish({
         documentId: tagModified.documentId,
       });
-      await strapi.documents(tagUid).update({
+      await metrix.documents(tagUid).update({
         documentId: tagModified.documentId,
         data: {
           slug: 'Tag One',
@@ -306,7 +306,7 @@ describe('Homepage API', () => {
       });
 
       // Publish author (draftAndPublish is false, so created documents are published by default)
-      await strapi.documents(authorUid).create({
+      await metrix.documents(authorUid).create({
         data: {
           name: 'Paul McCartney',
         },
@@ -327,7 +327,7 @@ describe('Homepage API', () => {
     });
 
     afterAll(async () => {
-      await strapi.destroy();
+      await metrix.destroy();
       await builder.cleanup();
     });
   });

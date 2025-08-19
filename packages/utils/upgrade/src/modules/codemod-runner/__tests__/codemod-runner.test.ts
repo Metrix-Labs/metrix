@@ -42,7 +42,7 @@ const currentStrapiVersion = '1.0.0';
 const packageJSONFile = `{
   "name": "test",
   "version": "${currentStrapiVersion}",
-  "dependencies": { "@strapi/strapi": "${currentStrapiVersion}" }
+  "dependencies": { "@metrix/metrix": "${currentStrapiVersion}" }
 }`;
 
 const srcFiles = {

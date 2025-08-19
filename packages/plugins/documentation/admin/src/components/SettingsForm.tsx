@@ -9,10 +9,10 @@ import {
   Toggle,
   Typography,
   Field,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 // Strapi Icons
-import { Check, Eye as Show, EyeStriked as Hide } from '@strapi/icons';
-import { translatedErrors, useRBAC, Layouts } from '@strapi/strapi/admin';
+import { Check, Eye as Show, EyeStriked as Hide } from '@metrix/icons';
+import { translatedErrors, useRBAC, Layouts } from '@metrix/metrix/admin';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

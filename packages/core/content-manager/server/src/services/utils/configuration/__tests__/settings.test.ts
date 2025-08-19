@@ -1,7 +1,7 @@
 import * as settingsService from '../settings';
 
-jest.mock('@strapi/utils', () => ({
-  ...jest.requireActual('@strapi/utils'),
+jest.mock('@metrix/utils', () => ({
+  ...jest.requireActual('@metrix/utils'),
   traverse: {
     traverseQuerySort: jest.fn((a, b, c) => c),
   },
@@ -21,7 +21,7 @@ jest.mock('../settings', () => {
 });
 
 describe('Configuration settings service', () => {
-  global.strapi = {
+  global.metrix = {
     getModel() {},
   } as any;
 

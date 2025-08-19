@@ -1,4 +1,4 @@
-import { Box, CardAsset, Flex } from '@strapi/design-system';
+import { Box, CardAsset, Flex } from '@metrix/design-system';
 import { styled } from 'styled-components';
 
 import { AssetCardBase, AssetCardBaseProps } from './AssetCardBase';

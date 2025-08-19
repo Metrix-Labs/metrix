@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/generators",
+  "name": "@metrix/generators",
   "version": "5.22.0",
   "description": "Interactive API generator.",
   "keywords": [
@@ -49,14 +49,14 @@
   },
   "dependencies": {
     "@sindresorhus/slugify": "1.1.0",
-    "@strapi/typescript-utils": "5.22.0",
-    "@strapi/utils": "5.22.0",
     "chalk": "4.1.2",
     "copyfiles": "2.4.1",
     "fs-extra": "11.2.0",
     "handlebars": "4.7.7",
     "plop": "4.0.1",
-    "pluralize": "8.0.0"
+    "pluralize": "8.0.0",
+    "@metrix/typescript-utils": "5.22.0",
+    "@metrix/utils": "5.22.0"
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",

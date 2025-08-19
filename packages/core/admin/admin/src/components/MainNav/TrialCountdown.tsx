@@ -1,5 +1,5 @@
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
-import { Flex, Tooltip } from '@strapi/design-system';
+import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
+import { Flex, Tooltip } from '@metrix/design-system';
 import { format, isBefore, startOfToday } from 'date-fns';
 import { useIntl } from 'react-intl';
 import { useTheme } from 'styled-components';

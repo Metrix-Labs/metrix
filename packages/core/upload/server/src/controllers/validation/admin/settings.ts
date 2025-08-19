@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrix/utils';
 
 const settingsSchema = yup.object({
   sizeOptimization: yup.boolean().required(),

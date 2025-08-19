@@ -3,7 +3,7 @@ import {
   Crumb,
   CrumbLink,
   BreadcrumbsProps as BaseBreadcrumbsProps,
-} from '@strapi/design-system';
+} from '@metrix/design-system';
 import { useIntl, MessageDescriptor } from 'react-intl';
 import { Link as ReactRouterLink } from 'react-router-dom';
 

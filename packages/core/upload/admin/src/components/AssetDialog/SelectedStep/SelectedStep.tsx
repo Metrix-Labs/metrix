@@ -1,5 +1,5 @@
 // TODO: find a better naming convention for the file that was an index file before
-import { Flex, Typography } from '@strapi/design-system';
+import { Flex, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTrad } from '../../../utils';

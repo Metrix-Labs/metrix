@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Button, Popover } from '@strapi/design-system';
-import { Filter } from '@strapi/icons';
+import { Button, Popover } from '@metrix/design-system';
+import { Filter } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { displayedFilters } from '../../../utils';

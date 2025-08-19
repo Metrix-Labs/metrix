@@ -1,4 +1,4 @@
-import { DesignSystemProvider } from '@strapi/design-system';
+import { DesignSystemProvider } from '@metrix/design-system';
 import { render as renderTL, screen } from '@testing-library/react';
 
 import en from '../../../translations/en.json';

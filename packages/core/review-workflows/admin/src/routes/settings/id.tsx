@@ -10,10 +10,10 @@ import {
   Page,
   FormProps,
   FormHelpers,
-} from '@strapi/admin/strapi-admin';
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
-import { Button, Dialog, Flex, Typography } from '@strapi/design-system';
-import { Check } from '@strapi/icons';
+} from '@metrix/admin/metrix-admin';
+import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
+import { Button, Dialog, Flex, Typography } from '@metrix/design-system';
+import { Check } from '@metrix/icons';
 import { generateNKeysBetween } from 'fractional-indexing';
 import { useIntl } from 'react-intl';
 import { useNavigate, useParams } from 'react-router-dom';

@@ -1,7 +1,7 @@
 import { posix, win32 } from 'path';
 import { cloneDeep, get, set } from 'lodash/fp';
 import { Readable, Writable } from 'stream-chain';
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrix/types';
 import { createTransferEngine, TRANSFER_STAGES } from '..';
 
 import type {
@@ -323,7 +323,7 @@ extendExpectForDataTransferTests();
 
 const metadata = {
   createdAt: '2022-11-23T09:26:43.463Z',
-  strapi: {
+  metrix: {
     version: '1.2.3',
   },
 };
@@ -899,7 +899,7 @@ describe('Transfer engine', () => {
 
         versionsThatFail.forEach((version) => {
           const modifiedMetadata = cloneDeep(metadata);
-          modifiedMetadata.strapi.version = version;
+          modifiedMetadata.metrix.version = version;
           const source = createSource();
           source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
           const engine = createTransferEngine(source, completeDestination, options);
@@ -921,7 +921,7 @@ describe('Transfer engine', () => {
 
         versionsThatFail.forEach((version) => {
           const modifiedMetadata = cloneDeep(metadata);
-          modifiedMetadata.strapi.version = version;
+          modifiedMetadata.metrix.version = version;
           const source = createSource();
           source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
           const engine = createTransferEngine(source, completeDestination, options);
@@ -934,7 +934,7 @@ describe('Transfer engine', () => {
 
         versionsThatSucceed.forEach((version) => {
           const modifiedMetadata = cloneDeep(metadata);
-          modifiedMetadata.strapi.version = version;
+          modifiedMetadata.metrix.version = version;
           const source = createSource();
           source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
           const engine = createTransferEngine(source, completeDestination, options);
@@ -957,7 +957,7 @@ describe('Transfer engine', () => {
         await Promise.all(
           versionsThatFail.map(async (version) => {
             const modifiedMetadata = cloneDeep(metadata);
-            modifiedMetadata.strapi.version = version;
+            modifiedMetadata.metrix.version = version;
             const source = createSource();
             source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
             const engine = createTransferEngine(source, completeDestination, options);
@@ -972,7 +972,7 @@ describe('Transfer engine', () => {
         await Promise.all(
           versionsThatSucceed.map(async (version) => {
             const modifiedMetadata = cloneDeep(metadata);
-            modifiedMetadata.strapi.version = version;
+            modifiedMetadata.metrix.version = version;
             const source = createSource();
             source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
             const engine = createTransferEngine(source, completeDestination, options);
@@ -996,7 +996,7 @@ describe('Transfer engine', () => {
         await Promise.all(
           versionsThatFail.map(async (version) => {
             const modifiedMetadata = cloneDeep(metadata);
-            modifiedMetadata.strapi.version = version;
+            modifiedMetadata.metrix.version = version;
             const source = createSource();
             source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
             const engine = createTransferEngine(source, completeDestination, options);
@@ -1011,7 +1011,7 @@ describe('Transfer engine', () => {
         await Promise.all(
           versionsThatSucceed.map(async (version) => {
             const modifiedMetadata = cloneDeep(metadata);
-            modifiedMetadata.strapi.version = version;
+            modifiedMetadata.metrix.version = version;
             const source = createSource();
             source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
             const engine = createTransferEngine(source, completeDestination, options);
@@ -1035,7 +1035,7 @@ describe('Transfer engine', () => {
         await Promise.all(
           versionsThatFail.map(async (version) => {
             const modifiedMetadata = cloneDeep(metadata);
-            modifiedMetadata.strapi.version = version;
+            modifiedMetadata.metrix.version = version;
             const source = createSource();
             source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
             const engine = createTransferEngine(source, completeDestination, options);
@@ -1050,7 +1050,7 @@ describe('Transfer engine', () => {
         await Promise.all(
           versionsThatSucceed.map(async (version) => {
             const modifiedMetadata = cloneDeep(metadata);
-            modifiedMetadata.strapi.version = version;
+            modifiedMetadata.metrix.version = version;
             const source = createSource();
             source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
             const engine = createTransferEngine(source, completeDestination, options);
@@ -1073,7 +1073,7 @@ describe('Transfer engine', () => {
         await Promise.all(
           versionsThatSucceed.map(async (version) => {
             const modifiedMetadata = cloneDeep(metadata);
-            modifiedMetadata.strapi.version = version;
+            modifiedMetadata.metrix.version = version;
             const source = createSource();
             source.getMetadata = jest.fn().mockResolvedValue(modifiedMetadata);
             const engine = createTransferEngine(source, completeDestination, options);

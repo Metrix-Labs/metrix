@@ -1,5 +1,5 @@
-import { contentTypes as contentTypeUtils } from '@strapi/utils';
-import type { Core, Struct } from '@strapi/types';
+import { contentTypes as contentTypeUtils } from '@metrix/utils';
+import type { Core, Struct } from '@metrix/types';
 
 import { createSingleTypeService } from './single-type';
 import { createCollectionTypeService } from './collection-type';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Box, CardAction, Flex, BoxProps } from '@strapi/design-system';
-import { Folder } from '@strapi/icons';
+import { Box, CardAction, Flex, BoxProps } from '@metrix/design-system';
+import { Folder } from '@metrix/icons';
 import { NavLink, LinkProps } from 'react-router-dom';
 import { styled } from 'styled-components';
 

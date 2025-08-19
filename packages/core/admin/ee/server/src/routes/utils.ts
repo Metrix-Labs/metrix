@@ -1,9 +1,9 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 export const enableFeatureMiddleware =
   (featureName: string): Core.MiddlewareHandler =>
   (ctx, next) => {
-    if (strapi.ee.features.isEnabled(featureName)) {
+    if (metrix.ee.features.isEnabled(featureName)) {
       return next();
     }
 

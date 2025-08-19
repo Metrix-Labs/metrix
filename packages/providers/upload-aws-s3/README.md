@@ -1,4 +1,4 @@
-# @strapi/provider-upload-aws-s3
+# @metrix/provider-upload-aws-s3
 
 ## Resources
 
@@ -6,19 +6,19 @@
 
 ## Links
 
-- [Strapi website](https://strapi.io/)
-- [Strapi documentation](https://docs.strapi.io)
-- [Strapi community on Discord](https://discord.strapi.io)
-- [Strapi news on Twitter](https://twitter.com/strapijs)
+- [Metrix website](https://metrix.io/)
+- [Metrix documentation](https://docs.metrix.io)
+- [Metrix community on Discord](https://discord.metrix.io)
+- [Metrix news on Twitter](https://twitter.com/strapijs)
 
 ## Installation
 
 ```bash
 # using yarn
-yarn add @strapi/provider-upload-aws-s3
+yarn add @metrix/provider-upload-aws-s3
 
 # using npm
-npm install @strapi/provider-upload-aws-s3 --save
+npm install @metrix/provider-upload-aws-s3 --save
 ```
 
 ## Configuration
@@ -31,9 +31,9 @@ npm install @strapi/provider-upload-aws-s3 --save
   - `Bucket` is the name of the bucket to upload to.
 - `actionOptions` is passed directly to the parameters to each method respectively. You can find the complete list of [upload/ uploadStream options](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property) and [delete options](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property)
 
-See the [documentation about using a provider](https://docs.strapi.io/developer-docs/latest/plugins/upload.html#using-a-provider) for information on installing and using a provider. To understand how environment variables are used in Strapi, please refer to the [documentation about environment variables](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#environment-variables).
+See the [documentation about using a provider](https://docs.metrix.io/developer-docs/latest/plugins/upload.html#using-a-provider) for information on installing and using a provider. To understand how environment variables are used in Metrix, please refer to the [documentation about environment variables](https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#environment-variables).
 
-If you're using the bucket as a CDN and deliver the content on a custom domain, you can get use of the `baseUrl` and `rootPath` properties to configure how your assets' urls will be saved inside Strapi.
+If you're using the bucket as a CDN and deliver the content on a custom domain, you can get use of the `baseUrl` and `rootPath` properties to configure how your assets' urls will be saved inside Metrix.
 
 ### Provider Configuration
 
@@ -141,7 +141,7 @@ module.exports = ({ env }) => ({
 
 ### Security Middleware Configuration
 
-Due to the default settings in the Strapi Security Middleware you will need to modify the `contentSecurityPolicy` settings to properly see thumbnail previews in the Media Library. You should replace `strapi::security` string with the object bellow instead as explained in the [middleware configuration](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/required/middlewares.html#loading-order) documentation.
+Due to the default settings in the Metrix Security Middleware you will need to modify the `contentSecurityPolicy` settings to properly see thumbnail previews in the Media Library. You should replace `metrix::security` string with the object bellow instead as explained in the [middleware configuration](https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/required/middlewares.html#loading-order) documentation.
 
 `./config/middlewares.js`
 
@@ -149,7 +149,7 @@ Due to the default settings in the Strapi Security Middleware you will need to m
 module.exports = [
   // ...
   {
-    name: 'strapi::security',
+    name: 'metrix::security',
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
@@ -159,14 +159,14 @@ module.exports = [
             "'self'",
             'data:',
             'blob:',
-            'market-assets.strapi.io',
+            'market-assets.metrix.io',
             'yourBucketName.s3.yourRegion.amazonaws.com',
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
-            'market-assets.strapi.io',
+            'market-assets.metrix.io',
             'yourBucketName.s3.yourRegion.amazonaws.com',
           ],
           upgradeInsecureRequests: null,
@@ -182,7 +182,7 @@ If you use dots in your bucket name (`forcePathStyle set to false`), the url of 
 
 ## Bucket CORS Configuration
 
-If you are planning on uploading content like GIFs and videos to your S3 bucket, you will want to edit its CORS configuration so that thumbnails are properly shown in Strapi. To do so, open your Bucket on the AWS console and locate the _Cross-origin resource sharing (CORS)_ field under the _Permissions_ tab, then amend the policies by writing your own JSON configuration, or copying and pasting the following one:
+If you are planning on uploading content like GIFs and videos to your S3 bucket, you will want to edit its CORS configuration so that thumbnails are properly shown in Metrix. To do so, open your Bucket on the AWS console and locate the _Cross-origin resource sharing (CORS)_ field under the _Permissions_ tab, then amend the policies by writing your own JSON configuration, or copying and pasting the following one:
 
 ```json
 [
@@ -212,7 +212,7 @@ These are the minimum amount of permissions needed for this provider to work.
 
 ## Update to AWS SDK V3 and URL Format Change
 
-In the recent update of the `@strapi/provider-upload-aws-s3` plugin, we have transitioned from AWS SDK V2 to AWS SDK V3. This significant update brings along a change in the format of the URLs used in Amazon S3 services.
+In the recent update of the `@metrix/provider-upload-aws-s3` plugin, we have transitioned from AWS SDK V2 to AWS SDK V3. This significant update brings along a change in the format of the URLs used in Amazon S3 services.
 
 ### Understanding the New URL Format
 
@@ -222,9 +222,9 @@ AWS SDK V3 adopts the virtual-hosted–style URI format for S3 URLs. This format
 
 The move to virtual-hosted–style URIs aligns with AWS's recommendation and future-proofing strategies. For an in-depth understanding of AWS's decision behind this transition, you can refer to their detailed post [here](https://aws.amazon.com/es/blogs/aws/amazon-s3-path-deprecation-plan-the-rest-of-the-story/).
 
-### Configuring Your Strapi Application
+### Configuring Your Metrix Application
 
-If you wish to continue using the plugin with Strapi 4.15.x versions or newer without changing your URL format, it's possible to specify your desired URL format directly in the plugin's configuration. Below is an example configuration highlighting the critical `baseUrl` property:
+If you wish to continue using the plugin with Metrix 4.15.x versions or newer without changing your URL format, it's possible to specify your desired URL format directly in the plugin's configuration. Below is an example configuration highlighting the critical `baseUrl` property:
 
 ```javascript
 upload: {

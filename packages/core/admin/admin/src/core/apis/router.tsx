@@ -87,20 +87,20 @@ class Router {
    * @internal This method is used internally by Strapi to create the router.
    * It should not be used by plugins, doing so will likely break the application.
    */
-  createRouter(strapi: StrapiApp, { memory, ...opts }: RouterOptions = {}) {
+  createRouter(metrix: StrapiApp, { memory, ...opts }: RouterOptions = {}) {
     const routes = [
       {
         path: '/*',
         errorElement: (
-          <Provider store={strapi.store!}>
-            <LanguageProvider messages={strapi.configurations.translations}>
-              <Theme themes={strapi.configurations.themes}>
+          <Provider store={metrix.store!}>
+            <LanguageProvider messages={metrix.configurations.translations}>
+              <Theme themes={metrix.configurations.themes}>
                 <ErrorElement />
               </Theme>
             </LanguageProvider>
           </Provider>
         ),
-        element: <App strapi={strapi} store={strapi.store!} />,
+        element: <App metrix={metrix} store={metrix.store!} />,
         children: [
           ...getImmutableRoutes(),
           {

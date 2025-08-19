@@ -13,8 +13,8 @@ import {
   Tabs,
   Badge,
   BaseLink,
-} from '@strapi/design-system';
-import { ExternalLink, CloudUpload, Code } from '@strapi/icons';
+} from '@metrix/design-system';
+import { ExternalLink, CloudUpload, Code } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { CLIDeployTabs } from '../components/CLIDeployTabs';
@@ -77,7 +77,7 @@ const CloudDeploy = () => {
               <Box>
                 <BaseLink
                   isExternal
-                  href="https://cloud.strapi.io/login?utm_campaign=Strapi%20Cloud%20Plugin&utm_source=In-Product&utm_medium=CTA"
+                  href="https://cloud.metrix.io/login?utm_campaign=Strapi%20Cloud%20Plugin&utm_source=In-Product&utm_medium=CTA"
                 >
                   <CloudUpload height={40} width={40} fill="buttonPrimary600" />
                 </BaseLink>
@@ -100,7 +100,7 @@ const CloudDeploy = () => {
                 <LinkButton
                   variant="default"
                   endIcon={<ExternalLink fill="neutral0" />}
-                  href="https://cloud.strapi.io/login?utm_campaign=Strapi%20Cloud%20Plugin&utm_source=In-Product&utm_medium=CTA"
+                  href="https://cloud.metrix.io/login?utm_campaign=Strapi%20Cloud%20Plugin&utm_source=In-Product&utm_medium=CTA"
                   isExternal
                   size="M"
                 >
@@ -111,7 +111,7 @@ const CloudDeploy = () => {
                 </LinkButton>
               </Box>
               <Box paddingTop={5}>
-                <Link isExternal href="https://docs.strapi.io/cloud/getting-started/deployment">
+                <Link isExternal href="https://docs.metrix.io/cloud/getting-started/deployment">
                   {documentationLink}
                 </Link>
               </Box>
@@ -139,7 +139,7 @@ const CloudDeploy = () => {
               <CLIDeployTabs />
 
               <Box paddingTop={5}>
-                <Link isExternal href="https://docs.strapi.io/cloud/getting-started/deployment-cli">
+                <Link isExternal href="https://docs.metrix.io/cloud/getting-started/deployment-cli">
                   {documentationLink}
                 </Link>
               </Box>

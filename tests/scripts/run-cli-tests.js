@@ -206,7 +206,7 @@ yargs
 
               /**
                * We do not start up the apps; the test runner is responsible for that if it's necessary,
-               * but most CLI commands don't need a started instance of strapi
+               * but most CLI commands don't need a started instance of metrix
                * Instead, we just pass in the path of the test apps assigned for this test runner via env
                *  */
               try {

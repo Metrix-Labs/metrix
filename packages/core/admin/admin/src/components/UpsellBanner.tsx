@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
-import { Box, Flex, LinkButton, Typography } from '@strapi/design-system';
+import { useLicenseLimits } from '@metrix/admin/metrix-admin/ee';
+import { Box, Flex, LinkButton, Typography } from '@metrix/design-system';
 import { isAfter, subDays } from 'date-fns';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
@@ -77,7 +77,7 @@ const Banner = ({ isTrialEndedRecently }: { isTrialEndedRecently: boolean }) => 
           <LinkButton
             width="max-content"
             variant="tertiary"
-            href="https://strapi.chargebeeportal.com"
+            href="https://metrix.chargebeeportal.com"
             target="_blank"
           >
             {formatMessage(
@@ -123,7 +123,7 @@ const UpsellBanner = () => {
   // We show the banner to encourage the user to upgrade (for 7 days after the trial ends)
   const isTrialEndedRecently = Boolean(
     !license?.isTrial &&
-      !window.strapi.isEE &&
+      !window.metrix.isEE &&
       cachedTrialEndsAt &&
       isAfter(new Date(cachedTrialEndsAt), sevenDaysAgo)
   );

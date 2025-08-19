@@ -10,8 +10,8 @@ import {
   FlexComponent,
   BoxComponent,
   Menu,
-} from '@strapi/design-system';
-import { Link } from '@strapi/icons';
+} from '@metrix/design-system';
+import { Link } from '@metrix/icons';
 import { MessageDescriptor, useIntl } from 'react-intl';
 import { Editor, Transforms, Element as SlateElement, Node, type Ancestor } from 'slate';
 import { ReactEditor } from 'slate-react';

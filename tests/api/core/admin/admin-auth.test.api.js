@@ -2,7 +2,7 @@
 
 // Helpers.
 const { createAuthRequest } = require('api-tests/request');
-const { createStrapiInstance, superAdmin } = require('api-tests/strapi');
+const { createStrapiInstance, superAdmin } = require('api-tests/metrix');
 const { createUtils } = require('api-tests/utils');
 
 const internals = {
@@ -11,12 +11,12 @@ const internals = {
 
 describe('Admin Auth End to End', () => {
   let rq;
-  let strapi;
+  let metrix;
   let utils;
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
-    utils = createUtils(strapi);
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
+    utils = createUtils(metrix);
 
     internals.role = await utils.createRole({
       name: 'auth_test_role',
@@ -27,7 +27,7 @@ describe('Admin Auth End to End', () => {
   afterAll(async () => {
     await utils.deleteRolesById([internals.role.id]);
 
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   describe('Login', () => {
@@ -55,7 +55,7 @@ describe('Admin Auth End to End', () => {
       // insert a user with a password that is over 72 bytes, which is not valid
       const longPassword = `aA1${'b'.repeat(100)}`;
       const someUser = await utils.createUser({
-        email: 'some-user@strapi.io',
+        email: 'some-user@metrix.io',
         firstname: 'some',
         lastname: 'user',
         password: longPassword,
@@ -110,7 +110,7 @@ describe('Admin Auth End to End', () => {
         url: '/admin/login',
         method: 'POST',
         body: {
-          email: 'non-existent-user@strapi.io',
+          email: 'non-existent-user@metrix.io',
           password: 'pcw123',
         },
       });
@@ -132,7 +132,7 @@ describe('Admin Auth End to End', () => {
         url: '/admin/login',
         method: 'POST',
         body: {
-          email: 'non-existent-user@strapi.io',
+          email: 'non-existent-user@metrix.io',
         },
       });
 
@@ -229,9 +229,9 @@ describe('Admin Auth End to End', () => {
 
     beforeAll(async () => {
       const userInfo = {
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
         firstname: 'test',
-        lastname: 'strapi',
+        lastname: 'metrix',
         roles: [internals.role.id],
         registrationToken,
         isActive: false,
@@ -313,9 +313,9 @@ describe('Admin Auth End to End', () => {
 
     beforeEach(async () => {
       const userInfo = {
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
         firstname: 'test',
-        lastname: 'strapi',
+        lastname: 'metrix',
         registrationToken: 'foobar',
       };
 
@@ -521,7 +521,7 @@ describe('Admin Auth End to End', () => {
         url: '/admin/register-admin',
         method: 'POST',
         body: {
-          email: 'test@strapi.io',
+          email: 'test@metrix.io',
           firstname: 'test',
           lastname: 'Strapi',
           password: '123',
@@ -563,7 +563,7 @@ describe('Admin Auth End to End', () => {
 
     test('Fails if already a user', async () => {
       const userInfo = {
-        email: 'test-admin@strapi.io',
+        email: 'test-admin@metrix.io',
         firstname: 'test',
         lastname: 'Strapi',
         password: '1Test2azda3',
@@ -590,13 +590,13 @@ describe('Admin Auth End to End', () => {
 
   describe('POST /forgot-password', () => {
     test('Always returns en empty response', async () => {
-      global.strapi.service('admin::auth').forgotPassword = jest.fn(() => {});
+      global.metrix.service('admin::auth').forgotPassword = jest.fn(() => {});
 
       const res = await rq({
         url: '/admin/forgot-password',
         method: 'POST',
         body: {
-          email: 'admin@strapi.io',
+          email: 'admin@metrix.io',
         },
       });
 
@@ -607,7 +607,7 @@ describe('Admin Auth End to End', () => {
         url: '/admin/forgot-password',
         method: 'POST',
         body: {
-          email: 'email-do-not-exist@strapi.io',
+          email: 'email-do-not-exist@metrix.io',
         },
       });
 

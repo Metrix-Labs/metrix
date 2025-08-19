@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex, Accordion, Typography } from '@strapi/design-system';
+import { Box, Flex, Accordion, Typography } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { getTranslation } from '../../../../../utils/translations';

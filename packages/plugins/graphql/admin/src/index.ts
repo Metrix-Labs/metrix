@@ -3,11 +3,11 @@ import pluginPkg from '../../package.json';
 import { pluginId } from './pluginId';
 import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 
-const name = pluginPkg.strapi.name;
+const name = pluginPkg.metrix.name;
 
 // eslint-disable-next-line import/no-default-export
 export default {
-  // TODO: we need to have the type for StrapiApp done from `@strapi/admin` package.
+  // TODO: we need to have the type for StrapiApp done from `@metrix/admin` package.
   register(app: any) {
     app.registerPlugin({
       id: pluginId,

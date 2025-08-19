@@ -18,7 +18,7 @@ const providerMethods = [
 
 describe('Action Provider', () => {
   beforeEach(() => {
-    global.strapi = {
+    global.metrix = {
       isLoaded: false,
       plugins: {
         bar: {},
@@ -61,8 +61,8 @@ describe('Action Provider', () => {
         expect(action).toMatchObject(expected);
       });
 
-      test(`Can't register an action if strapi is loaded`, async () => {
-        global.strapi.isLoaded = true;
+      test(`Can't register an action if metrix is loaded`, async () => {
+        global.metrix.isLoaded = true;
 
         const attributes = {
           section: 'settings',

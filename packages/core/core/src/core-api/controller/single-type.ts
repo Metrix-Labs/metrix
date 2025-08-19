@@ -1,6 +1,6 @@
 import { isObject } from 'lodash/fp';
-import { errors } from '@strapi/utils';
-import type { Struct, Core, Utils, UID } from '@strapi/types';
+import { errors } from '@metrix/utils';
+import type { Struct, Core, Utils, UID } from '@metrix/types';
 
 interface Options {
   contentType: Struct.SingleTypeSchema;
@@ -24,7 +24,7 @@ const createSingleTypeController = ({
       await this.validateQuery(ctx);
       const sanitizedQuery = await this.sanitizeQuery(ctx);
 
-      const entity = await strapi.service(uid).find(sanitizedQuery);
+      const entity = await metrix.service(uid).find(sanitizedQuery);
 
       const sanitizedEntity = await this.sanitizeOutput(entity, ctx);
 
@@ -45,7 +45,7 @@ const createSingleTypeController = ({
 
       const sanitizedInputData = await this.sanitizeInput(body.data, ctx);
 
-      const entity = await strapi.service(uid).createOrUpdate({
+      const entity = await metrix.service(uid).createOrUpdate({
         ...query,
         data: sanitizedInputData,
       });
@@ -58,7 +58,7 @@ const createSingleTypeController = ({
     async delete(ctx) {
       const { query } = ctx;
 
-      await strapi.service(uid).delete(query);
+      await metrix.service(uid).delete(query);
 
       ctx.status = 204;
     },

@@ -4,7 +4,7 @@ const { toPlainObject } = require('lodash/fp');
 
 const { checkBadRequest } = require('../../utils');
 
-module.exports = ({ nexus, strapi }) => {
+module.exports = ({ nexus, metrix }) => {
   const { nonNull } = nexus;
 
   return {
@@ -23,7 +23,7 @@ module.exports = ({ nexus, strapi }) => {
 
       koaContext.request.body = toPlainObject(args);
 
-      await strapi.plugin('users-permissions').controller('auth').changePassword(koaContext);
+      await metrix.plugin('users-permissions').controller('auth').changePassword(koaContext);
 
       const output = koaContext.body;
 

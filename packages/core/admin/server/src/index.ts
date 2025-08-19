@@ -30,7 +30,7 @@ const mergeRoutes = (a: any, b: any, key: string) => {
   return _.isArray(a) && _.isArray(b) && key === 'routes' ? a.concat(b) : undefined;
 };
 
-if (strapi.EE) {
+if (metrix.EE) {
   admin = _.mergeWith({}, admin, getEEAdmin(), mergeRoutes);
 }
 

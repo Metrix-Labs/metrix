@@ -22,7 +22,7 @@ import type * as AttributeUtils from './attributes';
  * Defining input for a content type schema:
  *
  * ```typescript
- * import type { UID } from '@strapi/types';
+ * import type { UID } from '@metrix/types';
  *
  * // Assume there's a schema with a UID of 'api::article.article'
  * type ArticleInput = Input<'api::article.article'>;
@@ -38,7 +38,7 @@ import type * as AttributeUtils from './attributes';
  * Handling component schema with optional and required attributes:
  *
  * ```typescript
- * import type { UID } from '@strapi/types';
+ * import type { UID } from '@metrix/types';
  *
  * // Assume there's a component with a UID of 'default.comment'
  * type CommentInput = Input<'default.comment'>;

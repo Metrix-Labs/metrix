@@ -5,7 +5,7 @@ describe('Encryption Service', () => {
   const ENCRYPTION_KEY = crypto.randomBytes(32).toString('hex');
 
   beforeEach(() => {
-    global.strapi = {
+    global.metrix = {
       config: {
         get: jest.fn((key) => {
           if (key === 'admin.secrets.encryptionKey') {
@@ -35,10 +35,10 @@ describe('Encryption Service', () => {
     });
 
     test('returns null and logs warning when key is missing', () => {
-      (global.strapi.config.get as jest.Mock).mockReturnValue(undefined);
+      (global.metrix.config.get as jest.Mock).mockReturnValue(undefined);
       const result = encryption.encrypt('test');
       expect(result).toBeNull();
-      expect(global.strapi.log.warn).toHaveBeenCalledWith('Encryption key is missing from config');
+      expect(global.metrix.log.warn).toHaveBeenCalledWith('Encryption key is missing from config');
     });
   });
 
@@ -55,22 +55,22 @@ describe('Encryption Service', () => {
     });
 
     test('returns null and logs warning when key is missing', () => {
-      (global.strapi.config.get as jest.Mock).mockReturnValue(undefined);
+      (global.metrix.config.get as jest.Mock).mockReturnValue(undefined);
       const result = encryption.decrypt('v1:iv:payload:tag');
       expect(result).toBeNull();
-      expect(global.strapi.log.warn).toHaveBeenCalledWith('Encryption key is missing from config');
+      expect(global.metrix.log.warn).toHaveBeenCalledWith('Encryption key is missing from config');
     });
 
     test('returns null and logs warning when decryption fails due to wrong key', () => {
       const encrypted = encryption.encrypt('cannot decrypt this');
 
       const wrongKey = crypto.randomBytes(32).toString('hex');
-      (global.strapi.config.get as jest.Mock).mockReturnValueOnce(wrongKey);
+      (global.metrix.config.get as jest.Mock).mockReturnValueOnce(wrongKey);
 
       const result = encryption.decrypt(encrypted!);
 
       expect(result).toBeNull();
-      expect(global.strapi.log.warn).toHaveBeenCalledWith(
+      expect(global.metrix.log.warn).toHaveBeenCalledWith(
         '[decrypt] Unable to decrypt value — encryption key may have changed or data is corrupted.'
       );
     });

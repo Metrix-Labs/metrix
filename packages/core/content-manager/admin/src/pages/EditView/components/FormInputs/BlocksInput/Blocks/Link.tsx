@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Button, Field, Flex, Popover, useComposedRefs } from '@strapi/design-system';
+import { Box, Button, Field, Flex, Popover, useComposedRefs } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 import { Editor, Path, Range, Transforms } from 'slate';
 import { type RenderElementProps, ReactEditor } from 'slate-react';
@@ -46,7 +46,7 @@ const LinkContent = React.forwardRef<HTMLAnchorElement, LinkContentProps>(
       try {
         // eslint-disable-next-line no-new
         new URL(
-          e.target.value?.startsWith('/') ? `https://strapi.io${e.target.value}` : e.target.value
+          e.target.value?.startsWith('/') ? `https://metrix.io${e.target.value}` : e.target.value
         );
       } catch (error) {
         setIsSaveDisabled(true);

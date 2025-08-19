@@ -1,32 +1,32 @@
 'use strict';
 
 import { omit } from 'lodash';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import constants from '../../../../packages/core/admin/server/src/services/constants';
 
 describe('Admin API Token v2 CRUD (api)', () => {
   let rq;
-  let strapi;
+  let metrix;
   let now;
   let nowSpy;
 
   const deleteAllTokens = async () => {
-    const tokens = await strapi.service('admin::api-token').list();
+    const tokens = await metrix.service('admin::api-token').list();
     const promises = [];
     tokens.forEach(({ id }) => {
-      promises.push(strapi.service('admin::api-token').revoke(id));
+      promises.push(metrix.service('admin::api-token').revoke(id));
     });
     await Promise.all(promises);
   };
 
   // Initialization Actions
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
+    metrix = await createStrapiInstance();
 
     // Set up encryption key for API token encryption; without this, we can't test viewable tokens
-    strapi.config.set('admin.secrets.encryptionKey', 'test-encryption-key-for-api-tokens');
-    rq = await createAuthRequest({ strapi });
+    metrix.config.set('admin.secrets.encryptionKey', 'test-encryption-key-for-api-tokens');
+    rq = await createAuthRequest({ metrix });
     // To eliminate latency in the request and predict the expiry timestamp, we freeze Date.now()
     now = Date.now();
     nowSpy = jest.spyOn(Date, 'now').mockImplementation(() => now);
@@ -38,7 +38,7 @@ describe('Admin API Token v2 CRUD (api)', () => {
   // Cleanup actions
   afterAll(async () => {
     nowSpy.mockRestore();
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   afterEach(async () => {
@@ -434,7 +434,7 @@ describe('Admin API Token v2 CRUD (api)', () => {
   });
 
   test('Creates a custom api token', async () => {
-    strapi.contentAPI.permissions.providers.action.keys = jest.fn(() => [
+    metrix.contentAPI.permissions.providers.action.keys = jest.fn(() => [
       'admin::subject.action',
       'plugin::foo.bar.action',
     ]);
@@ -494,7 +494,7 @@ describe('Admin API Token v2 CRUD (api)', () => {
   });
 
   test('Fails to create a custom api token with unknown permissions', async () => {
-    strapi.contentAPI.permissions.providers.action.keys = jest.fn(() => ['action-A', 'action-B']);
+    metrix.contentAPI.permissions.providers.action.keys = jest.fn(() => ['action-A', 'action-B']);
 
     const body = {
       name: 'api-token_tests-customFail',
@@ -581,7 +581,7 @@ describe('Admin API Token v2 CRUD (api)', () => {
   test('List all tokens (successfully)', async () => {
     await deleteAllTokens();
 
-    strapi.contentAPI.permissions.providers.action.keys = jest.fn(() => [
+    metrix.contentAPI.permissions.providers.action.keys = jest.fn(() => [
       'admin::model.model.read',
       'admin::model.model.create',
     ]);
@@ -934,7 +934,7 @@ describe('Admin API Token v2 CRUD (api)', () => {
 
   test('Custom token can only be created with valid permissions', async () => {
     // Mock the available permissions
-    strapi.contentAPI.permissions.providers.action.keys = jest.fn(() => [
+    metrix.contentAPI.permissions.providers.action.keys = jest.fn(() => [
       'api::foo.foo.find',
       'api::foo.foo.create',
     ]);
@@ -996,12 +996,12 @@ describe('Admin API Token v2 CRUD (api)', () => {
     expect(createRes.body.data.accessKey).toBeDefined();
 
     // Verify the token is stored encrypted but can be decrypted
-    const storedToken = await strapi.db.query('admin::api-token').findOne({
+    const storedToken = await metrix.db.query('admin::api-token').findOne({
       where: { id: createRes.body.data.id },
       select: ['encryptedKey'],
     });
 
-    const decryptedKey = strapi.service('admin::encryption').decrypt(storedToken.encryptedKey);
+    const decryptedKey = metrix.service('admin::encryption').decrypt(storedToken.encryptedKey);
     expect(decryptedKey).toBe(createRes.body.data.accessKey);
 
     // Verify retrieving the token returns the decrypted value

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { useField } from '@strapi/admin/strapi-admin';
-import { Box, Flex, Typography } from '@strapi/design-system';
-import { PlusCircle } from '@strapi/icons';
+import { useField } from '@metrix/admin/metrix-admin';
+import { Box, Flex, Typography } from '@metrix/design-system';
+import { PlusCircle } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

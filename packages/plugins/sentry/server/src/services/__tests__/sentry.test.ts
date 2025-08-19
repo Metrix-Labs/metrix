@@ -23,14 +23,14 @@ jest.mock('@sentry/node', () => {
 describe('Sentry service', () => {
   beforeEach(() => {
     // Reset Strapi state
-    global.strapi = {
+    global.metrix = {
       config: {
         // @ts-expect-error - ignore the generic type
         get: () => defaultConfig,
         set: jest.fn(),
         has: jest.fn(),
       },
-      // @ts-expect-error - we only need a subset of the strapi log object
+      // @ts-expect-error - we only need a subset of the metrix log object
       log: {
         warn: jest.fn(),
         info: jest.fn(),
@@ -44,9 +44,9 @@ describe('Sentry service', () => {
   });
 
   it('disables Sentry when no DSN is provided', () => {
-    const sentryService = sentryServiceLoader({ strapi });
+    const sentryService = sentryServiceLoader({ metrix });
     sentryService.init();
-    expect(strapi.log.info).toHaveBeenCalledWith(expect.stringMatching(/disabled/i));
+    expect(metrix.log.info).toHaveBeenCalledWith(expect.stringMatching(/disabled/i));
 
     const instance = sentryService.getInstance();
     expect(instance).toBeNull();
@@ -54,25 +54,25 @@ describe('Sentry service', () => {
 
   it('disables Sentry when an invalid DSN is provided', () => {
     // @ts-expect-error - ignore the generic type
-    global.strapi.config.get = () => ({ dsn: INVALID_DSN });
-    const sentryService = sentryServiceLoader({ strapi });
+    global.metrix.config.get = () => ({ dsn: INVALID_DSN });
+    const sentryService = sentryServiceLoader({ metrix });
     sentryService.init();
-    expect(strapi.log.warn).toHaveBeenCalledWith(expect.stringMatching(/could not set up sentry/i));
+    expect(metrix.log.warn).toHaveBeenCalledWith(expect.stringMatching(/could not set up sentry/i));
 
     const instance = sentryService.getInstance();
     expect(instance).toBeNull();
   });
 
   it("doesn't send events before init", () => {
-    const sentryService = sentryServiceLoader({ strapi });
+    const sentryService = sentryServiceLoader({ metrix });
     sentryService.sendError(Error());
-    expect(strapi.log.warn).toHaveBeenCalledWith(expect.stringMatching(/cannot send event/i));
+    expect(metrix.log.warn).toHaveBeenCalledWith(expect.stringMatching(/cannot send event/i));
   });
 
   it('initializes and sends errors', () => {
     // @ts-expect-error - ignore the generic type
-    global.strapi.config.get = () => ({ dsn: VALID_DSN, sendMetadata: true });
-    const sentryService = sentryServiceLoader({ strapi });
+    global.metrix.config.get = () => ({ dsn: VALID_DSN, sendMetadata: true });
+    const sentryService = sentryServiceLoader({ metrix });
     sentryService.init();
 
     // Saves the instance correctly
@@ -94,8 +94,8 @@ describe('Sentry service', () => {
   it('does not send metadata when the option is disabled', () => {
     // Init with metadata option disabled
     // @ts-expect-error - ignore the generic type
-    global.strapi.config.get = () => ({ dsn: VALID_DSN, sendMetadata: false });
-    const sentryService = sentryServiceLoader({ strapi });
+    global.metrix.config.get = () => ({ dsn: VALID_DSN, sendMetadata: false });
+    const sentryService = sentryServiceLoader({ metrix });
     sentryService.init();
 
     // Send error

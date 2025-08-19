@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DatePicker, useComposedRefs, Field } from '@strapi/design-system';
+import { DatePicker, useComposedRefs, Field } from '@metrix/design-system';
 import { useIntl } from 'react-intl';
 
 import { useFocusInputField } from '../../hooks/useFocusInputField';

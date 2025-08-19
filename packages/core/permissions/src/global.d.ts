@@ -1,1 +1,1 @@
-declare const strapi: any;
+declare const metrix: any;

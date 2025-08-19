@@ -4,9 +4,9 @@
  * This is the page we show when the user visits a url that doesn't have a route
  *
  */
-import { LinkButton, EmptyStateLayout } from '@strapi/design-system';
-import { ArrowRight } from '@strapi/icons';
-import { EmptyPictures } from '@strapi/icons/symbols';
+import { LinkButton, EmptyStateLayout } from '@metrix/design-system';
+import { ArrowRight } from '@metrix/icons';
+import { EmptyPictures } from '@metrix/icons/symbols';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 

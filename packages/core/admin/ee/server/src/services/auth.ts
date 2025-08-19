@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrix/utils';
 import { getService } from '../utils';
 import { isSsoLocked } from '../utils/sso-lock';
 
@@ -12,7 +12,7 @@ const { ApplicationError } = errors;
  * @param {string} param.email user email for which to reset the password
  */
 const forgotPassword = async ({ email }: any = {}) => {
-  const user = await strapi.db.query('admin::user').findOne({ where: { email, isActive: true } });
+  const user = await metrix.db.query('admin::user').findOne({ where: { email, isActive: true } });
 
   if (!user || (await isSsoLocked(user))) {
     return;
@@ -22,19 +22,19 @@ const forgotPassword = async ({ email }: any = {}) => {
   await getService('user').updateById(user.id, { resetPasswordToken });
 
   // Send an email to the admin.
-  const url = `${strapi.config.get(
+  const url = `${metrix.config.get(
     'admin.absoluteUrl'
   )}/auth/reset-password?code=${resetPasswordToken}`;
-  return strapi
+  return metrix
     .plugin('email')
     .service('email')
     .sendTemplatedEmail(
       {
         to: user.email,
-        from: strapi.config.get('admin.forgotPassword.from'),
-        replyTo: strapi.config.get('admin.forgotPassword.replyTo'),
+        from: metrix.config.get('admin.forgotPassword.from'),
+        replyTo: metrix.config.get('admin.forgotPassword.replyTo'),
       },
-      strapi.config.get('admin.forgotPassword.emailTemplate'),
+      metrix.config.get('admin.forgotPassword.emailTemplate'),
       {
         url,
         user: _.pick(user, ['email', 'firstname', 'lastname', 'username']),
@@ -42,7 +42,7 @@ const forgotPassword = async ({ email }: any = {}) => {
     )
     .catch((err: unknown) => {
       // log error server side but do not disclose it to the user to avoid leaking informations
-      strapi.log.error(err);
+      metrix.log.error(err);
     });
 };
 
@@ -53,7 +53,7 @@ const forgotPassword = async ({ email }: any = {}) => {
  * @param {string} param.password new user password
  */
 const resetPassword = async ({ resetPasswordToken, password }: any = {}) => {
-  const matchingUser = await strapi.db
+  const matchingUser = await metrix.db
     .query('admin::user')
     .findOne({ where: { resetPasswordToken, isActive: true } });
 

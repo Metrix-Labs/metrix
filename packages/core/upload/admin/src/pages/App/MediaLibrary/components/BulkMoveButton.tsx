@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Button, Modal } from '@strapi/design-system';
-import { Folder } from '@strapi/icons';
+import { Button, Modal } from '@metrix/design-system';
+import { Folder } from '@metrix/icons';
 import { useIntl } from 'react-intl';
 
 import { BulkMoveDialog } from '../../../../components/BulkMoveDialog/BulkMoveDialog';

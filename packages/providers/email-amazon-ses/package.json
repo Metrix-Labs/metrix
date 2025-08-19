@@ -44,8 +44,8 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
-    "node-ses": "^3.0.3",
-    "@metrixlabs/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0",
+    "node-ses": "^3.0.3"
   },
   "devDependencies": {
     "eslint-config-custom": "5.22.0",

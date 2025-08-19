@@ -23,6 +23,13 @@
       "require": "./dist/admin/index.js",
       "default": "./dist/admin/index.js"
     },
+    "./metrix-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
     "./package.json": "./package.json"
   },
   "files": [
@@ -40,28 +47,28 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
-    "react-intl": "6.6.2",
     "@strapi/design-system": "2.0.0-rc.29",
-    "@strapi/icons": "2.0.0-rc.29"
+    "@strapi/icons": "2.0.0-rc.29",
+    "react-intl": "6.6.2"
   },
   "devDependencies": {
+    "@metrixlabs/admin": "5.22.0",
+    "@metrixlabs/metrix": "5.22.0",
     "eslint-config-custom": "5.22.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.22.3",
     "styled-components": "6.1.8",
     "tsconfig": "5.22.0",
-    "typescript": "5.4.4",
-    "@metrixlabs/admin": "5.22.0",
-    "@metrixlabs/metrix": "5.22.0"
+    "typescript": "5.4.4"
   },
   "peerDependencies": {
+    "@metrixlabs/admin": "^5.0.0",
+    "@metrixlabs/metrix": "^5.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0",
-    "@metrixlabs/admin": "^5.0.0",
-    "@metrixlabs/metrix": "^5.0.0"
+    "styled-components": "^6.0.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

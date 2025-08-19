@@ -1,4 +1,4 @@
-import { metrix as pkgStrapi } from '../../package.json';
+import { strapi as pkgStrapi } from '../../package.json';
 
 import { PERMISSIONS } from './constants';
 import getTrad from './utils/getTrad';

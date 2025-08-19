@@ -52,7 +52,7 @@ const createCLI = async (argv: string[], command = new Command()) => {
 
   // TODO v6: remove these deprecation notices
   const deprecatedCommands = [
-    { name: 'plugin:init', message: 'Please use `npx @metrix/sdk-plugin init` instead.' },
+    { name: 'plugin:init', message: 'Please use `npx @strapi/sdk-plugin init` instead.' },
     {
       name: 'plugin:verify',
       message: 'After migrating your plugin to v5, use `metrix-plugin verify`',

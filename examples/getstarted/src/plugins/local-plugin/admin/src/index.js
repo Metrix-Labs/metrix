@@ -4,7 +4,7 @@ import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 import pluginPkg from '../../package.json';
 import pluginId from './pluginId';
 
-const name = pluginPkg.metrix.name;
+const name = (pluginPkg.metrix && pluginPkg.metrix.name) || (pluginPkg.strapi && pluginPkg.strapi.name) || pluginPkg.name;
 
 export default {
   register(app) {

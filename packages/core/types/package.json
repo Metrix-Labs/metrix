@@ -46,6 +46,10 @@
     "@casl/ability": "6.5.0",
     "@koa/cors": "5.0.0",
     "@koa/router": "12.0.2",
+    "@metrixlabs/database": "5.22.0",
+    "@metrixlabs/logger": "5.22.0",
+    "@metrixlabs/permissions": "5.22.0",
+    "@metrixlabs/utils": "5.22.0",
     "commander": "8.3.0",
     "json-logic-js": "2.0.5",
     "koa": "2.16.1",
@@ -54,13 +58,10 @@
     "typedoc": "0.25.10",
     "typedoc-github-wiki-theme": "1.1.0",
     "typedoc-plugin-markdown": "3.17.1",
-    "zod": "3.25.67",
-    "@metrixlabs/database": "5.22.0",
-    "@metrixlabs/logger": "5.22.0",
-    "@metrixlabs/permissions": "5.22.0",
-    "@metrixlabs/utils": "5.22.0"
+    "zod": "3.25.67"
   },
   "devDependencies": {
+    "@strapi/ts-zen": "^0.2.0",
     "@types/jest": "29.5.2",
     "@types/json-logic-js": "2.0.8",
     "@types/koa": "2.13.4",
@@ -70,8 +71,7 @@
     "lodash": "4.17.21",
     "tsconfig": "5.22.0",
     "typescript": "5.4.4",
-    "undici": "6.21.2",
-    "@metrixlabs/ts-zen": "^0.2.0"
+    "undici": "6.21.2"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

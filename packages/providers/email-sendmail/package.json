@@ -43,8 +43,8 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
-    "sendmail": "^1.6.1",
-    "@metrixlabs/utils": "5.22.0"
+    "@metrixlabs/utils": "5.22.0",
+    "sendmail": "^1.6.1"
   },
   "devDependencies": {
     "@types/sendmail": "1.4.4",

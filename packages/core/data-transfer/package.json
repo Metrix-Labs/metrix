@@ -42,6 +42,9 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
+    "@metrixlabs/logger": "5.22.0",
+    "@metrixlabs/types": "5.22.0",
+    "@metrixlabs/utils": "5.22.0",
     "chalk": "4.1.2",
     "cli-table3": "0.6.5",
     "commander": "8.3.0",
@@ -55,12 +58,10 @@
     "stream-json": "1.8.0",
     "tar": "6.2.1",
     "tar-stream": "2.2.0",
-    "ws": "8.17.1",
-    "@metrixlabs/logger": "5.22.0",
-    "@metrixlabs/types": "5.22.0",
-    "@metrixlabs/utils": "5.22.0"
+    "ws": "8.17.1"
   },
   "devDependencies": {
+    "@metrixlabs/database": "5.22.0",
     "@types/fs-extra": "11.0.4",
     "@types/jest": "29.5.2",
     "@types/koa": "2.13.4",
@@ -75,8 +76,7 @@
     "knex": "3.0.1",
     "koa": "2.16.1",
     "rimraf": "5.0.5",
-    "typescript": "5.4.4",
-    "@metrixlabs/database": "5.22.0"
+    "typescript": "5.4.4"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

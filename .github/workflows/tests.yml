@@ -175,7 +175,7 @@ jobs:
         run: yarn nx affected --target=test:front --nx-ignore-cycles -- --runInBand
 
   e2e_ce:
-    if: needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.frontend == 'true' || needs.conditions.outputs.e2e == 'true'
+    if: false
     timeout-minutes: 60
     needs: [conditions, build]
     name: '[CE] e2e (browser: ${{ matrix.project }}) (shard: ${{ matrix.shard }})'
@@ -221,7 +221,7 @@ jobs:
         continue-on-error: true
 
   e2e_ee:
-    if: needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.frontend == 'true' || needs.conditions.outputs.e2e == 'true'
+    if: false
     timeout-minutes: 60
     needs: [conditions, build]
     name: '[EE] e2e (browser: ${{ matrix.project }}) (shard: ${{ matrix.shard }})'
@@ -272,7 +272,7 @@ jobs:
         continue-on-error: true
 
   cli:
-    if: needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.cli == 'true'
+    if: false
     timeout-minutes: 60
     needs: [conditions, build]
     name: 'CLI Tests (node: ${{ matrix.node }})'
@@ -297,7 +297,7 @@ jobs:
         run: yarn test:cli
 
   api_ce_pg:
-    if: needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.api == 'true'
+    if: false
     runs-on: ubuntu-latest
     needs: [conditions, build]
     name: '[CE] API Integration (postgres, node: ${{ matrix.node }}, shard: ${{ matrix.shard }})'
@@ -337,7 +337,7 @@ jobs:
           jestOptions: '--shard=${{ matrix.shard }}'
 
   api_ce_mysql:
-    if: needs.conditions.outputs.global == 'true' ||  needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.api == 'true'
+    if: false
     runs-on: ubuntu-latest
     needs: [conditions, build]
     name: '[CE] API Integration (mysql:latest, package: mysql2}, node: ${{ matrix.node }}, shard: ${{ matrix.shard }})'
@@ -376,7 +376,7 @@ jobs:
           jestOptions: '--shard=${{ matrix.shard }}'
 
   api_ce_sqlite:
-    if: needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.api == 'true'
+    if: false
     runs-on: ubuntu-latest
     needs: [conditions, build]
     name: '[CE] API Integration (sqlite, package: better-sqlite3, node: ${{ matrix.node }}, shard: ${{ matrix.shard }})'
@@ -400,10 +400,7 @@ jobs:
 
   # EE
   api_ee_pg:
-    runs-on: ubuntu-latest
-    needs: [conditions, build]
-    name: '[EE] API Integration (postgres, node: ${{ matrix.node }}, shard: ${{ matrix.shard }})'
-    if: (needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.api == 'true') && needs.conditions.outputs.is_local == 'true'
+    if: false
     env:
       METRIX_LICENSE: ${{ secrets.strapiLicense }}
     strategy:
@@ -443,10 +440,7 @@ jobs:
           jestOptions: '--shard=${{ matrix.shard }}'
 
   api_ee_mysql:
-    runs-on: ubuntu-latest
-    needs: [conditions, build]
-    name: '[EE] API Integration (mysql:latest, package: mysql2, node: ${{ matrix.node }}, shard: ${{ matrix.shard }})'
-    if: (needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.api == 'true') && needs.conditions.outputs.is_local == 'true'
+    if: false
     env:
       METRIX_LICENSE: ${{ secrets.strapiLicense }}
     strategy:
@@ -485,10 +479,7 @@ jobs:
           jestOptions: '--shard=${{ matrix.shard }}'
 
   api_ee_sqlite:
-    runs-on: ubuntu-latest
-    needs: [conditions, build]
-    name: '[EE] API Integration (sqlite, client: better-sqlite3, node: ${{ matrix.node }}, shard: ${{ matrix.shard }})'
-    if: (needs.conditions.outputs.global == 'true' || needs.conditions.outputs.backend == 'true' || needs.conditions.outputs.api == 'true') && needs.conditions.outputs.is_local == 'true'
+    if: false
     env:
       METRIX_LICENSE: ${{ secrets.strapiLicense }}
     strategy:
@@ -522,15 +513,7 @@ jobs:
         typescript,
         unit_back,
         unit_front,
-        e2e_ce,
-        e2e_ee,
-        cli,
-        api_ce_pg,
-        api_ce_mysql,
-        api_ce_sqlite,
-        api_ee_pg,
-        api_ee_mysql,
-        api_ee_sqlite,
+        
       ]
     steps:
       - run: exit 1

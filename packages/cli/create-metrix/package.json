@@ -1,6 +1,6 @@
 {
   "name": "create-metrix",
-  "version": "5.22.0",
+  "version": "5.22.1",
   "description": "Generate a new Strapi application.",
   "keywords": [
     "create-strapi",
@@ -36,7 +36,7 @@
     "bin/"
   ],
   "dependencies": {
-    "create-metrix-app": "5.22.0"
+    "create-metrix-app": "5.22.1"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

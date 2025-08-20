@@ -1,6 +1,6 @@
 {
   "name": "create-metrix-app",
-  "version": "5.22.0",
+  "version": "5.22.1",
   "description": "Generate a new Strapi application.",
   "keywords": [
     "create-strapi-app",

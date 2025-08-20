@@ -28,7 +28,7 @@ export async function tryGitInit(rootDir: string) {
     await execa('git', ['init'], { stdio: 'ignore', cwd: rootDir });
 
     await execa('git', ['add', '.'], { stdio: 'ignore', cwd: rootDir });
-    await execa('git', ['commit', '-m', 'Initial commit from Strapi'], {
+          await execa('git', ['commit', '-m', 'Initial commit from Metrix'], {
       stdio: 'ignore',
       cwd: rootDir,
     });

@@ -16,7 +16,7 @@ export async function createPackageJSON(scope: Scope) {
     name: kebabCase(scope.name),
     private: true,
     version: '0.1.0',
-    description: 'A Strapi application',
+    description: 'A Metrix application',
     devDependencies: scope.devDependencies ?? {},
     dependencies: scope.dependencies ?? {},
     metrix: {

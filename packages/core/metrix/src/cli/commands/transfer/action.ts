@@ -1,5 +1,5 @@
 import { isObject } from 'lodash/fp';
-import { engine as engineDataTransfer, strapi as strapiDataTransfer } from '@metrixlabs/data-transfer';
+import { engine as engineDataTransfer, metrix as metrixDataTransfer } from '@metrixlabs/data-transfer';
 
 import {
   buildTransferTable,
@@ -25,7 +25,7 @@ const {
     createLocalStrapiDestinationProvider,
     createRemoteStrapiSourceProvider,
   },
-} = strapiDataTransfer;
+} = metrixDataTransfer;
 
 interface CmdOptions {
   from?: URL;
@@ -141,7 +141,7 @@ export default async (opts: CmdOptions) => {
 
   const { updateLoader } = loadersFactory();
 
-  engine.onSchemaDiff(getDiffHandler(engine, { force: opts.force, action: 'transfer' }));
+  engine.onSchemaDiff(getDiffHandler(engine, strapi, { force: opts.force, action: 'transfer' }));
 
   engine.addErrorHandler(
     'ASSETS_DIRECTORY_ERR',
@@ -173,7 +173,7 @@ export default async (opts: CmdOptions) => {
   let results: Awaited<ReturnType<typeof engine.transfer>>;
   try {
     // Abort transfer if user interrupts process
-    setSignalHandler(() => abortTransfer({ engine, strapi }));
+    setSignalHandler(() => abortTransfer({ engine, metrix: strapi }));
 
     results = await engine.transfer();
 

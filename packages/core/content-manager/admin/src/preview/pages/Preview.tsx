@@ -247,7 +247,7 @@ const PreviewPage = () => {
     );
   };
 
-  const hasAdvancedPreview = window.strapi.features.isEnabled('cms-advanced-preview');
+  const hasAdvancedPreview = window.metrix.features.isEnabled('cms-advanced-preview');
 
   return (
     <>

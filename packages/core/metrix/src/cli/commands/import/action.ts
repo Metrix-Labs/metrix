@@ -120,7 +120,7 @@ export default async (opts: CmdOptions) => {
 
   const { updateLoader } = loadersFactory();
 
-  engine.onSchemaDiff(getDiffHandler(engine, { force: opts.force, action: 'import' }));
+  engine.onSchemaDiff(getDiffHandler(engine, strapiInstance, { force: opts.force, action: 'import' }));
 
   progress.on(`stage::start`, ({ stage, data }) => {
     updateLoader(stage, data).start();

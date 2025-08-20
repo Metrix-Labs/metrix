@@ -128,11 +128,11 @@ interface BlockerProps {
   title: MessageDescriptor;
 }
 
-const Blocker = ({ displayedIcon, description, title, isOpen }: BlockerProps) => {
+const Blocker = ({ displayedIcon, description, title, isOpen }: BlockerProps): React.ReactNode => {
   const { formatMessage } = useIntl();
 
   // eslint-disable-next-line no-undef
-  return isOpen && globalThis?.document?.body
+  return (isOpen && globalThis?.document?.body
     ? createPortal(
         <Overlay id="autoReloadOverlayBlocker" direction="column" alignItems="center" gap={6}>
           <Flex direction="column" alignItems="center" gap={2}>
@@ -165,7 +165,7 @@ const Blocker = ({ displayedIcon, description, title, isOpen }: BlockerProps) =>
         // eslint-disable-next-line no-undef
         globalThis.document.body
       )
-    : null;
+    : null) as React.ReactNode;
 };
 
 const rotation = keyframes`

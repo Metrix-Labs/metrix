@@ -5,11 +5,9 @@ import { format } from 'winston';
  * It's used to log plain text in the log file
  */
 export default format.printf(({ message, level, timestamp }) => {
-  if (typeof message !== 'string') {
-    return message;
-  }
+  const messageStr = typeof message === 'string' ? message : String(message);
 
-  const newMessage = `[${timestamp as string}] ${level}: ${message as string}`;
+  const newMessage = `[${timestamp as string}] ${level}: ${messageStr}`;
 
   return newMessage.replace(
     // eslint-disable-next-line no-control-regex

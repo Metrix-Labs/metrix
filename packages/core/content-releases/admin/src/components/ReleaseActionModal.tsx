@@ -244,7 +244,7 @@ const ReleaseActionModalForm: DocumentActionComponent = ({
   } = useDocumentLayout(model);
 
   // Project is not EE or contentType does not have draftAndPublish enabled
-  if (!window.strapi.isEE || !options?.draftAndPublish || !canCreateAction) {
+  if (!window.metrix.isEE || !options?.draftAndPublish || !canCreateAction) {
     return null;
   }
 

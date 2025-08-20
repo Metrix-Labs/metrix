@@ -14,7 +14,7 @@ const HistoryAction: DocumentActionComponent = ({ model, document }) => {
   const { pathname } = useLocation();
   const pluginsQueryParams = stringify({ plugins: query.plugins }, { encode: false });
 
-  if (!window.strapi.features.isEnabled('cms-content-history')) {
+  if (!window.metrix.features.isEnabled('cms-content-history')) {
     return null;
   }
 

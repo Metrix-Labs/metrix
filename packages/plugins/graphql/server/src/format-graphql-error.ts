@@ -63,7 +63,7 @@ export function formatGraphqlError(formattedError: GraphQLFormattedError, error:
   // else if originalError doesn't appear to be from Strapi or GraphQL..
 
   // Log the error
-  strapi.log.error(originalError);
+  metrix.log.error(originalError);
 
   // Create a generic 500 to send so we don't risk leaking any data
   return createFormattedError(

@@ -1,10 +1,10 @@
 'use strict';
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
-let strapi;
+let metrix;
 let rq;
 
 describe('Test type UID', () => {
@@ -25,12 +25,12 @@ describe('Test type UID', () => {
     beforeAll(async () => {
       await builder.addContentType(model).build();
 
-      strapi = await createStrapiInstance();
-      rq = await createAuthRequest({ strapi });
+      metrix = await createStrapiInstance();
+      rq = await createAuthRequest({ metrix });
     });
 
     afterAll(async () => {
-      await strapi.destroy();
+      await metrix.destroy();
       await builder.cleanup();
     });
 
@@ -106,8 +106,8 @@ describe('Test type UID', () => {
     beforeAll(async () => {
       await builder.addContentType(model).build();
 
-      strapi = await createStrapiInstance();
-      rq = await createAuthRequest({ strapi });
+      metrix = await createStrapiInstance();
+      rq = await createAuthRequest({ metrix });
 
       for (const locale of locales) {
         await rq({
@@ -123,7 +123,7 @@ describe('Test type UID', () => {
     });
 
     afterAll(async () => {
-      await strapi.destroy();
+      await metrix.destroy();
       await builder.cleanup();
     });
 
@@ -181,12 +181,12 @@ describe('Test type UID', () => {
     beforeAll(async () => {
       await builder.addContentType(model).build();
 
-      strapi = await createStrapiInstance();
-      rq = await createAuthRequest({ strapi });
+      metrix = await createStrapiInstance();
+      rq = await createAuthRequest({ metrix });
     });
 
     afterAll(async () => {
-      await strapi.destroy();
+      await metrix.destroy();
       await builder.cleanup();
     });
 

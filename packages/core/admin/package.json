@@ -27,6 +27,13 @@
       "require": "./dist/admin/index.js",
       "default": "./dist/admin/index.js"
     },
+    "./metrix-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
     "./strapi-admin/ee": {
       "types": "./dist/admin/src/ee.d.ts",
       "source": "./admin/src/ee.ts",
@@ -34,7 +41,21 @@
       "require": "./dist/admin/ee.js",
       "default": "./dist/admin/ee.js"
     },
+    "./metrix-admin/ee": {
+      "types": "./dist/admin/src/ee.d.ts",
+      "source": "./admin/src/ee.ts",
+      "import": "./dist/admin/ee.mjs",
+      "require": "./dist/admin/ee.js",
+      "default": "./dist/admin/ee.js"
+    },
     "./strapi-admin/test": {
+      "types": "./dist/admin/tests/index.d.ts",
+      "source": "./admin/tests/index.ts",
+      "import": "./dist/admin/test.mjs",
+      "require": "./dist/admin/test.js",
+      "default": "./dist/admin/test.js"
+    },
+    "./metrix-admin/test": {
       "types": "./dist/admin/tests/index.d.ts",
       "source": "./admin/tests/index.ts",
       "import": "./dist/admin/test.mjs",

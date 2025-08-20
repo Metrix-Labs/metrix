@@ -6,7 +6,7 @@ title: FE Coding Guidelines
 
 ### Application Structure
 
-The FE of Strapi aims to be a domain driven application such as we heavily utilise the concept of
+The FE of Metrix aims to be a domain driven application such as we heavily utilise the concept of
 nested routes:
 
 ```shell
@@ -47,7 +47,7 @@ as necessary. But we strive for colocation.
 
 ### Exports
 
-Prefer named exports over default exports. Why? Because Strapi is a _very_ large codebase. If you
+Prefer named exports over default exports. Why? Because Metrix is a _very_ large codebase. If you
 export something as `default` someone can import it with a different name:
 
 ```jsx
@@ -444,7 +444,7 @@ export const Table = {
 
 // something-else.tsx
 import { useQuery } from 'react-query'
-import { useFetchClient } from '@strapi/helper-plugin'
+import { useFetchClient } from '@metrix/helper-plugin'
 
 import { Table } from './Table'
 
@@ -523,8 +523,8 @@ response change.
 When looking at `module` mocking:
 
 ```jsx
-jest.mock('@strapi/helper-plugin', () => ({
-  ...jest.requireActual('@strapi/helper-plugin'),
+jest.mock('@metrix/helper-plugin', () => ({
+  ...jest.requireActual('@metrix/helper-plugin'),
   useNotification: jest.fn(() => ({
     toggleNotification: jest.fn(),
   })),

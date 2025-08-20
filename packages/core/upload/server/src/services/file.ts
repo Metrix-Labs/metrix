@@ -9,13 +9,13 @@ import { Config, type File } from '../types';
 const getFolderPath = async (folderId?: number | null) => {
   if (!folderId) return '/';
 
-  const parentFolder = await strapi.db.query(FOLDER_MODEL_UID).findOne({ where: { id: folderId } });
+  const parentFolder = await metrix.db.query(FOLDER_MODEL_UID).findOne({ where: { id: folderId } });
 
   return parentFolder.path;
 };
 
 const deleteByIds = async (ids: number[] = []) => {
-  const filesToDelete = await strapi.db
+  const filesToDelete = await metrix.db
     .query(FILE_MODEL_UID)
     .findMany({ where: { id: { $in: ids } } });
 
@@ -25,8 +25,8 @@ const deleteByIds = async (ids: number[] = []) => {
 };
 
 const signFileUrls = async (file: File) => {
-  const { provider } = strapi.plugins.upload;
-  const { provider: providerConfig } = strapi.config.get<Config>('plugin::upload');
+  const { provider } = metrix.plugins.upload;
+  const { provider: providerConfig } = metrix.config.get<Config>('plugin::upload');
   const isPrivate = await provider.isPrivate();
   file.isUrlSigned = false;
 

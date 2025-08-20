@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FormErrors, Table, useTable } from '@metrixlabs/admin/strapi-admin';
+import { FormErrors, Table, useTable } from '@metrixlabs/admin/metrix-admin';
 import { Box, Typography, IconButton, Flex, Tooltip, Status, Modal } from '@strapi/design-system';
 import { Pencil, CheckCircle, CrossCircle, ArrowsCounterClockwise } from '@strapi/icons';
 import { stringify } from 'qs';

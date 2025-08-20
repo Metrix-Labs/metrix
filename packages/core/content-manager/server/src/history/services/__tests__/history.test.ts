@@ -110,7 +110,7 @@ const mockStrapi = {
 };
 
 // @ts-expect-error - we're not mocking the full Strapi object
-const historyService = createHistoryService({ strapi: mockStrapi });
+const historyService = createHistoryService({ metrix: mockStrapi });
 
 describe('history-version service', () => {
   afterEach(() => {

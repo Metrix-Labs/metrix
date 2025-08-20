@@ -32,8 +32,8 @@ type PaginationInfo =
  * Default limit values from config
  */
 const getLimitConfigDefaults = () => ({
-  defaultLimit: toNumber(strapi.config.get('api.rest.defaultLimit', 25)),
-  maxLimit: toNumber(strapi.config.get('api.rest.maxLimit')) || null,
+  defaultLimit: toNumber(metrix.config.get('api.rest.defaultLimit', 25)),
+  maxLimit: toNumber(metrix.config.get('api.rest.maxLimit')) || null,
 });
 
 const isOffsetPagination = (pagination?: PaginationParams): pagination is OffsetPagination =>
@@ -67,7 +67,7 @@ const shouldCount = (params: { pagination?: PaginationParams }) => {
     );
   }
 
-  return Boolean(strapi.config.get('api.rest.withCount', true));
+  return Boolean(metrix.config.get('api.rest.withCount', true));
 };
 
 const getPaginationInfo = (params: { pagination?: PaginationParams }): PaginationInfo => {

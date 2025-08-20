@@ -12,7 +12,7 @@ import { getService } from './utils';
 const getFeature = (): Partial<Plugin.LoadedPlugin> => {
   return {
     register() {
-      const config = getService(strapi, 'preview-config');
+      const config = getService(metrix, 'preview-config');
       config.validate();
       config.register();
     },

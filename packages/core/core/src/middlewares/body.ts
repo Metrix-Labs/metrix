@@ -22,12 +22,12 @@ function getFiles(ctx: Koa.Context) {
   return ctx?.request?.files?.files;
 }
 
-const bodyMiddleware: Core.MiddlewareFactory<Config> = (config, { strapi }) => {
+const bodyMiddleware: Core.MiddlewareFactory<Config> = (config, { metrix }) => {
   const bodyConfig: Config = defaultsDeep(defaults, config);
 
   let gqlEndpoint: string | undefined;
-  if (strapi.plugin('graphql')) {
-    const { config: gqlConfig } = strapi.plugin('graphql');
+  if (metrix.plugin('graphql')) {
+    const { config: gqlConfig } = metrix.plugin('graphql');
     gqlEndpoint = gqlConfig('endpoint');
   }
 

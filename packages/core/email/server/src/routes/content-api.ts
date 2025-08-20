@@ -2,7 +2,7 @@ import type { Core } from '@metrixlabs/types';
 import { EmailRouteValidator } from './validation';
 
 export default (): Core.RouterInput => {
-  const validator = new EmailRouteValidator(strapi);
+  const validator = new EmailRouteValidator(metrix);
 
   return {
     type: 'content-api',

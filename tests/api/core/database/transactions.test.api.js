@@ -1,27 +1,27 @@
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 
-let strapi;
+let metrix;
 
 describe('transactions', () => {
   let original;
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    original = await strapi.db
-      .queryBuilder('strapi::core-store')
+    metrix = await createStrapiInstance();
+    original = await metrix.db
+      .queryBuilder('metrix::core-store')
       .select(['*'])
       .where({ id: 1 })
       .execute();
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   afterEach(async () => {
-    await strapi.db
-      .queryBuilder('strapi::core-store')
+    await metrix.db
+      .queryBuilder('metrix::core-store')
       .update({
         key: original[0].key,
       })
@@ -31,17 +31,17 @@ describe('transactions', () => {
 
   describe('using a transaction method', () => {
     test('commits successfully', async () => {
-      await strapi.db.transaction(async () => {
-        await strapi.db
-          .queryBuilder('strapi::core-store')
+      await metrix.db.transaction(async () => {
+        await metrix.db
+          .queryBuilder('metrix::core-store')
           .update({
             key: 'wrong key',
           })
           .where({ id: 1 })
           .execute();
 
-        await strapi.db
-          .queryBuilder('strapi::core-store')
+        await metrix.db
+          .queryBuilder('metrix::core-store')
           .update({
             key: 'new key',
           })
@@ -49,8 +49,8 @@ describe('transactions', () => {
           .execute();
       });
 
-      const end = await strapi.db
-        .queryBuilder('strapi::core-store')
+      const end = await metrix.db
+        .queryBuilder('metrix::core-store')
         .select(['*'])
         .where({ id: 1 })
         .execute();
@@ -60,10 +60,10 @@ describe('transactions', () => {
 
     test('rollback successfully', async () => {
       try {
-        await strapi.db.transaction(async () => {
+        await metrix.db.transaction(async () => {
           // this is valid
-          await strapi.db
-            .queryBuilder('strapi::core-store')
+          await metrix.db
+            .queryBuilder('metrix::core-store')
             .update({
               key: 'wrong key',
             })
@@ -71,7 +71,7 @@ describe('transactions', () => {
             .execute();
 
           // this throws
-          await strapi.db
+          await metrix.db
             .queryBuilder('invalid_uid')
             .update({
               key: 'bad key',
@@ -86,8 +86,8 @@ describe('transactions', () => {
         // do nothing
       }
 
-      const end = await strapi.db
-        .queryBuilder('strapi::core-store')
+      const end = await metrix.db
+        .queryBuilder('metrix::core-store')
         .select(['*'])
         .where({ id: 1 })
         .execute();
@@ -97,10 +97,10 @@ describe('transactions', () => {
 
     test('nested rollback -> rollback works', async () => {
       try {
-        await strapi.db.transaction(async () => {
+        await metrix.db.transaction(async () => {
           // this is valid
-          await strapi.db
-            .queryBuilder('strapi::core-store')
+          await metrix.db
+            .queryBuilder('metrix::core-store')
             .update({
               key: 'changed key',
             })
@@ -109,9 +109,9 @@ describe('transactions', () => {
 
           // here we'll make a nested transaction that throws and then confirm we still have "changed key" from above
           try {
-            await strapi.db.transaction(async () => {
-              await strapi.db
-                .queryBuilder('strapi::core-store')
+            await metrix.db.transaction(async () => {
+              await metrix.db
+                .queryBuilder('metrix::core-store')
                 .update({
                   key: 'changed key - nested',
                 })
@@ -119,7 +119,7 @@ describe('transactions', () => {
                 .execute();
 
               // this should throw and roll back
-              await strapi.db
+              await metrix.db
                 .queryBuilder('invalid_uid')
                 .update({
                   invalid_key: 'error',
@@ -132,8 +132,8 @@ describe('transactions', () => {
           }
 
           // should equal the result from above
-          const result = await strapi.db
-            .queryBuilder('strapi::core-store')
+          const result = await metrix.db
+            .queryBuilder('metrix::core-store')
             .select(['*'])
             .where({ id: 1 })
             .execute();
@@ -141,7 +141,7 @@ describe('transactions', () => {
           expect(result[0].key).toEqual('changed key');
 
           // this throws
-          await strapi.db
+          await metrix.db
             .queryBuilder('invalid_uid')
             .update({
               key: original[0].key,
@@ -156,8 +156,8 @@ describe('transactions', () => {
         // do nothing
       }
 
-      const end = await strapi.db
-        .queryBuilder('strapi::core-store')
+      const end = await metrix.db
+        .queryBuilder('metrix::core-store')
         .select(['*'])
         .where({ id: 1 })
         .execute();
@@ -167,10 +167,10 @@ describe('transactions', () => {
 
     test('nested commit -> rollback works', async () => {
       try {
-        await strapi.db.transaction(async () => {
+        await metrix.db.transaction(async () => {
           // this is valid
-          await strapi.db
-            .queryBuilder('strapi::core-store')
+          await metrix.db
+            .queryBuilder('metrix::core-store')
             .update({
               key: 'changed key',
             })
@@ -179,9 +179,9 @@ describe('transactions', () => {
 
           // here we'll make a nested transaction that works, and then later we'll rollback the outer transaction
           try {
-            await strapi.db.transaction(async () => {
-              await strapi.db
-                .queryBuilder('strapi::core-store')
+            await metrix.db.transaction(async () => {
+              await metrix.db
+                .queryBuilder('metrix::core-store')
                 .update({
                   key: 'changed key - nested',
                 })
@@ -193,8 +193,8 @@ describe('transactions', () => {
           }
 
           // should equal the result from above
-          const result = await strapi.db
-            .queryBuilder('strapi::core-store')
+          const result = await metrix.db
+            .queryBuilder('metrix::core-store')
             .select(['*'])
             .where({ id: 1 })
             .execute();
@@ -202,7 +202,7 @@ describe('transactions', () => {
           expect(result[0].key).toEqual('changed key - nested');
 
           // this throws
-          await strapi.db
+          await metrix.db
             .queryBuilder('invalid_uid')
             .update({
               key: original[0].key,
@@ -217,8 +217,8 @@ describe('transactions', () => {
         // do nothing
       }
 
-      const end = await strapi.db
-        .queryBuilder('strapi::core-store')
+      const end = await metrix.db
+        .queryBuilder('metrix::core-store')
         .select(['*'])
         .where({ id: 1 })
         .execute();
@@ -228,7 +228,7 @@ describe('transactions', () => {
 
     test('onCommit hook works', async () => {
       let count = 0;
-      await strapi.db.transaction(({ onCommit, onRollback }) => {
+      await metrix.db.transaction(({ onCommit, onRollback }) => {
         onCommit(() => count++);
       });
       expect(count).toEqual(1);
@@ -236,9 +236,9 @@ describe('transactions', () => {
 
     test('onCommit hook works with nested transactions', async () => {
       let count = 0;
-      await strapi.db.transaction(({ onCommit, onRollback }) => {
+      await metrix.db.transaction(({ onCommit, onRollback }) => {
         onCommit(() => count++);
-        return strapi.db.transaction(({ onCommit, onRollback }) => {
+        return metrix.db.transaction(({ onCommit, onRollback }) => {
           onCommit(() => count++);
         });
       });
@@ -248,7 +248,7 @@ describe('transactions', () => {
     test('onRollback hook works', async () => {
       let count = 0;
       try {
-        await strapi.db.transaction(({ onRollback }) => {
+        await metrix.db.transaction(({ onRollback }) => {
           onRollback(() => count++);
           throw new Error('test');
         });
@@ -261,9 +261,9 @@ describe('transactions', () => {
     test('onRollback hook works with nested transactions', async () => {
       let count = 0;
       try {
-        await strapi.db.transaction(({ onRollback }) => {
+        await metrix.db.transaction(({ onRollback }) => {
           onRollback(() => count++);
-          return strapi.db.transaction(({ onRollback }) => {
+          return metrix.db.transaction(({ onRollback }) => {
             onRollback(() => count++);
             throw new Error('test');
           });
@@ -277,11 +277,11 @@ describe('transactions', () => {
 
   describe('using a transaction object', () => {
     test('commits successfully', async () => {
-      const trx = await strapi.db.transaction();
+      const trx = await metrix.db.transaction();
 
       try {
-        await strapi.db
-          .queryBuilder('strapi::core-store')
+        await metrix.db
+          .queryBuilder('metrix::core-store')
           .update({
             key: 'wrong key',
           })
@@ -289,8 +289,8 @@ describe('transactions', () => {
           .transacting(trx.get())
           .execute();
 
-        await strapi.db
-          .queryBuilder('strapi::core-store')
+        await metrix.db
+          .queryBuilder('metrix::core-store')
           .update({
             key: original[0].key,
           })
@@ -305,8 +305,8 @@ describe('transactions', () => {
         expect('this should not be reached').toBe(false);
       }
 
-      const end = await strapi.db
-        .queryBuilder('strapi::core-store')
+      const end = await metrix.db
+        .queryBuilder('metrix::core-store')
         .select(['*'])
         .where({ id: 1 })
         .execute();
@@ -315,11 +315,11 @@ describe('transactions', () => {
     });
 
     test('rollback successfully', async () => {
-      const trx = await strapi.db.transaction();
+      const trx = await metrix.db.transaction();
 
       try {
-        await strapi.db
-          .queryBuilder('strapi::core-store')
+        await metrix.db
+          .queryBuilder('metrix::core-store')
           .update({
             key: 'wrong key',
           })
@@ -328,7 +328,7 @@ describe('transactions', () => {
           .execute();
 
         // this query should throw because it has errors
-        await strapi.db
+        await metrix.db
           .queryBuilder('invalid_uid')
           .update({
             key: 123,
@@ -344,8 +344,8 @@ describe('transactions', () => {
         await trx.rollback();
       }
 
-      const end = await strapi.db
-        .queryBuilder('strapi::core-store')
+      const end = await metrix.db
+        .queryBuilder('metrix::core-store')
         .select(['*'])
         .where({ id: 1 })
         .execute();

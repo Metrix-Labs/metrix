@@ -1,5 +1,5 @@
 const styles = `
-.strapi--root {
+.metrix--root {
   position: absolute;
   top: 0;
   right: 0;
@@ -8,7 +8,7 @@ const styles = `
   background: #fff;
 }
 
-.strapi--no-js {
+.metrix--no-js {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -26,8 +26,8 @@ const styles = `
 const NoJavascript = () => {
   return (
     <noscript>
-      <div className="strapi--root">
-        <div className="strapi--no-js">
+      <div className="metrix--root">
+        <div className="metrix--no-js">
           <style type="text/css">{styles}</style>
           <h1>JavaScript disabled</h1>
           <p>

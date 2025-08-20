@@ -26,7 +26,7 @@ describe('Enumeration validator', () => {
 
       const validator = strapiUtils.validateYupSchema(
         Validators.enumeration({
-          attr: { type: 'enumeration', enum: ['strapi', 'headless'] },
+          attr: { type: 'enumeration', enum: ['metrix', 'headless'] },
           model: fakeModel,
           updatedAttribute: { name: 'attrFloatUnique', value: 1 },
           entity: null,
@@ -43,14 +43,14 @@ describe('Enumeration validator', () => {
     test('it validates the value if it is part of the allowed values', async () => {
       const validator = strapiUtils.validateYupSchema(
         Validators.enumeration({
-          attr: { type: 'enumeration', enum: ['strapi', 'headless'] },
+          attr: { type: 'enumeration', enum: ['metrix', 'headless'] },
           model: fakeModel,
           updatedAttribute: { name: 'attrEnumUnique', value: 1 },
           entity: null,
         })
       );
 
-      expect(await validator('strapi')).toBe('strapi');
+      expect(await validator('metrix')).toBe('metrix');
     });
   });
 });

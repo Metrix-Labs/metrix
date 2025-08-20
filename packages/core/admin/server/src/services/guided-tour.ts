@@ -18,15 +18,15 @@ const DEFAULT_ATTIBUTES = [
   'localizations',
 ];
 
-export const createGuidedTourService = ({ strapi }: { strapi: Core.Strapi }) => {
+export const createGuidedTourService = ({ metrix }: { metrix: Core.Strapi }) => {
   const getCompletedActions = async () => {
     // Check if any content-type schemas have been created on the api:: namespace
-    const contentTypeSchemaNames = Object.keys(strapi.contentTypes).filter((contentTypeUid) =>
+    const contentTypeSchemaNames = Object.keys(metrix.contentTypes).filter((contentTypeUid) =>
       contentTypeUid.startsWith('api::')
     );
     const contentTypeSchemaAttributes = contentTypeSchemaNames.map((uid) => {
       const attributes = Object.keys(
-        strapi.contentType(uid as Internal.UID.ContentType).attributes
+        metrix.contentType(uid as Internal.UID.ContentType).attributes
       );
       return attributes.filter((attribute) => !DEFAULT_ATTIBUTES.includes(attribute));
     });
@@ -40,7 +40,7 @@ export const createGuidedTourService = ({ strapi }: { strapi: Core.Strapi }) => 
     // Check if any content has been created for content-types on the api:: namespace
     const hasContent = await (async () => {
       for (const name of contentTypeSchemaNames) {
-        const count = await strapi.documents(name as Internal.UID.ContentType).count({});
+        const count = await metrix.documents(name as Internal.UID.ContentType).count({});
 
         if (count > 0) return true;
       }
@@ -50,7 +50,7 @@ export const createGuidedTourService = ({ strapi }: { strapi: Core.Strapi }) => 
     const didCreateContent = didCreateContentTypeSchema && hasContent;
 
     // Check if any api tokens have been created besides the default ones
-    const createdApiTokens = await strapi
+    const createdApiTokens = await metrix
       .documents('admin::api-token')
       .findMany({ fields: ['name', 'description'] });
     const didCreateApiToken = createdApiTokens.some((doc) =>

@@ -27,7 +27,7 @@ const createActionProvider = (options?: Options) => {
     },
 
     async register(actionAttributes: CreateActionPayload) {
-      if (strapi.isLoaded) {
+      if (metrix.isLoaded) {
         throw new Error(`You can't register new actions outside of the bootstrap function.`);
       }
 

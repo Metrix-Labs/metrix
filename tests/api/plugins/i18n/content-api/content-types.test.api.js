@@ -1,10 +1,10 @@
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const { createTestBuilder } = require('api-tests/builder');
 
-let strapi;
+let metrix;
 let rq;
 
 const compoModel = {
@@ -117,11 +117,11 @@ describe('i18n - Content API', () => {
       .addFixtures(categoryModel.singularName, categories)
       .build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
-    data.dogs = await builder.sanitizedFixturesFor(dogSchema.singularName, strapi);
-    data.categories = await builder.sanitizedFixturesFor(categoryModel.singularName, strapi);
+    data.dogs = await builder.sanitizedFixturesFor(dogSchema.singularName, metrix);
+    data.categories = await builder.sanitizedFixturesFor(categoryModel.singularName, metrix);
 
     // Create a new locale of the same document
     const { locale, name, ...partialDog } = dogs[0];
@@ -140,9 +140,9 @@ describe('i18n - Content API', () => {
 
   afterAll(async () => {
     // Delete all locales that have been created
-    await strapi.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
+    await metrix.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

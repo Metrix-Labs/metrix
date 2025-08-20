@@ -18,12 +18,12 @@ export default {
       state: { userAbility },
     } = ctx;
 
-    const pmFolder = strapi.service('admin::permission').createPermissionsManager({
+    const pmFolder = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: FOLDER_MODEL_UID,
     });
 
-    const pmFile = strapi.service('admin::permission').createPermissionsManager({
+    const pmFile = metrix.service('admin::permission').createPermissionsManager({
       ability: userAbility,
       action: ACTIONS.read,
       model: FILE_MODEL_UID,
@@ -42,7 +42,7 @@ export default {
     } = await folderService.deleteByIds(body.folderIds);
 
     if (deletedFiles.length + deletedFolders.length > 1) {
-      strapi.telemetry.send('didBulkDeleteMediaLibraryElements', {
+      metrix.telemetry.send('didBulkDeleteMediaLibraryElements', {
         eventProperties: {
           rootFolderNumber: deletedFolders.length,
           rootAssetNumber: deletedFiles.length,
@@ -65,12 +65,12 @@ export default {
       state: { userAbility },
     } = ctx;
 
-    const pmFolder = strapi.service('admin::permission').createPermissionsManager({
+    const pmFolder = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: FOLDER_MODEL_UID,
     });
 
-    const pmFile = strapi.service('admin::permission').createPermissionsManager({
+    const pmFile = metrix.service('admin::permission').createPermissionsManager({
       ability: userAbility,
       action: ACTIONS.read,
       model: FILE_MODEL_UID,
@@ -82,10 +82,10 @@ export default {
     let totalFolderNumber = 0;
     let totalFileNumber = 0;
 
-    const trx = await strapi.db.transaction();
+    const trx = await metrix.db.transaction();
     try {
       // fetch folders
-      const existingFolders = await strapi.db
+      const existingFolders = await metrix.db
         .queryBuilder(FOLDER_MODEL_UID)
         .select(['id', 'pathId', 'path'])
         .where({ id: { $in: folderIds } })
@@ -94,7 +94,7 @@ export default {
         .execute<Folder[]>();
 
       // fetch files
-      const existingFiles = await strapi.db
+      const existingFiles = await metrix.db
         .queryBuilder(FILE_MODEL_UID)
         .select(['id'])
         .where({ id: { $in: fileIds } })
@@ -105,7 +105,7 @@ export default {
       // fetch destinationFolder path
       let destinationFolderPath = '/';
       if (destinationFolderId !== null) {
-        const destinationFolder = await strapi.db
+        const destinationFolder = await metrix.db
           .queryBuilder(FOLDER_MODEL_UID)
           .select('path')
           .where({ id: destinationFolderId })
@@ -115,19 +115,19 @@ export default {
         destinationFolderPath = destinationFolder.path;
       }
 
-      const fileTable = strapi.getModel(FILE_MODEL_UID).collectionName;
-      const folderTable = strapi.getModel(FOLDER_MODEL_UID).collectionName;
+      const fileTable = metrix.getModel(FILE_MODEL_UID).collectionName;
+      const folderTable = metrix.getModel(FOLDER_MODEL_UID).collectionName;
       const folderPathColName =
         // @ts-expect-error - no dynamic typings for the models
-        strapi.db.metadata.get(FILE_MODEL_UID).attributes.folderPath.columnName;
+        metrix.db.metadata.get(FILE_MODEL_UID).attributes.folderPath.columnName;
       // @ts-expect-error - no dynamic typings for the models
-      const pathColName = strapi.db.metadata.get(FOLDER_MODEL_UID).attributes.path.columnName;
+      const pathColName = metrix.db.metadata.get(FOLDER_MODEL_UID).attributes.path.columnName;
 
       if (existingFolders.length > 0) {
         // update folders' parent relation
         // @ts-expect-error - no dynamic typings for the models
-        const { joinTable } = strapi.db.metadata.get(FOLDER_MODEL_UID).attributes.parent;
-        await strapi.db
+        const { joinTable } = metrix.db.metadata.get(FOLDER_MODEL_UID).attributes.parent;
+        await metrix.db
           .queryBuilder(joinTable.name)
           .transacting(trx.get())
           .delete()
@@ -135,7 +135,7 @@ export default {
           .execute();
 
         if (destinationFolderId !== null) {
-          await strapi.db
+          await metrix.db
             .queryBuilder(joinTable.name)
             .transacting(trx.get())
             .insert(
@@ -149,7 +149,7 @@ export default {
 
         for (const existingFolder of existingFolders) {
           let replaceQuery;
-          switch (strapi.db.dialect.client) {
+          switch (metrix.db.dialect.client) {
             case 'sqlite':
               replaceQuery = '? || SUBSTRING(??, ?)';
               break;
@@ -161,14 +161,14 @@ export default {
           }
 
           // update path for folders themselves & folders below
-          totalFolderNumber = await strapi.db
+          totalFolderNumber = await metrix.db
             .getConnection(folderTable)
             .transacting(trx.get())
             .where(pathColName, existingFolder.path)
             .orWhere(pathColName, 'like', `${existingFolder.path}/%`)
             .update(
               pathColName,
-              strapi.db.connection.raw(replaceQuery, [
+              metrix.db.connection.raw(replaceQuery, [
                 strings.joinBy('/', destinationFolderPath, `${existingFolder.pathId}`),
                 pathColName,
                 existingFolder.path.length + 1,
@@ -176,14 +176,14 @@ export default {
             );
 
           // update path of files below
-          totalFileNumber = await strapi.db
+          totalFileNumber = await metrix.db
             .getConnection(fileTable)
             .transacting(trx.get())
             .where(folderPathColName, existingFolder.path)
             .orWhere(folderPathColName, 'like', `${existingFolder.path}/%`)
             .update(
               folderPathColName,
-              strapi.db.connection.raw(replaceQuery, [
+              metrix.db.connection.raw(replaceQuery, [
                 strings.joinBy('/', destinationFolderPath, `${existingFolder.pathId}`),
                 folderPathColName,
                 existingFolder.path.length + 1,
@@ -195,8 +195,8 @@ export default {
       if (existingFiles.length > 0) {
         // update files' folder relation (delete + insert; upsert not possible)
         // @ts-expect-error - no dynamic typings for the models
-        const fileJoinTable = strapi.db.metadata.get(FILE_MODEL_UID).attributes.folder.joinTable;
-        await strapi.db
+        const fileJoinTable = metrix.db.metadata.get(FILE_MODEL_UID).attributes.folder.joinTable;
+        await metrix.db
           .queryBuilder(fileJoinTable.name)
           .transacting(trx.get())
           .delete()
@@ -204,7 +204,7 @@ export default {
           .execute();
 
         if (destinationFolderId !== null) {
-          await strapi.db
+          await metrix.db
             .queryBuilder(fileJoinTable.name)
             .transacting(trx.get())
             .insert(
@@ -217,7 +217,7 @@ export default {
         }
 
         // update files main fields (path + updatedBy)
-        await strapi.db
+        await metrix.db
           .getConnection(fileTable)
           .transacting(trx.get())
           .whereIn('id', fileIds)
@@ -230,15 +230,15 @@ export default {
       throw e;
     }
 
-    const updatedFolders = await strapi.db.query(FOLDER_MODEL_UID).findMany({
+    const updatedFolders = await metrix.db.query(FOLDER_MODEL_UID).findMany({
       where: { id: { $in: folderIds } },
     });
 
-    const updatedFiles = await strapi.db.query(FILE_MODEL_UID).findMany({
+    const updatedFiles = await metrix.db.query(FILE_MODEL_UID).findMany({
       where: { id: { $in: fileIds } },
     });
 
-    strapi.telemetry.send('didBulkMoveMediaLibraryElements', {
+    metrix.telemetry.send('didBulkMoveMediaLibraryElements', {
       eventProperties: {
         rootFolderNumber: updatedFolders.length,
         rootAssetNumber: updatedFiles.length,

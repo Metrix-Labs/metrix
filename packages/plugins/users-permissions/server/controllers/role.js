@@ -8,8 +8,8 @@ const { validateDeleteRoleBody } = require('./validation/user');
 const { ApplicationError, ValidationError } = errors;
 
 const sanitizeOutput = async (role) => {
-  const { sanitizeLocalizationFields } = strapi.plugin('i18n').service('sanitize');
-  const schema = strapi.getModel('plugin::users-permissions.role');
+  const { sanitizeLocalizationFields } = metrix.plugin('i18n').service('sanitize');
+  const schema = metrix.getModel('plugin::users-permissions.role');
 
   return async.pipe(sanitizeLocalizationFields(schema))(role);
 };
@@ -72,7 +72,7 @@ module.exports = {
     }
 
     // Fetch public role.
-    const publicRole = await strapi.db
+    const publicRole = await metrix.db
       .query('plugin::users-permissions.role')
       .findOne({ where: { type: 'public' } });
 

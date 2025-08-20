@@ -2,7 +2,7 @@ import { map, values, sumBy, pipe, flatMap } from 'lodash/fp';
 import type { Schema, UID } from '@metrixlabs/types';
 
 const getNumberOfDynamicZones = () => {
-  const contentTypes: Record<UID.ContentType, Schema.ContentType> = strapi.contentTypes;
+  const contentTypes: Record<UID.ContentType, Schema.ContentType> = metrix.contentTypes;
 
   return pipe(
     map('attributes'),

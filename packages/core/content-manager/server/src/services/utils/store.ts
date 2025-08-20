@@ -4,7 +4,7 @@ const keys = {
   CONFIGURATION: 'configuration',
 };
 
-const getStore = () => strapi.store({ type: 'plugin', name: 'content_manager' });
+const getStore = () => metrix.store({ type: 'plugin', name: 'content_manager' });
 
 /** Model configuration */
 const EMPTY_CONFIG = {
@@ -39,13 +39,13 @@ const setModelConfiguration = async (key: string, value: any) => {
 };
 
 const deleteKey = (key: any) => {
-  return strapi.db
-    .query('strapi::core-store')
+  return metrix.db
+    .query('metrix::core-store')
     .delete({ where: { key: `plugin_content_manager_configuration_${key}` } });
 };
 
 const findByKey = async (key: any) => {
-  const results = await strapi.db.query('strapi::core-store').findMany({
+  const results = await metrix.db.query('metrix::core-store').findMany({
     where: {
       key: {
         $startsWith: key,

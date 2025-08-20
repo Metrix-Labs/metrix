@@ -6,9 +6,9 @@ import type { Core } from '@metrixlabs/types';
 
 const { RateLimitError } = utils.errors;
 
-export default (config: any, { strapi }: { strapi: Core.Strapi }) =>
+export default (config: any, { metrix }: { metrix: Core.Strapi }) =>
   async (ctx: Context, next: Next) => {
-    let rateLimitConfig = strapi.config.get('admin.rateLimit') as any;
+    let rateLimitConfig = metrix.config.get('admin.rateLimit') as any;
 
     if (!rateLimitConfig) {
       rateLimitConfig = {

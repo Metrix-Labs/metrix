@@ -8,7 +8,7 @@ import {
 } from '../content-type';
 
 describe('Content type validator', () => {
-  global.strapi = {
+  global.metrix = {
     contentTypes: {},
     plugins: {
       'content-type-builder': {
@@ -57,13 +57,13 @@ describe('Content type validator', () => {
         expect(err).toMatchObject({
           name: 'ValidationError',
           message:
-            'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, strapi*, _strapi*, __strapi*',
+            'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, metrix*, _strapi*, __strapi*',
           details: {
             errors: [
               {
                 path: ['contentType', 'attributes', 'entryId'],
                 message:
-                  'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, strapi*, _strapi*, __strapi*',
+                  'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, metrix*, _strapi*, __strapi*',
                 name: 'ValidationError',
               },
             ],
@@ -93,13 +93,13 @@ describe('Content type validator', () => {
         expect(err).toMatchObject({
           name: 'ValidationError',
           message:
-            'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, strapi*, _strapi*, __strapi*',
+            'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, metrix*, _strapi*, __strapi*',
           details: {
             errors: [
               {
                 path: ['contentType', 'attributes', 'ENTRY_ID'],
                 message:
-                  'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, strapi*, _strapi*, __strapi*',
+                  'Attribute keys cannot be one of id, document_id, created_at, updated_at, published_at, created_by_id, updated_by_id, created_by, updated_by, entry_id, status, localizations, meta, locale, __component, __contentType, metrix*, _strapi*, __strapi*',
                 name: 'ValidationError',
               },
             ],
@@ -132,12 +132,12 @@ describe('Content type validator', () => {
       await validateUpdateContentTypeInput(data).catch((err) => {
         expect(err).toMatchObject({
           name: 'ValidationError',
-          message: `Content Type name cannot be one of boolean, date, date_time, time, upload, document, then, strapi*, _strapi*, __strapi*`,
+          message: `Content Type name cannot be one of boolean, date, date_time, time, upload, document, then, metrix*, _strapi*, __strapi*`,
           details: {
             errors: [
               {
                 path: ['contentType', name],
-                message: `Content Type name cannot be one of boolean, date, date_time, time, upload, document, then, strapi*, _strapi*, __strapi*`,
+                message: `Content Type name cannot be one of boolean, date, date_time, time, upload, document, then, metrix*, _strapi*, __strapi*`,
                 name: 'ValidationError',
               },
             ],

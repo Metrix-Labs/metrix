@@ -22,7 +22,7 @@ module.exports = ({ env }) => ({
           return null;
         }
 
-        return `https://strapi.io/preview/${uid}/${documentId}/${locale}/${status}`;
+        return `https://metrix.io/preview/${uid}/${documentId}/${locale}/${status}`;
       },
     },
   },

@@ -1,7 +1,7 @@
 'use strict';
 
 const { omit } = require('lodash/fp');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const { createUtils } = require('api-tests/utils');
 
@@ -34,7 +34,7 @@ const omitRegistrationToken = omit(['registrationToken']);
 describe('Admin User CRUD (api)', () => {
   let rq;
   let utils;
-  let strapi;
+  let metrix;
 
   // Local test data used across the test suite
   const testData = {
@@ -53,9 +53,9 @@ describe('Admin User CRUD (api)', () => {
 
   // Initialization Actions
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
-    utils = createUtils(strapi);
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
+    utils = createUtils(metrix);
 
     testData.role = await createUserRole();
 
@@ -67,7 +67,7 @@ describe('Admin User CRUD (api)', () => {
   afterAll(async () => {
     await utils.deleteRolesById([testData.role.id]);
 
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   test('1. Creates a user (wrong body)', async () => {
@@ -105,7 +105,7 @@ describe('Admin User CRUD (api)', () => {
 
   test('2. Creates a user (successfully)', async () => {
     const body = {
-      email: 'uSer-tEsTs@strapi-e2e.com', // Tested with a camelCase email address
+      email: 'uSer-tEsTs@metrix-e2e.com', // Tested with a camelCase email address
       firstname: 'user_tests-firstname',
       lastname: 'user_tests-lastname',
       roles: [testData.role.id],
@@ -131,7 +131,7 @@ describe('Admin User CRUD (api)', () => {
   test('3. Creates users with superAdmin role (success)', async () => {
     const getBody = (index) => {
       return {
-        email: `user-tests${index}@strapi-e2e.com`,
+        email: `user-tests${index}@metrix-e2e.com`,
         firstname: 'user_tests-firstname',
         lastname: 'user_tests-lastname',
         roles: [testData.superAdminRole.id],

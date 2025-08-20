@@ -2,10 +2,10 @@
 
 const usersPermissionsUserUID = 'plugin::users-permissions.user';
 
-module.exports = ({ nexus, strapi }) => {
-  const { getContentTypeInputName } = strapi.plugin('graphql').service('utils').naming;
+module.exports = ({ nexus, metrix }) => {
+  const { getContentTypeInputName } = metrix.plugin('graphql').service('utils').naming;
 
-  const userContentType = strapi.getModel(usersPermissionsUserUID);
+  const userContentType = metrix.getModel(usersPermissionsUserUID);
   const userInputName = getContentTypeInputName(userContentType);
 
   return nexus.extendInputType({

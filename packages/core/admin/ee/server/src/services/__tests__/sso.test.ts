@@ -7,7 +7,7 @@ import createProviderRegistry from '../passport/provider-registry';
 
 describe('SSO', () => {
   beforeEach(() => {
-    global.strapi = {
+    global.metrix = {
       ee: {
         features: {
           isEnabled() {
@@ -30,8 +30,8 @@ describe('SSO', () => {
 
   describe('Sync Provider Registry with Config', () => {
     test('The provider registry should match the auth config', async () => {
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         config: {
           get: () => ({
             providers: [{ uid: 'foo' }, { uid: 'bar' }],
@@ -63,7 +63,7 @@ describe('SSO', () => {
     const barProvider = { uid: 'bar', createStrategy: jest.fn() };
 
     beforeEach(() => {
-      global.strapi = { ...global.strapi, isLoaded: false } as any;
+      global.metrix = { ...global.metrix, isLoaded: false } as any;
     });
 
     afterEach(() => {
@@ -72,7 +72,7 @@ describe('SSO', () => {
     });
 
     test('Cannot register after bootstrap', () => {
-      global.strapi = { ...global.strapi, isLoaded: true } as any;
+      global.metrix = { ...global.metrix, isLoaded: true } as any;
 
       const fn = () => registry.register(fooProvider);
 

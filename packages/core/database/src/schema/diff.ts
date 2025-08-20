@@ -426,7 +426,7 @@ export default (db: Database) => {
 
     const persistedTables = helpers.hasTable(databaseSchema, 'strapi_core_store_settings')
       ? // TODO: replace with low level db query instead
-        ((await strapi.store.get({
+        ((await metrix.store.get({
           type: 'core',
           key: 'persisted_tables',
         })) ?? [])

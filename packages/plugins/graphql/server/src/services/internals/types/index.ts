@@ -7,9 +7,9 @@ import error from './error';
 import type { Context } from '../../types';
 
 export default (context: Context) => () => {
-  const { strapi } = context;
+  const { metrix } = context;
 
-  const { KINDS } = strapi.plugin('graphql').service('constants');
+  const { KINDS } = metrix.plugin('graphql').service('constants');
 
   return {
     [KINDS.internal]: {

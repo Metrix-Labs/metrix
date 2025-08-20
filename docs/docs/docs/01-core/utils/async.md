@@ -19,7 +19,7 @@ The `map` function is an asynchronous version of the `Array.prototype.map` metho
 Example usage:
 
 ```js
-import { async } from '@strapi/utils';
+import { async } from '@metrix/utils';
 
 const input = [1, 2, 3];
 
@@ -37,7 +37,7 @@ The `reduce` function is an asynchronous version of the `Array.prototype.reduce`
 Example usage:
 
 ```js
-import { async } from '@strapi/utils';
+import { async } from '@metrix/utils';
 const input = [1, 2, 3];
 
 const reducer = async.reduce(input);
@@ -55,7 +55,7 @@ The `pipe` function is a utility function for composing asynchronous functions. 
 Example usage:
 
 ```js
-import { async } from '@strapi/utils';
+import { async } from '@metrix/utils';
 
 async function addOne(input: number): Promise<number> {
   return input + 1;
@@ -94,5 +94,5 @@ If we begin to use lots of async utils function, we may consider to migrate to a
 
 ## Resources
 
-- [Async file in Strapi](https://github.com/strapi/strapi/blob/9b36c3b10adaa00fd3596853abc63122632c36fe/packages/core/utils/lib/async.js)
+- [Async file in Metrix](https://github.com/metrix/metrix/blob/9b36c3b10adaa00fd3596853abc63122632c36fe/packages/core/utils/lib/async.js)
 - http://caolan.github.io/async/v3/

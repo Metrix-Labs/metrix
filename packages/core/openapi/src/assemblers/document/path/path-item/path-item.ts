@@ -53,7 +53,7 @@ export class PathItemAssembler implements Assembler.Path {
 
   private _createPathItemContext(context: PathContext): PathItemContext {
     const initProps: PartialContext<PathItemContextData> = {
-      strapi: context.strapi,
+      metrix: context.metrix,
       registries: context.registries,
       routes: context.routes,
       timer: context.timer,

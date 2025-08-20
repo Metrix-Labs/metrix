@@ -141,7 +141,7 @@ const initProviders = ({ baseURL, purest }) => ({
         provider: 'github',
         defaults: {
           headers: {
-            'user-agent': 'strapi',
+            'user-agent': 'metrix',
           },
         },
       });
@@ -238,7 +238,7 @@ const initProviders = ({ baseURL, purest }) => ({
         .request()
         .then(({ body }) => ({
           username: body.username,
-          email: `${body.username}@strapi.io`, // dummy email as Instagram does not provide user email
+          email: `${body.username}@metrix.io`, // dummy email as Instagram does not provide user email
         }));
     },
   },
@@ -374,7 +374,7 @@ const initProviders = ({ baseURL, purest }) => ({
               version: 'v1',
               headers: {
                 Authorization: 'Bearer {auth}',
-                'user-agent': 'strapi',
+                'user-agent': 'metrix',
               },
             },
           },
@@ -387,7 +387,7 @@ const initProviders = ({ baseURL, purest }) => ({
         .request()
         .then(({ body }) => ({
           username: body.name,
-          email: `${body.name}@strapi.io`, // dummy email as Reddit does not provide user email
+          email: `${body.name}@metrix.io`, // dummy email as Reddit does not provide user email
         }));
     },
   },
@@ -412,7 +412,7 @@ const initProviders = ({ baseURL, purest }) => ({
         .request()
         .then(({ body }) => {
           const username = body.username || body.nickname || body.name || body.email.split('@')[0];
-          const email = body.email || `${username.replace(/\s+/g, '.')}@strapi.io`;
+          const email = body.email || `${username.replace(/\s+/g, '.')}@metrix.io`;
 
           return {
             username,
@@ -449,7 +449,7 @@ const initProviders = ({ baseURL, purest }) => ({
             ? body.attributes.strapiemail || body.attributes.email
             : body.strapiemail || body.email;
           if (!username || !email) {
-            strapi.log.warn(
+            metrix.log.warn(
               `CAS Response Body did not contain required attributes: ${JSON.stringify(body)}`
             );
           }
@@ -531,8 +531,8 @@ const initProviders = ({ baseURL, purest }) => ({
 module.exports = () => {
   const purest = require('purest');
 
-  const apiPrefix = strapi.config.get('api.rest.prefix');
-  const baseURL = urljoin(strapi.config.server.url, apiPrefix, 'auth');
+  const apiPrefix = metrix.config.get('api.rest.prefix');
+  const baseURL = urljoin(metrix.config.server.url, apiPrefix, 'auth');
 
   const authProviders = initProviders({ baseURL, purest });
 

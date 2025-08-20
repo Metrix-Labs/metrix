@@ -23,7 +23,7 @@ const transformLoadParamsToQuery = (
   params: Record<string, unknown>,
   pagination = {}
 ) => {
-  const query = strapi
+  const query = metrix
     .get('query-params')
     .transform(uid, { populate: { [field]: params } as any }) as any;
 
@@ -43,10 +43,10 @@ const databaseErrorsToTransform = [
 ];
 
 const createDefaultImplementation = ({
-  strapi,
+  metrix,
   db,
 }: {
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
   db: Database;
 }): Modules.EntityService.EntityService => ({
   async wrapParams(options: any = {}) {
@@ -58,23 +58,23 @@ const createDefaultImplementation = ({
   },
 
   async findMany(uid, opts) {
-    const { kind } = strapi.getModel(uid);
+    const { kind } = metrix.getModel(uid);
 
     const wrappedParams = await this.wrapParams(opts, { uid, action: 'findMany' });
 
     if (kind === 'singleType') {
-      const entity = strapi.documents!(uid).findFirst(wrappedParams);
+      const entity = metrix.documents!(uid).findFirst(wrappedParams);
       return this.wrapResult(entity, { uid, action: 'findOne' });
     }
 
-    const entities = await strapi.documents!(uid).findMany(wrappedParams);
+    const entities = await metrix.documents!(uid).findMany(wrappedParams);
     return this.wrapResult(entities, { uid, action: 'findMany' });
   },
 
   async findPage(uid, opts) {
     const wrappedParams = await this.wrapParams(opts, { uid, action: 'findPage' });
 
-    const query = strapi.get('query-params').transform(uid, wrappedParams);
+    const query = metrix.get('query-params').transform(uid, wrappedParams);
 
     const entities = await db.query(uid).findPage(query);
     return this.wrapResult(entities, { uid, action: 'findMany' });
@@ -89,7 +89,7 @@ const createDefaultImplementation = ({
       return this.wrapResult(null, { uid, action: 'findOne' });
     }
 
-    const entity = await strapi.documents!(uid).findOne({
+    const entity = await metrix.documents!(uid).findOne({
       ...wrappedParams,
       documentId: res.documentId,
     });
@@ -99,7 +99,7 @@ const createDefaultImplementation = ({
   async count(uid, opts) {
     const wrappedParams = await this.wrapParams(opts, { uid, action: 'count' });
 
-    return strapi.documents!(uid).count(wrappedParams);
+    return metrix.documents!(uid).count(wrappedParams);
   },
 
   async create(uid, params) {
@@ -112,9 +112,9 @@ const createDefaultImplementation = ({
       throw new Error('cannot create');
     }
 
-    const shouldPublish = !contentTypesUtils.isDraft(data, strapi.getModel(uid));
+    const shouldPublish = !contentTypesUtils.isDraft(data, metrix.getModel(uid));
 
-    const entity = await strapi.documents!(uid).create({
+    const entity = await metrix.documents!(uid).create({
       ...(wrappedParams as any),
       status: shouldPublish ? 'published' : 'draft',
     });
@@ -135,9 +135,9 @@ const createDefaultImplementation = ({
       return this.wrapResult(null, { uid, action: 'update' });
     }
 
-    const shouldPublish = !contentTypesUtils.isDraft(entityToUpdate, strapi.getModel(uid));
+    const shouldPublish = !contentTypesUtils.isDraft(entityToUpdate, metrix.getModel(uid));
 
-    const entity = strapi.documents!(uid).update({
+    const entity = metrix.documents!(uid).update({
       ...(wrappedParams as any),
       status: shouldPublish ? 'published' : 'draft',
       documentId: entityToUpdate.documentId,
@@ -155,7 +155,7 @@ const createDefaultImplementation = ({
       return this.wrapResult(null, { uid, action: 'delete' });
     }
 
-    await strapi.documents!(uid).delete({
+    await metrix.documents!(uid).delete({
       ...wrappedParams,
       documentId: entityToDelete.documentId,
     });
@@ -180,7 +180,7 @@ const createDefaultImplementation = ({
       throw new Error(`Invalid load. Expected "${field}" to be a string`);
     }
 
-    const { attributes } = strapi.getModel(uid);
+    const { attributes } = metrix.getModel(uid);
     const attribute = attributes[field];
 
     if (!relationUtils.isAnyToMany(attribute)) {
@@ -199,7 +199,7 @@ const createDefaultImplementation = ({
 });
 
 export default (ctx: {
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
   db: Database;
 }): Decoratable<Modules.EntityService.EntityService> => {
   const implementation = createDefaultImplementation(ctx);

@@ -13,16 +13,16 @@ const { ApplicationError, ForbiddenError } = errors;
 const pickUserCreationAttributes = pick(['firstname', 'lastname', 'email', 'roles']);
 
 const hasAdminSeatsAvaialble = async () => {
-  if (!strapi.EE) {
+  if (!metrix.EE) {
     return true;
   }
 
-  const permittedSeats = strapi.ee.seats as any;
+  const permittedSeats = metrix.ee.seats as any;
   if (isNil(permittedSeats)) {
     return true;
   }
 
-  const userCount = await strapi.service('admin::user').getCurrentActiveUserCount();
+  const userCount = await metrix.service('admin::user').getCurrentActiveUserCount();
 
   if (userCount < permittedSeats) {
     return true;

@@ -1,6 +1,6 @@
 # Test Suite for Role-Based Access Control
 
-This test suite focuses on Strapi's Role-Based Access Control (RBAC) feature.
+This test suite focuses on Metrix's Role-Based Access Control (RBAC) feature.
 
 The tests ensure that administrators or users with appropriate privileges can manage roles and permissions effectively.
 

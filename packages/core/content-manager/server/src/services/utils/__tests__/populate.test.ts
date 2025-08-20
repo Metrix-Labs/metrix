@@ -54,7 +54,7 @@ describe('Populate', () => {
 
   describe('getDeepPopulate', () => {
     beforeEach(() => {
-      global.strapi = {
+      global.metrix = {
         getModel: jest.fn((uid) => fakeModels[uid]),
       } as any;
     });

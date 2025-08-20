@@ -1,30 +1,30 @@
-# Strapi Upgrade Tool
+# Metrix Upgrade Tool
 
 ## Description
 
-The Strapi Upgrade Tool is the CLI for facilitating upgrades between Strapi versions.
+The Metrix Upgrade Tool is the CLI for facilitating upgrades between Metrix versions.
 
-It handles updating a project's package.json with the correct version of Strapi, running the package installer, and running suggested code transforms for breaking changes (in major versions).
+It handles updating a project's package.json with the correct version of Metrix, running the package installer, and running suggested code transforms for breaking changes (in major versions).
 
-Once released, it will be the recommended way to update to any major, minor, and patch versions of Strapi instead of manually modifying package.json files.
+Once released, it will be the recommended way to update to any major, minor, and patch versions of Metrix instead of manually modifying package.json files.
 
 The tool offers the following commands:
 
 ```
-  major [options]     Upgrade to the next available major version of Strapi
-  minor [options]     Upgrade to the latest minor and patch version of Strapi for the
+  major [options]     Upgrade to the next available major version of Metrix
+  minor [options]     Upgrade to the latest minor and patch version of Metrix for the
                       current major
-  patch [options]     Upgrade to latest patch version of Strapi for the current major
+  patch [options]     Upgrade to latest patch version of Metrix for the current major
                       and minor
   codemods [options]  Run a set of available codemods for the selected target version
-                      without updating the Strapi dependencies
+                      without updating the Metrix dependencies
 ```
 
 ### What's a codemod / code transform?
 
-Codemods are a scripted way to refactor code. Here we are providing and running these scripts for users for any changes necessary in user code between Strapi versions.
+Codemods are a scripted way to refactor code. Here we are providing and running these scripts for users for any changes necessary in user code between Metrix versions.
 
-For example, if we need to rename a package used by Strapi projects, instead of instructing users to change the import, we provide a script that searches through the user's project and does the replacement for them.
+For example, if we need to rename a package used by Metrix projects, instead of instructing users to change the import, we provide a script that searches through the user's project and does the replacement for them.
 
 ### Types of Transforms
 
@@ -37,9 +37,9 @@ The upgrade tool provides two types of transforms:
 
 Data migrations are not handled by the upgrade tool.
 
-For Strapi v4, no data migrations will be allowed and no support is planned (except in extenuating circumstances eg, a critical security issue somehow relating to the database shape)
+For Metrix v4, no data migrations will be allowed and no support is planned (except in extenuating circumstances eg, a critical security issue somehow relating to the database shape)
 
-For Strapi v5, automated data migrations can be added in the `packages/core/database` package of the `develop` branch of this repo.
+For Metrix v5, automated data migrations can be added in the `packages/core/database` package of the `develop` branch of this repo.
 
 ## Usage
 
@@ -49,13 +49,13 @@ This package is not yet released, so currently it can be run on a project in the
 
 Run the command with the `--help` option to see all the available options.
 
-[Coming Soon] The Strapi Upgrade tool will be available using `npx @strapi/upgrade` and an alias for that within a project using `strapi upgrade`
+[Coming Soon] The Metrix Upgrade tool will be available using `npx @metrix/upgrade` and an alias for that within a project using `metrix upgrade`
 
 ## Writing a code transforms
 
-To begin your code transform script, create a file `upgrade/resources/codemods/{X.X.X}/{short-description-of-action}.{code|json}.ts` where `X.X.X` is the target version of Strapi the codemod will be run for.
+To begin your code transform script, create a file `upgrade/resources/codemods/{X.X.X}/{short-description-of-action}.{code|json}.ts` where `X.X.X` is the target version of Metrix the codemod will be run for.
 
-For example, all breaking changes for the initial release of Strapi v5 will go in `upgrade/resources/codemods/5.0.0`
+For example, all breaking changes for the initial release of Metrix v5 will go in `upgrade/resources/codemods/5.0.0`
 
 Note that "short-description-of-action" will be converted to text displayed to the user with hyphens converted to spaces, for example: "short description of action"
 
@@ -84,9 +84,9 @@ const transform: JSONTransform = (file, params) => {
   // Use json() to get useful helpers for performing your transform
   const j = json(file.json);
 
-  const strapiDepAddress = 'dependencies.@strapi/strapi';
+  const strapiDepAddress = 'dependencies.@metrix/metrix';
 
-  // if this file contains a value at dependencies.@strapi/strapi
+  // if this file contains a value at dependencies.@metrix/metrix
   if (j.has(strapiDepAddress)) {
     // we set the value to 5.0.0
     j.set(strapiDepAddress, '5.0.0');
@@ -126,7 +126,7 @@ The methods available from `json()` are wrappers for the lodash methods of the s
 - **has(path)**: checks if path exists
 - **merge(obj)**: merges two json objects
 - **root()**: returns the whole json object
-- **remove(path)**: removes the attribute given the path (such as 'dependencies.strapi')
+- **remove(path)**: removes the attribute given the path (such as 'dependencies.metrix')
 
 ### 'code' codemod transforms
 

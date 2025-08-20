@@ -16,8 +16,8 @@ export const getRelationTargetStatus = (
   }
 ): Status[] => {
   // Ignore if the target content type does not have draft and publish enabled
-  const targetContentType = strapi.getModel(opts.targetUid);
-  const sourceContentType = strapi.getModel(opts.sourceUid);
+  const targetContentType = metrix.getModel(opts.targetUid);
+  const sourceContentType = metrix.getModel(opts.sourceUid);
 
   const targetHasDP = contentTypes.hasDraftAndPublish(targetContentType);
   const sourceHasDP = contentTypes.hasDraftAndPublish(sourceContentType);

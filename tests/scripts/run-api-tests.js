@@ -18,8 +18,8 @@ const databases = {
       host: '127.0.0.1',
       port: 5432,
       database: 'strapi_test',
-      username: 'strapi',
-      password: 'strapi',
+      username: 'metrix',
+      password: 'metrix',
       schema: 'myschema',
     },
   },
@@ -29,8 +29,8 @@ const databases = {
       host: '127.0.0.1',
       port: 3306,
       database: 'strapi_test',
-      username: 'strapi',
-      password: 'strapi',
+      username: 'metrix',
+      password: 'metrix',
     },
   },
   sqlite: {
@@ -50,7 +50,7 @@ const runAllTests = async (args) => {
     cwd: path.resolve(__dirname, '../..'),
     env: {
       // if STRAPI_LICENSE is in the env the test will run in ee automatically
-      STRAPI_DISABLE_EE: !process.env.STRAPI_LICENSE,
+      STRAPI_DISABLE_EE: !process.env.METRIX_LICENSE,
       FORCE_COLOR: 1,
       ENV_PATH: process.env.ENV_PATH,
       JWT_SECRET: 'aSecret',

@@ -3,7 +3,7 @@ import type { Core } from '@metrixlabs/types';
 import { getService } from './utils';
 import { ALLOWED_SORT_STRINGS, ALLOWED_WEBHOOK_EVENTS } from './constants';
 
-export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
+export async function bootstrap({ metrix }: { metrix: Core.Strapi }) {
   const defaultConfig = {
     settings: {
       sizeOptimization: true,
@@ -18,7 +18,7 @@ export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
 
   for (const [key, defaultValue] of Object.entries(defaultConfig)) {
     // set plugin store
-    const configurator = strapi.store!({ type: 'plugin', name: 'upload', key });
+    const configurator = metrix.store!({ type: 'plugin', name: 'upload', key });
 
     const config = await configurator.get({});
     if (
@@ -47,7 +47,7 @@ export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
 
 const registerWebhookEvents = async () =>
   Object.entries(ALLOWED_WEBHOOK_EVENTS).forEach(([key, value]) => {
-    strapi.get('webhookStore').addAllowedEvent(key, value);
+    metrix.get('webhookStore').addAllowedEvent(key, value);
   });
 
 const registerPermissionActions = async () => {
@@ -101,5 +101,5 @@ const registerPermissionActions = async () => {
     },
   ];
 
-  await strapi.service('admin::permission').actionProvider.registerMany(actions);
+  await metrix.service('admin::permission').actionProvider.registerMany(actions);
 };

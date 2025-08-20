@@ -4,16 +4,16 @@ import type { Core } from '@metrixlabs/types';
 
 import { Config, UploadableFile } from '../types';
 
-export default ({ strapi }: { strapi: Core.Strapi }) => ({
+export default ({ metrix }: { metrix: Core.Strapi }) => ({
   async checkFileSize(file: UploadableFile) {
-    const { sizeLimit } = strapi.config.get<Config>('plugin::upload');
-    await strapi.plugin('upload').provider.checkFileSize(file, { sizeLimit });
+    const { sizeLimit } = metrix.config.get<Config>('plugin::upload');
+    await metrix.plugin('upload').provider.checkFileSize(file, { sizeLimit });
   },
 
   async upload(file: UploadableFile) {
-    if (isFunction(strapi.plugin('upload').provider.uploadStream)) {
+    if (isFunction(metrix.plugin('upload').provider.uploadStream)) {
       file.stream = file.getStream();
-      await strapi.plugin('upload').provider.uploadStream(file);
+      await metrix.plugin('upload').provider.uploadStream(file);
 
       delete file.stream;
 
@@ -22,7 +22,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       }
     } else {
       file.buffer = await fileUtils.streamToBuffer(file.getStream());
-      await strapi.plugin('upload').provider.upload(file);
+      await metrix.plugin('upload').provider.upload(file);
 
       delete file.buffer;
 

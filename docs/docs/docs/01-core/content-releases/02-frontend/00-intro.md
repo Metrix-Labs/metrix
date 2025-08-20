@@ -7,7 +7,7 @@ tags:
 
 ## Summary
 
-There are two pages, ReleasesPage and ReleaseDetailsPage. To access these pages a user will need a valid Strapi license with the feature enabled and at lease `plugin::content-releases.read` permissions.
+There are two pages, ReleasesPage and ReleaseDetailsPage. To access these pages a user will need a valid Metrix license with the feature enabled and at lease `plugin::content-releases.read` permissions.
 
 Redux toolkit is used to manage content releases data (data retrieval, release creation and editing, and fetching release actions). `Formik` is used to create/edit a release and all input components are controlled components.
 

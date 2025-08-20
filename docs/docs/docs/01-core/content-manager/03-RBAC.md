@@ -9,7 +9,7 @@ tags:
 ---
 
 :::note
-This is not a detailed breakdown of permissions within strapi, if you're looking for this you should look at [Permissions Intro](../admin/02-permissions/00-intro.mdx).
+This is not a detailed breakdown of permissions within metrix, if you're looking for this you should look at [Permissions Intro](../admin/02-permissions/00-intro.mdx).
 :::
 
 Each document's permission's object will contain `properties.fields` which is an array of strings, we can use these to understand which properties can be created / updated etc. Via the subject of the permission.

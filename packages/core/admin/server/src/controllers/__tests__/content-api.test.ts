@@ -22,7 +22,7 @@ describe('Content API permissions', () => {
     const send = jest.fn();
     const ctx = createContext({}, { send });
 
-    global.strapi = {
+    global.metrix = {
       contentAPI: {
         permissions: {
           getActionsMap,
@@ -159,7 +159,7 @@ describe('Content API permissions', () => {
     const send = jest.fn();
     const ctx = createContext({}, { send });
 
-    global.strapi = {
+    global.metrix = {
       contentAPI: {
         getRoutesMap,
       },

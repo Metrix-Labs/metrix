@@ -81,10 +81,10 @@ const validateRouteConfig = (routeConfig: Core.RouteInput) => {
   }
 };
 
-const createRouteManager = (strapi: Core.Strapi, opts: { type?: string } = {}) => {
+const createRouteManager = (metrix: Core.Strapi, opts: { type?: string } = {}) => {
   const { type } = opts;
 
-  const composeEndpoint = createEndpointComposer(strapi);
+  const composeEndpoint = createEndpointComposer(metrix);
 
   const createRoute = (route: Core.RouteInput, router: Router) => {
     validateRouteConfig(route);

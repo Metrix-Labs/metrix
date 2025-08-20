@@ -138,7 +138,7 @@ describe('metadata', () => {
           test('throws error on duplicate table name', () => {
             const badModels = [
               {
-                uid: 'strapi::core-store',
+                uid: 'metrix::core-store',
                 collectionName: 'strapi_core_store_settings',
                 attributes: {
                   key: {
@@ -148,7 +148,7 @@ describe('metadata', () => {
                 tableName: 'strapi_core_store_settings',
               },
               {
-                uid: 'strapi::test',
+                uid: 'metrix::test',
                 collectionName: 'strapi_test',
                 attributes: {
                   key: {
@@ -166,7 +166,7 @@ describe('metadata', () => {
           test('throws error on missing relation uid', () => {
             const badModels = [
               {
-                uid: 'strapi::core-store',
+                uid: 'metrix::core-store',
                 collectionName: 'strapi_core_store_settings',
                 attributes: {
                   key: {
@@ -184,14 +184,14 @@ describe('metadata', () => {
               },
             ] as any;
             expect(() => createMetadata(badModels)).toThrow(
-              'Error on attribute role in model undefined(strapi::core-store): Metadata for "admin::role" not found'
+              'Error on attribute role in model undefined(metrix::core-store): Metadata for "admin::role" not found'
             );
           });
 
           test('throws error on invalid relation', () => {
             const badModels = [
               {
-                uid: 'strapi::core-store',
+                uid: 'metrix::core-store',
                 collectionName: 'strapi_core_store_settings',
                 attributes: {
                   key: {
@@ -203,21 +203,21 @@ describe('metadata', () => {
                     relation: 'somethingToNothing',
                     inversedBy: 'permissions',
                     mappedBy: 'permissions',
-                    target: 'strapi::core-store',
+                    target: 'metrix::core-store',
                   },
                 },
                 tableName: 'strapi_core_store_settings',
               },
             ] as any;
             expect(() => createMetadata(badModels)).toThrow(
-              'Error on attribute role in model undefined(strapi::core-store): Unknown relation'
+              'Error on attribute role in model undefined(metrix::core-store): Unknown relation'
             );
           });
 
           test('throws error on missing attribute inversedBy attribute', () => {
             const badModels = [
               {
-                uid: 'strapi::core-store',
+                uid: 'metrix::core-store',
                 collectionName: 'strapi_core_store_settings',
                 attributes: {
                   key: {
@@ -229,21 +229,21 @@ describe('metadata', () => {
                     relation: 'oneToOne',
                     inversedBy: 'permissions',
                     mappedBy: 'permissions',
-                    target: 'strapi::core-store',
+                    target: 'metrix::core-store',
                   },
                 },
                 tableName: 'strapi_core_store_settings',
               },
             ] as any;
             expect(() => createMetadata(badModels)).toThrow(
-              'Error on attribute role in model undefined(strapi::core-store): inversedBy attribute permissions not found target strapi::core-store'
+              'Error on attribute role in model undefined(metrix::core-store): inversedBy attribute permissions not found target metrix::core-store'
             );
           });
 
           test('throws error on missing attribute inversedBy attribute', () => {
             const badModels = [
               {
-                uid: 'strapi::core-store',
+                uid: 'metrix::core-store',
                 collectionName: 'strapi_core_store_settings',
                 attributes: {
                   key: {
@@ -255,7 +255,7 @@ describe('metadata', () => {
                     relation: 'oneToOne',
                     inversedBy: 'permissions',
                     mappedBy: 'permissions',
-                    target: 'strapi::core-store',
+                    target: 'metrix::core-store',
                   },
                   permissions: {
                     type: 'string',
@@ -265,14 +265,14 @@ describe('metadata', () => {
               },
             ] as any;
             expect(() => createMetadata(badModels)).toThrow(
-              'Error on attribute role in model undefined(strapi::core-store): inversedBy attribute permissions targets non relational attribute in strapi::core-store'
+              'Error on attribute role in model undefined(metrix::core-store): inversedBy attribute permissions targets non relational attribute in metrix::core-store'
             );
           });
 
           test('throws error on missing attribute inversedBy attribute', () => {
             const badModels = [
               {
-                uid: 'strapi::core-store',
+                uid: 'metrix::core-store',
                 collectionName: 'strapi_core_store_settings',
                 attributes: {
                   key: {
@@ -284,7 +284,7 @@ describe('metadata', () => {
                     relation: 'oneToOne',
                     inversedBy: 'permissions',
                     mappedBy: 'permissions',
-                    target: 'strapi::core-store',
+                    target: 'metrix::core-store',
                   },
                   permissions: {
                     type: 'string',
@@ -294,14 +294,14 @@ describe('metadata', () => {
               },
             ] as any;
             expect(() => createMetadata(badModels)).toThrow(
-              'Error on attribute role in model undefined(strapi::core-store): inversedBy attribute permissions targets non relational attribute in strapi::core-store'
+              'Error on attribute role in model undefined(metrix::core-store): inversedBy attribute permissions targets non relational attribute in metrix::core-store'
             );
           });
 
           test('throws error on missing target', () => {
             const badModels = [
               {
-                uid: 'strapi::core-store',
+                uid: 'metrix::core-store',
                 collectionName: 'strapi_core_store_settings',
                 attributes: {
                   key: {
@@ -317,7 +317,7 @@ describe('metadata', () => {
               },
             ] as any;
             expect(() => createMetadata(badModels)).toThrow(
-              'Error on attribute role in model undefined(strapi::core-store): Metadata for "missingtarget" not found'
+              'Error on attribute role in model undefined(metrix::core-store): Metadata for "missingtarget" not found'
             );
           });
         });

@@ -30,14 +30,14 @@ export default () => {
         }
 
         internals.isUpdating = true;
-        strapi.reload.isWatching = false;
+        metrix.reload.isWatching = false;
 
         await getService('schema').updateSchema(data);
 
         // NOTE: we do not set isUpdating to false here.
         // We want to wait for the server to restart to get the isUpdate = false only
         setImmediate(() => {
-          strapi.reload();
+          metrix.reload();
         });
 
         ctx.body = {};

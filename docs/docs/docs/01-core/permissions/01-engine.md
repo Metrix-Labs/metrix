@@ -12,16 +12,16 @@ tags:
 The permission engine is the entity responsible for generating new ability instances based on provided permissions,
 actions, and conditions.
 
-This is the abstraction used by other Strapi systems to create their custom permissions' engine:
+This is the abstraction used by other Metrix systems to create their custom permissions' engine:
 
-- [RBAC](https://github.com/strapi/strapi/blob/develop/packages/core/admin/server/src/services/permission/engine.ts)
-- [Transfer Tokens](https://github.com/strapi/strapi/blob/develop/packages/core/admin/server/src/services/transfer/permission.ts)
-- [API Tokens](https://github.com/strapi/strapi/blob/develop/packages/core/core/src/services/content-api/permissions/engine.ts)
+- [RBAC](https://github.com/metrix/metrix/blob/develop/packages/core/admin/server/src/services/permission/engine.ts)
+- [Transfer Tokens](https://github.com/metrix/metrix/blob/develop/packages/core/admin/server/src/services/transfer/permission.ts)
+- [API Tokens](https://github.com/metrix/metrix/blob/develop/packages/core/core/src/services/content-api/permissions/engine.ts)
 
 ## Usage
 
 ```typescript
-import * as permissions from '@strapi/permissions';
+import * as permissions from '@metrix/permissions';
 
 const engine = permissions.engine.new({
   providers: {

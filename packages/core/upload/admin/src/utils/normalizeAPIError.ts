@@ -1,4 +1,4 @@
-import type { FetchError } from '@metrixlabs/admin/strapi-admin';
+import type { FetchError } from '@metrixlabs/admin/metrix-admin';
 import type { errors } from '@metrixlabs/utils';
 
 type ApiError = InstanceType<(typeof errors)[keyof typeof errors]>;

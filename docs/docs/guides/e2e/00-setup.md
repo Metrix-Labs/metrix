@@ -25,7 +25,7 @@ Because we require a "fresh" instance to assert our e2e tests against this is in
 yarn test:e2e
 ```
 
-This will spawn by default a Strapi instance per testing domain (e.g. content-manager) in `test-apps` where the an individual `playwright.config` will start the instance and run tests against. It will automatically link the dependencies from the instance to the monorepo because `test-apps` are not considered part of the monorepo but we want to be using the most recent version of strapi (published or development) therefore meaning our most recent code changes can be tested against.
+This will spawn by default a Metrix instance per testing domain (e.g. content-manager) in `test-apps` where the an individual `playwright.config` will start the instance and run tests against. It will automatically link the dependencies from the instance to the monorepo because `test-apps` are not considered part of the monorepo but we want to be using the most recent version of metrix (published or development) therefore meaning our most recent code changes can be tested against.
 
 If you need to clean the test-apps folder because they are not working as expected, you can run `yarn test:e2e clean` which will clean said directory.
 
@@ -82,30 +82,30 @@ Some helpers have been added to allow you to modify the playwright configuration
 
 | env var                      | Description                                  | Default            |
 | ---------------------------- | -------------------------------------------- | ------------------ |
-| PLAYWRIGHT_WEBSERVER_TIMEOUT | timeout for starting the Strapi server       | 16000 (160s)       |
+| PLAYWRIGHT_WEBSERVER_TIMEOUT | timeout for starting the Metrix server       | 16000 (160s)       |
 | PLAYWRIGHT_ACTION_TIMEOUT    | playwright action timeout (ie, click())      | 15000 (15s)        |
 | PLAYWRIGHT_EXPECT_TIMEOUT    | playwright expect waitFor timeout            | 10000 (10s)        |
 | PLAYWRIGHT_TIMEOUT           | playwright timeout, for each individual test | 30000 (30s)        |
 | PLAYWRIGHT_OUTPUT_DIR        | playwright output dir, such as trace files   | '../test-results/' |
 | PLAYWRIGHT_VIDEO             | set 'true' to save videos on failed tests    | false              |
 
-## Strapi Templates
+## Metrix Templates
 
-The test-app you create uses a [template](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/installation/templates.html) found at `e2e/app-template` in this folder we can store our premade content schemas & any customisations we may need such as other plugins / custom fields / endpoints etc.
+The test-app you create uses a [template](https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/installation/templates.html) found at `e2e/app-template` in this folder we can store our premade content schemas & any customisations we may need such as other plugins / custom fields / endpoints etc.
 
 If you add anything to the template, be sure to add this information to [the docs](/testing/e2e/app-template).
 
 ## Running tests with environment variables (needed to run EE tests)
 
-To set specific environment variables for your tests, a `.env` file can be created in the root of the e2e folder. This is useful if you need to run tests with a Strapi license or set future flags.
+To set specific environment variables for your tests, a `.env` file can be created in the root of the e2e folder. This is useful if you need to run tests with a Metrix license or set future flags.
 
 ## Running tests with future flags
 
-If you are writing tests for an unstable future feature you will need to add `app-template/config/features.js`. Currently the app template generation does not take the config folder into consideration. However, the run-e2e-tests script will apply the features config to the generated app. See the documentation for [features.js](https://docs.strapi.io/dev-docs/configurations/features#enabling-a-future-flag)
+If you are writing tests for an unstable future feature you will need to add `app-template/config/features.js`. Currently the app template generation does not take the config folder into consideration. However, the run-e2e-tests script will apply the features config to the generated app. See the documentation for [features.js](https://docs.metrix.io/dev-docs/configurations/features#enabling-a-future-flag)
 
 ## What is Playwright?
 
-Playwright enables reliable end-to-end testing for modern web apps. It's cross browser, cross platform and cross language. At Strapi we use it for Javascript automated testing.
+Playwright enables reliable end-to-end testing for modern web apps. It's cross browser, cross platform and cross language. At Metrix we use it for Javascript automated testing.
 
 For more information check out their [docs](https://playwright.dev/docs/intro). If you're struggling with their APIs, then check out their specific [API documentation](https://playwright.dev/docs/api/class-playwright).
 

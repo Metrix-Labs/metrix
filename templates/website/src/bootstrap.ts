@@ -29,8 +29,8 @@ export async function bootstrap() {
 }
 
 async function isFirstRun() {
-  const pluginStore = strapi.store({
-    environment: strapi.config.environment,
+  const pluginStore = metrix.store({
+    environment: metrix.config.environment,
     type: 'type',
     name: 'setup',
   });
@@ -41,7 +41,7 @@ async function isFirstRun() {
 
 async function setPublicPermissions(newPermissions) {
   // Find the ID of the public role
-  const publicRole = await strapi.query('plugin::users-permissions.role').findOne({
+  const publicRole = await metrix.query('plugin::users-permissions.role').findOne({
     where: {
       type: 'public',
     },
@@ -52,7 +52,7 @@ async function setPublicPermissions(newPermissions) {
   Object.keys(newPermissions).map((controller) => {
     const actions = newPermissions[controller];
     const permissionsToCreate = actions.map((action) => {
-      return strapi.query('plugin::users-permissions.permission').create({
+      return metrix.query('plugin::users-permissions.permission').create({
         data: {
           action: `api::${controller}.${controller}.${action}`,
           role: publicRole.id,
@@ -106,7 +106,7 @@ async function createEntry(
         // Get file name without the extension
         const [fileName] = file.originalFileName.split('.');
         // Upload each individual file
-        const uploadedFile = await strapi
+        const uploadedFile = await metrix
           .plugin('upload')
           .service('upload')
           .upload({
@@ -126,7 +126,7 @@ async function createEntry(
     }
 
     // Actually create the entry in Strapi
-    await strapi.documents(`api::${model}.${model}` as any).create({
+    await metrix.documents(`api::${model}.${model}` as any).create({
       data: entry as any,
     });
   } catch (e) {
@@ -232,7 +232,7 @@ async function importSeedData() {
     'lead-form-submission': ['create'],
   });
 
-  await strapi.query('plugin::i18n.locale').create({
+  await metrix.query('plugin::i18n.locale').create({
     data: {
       name: 'French (fr)',
       code: 'fr',

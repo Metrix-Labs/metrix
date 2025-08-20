@@ -23,6 +23,13 @@
       "require": "./dist/admin/index.js",
       "default": "./dist/admin/index.js"
     },
+    "./metrix-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
     "./package.json": "./package.json"
   },
   "files": [
@@ -34,7 +41,7 @@
     "build:types": "run -T run-p build:types:admin",
     "build:types:admin": "run -T tsc -p admin/tsconfig.build.json --emitDeclarationOnly",
     "clean": "run -T rimraf ./dist",
-    "develop": "strapi-plugin watch",
+    "develop": "metrix-plugin watch",
     "lint": "run -T eslint .",
     "test:ts:front": "run -T tsc -p admin/tsconfig.json",
     "watch": "run -T rollup -c -w"

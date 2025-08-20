@@ -1,6 +1,6 @@
 import { prop } from 'lodash/fp';
 import { createTestBuilder } from 'api-tests/builder';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createRequest, createAuthRequest } from 'api-tests/request';
 import { createUtils } from 'api-tests/utils';
 
@@ -67,7 +67,7 @@ interface Requests {
 }
 
 describe('Admin Permissions - Conditions', () => {
-  let strapi: any;
+  let metrix: any;
   let utils: any;
   const builder = createTestBuilder();
   const requests: Requests = {
@@ -129,8 +129,8 @@ describe('Admin Permissions - Conditions', () => {
 
   const createFixtures = async (): Promise<void> => {
     // Login with admin and init admin tools
-    requests.admin = await createAuthRequest({ strapi });
-    requests.public = createRequest({ strapi });
+    requests.admin = await createAuthRequest({ metrix });
+    requests.public = createRequest({ metrix });
 
     // Create the foobar role
     const role = await utils.createRole(localTestData.role);
@@ -156,7 +156,7 @@ describe('Admin Permissions - Conditions', () => {
 
       const createdUser = await utils.createUser(userAttributes);
 
-      requests[createdUser.id] = await createAuthRequest({ strapi, userInfo: createdUser });
+      requests[createdUser.id] = await createAuthRequest({ metrix, userInfo: createdUser });
 
       users.push(createdUser);
     }
@@ -180,8 +180,8 @@ describe('Admin Permissions - Conditions', () => {
   beforeAll(async () => {
     await builder.addContentType(localTestData.models.article).build();
 
-    strapi = await createStrapiInstance();
-    utils = createUtils(strapi);
+    metrix = await createStrapiInstance();
+    utils = createUtils(metrix);
 
     await createFixtures();
   });
@@ -189,7 +189,7 @@ describe('Admin Permissions - Conditions', () => {
   afterAll(async () => {
     await deleteFixtures();
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

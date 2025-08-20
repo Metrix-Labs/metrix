@@ -50,7 +50,7 @@ const fieldSizes: Record<string, FieldSize> = {
   uid: defaultSize,
 };
 
-const createFieldSizesService = ({ strapi }: { strapi: Core.Strapi }) => {
+const createFieldSizesService = ({ metrix }: { metrix: Core.Strapi }) => {
   const fieldSizesService = {
     getAllFieldSizes() {
       return fieldSizes;
@@ -87,7 +87,7 @@ const createFieldSizesService = ({ strapi }: { strapi: Core.Strapi }) => {
 
     setCustomFieldInputSizes() {
       // Find all custom fields already registered
-      const customFields = strapi.get('custom-fields').getAll();
+      const customFields = metrix.get('custom-fields').getAll();
 
       // If they have a custom field size, register it
       // TODO types can be inferred when customFields is typed

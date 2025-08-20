@@ -5,8 +5,8 @@ import type createSentryService from '../services/sentry';
 /**
  * Programmatic sentry middleware. We do not want to expose it in the plugin
  */
-export default ({ strapi }: { strapi: Core.Strapi }) => {
-  const sentryService: ReturnType<typeof createSentryService> = strapi
+export default ({ metrix }: { metrix: Core.Strapi }) => {
+  const sentryService: ReturnType<typeof createSentryService> = metrix
     .plugin('sentry')
     .service('sentry');
   sentryService.init();
@@ -17,7 +17,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     return;
   }
 
-  strapi.server.use(async (ctx, next) => {
+  metrix.server.use(async (ctx, next) => {
     try {
       await next();
     } catch (error) {
@@ -34,7 +34,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
           // Manually add transaction name
           scope.setTag('transaction', `${ctx.method} ${ctx._matchedRoute}`);
           // Manually add Strapi version
-          scope.setTag('strapi_version', strapi.config.info.strapi);
+          scope.setTag('strapi_version', metrix.config.info.metrix);
           scope.setTag('method', ctx.method);
         });
       }

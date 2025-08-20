@@ -47,6 +47,6 @@ interface BrowserStrapi {
 
 declare global {
   interface Window {
-    strapi: BrowserStrapi;
+    metrix: BrowserStrapi;
   }
 }

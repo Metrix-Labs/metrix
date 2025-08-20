@@ -16,7 +16,7 @@ type FolderNode = Partial<Folder> & {
 };
 
 const setPathIdAndPath = async (folder: Pick<Folder, 'parent'>) => {
-  const { max } = await strapi.db
+  const { max } = await metrix.db
     .queryBuilder(FOLDER_MODEL_UID)
     .max('pathId')
     .first()
@@ -25,7 +25,7 @@ const setPathIdAndPath = async (folder: Pick<Folder, 'parent'>) => {
   const pathId = max + 1;
   let parentPath = '/';
   if (folder.parent) {
-    const parentFolder = await strapi.db
+    const parentFolder = await metrix.db
       .query(FOLDER_MODEL_UID)
       .findOne({ where: { id: folder.parent } });
 
@@ -51,9 +51,9 @@ const create = async (
     enrichedFolder = await setCreatorFields({ user })(enrichedFolder);
   }
 
-  const folder = await strapi.db.query(FOLDER_MODEL_UID).create({ data: enrichedFolder });
+  const folder = await metrix.db.query(FOLDER_MODEL_UID).create({ data: enrichedFolder });
 
-  strapi.eventHub.emit('media-folder.create', { folder });
+  metrix.eventHub.emit('media-folder.create', { folder });
 
   return folder;
 };
@@ -64,7 +64,7 @@ const create = async (
  * @returns {Promise<Object[]>}
  */
 const deleteByIds = async (ids = []) => {
-  const folders = await strapi.db.query(FOLDER_MODEL_UID).findMany({ where: { id: { $in: ids } } });
+  const folders = await metrix.db.query(FOLDER_MODEL_UID).findMany({ where: { id: { $in: ids } } });
   if (folders.length === 0) {
     return {
       folders: [],
@@ -76,7 +76,7 @@ const deleteByIds = async (ids = []) => {
   const pathsToDelete = map('path', folders);
 
   // delete files
-  const filesToDelete = await strapi.db.query(FILE_MODEL_UID).findMany({
+  const filesToDelete = await metrix.db.query(FILE_MODEL_UID).findMany({
     where: {
       $or: pathsToDelete.flatMap((path) => [
         { folderPath: { $eq: path } },
@@ -88,7 +88,7 @@ const deleteByIds = async (ids = []) => {
   await Promise.all(filesToDelete.map((file: File) => getService('upload').remove(file)));
 
   // delete folders and subfolders
-  const { count: totalFolderNumber } = await strapi.db.query(FOLDER_MODEL_UID).deleteMany({
+  const { count: totalFolderNumber } = await metrix.db.query(FOLDER_MODEL_UID).deleteMany({
     where: {
       $or: pathsToDelete.flatMap((path) => [
         { path: { $eq: path } },
@@ -97,7 +97,7 @@ const deleteByIds = async (ids = []) => {
     },
   });
 
-  strapi.eventHub.emit('media-folder.delete', { folders });
+  metrix.eventHub.emit('media-folder.delete', { folders });
 
   return {
     folders,
@@ -122,7 +122,7 @@ const update = async (
 ) => {
   // only name is updated
   if (isUndefined(parent)) {
-    const existingFolder = await strapi.db.query(FOLDER_MODEL_UID).findOne({ where: { id } });
+    const existingFolder = await metrix.db.query(FOLDER_MODEL_UID).findOne({ where: { id } });
 
     if (!existingFolder) {
       return undefined;
@@ -131,7 +131,7 @@ const update = async (
     const newFolder = setCreatorFields({ user, isEdition: true })({ name, parent });
 
     if (isUndefined(parent)) {
-      const folder = await strapi.db
+      const folder = await metrix.db
         .query(FOLDER_MODEL_UID)
         .update({ where: { id }, data: newFolder });
 
@@ -139,10 +139,10 @@ const update = async (
     }
     // location is updated => using transaction
   } else {
-    const trx = await strapi.db.transaction();
+    const trx = await metrix.db.transaction();
     try {
       // fetch existing folder
-      const existingFolder = await strapi.db
+      const existingFolder = await metrix.db
         .queryBuilder(FOLDER_MODEL_UID)
         .select(['pathId', 'path'])
         .where({ id })
@@ -153,8 +153,8 @@ const update = async (
 
       // update parent folder (delete + insert; upsert not possible)
       // @ts-expect-error - no dynamic types
-      const { joinTable } = strapi.db.metadata.get(FOLDER_MODEL_UID).attributes.parent;
-      await strapi.db
+      const { joinTable } = metrix.db.metadata.get(FOLDER_MODEL_UID).attributes.parent;
+      await metrix.db
         .queryBuilder(joinTable.name)
         .transacting(trx.get())
         .delete()
@@ -162,7 +162,7 @@ const update = async (
         .execute();
 
       if (parent !== null) {
-        await strapi.db
+        await metrix.db
           .queryBuilder(joinTable.name)
           .transacting(trx.get())
           .insert({ [joinTable.inverseJoinColumn.name]: parent, [joinTable.joinColumn.name]: id })
@@ -173,7 +173,7 @@ const update = async (
       // fetch destinationFolder path
       let destinationFolderPath = '/';
       if (parent !== null) {
-        const destinationFolder = await strapi.db
+        const destinationFolder = await metrix.db
           .queryBuilder(FOLDER_MODEL_UID)
           .select('path')
           .where({ id: parent })
@@ -183,23 +183,23 @@ const update = async (
         destinationFolderPath = destinationFolder.path;
       }
 
-      const folderTable = strapi.getModel(FOLDER_MODEL_UID).collectionName;
-      const fileTable = strapi.getModel(FILE_MODEL_UID).collectionName;
+      const folderTable = metrix.getModel(FOLDER_MODEL_UID).collectionName;
+      const fileTable = metrix.getModel(FILE_MODEL_UID).collectionName;
       const folderPathColumnName =
         // @ts-expect-error - no dynamic types
-        strapi.db.metadata.get(FILE_MODEL_UID).attributes.folderPath.columnName;
+        metrix.db.metadata.get(FILE_MODEL_UID).attributes.folderPath.columnName;
       // @ts-expect-error - no dynamic types
-      const pathColumnName = strapi.db.metadata.get(FOLDER_MODEL_UID).attributes.path.columnName;
+      const pathColumnName = metrix.db.metadata.get(FOLDER_MODEL_UID).attributes.path.columnName;
 
       // update folders below
-      await strapi.db
+      await metrix.db
         .getConnection(folderTable)
         .transacting(trx.get())
         .where(pathColumnName, existingFolder.path)
         .orWhere(pathColumnName, 'like', `${existingFolder.path}/%`)
         .update(
           pathColumnName,
-          strapi.db.connection.raw('REPLACE(??, ?, ?)', [
+          metrix.db.connection.raw('REPLACE(??, ?, ?)', [
             pathColumnName,
             existingFolder.path,
             strings.joinBy('/', destinationFolderPath, `${existingFolder.pathId}`),
@@ -207,14 +207,14 @@ const update = async (
         );
 
       // update files below
-      await strapi.db
+      await metrix.db
         .getConnection(fileTable)
         .transacting(trx.get())
         .where(folderPathColumnName, existingFolder.path)
         .orWhere(folderPathColumnName, 'like', `${existingFolder.path}/%`)
         .update(
           folderPathColumnName,
-          strapi.db.connection.raw('REPLACE(??, ?, ?)', [
+          metrix.db.connection.raw('REPLACE(??, ?, ?)', [
             folderPathColumnName,
             existingFolder.path,
             strings.joinBy('/', destinationFolderPath, `${existingFolder.pathId}`),
@@ -230,11 +230,11 @@ const update = async (
     // update less critical information (name + updatedBy)
     const newFolder = setCreatorFields({ user, isEdition: true })({ name });
 
-    const folder = await strapi.db
+    const folder = await metrix.db
       .query(FOLDER_MODEL_UID)
       .update({ where: { id }, data: newFolder });
 
-    strapi.eventHub.emit('media-folder.update', { folder });
+    metrix.eventHub.emit('media-folder.update', { folder });
     return folder;
   }
 };
@@ -245,7 +245,7 @@ const update = async (
  * @returns {Promise<boolean>}
  */
 const exists = async (params = {}) => {
-  const count = await strapi.db.query(FOLDER_MODEL_UID).count({ where: params });
+  const count = await metrix.db.query(FOLDER_MODEL_UID).count({ where: params });
   return count > 0;
 };
 
@@ -255,8 +255,8 @@ const exists = async (params = {}) => {
  */
 const getStructure = async () => {
   // @ts-expect-error - no dynamic types
-  const { joinTable } = strapi.db.metadata.get(FOLDER_MODEL_UID).attributes.parent;
-  const qb = strapi.db.queryBuilder(FOLDER_MODEL_UID);
+  const { joinTable } = metrix.db.metadata.get(FOLDER_MODEL_UID).attributes.parent;
+  const qb = metrix.db.queryBuilder(FOLDER_MODEL_UID);
   const alias = qb.getAlias();
   const folders = (await qb
     .select(['id', 'name', `${alias}.${joinTable.inverseJoinColumn.name} as parent`])

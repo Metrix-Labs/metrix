@@ -10,17 +10,17 @@ import { historyVersion } from './models/history-version';
  * so that we can assume it is enabled in the other files.
  */
 const getFeature = (): Partial<Plugin.LoadedPlugin> => {
-  if (strapi.ee.features.isEnabled('cms-content-history')) {
+  if (metrix.ee.features.isEnabled('cms-content-history')) {
     return {
-      register({ strapi }) {
-        strapi.get('models').add(historyVersion);
+      register({ metrix }) {
+        metrix.get('models').add(historyVersion);
       },
-      bootstrap({ strapi }) {
+      bootstrap({ metrix }) {
         // Start recording history and saving history versions
-        getService(strapi, 'lifecycles').bootstrap();
+        getService(metrix, 'lifecycles').bootstrap();
       },
-      destroy({ strapi }) {
-        getService(strapi, 'lifecycles').destroy();
+      destroy({ metrix }) {
+        getService(metrix, 'lifecycles').destroy();
       },
       controllers,
       services,
@@ -33,8 +33,8 @@ const getFeature = (): Partial<Plugin.LoadedPlugin> => {
    * or if the license expires.
    */
   return {
-    register({ strapi }) {
-      strapi.get('models').add(historyVersion);
+    register({ metrix }) {
+      metrix.get('models').add(historyVersion);
     },
   };
 };

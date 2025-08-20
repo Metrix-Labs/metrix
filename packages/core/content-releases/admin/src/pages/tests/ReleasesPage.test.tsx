@@ -8,8 +8,8 @@ import { ReleasesPage } from '../ReleasesPage';
 
 import { mockReleasesPageData } from './mockReleasesPageData';
 
-jest.mock('@strapi/admin/strapi-admin', () => ({
-  ...jest.requireActual('@strapi/admin/strapi-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useLicenseLimits: jest.fn().mockReturnValue({
     isLoading: false,
     isError: false,
@@ -25,13 +25,13 @@ jest.mock('@strapi/admin/strapi-admin', () => ({
 
 describe('Releases home page', () => {
   beforeAll(() => {
-    window.strapi.future = {
+    window.metrix.future = {
       isEnabled: () => true,
     };
   });
 
   afterAll(() => {
-    window.strapi.future = {
+    window.metrix.future = {
       isEnabled: () => false,
     };
   });

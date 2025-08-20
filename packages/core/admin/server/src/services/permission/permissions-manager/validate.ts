@@ -44,11 +44,11 @@ const throwInvalidKey = ({ key, path }: { key: string; path?: string | null }) =
 };
 
 export default ({ action, ability, model }: any) => {
-  const schema = strapi.getModel(model);
+  const schema = metrix.getModel(model);
 
   const ctx = {
     schema,
-    getModel: strapi.getModel.bind(strapi),
+    getModel: metrix.getModel.bind(metrix),
   };
 
   const createValidateQuery = (options = {} as any) => {

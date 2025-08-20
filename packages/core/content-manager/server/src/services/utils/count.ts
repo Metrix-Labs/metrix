@@ -53,7 +53,7 @@ function getCountFor(
 }
 
 const getDeepRelationsCount = (entity: any, uid: UID.Schema): Document => {
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
 
   return Object.keys(entity).reduce<Document>(
     (relationCountEntity, attributeName) =>

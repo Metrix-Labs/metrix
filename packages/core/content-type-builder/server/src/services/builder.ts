@@ -29,7 +29,7 @@ export const reservedAttributes = [
   '__contentType',
 
   // We support ending with * to denote prefixes
-  'strapi*',
+  'metrix*',
   '_strapi*',
   '__strapi*',
 ];
@@ -45,7 +45,7 @@ export const reservedModels = [
   'then', // no longer an issue but still restricting for being a javascript keyword
 
   // We support ending with * to denote prefixes
-  'strapi*',
+  'metrix*',
   '_strapi*',
   '__strapi*',
 ];

@@ -7,9 +7,9 @@ import type { Internal } from '@metrixlabs/types';
  */
 export async function clear(uid: Internal.UID.ContentType) {
   // TODO double check if this is the correct way to get the apiName
-  const { apiName, modelName } = strapi.contentTypes[uid] as any;
+  const { apiName, modelName } = metrix.contentTypes[uid] as any;
 
-  const apiFolder = path.join(strapi.dirs.app.api, apiName);
+  const apiFolder = path.join(metrix.dirs.app.api, apiName);
 
   await recursiveRemoveFiles(apiFolder, createDeleteApiFunction(modelName));
   await deleteBackup(uid);
@@ -20,10 +20,10 @@ export async function clear(uid: Internal.UID.ContentType) {
  * @param {string} uid content type uid
  */
 export async function backup(uid: Internal.UID.ContentType) {
-  const { apiName } = strapi.contentTypes[uid] as any;
+  const { apiName } = metrix.contentTypes[uid] as any;
 
-  const apiFolder = path.join(strapi.dirs.app.api, apiName);
-  const backupFolder = path.join(strapi.dirs.app.api, '.backup', apiName);
+  const apiFolder = path.join(metrix.dirs.app.api, apiName);
+  const backupFolder = path.join(metrix.dirs.app.api, '.backup', apiName);
 
   // backup the api folder
   await fse.copy(apiFolder, backupFolder);
@@ -33,10 +33,10 @@ export async function backup(uid: Internal.UID.ContentType) {
  * Deletes an API backup folder
  */
 async function deleteBackup(uid: Internal.UID.ContentType) {
-  const { apiName } = strapi.contentTypes[uid] as any;
+  const { apiName } = metrix.contentTypes[uid] as any;
 
-  const backupFolder = path.join(strapi.dirs.app.api, '.backup');
-  const apiBackupFolder = path.join(strapi.dirs.app.api, '.backup', apiName);
+  const backupFolder = path.join(metrix.dirs.app.api, '.backup');
+  const apiBackupFolder = path.join(metrix.dirs.app.api, '.backup', apiName);
 
   await fse.remove(apiBackupFolder);
 
@@ -50,10 +50,10 @@ async function deleteBackup(uid: Internal.UID.ContentType) {
  * Rollbacks the API folder of a contentType
  */
 export async function rollback(uid: Internal.UID.ContentType) {
-  const { apiName } = strapi.contentTypes[uid] as any;
+  const { apiName } = metrix.contentTypes[uid] as any;
 
-  const apiFolder = path.join(strapi.dirs.app.api, apiName);
-  const backupFolder = path.join(strapi.dirs.app.api, '.backup', apiName);
+  const apiFolder = path.join(metrix.dirs.app.api, apiName);
+  const backupFolder = path.join(metrix.dirs.app.api, '.backup', apiName);
 
   try {
     await fse.access(backupFolder);

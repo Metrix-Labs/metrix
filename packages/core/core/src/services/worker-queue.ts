@@ -5,7 +5,7 @@ import createDebugger from 'debug';
 import type { Logger } from '@metrixlabs/logger';
 import type { Utils } from '@metrixlabs/types';
 
-const debug = createDebugger('strapi:worker-queue');
+const debug = createDebugger('metrix:worker-queue');
 
 interface ConstructorParameters {
   logger: Logger;

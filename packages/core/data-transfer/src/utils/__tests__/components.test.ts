@@ -35,7 +35,7 @@ describe('resolveComponentUID', () => {
         },
       },
     };
-    const strapi = {
+    const metrix = {
       getModel: jest.fn().mockReturnValueOnce({
         collectionName: 'components_test_rels_repeatables',
         attributes: {
@@ -50,7 +50,7 @@ describe('resolveComponentUID', () => {
       relsRepeatable: [{ id: 1, title: 'test' }],
     };
 
-    const expectedUID = resolveComponentUID({ paths, strapi, data, contentType });
+    const expectedUID = resolveComponentUID({ paths, metrix, data, contentType });
 
     expect(expectedUID).toEqual(uid);
   });
@@ -66,7 +66,7 @@ describe('resolveComponentUID', () => {
         },
       },
     };
-    const strapi = {
+    const metrix = {
       getModel: jest.fn().mockReturnValueOnce({
         collectionName: 'components_test_rels',
         attributes: {
@@ -81,7 +81,7 @@ describe('resolveComponentUID', () => {
       rels: { id: 1, title: 'test' },
     };
 
-    const expectedUID = resolveComponentUID({ paths, strapi, data, contentType });
+    const expectedUID = resolveComponentUID({ paths, metrix, data, contentType });
 
     expect(expectedUID).toEqual(uid);
   });
@@ -96,7 +96,7 @@ describe('resolveComponentUID', () => {
         },
       },
     };
-    const strapi = {
+    const metrix = {
       getModel: jest.fn().mockReturnValueOnce({
         collectionName: 'components_test_rels',
         attributes: {
@@ -111,7 +111,7 @@ describe('resolveComponentUID', () => {
       dz: [{ __component: 'test.rels', id: 1, title: 'test' }],
     };
 
-    const expectedUID = resolveComponentUID({ paths, strapi, data, contentType });
+    const expectedUID = resolveComponentUID({ paths, metrix, data, contentType });
 
     expect(expectedUID).toEqual(uid);
   });

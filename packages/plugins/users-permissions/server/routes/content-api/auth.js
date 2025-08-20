@@ -2,8 +2,8 @@
 
 const { UsersPermissionsRouteValidator } = require('./validation');
 
-module.exports = (strapi) => {
-  const validator = new UsersPermissionsRouteValidator(strapi);
+module.exports = (metrix) => {
+  const validator = new UsersPermissionsRouteValidator(metrix);
 
   return [
     {

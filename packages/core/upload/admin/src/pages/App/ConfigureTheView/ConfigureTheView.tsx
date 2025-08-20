@@ -7,7 +7,7 @@ import {
   useNotification,
   Page,
   Layouts,
-} from '@metrixlabs/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import { Button, Dialog, Link } from '@strapi/design-system';
 import { ArrowLeft, Check } from '@strapi/icons';
 import isEqual from 'lodash/isEqual';

@@ -14,7 +14,7 @@ const defaults: Config = {
     useDefaults: true,
     directives: {
       'connect-src': ["'self'", 'https:'],
-      'img-src': ["'self'", 'data:', 'blob:', 'https://market-assets.strapi.io'],
+      'img-src': ["'self'", 'data:', 'blob:', 'https://market-assets.metrix.io'],
       'media-src': ["'self'", 'data:', 'blob:'],
       upgradeInsecureRequests: null,
     },
@@ -38,7 +38,7 @@ const mergeConfig = (existingConfig: Config, newConfig: Config) => {
 };
 
 export const security: Core.MiddlewareFactory<Config> =
-  (config, { strapi }) =>
+  (config, { metrix }) =>
   (ctx, next) => {
     let helmetConfig: Config = defaultsDeep(defaults, config);
 
@@ -51,14 +51,14 @@ export const security: Core.MiddlewareFactory<Config> =
       'frame-src': string[];
     } = {
       'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
-      'img-src': ["'self'", 'data:', 'cdn.jsdelivr.net', 'strapi.io'],
+      'img-src': ["'self'", 'data:', 'cdn.jsdelivr.net', 'metrix.io'],
       'manifest-src': [],
       'frame-src': [],
     };
 
     // if apollo graphql playground is enabled, add exceptions for it
-    if (strapi.plugin('graphql')?.service('utils').playground.isEnabled()) {
-      const { config: gqlConfig } = strapi.plugin('graphql');
+    if (metrix.plugin('graphql')?.service('utils').playground.isEnabled()) {
+      const { config: gqlConfig } = metrix.plugin('graphql');
       specialPaths.push(gqlConfig('endpoint'));
 
       directives['script-src'].push(`https: 'unsafe-inline'`);
@@ -91,7 +91,7 @@ export const security: Core.MiddlewareFactory<Config> =
     if (
       ['development', 'test'].includes(process.env.NODE_ENV ?? '') &&
       ctx.method === 'GET' &&
-      ctx.path.startsWith(strapi.config.get('admin.path'))
+      ctx.path.startsWith(metrix.config.get('admin.path'))
     ) {
       helmetConfig = mergeConfig(helmetConfig, {
         contentSecurityPolicy: {

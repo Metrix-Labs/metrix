@@ -32,13 +32,13 @@ const defaultPlugin = {
 };
 
 const applyUserExtension = async (plugins: Plugins) => {
-  const extensionsDir = strapi.dirs.dist.extensions;
+  const extensionsDir = metrix.dirs.dist.extensions;
   if (!(await fse.pathExists(extensionsDir))) {
     return;
   }
 
   const extendedSchemas = await loadFiles(extensionsDir, '**/content-types/**/schema.json');
-  const strapiServers = await loadFiles(extensionsDir, '**/strapi-server.js');
+  const strapiServers = await loadFiles(extensionsDir, '**/metrix-server.js');
 
   for (const pluginName of Object.keys(plugins)) {
     const plugin = plugins[pluginName];
@@ -52,8 +52,8 @@ const applyUserExtension = async (plugins: Plugins) => {
         };
       }
     }
-    // second: execute strapi-server extension
-    const strapiServer = get([pluginName, 'strapi-server'], strapiServers);
+    // second: execute metrix-server extension
+    const strapiServer = get([pluginName, 'metrix-server'], strapiServers);
     if (strapiServer) {
       plugins[pluginName] = await strapiServer(plugin);
     }
@@ -85,27 +85,27 @@ const applyUserConfig = async (plugins: Plugins) => {
   }
 };
 
-export default async function loadPlugins(strapi: Core.Strapi) {
+export default async function loadPlugins(metrix: Core.Strapi) {
   const plugins: Plugins = {};
 
-  const enabledPlugins = await getEnabledPlugins(strapi);
+  const enabledPlugins = await getEnabledPlugins(metrix);
 
-  strapi.config.set('enabledPlugins', enabledPlugins);
+  metrix.config.set('enabledPlugins', enabledPlugins);
 
   for (const pluginName of Object.keys(enabledPlugins)) {
     const enabledPlugin = enabledPlugins[pluginName];
 
     let serverEntrypointPath;
-    let resolvedExport = './strapi-server.js';
+    let resolvedExport = './metrix-server.js';
 
     try {
       resolvedExport = (
-        resolve.exports(enabledPlugin.packageInfo, 'strapi-server', {
+        resolve.exports(enabledPlugin.packageInfo, 'metrix-server', {
           require: true,
-        }) ?? './strapi-server.js'
+        }) ?? './metrix-server.js'
       ).toString();
     } catch (e) {
-      // no export map or missing strapi-server export => fallback to default
+      // no export map or missing metrix-server export => fallback to default
     }
 
     try {
@@ -136,7 +136,7 @@ export default async function loadPlugins(strapi: Core.Strapi) {
   await applyUserExtension(plugins);
 
   for (const pluginName of Object.keys(plugins)) {
-    strapi.get('plugins').add(pluginName, plugins[pluginName]);
+    metrix.get('plugins').add(pluginName, plugins[pluginName]);
   }
 }
 

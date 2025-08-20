@@ -6,7 +6,7 @@ const mockStrapi = {
   components: {} as Record<UID.Component, Schema.Component>,
 };
 
-(global as any).strapi = mockStrapi;
+(global as any).metrix = mockStrapi;
 
 describe('getNumberOfConditionalFields', () => {
   beforeEach(() => {

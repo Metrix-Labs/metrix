@@ -1,29 +1,29 @@
 import { omit } from 'lodash';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import constants from '../../../../packages/core/admin/server/src/services/constants';
 
 describe('Admin Transfer Token CRUD (api)', () => {
   let rq;
-  let strapi;
+  let metrix;
   let now;
   let nowSpy;
 
   const FULL_ACCESS = ['push', 'pull'];
 
   const deleteAllTokens = async () => {
-    const tokens = await strapi.service('admin::transfer').token.list();
+    const tokens = await metrix.service('admin::transfer').token.list();
     const promises = [];
     tokens.forEach(({ id }) => {
-      promises.push(strapi.service('admin::transfer').token.revoke(id));
+      promises.push(metrix.service('admin::transfer').token.revoke(id));
     });
     await Promise.all(promises);
   };
 
   // Initialization Actions
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
     // To eliminate latency in the request and predict the expiry timestamp, we freeze Date.now()
     now = Date.now();
     nowSpy = jest.spyOn(Date, 'now').mockImplementation(() => now);
@@ -35,7 +35,7 @@ describe('Admin Transfer Token CRUD (api)', () => {
   // Cleanup actions
   afterAll(async () => {
     nowSpy.mockRestore();
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   afterEach(async () => {

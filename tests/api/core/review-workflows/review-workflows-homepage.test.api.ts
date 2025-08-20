@@ -1,5 +1,5 @@
 import { createTestBuilder } from 'api-tests/builder';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import { describeOnCondition } from 'api-tests/utils';
 import {
@@ -7,10 +7,10 @@ import {
   WORKFLOW_MODEL_UID,
 } from '../../../../packages/core/review-workflows/server/src/constants/workflows';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const testBuilder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 
 const articleUid = 'api::article.article';
@@ -57,16 +57,16 @@ describeOnCondition(edition === 'EE')('Review Workflows Homepage API', () => {
 
   beforeAll(async () => {
     await testBuilder.addContentTypes([articleModel]).build();
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
-    defaultStage = await strapi.db.query(STAGE_MODEL_UID).create({
+    defaultStage = await metrix.db.query(STAGE_MODEL_UID).create({
       data: { name: 'Stage' },
     });
-    secondStage = await strapi.db.query(STAGE_MODEL_UID).create({
+    secondStage = await metrix.db.query(STAGE_MODEL_UID).create({
       data: { name: 'Stage 2' },
     });
-    testWorkflow = await strapi.db.query(WORKFLOW_MODEL_UID).create({
+    testWorkflow = await metrix.db.query(WORKFLOW_MODEL_UID).create({
       data: {
         contentTypes: [],
         name: 'workflow',
@@ -76,7 +76,7 @@ describeOnCondition(edition === 'EE')('Review Workflows Homepage API', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await testBuilder.cleanup();
   });
 
@@ -91,7 +91,7 @@ describeOnCondition(edition === 'EE')('Review Workflows Homepage API', () => {
     });
 
     // Create an article
-    const article = await strapi.documents(articleUid).create({
+    const article = await metrix.documents(articleUid).create({
       data: {
         title: 'The mitochondria is the powerhouse of the cell',
       },

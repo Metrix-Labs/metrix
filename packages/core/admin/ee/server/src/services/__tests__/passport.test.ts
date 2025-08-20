@@ -14,7 +14,7 @@ const { init } = passportService;
 
 describe('Passport', () => {
   beforeAll(() => {
-    global.strapi = {
+    global.metrix = {
       ee: {
         features: {
           isEnabled: jest.fn(() => {
@@ -28,7 +28,7 @@ describe('Passport', () => {
   afterEach(() => {
     // Reset the mock on passport.use.toHaveBeenCalledTimes
     jest.clearAllMocks();
-    // Reset the mock on strapi/ee so we can change its behavior
+    // Reset the mock on metrix/ee so we can change its behavior
     jest.resetModules();
   });
 
@@ -41,8 +41,8 @@ describe('Passport', () => {
       const createStrategy = jest.fn(() => ({ foo: 'bar' }));
       const { getPassportStrategies } = eePassportService;
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         admin: {
           services: {
             passport: { getPassportStrategies },
@@ -75,8 +75,8 @@ describe('Passport', () => {
       const createStrategy = jest.fn(() => ({ foo: 'bar' }));
       const { getPassportStrategies } = eePassportService;
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         admin: {
           services: {
             passport: { getPassportStrategies },

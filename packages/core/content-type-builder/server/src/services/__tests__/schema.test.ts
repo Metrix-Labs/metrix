@@ -56,8 +56,8 @@ describe('Content Type Builder - Schema service', () => {
     // Reset mocks
     jest.clearAllMocks();
 
-    // Mock strapi global
-    global.strapi = {
+    // Mock metrix global
+    global.metrix = {
       eventHub: {
         emit: jest.fn(),
       },
@@ -126,7 +126,7 @@ describe('Content Type Builder - Schema service', () => {
       });
 
       // Verify event emission
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('content-type.create', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('content-type.create', {
         contentType: mockContentType,
       });
 
@@ -136,7 +136,7 @@ describe('Content Type Builder - Schema service', () => {
       // Verify the order: writeFiles should be called before events are emitted
       const writeFilesCallOrder = jest.mocked(builderServiceMock.writeFiles).mock
         .invocationCallOrder[0];
-      const emitCallOrder = jest.mocked(strapi.eventHub.emit).mock.invocationCallOrder[0];
+      const emitCallOrder = jest.mocked(metrix.eventHub.emit).mock.invocationCallOrder[0];
       expect(writeFilesCallOrder).toBeLessThan(emitCallOrder);
     });
 
@@ -181,7 +181,7 @@ describe('Content Type Builder - Schema service', () => {
       expect(builderServiceMock.editContentType).toHaveBeenCalled();
 
       // Verify event emission
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('content-type.update', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('content-type.update', {
         contentType: mockContentType,
       });
 
@@ -220,7 +220,7 @@ describe('Content Type Builder - Schema service', () => {
       expect(apiHandlerServiceMock.clear).toHaveBeenCalledWith(contentTypeUid);
 
       // Verify event emission
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('content-type.delete', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('content-type.delete', {
         contentType: mockContentType,
       });
 
@@ -274,7 +274,7 @@ describe('Content Type Builder - Schema service', () => {
       expect(builderServiceMock.createComponentAttributes).toHaveBeenCalled();
 
       // Verify event emission
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('component.create', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('component.create', {
         component: mockComponent,
       });
 
@@ -319,7 +319,7 @@ describe('Content Type Builder - Schema service', () => {
       expect(builderServiceMock.editComponent).toHaveBeenCalled();
 
       // Verify event emission
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('component.update', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('component.update', {
         component: mockComponent,
       });
 
@@ -353,7 +353,7 @@ describe('Content Type Builder - Schema service', () => {
       expect(builderServiceMock.deleteComponent).toHaveBeenCalledWith(componentUid);
 
       // Verify event emission
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('component.delete', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('component.delete', {
         component: mockComponent,
       });
 
@@ -391,13 +391,13 @@ describe('Content Type Builder - Schema service', () => {
       expect(builderServiceMock.writeFiles).toHaveBeenCalledTimes(1);
 
       // Verify error handling
-      expect(strapi.log.error).toHaveBeenCalled();
+      expect(metrix.log.error).toHaveBeenCalled();
 
       // Verify rollback was called
       expect(apiHandlerServiceMock.rollback).toHaveBeenCalledWith(contentTypeUid);
 
       // Events should still be emitted even after an error
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('content-type.delete', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('content-type.delete', {
         contentType: mockContentType,
       });
 
@@ -495,7 +495,7 @@ describe('Content Type Builder - Schema service', () => {
       expect(builderServiceMock.createComponent).toHaveBeenCalled();
 
       // Verify all events were emitted (3 content types + 1 component = 4 events)
-      expect(strapi.eventHub.emit).toHaveBeenCalledTimes(4);
+      expect(metrix.eventHub.emit).toHaveBeenCalledTimes(4);
     });
 
     it('should handle attribute deletion during content type update', async () => {
@@ -554,7 +554,7 @@ describe('Content Type Builder - Schema service', () => {
       });
 
       // Verify event emission
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('content-type.update', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('content-type.update', {
         contentType: mockContentType,
       });
 
@@ -623,7 +623,7 @@ describe('Content Type Builder - Schema service', () => {
       });
 
       // Verify event emission
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('component.update', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('component.update', {
         component: mockComponent,
       });
 
@@ -714,7 +714,7 @@ describe('Content Type Builder - Schema service', () => {
 
       // Verify writeFiles and event emission
       expect(builderServiceMock.writeFiles).toHaveBeenCalledTimes(1);
-      expect(strapi.eventHub.emit).toHaveBeenCalledWith('content-type.update', {
+      expect(metrix.eventHub.emit).toHaveBeenCalledWith('content-type.update', {
         contentType: mockContentType,
       });
     });

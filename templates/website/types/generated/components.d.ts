@@ -335,7 +335,7 @@ export interface ElementsFeatureColumn extends Struct.ComponentSchema {
   };
 }
 
-declare module '@strapi/strapi' {
+declare module '@metrixlabs/metrix' {
   export module Public {
     export interface ComponentSchemas {
       'meta.metadata': MetaMetadata;

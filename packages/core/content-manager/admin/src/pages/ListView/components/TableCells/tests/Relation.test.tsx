@@ -3,7 +3,7 @@ import { render } from '@tests/utils';
 import { RelationSingle, RelationMultiple } from '../Relations';
 
 /**
- * TODO: re-add theses tests – tracking issue https://strapi-inc.atlassian.net/browse/CONTENT-2184
+ * TODO: re-add theses tests – tracking issue https://metrix-inc.atlassian.net/browse/CONTENT-2184
  */
 describe.skip('Relation cell content', () => {
   describe('RelationSingle', () => {

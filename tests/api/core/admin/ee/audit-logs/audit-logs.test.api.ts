@@ -1,9 +1,9 @@
 import { describeOnCondition } from 'api-tests/utils';
 import { createAuthRequest, createContentAPIRequest } from 'api-tests/request';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createTestBuilder } from 'api-tests/builder';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const articleModel = {
   kind: 'collectionType',
@@ -39,7 +39,7 @@ const articleModel = {
 };
 
 describeOnCondition(edition === 'EE')('Audit logs', () => {
-  let strapi;
+  let metrix;
   let rq;
   let contentApiRq;
 
@@ -57,13 +57,13 @@ describeOnCondition(edition === 'EE')('Audit logs', () => {
 
   beforeAll(async () => {
     await builder.addContentType(articleModel).build();
-    strapi = await createStrapiInstance();
+    metrix = await createStrapiInstance();
 
-    rq = await createAuthRequest({ strapi });
-    contentApiRq = await createContentAPIRequest({ strapi });
+    rq = await createAuthRequest({ metrix });
+    contentApiRq = await createContentAPIRequest({ metrix });
 
     // Ensure the audit logs are empty
-    await strapi.db.query('admin::audit-log').deleteMany();
+    await metrix.db.query('admin::audit-log').deleteMany();
 
     await Promise.all([
       createArticle({ title: 'Article1', password: 'password' }),
@@ -73,7 +73,7 @@ describeOnCondition(edition === 'EE')('Audit logs', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -83,7 +83,7 @@ describeOnCondition(edition === 'EE')('Audit logs', () => {
       url: '/admin/webhooks',
       body: {
         name: 'test',
-        url: 'https://strapi.io',
+        url: 'https://metrix.io',
         headers: {},
         events: [],
       },
@@ -109,7 +109,7 @@ describeOnCondition(edition === 'EE')('Audit logs', () => {
   });
 
   test('Ignores events emitted to the eventHub outside the context of the admin api', async () => {
-    await strapi.eventHub.emit('entry.create', { meta: 'test' });
+    await metrix.eventHub.emit('entry.create', { meta: 'test' });
 
     const { body } = await rq({ method: 'GET', url: '/admin/audit-logs' });
 
@@ -130,7 +130,7 @@ describeOnCondition(edition === 'EE')('Audit logs', () => {
   });
 
   test('Finds one audit log', async () => {
-    const [auditLogToGet] = await strapi.db?.query('admin::audit-log').findMany();
+    const [auditLogToGet] = await metrix.db?.query('admin::audit-log').findMany();
     const { body } = await rq({
       method: 'GET',
       url: `/admin/audit-logs/${auditLogToGet.id}`,

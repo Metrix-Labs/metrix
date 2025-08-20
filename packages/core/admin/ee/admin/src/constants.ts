@@ -46,7 +46,7 @@ export const ADMIN_PERMISSIONS_EE = {
  * during build time.
  */
 export const getEERoutes = (): RouteObject[] =>
-  window.strapi.isEE
+  window.metrix.isEE
     ? [
         {
           path: 'auth/login/:authResponse',
@@ -64,11 +64,11 @@ export const getEERoutes = (): RouteObject[] =>
 export const AUDIT_LOGS_DEFAULT_PAGE_SIZE = 50;
 
 // TODO: the constants.js file is imported before the React application is setup and
-// therefore `window.strapi` might not exist at import-time. We should probably define
+// therefore `window.metrix` might not exist at import-time. We should probably define
 // which constant is available at which stage of the application lifecycle.
 export const SETTINGS_LINKS_EE = (): SettingsMenu => ({
   global: [
-    ...(window.strapi.features.isEnabled(window.strapi.features.SSO)
+    ...(window.metrix.features.isEnabled(window.metrix.features.SSO)
       ? [
           {
             intlLabel: { id: 'Settings.sso.title', defaultMessage: 'Single Sign-On' },
@@ -81,7 +81,7 @@ export const SETTINGS_LINKS_EE = (): SettingsMenu => ({
   ],
 
   admin: [
-    ...(window.strapi.features.isEnabled(window.strapi.features.AUDIT_LOGS)
+    ...(window.metrix.features.isEnabled(window.metrix.features.AUDIT_LOGS)
       ? [
           {
             intlLabel: { id: 'global.auditLogs', defaultMessage: 'Audit Logs' },

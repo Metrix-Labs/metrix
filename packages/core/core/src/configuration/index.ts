@@ -59,12 +59,12 @@ export const loadConfiguration = (opts: StrapiOptions) => {
     launchedAt: Date.now(),
     autoReload,
     environment: process.env.NODE_ENV,
-    uuid: _.get(pkgJSON, 'strapi.uuid'),
-    installId: _.get(pkgJSON, 'strapi.installId'),
-    packageJsonStrapi: _.omit(_.get(pkgJSON, 'strapi', {}), 'uuid'),
+    uuid: _.get(pkgJSON, 'metrix.uuid'),
+    installId: _.get(pkgJSON, 'metrix.installId'),
+    packageJsonStrapi: _.omit(_.get(pkgJSON, 'metrix', {}), 'uuid'),
     info: {
       ...pkgJSON,
-      strapi: strapiVersion,
+      metrix: strapiVersion,
     },
     admin: {
       serveAdminPanel,

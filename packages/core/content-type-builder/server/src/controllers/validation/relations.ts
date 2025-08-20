@@ -35,8 +35,8 @@ export const getRelationValidator = (
   attribute: Schema.Attribute.Relation,
   allowedRelations: ReadonlyArray<string>
 ) => {
-  const contentTypesUIDs = Object.keys(strapi.contentTypes)
-    .filter((key) => strapi.contentTypes[key as UID.ContentType].kind === typeKinds.COLLECTION_TYPE)
+  const contentTypesUIDs = Object.keys(metrix.contentTypes)
+    .filter((key) => metrix.contentTypes[key as UID.ContentType].kind === typeKinds.COLLECTION_TYPE)
     .filter((key) => !key.startsWith(coreUids.PREFIX) || key === coreUids.STRAPI_USER)
     .concat(['__self__', '__contentType__']);
 

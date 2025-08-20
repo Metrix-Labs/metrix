@@ -25,7 +25,7 @@ export const getDocumentLocaleAndStatus = async (
   const { allowMultipleLocales } = opts;
   const { locale, status: providedStatus, ...rest } = request || {};
 
-  const defaultStatus = contentTypes.hasDraftAndPublish(strapi.getModel(model))
+  const defaultStatus = contentTypes.hasDraftAndPublish(metrix.getModel(model))
     ? undefined
     : 'published';
   const status = providedStatus !== undefined ? providedStatus : defaultStatus;

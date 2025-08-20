@@ -11,7 +11,7 @@ const withStrapiSchema = (editor: Editor) => {
   const { normalizeNode } = editor;
 
   /**
-   * On the strapi schema, we want text nodes to have type: text
+   * On the metrix schema, we want text nodes to have type: text
    * By default, Slate add text nodes without type: text
    * So we add this normalization for the cases when Slate add text nodes automatically
    */

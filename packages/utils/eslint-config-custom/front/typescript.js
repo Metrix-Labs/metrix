@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['@strapi/eslint-config/front/typescript'],
+  extends: ['@metrixlabs/eslint-config/front/typescript'],
   overrides: [
     {
       files: ['**/*.test.[j|t]s', '**/*.test.[j|t]sx', '**/__mocks__/**/*'],
@@ -44,8 +44,8 @@ module.exports = {
     'no-restricted-globals': [
       'error',
       {
-        name: 'strapi',
-        message: 'Use window.strapi instead.',
+        name: 'metrix',
+        message: 'Use window.metrix instead.',
       },
     ],
     'react/display-name': 'off',

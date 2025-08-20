@@ -15,10 +15,10 @@ export const authenticate: Core.MiddlewareHandler = async (ctx, next) => {
   return passport.authenticate(provider, null, async (error, profile) => {
     if (error || !profile || !profile.email) {
       if (error) {
-        strapi.log.error(error);
+        metrix.log.error(error);
       }
 
-      strapi.eventHub.emit('admin.auth.error', {
+      metrix.eventHub.emit('admin.auth.error', {
         error: error || defaultConnectionError(),
         provider,
       });
@@ -38,7 +38,7 @@ const existingUserScenario: Core.MiddlewareHandler =
     const redirectUrls = utils.getPrefixedRedirectUrls();
 
     if (!user.isActive) {
-      strapi.eventHub.emit('admin.auth.error', {
+      metrix.eventHub.emit('admin.auth.error', {
         error: new Error(`Deactivated user tried to login (${user.id})`),
         provider,
       });
@@ -60,7 +60,7 @@ const nonExistingUserScenario: Core.MiddlewareHandler =
     const isMissingRegisterFields = !username && (!firstname || !lastname);
 
     if (!providers.autoRegister || !providers.defaultRole || isMissingRegisterFields) {
-      strapi.eventHub.emit('admin.auth.error', { error: defaultConnectionError(), provider });
+      metrix.eventHub.emit('admin.auth.error', { error: defaultConnectionError(), provider });
       return ctx.redirect(redirectUrls.error);
     }
 
@@ -68,7 +68,7 @@ const nonExistingUserScenario: Core.MiddlewareHandler =
 
     // If the default role has been misconfigured, redirect with an error
     if (!defaultRole) {
-      strapi.eventHub.emit('admin.auth.error', { error: defaultConnectionError(), provider });
+      metrix.eventHub.emit('admin.auth.error', { error: defaultConnectionError(), provider });
       return ctx.redirect(redirectUrls.error);
     }
 
@@ -83,7 +83,7 @@ const nonExistingUserScenario: Core.MiddlewareHandler =
       registrationToken: null,
     });
 
-    strapi.eventHub.emit('admin.auth.autoRegistration', {
+    metrix.eventHub.emit('admin.auth.autoRegistration', {
       user: ctx.state.user,
       provider,
     });
@@ -96,17 +96,17 @@ export const redirectWithAuth: Core.MiddlewareHandler = (ctx) => {
     params: { provider },
   } = ctx;
   const redirectUrls = utils.getPrefixedRedirectUrls();
-  const domain: string | undefined = strapi.config.get('admin.auth.domain');
+  const domain: string | undefined = metrix.config.get('admin.auth.domain');
   const { user } = ctx.state;
 
   const jwt = getService('token').createJwtToken(user);
 
-  const isProduction = strapi.config.get('environment') === 'production';
+  const isProduction = metrix.config.get('environment') === 'production';
 
   const cookiesOptions = { httpOnly: false, secure: isProduction, overwrite: true, domain };
 
   const sanitizedUser = getService('user').sanitizeUser(user);
-  strapi.eventHub.emit('admin.auth.success', { user: sanitizedUser, provider });
+  metrix.eventHub.emit('admin.auth.success', { user: sanitizedUser, provider });
 
   ctx.cookies.set('jwtToken', jwt, cookiesOptions);
   ctx.redirect(redirectUrls.success);

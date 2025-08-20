@@ -141,7 +141,7 @@ const handlers = [
           display: 'Email.template.email_confirmation',
           options: {
             from: {
-              email: 'mochoko@strapi.io',
+              email: 'mochoko@metrix.io',
               name: 'Administration Panel',
             },
             message: 'Thank you for registering. Please click on the link below.',
@@ -153,7 +153,7 @@ const handlers = [
           display: 'Email.template.reset_password',
           options: {
             from: {
-              email: 'mochoko@strapi.io',
+              email: 'mochoko@metrix.io',
               name: 'Administration Panel',
             },
             message: 'We heard that you lost your password. Sorry about that!',

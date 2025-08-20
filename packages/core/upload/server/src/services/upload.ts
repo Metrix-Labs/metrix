@@ -45,23 +45,23 @@ const { MEDIA_CREATE, MEDIA_UPDATE, MEDIA_DELETE } = ALLOWED_WEBHOOK_EVENTS;
 const { ApplicationError, NotFoundError } = errors;
 const { bytesToKbytes } = fileUtils;
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
+export default ({ metrix }: { metrix: Core.Strapi }) => {
   const fileService = getService('file');
 
   const sendMediaMetrics = (data: Pick<File, 'caption' | 'alternativeText'>) => {
     if (_.has(data, 'caption') && !_.isEmpty(data.caption)) {
-      strapi.telemetry.send('didSaveMediaWithCaption');
+      metrix.telemetry.send('didSaveMediaWithCaption');
     }
 
     if (_.has(data, 'alternativeText') && !_.isEmpty(data.alternativeText)) {
-      strapi.telemetry.send('didSaveMediaWithAlternativeText');
+      metrix.telemetry.send('didSaveMediaWithAlternativeText');
     }
   };
 
   const createAndAssignTmpWorkingDirectoryToFiles = async (
     files: InputFile | InputFile[]
   ): Promise<string> => {
-    const tmpWorkingDirectory = await fse.mkdtemp(path.join(os.tmpdir(), 'strapi-upload-'));
+    const tmpWorkingDirectory = await fse.mkdtemp(path.join(os.tmpdir(), 'metrix-upload-'));
 
     if (Array.isArray(files)) {
       files.forEach((file) => {
@@ -100,18 +100,18 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   }
 
   async function emitEvent(event: string, data: Record<string, any>) {
-    const modelDef = strapi.getModel(FILE_MODEL_UID);
+    const modelDef = metrix.getModel(FILE_MODEL_UID);
     const sanitizedData = await sanitize.sanitizers.defaultSanitizeOutput(
       {
         schema: modelDef,
         getModel(uid: string) {
-          return strapi.getModel(uid as UID.Schema);
+          return metrix.getModel(uid as UID.Schema);
         },
       },
       data
     );
 
-    strapi.eventHub.emit(event, { media: sanitizedData });
+    metrix.eventHub.emit(event, { media: sanitizedData });
   }
 
   async function formatFileInfo(
@@ -201,7 +201,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     currentFile.filepath = file.filepath;
     currentFile.getStream = () => fs.createReadStream(file.filepath);
 
-    const { optimize, isImage, isFaultyImage, isOptimizableImage } = strapi
+    const { optimize, isImage, isFaultyImage, isOptimizableImage } = metrix
       .plugin('upload')
       .service('image-manipulation');
 
@@ -320,7 +320,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   async function uploadFileAndPersist(fileData: UploadableFile, opts?: CommonOptions) {
     const { user } = opts ?? {};
 
-    const config = strapi.config.get<Config>('plugin::upload');
+    const config = metrix.config.get<Config>('plugin::upload');
     const { isImage } = getService('image-manipulation');
 
     await getService('provider').checkFileSize(fileData);
@@ -371,7 +371,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   ) {
     const { user } = opts ?? {};
 
-    const config = strapi.config.get<Config>('plugin::upload');
+    const config = metrix.config.get<Config>('plugin::upload');
 
     const { isImage } = getService('image-manipulation');
 
@@ -397,12 +397,12 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
 
       // execute delete function of the provider
       if (dbFile.provider === config.provider) {
-        await strapi.plugin('upload').provider.delete(dbFile);
+        await metrix.plugin('upload').provider.delete(dbFile);
 
         if (dbFile.formats) {
           await Promise.all(
             Object.keys(dbFile.formats).map((key) => {
-              return strapi.plugin('upload').provider.delete(dbFile.formats[key]);
+              return metrix.plugin('upload').provider.delete(dbFile.formats[key]);
             })
           );
         }
@@ -438,7 +438,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
 
     sendMediaMetrics(fileValues);
 
-    const res = await strapi.db.query(FILE_MODEL_UID).update({ where: { id }, data: fileValues });
+    const res = await metrix.db.query(FILE_MODEL_UID).update({ where: { id }, data: fileValues });
 
     await emitEvent(MEDIA_UPDATE, res);
 
@@ -458,7 +458,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
 
     sendMediaMetrics(fileValues);
 
-    const res = await strapi.db.query(FILE_MODEL_UID).create({ data: fileValues });
+    const res = await metrix.db.query(FILE_MODEL_UID).create({ data: fileValues });
 
     await emitEvent(MEDIA_CREATE, res);
 
@@ -466,11 +466,11 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   }
 
   async function findOne(id: ID, populate = {}) {
-    const query = strapi.get('query-params').transform(FILE_MODEL_UID, {
+    const query = metrix.get('query-params').transform(FILE_MODEL_UID, {
       populate,
     });
 
-    const file = await strapi.db.query(FILE_MODEL_UID).findOne({
+    const file = await metrix.db.query(FILE_MODEL_UID).findOne({
       where: { id },
       ...query,
     });
@@ -482,18 +482,18 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   }
 
   async function findMany(query: any = {}): Promise<File[]> {
-    const files = await strapi.db
+    const files = await metrix.db
       .query(FILE_MODEL_UID)
-      .findMany(strapi.get('query-params').transform(FILE_MODEL_UID, query));
+      .findMany(metrix.get('query-params').transform(FILE_MODEL_UID, query));
 
     // Sign file URLs if using private provider
     return async.map(files, (file: File) => fileService.signFileUrls(file));
   }
 
   async function findPage(query: any = {}) {
-    const result = await strapi.db
+    const result = await metrix.db
       .query(FILE_MODEL_UID)
-      .findPage(strapi.get('query-params').transform(FILE_MODEL_UID, query));
+      .findPage(metrix.get('query-params').transform(FILE_MODEL_UID, query));
 
     // Sign file URLs if using private provider
     const signedResults = await async.map(result.results, (file: File) =>
@@ -507,50 +507,50 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   }
 
   async function remove(file: File) {
-    const config = strapi.config.get<Config>('plugin::upload');
+    const config = metrix.config.get<Config>('plugin::upload');
 
     // execute delete function of the provider
     if (file.provider === config.provider) {
-      await strapi.plugin('upload').provider.delete(file);
+      await metrix.plugin('upload').provider.delete(file);
 
       if (file.formats) {
         const keys = Object.keys(file.formats);
 
         await Promise.all(
           keys.map((key) => {
-            return strapi.plugin('upload').provider.delete(file.formats![key]);
+            return metrix.plugin('upload').provider.delete(file.formats![key]);
           })
         );
       }
     }
 
-    const media = await strapi.db.query(FILE_MODEL_UID).findOne({
+    const media = await metrix.db.query(FILE_MODEL_UID).findOne({
       where: { id: file.id },
     });
 
     await emitEvent(MEDIA_DELETE, media);
 
-    return strapi.db.query(FILE_MODEL_UID).delete({ where: { id: file.id } });
+    return metrix.db.query(FILE_MODEL_UID).delete({ where: { id: file.id } });
   }
 
   async function getSettings() {
-    const res = await strapi.store!({ type: 'plugin', name: 'upload', key: 'settings' }).get({});
+    const res = await metrix.store!({ type: 'plugin', name: 'upload', key: 'settings' }).get({});
 
     return res as Settings | null;
   }
 
   function setSettings(value: Settings) {
     if (value.responsiveDimensions === true) {
-      strapi.telemetry.send('didEnableResponsiveDimensions');
+      metrix.telemetry.send('didEnableResponsiveDimensions');
     } else {
-      strapi.telemetry.send('didDisableResponsiveDimensions');
+      metrix.telemetry.send('didDisableResponsiveDimensions');
     }
 
-    return strapi.store!({ type: 'plugin', name: 'upload', key: 'settings' }).set({ value });
+    return metrix.store!({ type: 'plugin', name: 'upload', key: 'settings' }).set({ value });
   }
 
   async function getConfiguration() {
-    const res = await strapi.store!({
+    const res = await metrix.store!({
       type: 'plugin',
       name: 'upload',
       key: 'view_configuration',
@@ -560,7 +560,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   }
 
   function setConfiguration(value: ViewConfiguration) {
-    return strapi.store!({ type: 'plugin', name: 'upload', key: 'view_configuration' }).set({
+    return metrix.store!({ type: 'plugin', name: 'upload', key: 'view_configuration' }).set({
       value,
     });
   }

@@ -33,9 +33,9 @@ const validateContentTypes = yup.array().of(
       name: 'content-type-exists',
       message: (value) => `Content type ${value.originalValue} does not exist`,
       test(uid: any) {
-        // Warning; we use the strapi global - to avoid that, it would need to refactor how
-        // we generate validation function by using a factory with the strapi instance as parameter.
-        return !!strapi.getModel(uid);
+        // Warning; we use the metrix global - to avoid that, it would need to refactor how
+        // we generate validation function by using a factory with the metrix instance as parameter.
+        return !!metrix.getModel(uid);
       },
     })
     .test({
@@ -43,7 +43,7 @@ const validateContentTypes = yup.array().of(
       message: (value) =>
         `Content type ${value.originalValue} does not have review workflow enabled`,
       test(uid: any) {
-        const model = strapi.getModel(uid);
+        const model = metrix.getModel(uid);
 
         // It's not a valid content type if it doesn't have the stage attribute
         return hasStageAttribute(model);

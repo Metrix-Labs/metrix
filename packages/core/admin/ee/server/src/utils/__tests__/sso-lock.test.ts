@@ -24,7 +24,7 @@ describe('isSsoLocked', () => {
     roles: [{ id: 3 }, { id: 4 }],
   };
 
-  global.strapi = {
+  global.metrix = {
     db: {
       query: jest.fn(() => {
         return {
@@ -76,6 +76,6 @@ describe('isSsoLocked', () => {
   it('queries for roles when user object does not have it populated', async () => {
     ssoEnabled = true;
     expect(await isSsoLocked(userWithLoadedLockedRoles)).toBe(true);
-    expect(global.strapi.db.query).toHaveBeenCalledTimes(1);
+    expect(global.metrix.db.query).toHaveBeenCalledTimes(1);
   });
 });

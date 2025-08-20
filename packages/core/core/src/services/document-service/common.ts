@@ -6,5 +6,5 @@ export type RepositoryFactoryMethod = <TContentTypeUID extends UID.ContentType>(
 ) => Modules.Documents.ServiceInstance<TContentTypeUID>;
 
 export const wrapInTransaction = (fn: (...args: any) => any) => {
-  return (...args: any[]) => strapi.db.transaction?.(() => fn(...args));
+  return (...args: any[]) => metrix.db.transaction?.(() => fn(...args));
 };

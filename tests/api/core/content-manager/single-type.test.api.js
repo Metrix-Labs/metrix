@@ -2,11 +2,11 @@
 
 // Helpers.
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 const MODEL_UID = 'api::single-type-model.single-type-model';
 
@@ -65,16 +65,16 @@ describe('Content Manager single types', () => {
   beforeAll(async () => {
     await builder.addContentType(ct).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   beforeEach(async () => {
-    await strapi.db.query(MODEL_UID).deleteMany({});
+    await metrix.db.query(MODEL_UID).deleteMany({});
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -142,7 +142,7 @@ describe('Content Manager single types', () => {
     expect(res.body.data.locale).toBe(null);
 
     // There should be a draft and a published entry in db
-    const documents = await strapi.db.query(MODEL_UID).findMany({});
+    const documents = await metrix.db.query(MODEL_UID).findMany({});
 
     const draftDocument = documents.find((doc) => doc.publishedAt === null);
     const publishedDocument = documents.find((doc) => doc.publishedAt !== null);
@@ -159,7 +159,7 @@ describe('Content Manager single types', () => {
     expect(res.statusCode).toBe(200);
 
     // Both draft and publish versions should have been updated
-    const documents = await strapi.db.query(MODEL_UID).findMany({});
+    const documents = await metrix.db.query(MODEL_UID).findMany({});
 
     const draftDocument = documents.find((doc) => doc.publishedAt === null);
     const publishedDocument = documents.find((doc) => doc.publishedAt !== null);
@@ -178,7 +178,7 @@ describe('Content Manager single types', () => {
     expect(unpublishedRes.statusCode).toBe(200);
 
     // There should be a draft and a published entry in db
-    const documents = await strapi.db.query(MODEL_UID).findMany({});
+    const documents = await metrix.db.query(MODEL_UID).findMany({});
 
     const draftDocument = documents.find((doc) => doc.publishedAt === null);
     const publishedDocument = documents.find((doc) => doc.publishedAt !== null);
@@ -201,7 +201,7 @@ describe('Content Manager single types', () => {
     expect(unpublishedRes.statusCode).toBe(200);
 
     // Published entry should be deleted, and draft should contain the published content
-    const documents = await strapi.db.query(MODEL_UID).findMany({});
+    const documents = await metrix.db.query(MODEL_UID).findMany({});
 
     const draftDocument = documents.find((doc) => doc.publishedAt === null);
     const publishedDocument = documents.find((doc) => doc.publishedAt !== null);

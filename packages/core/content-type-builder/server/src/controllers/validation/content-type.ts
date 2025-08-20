@@ -156,10 +156,10 @@ const forbiddenContentTypeNameValidator = () => {
 };
 
 const nameIsAvailable = (isEdition: boolean) => {
-  // TODO TS: if strapi.contentTypes (ie, ContentTypes) works as an ArrayLike and is used like this, we may want to ensure it is typed so that it can be without using as
+  // TODO TS: if metrix.contentTypes (ie, ContentTypes) works as an ArrayLike and is used like this, we may want to ensure it is typed so that it can be without using as
   const usedNames = flatMap((ct: Struct.ContentTypeSchema) => {
     return [ct.info?.singularName, ct.info?.pluralName];
-  })(strapi.contentTypes as any);
+  })(metrix.contentTypes as any);
 
   return {
     name: 'nameAlreadyUsed',
@@ -180,8 +180,8 @@ const nameIsAvailable = (isEdition: boolean) => {
 };
 
 const nameIsNotExistingCollectionName = (isEdition: boolean) => {
-  const usedNames = Object.keys(strapi.contentTypes).map(
-    (key) => strapi.contentTypes[key as Internal.UID.ContentType].collectionName
+  const usedNames = Object.keys(metrix.contentTypes).map(
+    (key) => metrix.contentTypes[key as Internal.UID.ContentType].collectionName
   ) as string[];
 
   return {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useTracking, useNotification } from '@metrixlabs/admin/strapi-admin';
+import { useTracking, useNotification } from '@metrixlabs/admin/metrix-admin';
 import { Button, Field, Flex, Grid, Loader, Modal, Typography } from '@strapi/design-system';
 import { Form, Formik, FormikErrors } from 'formik';
 import isEmpty from 'lodash/isEmpty';
@@ -19,7 +19,7 @@ import { EditFolderModalHeader } from './ModalHeader/ModalHeader';
 import { RemoveFolderDialog } from './RemoveFolderDialog';
 
 import type { FolderDefinition } from '../../../../shared/contracts/folders';
-import type { FetchError } from '@metrixlabs/admin/strapi-admin';
+import type { FetchError } from '@metrixlabs/admin/metrix-admin';
 
 const folderSchema = yup.object({
   name: yup.string().required(),

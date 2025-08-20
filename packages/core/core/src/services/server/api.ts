@@ -8,12 +8,12 @@ interface Options {
   type?: string;
 }
 
-const createAPI = (strapi: Core.Strapi, opts: Options = {}) => {
+const createAPI = (metrix: Core.Strapi, opts: Options = {}) => {
   const { prefix, type } = opts;
 
   const api = new Router({ prefix });
 
-  const routeManager = createRouteManager(strapi, { type });
+  const routeManager = createRouteManager(metrix, { type });
 
   return {
     listRoutes() {

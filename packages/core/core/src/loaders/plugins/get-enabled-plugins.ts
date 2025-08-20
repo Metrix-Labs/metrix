@@ -34,16 +34,16 @@ interface PluginDeclaration {
  *       See admin.ts server controller on the content-manager plugin for more details.
  */
 const INTERNAL_PLUGINS = [
-  '@strapi/content-manager',
-  '@strapi/content-type-builder',
-  '@strapi/email',
-  '@strapi/upload',
-  '@strapi/i18n',
-  '@strapi/content-releases',
-  '@strapi/review-workflows',
+  '@metrixlabs/content-manager',
+  '@metrixlabs/content-type-builder',
+  '@metrixlabs/email',
+  '@metrixlabs/upload',
+  '@metrixlabs/i18n',
+  '@metrixlabs/content-releases',
+  '@metrixlabs/review-workflows',
 ];
 
-const isStrapiPlugin = (info: PluginInfo) => get('strapi.kind', info) === 'plugin';
+const isStrapiPlugin = (info: PluginInfo) => get('metrix.kind', info) === 'plugin';
 
 const validatePluginName = (pluginName: string) => {
   if (!strings.isKebabCase(pluginName)) {
@@ -72,7 +72,7 @@ const toDetailedDeclaration = (declaration: boolean | PluginDeclaration) => {
       try {
         pathToPlugin = dirname(require.resolve(declaration.resolve));
       } catch (e) {
-        pathToPlugin = resolve(strapi.dirs.app.root, declaration.resolve);
+        pathToPlugin = resolve(metrix.dirs.app.root, declaration.resolve);
 
         if (!existsSync(pathToPlugin) || !statSync(pathToPlugin).isDirectory()) {
           throw new Error(`${declaration.resolve} couldn't be resolved`);
@@ -86,29 +86,30 @@ const toDetailedDeclaration = (declaration: boolean | PluginDeclaration) => {
   return detailedDeclaration;
 };
 
-export const getEnabledPlugins = async (strapi: Core.Strapi, { client } = { client: false }) => {
+export const getEnabledPlugins = async (metrix: Core.Strapi, { client } = { client: false }) => {
   const internalPlugins: PluginMetas = {};
 
   for (const dep of INTERNAL_PLUGINS) {
     const packagePath = join(dep, 'package.json');
 
-    // NOTE: internal plugins should be resolved from the strapi package
+    // NOTE: internal plugins should be resolved from the metrix package
     const packageModulePath = require.resolve(packagePath, {
-      paths: [require.resolve('@strapi/strapi/package.json'), process.cwd()],
+      paths: [require.resolve('@metrixlabs/metrix/package.json'), process.cwd()],
     });
 
     const packageInfo = require(packageModulePath);
 
-    validatePluginName(packageInfo.strapi.name);
-    internalPlugins[packageInfo.strapi.name] = {
+    const pluginName = (packageInfo as any).metrix?.name ?? (packageInfo as any).strapi?.name ?? packageInfo.name;
+    validatePluginName(pluginName);
+    internalPlugins[pluginName] = {
       ...toDetailedDeclaration({ enabled: true, resolve: packageModulePath, isModule: client }),
-      info: packageInfo.strapi,
+      info: packageInfo.metrix,
       packageInfo,
     };
   }
 
   const installedPlugins: PluginMetas = {};
-  const dependencies = strapi.config.get('info.dependencies', {});
+  const dependencies = metrix.config.get('info.dependencies', {});
 
   for (const dep of Object.keys(dependencies)) {
     const packagePath = join(dep, 'package.json');
@@ -120,11 +121,12 @@ export const getEnabledPlugins = async (strapi: Core.Strapi, { client } = { clie
     }
 
     if (isStrapiPlugin(packageInfo)) {
-      validatePluginName(packageInfo.strapi.name);
-      installedPlugins[packageInfo.strapi.name] = {
+      const name = (packageInfo as any).metrix?.name ?? (packageInfo as any).strapi?.name ?? packageInfo.name;
+      validatePluginName(name);
+      installedPlugins[name] = {
         ...toDetailedDeclaration({ enabled: true, resolve: packagePath, isModule: client }),
         info: {
-          ...packageInfo.strapi,
+          ...packageInfo.metrix,
           packageName: packageInfo.name,
         },
         packageInfo,
@@ -151,7 +153,7 @@ export const getEnabledPlugins = async (strapi: Core.Strapi, { client } = { clie
       const packageInfo = require(packagePath);
 
       if (isStrapiPlugin(packageInfo)) {
-        declaredPlugins[pluginName].info = packageInfo.strapi || {};
+        declaredPlugins[pluginName].info = packageInfo.metrix || {};
         declaredPlugins[pluginName].packageInfo = packageInfo;
       }
     }

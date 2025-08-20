@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Permission Checker** is a service in Strapi that helps enforce access control policies by verifying user permissions for various actions on content entities. It provides methods to check, sanitize, and validate user actions based on their permissions.
+The **Permission Checker** is a service in Metrix that helps enforce access control policies by verifying user permissions for various actions on content entities. It provides methods to check, sanitize, and validate user actions based on their permissions.
 
 ## Features
 
@@ -34,7 +34,7 @@ const ACTIONS = {
 To use the permission checker, retrieve it from the **content-manager** plugin:
 
 ```ts
-const permissionChecker = strapi
+const permissionChecker = metrix
   .plugin('content-manager')
   .service('permission-checker')
   .create({ userAbility, model });
@@ -138,15 +138,15 @@ const securedQuery = permissionChecker.sanitizedQuery.read({ sort: 'createdAt:de
 ## Exported Service
 
 ```ts
-export default ({ strapi }: { strapi: Core.Strapi }) => ({
-  create: createPermissionChecker(strapi),
+export default ({ metrix }: { metrix: Core.Metrix }) => ({
+  create: createPermissionChecker(metrix),
 });
 ```
 
-## Example Usage in Strapi
+## Example Usage in Metrix
 
 ```ts
-const canCreate = strapi.plugin('content-manager').service('permission-checker').can.create();
+const canCreate = metrix.plugin('content-manager').service('permission-checker').can.create();
 if (!canCreate) {
   throw new errors.ForbiddenError('User does not have permission to create content');
 }

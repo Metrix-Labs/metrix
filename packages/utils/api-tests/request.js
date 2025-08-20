@@ -1,25 +1,25 @@
 'use strict';
 
 const { createAgent } = require('./agent');
-const { superAdmin } = require('./strapi');
+const { superAdmin } = require('./metrix');
 
 const CONTENT_API_URL_PREFIX = '/api';
 
-const createRequest = ({ strapi } = {}) => createAgent(strapi);
+const createRequest = ({ metrix } = {}) => createAgent(metrix);
 
-const createContentAPIRequest = ({ strapi, auth = {} } = {}) => {
+const createContentAPIRequest = ({ metrix, auth = {} } = {}) => {
   const { token } = auth;
 
   if (token) {
-    return createAgent(strapi, { urlPrefix: CONTENT_API_URL_PREFIX, token });
+    return createAgent(metrix, { urlPrefix: CONTENT_API_URL_PREFIX, token });
   }
 
   // Default content api agent
-  return createAgent(strapi, { urlPrefix: CONTENT_API_URL_PREFIX, token: 'test-token' });
+  return createAgent(metrix, { urlPrefix: CONTENT_API_URL_PREFIX, token: 'test-token' });
 };
 
-const createAuthRequest = ({ strapi, userInfo = superAdmin.credentials, state = {} }) => {
-  return createAgent(strapi, state).login(userInfo);
+const createAuthRequest = ({ metrix, userInfo = superAdmin.credentials, state = {} }) => {
+  return createAgent(metrix, state).login(userInfo);
 };
 
 // TODO: Remove

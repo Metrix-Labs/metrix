@@ -3,10 +3,10 @@
 const { pick } = require('lodash/fp');
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
-let strapi;
+let metrix;
 let rq;
 const data = {
   products: [],
@@ -101,18 +101,18 @@ describe('i18n - Find available relations', () => {
       .addFixtures(productModel.singularName, products)
       .build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
-    data.shops = await builder.sanitizedFixturesFor(shopModel.singularName, strapi);
-    data.products = await builder.sanitizedFixturesFor(productModel.singularName, strapi);
+    data.shops = await builder.sanitizedFixturesFor(shopModel.singularName, metrix);
+    data.products = await builder.sanitizedFixturesFor(productModel.singularName, metrix);
   });
 
   afterAll(async () => {
     // Delete all locales that have been created
-    await strapi.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
+    await metrix.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

@@ -116,7 +116,7 @@ export const getSchema = async () => {
       visible: isContentTypeVisible(contentType),
       restrictRelationsTo: getRestrictRelationsTo(contentType),
     };
-  }, strapi.contentTypes);
+  }, metrix.contentTypes);
 
   const components = mapValues((component) => {
     const { uid, globalId, modelName, collectionName, info, category, modelType } = component;
@@ -131,7 +131,7 @@ export const getSchema = async () => {
       info,
       attributes: formatAttributes(component),
     };
-  }, strapi.components);
+  }, metrix.components);
 
   return {
     contentTypes,
@@ -261,7 +261,7 @@ export const updateSchema = async (schema: CTBSchema) => {
       await apiHandler.clear(uid);
     }
   } catch (error) {
-    strapi.log.error(error);
+    metrix.log.error(error);
     for (const uid of APIsToDelete) {
       await apiHandler.rollback(uid);
     }
@@ -269,19 +269,19 @@ export const updateSchema = async (schema: CTBSchema) => {
 
   for (const contentType of contentTypes) {
     if (contentType.action === 'delete') {
-      strapi.eventHub.emit('content-type.delete', {
+      metrix.eventHub.emit('content-type.delete', {
         contentType: builder.contentTypes.get(contentType.uid),
       });
     }
 
     if (contentType.action === 'update') {
-      strapi.eventHub.emit('content-type.update', {
+      metrix.eventHub.emit('content-type.update', {
         contentType: builder.contentTypes.get(contentType.uid),
       });
     }
 
     if (contentType.action === 'create') {
-      strapi.eventHub.emit('content-type.create', {
+      metrix.eventHub.emit('content-type.create', {
         contentType: builder.contentTypes.get(contentType.uid),
       });
     }
@@ -289,19 +289,19 @@ export const updateSchema = async (schema: CTBSchema) => {
 
   for (const component of components) {
     if (component.action === 'delete') {
-      strapi.eventHub.emit('component.delete', {
+      metrix.eventHub.emit('component.delete', {
         component: builder.components.get(component.uid),
       });
     }
 
     if (component.action === 'update') {
-      strapi.eventHub.emit('component.update', {
+      metrix.eventHub.emit('component.update', {
         component: builder.components.get(component.uid),
       });
     }
 
     if (component.action === 'create') {
-      strapi.eventHub.emit('component.create', {
+      metrix.eventHub.emit('component.create', {
         component: builder.components.get(component.uid),
       });
     }

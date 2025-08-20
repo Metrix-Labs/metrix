@@ -7,7 +7,7 @@ export default (options = {}) => {
     ...provider,
 
     async register(action: string, payload: Record<string, unknown>) {
-      if (strapi.isLoaded) {
+      if (metrix.isLoaded) {
         throw new Error(`You can't register new actions outside the bootstrap function.`);
       }
 

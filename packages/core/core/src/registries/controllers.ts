@@ -3,13 +3,13 @@ import type { Core, UID } from '@metrixlabs/types';
 import { addNamespace, hasNamespace } from './namespace';
 
 export type ControllerFactory =
-  | ((params: { strapi: Core.Strapi }) => Core.Controller)
+  | ((params: { metrix: Core.Strapi }) => Core.Controller)
   | Core.Controller;
 export type ControllerFactoryMap = Record<UID.Controller, ControllerFactory>;
 export type ControllerMap = Record<UID.Controller, Core.Controller>;
 export type ControllerExtendFn = (service: Core.Controller) => Core.Controller;
 
-const controllersRegistry = (strapi: Core.Strapi) => {
+const controllersRegistry = (metrix: Core.Strapi) => {
   const controllers: ControllerFactoryMap = {};
   const instances: ControllerMap = {};
 
@@ -32,7 +32,7 @@ const controllersRegistry = (strapi: Core.Strapi) => {
       const controller = controllers[uid];
 
       if (controller) {
-        instances[uid] = typeof controller === 'function' ? controller({ strapi }) : controller;
+        instances[uid] = typeof controller === 'function' ? controller({ metrix }) : controller;
         return instances[uid];
       }
     },

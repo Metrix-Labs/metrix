@@ -48,7 +48,7 @@ const initEmails = async (pluginStore) => {
         options: {
           from: {
             name: 'Administration Panel',
-            email: 'no-reply@strapi.io',
+            email: 'no-reply@metrix.io',
           },
           response_email: '',
           object: 'Reset password',
@@ -66,7 +66,7 @@ const initEmails = async (pluginStore) => {
         options: {
           from: {
             name: 'Administration Panel',
-            email: 'no-reply@strapi.io',
+            email: 'no-reply@metrix.io',
           },
           response_email: '',
           object: 'Account confirmation',
@@ -100,35 +100,35 @@ const initAdvancedOptions = async (pluginStore) => {
   }
 };
 
-module.exports = async ({ strapi }) => {
-  const pluginStore = strapi.store({ type: 'plugin', name: 'users-permissions' });
+module.exports = async ({ metrix }) => {
+  const pluginStore = metrix.store({ type: 'plugin', name: 'users-permissions' });
 
   await initGrant(pluginStore);
   await initEmails(pluginStore);
   await initAdvancedOptions(pluginStore);
 
-  await strapi
+  await metrix
     .service('admin::permission')
     .actionProvider.registerMany(usersPermissionsActions.actions);
 
   await getService('users-permissions').initialize();
 
-  if (!strapi.config.get('plugin::users-permissions.jwtSecret')) {
+  if (!metrix.config.get('plugin::users-permissions.jwtSecret')) {
     if (process.env.NODE_ENV !== 'development') {
       throw new Error(
         `Missing jwtSecret. Please, set configuration variable "jwtSecret" for the users-permissions plugin in config/plugins.js (ex: you can generate one using Node with \`crypto.randomBytes(16).toString('base64')\`).
-For security reasons, prefer storing the secret in an environment variable and read it in config/plugins.js. See https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`
+For security reasons, prefer storing the secret in an environment variable and read it in config/plugins.js. See https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`
       );
     }
 
     const jwtSecret = crypto.randomBytes(16).toString('base64');
 
-    strapi.config.set('plugin::users-permissions.jwtSecret', jwtSecret);
+    metrix.config.set('plugin::users-permissions.jwtSecret', jwtSecret);
 
     if (!process.env.JWT_SECRET) {
       const envPath = process.env.ENV_PATH || '.env';
-      strapi.fs.appendFile(envPath, `JWT_SECRET=${jwtSecret}\n`);
-      strapi.log.info(
+      metrix.fs.appendFile(envPath, `JWT_SECRET=${jwtSecret}\n`);
+      metrix.log.info(
         `The Users & Permissions plugin automatically generated a jwt secret and stored it in ${envPath} under the name JWT_SECRET.`
       );
     }

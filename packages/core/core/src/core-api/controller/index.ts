@@ -31,38 +31,38 @@ function createController({
       const ctx = requestCtx.get();
       return transformResponse(data, meta, {
         contentType,
-        useJsonAPIFormat: ctx?.headers?.['strapi-response-format'] === 'v4',
+        useJsonAPIFormat: ctx?.headers?.['metrix-response-format'] === 'v4',
       });
     },
 
     async sanitizeOutput(data, ctx) {
       const auth = getAuthFromKoaContext(ctx);
 
-      return strapi.contentAPI.sanitize.output(data, contentType, { auth });
+      return metrix.contentAPI.sanitize.output(data, contentType, { auth });
     },
 
     async sanitizeInput(data, ctx) {
       const auth = getAuthFromKoaContext(ctx);
 
-      return strapi.contentAPI.sanitize.input(data, contentType, { auth });
+      return metrix.contentAPI.sanitize.input(data, contentType, { auth });
     },
 
     async sanitizeQuery(ctx) {
       const auth = getAuthFromKoaContext(ctx);
 
-      return strapi.contentAPI.sanitize.query(ctx.query, contentType, { auth });
+      return metrix.contentAPI.sanitize.query(ctx.query, contentType, { auth });
     },
 
     async validateQuery(ctx) {
       const auth = getAuthFromKoaContext(ctx);
 
-      return strapi.contentAPI.validate.query(ctx.query, contentType, { auth });
+      return metrix.contentAPI.validate.query(ctx.query, contentType, { auth });
     },
 
     async validateInput(data, ctx) {
       const auth = getAuthFromKoaContext(ctx);
 
-      return strapi.contentAPI.validate.input(data, contentType, { auth });
+      return metrix.contentAPI.validate.input(data, contentType, { auth });
     },
   };
 

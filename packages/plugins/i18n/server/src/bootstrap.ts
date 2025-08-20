@@ -2,7 +2,7 @@ import type { Schema } from '@metrixlabs/types';
 import { getService } from './utils';
 
 const registerModelsHooks = () => {
-  strapi.db.lifecycles.subscribe({
+  metrix.db.lifecycles.subscribe({
     models: ['plugin::i18n.locale'],
 
     async afterCreate() {
@@ -14,7 +14,7 @@ const registerModelsHooks = () => {
     },
   });
 
-  strapi.documents.use(async (context, next) => {
+  metrix.documents.use(async (context, next) => {
     const schema: Schema.ContentType = context.contentType;
 
     if (!['create', 'update', 'discardDraft', 'publish'].includes(context.action)) {
@@ -47,7 +47,7 @@ const registerModelsHooks = () => {
     }
 
     if (attributesToPopulate.length > 0) {
-      const populatedResult = await strapi.db
+      const populatedResult = await metrix.db
         .query(schema.uid)
         .findOne({ where: { id: resultID }, populate: attributesToPopulate });
 

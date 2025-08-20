@@ -11,87 +11,87 @@ const getConfig = (enabled: boolean, handler: () => void) => {
 
 describe('Preview Config', () => {
   test('Is not enabled by default', () => {
-    const strapi = {
+    const metrix = {
       config: {
         get: () => undefined,
       },
     } as any;
 
-    expect(createPreviewConfigService({ strapi }).isEnabled()).toBe(false);
+    expect(createPreviewConfigService({ metrix }).isEnabled()).toBe(false);
   });
 
   test('Is enabled when configuration is set', () => {
-    const strapi = {
+    const metrix = {
       config: {
         get: () => getConfig(true, () => {}),
       },
     } as any;
 
-    expect(createPreviewConfigService({ strapi }).isEnabled()).toBe(true);
+    expect(createPreviewConfigService({ metrix }).isEnabled()).toBe(true);
   });
 
   describe('isConfigured', () => {
     test('Is configured when preview is explicitly disabled', () => {
-      const strapi = {
+      const metrix = {
         config: {
           get: () => ({ enabled: false }),
         },
       } as any;
 
-      expect(createPreviewConfigService({ strapi }).isConfigured()).toBe(true);
+      expect(createPreviewConfigService({ metrix }).isConfigured()).toBe(true);
     });
 
     test('Is configured when handler is configured', () => {
-      const strapi = {
+      const metrix = {
         config: {
           get: () => getConfig(true, () => {}),
         },
       } as any;
 
-      expect(createPreviewConfigService({ strapi }).isConfigured()).toBe(true);
+      expect(createPreviewConfigService({ metrix }).isConfigured()).toBe(true);
     });
 
     test('Is not configured when preview is neither disabled nor configured', () => {
-      const strapi = {
+      const metrix = {
         config: {
           get: () => ({ enabled: true }),
         },
       } as any;
 
-      expect(createPreviewConfigService({ strapi }).isConfigured()).toBe(false);
+      expect(createPreviewConfigService({ metrix }).isConfigured()).toBe(false);
     });
 
     test('Is not configured when no config is provided', () => {
-      const strapi = {
+      const metrix = {
         config: {
           get: () => undefined,
         },
       } as any;
 
-      expect(createPreviewConfigService({ strapi }).isConfigured()).toBe(false);
+      expect(createPreviewConfigService({ metrix }).isConfigured()).toBe(false);
     });
   });
 
   describe('validate', () => {
     test('Passes on valid configuration', () => {
-      const strapi = {
+      const metrix = {
         config: {
           get: () => getConfig(true, () => {}),
         },
       } as any;
 
-      createPreviewConfigService({ strapi }).validate();
+      createPreviewConfigService({ metrix }).validate();
     });
 
     test('Fails on missing handler', () => {
-      const strapi = {
+      const metrix = {
         config: {
           // @ts-expect-error - invalid handler
           get: () => getConfig(true, 3),
         },
       } as any;
 
-      expect(() => createPreviewConfigService({ strapi }).validate()).toThrowError();
+      expect(() => createPreviewConfigService({ metrix }).validate()).toThrowError();
     });
   });
 });

@@ -3,10 +3,10 @@
 // Test a simple default API with no relations
 
 const bcrypt = require('bcryptjs');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createContentAPIRequest } = require('api-tests/request');
 
-let strapi;
+let metrix;
 let rq;
 
 const internals = {
@@ -19,12 +19,12 @@ const data = {};
 
 describe('Users API', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createContentAPIRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createContentAPIRequest({ metrix });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   test('Create and get Role', async () => {
@@ -63,7 +63,7 @@ describe('Users API', () => {
   test('Create User', async () => {
     const user = {
       username: 'User 1',
-      email: 'user1@strapi.io',
+      email: 'user1@metrix.io',
       password: 'test1234',
       role: data.role.id,
     };
@@ -75,7 +75,7 @@ describe('Users API', () => {
     });
 
     // check that password was hashed
-    const userDb = await strapi.db.query('plugin::users-permissions.user').findOne({
+    const userDb = await metrix.db.query('plugin::users-permissions.user').findOne({
       where: {
         email: user.email,
       },

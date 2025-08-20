@@ -8,7 +8,7 @@ import {
   useTracking,
   useQueryParams,
   Layouts,
-} from '@metrixlabs/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Checkbox,
   Box,

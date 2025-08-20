@@ -2,7 +2,7 @@ import { Transform } from 'jscodeshift';
 
 /**
  * Replaces string dot format for config get/set/has with uid format for 'plugin' and 'api' namespace where possible
- * For example, `strapi.config.get('plugin.anyString')` will become `strapi.config.get('plugin::anyString')`
+ * For example, `metrix.config.get('plugin.anyString')` will become `metrix.config.get('plugin::anyString')`
  * Ignores api followed by 'rest' or 'responses' because those are the valid Strapi api config values in v4
  */
 const transform: Transform = (file, api) => {
@@ -18,7 +18,7 @@ const transform: Transform = (file, api) => {
           type: 'MemberExpression',
           object: {
             type: 'MemberExpression',
-            object: { type: 'Identifier', name: 'strapi' },
+            object: { type: 'Identifier', name: 'metrix' },
             property: { type: 'Identifier', name: 'config' },
           },
           property: { type: 'Identifier', name: configMethod },

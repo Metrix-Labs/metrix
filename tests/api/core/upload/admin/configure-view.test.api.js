@@ -2,7 +2,7 @@
 
 // Helpers.
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const { createUtils } = require('api-tests/utils');
 
@@ -11,7 +11,7 @@ const {
 } = require('../../../../../packages/core/upload/server/src/constants');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let utils;
 
 const requests = {
@@ -70,19 +70,19 @@ describe('Configure Media Library View', () => {
   beforeAll(async () => {
     await builder.addContentType(dogModel).build();
 
-    strapi = await createStrapiInstance();
-    utils = createUtils(strapi);
+    metrix = await createStrapiInstance();
+    utils = createUtils(metrix);
 
     await createFixtures();
 
-    requests.admin = await createAuthRequest({ strapi });
-    requests.restricted = await createAuthRequest({ strapi, userInfo: restrictedUser });
+    requests.admin = await createAuthRequest({ metrix });
+    requests.restricted = await createAuthRequest({ metrix, userInfo: restrictedUser });
   });
 
   afterAll(async () => {
     await deleteFixtures();
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

@@ -5,7 +5,7 @@
  * packages & plugins.
  *
  * The utilities are designed to work both standalone (for generic validation) and
- * as building blocks for more sophisticated schema-aware validation via @strapi/core.
+ * as building blocks for more sophisticated schema-aware validation via @metrix/core.
  *
  * @example
  * ```typescript
@@ -13,7 +13,7 @@
  * import * as z from 'zod/v4';
  *
  * export class MyPluginRouteValidator extends AbstractRouteValidator {
- *   constructor(strapi: Core.Strapi) {
+ *   constructor(metrix: Core.Strapi) {
  *     super();
  *   }
  *

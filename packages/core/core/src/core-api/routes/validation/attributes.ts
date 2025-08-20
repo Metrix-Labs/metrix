@@ -81,7 +81,7 @@ export const componentToSchema = (
 
   const componentSchema = safeSchemaCreation(
     component,
-    () => new CoreComponentRouteValidator(strapi, component).entry
+    () => new CoreComponentRouteValidator(metrix, component).entry
   ) as z.ZodType;
 
   const baseSchema = repeatable ? z.array(componentSchema) : componentSchema;
@@ -271,14 +271,14 @@ export const mediaToSchema = (
 ): z.Schema => {
   const { writable, required, multiple } = attribute;
 
-  const uploadPlugin = strapi.plugin('upload');
+  const uploadPlugin = metrix.plugin('upload');
 
   // @ts-expect-error there is a mismatch between a raw module and a loader module
   const fileSchema = uploadPlugin.contentTypes.file as Struct.ContentTypeSchema;
 
   const mediaSchema = safeSchemaCreation(
     fileSchema.uid,
-    () => new CoreContentTypeRouteValidator(strapi, fileSchema.uid).document
+    () => new CoreContentTypeRouteValidator(metrix, fileSchema.uid).document
   ) as z.ZodType;
 
   const baseSchema = multiple ? z.array(mediaSchema) : mediaSchema;
@@ -302,7 +302,7 @@ export const relationToSchema = (attribute: Schema.Attribute.Relation): z.Schema
 
   const targetSchema = safeSchemaCreation(
     target,
-    () => new CoreContentTypeRouteValidator(strapi, target).document
+    () => new CoreContentTypeRouteValidator(metrix, target).document
   ) as z.ZodType;
 
   const baseSchema = relations.isAnyToMany(attribute) ? z.array(targetSchema) : targetSchema;

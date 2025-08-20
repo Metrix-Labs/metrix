@@ -1,12 +1,12 @@
 import { traverseQueryPopulate } from '../traverse';
 
 describe('traverseQueryPopulate', () => {
-  global.strapi = {
+  global.metrix = {
     getModel() {},
   } as any;
 
   test('should not modify wildcard', async () => {
-    const strapi = {
+    const metrix = {
       getModel: jest.fn((uid) => {
         return {
           uid,
@@ -28,7 +28,7 @@ describe('traverseQueryPopulate', () => {
       },
     } as any;
 
-    global.strapi = strapi;
+    global.metrix = metrix;
 
     const query = await traverseQueryPopulate(jest.fn(), {
       schema: {
@@ -56,7 +56,7 @@ describe('traverseQueryPopulate', () => {
   });
 
   test('should return only selected populatable field', async () => {
-    const strapi = {
+    const metrix = {
       getModel: jest.fn((uid) => {
         return {
           uid,
@@ -78,7 +78,7 @@ describe('traverseQueryPopulate', () => {
       },
     } as any;
 
-    global.strapi = strapi;
+    global.metrix = metrix;
 
     const query = await traverseQueryPopulate(jest.fn(), {
       schema: {
@@ -108,7 +108,7 @@ describe('traverseQueryPopulate', () => {
   test('should work with filters attribute', async () => {
     expect.assertions(5);
 
-    const strapi = {
+    const metrix = {
       getModel: jest.fn((uid) => {
         return {
           uid,
@@ -130,7 +130,7 @@ describe('traverseQueryPopulate', () => {
       },
     } as any;
 
-    global.strapi = strapi;
+    global.metrix = metrix;
 
     const schema = {
       kind: 'collectionType',
@@ -148,7 +148,7 @@ describe('traverseQueryPopulate', () => {
 
     const ctx = {
       schema,
-      getModel: strapi.getModel,
+      getModel: metrix.getModel,
     } as const;
 
     await traverseQueryPopulate(({ key, parent, attribute }) => {

@@ -9,13 +9,13 @@ const {
 const config = {
   title: 'Doc',
   tagline: 'Dinosaurs are cool',
-  url: 'https://contributor.strapi.io',
+  url: 'https://contributor.metrix.io',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-  organizationName: 'strapi',
-  projectName: 'strapi',
+  organizationName: 'metrix',
+  projectName: 'metrix',
   trailingSlash: false,
   themes: ['@docusaurus/theme-mermaid'],
 
@@ -46,8 +46,8 @@ const config = {
       'docusaurus-plugin-typedoc',
       // Plugin / TypeDoc options
       {
-        entryPoints: ['../packages/core/strapi/src/admin.ts'],
-        tsconfig: '../packages/core/strapi/tsconfig.build.json',
+        entryPoints: ['../packages/core/metrix/src/admin.ts'],
+        tsconfig: '../packages/core/metrix/tsconfig.build.json',
         entryDocument: null,
         out: 'exports',
         watch: process.env.TYPEDOC_WATCH,
@@ -68,7 +68,7 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/strapi/strapi/tree/main/docs/',
+          editUrl: 'https://github.com/metrix/metrix/tree/main/docs/',
         },
         blog: false,
       },

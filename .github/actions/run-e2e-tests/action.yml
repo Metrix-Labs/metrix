@@ -12,5 +12,5 @@ runs:
       env:
         RUN_EE: ${{ inputs.runEE }}
         JEST_OPTIONS: ${{ inputs.jestOptions }}
-        STRAPI_FEATURES_UNSTABLE_PREVIEW_SIDE_EDITOR: true
+        METRIX_FEATURES_UNSTABLE_PREVIEW_SIDE_EDITOR: true
       shell: bash

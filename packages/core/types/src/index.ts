@@ -13,12 +13,12 @@ export type * as UID from './uid';
 
 declare global {
   // eslint-disable-next-line vars-on-top,no-var
-  var strapi: Strapi;
+  var metrix: Strapi;
 
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace NodeJS {
     interface Global {
-      strapi: Strapi;
+      metrix: Strapi;
     }
   }
 }

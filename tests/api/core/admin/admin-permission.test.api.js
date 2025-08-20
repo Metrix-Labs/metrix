@@ -3,19 +3,19 @@
 const _ = require('lodash');
 
 const { createAuthRequest } = require('api-tests/request');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 
 describe('Role CRUD End to End', () => {
   let rq;
-  let strapi;
+  let metrix;
 
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   test('Can get the existing permissions', async () => {
@@ -33,7 +33,7 @@ describe('Role CRUD End to End', () => {
     });
     sortedData.conditions = sortedData.conditions.sort();
 
-    const hasSSO = strapi.ee.features.isEnabled('sso');
+    const hasSSO = metrix.ee.features.isEnabled('sso');
 
     if (hasSSO) {
       expect(sortedData).toMatchInlineSnapshot(`

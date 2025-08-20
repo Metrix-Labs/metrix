@@ -42,7 +42,7 @@ export default {
         documentationAccess,
       });
     } catch (err) {
-      strapi.log.error(err);
+      metrix.log.error(err);
       ctx.badRequest();
     }
   },
@@ -60,7 +60,7 @@ export default {
           : getService('documentation').getDocumentationVersion();
 
       const openAPISpecsPath = path.join(
-        strapi.dirs.app.extensions,
+        metrix.dirs.app.extensions,
         'documentation',
         'documentation',
         version,
@@ -73,13 +73,13 @@ export default {
         const layout = (await import('../public/index.html')).default;
 
         const filledLayout = _.template(layout)({
-          backendUrl: strapi.config.server.url,
+          backendUrl: metrix.config.server.url,
           spec: JSON.stringify(JSON.parse(documentation)),
         });
 
         try {
           const layoutPath = path.resolve(
-            strapi.dirs.app.extensions,
+            metrix.dirs.app.extensions,
             'documentation',
             'public',
             'index.html'
@@ -92,22 +92,22 @@ export default {
 
           try {
             const staticFolder = path.resolve(
-              strapi.dirs.app.extensions,
+              metrix.dirs.app.extensions,
               'documentation',
               'public'
             );
             return koaStatic(staticFolder)(ctx, next);
           } catch (e) {
-            strapi.log.error(e);
+            metrix.log.error(e);
           }
         } catch (e) {
-          strapi.log.error(e);
+          metrix.log.error(e);
         }
       } catch (e) {
-        strapi.log.error(e);
+        metrix.log.error(e);
       }
     } catch (e) {
-      strapi.log.error(e);
+      metrix.log.error(e);
     }
   },
 
@@ -122,7 +122,7 @@ export default {
       const layout = (await import('../public/login.html')).default;
 
       const filledLayout = _.template(layout.toString())({
-        actionUrl: `${strapi.config.server.url}/documentation/login`,
+        actionUrl: `${metrix.config.server.url}/documentation/login`,
       });
 
       const $ = cheerio.load(filledLayout);
@@ -131,7 +131,7 @@ export default {
 
       try {
         const layoutPath = path.resolve(
-          strapi.dirs.app.extensions,
+          metrix.dirs.app.extensions,
           'documentation',
           'public',
           'login.html'
@@ -142,16 +142,16 @@ export default {
         ctx.url = path.basename(`${ctx.url}/login.html`);
 
         try {
-          const staticFolder = path.resolve(strapi.dirs.app.extensions, 'documentation', 'public');
+          const staticFolder = path.resolve(metrix.dirs.app.extensions, 'documentation', 'public');
           return koaStatic(staticFolder)(ctx, next);
         } catch (e) {
-          strapi.log.error(e);
+          metrix.log.error(e);
         }
       } catch (e) {
-        strapi.log.error(e);
+        metrix.log.error(e);
       }
     } catch (e) {
-      strapi.log.error(e);
+      metrix.log.error(e);
     }
   },
 
@@ -160,7 +160,7 @@ export default {
       body: { password },
     } = ctx.request;
 
-    const { password: hash } = (await strapi
+    const { password: hash } = (await metrix
       .store({ type: 'plugin', name: 'documentation', key: 'config' })
       .get()) as { password: string };
 
@@ -176,7 +176,7 @@ export default {
       querystring = '';
     }
 
-    ctx.redirect(`${strapi.config.server.url}/documentation${querystring}`);
+    ctx.redirect(`${metrix.config.server.url}/documentation${querystring}`);
   },
 
   async regenerateDoc(ctx: Koa.Context) {
@@ -195,11 +195,11 @@ export default {
     }
 
     try {
-      strapi.reload.isWatching = false;
+      metrix.reload.isWatching = false;
       await service.generateFullDoc(version);
       ctx.send({ ok: true });
     } finally {
-      strapi.reload.isWatching = true;
+      metrix.reload.isWatching = true;
     }
   },
 
@@ -219,16 +219,16 @@ export default {
     }
 
     try {
-      strapi.reload.isWatching = false;
+      metrix.reload.isWatching = false;
       await service.deleteDocumentation(version);
       ctx.send({ ok: true });
     } finally {
-      strapi.reload.isWatching = true;
+      metrix.reload.isWatching = true;
     }
   },
 
   async updateSettings(ctx: Koa.Context) {
-    const pluginStore = strapi.store({ type: 'plugin', name: 'documentation' });
+    const pluginStore = metrix.store({ type: 'plugin', name: 'documentation' });
 
     const data = await validation.validateSettings(ctx.request.body);
 

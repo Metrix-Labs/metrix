@@ -47,13 +47,13 @@ const COMPONENT_FIELDS = ['__component'];
 const STATIC_FIELDS = [ID_ATTRIBUTE, DOC_ID_ATTRIBUTE];
 
 export default ({ action, ability, model }: any) => {
-  const schema = strapi.getModel(model);
+  const schema = metrix.getModel(model);
 
   const { removeDisallowedFields } = sanitize.visitors;
 
   const ctx = {
     schema,
-    getModel: strapi.getModel.bind(strapi),
+    getModel: metrix.getModel.bind(metrix),
   };
 
   const createSanitizeQuery = (options = {} as any) => {
@@ -139,7 +139,7 @@ export default ({ action, ability, model }: any) => {
       sanitize.sanitizers.sanitizePasswords({
         schema,
         getModel(uid: string) {
-          return strapi.getModel(uid as UID.Schema);
+          return metrix.getModel(uid as UID.Schema);
         },
       })
     );

@@ -3,8 +3,8 @@ import type * as Nexus from 'nexus';
 import type { Struct } from '@metrixlabs/types';
 import type { Context } from '../../types';
 
-export default ({ strapi }: Context) => {
-  const { service: getService } = strapi.plugin('graphql');
+export default ({ metrix }: Context) => {
+  const { service: getService } = metrix.plugin('graphql');
 
   const { naming } = getService('utils');
   const { args } = getService('internals');
@@ -30,7 +30,7 @@ export default ({ strapi }: Context) => {
       type: typeName,
 
       extensions: {
-        strapi: {
+        metrix: {
           contentType,
         },
       },
@@ -45,11 +45,11 @@ export default ({ strapi }: Context) => {
         const { auth } = context.state;
 
         // Sanitize input data
-        const sanitizedInputData = await strapi.contentAPI.sanitize.input(args.data, contentType, {
+        const sanitizedInputData = await metrix.contentAPI.sanitize.input(args.data, contentType, {
           auth,
         });
 
-        return strapi.documents!(uid).create({
+        return metrix.documents!(uid).create({
           ...args,
           data: sanitizedInputData,
         });
@@ -70,7 +70,7 @@ export default ({ strapi }: Context) => {
       type: typeName,
 
       extensions: {
-        strapi: {
+        metrix: {
           contentType,
         },
       },
@@ -87,11 +87,11 @@ export default ({ strapi }: Context) => {
         const { data, ...restParams } = args;
 
         // Sanitize input data
-        const sanitizedInputData = await strapi.contentAPI.sanitize.input(data, contentType, {
+        const sanitizedInputData = await metrix.contentAPI.sanitize.input(data, contentType, {
           auth,
         });
 
-        return strapi.documents!(uid).update({
+        return metrix.documents!(uid).update({
           ...restParams,
           data: sanitizedInputData,
         });
@@ -107,13 +107,13 @@ export default ({ strapi }: Context) => {
 
     const deleteMutationName = getDeleteMutationTypeName(contentType);
 
-    const { DELETE_MUTATION_RESPONSE_TYPE_NAME } = strapi.plugin('graphql').service('constants');
+    const { DELETE_MUTATION_RESPONSE_TYPE_NAME } = metrix.plugin('graphql').service('constants');
 
     t.field(deleteMutationName, {
       type: DELETE_MUTATION_RESPONSE_TYPE_NAME,
 
       extensions: {
-        strapi: {
+        metrix: {
           contentType,
         },
       },
@@ -125,7 +125,7 @@ export default ({ strapi }: Context) => {
       async resolve(parent, args) {
         const { documentId } = args;
 
-        await strapi.documents!(uid).delete({ documentId });
+        await metrix.documents!(uid).delete({ documentId });
 
         return { documentId };
       },

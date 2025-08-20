@@ -1,4 +1,4 @@
-import { adminApi } from '@metrixlabs/admin/strapi-admin';
+import { adminApi } from '@metrixlabs/admin/metrix-admin';
 
 import { DocumentInfos } from '../types';
 

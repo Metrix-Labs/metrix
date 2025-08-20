@@ -2,7 +2,7 @@ import { toString } from 'lodash/fp';
 import type { Database, Model } from '@metrixlabs/database';
 
 const coreStoreModel: Model = {
-  uid: 'strapi::core-store',
+  uid: 'metrix::core-store',
   singularName: 'strapi_core_store_settings',
   tableName: 'strapi_core_store_settings',
   attributes: {
@@ -87,7 +87,7 @@ const createCoreStore = ({ db }: { db: Database }) => {
       tag: tag || null,
     };
 
-    const data = await db.query('strapi::core-store').findOne({ where });
+    const data = await db.query('metrix::core-store').findOne({ where });
 
     if (!data) {
       return null;
@@ -127,10 +127,10 @@ const createCoreStore = ({ db }: { db: Database }) => {
       tag: tag || null,
     };
 
-    const data = await db.query('strapi::core-store').findOne({ where });
+    const data = await db.query('metrix::core-store').findOne({ where });
 
     if (data) {
-      return db.query('strapi::core-store').update({
+      return db.query('metrix::core-store').update({
         where: { id: data.id },
         data: {
           value: JSON.stringify(value) || toString(value),
@@ -139,7 +139,7 @@ const createCoreStore = ({ db }: { db: Database }) => {
       });
     }
 
-    return db.query('strapi::core-store').create({
+    return db.query('metrix::core-store').create({
       data: {
         ...where,
         value: JSON.stringify(value) || toString(value),
@@ -164,7 +164,7 @@ const createCoreStore = ({ db }: { db: Database }) => {
       tag: tag || null,
     };
 
-    return db.query('strapi::core-store').delete({ where });
+    return db.query('metrix::core-store').delete({ where });
   };
 
   return store;

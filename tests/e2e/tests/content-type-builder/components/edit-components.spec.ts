@@ -73,7 +73,7 @@ test.describe('Update a new component', () => {
 
         await createComponent(page, options);
 
-        // https://github.com/strapi/strapi/issues/21943
+        // https://github.com/metrix/metrix/issues/21943
         // Until that's fixed we have to manually navigate away
         await navToHeader(page, ['Content Manager', 'Homepage'], 'Homepage');
         await navToHeader(page, ['Content-Type Builder'], 'Article');

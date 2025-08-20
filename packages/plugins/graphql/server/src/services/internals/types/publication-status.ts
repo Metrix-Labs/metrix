@@ -1,8 +1,8 @@
 import { enumType } from 'nexus';
 import type { Context } from '../../types';
 
-export default ({ strapi }: Context) => {
-  const { PUBLICATION_STATUS_TYPE_NAME } = strapi.plugin('graphql').service('constants');
+export default ({ metrix }: Context) => {
+  const { PUBLICATION_STATUS_TYPE_NAME } = metrix.plugin('graphql').service('constants');
 
   return {
     /**

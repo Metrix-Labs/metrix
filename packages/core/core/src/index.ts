@@ -8,18 +8,18 @@ export { default as compileStrapi } from './compile';
 export * as factories from './factories';
 
 export const createStrapi = (options: Partial<StrapiOptions> = {}): Core.Strapi => {
-  const strapi = new Strapi({
+  const metrix = new Strapi({
     ...options,
     ...resolveWorkingDirectories(options),
   });
 
-  destroyOnSignal(strapi);
-  createUpdateNotifier(strapi);
+  destroyOnSignal(metrix);
+  createUpdateNotifier(metrix);
 
   // TODO: deprecate and remove in next major
-  global.strapi = strapi;
+  global.metrix = metrix;
 
-  return strapi;
+  return metrix;
 };
 
 // Augment Koa query type based on Strapi query middleware

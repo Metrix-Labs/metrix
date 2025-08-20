@@ -30,7 +30,7 @@ const strapiMock = {
     if (name === 'query-params') {
       const transformer = queryParams.createTransformer({
         getModel(name: string) {
-          return strapi.getModel(name as any);
+          return metrix.getModel(name as any);
         },
       });
 
@@ -47,7 +47,7 @@ describe('Role', () => {
       const dbCreate = jest.fn(({ data }) => Promise.resolve(data));
       const dbCount = jest.fn(() => Promise.resolve(0));
 
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         db: { query: () => ({ create: dbCreate, count: dbCount }) },
         eventHub: {
@@ -77,7 +77,7 @@ describe('Role', () => {
       };
       const dbFindOne = jest.fn(({ where: { id } }) => Promise.resolve(_.find([role], { id })));
 
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         db: { query: () => ({ findOne: dbFindOne }) },
       } as any;
@@ -99,7 +99,7 @@ describe('Role', () => {
         Promise.resolve(_.find([_.omit(role, ['usersCount'])], { id }))
       );
       const dbCount = jest.fn(() => Promise.resolve(0));
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         db: { query: () => ({ findOne: dbFindOne, count: dbCount }) },
       } as any;
@@ -124,7 +124,7 @@ describe('Role', () => {
 
       const dbFind = jest.fn(() => Promise.resolve(roles));
 
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         db: { query: () => ({ findMany: dbFind }) },
       } as any;
@@ -150,7 +150,7 @@ describe('Role', () => {
       const dbCount = jest.fn(() => Promise.resolve(0));
       const findMany = jest.fn(() => Promise.resolve(roles));
 
-      global.strapi = {
+      global.metrix = {
         ...strapiMock,
         getModel: () => roleContentType,
         db: { query: () => ({ count: dbCount, findMany }) },
@@ -192,7 +192,7 @@ describe('Role', () => {
       const dbUpdate = jest.fn(() => Promise.resolve(expectedUpdatedRole));
       const dbCount = jest.fn(() => Promise.resolve(0));
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ update: dbUpdate, count: dbCount }) },
         eventHub: {
           emit: jest.fn(),
@@ -228,7 +228,7 @@ describe('Role', () => {
       const dbFindOne = jest.fn(() => ({ id: '1', code: SUPER_ADMIN_CODE }));
       const badRequest = jest.fn(() => {});
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ find: dbFind, findOne: dbFindOne, update: dbUpdate }) },
         admin: { config: { superAdminCode: SUPER_ADMIN_CODE } },
         errors: { badRequest },
@@ -247,7 +247,7 @@ describe('Role', () => {
     test('getUsersCount', async () => {
       const roleId = 1;
       const dbCount = jest.fn(() => Promise.resolve(0));
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ count: dbCount }) },
       } as any;
 
@@ -271,7 +271,7 @@ describe('Role', () => {
       const dbDelete = jest.fn(() => Promise.resolve(role));
       const dbDeleteByRolesIds = jest.fn(() => Promise.resolve());
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ delete: dbDelete, count: dbCount, findOne: dbFindOne }) },
         store: () => ({
           get: () => ({
@@ -325,7 +325,7 @@ describe('Role', () => {
       const dbGetUsersCount = jest.fn(() => Promise.resolve(0));
       const dbDeleteByRolesIds = jest.fn(() => Promise.resolve());
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ delete: dbDelete, count: dbCount, findOne: dbFindOne }) },
         store: () => ({
           get: () => ({
@@ -360,7 +360,7 @@ describe('Role', () => {
       const dbFind = jest.fn(() => [{ id: '1' }]);
       const dbFindOne = jest.fn(() => ({ id: '1', code: SUPER_ADMIN_CODE }));
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query: () => ({ find: dbFind, findOne: dbFindOne }),
         },
@@ -382,7 +382,7 @@ describe('Role', () => {
       const dbFindOne = jest.fn(() => ({}));
       const dbCount = jest.fn(() => 2);
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ find: dbFind, findOne: dbFindOne, count: dbCount }) },
         store: () => ({
           get: () => ({
@@ -403,7 +403,7 @@ describe('Role', () => {
   describe('Count roles', () => {
     test('Count roles without params', async () => {
       const dbCount = jest.fn(() => Promise.resolve(2));
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ count: dbCount }) },
       } as any;
 
@@ -415,7 +415,7 @@ describe('Role', () => {
 
     test('Count roles with params', async () => {
       const dbCount = jest.fn(() => Promise.resolve(2));
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ count: dbCount }) },
       } as any;
 
@@ -431,7 +431,7 @@ describe('Role', () => {
     test("Don't create roles if one already exist", async () => {
       const count = jest.fn(() => Promise.resolve(1));
       const create = jest.fn();
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ count, create }) },
       } as any;
       await createRolesIfNoneExist();
@@ -518,7 +518,7 @@ describe('Role', () => {
       const assignARoleToAll = jest.fn();
       const getPermissionsWithNestedFields = jest.fn(() => permissions.map(createPermission)); // cloned, otherwise it is modified inside createRolesIfNoneExist()
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ count, create }) },
         admin: {
           services: {
@@ -544,7 +544,7 @@ describe('Role', () => {
       expect(create).toHaveBeenNthCalledWith(1, {
         data: {
           name: 'Super Admin',
-          code: 'strapi-super-admin',
+          code: 'metrix-super-admin',
           description: 'Super Admins can access and manage all features and settings.',
         },
       });
@@ -554,7 +554,7 @@ describe('Role', () => {
       expect(create).toHaveBeenNthCalledWith(2, {
         data: {
           name: 'Editor',
-          code: 'strapi-editor',
+          code: 'metrix-editor',
           description: 'Editors can manage and publish contents including those of other users.',
         },
       });
@@ -562,7 +562,7 @@ describe('Role', () => {
       expect(create).toHaveBeenNthCalledWith(3, {
         data: {
           name: 'Author',
-          code: 'strapi-author',
+          code: 'metrix-author',
           description: 'Authors can manage the content they have created.',
         },
       });
@@ -600,7 +600,7 @@ describe('Role', () => {
       const exists = jest.fn(() => Promise.resolve(true));
       const warn = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ findOne, count }) },
         admin: { services: { user: { exists } } },
         log: { warn },
@@ -617,7 +617,7 @@ describe('Role', () => {
       const exists = jest.fn(() => Promise.resolve(false));
       const warn = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ findOne, count }) },
         admin: { services: { user: { exists } } },
         log: { warn },
@@ -634,7 +634,7 @@ describe('Role', () => {
       const exists = jest.fn(() => Promise.resolve(true));
       const warn = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ findOne, count }) },
         admin: { services: { user: { exists } } },
         log: { warn },
@@ -651,7 +651,7 @@ describe('Role', () => {
       const getSuperAdmin = jest.fn(() => Promise.resolve(undefined));
       const createMany = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         db: { query: () => ({ createMany }) },
         admin: { services: { role: { getSuperAdmin } } },
       } as any;
@@ -726,7 +726,7 @@ describe('Role', () => {
       const createMany = jest.fn(() => []);
       const isValidCondition = jest.fn(() => true);
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             permission: {
@@ -769,7 +769,7 @@ describe('Role', () => {
       const deleteByIds = jest.fn();
       const values = jest.fn(() => []);
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             metrics: { sendDidUpdateRolePermissions },
@@ -799,7 +799,7 @@ describe('Role', () => {
       const values = jest.fn(() => permissions.map((perm) => ({ actionId: perm.action })));
       const conditionProviderHas = jest.fn((cond) => cond === 'cond');
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             metrics: { sendDidUpdateRolePermissions },
@@ -891,7 +891,7 @@ describe('Role', () => {
       ]);
       const conditionProviderHas = jest.fn((cond) => cond === 'cond');
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             metrics: { sendDidUpdateRolePermissions },
@@ -952,7 +952,7 @@ describe('Role', () => {
       ]);
       const conditionProviderHas = jest.fn((cond) => cond === 'cond');
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             metrics: { sendDidUpdateRolePermissions },
@@ -1001,7 +1001,7 @@ describe('Role', () => {
         role: roleId,
       }));
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             permission: {

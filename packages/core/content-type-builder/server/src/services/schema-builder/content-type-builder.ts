@@ -159,7 +159,7 @@ export default function createComponentBuilder() {
       const contentType = createSchemaHandler({
         modelName: infos.singularName,
         dir: path.join(
-          strapi.dirs.app.api,
+          metrix.dirs.app.api,
           infos.singularName,
           'content-types',
           infos.singularName

@@ -105,7 +105,7 @@ export const EditPage = () => {
               primaryAction={
                 !isLoadingPlugins ? (
                   <Button
-                    disabled={role.code === 'strapi-super-admin'}
+                    disabled={role.code === 'metrix-super-admin'}
                     type="submit"
                     loading={mutation.isLoading}
                     startIcon={<Check />}

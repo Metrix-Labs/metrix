@@ -1,4 +1,4 @@
-import { Form } from '@metrixlabs/admin/strapi-admin';
+import { Form } from '@metrixlabs/admin/metrix-admin';
 import { screen, render } from '@tests/utils';
 
 import { MediaLibraryInput } from '../MediaLibraryInput';

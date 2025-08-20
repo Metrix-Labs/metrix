@@ -146,7 +146,7 @@ const createComponentValidator =
     }: ValidatorMeta<Schema.Attribute.Component<UID.Component, boolean>>,
     { isDraft }: ValidatorContext
   ) => {
-    const model = strapi.getModel(attr.component);
+    const model = metrix.getModel(attr.component);
     if (!model) {
       throw new Error('Validation failed: Model not found');
     }
@@ -201,11 +201,11 @@ const createDzValidator =
 
     validator = yup.array().of(
       yup.lazy((item) => {
-        const model = strapi.getModel(prop('__component', item));
+        const model = metrix.getModel(prop('__component', item));
         const schema = yup
           .object()
           .shape({
-            __component: yup.string().required().oneOf(Object.keys(strapi.components)),
+            __component: yup.string().required().oneOf(Object.keys(metrix.components)),
           })
           .notNull();
 
@@ -453,7 +453,7 @@ const buildRelationsStore = <TUID extends UID.Schema>({
     return {};
   }
 
-  const currentModel = strapi.getModel(uid);
+  const currentModel = metrix.getModel(uid);
 
   return Object.keys(currentModel.attributes).reduce(
     (result, attributeName: string) => {
@@ -569,7 +569,7 @@ const checkRelationsExist = async (relationsStore: Record<string, ID[]> = {}) =>
   for (const [key, value] of Object.entries(relationsStore)) {
     const evaluate = async () => {
       const uniqueValues = uniqBy(value, `id`);
-      const count = await strapi.db.query(key as UID.Schema).count({
+      const count = await metrix.db.query(key as UID.Schema).count({
         where: {
           id: {
             $in: uniqueValues.map((v) => v.id),

@@ -11,9 +11,9 @@ import { AbstractCoreRouteValidator } from './common';
  *
  * @example
  * ```ts
- * const strapi = // ... strapi instance
+ * const metrix = // ... metrix instance
  * const uid = 'api::article.article'
- * const validator = new CoreComponentRouteValidator(strapi, uid);
+ * const validator = new CoreComponentRouteValidator(metrix, uid);
  *
  * // Get validation schema for a component entry
  * const componentSchema = validator.component;
@@ -29,7 +29,7 @@ export class CoreComponentRouteValidator extends AbstractCoreRouteValidator<UID.
    *
    * @example
    * ```ts
-   * const validator = new CoreComponentRouteValidator(strapi, uid);
+   * const validator = new CoreComponentRouteValidator(metrix, uid);
    * const entrySchema = validator.entry;
    * ```
    */

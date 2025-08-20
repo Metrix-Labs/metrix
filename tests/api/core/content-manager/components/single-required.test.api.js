@@ -1,10 +1,10 @@
 'use strict';
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
-let strapi;
+let metrix;
 let rq;
 
 const component = {
@@ -36,13 +36,13 @@ describe('Non repeatable and required component', () => {
   beforeAll(async () => {
     await builder.addComponent(component).addContentType(ct).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
     rq.setURLPrefix('/content-manager/collection-types/api::withcomponent.withcomponent');
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

@@ -15,7 +15,7 @@ const updateActionsStatusAndUpdateReleaseStatus = async (
   contentType: UID.ContentType,
   entry: Modules.Documents.AnyDocument
 ) => {
-  const releases = await strapi.db.query(RELEASE_MODEL_UID).findMany({
+  const releases = await metrix.db.query(RELEASE_MODEL_UID).findMany({
     where: {
       releasedAt: null,
       actions: {
@@ -26,9 +26,9 @@ const updateActionsStatusAndUpdateReleaseStatus = async (
     },
   });
 
-  const entryStatus = await isEntryValid(contentType, entry, { strapi });
+  const entryStatus = await isEntryValid(contentType, entry, { metrix });
 
-  await strapi.db.query(RELEASE_ACTION_MODEL_UID).updateMany({
+  await metrix.db.query(RELEASE_ACTION_MODEL_UID).updateMany({
     where: {
       contentType,
       entryDocumentId: entry.documentId,
@@ -40,23 +40,23 @@ const updateActionsStatusAndUpdateReleaseStatus = async (
   });
 
   for (const release of releases) {
-    getService('release', { strapi }).updateReleaseStatus(release.id);
+    getService('release', { metrix }).updateReleaseStatus(release.id);
   }
 };
 
 const deleteActionsAndUpdateReleaseStatus = async (params: ReleaseActionsParams) => {
-  const releases = await strapi.db.query(RELEASE_MODEL_UID).findMany({
+  const releases = await metrix.db.query(RELEASE_MODEL_UID).findMany({
     where: {
       actions: params,
     },
   });
 
-  await strapi.db.query(RELEASE_ACTION_MODEL_UID).deleteMany({
+  await metrix.db.query(RELEASE_ACTION_MODEL_UID).deleteMany({
     where: params,
   });
 
   for (const release of releases) {
-    getService('release', { strapi }).updateReleaseStatus(release.id);
+    getService('release', { metrix }).updateReleaseStatus(release.id);
   }
 };
 
@@ -85,7 +85,7 @@ const deleteActionsOnDelete: Middleware = async (ctx, next) => {
       ...(locale !== '*' && { locale }),
     });
   } catch (error) {
-    strapi.log.error('Error while deleting release actions after delete', {
+    metrix.log.error('Error while deleting release actions after delete', {
       error,
     });
   }
@@ -113,7 +113,7 @@ const updateActionsOnUpdate: Middleware = async (ctx, next) => {
   try {
     updateActionsStatusAndUpdateReleaseStatus(contentType, result);
   } catch (error) {
-    strapi.log.error('Error while updating release actions after update', {
+    metrix.log.error('Error while updating release actions after update', {
       error,
     });
   }

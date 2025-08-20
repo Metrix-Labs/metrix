@@ -2,16 +2,16 @@ import { defineProvider } from './provider';
 import createTelemetry from '../services/metrics';
 
 export default defineProvider({
-  init(strapi) {
-    strapi.add('telemetry', () => createTelemetry(strapi));
+  init(metrix) {
+    metrix.add('telemetry', () => createTelemetry(metrix));
   },
-  async register(strapi) {
-    strapi.get('telemetry').register();
+  async register(metrix) {
+    metrix.get('telemetry').register();
   },
-  async bootstrap(strapi) {
-    strapi.get('telemetry').bootstrap();
+  async bootstrap(metrix) {
+    metrix.get('telemetry').bootstrap();
   },
-  async destroy(strapi) {
-    strapi.get('telemetry').destroy();
+  async destroy(metrix) {
+    metrix.get('telemetry').destroy();
   },
 });

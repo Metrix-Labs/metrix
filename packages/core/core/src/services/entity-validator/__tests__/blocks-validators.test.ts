@@ -18,17 +18,17 @@ const validParagraph = [
       },
       {
         type: 'link',
-        url: 'https://strapi.io',
+        url: 'https://metrix.io',
         children: [{ type: 'text', text: 'Strapi' }],
       },
       {
         type: 'link',
-        url: '/strapi',
+        url: '/metrix',
         children: [{ type: 'text', text: 'Strapi relative link' }],
       },
       {
         type: 'link',
-        url: 'mailto:info@strapi.io',
+        url: 'mailto:info@metrix.io',
         children: [{ type: 'text', text: 'Strapi Email' }],
       },
     ],
@@ -68,7 +68,7 @@ const validQuote = [
       },
       {
         type: 'link',
-        url: 'https://strapi.io',
+        url: 'https://metrix.io',
         children: [
           {
             type: 'text',
@@ -91,7 +91,7 @@ const validHeadings = [
     children: [
       {
         type: 'link',
-        url: 'https://strapi.io',
+        url: 'https://metrix.io',
         children: [{ type: 'text', text: 'Heading 2' }],
       },
     ],
@@ -106,7 +106,7 @@ const validHeadings = [
       },
       {
         type: 'link',
-        url: 'https://strapi.io',
+        url: 'https://metrix.io',
         children: [
           {
             type: 'text',
@@ -136,7 +136,7 @@ const validLists = [
         children: [
           {
             type: 'link',
-            url: 'https://strapi.io',
+            url: 'https://metrix.io',
             children: [
               {
                 type: 'text',
@@ -166,7 +166,7 @@ const validLists = [
         children: [
           {
             type: 'link',
-            url: 'https://strapi.io',
+            url: 'https://metrix.io',
             children: [
               {
                 type: 'text',

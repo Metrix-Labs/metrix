@@ -2,9 +2,9 @@ const DAY_IN_MS = 24 * 60 * 60 * 1000;
 
 const constants = {
   CONTENT_TYPE_SECTION: 'contentTypes',
-  SUPER_ADMIN_CODE: 'strapi-super-admin',
-  EDITOR_CODE: 'strapi-editor',
-  AUTHOR_CODE: 'strapi-author',
+  SUPER_ADMIN_CODE: 'metrix-super-admin',
+  EDITOR_CODE: 'metrix-editor',
+  AUTHOR_CODE: 'metrix-author',
   READ_ACTION: 'plugin::content-manager.explorer.read',
   CREATE_ACTION: 'plugin::content-manager.explorer.create',
   UPDATE_ACTION: 'plugin::content-manager.explorer.update',

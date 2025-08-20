@@ -178,7 +178,7 @@ const getDefaultMainField = (schema: any) => findFirstStringAttribute(schema) ||
 const getSortableAttributes = (schema: any) => {
   const validAttributes = Object.keys(schema.attributes).filter((key) => isListable(schema, key));
 
-  const model = strapi.getModel(schema.uid);
+  const model = metrix.getModel(schema.uid);
   const nonVisibleWritableAttributes = intersection(
     getNonVisibleAttributes(model),
     getWritableAttributes(model)

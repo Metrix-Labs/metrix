@@ -1,20 +1,20 @@
 'use strict';
 
 // Helpers.
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest, createRequest } = require('api-tests/request');
 
 describe('Authenticated User', () => {
   let rq;
-  let strapi;
+  let metrix;
 
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   describe('GET /users/me', () => {
@@ -37,7 +37,7 @@ describe('Authenticated User', () => {
     });
 
     test('Returns forbidden on unauthenticated query', async () => {
-      const req = createRequest({ strapi });
+      const req = createRequest({ metrix });
       const res = await req({
         url: '/admin/users/me',
         method: 'GET',
@@ -50,7 +50,7 @@ describe('Authenticated User', () => {
 
   describe('PUT /users/me', () => {
     test('Returns forbidden on unauthenticated query', async () => {
-      const req = createRequest({ strapi });
+      const req = createRequest({ metrix });
       const res = await req({
         url: '/admin/users/me',
         method: 'PUT',

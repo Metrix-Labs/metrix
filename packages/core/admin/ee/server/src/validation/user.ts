@@ -11,7 +11,7 @@ const ssoUserCreationInputExtension = yup
 export const validateUserCreationInput = (data: any) => {
   let schema = schemas.userCreationSchema;
 
-  if (strapi.ee.features.isEnabled('sso')) {
+  if (metrix.ee.features.isEnabled('sso')) {
     schema = schema.concat(ssoUserCreationInputExtension);
   }
 

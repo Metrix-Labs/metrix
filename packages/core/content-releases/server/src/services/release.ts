@@ -16,12 +16,12 @@ import type { ReleaseAction } from '../../../shared/contracts/release-actions';
 import type { UserInfo } from '../../../shared/types';
 import { getService } from '../utils';
 
-const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
+const createReleaseService = ({ metrix }: { metrix: Core.Strapi }) => {
   const dispatchWebhook = (
     event: string,
     { isPublished, release, error }: { isPublished: boolean; release?: any; error?: unknown }
   ) => {
-    strapi.eventHub.emit(event, {
+    metrix.eventHub.emit(event, {
       isPublished,
       error,
       release,
@@ -33,7 +33,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
    * We split them by contentType and type (publish/unpublish) and extract only the documentIds and locales.
    */
   const getFormattedActions = async (releaseId: Release['id']) => {
-    const actions = (await strapi.db.query(RELEASE_ACTION_MODEL_UID).findMany({
+    const actions = (await metrix.db.query(RELEASE_ACTION_MODEL_UID).findMany({
       where: {
         release: {
           id: releaseId,
@@ -82,7 +82,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
         validatePendingReleasesLimit,
         validateUniqueNameForPendingRelease,
         validateScheduledAtIsLaterThanNow,
-      } = getService('release-validation', { strapi });
+      } = getService('release-validation', { metrix });
 
       await Promise.all([
         validatePendingReleasesLimit(),
@@ -90,7 +90,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
         validateScheduledAtIsLaterThanNow(releaseWithCreatorFields.scheduledAt),
       ]);
 
-      const release = await strapi.db.query(RELEASE_MODEL_UID).create({
+      const release = await metrix.db.query(RELEASE_MODEL_UID).create({
         data: {
           ...releaseWithCreatorFields,
           status: 'empty',
@@ -98,19 +98,19 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
       });
 
       if (releaseWithCreatorFields.scheduledAt) {
-        const schedulingService = getService('scheduling', { strapi });
+        const schedulingService = getService('scheduling', { metrix });
 
         await schedulingService.set(release.id, release.scheduledAt);
       }
 
-      strapi.telemetry.send('didCreateContentRelease');
+      metrix.telemetry.send('didCreateContentRelease');
 
       return release;
     },
 
     async findOne(id: GetRelease.Request['params']['id'], query = {}) {
-      const dbQuery = strapi.get('query-params').transform(RELEASE_MODEL_UID, query);
-      const release = await strapi.db.query(RELEASE_MODEL_UID).findOne({
+      const dbQuery = metrix.get('query-params').transform(RELEASE_MODEL_UID, query);
+      const release = await metrix.db.query(RELEASE_MODEL_UID).findOne({
         ...dbQuery,
         where: { id },
       });
@@ -119,9 +119,9 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
     },
 
     findPage(query?: GetReleases.Request['query']) {
-      const dbQuery = strapi.get('query-params').transform(RELEASE_MODEL_UID, query ?? {});
+      const dbQuery = metrix.get('query-params').transform(RELEASE_MODEL_UID, query ?? {});
 
-      return strapi.db.query(RELEASE_MODEL_UID).findPage({
+      return metrix.db.query(RELEASE_MODEL_UID).findPage({
         ...dbQuery,
         populate: {
           actions: {
@@ -132,9 +132,9 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
     },
 
     findMany(query?: any) {
-      const dbQuery = strapi.get('query-params').transform(RELEASE_MODEL_UID, query ?? {});
+      const dbQuery = metrix.get('query-params').transform(RELEASE_MODEL_UID, query ?? {});
 
-      return strapi.db.query(RELEASE_MODEL_UID).findMany({
+      return metrix.db.query(RELEASE_MODEL_UID).findMany({
         ...dbQuery,
       });
     },
@@ -150,7 +150,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
 
       const { validateUniqueNameForPendingRelease, validateScheduledAtIsLaterThanNow } = getService(
         'release-validation',
-        { strapi }
+        { metrix }
       );
 
       await Promise.all([
@@ -158,7 +158,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
         validateScheduledAtIsLaterThanNow(releaseWithCreatorFields.scheduledAt),
       ]);
 
-      const release = await strapi.db.query(RELEASE_MODEL_UID).findOne({ where: { id } });
+      const release = await metrix.db.query(RELEASE_MODEL_UID).findOne({ where: { id } });
 
       if (!release) {
         throw new errors.NotFoundError(`No release found for id ${id}`);
@@ -168,12 +168,12 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
         throw new errors.ValidationError('Release already published');
       }
 
-      const updatedRelease = await strapi.db.query(RELEASE_MODEL_UID).update({
+      const updatedRelease = await metrix.db.query(RELEASE_MODEL_UID).update({
         where: { id },
         data: releaseWithCreatorFields,
       });
 
-      const schedulingService = getService('scheduling', { strapi });
+      const schedulingService = getService('scheduling', { metrix });
 
       if (releaseData.scheduledAt) {
         // set function always cancel the previous job if it exists, so we can call it directly
@@ -185,13 +185,13 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
 
       this.updateReleaseStatus(id);
 
-      strapi.telemetry.send('didUpdateContentRelease');
+      metrix.telemetry.send('didUpdateContentRelease');
 
       return updatedRelease;
     },
 
     async getAllComponents() {
-      const contentManagerComponentsService = strapi
+      const contentManagerComponentsService = metrix
         .plugin('content-manager')
         .service('components');
 
@@ -213,7 +213,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
     },
 
     async delete(releaseId: DeleteRelease.Request['params']['id']) {
-      const release: Release = await strapi.db.query(RELEASE_MODEL_UID).findOne({
+      const release: Release = await metrix.db.query(RELEASE_MODEL_UID).findOne({
         where: { id: releaseId },
         populate: {
           actions: {
@@ -232,8 +232,8 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
 
       // Only delete the release and its actions is you in fact can delete all the actions and the release
       // Otherwise, if the transaction fails it throws an error
-      await strapi.db.transaction(async () => {
-        await strapi.db.query(RELEASE_ACTION_MODEL_UID).deleteMany({
+      await metrix.db.transaction(async () => {
+        await metrix.db.query(RELEASE_ACTION_MODEL_UID).deleteMany({
           where: {
             id: {
               $in: release.actions.map((action) => action.id),
@@ -241,7 +241,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
           },
         });
 
-        await strapi.db.query(RELEASE_MODEL_UID).delete({
+        await metrix.db.query(RELEASE_MODEL_UID).delete({
           where: {
             id: releaseId,
           },
@@ -249,11 +249,11 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
       });
 
       if (release.scheduledAt) {
-        const schedulingService = getService('scheduling', { strapi });
+        const schedulingService = getService('scheduling', { metrix });
         await schedulingService.cancel(release.id);
       }
 
-      strapi.telemetry.send('didDeleteContentRelease');
+      metrix.telemetry.send('didDeleteContentRelease');
 
       return release;
     },
@@ -263,12 +263,12 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
         release,
         error,
       }: { release: Pick<Release, 'id' | 'releasedAt' | 'status'> | null; error: unknown | null } =
-        await strapi.db.transaction(async ({ trx }) => {
+        await metrix.db.transaction(async ({ trx }) => {
           /**
            * We lock the release in this transaction, so any other process trying to publish it will wait until this transaction is finished
            * In this transaction we don't care about rollback, becasue we want to persist the lock until the end and if it fails we want to change the release status to failed
            */
-          const lockedRelease = (await strapi.db
+          const lockedRelease = (await metrix.db
             ?.queryBuilder(RELEASE_MODEL_UID)
             .where({ id: releaseId })
             .select(['id', 'name', 'releasedAt', 'status'])
@@ -290,25 +290,25 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
           }
 
           try {
-            strapi.log.info(`[Content Releases] Starting to publish release ${lockedRelease.name}`);
+            metrix.log.info(`[Content Releases] Starting to publish release ${lockedRelease.name}`);
 
             const formattedActions = await getFormattedActions(releaseId);
 
-            await strapi.db.transaction(async () =>
+            await metrix.db.transaction(async () =>
               Promise.all(
                 Object.keys(formattedActions).map(async (contentTypeUid) => {
                   const contentType = contentTypeUid as UID.ContentType;
                   const { publish, unpublish } = formattedActions[contentType];
 
                   return Promise.all([
-                    ...publish.map((params) => strapi.documents(contentType).publish(params)),
-                    ...unpublish.map((params) => strapi.documents(contentType).unpublish(params)),
+                    ...publish.map((params) => metrix.documents(contentType).publish(params)),
+                    ...unpublish.map((params) => metrix.documents(contentType).unpublish(params)),
                   ]);
                 })
               )
             );
 
-            const release = await strapi.db.query(RELEASE_MODEL_UID).update({
+            const release = await metrix.db.query(RELEASE_MODEL_UID).update({
               where: {
                 id: releaseId,
               },
@@ -323,7 +323,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
               release,
             });
 
-            strapi.telemetry.send('didPublishContentRelease');
+            metrix.telemetry.send('didPublishContentRelease');
 
             return { release, error: null };
           } catch (error) {
@@ -333,7 +333,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
             });
 
             // We need to run the update in the same transaction because the release is locked
-            await strapi.db
+            await metrix.db
               ?.queryBuilder(RELEASE_MODEL_UID)
               .where({ id: releaseId })
               .update({
@@ -360,7 +360,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
     },
 
     async updateReleaseStatus(releaseId: Release['id']) {
-      const releaseActionService = getService('release-action', { strapi });
+      const releaseActionService = getService('release-action', { metrix });
 
       const [totalActions, invalidActions] = await Promise.all([
         releaseActionService.countActions({
@@ -378,7 +378,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
 
       if (totalActions > 0) {
         if (invalidActions > 0) {
-          return strapi.db.query(RELEASE_MODEL_UID).update({
+          return metrix.db.query(RELEASE_MODEL_UID).update({
             where: {
               id: releaseId,
             },
@@ -388,7 +388,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
           });
         }
 
-        return strapi.db.query(RELEASE_MODEL_UID).update({
+        return metrix.db.query(RELEASE_MODEL_UID).update({
           where: {
             id: releaseId,
           },
@@ -398,7 +398,7 @@ const createReleaseService = ({ strapi }: { strapi: Core.Strapi }) => {
         });
       }
 
-      return strapi.db.query(RELEASE_MODEL_UID).update({
+      return metrix.db.query(RELEASE_MODEL_UID).update({
         where: {
           id: releaseId,
         },

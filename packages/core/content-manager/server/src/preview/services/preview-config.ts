@@ -22,7 +22,7 @@ export interface PreviewConfig {
  * Utility to extend Strapi configuration middlewares. Mainly used to extend the CSP directives from the security middleware.
  */
 const extendMiddlewareConfiguration = (middleware = { name: '', config: {} }) => {
-  const middlewares = strapi.config.get('middlewares') as (string | object)[];
+  const middlewares = metrix.config.get('middlewares') as (string | object)[];
 
   const configuredMiddlewares = middlewares.map((currentMiddleware) => {
     if (currentMiddleware === middleware.name) {
@@ -49,27 +49,27 @@ const extendMiddlewareConfiguration = (middleware = { name: '', config: {} }) =>
     return currentMiddleware;
   });
 
-  strapi.config.set('middlewares', configuredMiddlewares);
+  metrix.config.set('middlewares', configuredMiddlewares);
 };
 
 /**
  * Read configuration for static preview
  */
-const createPreviewConfigService = ({ strapi }: { strapi: Core.Strapi }) => {
+const createPreviewConfigService = ({ metrix }: { metrix: Core.Strapi }) => {
   return {
     register() {
       if (!this.isEnabled()) {
         return;
       }
 
-      const config = strapi.config.get('admin.preview') as PreviewConfig;
+      const config = metrix.config.get('admin.preview') as PreviewConfig;
 
       /**
        * Register the allowed origins for CSP, so the preview URL can be displayed
        */
       if (config.config?.allowedOrigins) {
         extendMiddlewareConfiguration({
-          name: 'strapi::security',
+          name: 'metrix::security',
           config: {
             contentSecurityPolicy: {
               directives: {
@@ -82,12 +82,12 @@ const createPreviewConfigService = ({ strapi }: { strapi: Core.Strapi }) => {
     },
 
     isConfigured() {
-      const config = strapi.config.get('admin.preview') as PreviewConfig;
+      const config = metrix.config.get('admin.preview') as PreviewConfig;
       return config?.enabled === false || config?.config?.handler != null;
     },
 
     isEnabled() {
-      const config = strapi.config.get('admin.preview') as PreviewConfig;
+      const config = metrix.config.get('admin.preview') as PreviewConfig;
 
       if (!config) {
         return false;
@@ -126,7 +126,7 @@ const createPreviewConfigService = ({ strapi }: { strapi: Core.Strapi }) => {
         return emptyHandler;
       }
 
-      const config = strapi.config.get('admin.preview') as PreviewConfig;
+      const config = metrix.config.get('admin.preview') as PreviewConfig;
 
       return config?.config?.handler || emptyHandler;
     },

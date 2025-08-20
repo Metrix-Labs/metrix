@@ -7,7 +7,7 @@ import { mockOptions } from './utils';
 describe('UID validator', () => {
   const fakeFindOne = jest.fn();
 
-  global.strapi = {
+  global.metrix = {
     db: {
       query: () => ({
         findOne: fakeFindOne,

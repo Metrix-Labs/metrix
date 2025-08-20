@@ -317,7 +317,7 @@ const FORM_LAYOUT = [
       name: 'email',
       placeholder: {
         id: 'Auth.form.email.placeholder',
-        defaultMessage: 'e.g. kai.doe@strapi.io',
+        defaultMessage: 'e.g. kai.doe@metrix.io',
       },
       type: 'email' as const,
       size: 6,

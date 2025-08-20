@@ -4,7 +4,7 @@ import { errors } from '@metrixlabs/utils';
 const { ApplicationError } = errors;
 
 const ssoCheckRolesIdForDeletion = async (ids: any) => {
-  const adminStore = await strapi.store({ type: 'core', name: 'admin' });
+  const adminStore = await metrix.store({ type: 'core', name: 'admin' });
 
   const {
     providers: { defaultRole },

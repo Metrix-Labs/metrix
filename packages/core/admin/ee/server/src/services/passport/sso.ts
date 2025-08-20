@@ -1,4 +1,4 @@
-import '@strapi/types';
+import '@metrixlabs/types';
 import passport from '../../../../../server/src/services/passport';
 import createProviderRegistry from './provider-registry';
 
@@ -6,7 +6,7 @@ export const providerRegistry = createProviderRegistry();
 const errorMessage = 'SSO is disabled. Its functionnalities cannot be accessed.';
 
 export const getStrategyCallbackURL = (providerName: string) => {
-  if (!strapi.ee.features.isEnabled('sso')) {
+  if (!metrix.ee.features.isEnabled('sso')) {
     throw new Error(errorMessage);
   }
 
@@ -14,11 +14,11 @@ export const getStrategyCallbackURL = (providerName: string) => {
 };
 
 export const syncProviderRegistryWithConfig = () => {
-  if (!strapi.ee.features.isEnabled('sso')) {
+  if (!metrix.ee.features.isEnabled('sso')) {
     throw new Error(errorMessage);
   }
 
-  const { providers = [] } = strapi.config.get('admin.auth', {}) as any;
+  const { providers = [] } = metrix.config.get('admin.auth', {}) as any;
 
   // TODO
   // @ts-expect-error check map types

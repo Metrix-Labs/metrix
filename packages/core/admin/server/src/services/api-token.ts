@@ -52,7 +52,7 @@ const assertCustomTokenPermissionsValidity = (
 
   // Permissions provided for a custom type token should be valid/registered permissions UID
   if (type === constants.API_TOKEN_TYPE.CUSTOM) {
-    const validPermissions = strapi.contentAPI.permissions.providers.action.keys();
+    const validPermissions = metrix.contentAPI.permissions.providers.action.keys();
     const invalidPermissions = difference(permissions, validPermissions) as string[];
 
     if (!isEmpty(invalidPermissions)) {
@@ -118,7 +118,7 @@ const getBy = async (whereParams: WhereParams = {}): Promise<ApiToken | null> =>
     return null;
   }
 
-  const token = await strapi.db.query('admin::api-token').findOne({
+  const token = await metrix.db.query('admin::api-token').findOne({
     select: [...SELECT_FIELDS, 'encryptedKey'],
     populate: POPULATE_FIELDS,
     where: whereParams,
@@ -156,7 +156,7 @@ const exists = async (whereParams: WhereParams = {}): Promise<boolean> => {
  */
 const hash = (accessKey: string) => {
   return crypto
-    .createHmac('sha512', strapi.config.get('admin.apiToken.salt'))
+    .createHmac('sha512', metrix.config.get('admin.apiToken.salt'))
     .update(accessKey)
     .digest('hex');
 };
@@ -186,7 +186,7 @@ const create = async (attributes: ApiTokenBody): Promise<ApiToken> => {
   assertValidLifespan(attributes.lifespan);
 
   // Create the token
-  const apiToken: ApiToken = await strapi.db.query('admin::api-token').create({
+  const apiToken: ApiToken = await metrix.db.query('admin::api-token').create({
     select: SELECT_FIELDS,
     populate: POPULATE_FIELDS,
     data: {
@@ -202,19 +202,19 @@ const create = async (attributes: ApiTokenBody): Promise<ApiToken> => {
   // If this is a custom type token, create and the related permissions
   if (attributes.type === constants.API_TOKEN_TYPE.CUSTOM) {
     // TODO: createMany doesn't seem to create relation properly, implement a better way rather than a ton of queries
-    // const permissionsCount = await strapi.db.query('admin::api-token-permission').createMany({
+    // const permissionsCount = await metrix.db.query('admin::api-token-permission').createMany({
     //   populate: POPULATE_FIELDS,
     //   data: attributes.permissions.map(action => ({ action, token: apiToken })),
     // });
     await Promise.all(
       uniq(attributes.permissions).map((action) =>
-        strapi.db.query('admin::api-token-permission').create({
+        metrix.db.query('admin::api-token-permission').create({
           data: { action, token: apiToken },
         })
       )
     );
 
-    const currentPermissions = await strapi.db
+    const currentPermissions = await metrix.db
       .query('admin::api-token')
       .load(apiToken, 'permissions');
 
@@ -231,7 +231,7 @@ const regenerate = async (id: string | number): Promise<ApiToken> => {
   const encryptionService = getService('encryption');
   const encryptedKey = encryptionService.encrypt(accessKey);
 
-  const apiToken: ApiToken = await strapi.db.query('admin::api-token').update({
+  const apiToken: ApiToken = await metrix.db.query('admin::api-token').update({
     select: ['id', 'accessKey'],
     where: { id },
     data: {
@@ -251,17 +251,17 @@ const regenerate = async (id: string | number): Promise<ApiToken> => {
 };
 
 const checkSaltIsDefined = () => {
-  if (!strapi.config.get('admin.apiToken.salt')) {
+  if (!metrix.config.get('admin.apiToken.salt')) {
     // TODO V5: stop reading API_TOKEN_SALT
     if (process.env.API_TOKEN_SALT) {
       process.emitWarning(`[deprecated] In future versions, Strapi will stop reading directly from the environment variable API_TOKEN_SALT. Please set apiToken.salt in config/admin.js instead.
-For security reasons, keep storing the secret in an environment variable and use env() to read it in config/admin.js (ex: \`apiToken: { salt: env('API_TOKEN_SALT') }\`). See https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`);
+For security reasons, keep storing the secret in an environment variable and use env() to read it in config/admin.js (ex: \`apiToken: { salt: env('API_TOKEN_SALT') }\`). See https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`);
 
-      strapi.config.set('admin.apiToken.salt', process.env.API_TOKEN_SALT);
+      metrix.config.set('admin.apiToken.salt', process.env.API_TOKEN_SALT);
     } else {
       throw new Error(
         `Missing apiToken.salt. Please set apiToken.salt in config/admin.js (ex: you can generate one using Node with \`crypto.randomBytes(16).toString('base64')\`).
-For security reasons, prefer storing the secret in an environment variable and read it in config/admin.js. See https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`
+For security reasons, prefer storing the secret in an environment variable and read it in config/admin.js. See https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`
       );
     }
   }
@@ -271,7 +271,7 @@ For security reasons, prefer storing the secret in an environment variable and r
  * Return a list of all tokens and their permissions
  */
 const list = async (): Promise<Array<ApiToken>> => {
-  const tokens: Array<DBApiToken> = await strapi.db.query('admin::api-token').findMany({
+  const tokens: Array<DBApiToken> = await metrix.db.query('admin::api-token').findMany({
     select: SELECT_FIELDS,
     populate: POPULATE_FIELDS,
     orderBy: { name: 'ASC' },
@@ -288,7 +288,7 @@ const list = async (): Promise<Array<ApiToken>> => {
  * Revoke (delete) a token
  */
 const revoke = async (id: string | number): Promise<ApiToken> => {
-  return strapi.db
+  return metrix.db
     .query('admin::api-token')
     .delete({ select: SELECT_FIELDS, populate: POPULATE_FIELDS, where: { id } });
 };
@@ -315,7 +315,7 @@ const update = async (
   attributes: Update.Request['body']
 ): Promise<ApiToken> => {
   // retrieve token without permissions
-  const originalToken: DBApiToken = await strapi.db
+  const originalToken: DBApiToken = await metrix.db
     .query('admin::api-token')
     .findOne({ where: { id } });
 
@@ -338,7 +338,7 @@ const update = async (
 
   assertValidLifespan(attributes.lifespan);
 
-  const updatedToken: ApiToken = await strapi.db.query('admin::api-token').update({
+  const updatedToken: ApiToken = await metrix.db.query('admin::api-token').update({
     select: SELECT_FIELDS,
     where: { id },
     data: omit('permissions', attributes),
@@ -346,7 +346,7 @@ const update = async (
 
   // custom tokens need to have their permissions updated as well
   if (updatedToken.type === constants.API_TOKEN_TYPE.CUSTOM && attributes.permissions) {
-    const currentPermissionsResult = await strapi.db
+    const currentPermissionsResult = await metrix.db
       .query('admin::api-token')
       .load(updatedToken, 'permissions');
 
@@ -360,7 +360,7 @@ const update = async (
     // method using a loop -- works but very inefficient
     await Promise.all(
       actionsToDelete.map((action) =>
-        strapi.db.query('admin::api-token-permission').delete({
+        metrix.db.query('admin::api-token-permission').delete({
           where: { action, token: id },
         })
       )
@@ -370,7 +370,7 @@ const update = async (
     // using a loop -- works but very inefficient
     await Promise.all(
       actionsToAdd.map((action) =>
-        strapi.db.query('admin::api-token-permission').create({
+        metrix.db.query('admin::api-token-permission').create({
           data: { action, token: id },
         })
       )
@@ -378,13 +378,13 @@ const update = async (
   }
   // if type is not custom, make sure any old permissions get removed
   else if (updatedToken.type !== constants.API_TOKEN_TYPE.CUSTOM) {
-    await strapi.db.query('admin::api-token-permission').delete({
+    await metrix.db.query('admin::api-token-permission').delete({
       where: { token: id },
     });
   }
 
   // retrieve permissions
-  const permissionsFromDb = await strapi.db
+  const permissionsFromDb = await metrix.db
     .query('admin::api-token')
     .load(updatedToken, 'permissions');
 
@@ -395,7 +395,7 @@ const update = async (
 };
 
 const count = async (where = {}): Promise<number> => {
-  return strapi.db.query('admin::api-token').count({ where });
+  return metrix.db.query('admin::api-token').count({ where });
 };
 
 export {

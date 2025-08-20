@@ -25,7 +25,7 @@ describe('Permission Controller', () => {
     badRequest: jest.fn(),
   };
 
-  global.strapi = {
+  global.metrix = {
     admin: {
       services: {
         permission: {
@@ -195,7 +195,7 @@ describe('Permission Controller', () => {
       await permissionController.check(ctx);
 
       expect(localTestData.ability.can).toHaveBeenCalled();
-      expect(strapi.service('admin::permission').engine.checkMany).toHaveBeenCalled();
+      expect(metrix.service('admin::permission').engine.checkMany).toHaveBeenCalled();
       expect(ctx.body.data).toHaveLength(localTestData.permissions.valid.length);
     });
   });

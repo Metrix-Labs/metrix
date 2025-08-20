@@ -26,7 +26,7 @@ describe('API Token Auth Strategy', () => {
       const update = jest.fn(() => apiToken);
       const ctx = createContext({}, { request });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -58,7 +58,7 @@ describe('API Token Auth Strategy', () => {
       const update = jest.fn(() => apiToken);
       const ctx = createContext({}, { request });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -91,7 +91,7 @@ describe('API Token Auth Strategy', () => {
       const update = jest.fn(() => apiToken);
       const ctx = createContext({}, { request });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -134,7 +134,7 @@ describe('API Token Auth Strategy', () => {
         { request: { header: { authorization: 'bearer invalid-header' } } }
       );
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -163,7 +163,7 @@ describe('API Token Auth Strategy', () => {
       const update = jest.fn(() => apiToken);
       const ctx = createContext({}, { request });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -229,7 +229,7 @@ describe('API Token Auth Strategy', () => {
     };
 
     test('Verify read-only access', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect(
         apiTokenStrategy.verify(
@@ -240,7 +240,7 @@ describe('API Token Auth Strategy', () => {
     });
 
     test('Verify full-access access', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect(
         apiTokenStrategy.verify(
@@ -251,7 +251,7 @@ describe('API Token Auth Strategy', () => {
     });
 
     test('Verify custom access', async () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect(
         apiTokenStrategy.verify(
@@ -262,7 +262,7 @@ describe('API Token Auth Strategy', () => {
     });
 
     test('Verify with expiration in future', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect(
         apiTokenStrategy.verify(
@@ -278,7 +278,7 @@ describe('API Token Auth Strategy', () => {
     });
 
     test('Throws with expired token', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect(() => {
         apiTokenStrategy.verify(
@@ -294,7 +294,7 @@ describe('API Token Auth Strategy', () => {
     });
 
     test('Throws an error if trying to access a `full-access` action with a read only access key', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect.assertions(1);
 
@@ -309,7 +309,7 @@ describe('API Token Auth Strategy', () => {
     });
 
     test('Throws an error if trying to access an action with a custom access key without the permission', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect.assertions(1);
 
@@ -324,7 +324,7 @@ describe('API Token Auth Strategy', () => {
     });
 
     test('Throws an error if the credentials are not passed in the auth object', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect.assertions(1);
 
@@ -336,13 +336,13 @@ describe('API Token Auth Strategy', () => {
     });
 
     test('A `full-access` token is needed when no scope is passed', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect(apiTokenStrategy.verify({ credentials: fullAccessApiToken }, {})).toBeUndefined();
     });
 
     test('Throws an error if no scope is passed with a `read-only` token', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect.assertions(1);
 
@@ -354,7 +354,7 @@ describe('API Token Auth Strategy', () => {
     });
 
     test('Throws an error if no scope is passed with a `custom` token', () => {
-      global.strapi = strapiMock as any;
+      global.metrix = strapiMock as any;
 
       expect.assertions(1);
 

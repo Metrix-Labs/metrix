@@ -12,4 +12,4 @@ export * from './router';
 export * from './plugin';
 export * from './module';
 export * from './api';
-export * from './strapi';
+export * from './metrix';

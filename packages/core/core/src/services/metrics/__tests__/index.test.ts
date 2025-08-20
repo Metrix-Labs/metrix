@@ -19,7 +19,7 @@ describe('metrics', () => {
         uuid: 'test',
         environment: 'dev',
         info: {
-          strapi: '0.0.0',
+          metrix: '0.0.0',
         },
       },
       server: {
@@ -58,7 +58,7 @@ describe('metrics', () => {
         uuid: false,
         environment: 'dev',
         info: {
-          strapi: '0.0.0',
+          metrix: '0.0.0',
         },
       },
       server: {
@@ -94,7 +94,7 @@ describe('metrics', () => {
         uuid: 'test',
         environment: 'dev',
         info: {
-          strapi: '0.0.0',
+          metrix: '0.0.0',
         },
       },
       server: {
@@ -119,7 +119,7 @@ describe('metrics', () => {
     expect(fetch).toHaveBeenCalled();
 
     const callParameters = fetch.mock.calls[0] as any[];
-    expect(callParameters[0]).toBe('https://analytics.strapi.io/api/v2/track');
+    expect(callParameters[0]).toBe('https://analytics.metrix.io/api/v2/track');
 
     expect(callParameters[1].method).toBe('POST');
     expect(JSON.parse(callParameters[1].body)).toMatchObject({
@@ -147,7 +147,7 @@ describe('metrics', () => {
         packageJsonStrapi: {},
         environment: 'dev',
         info: {
-          strapi: '0.0.0',
+          metrix: '0.0.0',
         },
       },
       server: {

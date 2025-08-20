@@ -4,25 +4,25 @@
 
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const { createTestBuilder } = require('api-tests/builder');
 
-let strapi;
+let metrix;
 let rq;
 
 const restart = async () => {
-  await strapi.destroy();
-  strapi = await createStrapiInstance();
-  rq = await createAuthRequest({ strapi });
+  await metrix.destroy();
+  metrix = await createStrapiInstance();
+  rq = await createAuthRequest({ metrix });
 };
 
 const builder = createTestBuilder();
 
 describe('Content Type Builder - Schema', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterEach(async () => {
@@ -30,7 +30,7 @@ describe('Content Type Builder - Schema', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

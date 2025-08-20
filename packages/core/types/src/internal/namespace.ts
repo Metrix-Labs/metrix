@@ -6,9 +6,9 @@ import type { String } from '../utils';
 export type Admin = 'admin';
 
 /**
- * Namespace for strapi internal resources
+ * Namespace for metrix internal resources
  */
-export type Strapi = 'strapi';
+export type Strapi = 'metrix';
 
 /**
  * Namespace for scoped APIs resources
@@ -46,7 +46,7 @@ export type AnyNamespace = API | Plugin | Admin | Strapi | Global;
 export type GetSeparator<TNamespace extends AnyNamespace = AnyNamespace> = TNamespace extends Scoped
   ? // 'api::foo' | 'plugin::bar' => '.'
     DotSeparator
-  : // 'admin' | 'strapi' | 'global' => '::'
+  : // 'admin' | 'metrix' | 'global' => '::'
     ColonsSeparator;
 
 /**

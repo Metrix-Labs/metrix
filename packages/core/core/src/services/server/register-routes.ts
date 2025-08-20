@@ -18,41 +18,41 @@ const createRouteScopeGenerator = (namespace: string) => (route: Core.RouteInput
 /**
  * Register all routes
  */
-export default (strapi: Core.Strapi) => {
-  registerAdminRoutes(strapi);
-  registerAPIRoutes(strapi);
-  registerPluginRoutes(strapi);
+export default (metrix: Core.Strapi) => {
+  registerAdminRoutes(metrix);
+  registerAPIRoutes(metrix);
+  registerPluginRoutes(metrix);
 };
 
 /**
  * Register admin routes
- * @param {import('../../').Strapi} strapi
+ * @param {import('../../').Strapi} metrix
  */
-const registerAdminRoutes = (strapi: Core.Strapi) => {
+const registerAdminRoutes = (metrix: Core.Strapi) => {
   const generateRouteScope = createRouteScopeGenerator(`admin::`);
 
   // Instantiate function-like routers
   // Mutate admin.routes in-place and make sure router factories are instantiated correctly
-  strapi.admin.routes = instantiateRouterInputs(strapi.admin.routes, strapi);
+  metrix.admin.routes = instantiateRouterInputs(metrix.admin.routes, metrix);
 
-  _.forEach(strapi.admin.routes, (router) => {
+  _.forEach(metrix.admin.routes, (router) => {
     router.type = router.type || 'admin';
     router.prefix = router.prefix || `/admin`;
     router.routes.forEach((route) => {
       generateRouteScope(route);
       route.info = { pluginName: 'admin' };
     });
-    strapi.server.routes(router);
+    metrix.server.routes(router);
   });
 };
 
 /**
  * Register plugin routes
- * @param {import('../../').Strapi} strapi
+ * @param {import('../../').Strapi} metrix
  */
-const registerPluginRoutes = (strapi: Core.Strapi) => {
-  for (const pluginName of Object.keys(strapi.plugins)) {
-    const plugin = strapi.plugins[pluginName];
+const registerPluginRoutes = (metrix: Core.Strapi) => {
+  for (const pluginName of Object.keys(metrix.plugins)) {
+    const plugin = metrix.plugins[pluginName];
 
     const generateRouteScope = createRouteScopeGenerator(`plugin::${pluginName}`);
 
@@ -62,7 +62,7 @@ const registerPluginRoutes = (strapi: Core.Strapi) => {
         route.info = { pluginName };
       });
 
-      strapi.server.routes({
+      metrix.server.routes({
         type: 'admin',
         prefix: `/${pluginName}`,
         routes: plugin.routes,
@@ -70,7 +70,7 @@ const registerPluginRoutes = (strapi: Core.Strapi) => {
     } else {
       // Instantiate function-like routers
       // Mutate plugin.routes in-place and make sure router factories are instantiated correctly
-      plugin.routes = instantiateRouterInputs(plugin.routes, strapi);
+      plugin.routes = instantiateRouterInputs(plugin.routes, metrix);
 
       _.forEach(plugin.routes, (router) => {
         router.type = router.type ?? 'admin';
@@ -80,7 +80,7 @@ const registerPluginRoutes = (strapi: Core.Strapi) => {
           route.info = { pluginName };
         });
 
-        strapi.server.routes(router);
+        metrix.server.routes(router);
       });
     }
   }
@@ -89,14 +89,14 @@ const registerPluginRoutes = (strapi: Core.Strapi) => {
 /**
  * Register api routes
  */
-const registerAPIRoutes = (strapi: Core.Strapi) => {
-  for (const apiName of Object.keys(strapi.apis)) {
-    const api = strapi.api(apiName);
+const registerAPIRoutes = (metrix: Core.Strapi) => {
+  for (const apiName of Object.keys(metrix.apis)) {
+    const api = metrix.api(apiName);
 
     const generateRouteScope = createRouteScopeGenerator(`api::${apiName}`);
 
     // Mutate api.routes in-place and make sure router factories are instantiated correctly
-    api.routes = instantiateRouterInputs(api.routes, strapi);
+    api.routes = instantiateRouterInputs(api.routes, metrix);
 
     _.forEach(api.routes, (router) => {
       // TODO: remove once auth setup
@@ -107,20 +107,20 @@ const registerAPIRoutes = (strapi: Core.Strapi) => {
         route.info = { apiName };
       });
 
-      return strapi.server.routes(router);
+      return metrix.server.routes(router);
     });
   }
 };
 
 const instantiateRouterInputs = (
   routers: Record<string, Core.RouterConfig>,
-  strapi: Core.Strapi
+  metrix: Core.Strapi
 ): Record<string, Core.Router> => {
   const entries = Object.entries(routers);
 
   return entries.reduce((record, [key, inputOrCallback]) => {
     const isCallback = typeof inputOrCallback === 'function';
 
-    return { ...record, [key]: isCallback ? inputOrCallback({ strapi }) : inputOrCallback };
+    return { ...record, [key]: isCallback ? inputOrCallback({ metrix }) : inputOrCallback };
   }, {});
 };

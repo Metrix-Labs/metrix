@@ -5,9 +5,9 @@ import type { Core } from '@metrixlabs/types';
 
 const { RateLimitError } = utils.errors;
 
-export default (config: any, { strapi }: { strapi: Core.Strapi }) =>
+export default (config: any, { metrix }: { metrix: Core.Strapi }) =>
   async (ctx: Context, next: Next) => {
-    const pluginConfig = strapi.config.get('plugin::email') as any;
+    const pluginConfig = metrix.config.get('plugin::email') as any;
     const rateLimitConfig = {
       enabled: true,
       ...(pluginConfig.ratelimit || {}),

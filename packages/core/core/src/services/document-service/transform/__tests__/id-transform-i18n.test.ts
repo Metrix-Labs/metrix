@@ -11,7 +11,7 @@ const findManyQueries = {
 
 // TODO: Relation between published documents
 describe('Transform relational data', () => {
-  global.strapi = {
+  global.metrix = {
     getModel: (uid: string) => models[uid],
     plugins: {
       i18n: {

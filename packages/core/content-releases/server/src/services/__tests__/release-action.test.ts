@@ -62,7 +62,7 @@ const baseStrapiMock = {
     if (name === 'query-params') {
       const transformer = queryParams.createTransformer({
         getModel(name: string) {
-          return strapi.getModel(name as any);
+          return metrix.getModel(name as any);
         },
       });
 
@@ -125,7 +125,7 @@ describe('Release Action service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseActionService = createReleaseActionService({ strapi: strapiMock });
+      const releaseActionService = createReleaseActionService({ metrix: strapiMock });
 
       expect(() => releaseActionService.findPage(1, {})).rejects.toThrow(
         'No release found for id 1'
@@ -151,7 +151,7 @@ describe('Release Action service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseActionService = createReleaseActionService({ strapi: strapiMock });
+      const releaseActionService = createReleaseActionService({ metrix: strapiMock });
 
       const mockActionArgs = {
         type: 'publish' as const,
@@ -177,7 +177,7 @@ describe('Release Action service', () => {
         },
       };
       // @ts-expect-error Ignore missing properties
-      const releaseActionService = createReleaseActionService({ strapi: strapiMock });
+      const releaseActionService = createReleaseActionService({ metrix: strapiMock });
 
       const mockActionArgs = {
         type: 'publish' as const,
@@ -201,7 +201,7 @@ describe('Release Action service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseActionService = createReleaseActionService({ strapi: strapiMock });
+      const releaseActionService = createReleaseActionService({ metrix: strapiMock });
 
       const mockActionArgs = {
         type: 'publish' as const,
@@ -254,7 +254,7 @@ describe('Release Action service', () => {
       ];
 
       // @ts-expect-error Ignore missing properties
-      const releaseActionService = createReleaseActionService({ strapi: strapiMock });
+      const releaseActionService = createReleaseActionService({ metrix: strapiMock });
 
       // @ts-expect-error ignore missing properties
       const groupedData = await releaseActionService.groupActions(mockActions, 'contentType');
@@ -316,7 +316,7 @@ describe('Release Action service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseActionService = createReleaseActionService({ strapi: strapiMock });
+      const releaseActionService = createReleaseActionService({ metrix: strapiMock });
 
       const release = await releaseActionService.delete(1, 1);
 
@@ -335,7 +335,7 @@ describe('Release Action service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseActionService = createReleaseActionService({ strapi: strapiMock });
+      const releaseActionService = createReleaseActionService({ metrix: strapiMock });
 
       expect(() => releaseActionService.delete(1, 1)).rejects.toThrow(
         'Action with id 1 not found in release with id 1 or it is already published'
@@ -356,7 +356,7 @@ describe('Release Action service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseActionService = createReleaseActionService({ strapi: strapiMock });
+      const releaseActionService = createReleaseActionService({ metrix: strapiMock });
 
       const release = await releaseActionService.update(1, 1, { type: 'publish' });
 
@@ -375,7 +375,7 @@ describe('Release Action service', () => {
       };
 
       // @ts-expect-error Ignore missing properties
-      const releaseActionService = createReleaseActionService({ strapi: strapiMock });
+      const releaseActionService = createReleaseActionService({ metrix: strapiMock });
 
       expect(() => releaseActionService.update(1, 1, { type: 'publish' })).rejects.toThrow(
         'Action with id 1 not found in release with id 1 or it is already published'

@@ -10,8 +10,8 @@ const { ValidationError } = errors;
  * Build an Error object type
  * @return {Object<string, NexusObjectTypeDef>}
  */
-export default ({ strapi }: Context) => {
-  const { ERROR_CODES, ERROR_TYPE_NAME } = strapi.plugin('graphql').service('constants');
+export default ({ metrix }: Context) => {
+  const { ERROR_CODES, ERROR_TYPE_NAME } = metrix.plugin('graphql').service('constants');
 
   return objectType({
     name: ERROR_TYPE_NAME,

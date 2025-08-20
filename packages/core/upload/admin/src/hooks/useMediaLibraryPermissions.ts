@@ -1,4 +1,4 @@
-import { useRBAC, type AllowedActions } from '@metrixlabs/admin/strapi-admin';
+import { useRBAC, type AllowedActions } from '@metrixlabs/admin/metrix-admin';
 
 import { PERMISSIONS } from '../constants';
 

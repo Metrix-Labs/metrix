@@ -86,7 +86,7 @@ describe('Upload | extensions | entity-manager', () => {
         registerCron: jest.fn().mockResolvedValue(undefined),
       }));
 
-      global.strapi = {
+      global.metrix = {
         plugins: {
           upload: {},
         },

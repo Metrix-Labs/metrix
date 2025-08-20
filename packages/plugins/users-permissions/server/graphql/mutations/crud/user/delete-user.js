@@ -4,11 +4,11 @@ const { checkBadRequest } = require('../../../utils');
 
 const usersPermissionsUserUID = 'plugin::users-permissions.user';
 
-module.exports = ({ nexus, strapi }) => {
+module.exports = ({ nexus, metrix }) => {
   const { nonNull } = nexus;
-  const { getEntityResponseName } = strapi.plugin('graphql').service('utils').naming;
+  const { getEntityResponseName } = metrix.plugin('graphql').service('utils').naming;
 
-  const userContentType = strapi.getModel(usersPermissionsUserUID);
+  const userContentType = metrix.getModel(usersPermissionsUserUID);
 
   const responseName = getEntityResponseName(userContentType);
 
@@ -26,7 +26,7 @@ module.exports = ({ nexus, strapi }) => {
 
       koaContext.params = { id: args.id };
 
-      await strapi.plugin('users-permissions').controller('user').destroy(koaContext);
+      await metrix.plugin('users-permissions').controller('user').destroy(koaContext);
 
       checkBadRequest(koaContext.body);
 

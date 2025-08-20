@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'strapi-getstarted',
+      name: 'metrix-getstarted',
       script: 'npm',
       args: 'start',
       env: {

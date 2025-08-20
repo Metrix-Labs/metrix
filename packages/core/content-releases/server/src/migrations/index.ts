@@ -33,7 +33,7 @@ export async function deleteActionsOnDisableDraftAndPublish({
       contentTypesUtils.hasDraftAndPublish(oldContentType) &&
       !contentTypesUtils.hasDraftAndPublish(contentType)
     ) {
-      await strapi.db
+      await metrix.db
         ?.queryBuilder(RELEASE_ACTION_MODEL_UID)
         .delete()
         .where({ contentType: uid })
@@ -47,7 +47,7 @@ export async function deleteActionsOnDeleteContentType({ oldContentTypes, conten
 
   if (deletedContentTypes.length) {
     await async.map(deletedContentTypes, async (deletedContentTypeUID: unknown) => {
-      return strapi.db
+      return metrix.db
         ?.queryBuilder(RELEASE_ACTION_MODEL_UID)
         .delete()
         .where({ contentType: deletedContentTypeUID })
@@ -57,7 +57,7 @@ export async function deleteActionsOnDeleteContentType({ oldContentTypes, conten
 }
 
 export async function migrateIsValidAndStatusReleases() {
-  const releasesWithoutStatus = (await strapi.db.query(RELEASE_MODEL_UID).findMany({
+  const releasesWithoutStatus = (await metrix.db.query(RELEASE_MODEL_UID).findMany({
     where: {
       status: null,
       releasedAt: null,
@@ -86,10 +86,10 @@ export async function migrateIsValidAndStatusReleases() {
             documentId: action.entryDocumentId,
             locale: action.locale,
           },
-          { strapi }
+          { metrix }
         );
 
-        await strapi.db.query(RELEASE_ACTION_MODEL_UID).update({
+        await metrix.db.query(RELEASE_ACTION_MODEL_UID).update({
           where: {
             id: action.id,
           },
@@ -100,10 +100,10 @@ export async function migrateIsValidAndStatusReleases() {
       }
     }
 
-    return getService('release', { strapi }).updateReleaseStatus(release.id);
+    return getService('release', { metrix }).updateReleaseStatus(release.id);
   });
 
-  const publishedReleases = await strapi.db.query(RELEASE_MODEL_UID).findMany({
+  const publishedReleases = await metrix.db.query(RELEASE_MODEL_UID).findMany({
     where: {
       status: null,
       releasedAt: {
@@ -113,7 +113,7 @@ export async function migrateIsValidAndStatusReleases() {
   });
 
   async.map(publishedReleases, async (release: Release) => {
-    return strapi.db.query(RELEASE_MODEL_UID).update({
+    return metrix.db.query(RELEASE_MODEL_UID).update({
       where: {
         id: release.id,
       },
@@ -138,7 +138,7 @@ export async function revalidateChangedContentTypes({ oldContentTypes, contentTy
 
         // If attributes have changed, we need to revalidate actions because maybe validations rules are different
         if (!isEqual(oldContentType?.attributes, contentType?.attributes)) {
-          const actions = await strapi.db.query(RELEASE_ACTION_MODEL_UID).findMany({
+          const actions = await metrix.db.query(RELEASE_ACTION_MODEL_UID).findMany({
             where: {
               contentType: contentTypeUID,
             },
@@ -156,12 +156,12 @@ export async function revalidateChangedContentTypes({ oldContentTypes, contentTy
                   documentId: action.entryDocumentId,
                   locale: action.locale,
                 },
-                { strapi }
+                { metrix }
               );
 
               releasesAffected.add(action.release.id);
 
-              await strapi.db.query(RELEASE_ACTION_MODEL_UID).update({
+              await metrix.db.query(RELEASE_ACTION_MODEL_UID).update({
                 where: {
                   id: action.id,
                 },
@@ -176,7 +176,7 @@ export async function revalidateChangedContentTypes({ oldContentTypes, contentTy
       .then(() => {
         // We need to update the status of the releases affected
         async.map(releasesAffected, async (releaseId: Release['id']) => {
-          return getService('release', { strapi }).updateReleaseStatus(releaseId);
+          return getService('release', { metrix }).updateReleaseStatus(releaseId);
         });
       });
   }
@@ -187,7 +187,7 @@ export async function disableContentTypeLocalized({ oldContentTypes, contentType
     return;
   }
 
-  const i18nPlugin = strapi.plugin('i18n');
+  const i18nPlugin = metrix.plugin('i18n');
   if (!i18nPlugin) {
     return;
   }
@@ -204,7 +204,7 @@ export async function disableContentTypeLocalized({ oldContentTypes, contentType
 
     // if i18N is disabled remove non default locales before sync
     if (isLocalizedContentType(oldContentType) && !isLocalizedContentType(contentType)) {
-      await strapi.db
+      await metrix.db
         .queryBuilder(RELEASE_ACTION_MODEL_UID)
         .update({
           locale: null,
@@ -220,7 +220,7 @@ export async function enableContentTypeLocalized({ oldContentTypes, contentTypes
     return;
   }
 
-  const i18nPlugin = strapi.plugin('i18n');
+  const i18nPlugin = metrix.plugin('i18n');
   if (!i18nPlugin) {
     return;
   }
@@ -240,7 +240,7 @@ export async function enableContentTypeLocalized({ oldContentTypes, contentTypes
     if (!isLocalizedContentType(oldContentType) && isLocalizedContentType(contentType)) {
       const defaultLocale = await getDefaultLocale();
 
-      await strapi.db
+      await metrix.db
         .queryBuilder(RELEASE_ACTION_MODEL_UID)
         .update({
           locale: defaultLocale,

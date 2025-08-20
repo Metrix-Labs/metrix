@@ -7,18 +7,18 @@ tags:
   - actions
 ---
 
-# @strapi/permissions
+# @metrix/permissions
 
 ## Introduction
 
-The `@strapi/permissions` package is a sophisticated permission management system designed to provide flexible, granular
-control over access rights in Strapi systems.
+The `@metrix/permissions` package is a sophisticated permission management system designed to provide flexible, granular
+control over access rights in Metrix systems.
 
 Built on top of CASL's ability system, it extends the basic permission model with advanced features like parametrized
 actions, conditional evaluation, and a hook system for custom behaviors.
 
-It serves as the backbone for building advanced implementations in Strapi, enabling developers to design customized
-permission systems tailored to specific Strapi business objectives and application demands like RBAC, users and permissions, or API tokens.
+It serves as the backbone for building advanced implementations in Metrix, enabling developers to design customized
+permission systems tailored to specific Metrix business objectives and application demands like RBAC, users and permissions, or API tokens.
 
 ## Core Architecture
 
@@ -83,7 +83,7 @@ granting access.
 ## Integration Example
 
 ```typescript
-import { engine, domain } from '@strapi/permissions';
+import { engine, domain } from '@metrix/permissions';
 
 // 1. Define Providers
 const providers = {

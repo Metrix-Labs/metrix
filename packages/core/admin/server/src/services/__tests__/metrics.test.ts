@@ -5,7 +5,7 @@ describe('Metrics', () => {
     const send = jest.fn(() => Promise.resolve());
     const countUsers = jest.fn(() => Promise.resolve(2));
     const countRoles = jest.fn(() => Promise.resolve(3));
-    global.strapi = {
+    global.metrix = {
       telemetry: { send },
       admin: {
         services: {
@@ -29,7 +29,7 @@ describe('Metrics', () => {
 
   test('sendDidUpdateRolePermissions', async () => {
     const send = jest.fn(() => Promise.resolve());
-    global.strapi = {
+    global.metrix = {
       telemetry: { send },
     } as any;
 
@@ -42,7 +42,7 @@ describe('Metrics', () => {
     const getLanguagesInUse = jest.fn(() => Promise.resolve(['en', 'fr', 'en']));
     const send = jest.fn(() => Promise.resolve());
 
-    global.strapi = {
+    global.metrix = {
       telemetry: { send },
       admin: {
         services: {

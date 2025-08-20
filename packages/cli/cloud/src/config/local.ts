@@ -3,7 +3,7 @@ import os from 'os';
 import fse from 'fs-extra';
 import XDGAppPaths from 'xdg-app-paths';
 
-const APP_FOLDER_NAME = 'com.strapi.cli';
+const APP_FOLDER_NAME = 'com.metrix.cli';
 
 export const CONFIG_FILENAME = 'config.json';
 

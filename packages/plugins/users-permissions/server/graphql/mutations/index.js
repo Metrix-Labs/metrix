@@ -4,12 +4,12 @@ const userUID = 'plugin::users-permissions.user';
 const roleUID = 'plugin::users-permissions.role';
 
 module.exports = (context) => {
-  const { nexus, strapi } = context;
+  const { nexus, metrix } = context;
 
-  const { naming } = strapi.plugin('graphql').service('utils');
+  const { naming } = metrix.plugin('graphql').service('utils');
 
-  const user = strapi.getModel(userUID);
-  const role = strapi.getModel(roleUID);
+  const user = metrix.getModel(userUID);
+  const role = metrix.getModel(roleUID);
 
   const mutations = {
     // CRUD (user & role)

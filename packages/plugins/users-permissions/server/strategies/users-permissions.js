@@ -6,7 +6,7 @@ const { ForbiddenError, UnauthorizedError } = require('@metrixlabs/utils').error
 const { getService } = require('../utils');
 
 const getAdvancedSettings = () => {
-  return strapi.store({ type: 'plugin', name: 'users-permissions' }).get({ key: 'advanced' });
+  return metrix.store({ type: 'plugin', name: 'users-permissions' }).get({ key: 'advanced' });
 };
 
 const authenticate = async (ctx) => {
@@ -46,7 +46,7 @@ const authenticate = async (ctx) => {
         .then(map(getService('permission').toContentAPIPermission));
 
       // Generate an ability (content API engine) based on the given permissions
-      const ability = await strapi.contentAPI.permissions.engine.generateAbility(permissions);
+      const ability = await metrix.contentAPI.permissions.engine.generateAbility(permissions);
 
       ctx.state.user = user;
 
@@ -65,7 +65,7 @@ const authenticate = async (ctx) => {
       return { authenticated: false };
     }
 
-    const ability = await strapi.contentAPI.permissions.engine.generateAbility(publicPermissions);
+    const ability = await metrix.contentAPI.permissions.engine.generateAbility(publicPermissions);
 
     return {
       authenticated: true,

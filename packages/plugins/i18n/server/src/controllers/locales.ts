@@ -9,9 +9,9 @@ const { setCreatorFields } = utils;
 const { ApplicationError } = utils.errors;
 
 const sanitizeLocale = (locale: any) => {
-  const model = strapi.getModel('plugin::i18n.locale');
+  const model = metrix.getModel('plugin::i18n.locale');
 
-  return strapi.contentAPI.sanitize.output(locale, model);
+  return metrix.contentAPI.sanitize.output(locale, model);
 };
 
 const controller: Core.Controller = {

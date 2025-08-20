@@ -22,7 +22,7 @@ export const transformPopulate = async (data: Data, opts: { uid: UID.Schema }) =
 
       set(key, value);
     },
-    { schema: strapi.getModel(opts.uid), getModel: strapi.getModel.bind(strapi) },
+    { schema: metrix.getModel(opts.uid), getModel: metrix.getModel.bind(metrix) },
     data
   );
 };

@@ -8,7 +8,7 @@ const { removeUserRelationFromRoleEntities } = require('./visitors');
 const sanitizeUserRelationFromRoleEntities = curry((schema, entity) => {
   return traverseEntity(
     removeUserRelationFromRoleEntities,
-    { schema, getModel: strapi.getModel.bind(strapi) },
+    { schema, getModel: metrix.getModel.bind(metrix) },
     entity
   );
 });

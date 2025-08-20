@@ -1,10 +1,10 @@
 import type { Webhook, LoadedStrapi } from '@metrixlabs/types';
 
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 
 let rq;
-let strapi: LoadedStrapi;
+let metrix: LoadedStrapi;
 
 const defaultWebhook = {
   name: 'test',
@@ -60,13 +60,13 @@ const deleteWebhook = async (id: string) => {
 describe('Admin API Webhooks', () => {
   // Initialization Actions
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   // Cleanup actions
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   test('Can create a webhook', async () => {

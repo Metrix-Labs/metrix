@@ -6,7 +6,7 @@ import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 // eslint-disable-next-line import/no-default-export
 export default {
   /**
-   * TODO: we need to have the type for StrapiApp done from `@strapi/admin` package.
+   * TODO: we need to have the type for StrapiApp done from `@metrix/admin` package.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register(app: any) {

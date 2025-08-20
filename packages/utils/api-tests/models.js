@@ -1,7 +1,7 @@
 'use strict';
 
 const { isFunction, isNil, prop } = require('lodash/fp');
-const { createStrapiInstance } = require('./strapi');
+const { createStrapiInstance } = require('./metrix');
 const componentData = require('../../core/core/src/services/document-service/components');
 
 const toContentTypeUID = (name) => {
@@ -12,27 +12,27 @@ const toCompoUID = (name) => {
   return `default.${name}`;
 };
 
-const createHelpers = async ({ strapi: strapiInstance = null, ...options } = {}) => {
-  const strapi = strapiInstance || (await createStrapiInstance(options));
-  const contentTypeService = strapi.plugin('content-type-builder').service('content-types');
-  const componentsService = strapi.plugin('content-type-builder').service('components');
+const createHelpers = async ({ metrix: strapiInstance = null, ...options } = {}) => {
+  const metrix = strapiInstance || (await createStrapiInstance(options));
+  const contentTypeService = metrix.plugin('content-type-builder').service('content-types');
+  const componentsService = metrix.plugin('content-type-builder').service('components');
 
   const cleanup = async () => {
     if (isNil(strapiInstance)) {
-      await strapi.destroy();
+      await metrix.destroy();
     }
   };
 
   return {
-    strapi,
+    metrix,
     contentTypeService,
     componentsService,
     cleanup,
   };
 };
 
-const createContentType = async (model, { strapi } = {}) => {
-  const { contentTypeService, cleanup } = await createHelpers({ strapi });
+const createContentType = async (model, { metrix } = {}) => {
+  const { contentTypeService, cleanup } = await createHelpers({ metrix });
 
   const contentType = await contentTypeService.createContentType({
     contentType: {
@@ -45,8 +45,8 @@ const createContentType = async (model, { strapi } = {}) => {
   return contentType;
 };
 
-const createContentTypes = async (models, { strapi } = {}) => {
-  const { contentTypeService, cleanup } = await createHelpers({ strapi });
+const createContentTypes = async (models, { metrix } = {}) => {
+  const { contentTypeService, cleanup } = await createHelpers({ metrix });
 
   const contentTypes = await contentTypeService.createContentTypes(
     models.map((model) => ({
@@ -61,8 +61,8 @@ const createContentTypes = async (models, { strapi } = {}) => {
   return contentTypes;
 };
 
-const createComponent = async (component, { strapi } = {}) => {
-  const { componentsService, cleanup } = await createHelpers({ strapi });
+const createComponent = async (component, { metrix } = {}) => {
+  const { componentsService, cleanup } = await createHelpers({ metrix });
 
   const createdComponent = await componentsService.createComponent({
     component: {
@@ -77,18 +77,18 @@ const createComponent = async (component, { strapi } = {}) => {
   return createdComponent;
 };
 
-const createComponents = async (components, { strapi } = {}) => {
+const createComponents = async (components, { metrix } = {}) => {
   const createdComponents = [];
 
   for (const component of components) {
-    createdComponents.push(await createComponent(component, { strapi }));
+    createdComponents.push(await createComponent(component, { metrix }));
   }
 
   return createdComponents;
 };
 
-const deleteComponent = async (componentUID, { strapi } = {}) => {
-  const { componentsService, cleanup } = await createHelpers({ strapi });
+const deleteComponent = async (componentUID, { metrix } = {}) => {
+  const { componentsService, cleanup } = await createHelpers({ metrix });
 
   const component = await componentsService.deleteComponent(componentUID);
 
@@ -97,18 +97,18 @@ const deleteComponent = async (componentUID, { strapi } = {}) => {
   return component;
 };
 
-const deleteComponents = async (componentsUID, { strapi } = {}) => {
+const deleteComponents = async (componentsUID, { metrix } = {}) => {
   const deletedComponents = [];
 
   for (const componentUID of componentsUID) {
-    deletedComponents.push(await deleteComponent(componentUID, { strapi }));
+    deletedComponents.push(await deleteComponent(componentUID, { metrix }));
   }
 
   return deletedComponents;
 };
 
-const deleteContentType = async (uid, { strapi } = {}) => {
-  const { contentTypeService, cleanup } = await createHelpers({ strapi });
+const deleteContentType = async (uid, { metrix } = {}) => {
+  const { contentTypeService, cleanup } = await createHelpers({ metrix });
 
   const contentType = await contentTypeService.deleteContentType(uid);
 
@@ -117,8 +117,8 @@ const deleteContentType = async (uid, { strapi } = {}) => {
   return contentType;
 };
 
-const deleteContentTypes = async (modelsUIDs, { strapi } = {}) => {
-  const { contentTypeService, cleanup } = await createHelpers({ strapi });
+const deleteContentTypes = async (modelsUIDs, { metrix } = {}) => {
+  const { contentTypeService, cleanup } = await createHelpers({ metrix });
 
   const contentTypes = await contentTypeService.deleteContentTypes(modelsUIDs);
 
@@ -127,22 +127,22 @@ const deleteContentTypes = async (modelsUIDs, { strapi } = {}) => {
   return contentTypes;
 };
 
-async function cleanupModel(uid, { strapi: strapiIst } = {}) {
-  const { strapi, cleanup } = await createHelpers({ strapi: strapiIst });
+async function cleanupModel(uid, { metrix: strapiIst } = {}) {
+  const { metrix, cleanup } = await createHelpers({ metrix: strapiIst });
 
-  await strapi.db.query(uid).deleteMany();
+  await metrix.db.query(uid).deleteMany();
 
   await cleanup();
 }
 
-async function cleanupModels(models, { strapi } = {}) {
+async function cleanupModels(models, { metrix } = {}) {
   for (const model of models) {
-    await cleanupModel(model, { strapi });
+    await cleanupModel(model, { metrix });
   }
 }
 
-async function createFixtures(dataMap, { strapi: strapiIst } = {}) {
-  const { strapi, cleanup } = await createHelpers({ strapi: strapiIst });
+async function createFixtures(dataMap, { metrix: strapiIst } = {}) {
+  const { metrix, cleanup } = await createHelpers({ metrix: strapiIst });
   const models = Object.keys(dataMap);
   const resultMap = {};
 
@@ -150,7 +150,7 @@ async function createFixtures(dataMap, { strapi: strapiIst } = {}) {
     const entries = [];
 
     for (const data of dataMap[model]) {
-      entries.push(await strapi.db.query(toContentTypeUID(model)).create({ data }));
+      entries.push(await metrix.db.query(toContentTypeUID(model)).create({ data }));
     }
 
     resultMap[model] = entries;
@@ -161,11 +161,11 @@ async function createFixtures(dataMap, { strapi: strapiIst } = {}) {
   return resultMap;
 }
 
-async function createFixturesFor(model, entries, { strapi: strapiIst } = {}) {
-  const { strapi, cleanup } = await createHelpers({ strapi: strapiIst });
+async function createFixturesFor(model, entries, { metrix: strapiIst } = {}) {
+  const { metrix, cleanup } = await createHelpers({ metrix: strapiIst });
 
   const uid = toContentTypeUID(model);
-  const contentType = strapi.getModel(uid);
+  const contentType = metrix.getModel(uid);
 
   const results = [];
 
@@ -178,7 +178,7 @@ async function createFixturesFor(model, entries, { strapi: strapiIst } = {}) {
       componentValidData
     );
 
-    const res = await strapi.db.query(uid).create({ data: entryData });
+    const res = await metrix.db.query(uid).create({ data: entryData });
 
     results.push(res);
   }
@@ -188,18 +188,18 @@ async function createFixturesFor(model, entries, { strapi: strapiIst } = {}) {
   return results;
 }
 
-async function deleteFixturesFor(model, entries, { strapi: strapiIst } = {}) {
-  const { strapi, cleanup } = await createHelpers({ strapi: strapiIst });
+async function deleteFixturesFor(model, entries, { metrix: strapiIst } = {}) {
+  const { metrix, cleanup } = await createHelpers({ metrix: strapiIst });
 
-  await strapi.db
+  await metrix.db
     .query(toContentTypeUID(model))
     .deleteMany({ where: { id: entries.map(prop('id')) } });
 
   await cleanup();
 }
 
-async function modifyContentType(data, { strapi } = {}) {
-  const { contentTypeService, cleanup } = await createHelpers({ strapi });
+async function modifyContentType(data, { metrix } = {}) {
+  const { contentTypeService, cleanup } = await createHelpers({ metrix });
 
   const sanitizedData = { ...data };
   delete sanitizedData.editable;
@@ -218,8 +218,8 @@ async function modifyContentType(data, { strapi } = {}) {
   return ct;
 }
 
-async function modifyComponent(data, { strapi } = {}) {
-  const { componentsService, cleanup } = await createHelpers({ strapi });
+async function modifyComponent(data, { metrix } = {}) {
+  const { componentsService, cleanup } = await createHelpers({ metrix });
 
   const sanitizedData = { ...data };
   delete sanitizedData.editable;
@@ -238,11 +238,11 @@ async function modifyComponent(data, { strapi } = {}) {
   return compo;
 }
 
-async function getContentTypeSchema(modelName, { strapi: strapiIst } = {}) {
-  const { strapi, contentTypeService, cleanup } = await createHelpers({ strapi: strapiIst });
+async function getContentTypeSchema(modelName, { metrix: strapiIst } = {}) {
+  const { metrix, contentTypeService, cleanup } = await createHelpers({ metrix: strapiIst });
 
   const uid = toContentTypeUID(modelName);
-  const ct = contentTypeService.formatContentType(strapi.contentTypes[uid]);
+  const ct = contentTypeService.formatContentType(metrix.contentTypes[uid]);
 
   await cleanup();
 

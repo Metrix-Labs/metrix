@@ -158,7 +158,7 @@ export class AppProject extends Project {
 
   private refreshStrapiVersion(): void {
     this.strapiVersion =
-      // First try to get the strapi version from the package.json dependencies
+      // First try to get the metrix version from the package.json dependencies
       this.findStrapiVersionFromProjectPackageJSON() ??
       // If the version found is not a valid SemVer, get the Strapi version from the installed package
       this.findLocallyInstalledStrapiVersion();
@@ -176,7 +176,7 @@ export class AppProject extends Project {
 
     const isValidSemVer = isLiteralSemVer(version) && semver.valid(version) === version;
 
-    // We return undefined only if a strapi/strapi version is found, but it's not semver compliant
+    // We return undefined only if a metrix/metrix version is found, but it's not semver compliant
     return isValidSemVer ? semVerFactory(version) : undefined;
   }
 
@@ -262,7 +262,7 @@ const isPlugin = (cwd: string) => {
 
   const packageJSON = JSON.parse(packageJSONBuffer.toString());
 
-  return packageJSON?.strapi?.kind === 'plugin';
+  return packageJSON?.metrix?.kind === 'plugin';
 };
 
 // TODO: make this async so we can use async file methods

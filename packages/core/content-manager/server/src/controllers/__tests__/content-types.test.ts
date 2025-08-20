@@ -20,7 +20,7 @@ describe('Content Types', () => {
       },
     };
 
-    global.strapi = {
+    global.metrix = {
       plugins: {
         'content-manager': {
           services: {

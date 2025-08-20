@@ -19,7 +19,7 @@ jest.mock('react-intl', () => ({
 const data = [
   {
     id: 1,
-    name: 'strapi-cover_1fabc982ce.png',
+    name: 'metrix-cover_1fabc982ce.png',
     alternativeText: '',
     caption: '',
     width: 1066,

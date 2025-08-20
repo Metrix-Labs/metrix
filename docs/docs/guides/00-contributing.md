@@ -1,5 +1,5 @@
 ---
-title: Contributing to Strapi
+title: Contributing to Metrix
 hide_title: true
 ---
 

@@ -15,7 +15,7 @@ Extends the upload plugin, to connect to different external services or applicat
 
 To use a provider, you need to install it and configure it in the `./config/plugins.js` file.
 
-More info about installing providers on [strapi docs](https://docs.strapi.io/developer-docs/latest/development/providers.html#installing-providers).
+More info about installing providers on [metrix docs](https://docs.metrix.io/developer-docs/latest/development/providers.html#installing-providers).
 
 # Provider development
 

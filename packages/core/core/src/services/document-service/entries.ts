@@ -14,7 +14,7 @@ const createEntriesService = (
   uid: UID.ContentType,
   entityValidator: Modules.EntityValidator.EntityValidator
 ) => {
-  const contentType = strapi.contentType(uid);
+  const contentType = metrix.contentType(uid);
 
   async function createEntry(params = {} as any) {
     const { data, ...restParams } = await transformParamsDocumentId(uid, params);
@@ -27,7 +27,7 @@ const createEntriesService = (
 
     // Check for uniqueness based on documentId and locale (if localized)
     if (data.documentId) {
-      const i18nService = strapi.plugin('i18n')?.service('content-types');
+      const i18nService = metrix.plugin('i18n')?.service('content-types');
       const isLocalized = i18nService?.isLocalizedContentType(contentType) ?? false;
       const hasDraftAndPublish = contentType.options?.draftAndPublish === true;
 
@@ -51,7 +51,7 @@ const createEntriesService = (
         }
       }
 
-      const existingEntry = await strapi.db.query(uid).findOne({
+      const existingEntry = await metrix.db.query(uid).findOne({
         select: ['id'],
         where: whereClause,
       });
@@ -82,7 +82,7 @@ const createEntriesService = (
 
     const entryData = applyTransforms(contentType, dataWithComponents);
 
-    const doc = await strapi.db.query(uid).create({ ...query, data: entryData });
+    const doc = await metrix.db.query(uid).create({ ...query, data: entryData });
 
     return doc;
   }
@@ -90,7 +90,7 @@ const createEntriesService = (
   async function deleteEntry(id: number) {
     const componentsToDelete = await components.getComponents(uid, { id });
 
-    const deletedEntry = await strapi.db.query(uid).delete({ where: { id } });
+    const deletedEntry = await metrix.db.query(uid).delete({ where: { id } });
 
     await components.deleteComponents(uid, componentsToDelete as any, { loadComponents: false });
 
@@ -120,7 +120,7 @@ const createEntriesService = (
 
     const entryData = applyTransforms(contentType, dataWithComponents);
 
-    return strapi.db
+    return metrix.db
       .query(uid)
       .update({ ...query, where: { id: entryToUpdate.id }, data: entryData });
   }

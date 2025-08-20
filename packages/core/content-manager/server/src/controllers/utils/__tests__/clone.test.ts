@@ -124,7 +124,7 @@ describe('Populate', () => {
 
   describe('hasProhibitedCloningFields', () => {
     beforeEach(() => {
-      global.strapi = {
+      global.metrix = {
         getModel: jest.fn((uid) => fakeModels[uid]),
       } as any;
     });

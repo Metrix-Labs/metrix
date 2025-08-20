@@ -19,7 +19,7 @@ export default (params: { providers: engine.EngineParams['providers'] }) => {
 
       // If the action isn't registered into the action provider, then ignore the permission
       if (!action) {
-        strapi.log.debug(
+        metrix.log.debug(
           `Unknown action "${permission.action}" supplied when registering a new permission in engine`
         );
         return false;

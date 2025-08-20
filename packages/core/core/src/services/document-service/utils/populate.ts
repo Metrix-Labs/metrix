@@ -12,7 +12,7 @@ const { CREATED_BY_ATTRIBUTE, UPDATED_BY_ATTRIBUTE } = contentTypes.constants;
 
 // We want to build a populate object based on the schema
 export const getDeepPopulate = (uid: UID.Schema, opts: Options = {}) => {
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
   const attributes = Object.entries(model.attributes);
 
   return attributes.reduce((acc: any, [attributeName, attribute]) => {
@@ -37,7 +37,7 @@ export const getDeepPopulate = (uid: UID.Schema, opts: Options = {}) => {
 
       case 'media': {
         // We populate all media fields for completeness of webhook responses
-        // see https://github.com/strapi/strapi/issues/21546
+        // see https://github.com/metrix/metrix/issues/21546
         acc[attributeName] = { select: ['*'] };
         break;
       }

@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 // TODO: remove this tmp fix and migrate tests
 let strapiInstance;
-Object.defineProperty(global, 'strapi', {
+Object.defineProperty(global, 'metrix', {
   get() {
     return strapiInstance;
   },
@@ -12,7 +12,7 @@ Object.defineProperty(global, 'strapi', {
     strapiInstance = value;
 
     strapiInstance.plugin = (name) => strapiInstance.plugins[name];
-    _.mapValues(strapi.plugins, (acc) => {
+    _.mapValues(metrix.plugins, (acc) => {
       acc.controller = (name) => acc.controllers[name];
       acc.service = (name) => acc.services[name];
       acc.contentType = (name) => acc.contentTypes[name];
@@ -20,7 +20,7 @@ Object.defineProperty(global, 'strapi', {
     });
 
     strapiInstance.api = (name) => strapiInstance.apis[name];
-    _.mapValues(strapi.api, (acc) => {
+    _.mapValues(metrix.api, (acc) => {
       acc.controller = (name) => acc.controllers[name];
       acc.service = (name) => acc.services[name];
       acc.contentType = (name) => acc.contentTypes[name];

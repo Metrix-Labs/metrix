@@ -3,13 +3,13 @@
 // Test an API with all the possible filed types and simple filterings (no deep filtering, no relations)
 const { omit } = require('lodash/fp');
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 const CREATOR_FIELDS = ['updatedBy', 'createdBy'];
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 const data = {
   beds: [],
@@ -136,14 +136,14 @@ describe('Search query', () => {
   beforeAll(async () => {
     await builder.addContentType(bedModel).addFixtures(bedModel.singularName, bedFixtures).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
-    data.beds = await builder.sanitizedFixturesFor(bedModel.singularName, strapi);
+    data.beds = await builder.sanitizedFixturesFor(bedModel.singularName, metrix);
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

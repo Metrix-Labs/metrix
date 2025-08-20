@@ -1,4 +1,4 @@
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import { createTestBuilder } from 'api-tests/builder';
 import { Core } from '@metrixlabs/types';
@@ -16,23 +16,23 @@ const articleContentType = {
 };
 
 let authRq;
-let strapi: Core.Strapi;
+let metrix: Core.Strapi;
 const builder = createTestBuilder();
 
 const restartWithSchema = async () => {
-  await strapi.destroy();
+  await metrix.destroy();
   await builder.cleanup();
 
   await builder.addContentType(articleContentType).build();
 
-  strapi = await createStrapiInstance();
-  authRq = await createAuthRequest({ strapi });
+  metrix = await createStrapiInstance();
+  authRq = await createAuthRequest({ metrix });
 };
 
 describe('Guided Tour Meta', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    authRq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    authRq = await createAuthRequest({ metrix });
   });
 
   afterEach(async () => {
@@ -41,7 +41,7 @@ describe('Guided Tour Meta', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -82,9 +82,9 @@ describe('Guided Tour Meta', () => {
         roles: [1],
         isActive: true,
       };
-      await strapi.db.query('admin::user').create({ data: newUser });
+      await metrix.db.query('admin::user').create({ data: newUser });
       const request = await createAuthRequest({
-        strapi,
+        metrix,
         userInfo: newUser,
       });
 
@@ -112,7 +112,7 @@ describe('Guided Tour Meta', () => {
     test('Detects created content', async () => {
       await restartWithSchema();
 
-      const createdDocument = await strapi.documents('api::article.article').create({
+      const createdDocument = await metrix.documents('api::article.article').create({
         data: {
           name: 'Article 1',
         },
@@ -127,14 +127,14 @@ describe('Guided Tour Meta', () => {
       expect(res.body.data.completedActions).toContain('didCreateContent');
 
       // Cleanup
-      await strapi.documents('api::article.article').delete({
+      await metrix.documents('api::article.article').delete({
         documentId: createdDocument.documentId,
       });
     });
 
     test('Detects created custom API tokens', async () => {
       // Create a custom API token
-      const createdToken = await strapi.documents('admin::api-token').create({
+      const createdToken = await metrix.documents('admin::api-token').create({
         data: {
           name: 'Custom Token',
           type: 'read-only',
@@ -152,7 +152,7 @@ describe('Guided Tour Meta', () => {
       expect(res.body.data.completedActions).toContain('didCreateApiToken');
 
       // Cleanup
-      await strapi.documents('admin::api-token').delete({
+      await metrix.documents('admin::api-token').delete({
         documentId: createdToken.documentId,
       });
     });

@@ -1,14 +1,14 @@
 'use strict';
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 // Import the upload function from the upload test
 const { uploadFile, getFiles } = require('../upload/admin/file.test.api');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 
 /**
@@ -16,12 +16,12 @@ let rq;
  */
 describe('Admin Homepage API', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

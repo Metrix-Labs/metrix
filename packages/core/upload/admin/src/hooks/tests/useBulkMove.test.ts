@@ -1,4 +1,4 @@
-import { useFetchClient } from '@metrixlabs/admin/strapi-admin';
+import { useFetchClient } from '@metrixlabs/admin/metrix-admin';
 import { act, renderHook, screen } from '@tests/utils';
 
 import { useBulkMove, FileWithType, FolderWithType } from '../useBulkMove';
@@ -54,8 +54,8 @@ const FIXTURE_FOLDERS: FolderWithType[] = [
 
 const FIXTURE_DESTINATION_FOLDER_ID = 1;
 
-jest.mock('@strapi/admin/strapi-admin', () => ({
-  ...jest.requireActual('@strapi/admin/strapi-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useFetchClient: jest.fn().mockReturnValue({
     post: jest.fn((url, payload) => {
       const res: { data: { data: { files: FileWithType[]; folders: FolderWithType[] } } } = {

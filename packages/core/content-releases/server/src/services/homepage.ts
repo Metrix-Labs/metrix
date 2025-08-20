@@ -2,12 +2,12 @@ import type { Core } from '@metrixlabs/types';
 
 import type { GetUpcomingReleases } from '../../../shared/contracts/homepage';
 
-const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
+const createHomepageService = ({ metrix }: { metrix: Core.Strapi }) => {
   const MAX_DOCUMENTS = 4;
 
   return {
     async getUpcomingReleases(): Promise<GetUpcomingReleases.Response['data']> {
-      const releases = await strapi.db.query('plugin::content-releases.release').findMany({
+      const releases = await metrix.db.query('plugin::content-releases.release').findMany({
         filters: {
           releasedAt: {
             $notNull: false,

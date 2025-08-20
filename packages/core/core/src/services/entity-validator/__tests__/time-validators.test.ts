@@ -7,7 +7,7 @@ describe('Time validator', () => {
   describe('unique', () => {
     const fakeFindOne = jest.fn();
 
-    global.strapi = {
+    global.metrix = {
       db: {
         query: () => ({
           findOne: fakeFindOne,

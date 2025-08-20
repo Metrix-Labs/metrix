@@ -5,7 +5,7 @@ import isoLocales from './iso-locales.json';
  * @returns {string}
  */
 const getInitLocale = () => {
-  const envLocaleCode = process.env.STRAPI_PLUGIN_I18N_INIT_LOCALE_CODE;
+  const envLocaleCode = process.env.METRIX_PLUGIN_I18N_INIT_LOCALE_CODE;
 
   if (envLocaleCode) {
     const matchingLocale = isoLocales.find(({ code }) => code === envLocaleCode);

@@ -77,9 +77,9 @@ export const cors: Core.MiddlewareFactory<Config> = (config) => {
   };
 
   if (config.enabled !== undefined) {
-    strapi.log.warn(
-      'The strapi::cors middleware no longer supports the `enabled` option. Using it' +
-        ' to conditionally enable CORS might cause an insecure default. To disable strapi::cors, remove it from' +
+    metrix.log.warn(
+      'The metrix::cors middleware no longer supports the `enabled` option. Using it' +
+        ' to conditionally enable CORS might cause an insecure default. To disable metrix::cors, remove it from' +
         ' the exported array in config/middleware.js'
     );
   }

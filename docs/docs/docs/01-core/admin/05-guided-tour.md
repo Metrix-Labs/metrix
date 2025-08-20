@@ -137,12 +137,12 @@ const tours = {
 } as const;
 ```
 
-2. **Add tour components to Strapi**:
+2. **Add tour components to Metrix**:
 
 Wrap the element that should be the anchor for the step popover.
 
 ```tsx
-import { tours } from '@strapi/admin/strapi-admin';
+import { tours } from '@metrix/admin/metrix-admin';
 
 const MyComponent = () => {
   return (
@@ -312,7 +312,7 @@ const MyComponent = () => {
 
 ### Persistence
 
-Tour state is automatically persisted to localStorage using the `usePersistentState` hook with the key `STRAPI_GUIDED_TOUR`.
+Tour state is automatically persisted to localStorage using the `usePersistentState` hook with the key `METRIX_GUIDED_TOUR`.
 
 ## Backend Integration
 

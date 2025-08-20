@@ -2,9 +2,9 @@ import { first } from 'lodash/fp';
 import type { Context } from '../../types';
 import type { Constants } from '../../constants';
 
-export default ({ strapi }: Context) =>
+export default ({ metrix }: Context) =>
   () => {
-    const { GRAPHQL_SCALAR_OPERATORS } = strapi.plugin('graphql').service<Constants>('constants');
+    const { GRAPHQL_SCALAR_OPERATORS } = metrix.plugin('graphql').service<Constants>('constants');
 
     return (
       Object.entries(GRAPHQL_SCALAR_OPERATORS)

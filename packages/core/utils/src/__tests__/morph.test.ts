@@ -16,7 +16,7 @@ describe('restricted relations', () => {
     };
 
     // we don't care about actual relation permissions here, only that the properties are sanitized and validated correctly
-    global.strapi = {
+    global.metrix = {
       auth: {
         verify(_config, auth) {
           if (auth.scope === 'undefined.find') {

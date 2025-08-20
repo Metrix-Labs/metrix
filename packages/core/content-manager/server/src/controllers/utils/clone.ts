@@ -37,7 +37,7 @@ const getProhibitedCloningFields = (
   uid: any,
   pathPrefix: string[] = []
 ): ProhibitedCloningField[] => {
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
 
   const prohibitedFields = Object.keys(model.attributes).reduce<ProhibitedCloningField[]>(
     (acc, attributeName) => {
@@ -55,7 +55,7 @@ const getProhibitedCloningFields = (
             ...(attribute.components || []).flatMap((componentUID: any) =>
               getProhibitedCloningFields(componentUID, [
                 ...attributePath,
-                strapi.getModel(componentUID).info.displayName,
+                metrix.getModel(componentUID).info.displayName,
               ])
             ),
           ];
@@ -84,7 +84,7 @@ const getProhibitedCloningFields = (
 const excludeNotCreatableFields =
   (uid: any, permissionChecker: any) =>
   (body: any, path = []): any => {
-    const model = strapi.getModel(uid);
+    const model = metrix.getModel(uid);
     const canCreate = (path: any) => permissionChecker.can.create(null, path);
 
     return Object.keys(model.attributes).reduce((body, attributeName) => {

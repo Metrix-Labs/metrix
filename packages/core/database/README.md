@@ -1,3 +1,3 @@
-# @strapi/database
+# @metrix/database
 
-> ⚠️ This package is only meant to be used inside Strapi
+> ⚠️ This package is only meant to be used inside Metrix

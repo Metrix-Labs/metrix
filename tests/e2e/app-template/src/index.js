@@ -7,7 +7,7 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/* { strapi } */) {},
+  register(/* { metrix } */) {},
 
   /**
    * An asynchronous bootstrap function that runs before
@@ -16,10 +16,10 @@ module.exports = {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  async bootstrap({ strapi }) {
-    strapi.service('api::config.config').rateLimitEnable(false);
-    strapi.service('api::config.config').adminAutoOpenEnable(false);
+  async bootstrap({ metrix }) {
+    metrix.service('api::config.config').rateLimitEnable(false);
+    metrix.service('api::config.config').adminAutoOpenEnable(false);
 
-    await createTestTransferToken(strapi);
+    await createTestTransferToken(metrix);
   },
 };

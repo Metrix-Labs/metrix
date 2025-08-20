@@ -18,7 +18,7 @@ describe('Locales', () => {
       const setIsDefault = jest.fn(() => expectedLocales);
       const find = jest.fn(() => locales);
       const getModel = jest.fn(() => localeModel.schema);
-      global.strapi = {
+      global.metrix = {
         getModel,
         plugins: {
           i18n: {
@@ -53,7 +53,7 @@ describe('Locales', () => {
       const findByCode = jest.fn(() => undefined);
       const create = jest.fn(() => Promise.resolve(locale));
       const getModel = jest.fn(() => localeModel.schema);
-      global.strapi = {
+      global.metrix = {
         getModel,
         plugins: {
           i18n: {
@@ -93,7 +93,7 @@ describe('Locales', () => {
       const findByCode = jest.fn(() => undefined);
       const create = jest.fn(() => Promise.resolve(locale));
       const getModel = jest.fn(() => localeModel.schema);
-      global.strapi = {
+      global.metrix = {
         getModel,
         plugins: {
           i18n: {
@@ -131,7 +131,7 @@ describe('Locales', () => {
       const findByCode = jest.fn(() => ({ name: 'other locale', code: 'af' }));
       const create = jest.fn(() => Promise.resolve(locale));
       const getModel = jest.fn(() => localeModel.schema);
-      global.strapi = {
+      global.metrix = {
         getModel,
         plugins: {
           i18n: {
@@ -179,7 +179,7 @@ describe('Locales', () => {
       const findById = jest.fn(() => existingLocale);
       const update = jest.fn(() => Promise.resolve(updatedLocale));
       const getModel = jest.fn(() => localeModel.schema);
-      global.strapi = {
+      global.metrix = {
         getModel,
         plugins: {
           i18n: {
@@ -221,7 +221,7 @@ describe('Locales', () => {
       const findById = jest.fn(() => existingLocale);
       const update = jest.fn(() => Promise.resolve(updatedLocale));
       const getModel = jest.fn(() => localeModel.schema);
-      global.strapi = {
+      global.metrix = {
         getModel,
         plugins: {
           i18n: {
@@ -270,7 +270,7 @@ describe('Locales', () => {
       const findById = jest.fn(() => locale);
       const deleteFn = jest.fn();
       const getModel = jest.fn(() => localeModel.schema);
-      global.strapi = {
+      global.metrix = {
         getModel,
         plugins: {
           i18n: {
@@ -305,7 +305,7 @@ describe('Locales', () => {
       const findById = jest.fn(() => Promise.resolve(locale));
       const deleteFn = jest.fn();
       const getModel = jest.fn(() => localeModel.schema);
-      global.strapi = {
+      global.metrix = {
         getModel,
         plugins: {
           i18n: {

@@ -125,7 +125,7 @@ const transformDataIdsVisitor = (idMap: IdMap, data: Record<string, any>, source
 
       set(key, newRelation as any);
     },
-    { schema: strapi.getModel(source.uid), getModel: strapi.getModel.bind(strapi) },
+    { schema: metrix.getModel(source.uid), getModel: metrix.getModel.bind(metrix) },
     data
   );
 };

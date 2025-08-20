@@ -10,7 +10,7 @@ import {
   useAPIErrorHandler,
   useNotification,
   useAuth,
-} from '@metrixlabs/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Button,

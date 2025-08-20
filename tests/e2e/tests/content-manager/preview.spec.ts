@@ -4,7 +4,7 @@ import { resetDatabaseAndImportDataFromPath } from '../../utils/dts-import';
 import { clickAndWait, describeOnCondition, findAndClose } from '../../utils/shared';
 import { resetFiles } from '../../utils/file-reset';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 test.describe('Preview', () => {
   test.beforeEach(async ({ page }) => {

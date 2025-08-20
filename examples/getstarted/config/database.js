@@ -9,9 +9,9 @@ const sqlite = {
 const postgres = {
   client: 'postgres',
   connection: {
-    database: 'strapi',
-    user: 'strapi',
-    password: 'strapi',
+    database: 'metrix',
+    user: 'metrix',
+    password: 'metrix',
     port: 5432,
     host: 'localhost',
   },
@@ -20,9 +20,9 @@ const postgres = {
 const mysql = {
   client: 'mysql',
   connection: {
-    database: 'strapi',
-    user: 'strapi',
-    password: 'strapi',
+    database: 'metrix',
+    user: 'metrix',
+    password: 'metrix',
     port: 3306,
     host: 'localhost',
   },
@@ -31,9 +31,9 @@ const mysql = {
 const mariadb = {
   client: 'mysql',
   connection: {
-    database: 'strapi',
-    user: 'strapi',
-    password: 'strapi',
+    database: 'metrix',
+    user: 'metrix',
+    password: 'metrix',
     port: 3307,
     host: 'localhost',
   },

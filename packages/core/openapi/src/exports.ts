@@ -22,7 +22,7 @@ import type { GeneratorOutput } from './generator';
  *
  * @experimental
  *
- * @param strapi - The Strapi application instance.
+ * @param metrix - The Strapi application instance.
  * @param options - Optional configuration for the generation process.
  * @param options.type - The type of routes to generate documentation for, either 'admin' or 'content-api'.
  *                       Defaults to 'content-api'.
@@ -32,8 +32,8 @@ import type { GeneratorOutput } from './generator';
  * ```typescript
  * import { generate } from '@metrixlabs/openapi';
  *
- * // Assuming 'strapi' is your Strapi instance
- * const output = generate(strapi, { type: 'content-api' });
+ * // Assuming 'metrix' is your Strapi instance
+ * const output = generate(metrix, { type: 'content-api' });
  * console.log(output.document);
  * ```
  *
@@ -42,11 +42,11 @@ import type { GeneratorOutput } from './generator';
  * import { generate } from '@metrixlabs/openapi';
  *
  * // Generate documentation for all route types (default)
- * const output = generate(strapi);
+ * const output = generate(metrix);
  * console.log(output.document);
  * ```
  */
-export const generate = (strapi: Core.Strapi, options?: GenerationOptions): GeneratorOutput => {
+export const generate = (metrix: Core.Strapi, options?: GenerationOptions): GeneratorOutput => {
   const { type = 'content-api' } = options ?? {};
 
   const config = {
@@ -58,9 +58,9 @@ export const generate = (strapi: Core.Strapi, options?: GenerationOptions): Gene
   // Data sources for the Strapi routes
   const routeCollector = new RouteCollector(
     [
-      new AdminRoutesProvider(strapi),
-      new ApiRoutesProvider(strapi),
-      new PluginRoutesProvider(strapi),
+      new AdminRoutesProvider(metrix),
+      new ApiRoutesProvider(metrix),
+      new PluginRoutesProvider(metrix),
     ],
 
     new RouteMatcher([
@@ -71,7 +71,7 @@ export const generate = (strapi: Core.Strapi, options?: GenerationOptions): Gene
 
   const contextFactory = new DocumentContextFactory();
 
-  const generator = new OpenAPIGenerator(config, strapi, routeCollector, contextFactory);
+  const generator = new OpenAPIGenerator(config, metrix, routeCollector, contextFactory);
 
   return generator.generate();
 };

@@ -17,5 +17,5 @@ type S = {
 export function getService<T extends keyof S>(
   name: T
 ): S[T] extends (...args: any[]) => any ? ReturnType<S[T]> : S[T] {
-  return strapi.plugin('content-type-builder').service(name);
+  return metrix.plugin('content-type-builder').service(name);
 }

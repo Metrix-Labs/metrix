@@ -70,13 +70,13 @@ const updateWebhookValidator = webhookValidator.shape({
 
 export default {
   async listWebhooks(ctx: Context) {
-    const webhooks = await strapi.get('webhookStore').findWebhooks();
+    const webhooks = await metrix.get('webhookStore').findWebhooks();
     ctx.send({ data: webhooks } satisfies GetWebhooks.Response);
   },
 
   async getWebhook(ctx: Context) {
     const { id } = ctx.params;
-    const webhook = await strapi.get('webhookStore').findWebhook(id);
+    const webhook = await metrix.get('webhookStore').findWebhook(id);
 
     if (!webhook) {
       return ctx.notFound('webhook.notFound');
@@ -90,9 +90,9 @@ export default {
 
     await validateYupSchema(webhookValidator)(body);
 
-    const webhook = await strapi.get('webhookStore').createWebhook(body);
+    const webhook = await metrix.get('webhookStore').createWebhook(body);
 
-    strapi.get('webhookRunner').add(webhook);
+    metrix.get('webhookRunner').add(webhook);
 
     ctx.created({ data: webhook } satisfies CreateWebhook.Response);
   },
@@ -103,13 +103,13 @@ export default {
 
     await validateYupSchema(updateWebhookValidator)(body);
 
-    const webhook = await strapi.get('webhookStore').findWebhook(id);
+    const webhook = await metrix.get('webhookStore').findWebhook(id);
 
     if (!webhook) {
       return ctx.notFound('webhook.notFound');
     }
 
-    const updatedWebhook = await strapi.get('webhookStore').updateWebhook(id, {
+    const updatedWebhook = await metrix.get('webhookStore').updateWebhook(id, {
       ...webhook,
       ...body,
     });
@@ -118,22 +118,22 @@ export default {
       return ctx.notFound('webhook.notFound');
     }
 
-    strapi.get('webhookRunner').update(updatedWebhook);
+    metrix.get('webhookRunner').update(updatedWebhook);
 
     ctx.send({ data: updatedWebhook } satisfies UpdateWebhook.Response);
   },
 
   async deleteWebhook(ctx: Context) {
     const { id } = ctx.params;
-    const webhook = await strapi.get('webhookStore').findWebhook(id);
+    const webhook = await metrix.get('webhookStore').findWebhook(id);
 
     if (!webhook) {
       return ctx.notFound('webhook.notFound');
     }
 
-    await strapi.get('webhookStore').deleteWebhook(id);
+    await metrix.get('webhookStore').deleteWebhook(id);
 
-    strapi.get('webhookRunner').remove(webhook);
+    metrix.get('webhookRunner').remove(webhook);
 
     ctx.body = { data: webhook } satisfies DeleteWebhook.Response;
   },
@@ -146,11 +146,11 @@ export default {
     }
 
     for (const id of ids) {
-      const webhook = await strapi.get('webhookStore').findWebhook(id);
+      const webhook = await metrix.get('webhookStore').findWebhook(id);
 
       if (webhook) {
-        await strapi.get('webhookStore').deleteWebhook(id);
-        strapi.get('webhookRunner').remove(webhook);
+        await metrix.get('webhookStore').deleteWebhook(id);
+        metrix.get('webhookRunner').remove(webhook);
       }
     }
 
@@ -160,9 +160,9 @@ export default {
   async triggerWebhook(ctx: Context) {
     const { id } = ctx.params;
 
-    const webhook = await strapi.get('webhookStore').findWebhook(id);
+    const webhook = await metrix.get('webhookStore').findWebhook(id);
 
-    const response = await strapi
+    const response = await metrix
       .get('webhookRunner')
       .run(webhook as Modules.WebhookStore.Webhook, 'trigger-test', {});
 

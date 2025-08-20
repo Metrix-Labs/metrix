@@ -82,7 +82,7 @@ test.describe('Login', () => {
       await expect(await page.getByLabel('Password*')).toBeFocused();
 
       // Test with a wrong email value
-      await page.getByLabel('Email*', { exact: true }).fill('e2e+wrong-email@strapi.io');
+      await page.getByLabel('Email*', { exact: true }).fill('e2e+wrong-email@metrix.io');
       await page.getByLabel('Password*', { exact: true }).fill(ADMIN_PASSWORD);
       await page.getByRole('button', { name: 'Login' }).click();
       await expect(page.getByText('Invalid credentials')).toBeVisible();

@@ -12,7 +12,7 @@ const findManyQueries = {
 
 describe('transformPopulate', () => {
   beforeAll(() => {
-    global.strapi = {
+    global.metrix = {
       getModel: (uid: string) => models[uid],
       db: {
         query: jest.fn((uid) => ({ findMany: findManyQueries[uid] })),

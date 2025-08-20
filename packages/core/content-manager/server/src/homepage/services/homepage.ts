@@ -7,11 +7,11 @@ import type {
   RecentDocument,
 } from '../../../../shared/contracts/homepage';
 
-const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
+const createHomepageService = ({ metrix }: { metrix: Core.Strapi }) => {
   const MAX_DOCUMENTS = 4;
 
-  const metadataService = strapi.plugin('content-manager').service('document-metadata');
-  const permissionService = strapi.admin.services.permission;
+  const metadataService = metrix.plugin('content-manager').service('document-metadata');
+  const permissionService = metrix.admin.services.permission;
 
   type ContentTypeConfiguration = {
     uid: RecentDocument['contentTypeUid'];
@@ -21,10 +21,10 @@ const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
     contentTypeUids: RecentDocument['contentTypeUid'][]
   ): Promise<ContentTypeConfiguration[]> => {
     /**
-     * Don't use the strapi.store util because we need to make
+     * Don't use the metrix.store util because we need to make
      * more precise queries than exact key matches, in order to make as few queries as possible.
      */
-    const coreStore = strapi.db.query('strapi::core-store');
+    const coreStore = metrix.db.query('metrix::core-store');
     const rawConfigurations = await coreStore.findMany({
       where: {
         key: {
@@ -43,7 +43,7 @@ const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
   const getPermittedContentTypes = async () => {
     const readPermissions: Modules.Permissions.PermissionRule[] = await permissionService.findMany({
       where: {
-        role: { users: { id: strapi.requestContext.get()?.state?.user.id } },
+        role: { users: { id: metrix.requestContext.get()?.state?.user.id } },
         action: 'plugin::content-manager.explorer.read',
       },
     });
@@ -67,7 +67,7 @@ const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
   ): ContentTypeMeta[] => {
     return allowedContentTypeUids.map((uid) => {
       const configuration = configurations.find((config) => config.uid === uid);
-      const contentType = strapi.contentType(uid);
+      const contentType = metrix.contentType(uid);
       const fields = ['documentId', 'updatedAt'];
 
       // Add fields required to get the status if D&P is enabled
@@ -126,10 +126,10 @@ const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
     });
   };
 
-  const permissionCheckerService = strapi.plugin('content-manager').service('permission-checker');
+  const permissionCheckerService = metrix.plugin('content-manager').service('permission-checker');
   const getPermissionChecker = (uid: string) =>
     permissionCheckerService.create({
-      userAbility: strapi.requestContext.get()?.state.userAbility,
+      userAbility: metrix.requestContext.get()?.state.userAbility,
       model: uid,
     });
 
@@ -138,7 +138,7 @@ const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
       return Promise.all(
         documents.map(async (recentDocument) => {
           const hasDraftAndPublish = contentTypes.hasDraftAndPublish(
-            strapi.contentType(recentDocument.contentTypeUid)
+            metrix.contentType(recentDocument.contentTypeUid)
           );
           /**
            * Tries to query the other version of the document if draft and publish is enabled,
@@ -172,7 +172,7 @@ const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
       const permittedContentTypes = await getPermittedContentTypes();
       const allowedContentTypeUids = draftAndPublishOnly
         ? permittedContentTypes.filter((uid) => {
-            return contentTypes.hasDraftAndPublish(strapi.contentType(uid));
+            return contentTypes.hasDraftAndPublish(metrix.contentType(uid));
           })
         : permittedContentTypes;
       // Fetch the configuration for each content type in a single query
@@ -188,7 +188,7 @@ const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
             ...additionalQueryParams,
           });
 
-          const docs = await strapi.documents(meta.uid).findMany(permissionQuery);
+          const docs = await metrix.documents(meta.uid).findMany(permissionQuery);
           const populate = additionalQueryParams?.populate as string[];
 
           return formatDocuments(docs, meta, populate);
@@ -253,8 +253,8 @@ const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
 
       await Promise.all(
         contentTypesMeta.map(async (meta) => {
-          const strapiDBConnection = strapi.db.connection;
-          const tableName = strapi.contentType(meta.uid).collectionName;
+          const strapiDBConnection = metrix.db.connection;
+          const tableName = metrix.contentType(meta.uid).collectionName;
           if (tableName) {
             const draftDocuments = await strapiDBConnection(tableName)
               .whereNull('published_at')

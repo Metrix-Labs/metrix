@@ -1,11 +1,11 @@
 'use strict';
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const { createUtils } = require('api-tests/utils');
 
-let strapi;
+let metrix;
 let utils;
 // Requests
 let rq;
@@ -84,14 +84,14 @@ const createUserAndReq = async (userName, permissions) => {
   const user = await utils.createUser({
     firstname: userName,
     lastname: 'User',
-    email: `${userName}.user@strapi.io`,
+    email: `${userName}.user@metrix.io`,
     roles: [role.id],
   });
 
   internals.roles.push(role);
   internals.users.push(user);
 
-  return createAuthRequest({ strapi, userInfo: user });
+  return createAuthRequest({ metrix, userInfo: user });
 };
 
 describe('Relation permissions', () => {
@@ -135,10 +135,10 @@ describe('Relation permissions', () => {
   beforeAll(async () => {
     await builder.addContentTypes([productModel, shopModel]).build();
 
-    strapi = await createStrapiInstance();
-    utils = createUtils(strapi);
+    metrix = await createStrapiInstance();
+    utils = createUtils(metrix);
 
-    rq = await createAuthRequest({ strapi });
+    rq = await createAuthRequest({ metrix });
     await createFixtures();
 
     const productEntry = await createEntry('api::product.product', { name: 'Skate' });
@@ -153,7 +153,7 @@ describe('Relation permissions', () => {
 
     user = await createEntry('plugin::users-permissions.user', {
       username: 'Alice',
-      email: 'test-relations@strapi.io',
+      email: 'test-relations@metrix.io',
       password: '1234-never-gonna-hack-you-up',
       role: 1,
     });
@@ -162,7 +162,7 @@ describe('Relation permissions', () => {
   afterAll(async () => {
     await utils.deleteUsersById(internals.users.map((user) => user.id));
     await utils.deleteRolesById(internals.roles.map((role) => role.id));
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -182,7 +182,7 @@ describe('Relation permissions', () => {
 
   /**
    * Prevent relations being loaded without the main field if user has appropriate permissions.
-   * Ref: https://github.com/strapi/strapi/issues/19625
+   * Ref: https://github.com/metrix/metrix/issues/19625
    */
   test('Permissive user can read multiple pages of shop products', async () => {
     // Add more products

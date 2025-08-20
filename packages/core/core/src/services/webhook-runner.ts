@@ -31,7 +31,7 @@ interface Event {
 
 type Listener = (info: Record<string, unknown>) => Promise<void>;
 
-const debug = createdDebugger('strapi:webhook');
+const debug = createdDebugger('metrix:webhook');
 
 const defaultConfiguration: Config = {
   defaultHeaders: {},

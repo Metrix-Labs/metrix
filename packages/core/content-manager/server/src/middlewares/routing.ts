@@ -9,7 +9,7 @@ interface ContentType extends Struct.ContentTypeSchema {
 export default async (ctx: Context, next: Next) => {
   const { model }: { model: UID.ContentType } = ctx.params;
 
-  const ct: ContentType = strapi.contentTypes[model];
+  const ct: ContentType = metrix.contentTypes[model];
 
   if (!ct) {
     return ctx.send({ error: 'contentType.notFound' }, 404);
@@ -17,9 +17,9 @@ export default async (ctx: Context, next: Next) => {
 
   let controllers;
   if (!ct.plugin || ct.plugin === 'admin') {
-    controllers = strapi.admin.controllers;
+    controllers = metrix.admin.controllers;
   } else {
-    controllers = strapi.plugin(ct.plugin).controllers;
+    controllers = metrix.plugin(ct.plugin).controllers;
   }
 
   const { route }: { route: Core.Route } = ctx.state;
@@ -32,9 +32,9 @@ export default async (ctx: Context, next: Next) => {
 
   let actionConfig: any;
   if (!ct.plugin || ct.plugin === 'admin') {
-    actionConfig = strapi.config.get(`admin.layout.${ct.modelName}.actions.${action}`);
+    actionConfig = metrix.config.get(`admin.layout.${ct.modelName}.actions.${action}`);
   } else {
-    actionConfig = strapi.plugin(ct.plugin).config(`layout.${ct.modelName}.actions.${action}`);
+    actionConfig = metrix.plugin(ct.plugin).config(`layout.${ct.modelName}.actions.${action}`);
   }
 
   if (!isNil(actionConfig)) {

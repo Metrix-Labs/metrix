@@ -2,14 +2,14 @@ import { propEq } from 'lodash/fp';
 import type { Schema } from '@metrixlabs/types';
 import type { Context } from '../types';
 
-export default ({ strapi }: Context) => {
+export default ({ metrix }: Context) => {
   /**
    * Check if the given attribute is a Strapi scalar
    * @param {object} attribute
    * @return {boolean}
    */
   const isStrapiScalar = (attribute: Schema.Attribute.AnyAttribute) => {
-    return strapi.plugin('graphql').service('constants').STRAPI_SCALARS.includes(attribute.type);
+    return metrix.plugin('graphql').service('constants').STRAPI_SCALARS.includes(attribute.type);
   };
 
   /**
@@ -18,7 +18,7 @@ export default ({ strapi }: Context) => {
    * @return {boolean}
    */
   const isGraphQLScalar = (attribute: Schema.Attribute.AnyAttribute) => {
-    return strapi.plugin('graphql').service('constants').GRAPHQL_SCALARS.includes(attribute.type);
+    return metrix.plugin('graphql').service('constants').GRAPHQL_SCALARS.includes(attribute.type);
   };
 
   /**

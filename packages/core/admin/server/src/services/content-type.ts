@@ -127,8 +127,8 @@ const getPermissionsWithNestedFields = (
     // Create a Permission for each subject (content-type uid) within the action
     for (const subject of validSubjects) {
       const fields = actionDomain.appliesToProperty('fields', action)
-        ? getNestedFields(strapi.contentTypes[subject], {
-            components: strapi.components,
+        ? getNestedFields(metrix.contentTypes[subject], {
+            components: metrix.components,
             nestingLevel,
           })
         : undefined;
@@ -168,12 +168,12 @@ const cleanPermissionFields = (
       return permissionDomain.deleteProperty('fields', permission);
     }
 
-    if (!subject || !strapi.contentTypes[subject]) {
+    if (!subject || !metrix.contentTypes[subject]) {
       return permission;
     }
 
-    const possibleFields = getNestedFieldsWithIntermediate(strapi.contentTypes[subject], {
-      components: strapi.components,
+    const possibleFields = getNestedFieldsWithIntermediate(metrix.contentTypes[subject], {
+      components: metrix.components,
     });
 
     const currentFields: string[] = fields || [];

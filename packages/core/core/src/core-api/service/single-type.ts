@@ -13,7 +13,7 @@ export class SingleTypeService extends CoreService implements Core.CoreAPI.Servi
   async getDocumentId() {
     const { uid } = this.contentType;
 
-    return strapi.db
+    return metrix.db
       .query(uid)
       .findOne()
       .then((document) => document?.documentId as string);
@@ -22,7 +22,7 @@ export class SingleTypeService extends CoreService implements Core.CoreAPI.Servi
   async find(params = {}) {
     const { uid } = this.contentType;
 
-    return strapi.documents(uid).findFirst(this.getFetchParams(params));
+    return metrix.documents(uid).findFirst(this.getFetchParams(params));
   }
 
   async createOrUpdate(params = {}) {
@@ -31,13 +31,13 @@ export class SingleTypeService extends CoreService implements Core.CoreAPI.Servi
     const documentId = await this.getDocumentId();
 
     if (documentId) {
-      return strapi.documents(uid).update({
+      return metrix.documents(uid).update({
         ...this.getFetchParams(params),
         documentId,
       });
     }
 
-    return strapi.documents(uid).create(this.getFetchParams(params));
+    return metrix.documents(uid).create(this.getFetchParams(params));
   }
 
   async delete(params = {}) {
@@ -46,7 +46,7 @@ export class SingleTypeService extends CoreService implements Core.CoreAPI.Servi
     const documentId = await this.getDocumentId();
     if (!documentId) return { deletedEntries: 0 };
 
-    const { entries } = await strapi.documents(uid).delete({
+    const { entries } = await metrix.documents(uid).delete({
       ...this.getFetchParams(params),
       documentId,
     });

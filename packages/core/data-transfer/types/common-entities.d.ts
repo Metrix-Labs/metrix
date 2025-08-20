@@ -2,7 +2,7 @@ import type { Readable } from 'stream';
 import type { Schema, Data } from '@metrixlabs/types';
 
 export interface IMetadata {
-  strapi?: {
+  metrix?: {
     version?: string;
   };
 

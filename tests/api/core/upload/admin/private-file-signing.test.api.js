@@ -4,11 +4,11 @@ const fs = require('fs');
 const path = require('path');
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let baseRequest;
 let rq;
 
@@ -125,21 +125,21 @@ describe.skip('Upload Plugin url signing', () => {
   };
 
   beforeAll(async () => {
-    const localProviderPath = require.resolve('@strapi/provider-upload-local');
+    const localProviderPath = require.resolve('@metrix/provider-upload-local');
     jest.mock(localProviderPath, () => mockProvider(true));
 
     //  Create builder
     await builder.addComponent(models[componentUID]).addContentType(models[modelUID]).build();
 
     // Create api instance
-    strapi = await createStrapiInstance();
+    metrix = await createStrapiInstance();
 
-    baseRequest = await createAuthRequest({ strapi });
+    baseRequest = await createAuthRequest({ metrix });
 
-    rq = await createAuthRequest({ strapi });
+    rq = await createAuthRequest({ metrix });
     rq.setURLPrefix(`/content-manager/collection-types/${modelUID}`);
 
-    const imgRes = [await uploadImg('rec.jpg'), await uploadImg('strapi.jpg')];
+    const imgRes = [await uploadImg('rec.jpg'), await uploadImg('metrix.jpg')];
 
     repeatable = imgRes.map((img) => img.body[0].id);
     singleMedia = imgRes[0].body[0].id;
@@ -150,7 +150,7 @@ describe.skip('Upload Plugin url signing', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

@@ -2,6 +2,6 @@ import type { Core } from '@metrixlabs/types';
 import type { TypeRegistry } from './type-registry';
 
 export type Context = {
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
   registry: TypeRegistry;
 };

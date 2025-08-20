@@ -17,21 +17,21 @@ const configurationService = createConfigurationService({
   getModels() {
     const { toContentManagerModel } = getService('data-mapper');
 
-    return mapValues(toContentManagerModel, strapi.components);
+    return mapValues(toContentManagerModel, metrix.components);
   },
 });
 
-export default ({ strapi }: { strapi: Core.Strapi }) => ({
+export default ({ metrix }: { metrix: Core.Strapi }) => ({
   findAllComponents() {
     const { toContentManagerModel } = getService('data-mapper');
 
-    return Object.values(strapi.components).map(toContentManagerModel);
+    return Object.values(metrix.components).map(toContentManagerModel);
   },
 
   findComponent(uid: UID.Component) {
     const { toContentManagerModel } = getService('data-mapper');
 
-    const component = strapi.components[uid];
+    const component = metrix.components[uid];
 
     return isNil(component) ? component : toContentManagerModel(component);
   },

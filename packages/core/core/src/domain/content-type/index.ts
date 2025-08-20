@@ -91,7 +91,7 @@ const addFirstPublishedAt = (schema: Schema.ContentType) => {
   // Note: As an expertimental feature, we are okay if this data is deleted if this feature is
   // switched off. Once "preserve_attributes" come into play, this will be updated.
   if (isEnabled) {
-    strapi.log.warn(`Experimental feature enabled: firstPublishedAt on ${schema.collectionName}`);
+    metrix.log.warn(`Experimental feature enabled: firstPublishedAt on ${schema.collectionName}`);
     schema.attributes[FIRST_PUBLISHED_AT_ATTRIBUTE] = {
       type: 'datetime',
       configurable: false,

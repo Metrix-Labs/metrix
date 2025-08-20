@@ -141,7 +141,7 @@ describe('Permissions Engine', () => {
   };
 
   beforeEach(async () => {
-    global.strapi = {
+    global.metrix = {
       isLoaded: false,
     };
   });

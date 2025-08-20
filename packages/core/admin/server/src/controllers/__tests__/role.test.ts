@@ -19,7 +19,7 @@ describe('Role controller', () => {
         }
       ) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             role: {
@@ -54,7 +54,7 @@ describe('Role controller', () => {
         params: { id: 1 },
       }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             role: {
@@ -87,7 +87,7 @@ describe('Role controller', () => {
         body: {},
       }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             permission: {
@@ -120,7 +120,7 @@ describe('Role controller', () => {
         },
       }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             role: { findOne },
@@ -163,7 +163,7 @@ describe('Role controller', () => {
         },
       }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             role: {

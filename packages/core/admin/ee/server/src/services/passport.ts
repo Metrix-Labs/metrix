@@ -21,20 +21,20 @@ const localStrategyMiddleware = async ([error, user, message]: any, done: any) =
 };
 
 const getPassportStrategies = () => {
-  if (!strapi.ee.features.isEnabled('sso')) {
-    return [createLocalStrategy(strapi)];
+  if (!metrix.ee.features.isEnabled('sso')) {
+    return [createLocalStrategy(metrix)];
   }
 
-  const localStrategy = createLocalStrategy(strapi, localStrategyMiddleware);
+  const localStrategy = createLocalStrategy(metrix, localStrategyMiddleware);
 
-  if (!strapi.isLoaded) {
+  if (!metrix.isLoaded) {
     sso.syncProviderRegistryWithConfig();
   }
 
   // TODO
   // @ts-expect-error check map types
   const providers = sso.providerRegistry.getAll();
-  const strategies = providers.map((provider: any) => provider.createStrategy(strapi));
+  const strategies = providers.map((provider: any) => provider.createStrategy(metrix));
 
   return [localStrategy, ...strategies];
 };

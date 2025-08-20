@@ -21,7 +21,7 @@ type ComponentBody = {
   >;
 };
 
-const isDialectMySQL = () => strapi.db?.dialect.client === 'mysql';
+const isDialectMySQL = () => metrix.db?.dialect.client === 'mysql';
 
 function omitComponentData(
   contentType: Schema.ContentType,
@@ -53,7 +53,7 @@ const createComponents = async <
   uid: TUID,
   data: TData
 ) => {
-  const { attributes = {} } = strapi.getModel(uid);
+  const { attributes = {} } = metrix.getModel(uid);
 
   const componentBody: ComponentBody = {};
 
@@ -84,7 +84,7 @@ const createComponents = async <
         const components = (await async.map(
           componentValue,
           (value: any) => createComponent(componentUID, value),
-          { concurrency: isDialectMySQL() && !strapi.db?.inTransaction() ? 1 : Infinity }
+          { concurrency: isDialectMySQL() && !metrix.db?.inTransaction() ? 1 : Infinity }
         )) as Schema.Attribute.Value<Schema.Attribute.Component<UID.Component, true>>;
 
         componentBody[attributeName] = components.map(({ id }) => {
@@ -139,7 +139,7 @@ const createComponents = async <
       componentBody[attributeName] = await async.map(
         dynamiczoneValues,
         createDynamicZoneComponents,
-        { concurrency: isDialectMySQL() && !strapi.db?.inTransaction() ? 1 : Infinity }
+        { concurrency: isDialectMySQL() && !metrix.db?.inTransaction() ? 1 : Infinity }
       );
 
       continue;
@@ -153,13 +153,13 @@ const getComponents = async <TUID extends UID.Schema>(
   uid: TUID,
   entity: { id: Modules.EntityService.Params.Attribute.ID }
 ): Promise<LoadedComponents<TUID>> => {
-  const componentAttributes = contentTypesUtils.getComponentAttributes(strapi.getModel(uid));
+  const componentAttributes = contentTypesUtils.getComponentAttributes(metrix.getModel(uid));
 
   if (_.isEmpty(componentAttributes)) {
     return {} as LoadedComponents<TUID>;
   }
 
-  return strapi.db.query(uid).load(entity, componentAttributes) as Promise<LoadedComponents<TUID>>;
+  return metrix.db.query(uid).load(entity, componentAttributes) as Promise<LoadedComponents<TUID>>;
 };
 
 /*
@@ -174,7 +174,7 @@ const updateComponents = async <
   entityToUpdate: { id: Modules.EntityService.Params.Attribute.ID },
   data: TData
 ) => {
-  const { attributes = {} } = strapi.getModel(uid);
+  const { attributes = {} } = metrix.getModel(uid);
 
   const componentBody: ComponentBody = {};
 
@@ -203,7 +203,7 @@ const updateComponents = async <
         const components = (await async.map(
           componentValue,
           (value: any) => updateOrCreateComponent(componentUID, value),
-          { concurrency: isDialectMySQL() && !strapi.db?.inTransaction() ? 1 : Infinity }
+          { concurrency: isDialectMySQL() && !metrix.db?.inTransaction() ? 1 : Infinity }
         )) as Schema.Attribute.Value<Schema.Attribute.Component<UID.Component, true>>;
 
         componentBody[attributeName] = components.filter(_.negate(_.isNil)).map(({ id }) => {
@@ -254,7 +254,7 @@ const updateComponents = async <
             },
           };
         },
-        { concurrency: isDialectMySQL() && !strapi.db?.inTransaction() ? 1 : Infinity }
+        { concurrency: isDialectMySQL() && !metrix.db?.inTransaction() ? 1 : Infinity }
       );
 
       continue;
@@ -283,7 +283,7 @@ const deleteOldComponents = async <TUID extends UID.Schema>(
   attributeName: string,
   componentValue: Schema.Attribute.Value<Schema.Attribute.Component>
 ) => {
-  const previousValue = (await strapi.db
+  const previousValue = (await metrix.db
     .query(uid)
     .load(entityToUpdate, attributeName)) as ComponentValue;
 
@@ -313,7 +313,7 @@ const deleteOldDZComponents = async <TUID extends UID.Schema>(
   attributeName: string,
   dynamiczoneValues: Schema.Attribute.Value<Schema.Attribute.DynamicZone>
 ) => {
-  const previousValue = (await strapi.db
+  const previousValue = (await metrix.db
     .query(uid)
     .load(entityToUpdate, attributeName)) as Schema.Attribute.Value<Schema.Attribute.DynamicZone>;
 
@@ -365,7 +365,7 @@ const deleteComponents = async <TUID extends UID.Schema, TEntity extends Data.En
   entityToDelete: TEntity,
   { loadComponents = true } = {}
 ) => {
-  const { attributes = {} } = strapi.getModel(uid);
+  const { attributes = {} } = metrix.getModel(uid);
 
   const attributeNames = Object.keys(attributes);
 
@@ -375,7 +375,7 @@ const deleteComponents = async <TUID extends UID.Schema, TEntity extends Data.En
     if (attribute.type === 'component' || attribute.type === 'dynamiczone') {
       let value;
       if (loadComponents) {
-        value = await strapi.db.query(uid).load(entityToDelete, attributeName);
+        value = await metrix.db.query(uid).load(entityToDelete, attributeName);
       } else {
         value = entityToDelete[attributeName as keyof TEntity];
       }
@@ -391,7 +391,7 @@ const deleteComponents = async <TUID extends UID.Schema, TEntity extends Data.En
           _.castArray(value),
           (subValue: any) => deleteComponent(componentUID, subValue),
           {
-            concurrency: isDialectMySQL() && !strapi.db?.inTransaction() ? 1 : Infinity,
+            concurrency: isDialectMySQL() && !metrix.db?.inTransaction() ? 1 : Infinity,
           }
         );
       } else {
@@ -400,7 +400,7 @@ const deleteComponents = async <TUID extends UID.Schema, TEntity extends Data.En
         await async.map(
           _.castArray(value),
           (subValue: any) => deleteComponent(subValue.__component, subValue),
-          { concurrency: isDialectMySQL() && !strapi.db?.inTransaction() ? 1 : Infinity }
+          { concurrency: isDialectMySQL() && !metrix.db?.inTransaction() ? 1 : Infinity }
         );
       }
 
@@ -418,7 +418,7 @@ const createComponent = async <TUID extends UID.Component = UID.Component>(
   uid: TUID,
   data: Modules.EntityService.Params.Data.Input<TUID>
 ) => {
-  const model = strapi.getModel(uid) as Schema.Component;
+  const model = metrix.getModel(uid) as Schema.Component;
 
   const componentData = await createComponents(uid, data);
   const transform = pipe(
@@ -430,7 +430,7 @@ const createComponent = async <TUID extends UID.Component = UID.Component>(
     assign(componentData)
   );
 
-  return strapi.db.query(uid).create({ data: transform(data) });
+  return metrix.db.query(uid).create({ data: transform(data) });
 };
 
 // components can have nested compos so this must be recursive
@@ -439,11 +439,11 @@ const updateComponent = async <TUID extends UID.Component>(
   componentToUpdate: { id: Modules.EntityService.Params.Attribute.ID },
   data: Modules.EntityService.Params.Data.Input<TUID>
 ) => {
-  const model = strapi.getModel(uid) as Schema.Component;
+  const model = metrix.getModel(uid) as Schema.Component;
 
   const componentData = await updateComponents(uid, componentToUpdate, data);
 
-  return strapi.db.query(uid).update({
+  return metrix.db.query(uid).update({
     where: {
       id: componentToUpdate.id,
     },
@@ -474,7 +474,7 @@ const deleteComponent = async <TUID extends UID.Component>(
   componentToDelete: Data.Component<TUID>
 ) => {
   await deleteComponents(uid, componentToDelete);
-  await strapi.db.query(uid).delete({ where: { id: componentToDelete.id } });
+  await metrix.db.query(uid).delete({ where: { id: componentToDelete.id } });
 };
 
 /**
@@ -483,12 +483,12 @@ const deleteComponent = async <TUID extends UID.Component>(
  */
 const resolveComponentUID = ({
   paths,
-  strapi,
+  metrix,
   data,
   contentType,
 }: {
   paths: string[];
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
   data: any;
   contentType: Schema.ContentType;
 }): UID.Schema | undefined => {
@@ -510,11 +510,11 @@ const resolveComponentUID = ({
       const attribute: Schema.Attribute.AnyAttribute = cType.attributes[path];
 
       if (attribute.type === 'component') {
-        cType = strapi.getModel(attribute.component);
+        cType = metrix.getModel(attribute.component);
       }
 
       if (attribute.type === 'dynamiczone') {
-        cType = ({ __component }: { __component: UID.Component }) => strapi.getModel(__component);
+        cType = ({ __component }: { __component: UID.Component }) => metrix.getModel(__component);
       }
     }
   }

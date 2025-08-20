@@ -47,7 +47,7 @@ const createOrUpdateDocument = async (ctx: any, opts?: OptionsWithPopulate) => {
   const [documentVersion, otherDocumentVersion] = await Promise.all([
     findDocument(sanitizedQuery, model, { locale, status: 'draft' }),
     // Find the first document to check if it exists
-    strapi.db.query(model).findOne({ select: ['documentId'] }),
+    metrix.db.query(model).findOne({ select: ['documentId'] }),
   ]);
 
   const documentId = otherDocumentVersion?.documentId;
@@ -112,7 +112,7 @@ export default {
         return ctx.forbidden();
       }
       // Check if document exists
-      const document = await strapi.db.query(model).findOne({});
+      const document = await metrix.db.query(model).findOne({});
 
       if (!document) {
         return ctx.notFound();
@@ -199,7 +199,7 @@ export default {
       return ctx.forbidden();
     }
 
-    const publishedDocument = await strapi.db.transaction(async () => {
+    const publishedDocument = await metrix.db.transaction(async () => {
       const sanitizedQuery = await permissionChecker.sanitizedQuery.publish(query);
       const populate = await buildPopulateFromQuery(sanitizedQuery, model);
       const document = await createOrUpdateDocument(ctx, { populate });
@@ -258,7 +258,7 @@ export default {
       return ctx.forbidden();
     }
 
-    await strapi.db.transaction(async () => {
+    await metrix.db.transaction(async () => {
       if (discardDraft) {
         await documentManager.discardDraft(document.documentId, model, { locale });
       }

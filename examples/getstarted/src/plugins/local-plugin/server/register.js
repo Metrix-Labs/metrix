@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = ({ strapi }) => {
+module.exports = ({ metrix }) => {
   const allTypes = [
     'biginteger',
     'boolean',
@@ -22,14 +22,14 @@ module.exports = ({ strapi }) => {
 
   allTypes.forEach((type) => {
     const upcasedType = type.charAt(0).toUpperCase() + type.slice(1);
-    strapi.customFields.register({
+    metrix.customFields.register({
       type,
       name: `custom${upcasedType}`,
       plugin: 'myplugin',
     });
   });
 
-  if (strapi.plugin('graphql')) {
-    require('./graphql')({ strapi });
+  if (metrix.plugin('graphql')) {
+    require('./graphql')({ metrix });
   }
 };

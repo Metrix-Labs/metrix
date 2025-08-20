@@ -4,8 +4,8 @@ import * as z from 'zod/v4';
 export class EmailRouteValidator {
   protected readonly _strapi: Core.Strapi;
 
-  public constructor(strapi: Core.Strapi) {
-    this._strapi = strapi;
+  public constructor(metrix: Core.Strapi) {
+    this._strapi = metrix;
   }
 
   get sendEmailInput() {

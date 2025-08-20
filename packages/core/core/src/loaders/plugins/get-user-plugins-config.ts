@@ -9,9 +9,9 @@ import { loadConfigFile } from '../../utils/load-config-file';
  * and then merge config from `config/env/{env}/plugins.js`
  */
 export const getUserPluginsConfig = async () => {
-  const globalUserConfigPath = join(strapi.dirs.dist.config, 'plugins.js');
+  const globalUserConfigPath = join(metrix.dirs.dist.config, 'plugins.js');
   const currentEnvUserConfigPath = join(
-    strapi.dirs.dist.config,
+    metrix.dirs.dist.config,
     'env',
     process.env.NODE_ENV as string,
     'plugins.js'

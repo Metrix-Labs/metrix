@@ -3,7 +3,7 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import type { Core } from '@metrixlabs/types';
 import { getService } from '../../utils';
 
-const createLocalStrategy = (strapi: Core.Strapi, middleware?: any) => {
+const createLocalStrategy = (metrix: Core.Strapi, middleware?: any) => {
   return new LocalStrategy(
     {
       usernameField: 'email',

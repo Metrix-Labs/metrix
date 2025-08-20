@@ -1,12 +1,12 @@
 ---
 title: Migrations
-description: Conceptual guide to migrations in Strapi
+description: Conceptual guide to migrations in Metrix
 tags:
   - database
   - migration
 ---
 
-Strapi manages schema and data migrations in multiple ways. As much as possible we try to automatically sync the DB schema with the application configuration. However this in not sufficient to manage data migrations or schema migrations that are not reconcilable.
+Metrix manages schema and data migrations in multiple ways. As much as possible we try to automatically sync the DB schema with the application configuration. However this in not sufficient to manage data migrations or schema migrations that are not reconcilable.
 
 ![Migration flowchart](/img/database/migration-flow.png)
 

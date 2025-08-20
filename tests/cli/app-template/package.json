@@ -1,14 +1,14 @@
 {
-  "name": "@strapi/cli-test-app",
+  "name": "@metrix/cli-test-app",
   "version": "0.1.0",
   "private": true,
   "description": "E2E template application",
   "license": "MIT",
   "scripts": {
-    "build": "strapi build",
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "strapi": "strapi"
+    "build": "metrix build",
+    "develop": "metrix develop",
+    "start": "metrix start",
+    "strapi": "metrix"
   },
   "dependencies": {
     "@metrixlabs/metrix": "latest",

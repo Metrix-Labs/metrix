@@ -18,7 +18,7 @@ const getPreviewUrlSchema = yup
   .required();
 
 export const validatePreviewUrl = async (
-  strapi: Core.Strapi,
+  metrix: Core.Strapi,
   uid: UID.ContentType,
   params: Preview.GetPreviewUrl.Request['query']
 ): Promise<HandlerParams> => {
@@ -26,7 +26,7 @@ export const validatePreviewUrl = async (
   await validateYupSchema(getPreviewUrlSchema)(params);
 
   const newParams = pick(['documentId', 'locale', 'status'], params) as HandlerParams;
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
 
   // If it's not a collection type or single type
   if (!model || model.modelType !== 'contentType') {
@@ -41,7 +41,7 @@ export const validatePreviewUrl = async (
 
   // Fill the documentId if it's a single type
   if (isSingleType) {
-    const doc = await strapi.documents(uid).findFirst();
+    const doc = await metrix.documents(uid).findFirst();
 
     if (!doc) {
       throw new errors.NotFoundError('Document not found');

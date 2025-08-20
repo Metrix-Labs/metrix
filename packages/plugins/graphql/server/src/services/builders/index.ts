@@ -39,15 +39,15 @@ const buildersFactories = [
   resolvers,
 ];
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
+export default ({ metrix }: { metrix: Core.Strapi }) => {
   const buildersMap = new Map();
 
   return {
     /**
-     * Instantiate every builder with a strapi instance & a type registry
+     * Instantiate every builder with a metrix instance & a type registry
      */
     new(name: string, registry: TypeRegistry) {
-      const context = { strapi, registry };
+      const context = { metrix, registry };
 
       const builders = pipe(
         // Create a new instance of every builders
@@ -78,9 +78,9 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     },
 
     filters: {
-      operators: operators({ strapi }),
+      operators: operators({ metrix }),
     },
 
-    utils: utils({ strapi }),
+    utils: utils({ metrix }),
   };
 };

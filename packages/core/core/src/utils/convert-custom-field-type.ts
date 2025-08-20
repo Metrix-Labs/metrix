@@ -7,12 +7,12 @@ type InputAttributes = {
   };
 };
 
-export const convertCustomFieldType = (strapi: Core.Strapi) => {
-  const allContentTypeSchemaAttributes = Object.values(strapi.contentTypes).map(
+export const convertCustomFieldType = (metrix: Core.Strapi) => {
+  const allContentTypeSchemaAttributes = Object.values(metrix.contentTypes).map(
     (schema) => schema.attributes
   );
 
-  const allComponentSchemaAttributes = Object.values(strapi.components).map(
+  const allComponentSchemaAttributes = Object.values(metrix.components).map(
     (schema) => schema.attributes
   );
   const allSchemasAttributes: InputAttributes[] = [
@@ -23,7 +23,7 @@ export const convertCustomFieldType = (strapi: Core.Strapi) => {
   for (const schemaAttrbutes of allSchemasAttributes) {
     for (const attribute of Object.values(schemaAttrbutes)) {
       if (attribute.type === 'customField') {
-        const customField = strapi.get('custom-fields').get(attribute.customField);
+        const customField = metrix.get('custom-fields').get(attribute.customField);
         attribute.type = customField.type;
       }
     }

@@ -15,8 +15,8 @@ jest.mock('cropperjs/dist/cropper.css?raw', () => '', {
   virtual: true,
 });
 
-jest.mock('@strapi/strapi/admin', () => ({
-  ...jest.requireActual('@strapi/strapi/admin'),
+jest.mock('@metrixlabs/metrix/admin', () => ({
+  ...jest.requireActual('@metrixlabs/metrix/admin'),
   useRBAC: jest.fn().mockImplementation(() => ({
     isLoading: false,
     allowedActions: { canRead: true, canUpdate: true, canDelete: true, canCreate: true },

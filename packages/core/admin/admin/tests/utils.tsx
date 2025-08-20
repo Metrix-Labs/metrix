@@ -173,8 +173,8 @@ const Providers = ({ children, initialEntries, storeConfig, permissions = [] }: 
                                 autoReload
                                 useYarn
                                 dependencies={{
-                                  '@strapi/plugin-documentation': '4.2.0',
-                                  '@strapi/provider-upload-cloudinary': '4.2.0',
+                                  '@metrixlabs/plugin-documentation': '4.2.0',
+                                  '@metrixlabs/provider-upload-cloudinary': '4.2.0',
                                 }}
                                 strapiVersion="4.1.0"
                                 communityEdition

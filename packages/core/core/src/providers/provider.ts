@@ -1,10 +1,10 @@
 import type { Core } from '@metrixlabs/types';
 
 export type Provider = {
-  init?: (strapi: Core.Strapi) => void;
-  register?: (strapi: Core.Strapi) => Promise<void>;
-  bootstrap?: (strapi: Core.Strapi) => Promise<void>;
-  destroy?: (strapi: Core.Strapi) => Promise<void>;
+  init?: (metrix: Core.Strapi) => void;
+  register?: (metrix: Core.Strapi) => Promise<void>;
+  bootstrap?: (metrix: Core.Strapi) => Promise<void>;
+  destroy?: (metrix: Core.Strapi) => Promise<void>;
 };
 
 export const defineProvider = (provider: Provider) => provider;

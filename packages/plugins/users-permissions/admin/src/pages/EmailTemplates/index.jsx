@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useTracking } from '@metrixlabs/admin/strapi-admin';
+import { useTracking } from '@metrixlabs/admin/metrix-admin';
 import { useNotifyAT } from '@strapi/design-system';
 import {
   Page,

@@ -84,12 +84,12 @@ const removeIdsMut = (model: any, entry: any) => {
     if (attr.type === 'dynamiczone' && isArray(value)) {
       value.forEach((compo) => {
         if (has('__component', compo)) {
-          const model = strapi.components[compo.__component];
+          const model = metrix.components[compo.__component];
           removeIdsMut(model, compo);
         }
       });
     } else if (attr.type === 'component') {
-      const model = strapi.components[attr.component];
+      const model = metrix.components[attr.component];
       if (isArray(value)) {
         value.forEach((compo) => removeIdsMut(model, compo));
       } else {
@@ -136,7 +136,7 @@ const fillNonLocalizedAttributes = (entry: any, relatedEntry: any, { model }: an
     return;
   }
 
-  const modelDef = strapi.getModel(model);
+  const modelDef = metrix.getModel(model);
   const relatedEntryCopy = copyNonLocalizedAttributes(modelDef, relatedEntry);
 
   _.forEach(relatedEntryCopy, (value, field) => {
@@ -151,7 +151,7 @@ const fillNonLocalizedAttributes = (entry: any, relatedEntry: any, { model }: an
  * @param {String} modelUID uid of the model, could be of a content-type or a component
  */
 const getNestedPopulateOfNonLocalizedAttributes = (modelUID: any) => {
-  const schema = strapi.getModel(modelUID);
+  const schema = metrix.getModel(modelUID);
   const scalarAttributes = getScalarAttributes(schema);
   const nonLocalizedAttributes = getNonLocalizedAttributes(schema);
 

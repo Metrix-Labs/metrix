@@ -7,26 +7,26 @@ import type { QueryParam } from './validation/content-type';
 import { CoreContentTypeRouteValidator } from './validation';
 
 export const createRoutes = ({
-  strapi,
+  metrix,
   contentType,
 }: {
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
   contentType: Schema.ContentType;
 }) => {
   if (contentTypeUtils.isSingleType(contentType)) {
-    return getSingleTypeRoutes(contentType, strapi);
+    return getSingleTypeRoutes(contentType, metrix);
   }
 
-  return getCollectionTypeRoutes(contentType, strapi);
+  return getCollectionTypeRoutes(contentType, metrix);
 };
 
 const getSingleTypeRoutes = (
   schema: Schema.ContentType,
-  strapi: Core.Strapi
+  metrix: Core.Strapi
 ): Record<string, Partial<Core.Route>> => {
   const { uid, info } = schema;
 
-  const validator = new CoreContentTypeRouteValidator(strapi, uid);
+  const validator = new CoreContentTypeRouteValidator(metrix, uid);
   const conditionalQueryParams = getConditionalQueryParams(schema);
 
   return {
@@ -66,11 +66,11 @@ const getSingleTypeRoutes = (
 
 const getCollectionTypeRoutes = (
   schema: Schema.ContentType,
-  strapi: Core.Strapi
+  metrix: Core.Strapi
 ): Record<string, Partial<Core.Route>> => {
   const { uid, info } = schema;
 
-  const validator = new CoreContentTypeRouteValidator(strapi, uid);
+  const validator = new CoreContentTypeRouteValidator(metrix, uid);
   const conditionalQueryParams = getConditionalQueryParams(schema);
 
   return {
@@ -144,7 +144,7 @@ const getCollectionTypeRoutes = (
 };
 
 const getConditionalQueryParams = (schema: Schema.ContentType) => {
-  const isLocalized = strapi.plugin('i18n').service('content-types').isLocalizedContentType(schema);
+  const isLocalized = metrix.plugin('i18n').service('content-types').isLocalizedContentType(schema);
   const hasDraftAndPublish = contentTypes.hasDraftAndPublish(schema);
 
   return [

@@ -9,8 +9,8 @@ const { createPolicy } = policy;
  */
 export default createPolicy({
   name: 'admin::isTelemetryEnabled',
-  handler(_ctx, _config, { strapi }) {
-    if (strapi.telemetry.isDisabled) {
+  handler(_ctx, _config, { metrix }) {
+    if (metrix.telemetry.isDisabled) {
       return false;
     }
   },

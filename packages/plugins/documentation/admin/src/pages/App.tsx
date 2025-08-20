@@ -258,10 +258,10 @@ const createDocumentationHref = (path: string) => {
   }
 
   if (path.startsWith('/')) {
-    return `${window.strapi.backendURL}${path}`;
+    return `${window.metrix.backendURL}${path}`;
   }
 
-  return `${window.strapi.backendURL}/${path}`;
+  return `${window.metrix.backendURL}/${path}`;
 };
 
 export { App };

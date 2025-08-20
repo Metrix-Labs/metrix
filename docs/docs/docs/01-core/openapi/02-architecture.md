@@ -19,17 +19,17 @@ The package is organized into two main domains:
 
 ### The Route Collection
 
-This domain provides objects that extract different sets of routes from a Strapi application.
+This domain provides objects that extract different sets of routes from a Metrix application.
 
 You can find related files in `src/routes`.
 
 :::info
-This domain could potentially be moved to the Strapi core or Strapi utils in the future since it doesn't have any direct dependencies on OpenAPI itself.
+This domain could potentially be moved to the Metrix core or Metrix utils in the future since it doesn't have any direct dependencies on OpenAPI itself.
 :::
 
 ### The OpenAPI Document Generation
 
-This domain contains all the components necessary to generate a valid OpenAPI document from a Strapi application:
+This domain contains all the components necessary to generate a valid OpenAPI document from a Metrix application:
 
 | Component         | Path                                       |
 | ----------------- | ------------------------------------------ |
@@ -117,7 +117,7 @@ erDiagram
 
 ### OpenAPI Generator
 
-Generates valid OpenAPI documents from a Strapi application:
+Generates valid OpenAPI documents from a Metrix application:
 
 - **Processors**
 
@@ -173,7 +173,7 @@ erDiagram
 
   Context {
     object output
-    Strapi strapi
+    Metrix metrix
     array routes
     array registries
   }

@@ -2,8 +2,8 @@ import { Input } from './draft-publish';
 
 // if i18N enabled set default locale
 const enableI18n = async ({ oldContentTypes, contentTypes }: Input) => {
-  const { isLocalizedContentType } = strapi.plugin('i18n')?.service('content-types') ?? {};
-  const { getDefaultLocale } = strapi.plugin('i18n')?.service('locales') ?? {};
+  const { isLocalizedContentType } = metrix.plugin('i18n')?.service('content-types') ?? {};
+  const { getDefaultLocale } = metrix.plugin('i18n')?.service('locales') ?? {};
 
   if (!oldContentTypes) {
     return;
@@ -20,7 +20,7 @@ const enableI18n = async ({ oldContentTypes, contentTypes }: Input) => {
     if (!isLocalizedContentType(oldContentType) && isLocalizedContentType(contentType)) {
       const defaultLocale = await getDefaultLocale();
 
-      await strapi.db.query(uid).updateMany({
+      await metrix.db.query(uid).updateMany({
         where: { locale: null },
         data: { locale: defaultLocale },
       });
@@ -29,8 +29,8 @@ const enableI18n = async ({ oldContentTypes, contentTypes }: Input) => {
 };
 
 const disableI18n = async ({ oldContentTypes, contentTypes }: Input) => {
-  const { isLocalizedContentType } = strapi.plugin('i18n')?.service('content-types') ?? {};
-  const { getDefaultLocale } = strapi.plugin('i18n')?.service('locales') ?? {};
+  const { isLocalizedContentType } = metrix.plugin('i18n')?.service('content-types') ?? {};
+  const { getDefaultLocale } = metrix.plugin('i18n')?.service('locales') ?? {};
 
   if (!oldContentTypes) {
     return;
@@ -50,11 +50,11 @@ const disableI18n = async ({ oldContentTypes, contentTypes }: Input) => {
 
       await Promise.all([
         // Delete all entities that are not in the default locale
-        strapi.db.query(uid).deleteMany({
+        metrix.db.query(uid).deleteMany({
           where: { locale: { $ne: defaultLocale } },
         }),
         // Set locale to null for the rest
-        strapi.db.query(uid).updateMany({
+        metrix.db.query(uid).updateMany({
           where: { locale: { $eq: defaultLocale } },
           data: { locale: null },
         }),

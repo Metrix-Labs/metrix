@@ -5,15 +5,15 @@ const registerFiltersDefinition = (
   contentType: Struct.Schema,
   {
     registry,
-    strapi,
+    metrix,
     builders,
   }: {
     registry: TypeRegistry;
-    strapi: Core.Strapi;
+    metrix: Core.Strapi;
     builders: any;
   }
 ) => {
-  const { service: getService } = strapi.plugin('graphql');
+  const { service: getService } = metrix.plugin('graphql');
 
   const { getFiltersInputTypeName } = getService('utils').naming;
   const { KINDS } = getService('constants');

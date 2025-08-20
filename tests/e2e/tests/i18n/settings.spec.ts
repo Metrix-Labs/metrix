@@ -4,7 +4,7 @@ import { login } from '../../utils/login';
 import { prunePermissions } from '../../scripts/endpoints';
 import { clickAndWait, findAndClose, navToHeader } from '../../utils/shared';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 test.describe('Settings', () => {
   test.beforeEach(async ({ page }) => {

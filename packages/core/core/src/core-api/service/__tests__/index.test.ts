@@ -56,7 +56,7 @@ describe('Default Service', () => {
           findOne: jest.fn(() => Promise.resolve(null)),
         };
 
-        const strapi = {
+        const metrix = {
           db: {
             query() {
               return dbInstance;
@@ -68,7 +68,7 @@ describe('Default Service', () => {
           },
         };
 
-        global.strapi = strapi;
+        global.metrix = metrix;
 
         const service = createService({ contentType: singleType });
 
@@ -89,7 +89,7 @@ describe('Default Service', () => {
           count() {},
         };
 
-        const strapi = {
+        const metrix = {
           db: {
             query() {
               return dbInstance;
@@ -98,7 +98,7 @@ describe('Default Service', () => {
           documents: jest.fn(() => documentService),
         };
 
-        global.strapi = strapi;
+        global.metrix = metrix;
 
         const service = createService({ contentType: singleType });
 
@@ -123,7 +123,7 @@ describe('Default Service', () => {
           findOne: jest.fn(() => Promise.resolve({ documentId: 1 })),
         };
 
-        const strapi = {
+        const metrix = {
           db: {
             query() {
               return dbInstance;
@@ -132,7 +132,7 @@ describe('Default Service', () => {
           documents: jest.fn(() => documentService),
         };
 
-        global.strapi = strapi;
+        global.metrix = metrix;
 
         const service = createService({ contentType: singleType });
 

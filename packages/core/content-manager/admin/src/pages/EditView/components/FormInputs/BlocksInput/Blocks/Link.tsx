@@ -46,7 +46,7 @@ const LinkContent = React.forwardRef<HTMLAnchorElement, LinkContentProps>(
       try {
         // eslint-disable-next-line no-new
         new URL(
-          e.target.value?.startsWith('/') ? `https://strapi.io${e.target.value}` : e.target.value
+          e.target.value?.startsWith('/') ? `https://metrix.io${e.target.value}` : e.target.value
         );
       } catch (error) {
         setIsSaveDisabled(true);

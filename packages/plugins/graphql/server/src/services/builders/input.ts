@@ -5,9 +5,9 @@ import type { Context } from '../types';
 
 const { isWritableAttribute } = contentTypes;
 
-export default ({ strapi }: Context) => {
-  const { naming, mappers, attributes } = strapi.plugin('graphql').service('utils');
-  const extension = strapi.plugin('graphql').service('extension');
+export default ({ metrix }: Context) => {
+  const { naming, mappers, attributes } = metrix.plugin('graphql').service('utils');
+  const extension = metrix.plugin('graphql').service('extension');
 
   const { getComponentInputName, getContentTypeInputName, getEnumName, getDynamicZoneInputName } =
     naming;
@@ -101,7 +101,7 @@ export default ({ strapi }: Context) => {
             // Components
             else if (isComponent(attribute)) {
               const isRepeatable = (attribute as any).repeatable === true;
-              const component = strapi.components[(attribute as any).component];
+              const component = metrix.components[(attribute as any).component];
               const componentInputType = getComponentInputName(component as any);
 
               if (isRepeatable) {

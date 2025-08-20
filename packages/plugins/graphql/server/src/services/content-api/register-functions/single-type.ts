@@ -5,15 +5,15 @@ const registerSingleType = (
   contentType: Struct.SingleTypeSchema,
   {
     registry,
-    strapi,
+    metrix,
     builders,
   }: {
     registry: TypeRegistry;
-    strapi: Core.Strapi;
+    metrix: Core.Strapi;
     builders: any;
   }
 ) => {
-  const { service: getService } = strapi.plugin('graphql');
+  const { service: getService } = metrix.plugin('graphql');
 
   const { naming } = getService('utils');
   const { KINDS } = getService('constants');

@@ -1,9 +1,10 @@
 import type { Core } from '@metrixlabs/types';
+import type { Core } from '@metrix/types';
 
 import { values } from 'lodash/fp';
 
 import { createTestBuilder } from 'api-tests/builder';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 
 type Builder = ReturnType<typeof createTestBuilder>;
@@ -12,7 +13,7 @@ export type BuilderHelperReturn = {
   builder: Builder;
   data: any;
 
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
   rq: {
     admin: ReturnType<typeof createAuthRequest>;
     // public: ReturnType<typeof createAuthRequest>;
@@ -55,14 +56,14 @@ export const createTestSetup = async (
   bootstrapBuilder(resources, builder);
   await builder.build();
 
-  const strapi = await createStrapiInstance();
-  const rqAdmin = await createAuthRequest({ strapi });
-  const data = await builder.sanitizedFixtures(strapi);
+  const metrix = await createStrapiInstance();
+  const rqAdmin = await createAuthRequest({ metrix });
+  const data = await builder.sanitizedFixtures(metrix);
 
   return {
     builder,
     data,
-    strapi,
+    metrix,
     rq: {
       admin: rqAdmin,
       // public: rqAdmin, // TODO
@@ -70,7 +71,7 @@ export const createTestSetup = async (
   };
 };
 
-export const destroyTestSetup = async ({ strapi, builder }) => {
-  await strapi.destroy();
+export const destroyTestSetup = async ({ metrix, builder }) => {
+  await metrix.destroy();
   await builder.cleanup();
 };

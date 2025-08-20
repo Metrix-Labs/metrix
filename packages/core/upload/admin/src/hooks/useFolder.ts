@@ -1,4 +1,4 @@
-import { useNotification, useFetchClient } from '@metrixlabs/admin/strapi-admin';
+import { useNotification, useFetchClient } from '@metrixlabs/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 

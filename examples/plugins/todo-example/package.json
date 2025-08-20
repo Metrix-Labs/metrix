@@ -19,8 +19,8 @@
     }
   },
   "scripts": {
-    "build": "strapi-plugin build",
-    "watch": "strapi-plugin watch",
+    "build": "metrix-plugin build",
+    "watch": "metrix-plugin watch",
     "lint": "eslint ."
   },
   "peerDependencies": {

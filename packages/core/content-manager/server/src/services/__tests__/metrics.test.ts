@@ -61,8 +61,8 @@ describe('metrics', () => {
 
     test.each(testData)('%s', async (list, expectedResult) => {
       const send = jest.fn(() => Promise.resolve());
-      global.strapi = { telemetry: { send } } as any;
-      metricsService = metricsServiceLoader({ strapi });
+      global.metrix = { telemetry: { send } } as any;
+      metricsService = metricsServiceLoader({ metrix });
       const [containsRelationalFields, displayedFields, displayedRelationalFields] = expectedResult;
       await metricsService.sendDidConfigureListView(
         contentType as any,

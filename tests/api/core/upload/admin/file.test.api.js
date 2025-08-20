@@ -4,12 +4,12 @@ const fs = require('fs');
 const path = require('path');
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const { createUtils } = require('api-tests/utils');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 let utils;
 
@@ -42,13 +42,13 @@ const getFiles = async (request) => {
 describe('Upload', () => {
   beforeAll(async () => {
     await builder.addContentType(dogModel).build();
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
-    utils = createUtils(strapi);
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
+    utils = createUtils(metrix);
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -106,7 +106,7 @@ describe('Upload', () => {
       users.u1 = await utils.createUser({
         firstname: 'reader1',
         lastname: 'reader1',
-        email: 'reader1@strapi.io',
+        email: 'reader1@metrix.io',
         password: 'Reader1',
         isActive: true,
         roles: [uploadReaderRole.id],
@@ -115,7 +115,7 @@ describe('Upload', () => {
       users.u2 = await utils.createUser({
         firstname: 'reader2',
         lastname: 'reader2',
-        email: 'reader2@strapi.io',
+        email: 'reader2@metrix.io',
         password: 'Reader2',
         isActive: true,
         roles: [uploadReaderRole.id],
@@ -124,13 +124,13 @@ describe('Upload', () => {
       // Users' requests
 
       u1Req = await createAuthRequest({
-        strapi,
-        userInfo: { email: 'reader1@strapi.io', password: 'Reader1' },
+        metrix,
+        userInfo: { email: 'reader1@metrix.io', password: 'Reader1' },
       });
 
       u2Req = await createAuthRequest({
-        strapi,
-        userInfo: { email: 'reader2@strapi.io', password: 'Reader2' },
+        metrix,
+        userInfo: { email: 'reader2@metrix.io', password: 'Reader2' },
       });
     });
 

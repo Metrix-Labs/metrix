@@ -26,12 +26,12 @@ type ComponentMap = {
   [uid in UID.Component]: Struct.ComponentSchema;
 };
 
-export default async function loadComponents(strapi: Core.Strapi) {
-  if (!(await pathExists(strapi.dirs.dist.components))) {
+export default async function loadComponents(metrix: Core.Strapi) {
+  if (!(await pathExists(metrix.dirs.dist.components))) {
     return {};
   }
 
-  const map = await loadFiles<LoadedComponents>(strapi.dirs.dist.components, '*/*.*(js|json)');
+  const map = await loadFiles<LoadedComponents>(metrix.dirs.dist.components, '*/*.*(js|json)');
 
   const components = Object.keys(map).reduce((acc, category) => {
     Object.keys(map[category]).forEach((key) => {
@@ -39,9 +39,9 @@ export default async function loadComponents(strapi: Core.Strapi) {
 
       if (!schema.collectionName) {
         // NOTE: We're using the filepath from the app directory instead of the dist for information purpose
-        const filePath = join(strapi.dirs.app.components, category, schema.__filename__);
+        const filePath = join(metrix.dirs.app.components, category, schema.__filename__);
 
-        return strapi.stopWithError(
+        return metrix.stopWithError(
           `Component ${key} is missing a "collectionName" property.\nVerify file ${filePath}.`
         );
       }
@@ -61,5 +61,5 @@ export default async function loadComponents(strapi: Core.Strapi) {
     return acc;
   }, {} as ComponentMap);
 
-  strapi.get('components').add(components);
+  metrix.get('components').add(components);
 }

@@ -2,7 +2,7 @@ import { async } from '@metrixlabs/utils';
 import { signEntityMedia } from './utils';
 
 const signFileUrlsOnDocumentService = async () => {
-  const { provider } = strapi.plugins.upload;
+  const { provider } = metrix.plugins.upload;
   const isPrivate = await provider.isPrivate();
 
   // We only need to sign the file urls if the provider is private
@@ -10,7 +10,7 @@ const signFileUrlsOnDocumentService = async () => {
     return;
   }
 
-  strapi.documents.use(async (ctx, next) => {
+  metrix.documents.use(async (ctx, next) => {
     const uid = ctx.uid;
     const result: any = await next();
 

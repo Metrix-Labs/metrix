@@ -58,7 +58,7 @@ export default {
   async find(ctx: Context) {
     const userService = getService('user');
 
-    const permissionsManager = strapi.service('admin::permission').createPermissionsManager({
+    const permissionsManager = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: 'admin::user',
     });

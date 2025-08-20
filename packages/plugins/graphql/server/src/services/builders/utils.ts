@@ -10,8 +10,8 @@ type ContentTypeArgsOptions = {
   isNested?: boolean;
 };
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
-  const { service: getService } = strapi.plugin('graphql');
+export default ({ metrix }: { metrix: Core.Strapi }) => {
+  const { service: getService } = metrix.plugin('graphql');
 
   return {
     getContentTypeArgs(
@@ -109,7 +109,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       }: { contentType: Struct.ContentTypeSchema; usePagination?: boolean }
     ) {
       const { mappers } = getService('utils');
-      const { config } = strapi.plugin('graphql');
+      const { config } = metrix.plugin('graphql');
       const { pagination = {}, filters = {} } = args;
 
       // Init

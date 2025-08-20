@@ -5,7 +5,7 @@ import type { Metadata } from '../../metadata';
 import { type Database } from '../..';
 import { identifiers } from '../../utils/identifiers';
 
-const debug = createDebug('strapi::database::migration');
+const debug = createDebug('metrix::database::migration');
 
 type NameDiff<T> = {
   short: T;

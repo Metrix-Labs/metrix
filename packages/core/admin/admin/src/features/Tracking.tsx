@@ -52,7 +52,7 @@ const TrackingProvider = ({ children }: TrackingProviderProps) => {
     if (uuid && data) {
       const event = 'didInitializeAdministration';
       try {
-        fetch(`${process.env.STRAPI_ANALYTICS_URL || 'https://analytics.strapi.io'}/api/v2/track`, {
+        fetch(`${process.env.METRIX_ANALYTICS_URL || 'https://analytics.metrix.io'}/api/v2/track`, {
           method: 'POST',
           body: JSON.stringify({
             // This event is anonymous
@@ -486,9 +486,9 @@ const useTracking = (): UseTrackingReturn => {
       properties?: TEvent['properties']
     ) => {
       try {
-        if (uuid && !window.strapi.telemetryDisabled) {
+        if (uuid && !window.metrix.telemetryDisabled) {
           const res = await axios.post<string>(
-            `${process.env.STRAPI_ANALYTICS_URL || 'https://analytics.strapi.io'}/api/v2/track`,
+            `${process.env.METRIX_ANALYTICS_URL || 'https://analytics.metrix.io'}/api/v2/track`,
             {
               event,
               userId,
@@ -497,7 +497,7 @@ const useTracking = (): UseTrackingReturn => {
               groupProperties: {
                 ...telemetryProperties,
                 projectId: uuid,
-                projectType: window.strapi.projectType,
+                projectType: window.metrix.projectType,
               },
             },
             {

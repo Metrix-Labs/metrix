@@ -6,7 +6,7 @@ import {
   useNotification,
   useRBAC,
   Layouts,
-} from '@metrixlabs/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import { EmptyStateLayout } from '@strapi/design-system';
 import { EmptyDocuments } from '@strapi/icons/symbols';
 import { useIntl } from 'react-intl';

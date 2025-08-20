@@ -11,7 +11,7 @@ const { isVisibleAttribute } = strapiUtils.contentTypes;
  * @returns {Number} of draft relations
  */
 const sumDraftCounts = (entity: any, uid: any): number => {
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
 
   return Object.keys(model.attributes).reduce((sum, attributeName) => {
     const attribute: any = model.attributes[attributeName];

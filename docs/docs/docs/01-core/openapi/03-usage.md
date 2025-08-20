@@ -10,25 +10,25 @@ toc_max_heading_level: 4
 
 # OpenAPI
 
-This section explores the Strapi OpenAPI toolset
+This section explores the Metrix OpenAPI toolset
 
 ---
 
 ## `generate`
 
-Generate an OpenAPI JSON document based on the given Strapi application.
+Generate an OpenAPI JSON document based on the given Metrix application.
 
 By default, it collects content API routes registered in the application, transforms them into OpenAPI path objects, and fills in other OpenAPI components.
 
 ### Signature
 
 ```typescript
-function generate(strapi: Core.Strapi, options?: GeneratorOptions): GeneratorOutput;
+function generate(metrix: Core.Metrix, options?: GeneratorOptions): GeneratorOutput;
 ```
 
 ### Parameters
 
-- `strapi`, the Strapi application to generate an OpenAPI specification for
+- `metrix`, the Metrix application to generate an OpenAPI specification for
 - `options`, optional configuration for the generation process
 
 ### Return Value

@@ -1,9 +1,9 @@
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest, createRequest } from 'api-tests/request';
 import { createTestBuilder } from 'api-tests/builder';
 import { describeOnCondition } from 'api-tests/utils';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const productUID = 'api::product.product';
 const model = {
@@ -35,7 +35,7 @@ const getStageTransitionPermissions = (roleIds) => {
 describeOnCondition(edition === 'EE')('Review workflows', () => {
   const builder = createTestBuilder();
 
-  let strapi;
+  let metrix;
   let workflow;
   let rq;
   let roles;
@@ -78,8 +78,8 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
   beforeAll(async () => {
     await builder.addContentTypes([model]).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     workflow = await createWorkflow(baseWorkflow);
 
@@ -89,7 +89,7 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -136,7 +136,7 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
       });
 
       // Validate that permissions have been removed from database
-      const deletedPermission = await strapi.db.query('admin::permission').findOne({
+      const deletedPermission = await metrix.db.query('admin::permission').findOne({
         where: {
           id: workflow.stages[0].permissions[1].id,
         },
@@ -164,7 +164,7 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
       });
 
       // Deleted stage permissions should be removed from database
-      const permissions = await strapi.db.query('admin::permission').findMany({
+      const permissions = await metrix.db.query('admin::permission').findMany({
         where: {
           id: { $in: workflow.stages[0].permissions.map((p) => p.id) },
         },
@@ -187,7 +187,7 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
       await deleteWorkflow(workflow.id);
 
       // Deleted workflow permissions should be removed from database
-      const permissions = await strapi.db.query('admin::permission').findMany({
+      const permissions = await metrix.db.query('admin::permission').findMany({
         where: {
           id: { $in: workflow.stages[0].permissions.map((p) => p.id) },
         },

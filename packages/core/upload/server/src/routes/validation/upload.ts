@@ -13,9 +13,9 @@ export type FileQueryParam = QueryParam;
 export class UploadRouteValidator extends AbstractRouteValidator {
   protected readonly _strapi: Core.Strapi;
 
-  public constructor(strapi: Core.Strapi) {
+  public constructor(metrix: Core.Strapi) {
     super();
-    this._strapi = strapi;
+    this._strapi = metrix;
   }
 
   /**

@@ -15,7 +15,7 @@ const enableFirstPublishedAt = async ({ oldContentTypes, contentTypes }: Input) 
     return;
   }
 
-  return strapi.db.transaction(async (trx) => {
+  return metrix.db.transaction(async (trx) => {
     for (const uid in contentTypes) {
       if (!oldContentTypes[uid]) {
         continue;
@@ -31,7 +31,7 @@ const enableFirstPublishedAt = async ({ oldContentTypes, contentTypes }: Input) 
         continue;
       }
 
-      const content: ContentTypeData[] = await strapi.db
+      const content: ContentTypeData[] = await metrix.db
         .queryBuilder(uid)
         .select('*')
         .transacting(trx)
@@ -57,7 +57,7 @@ const enableFirstPublishedAt = async ({ oldContentTypes, contentTypes }: Input) 
           continue;
         }
 
-        await strapi.db
+        await metrix.db
           .queryBuilder(uid)
           .update({
             firstPublishedAt: new Date(publishedContent.publishedAt),

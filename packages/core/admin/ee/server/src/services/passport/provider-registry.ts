@@ -1,11 +1,11 @@
-import '@strapi/types';
+import '@metrixlabs/types';
 
 export default () => {
   const registry = new Map();
 
   Object.assign(registry, {
     register(provider: unknown) {
-      if (strapi.isLoaded) {
+      if (metrix.isLoaded) {
         throw new Error(`You can't register new provider after the bootstrap`);
       }
 

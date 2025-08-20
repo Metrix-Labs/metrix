@@ -11,26 +11,26 @@ import { FileInfo } from '../types';
 
 const { ValidationError } = utils.errors;
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
+export default ({ metrix }: { metrix: Core.Strapi }) => {
   const sanitizeOutput = async (data: unknown | unknown[], ctx: Context) => {
-    const schema = strapi.getModel(FILE_MODEL_UID);
+    const schema = metrix.getModel(FILE_MODEL_UID);
     const { auth } = ctx.state;
 
-    return strapi.contentAPI.sanitize.output(data, schema, { auth });
+    return metrix.contentAPI.sanitize.output(data, schema, { auth });
   };
 
   const validateQuery = async (data: Record<string, unknown>, ctx: Context) => {
-    const schema = strapi.getModel(FILE_MODEL_UID);
+    const schema = metrix.getModel(FILE_MODEL_UID);
     const { auth } = ctx.state;
 
-    return strapi.contentAPI.validate.query(data, schema, { auth });
+    return metrix.contentAPI.validate.query(data, schema, { auth });
   };
 
   const sanitizeQuery = async (data: Record<string, unknown>, ctx: Context) => {
-    const schema = strapi.getModel(FILE_MODEL_UID);
+    const schema = metrix.getModel(FILE_MODEL_UID);
     const { auth } = ctx.state;
 
-    return strapi.contentAPI.sanitize.query(data, schema, { auth });
+    return metrix.contentAPI.sanitize.query(data, schema, { auth });
   };
 
   return {

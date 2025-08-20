@@ -1,10 +1,10 @@
-import { useFetchClient } from '@metrixlabs/admin/strapi-admin';
+import { useFetchClient } from '@metrixlabs/admin/metrix-admin';
 import { renderHook, waitFor, screen } from '@tests/utils';
 
 import { useAssets } from '../useAssets';
 
-jest.mock('@strapi/admin/strapi-admin', () => ({
-  ...jest.requireActual('@strapi/admin/strapi-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useFetchClient: jest.fn().mockReturnValue({
     get: jest.fn().mockResolvedValue({
       data: {

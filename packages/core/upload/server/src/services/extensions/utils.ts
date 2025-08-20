@@ -79,11 +79,11 @@ const signEntityMedia = async (entity: any, uid: UID.Schema) => {
   }
 
   // If the entity is a regular content type, look for media attributes
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
   return traverseEntity(
     // @ts-expect-error - FIXME: fix traverseEntity using wrong types
     signEntityMediaVisitor,
-    { schema: model, getModel: strapi.getModel.bind(strapi) },
+    { schema: model, getModel: metrix.getModel.bind(metrix) },
     entity
   );
 };

@@ -6,8 +6,8 @@ const DEFAULT_SETTINGS = {
   defaultTimezone: null,
 } satisfies Settings;
 
-const createSettingsService = ({ strapi }: { strapi: Core.Strapi }) => {
-  const getStore = async () => strapi.store({ type: 'core', name: 'content-releases' });
+const createSettingsService = ({ metrix }: { metrix: Core.Strapi }) => {
+  const getStore = async () => metrix.store({ type: 'core', name: 'content-releases' });
 
   return {
     async update({ settings }: { settings: Settings }): Promise<Settings> {

@@ -25,7 +25,7 @@ const Input = ({
   const { formatMessage } = useIntl();
   const inputValue =
     name === 'noName'
-      ? `${window.strapi.backendURL}/api/connect/${providerToEditName}/callback`
+      ? `${window.metrix.backendURL}/api/connect/${providerToEditName}/callback`
       : value;
 
   const label = formatMessage(

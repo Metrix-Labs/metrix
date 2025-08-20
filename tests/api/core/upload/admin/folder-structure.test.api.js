@@ -1,10 +1,10 @@
 'use strict';
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
-let strapi;
+let metrix;
 let rq;
 const data = {
   folders: [],
@@ -23,8 +23,8 @@ describe('Folder structure', () => {
   const builder = createTestBuilder();
 
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     // delete all possibly existing folders
     const res = await rq({
@@ -57,7 +57,7 @@ describe('Folder structure', () => {
       },
     });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

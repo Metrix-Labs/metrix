@@ -51,9 +51,9 @@ const CLIDeployTabs = () => {
             <Box padding={4}>
               <Flex direction="row" justifyContent="space-between" alignItems="center">
                 <Typography tag="code" textColor="neutral800">
-                  yarn strapi deploy
+                  yarn metrix deploy
                 </Typography>
-                <CopyCommandButton command="yarn strapi deploy" />
+                <CopyCommandButton command="yarn metrix deploy" />
               </Flex>
             </Box>
           </Box>

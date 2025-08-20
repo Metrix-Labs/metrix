@@ -16,7 +16,7 @@ Here you can read about what content schemas the test instance has & the API cus
 ## Update the app template
 
 :::info
-The app template should be realistic and structured in a way an actual user might create an app using Strapi
+The app template should be realistic and structured in a way an actual user might create an app using Metrix
 :::
 
 To update the app template:
@@ -327,7 +327,7 @@ async function toggleRateLimiting(page, enabled = true) {
 ##### What does it do?
 
 This endpoint can be used to enable or disable the rate limitting middleware in
-strapi. When enabled login requests for each user are limitted to 5 in 5 minutes.
+metrix. When enabled login requests for each user are limitted to 5 in 5 minutes.
 
 ##### Why do we have it?
 
@@ -339,8 +339,8 @@ attempts.
 ##### Usage
 
 ```ts
-  bootstrap({ strapi }) {
-    strapi.service('api::config.config').adminAutoOpenEnable(false);
+  bootstrap({ metrix }) {
+    metrix.service('api::config.config').adminAutoOpenEnable(false);
   },
 ```
 
@@ -351,6 +351,6 @@ This endpoint can be used to enable or disable admin auto open.
 ##### Why do we have it?
 
 It can be frustrating to work with the e2e tests locally. If auto open is set to
-true a browser window will open each time you run the e2e tests as the strapi
+true a browser window will open each time you run the e2e tests as the metrix
 app starts for the first time. Because of this we disable it during the
 bootstrap phase of the test app instance.

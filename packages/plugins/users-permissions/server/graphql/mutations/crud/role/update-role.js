@@ -2,11 +2,11 @@
 
 const usersPermissionsRoleUID = 'plugin::users-permissions.role';
 
-module.exports = ({ nexus, strapi }) => {
-  const { getContentTypeInputName } = strapi.plugin('graphql').service('utils').naming;
+module.exports = ({ nexus, metrix }) => {
+  const { getContentTypeInputName } = metrix.plugin('graphql').service('utils').naming;
   const { nonNull } = nexus;
 
-  const roleContentType = strapi.getModel(usersPermissionsRoleUID);
+  const roleContentType = metrix.getModel(usersPermissionsRoleUID);
 
   const roleInputName = getContentTypeInputName(roleContentType);
 
@@ -27,7 +27,7 @@ module.exports = ({ nexus, strapi }) => {
       koaContext.request.body = args.data;
       koaContext.request.body.role = args.id;
 
-      await strapi.plugin('users-permissions').controller('role').updateRole(koaContext);
+      await metrix.plugin('users-permissions').controller('role').updateRole(koaContext);
 
       return { ok: true };
     },

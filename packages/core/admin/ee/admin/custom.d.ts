@@ -9,7 +9,7 @@ declare module 'styled-components' {
 
 declare global {
   interface Window {
-    strapi: {
+    metrix: {
       backendURL: string;
       isEE: boolean;
       future: {

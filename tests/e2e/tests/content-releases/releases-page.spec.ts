@@ -4,7 +4,7 @@ import { waitForRestart } from '../../utils/restart';
 import { resetFiles } from '../../utils/file-reset';
 import { sharedSetup } from '../../utils/setup';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 describeOnCondition(edition === 'EE')('Releases page', () => {
   test.beforeEach(async ({ page }) => {

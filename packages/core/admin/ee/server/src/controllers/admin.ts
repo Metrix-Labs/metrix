@@ -5,15 +5,15 @@ import { getService } from '../utils';
 export default {
   // NOTE: Overrides CE admin controller
   async getProjectType() {
-    const flags = strapi.config.get('admin.flags', {});
+    const flags = metrix.config.get('admin.flags', {});
     try {
       return {
         data: {
-          isEE: strapi.EE,
-          isTrial: strapi.ee.isTrial,
-          features: strapi.ee.features.list(),
+          isEE: metrix.EE,
+          isTrial: metrix.ee.isTrial,
+          features: metrix.ee.features.list(),
           flags,
-          type: strapi.ee.type,
+          type: metrix.ee.type,
         },
       };
     } catch (err) {
@@ -22,7 +22,7 @@ export default {
   },
 
   async licenseLimitInformation() {
-    const permittedSeats = strapi.ee.seats;
+    const permittedSeats = metrix.ee.seats;
 
     let shouldNotify = false;
     let licenseLimitStatus = null;
@@ -55,10 +55,10 @@ export default {
       shouldNotify,
       shouldStopCreate: isNil(permittedSeats) ? false : currentActiveUserCount >= permittedSeats,
       licenseLimitStatus,
-      isHostedOnStrapiCloud: env('STRAPI_HOSTING', null) === 'strapi.cloud',
-      type: strapi.ee.type,
-      isTrial: strapi.ee.isTrial,
-      features: strapi.ee.features.list() ?? [],
+      isHostedOnStrapiCloud: env('STRAPI_HOSTING', null) === 'metrix.cloud',
+      type: metrix.ee.type,
+      isTrial: metrix.ee.isTrial,
+      features: metrix.ee.features.list() ?? [],
     };
 
     return { data };

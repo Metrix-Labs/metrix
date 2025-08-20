@@ -5,9 +5,9 @@ import type { Context } from '../../types';
  * Build a map of filters type for every GraphQL scalars
  * @return {Object<string, NexusInputTypeDef>}
  */
-const buildScalarFilters = ({ strapi }: Context) => {
-  const { naming, mappers } = strapi.plugin('graphql').service('utils');
-  const { helpers } = strapi.plugin('graphql').service('internals');
+const buildScalarFilters = ({ metrix }: Context) => {
+  const { naming, mappers } = metrix.plugin('graphql').service('utils');
+  const { helpers } = metrix.plugin('graphql').service('internals');
 
   return helpers.getEnabledScalars().reduce((acc: any, type: string) => {
     const operators = mappers.graphqlScalarToOperators(type);

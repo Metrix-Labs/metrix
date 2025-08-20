@@ -5,7 +5,7 @@ const folderPath = '/1';
 describe('file', () => {
   describe('getFolderPath', () => {
     beforeAll(() => {
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne: jest.fn(() => ({ path: folderPath })) };
@@ -29,7 +29,7 @@ describe('file', () => {
     test('Delete 2 files', async () => {
       const remove = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         plugins: {
           upload: {
             services: {
@@ -68,7 +68,7 @@ describe('file', () => {
         getSignedUrl: jest.fn(),
       };
 
-      global.strapi = {
+      global.metrix = {
         plugins: {
           upload: {
             provider,

@@ -26,7 +26,7 @@ describe('Preview Service', () => {
   test('Throws 404 when preview is not configured', async () => {
     mockConfig.isConfigured.mockReturnValue(false);
 
-    const previewService = createPreviewService({ strapi: mockStrapi });
+    const previewService = createPreviewService({ metrix: mockStrapi });
 
     await expect(
       previewService.getPreviewUrl('api::article.article', {
@@ -45,7 +45,7 @@ describe('Preview Service', () => {
     mockConfig.isConfigured.mockReturnValue(true);
     mockConfig.getPreviewHandler.mockReturnValue(mockHandler);
 
-    const previewService = createPreviewService({ strapi: mockStrapi });
+    const previewService = createPreviewService({ metrix: mockStrapi });
     const params = { documentId: '1', locale: 'en', status: 'published' as const };
 
     const result = await previewService.getPreviewUrl('api::article.article', params);

@@ -5,15 +5,15 @@ const registerComponent = (
   contentType: Struct.ComponentSchema,
   {
     registry,
-    strapi,
+    metrix,
     builders,
   }: {
     registry: TypeRegistry;
-    strapi: Core.Strapi;
+    metrix: Core.Strapi;
     builders: any;
   }
 ) => {
-  const { service: getService } = strapi.plugin('graphql');
+  const { service: getService } = metrix.plugin('graphql');
 
   const { getComponentName } = getService('utils').naming;
   const { KINDS } = getService('constants');

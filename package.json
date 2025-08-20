@@ -1,5 +1,5 @@
 {
-  "name": "strapi",
+  "name": "metrix",
   "private": true,
   "bugs": {
     "url": "https://github.com/strapi/strapi/issues"
@@ -79,7 +79,21 @@
     "test:unit": "jest --config jest.config.js",
     "test:unit:update": "jest --config jest.config.js -u",
     "test:unit:all": "nx run-many --target=test:unit --nx-ignore-cycles",
-    "test:unit:watch": "run test:unit --watch"
+    "test:unit:watch": "run test:unit --watch",
+    "rename:fs:dry": "node scripts/rename/rename-metrix-to-metrix.js --dry",
+    "rename:fs": "node scripts/rename/rename-metrix-to-metrix.js",
+    "rename:code:dry": "node scripts/rename/run-code-codemod.js --dry",
+    "rename:code": "node scripts/rename/run-code-codemod.js",
+    "rename:json:dry": "node scripts/rename/update-json.js --dry",
+    "rename:json": "node scripts/rename/update-json.js",
+    "rename:text:dry": "node scripts/rename/replace-text.js --dry",
+    "rename:text": "node scripts/rename/replace-text.js",
+    "rename:code-lite:dry": "node scripts/rename/replace-code-lite.js --dry",
+    "rename:code-lite": "node scripts/rename/replace-code-lite.js",
+    "rename:revert-external:dry": "node scripts/rename/revert-external-strapi.js --dry",
+    "rename:revert-external": "node scripts/rename/revert-external-strapi.js",
+    "rename:rescope:dry": "node scripts/rename/rescope-internal-to-metrixlabs.js --dry",
+    "rename:rescope": "node scripts/rename/rescope-internal-to-metrixlabs.js"
   },
   "resolutions": {
     "@types/koa": "2.13.4",
@@ -120,7 +134,7 @@
     "chokidar": "3.6.0",
     "coffee": "5.5.1",
     "core-js": "3.36.0",
-    "create-strapi-app": "workspace:*",
+    "create-metrix-app": "workspace:*",
     "cross-env": "7.0.3",
     "dotenv": "16.4.5",
     "eslint": "8.50.0",
@@ -151,6 +165,7 @@
     "jest-cli": "29.6.0",
     "jest-environment-jsdom": "29.6.1",
     "jest-watch-typeahead": "2.2.2",
+    "jscodeshift": "17.1.2",
     "lerna": "8.2.0",
     "lint-staged": "15.2.10",
     "lodash": "4.17.21",

@@ -1,10 +1,10 @@
 # Experimental Dev
 
-This app is used to run experimental dependencies in Strapi. Specifically right now, used to test react19 release candidates & the react-compiler
+This app is used to run experimental dependencies in Metrix. Specifically right now, used to test react19 release candidates & the react-compiler
 
 ## Getting started
 
-To run the example you should include `USE_EXPERIMENTAL_DEPENDENCIES=true` in your `.env` file. This flag is used by the `@strapi/strapi` cli package and disabled checking against the dependency versions in your project as for production applications we only officially support v17/18 of react.
+To run the example you should include `USE_EXPERIMENTAL_DEPENDENCIES=true` in your `.env` file. This flag is used by the `@metrix/metrix` cli package and disabled checking against the dependency versions in your project as for production applications we only officially support v17/18 of react.
 
 ## Using the compiler
 

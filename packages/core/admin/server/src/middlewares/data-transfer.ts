@@ -13,7 +13,7 @@ export default () => async (ctx: Context, next: Next) => {
   }
 
   // if it has been manually disabled, return a not found
-  if (strapi.config.get('server.transfer.remote.enabled') === false) {
+  if (metrix.config.get('server.transfer.remote.enabled') === false) {
     return ctx.notFound();
   }
 

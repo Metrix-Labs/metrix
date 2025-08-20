@@ -1,9 +1,9 @@
 import type { Core, Modules } from '@metrixlabs/types';
 
-const createCustomFields = (strapi: Core.Strapi): Modules.CustomFields.CustomFields => {
+const createCustomFields = (metrix: Core.Strapi): Modules.CustomFields.CustomFields => {
   return {
     register(customField) {
-      strapi.get('custom-fields').add(customField);
+      metrix.get('custom-fields').add(customField);
     },
   };
 };

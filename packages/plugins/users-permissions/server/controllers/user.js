@@ -14,24 +14,24 @@ const { validateCreateUserBody, validateUpdateUserBody } = require('./validation
 const { ApplicationError, ValidationError, NotFoundError } = utils.errors;
 
 const sanitizeOutput = async (user, ctx) => {
-  const schema = strapi.getModel('plugin::users-permissions.user');
+  const schema = metrix.getModel('plugin::users-permissions.user');
   const { auth } = ctx.state;
 
-  return strapi.contentAPI.sanitize.output(user, schema, { auth });
+  return metrix.contentAPI.sanitize.output(user, schema, { auth });
 };
 
 const validateQuery = async (query, ctx) => {
-  const schema = strapi.getModel('plugin::users-permissions.user');
+  const schema = metrix.getModel('plugin::users-permissions.user');
   const { auth } = ctx.state;
 
-  return strapi.contentAPI.validate.query(query, schema, { auth });
+  return metrix.contentAPI.validate.query(query, schema, { auth });
 };
 
 const sanitizeQuery = async (query, ctx) => {
-  const schema = strapi.getModel('plugin::users-permissions.user');
+  const schema = metrix.getModel('plugin::users-permissions.user');
   const { auth } = ctx.state;
 
-  return strapi.contentAPI.sanitize.query(query, schema, { auth });
+  return metrix.contentAPI.sanitize.query(query, schema, { auth });
 };
 
 module.exports = {
@@ -40,7 +40,7 @@ module.exports = {
    * @return {Object}
    */
   async create(ctx) {
-    const advanced = await strapi
+    const advanced = await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'advanced' })
       .get();
 
@@ -48,7 +48,7 @@ module.exports = {
 
     const { email, username, role } = ctx.request.body;
 
-    const userWithSameUsername = await strapi.db
+    const userWithSameUsername = await metrix.db
       .query('plugin::users-permissions.user')
       .findOne({ where: { username } });
 
@@ -57,7 +57,7 @@ module.exports = {
     }
 
     if (advanced.unique_email) {
-      const userWithSameEmail = await strapi.db
+      const userWithSameEmail = await metrix.db
         .query('plugin::users-permissions.user')
         .findOne({ where: { email: email.toLowerCase() } });
 
@@ -73,7 +73,7 @@ module.exports = {
     };
 
     if (!role) {
-      const defaultRole = await strapi.db
+      const defaultRole = await metrix.db
         .query('plugin::users-permissions.role')
         .findOne({ where: { type: advanced.default_role } });
 
@@ -95,7 +95,7 @@ module.exports = {
    * @return {Object}
    */
   async update(ctx) {
-    const advancedConfigs = await strapi
+    const advancedConfigs = await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'advanced' })
       .get();
 
@@ -114,7 +114,7 @@ module.exports = {
     }
 
     if (_.has(ctx.request.body, 'username')) {
-      const userWithSameUsername = await strapi.db
+      const userWithSameUsername = await metrix.db
         .query('plugin::users-permissions.user')
         .findOne({ where: { username } });
 
@@ -124,7 +124,7 @@ module.exports = {
     }
 
     if (_.has(ctx.request.body, 'email') && advancedConfigs.unique_email) {
-      const userWithSameEmail = await strapi.db
+      const userWithSameEmail = await metrix.db
         .query('plugin::users-permissions.user')
         .findOne({ where: { email: email.toLowerCase() } });
 

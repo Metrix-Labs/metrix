@@ -3,7 +3,7 @@
 const { isEmpty } = require('lodash/fp');
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const form = require('api-tests/generators');
 const { createAuthRequest } = require('api-tests/request');
 
@@ -13,7 +13,7 @@ const cleanDate = (entry) => {
 };
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let data;
 let rq;
 
@@ -57,12 +57,12 @@ describe('Relations', () => {
       )
       .build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

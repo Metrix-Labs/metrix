@@ -12,7 +12,7 @@ const findManyQueries = {
 } as Record<string, jest.Mock>;
 
 describe('Transform relational data', () => {
-  global.strapi = {
+  global.metrix = {
     getModel: (uid: string) => models[uid],
     plugins: {
       i18n: {

@@ -145,70 +145,70 @@ describe('Content types utils', () => {
   describe('getPrivateAttributes', () => {
     test('Attribute is private in the model attributes', () => {
       const model = createModelWithPrivates();
-      global.strapi = { config: createConfig() };
+      global.metrix = { config: createConfig() };
 
       const privateAttributes = getPrivateAttributes(model);
 
       expect(privateAttributes).toContain('foo');
       expect(privateAttributes).not.toContain('bar');
       expect(privateAttributes).not.toContain('foobar');
-      expect(strapi.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
+      expect(metrix.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
     });
 
     test('Attribute is set to private in the app config', () => {
       const model = createModelWithPrivates();
-      global.strapi = { config: createConfig(['bar']) };
+      global.metrix = { config: createConfig(['bar']) };
 
       const privateAttributes = getPrivateAttributes(model);
 
       expect(privateAttributes).toContain('foo');
       expect(privateAttributes).toContain('bar');
       expect(privateAttributes).not.toContain('foobar');
-      expect(strapi.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
+      expect(metrix.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
     });
 
     test('Attribute is set to private in the model options', () => {
       const model = createModelWithPrivates(['foobar']);
-      global.strapi = { config: createConfig() };
+      global.metrix = { config: createConfig() };
 
       const privateAttributes = getPrivateAttributes(model);
 
       expect(privateAttributes).toContain('foo');
       expect(privateAttributes).not.toContain('bar');
       expect(privateAttributes).toContain('foobar');
-      expect(strapi.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
+      expect(metrix.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
     });
   });
 
   describe('isPrivateAttribute', () => {
     test('Attribute is private in the model attributes', () => {
       const model = createModelWithPrivates();
-      global.strapi = { config: createConfig() };
+      global.metrix = { config: createConfig() };
 
       expect(isPrivateAttribute(model, 'foo')).toBeTruthy();
       expect(isPrivateAttribute(model, 'bar')).toBeFalsy();
       expect(isPrivateAttribute(model, 'foobar')).toBeFalsy();
-      expect(strapi.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
+      expect(metrix.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
     });
 
     test('Attribute is set to private in the app config', () => {
       const model = createModelWithPrivates();
-      global.strapi = { config: createConfig(['bar']) };
+      global.metrix = { config: createConfig(['bar']) };
 
       expect(isPrivateAttribute(model, 'foo')).toBeTruthy();
       expect(isPrivateAttribute(model, 'bar')).toBeTruthy();
       expect(isPrivateAttribute(model, 'foobar')).toBeFalsy();
-      expect(strapi.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
+      expect(metrix.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
     });
 
     test('Attribute is set to private in the model options', () => {
       const model = createModelWithPrivates(['foobar']);
-      global.strapi = { config: createConfig() };
+      global.metrix = { config: createConfig() };
 
       expect(isPrivateAttribute(model, 'foo')).toBeTruthy();
       expect(isPrivateAttribute(model, 'bar')).toBeFalsy();
       expect(isPrivateAttribute(model, 'foobar')).toBeTruthy();
-      expect(strapi.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
+      expect(metrix.config.get).toHaveBeenCalledWith('api.responses.privateAttributes', []);
     });
   });
 

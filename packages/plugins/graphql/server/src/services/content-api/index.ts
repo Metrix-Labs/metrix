@@ -19,12 +19,12 @@ import {
 } from './register-functions';
 import { TypeRegistry } from '../type-registry';
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
+export default ({ metrix }: { metrix: Core.Strapi }) => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { mergeSchemas, addResolversToSchema } = require('@graphql-tools/schema');
 
-  const { service: getGraphQLService } = strapi.plugin('graphql');
-  const { config } = strapi.plugin('graphql');
+  const { service: getGraphQLService } = metrix.plugin('graphql');
+  const { config } = metrix.plugin('graphql');
 
   const { KINDS, GENERIC_MORPH_TYPENAME } = getGraphQLService('constants');
   const extensionService = getGraphQLService('extension');
@@ -44,8 +44,8 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     // content-api, and link the new type registry
     builders = getGraphQLService('builders').new('content-api', registry);
 
-    registerScalars({ registry, strapi });
-    registerInternals({ registry, strapi });
+    registerScalars({ registry, metrix });
+    registerInternals({ registry, metrix });
 
     if (isShadowCRUDEnabled) {
       shadowCRUD();
@@ -72,7 +72,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       typegen: config('artifacts.typegen', false),
     };
 
-    const currentEnv = strapi.config.get('environment');
+    const currentEnv = metrix.config.get('environment');
 
     const nexusSchema = makeSchema({
       types: [],
@@ -93,7 +93,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     });
 
     // Wrap resolvers if needed (auth, middlewares, policies...) as configured in the extension
-    const wrappedNexusSchema = wrapResolvers({ schema: nexusSchema, strapi, extension });
+    const wrappedNexusSchema = wrapResolvers({ schema: nexusSchema, metrix, extension });
 
     // Prune schema, remove unused types
     // eg: removes registered subscriptions if they're disabled in the config)
@@ -124,8 +124,8 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
 
     // Get every content type & component defined in Strapi
     const contentTypes = [
-      ...Object.values(strapi.components),
-      ...Object.values(strapi.contentTypes),
+      ...Object.values(metrix.components),
+      ...Object.values(metrix.contentTypes),
     ];
 
     // Disable Shadow CRUD for admin content types
@@ -153,7 +153,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     for (const contentType of contentTypes) {
       const { modelType } = contentType;
 
-      const registerOptions = { registry, strapi, builders };
+      const registerOptions = { registry, metrix, builders };
 
       // Generate various types associated to the content type
       // (enums, dynamic-zones, filters, inputs...)
@@ -188,7 +188,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     registry.register(GENERIC_MORPH_TYPENAME, genericMorphType, { kind: KINDS.morph });
 
     for (const contentType of contentTypes) {
-      registerPolymorphicContentType(contentType, { registry, strapi });
+      registerPolymorphicContentType(contentType, { registry, metrix });
     }
   };
 

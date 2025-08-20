@@ -2,7 +2,7 @@ import type { Core, Data, UID } from '@metrixlabs/types';
 import { async, contentTypes } from '@metrixlabs/utils';
 
 const hasDraftAndPublish = (uid: UID.CollectionType) => {
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
   return contentTypes.hasDraftAndPublish(model);
 };
 
@@ -47,7 +47,7 @@ export interface IdMap {
 /**
  * Holds a registry of document ids and their corresponding entity ids.
  */
-const createIdMap = ({ strapi }: { strapi: Core.Strapi }): IdMap => {
+const createIdMap = ({ metrix }: { metrix: Core.Strapi }): IdMap => {
   const loadedIds = new Map();
   const toLoadIds = new Map();
 
@@ -101,7 +101,7 @@ const createIdMap = ({ strapi }: { strapi: Core.Strapi }): IdMap => {
             findParams.where.publishedAt = status === 'draft' ? null : { $ne: null };
           }
 
-          const result = await strapi?.db?.query(uid).findMany(findParams);
+          const result = await metrix?.db?.query(uid).findMany(findParams);
 
           // 3. Store result in loadedIds
           result?.forEach(({ documentId, id, locale, publishedAt }: any) => {

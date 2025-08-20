@@ -15,7 +15,7 @@ const defaultConfig = {
 };
 
 // Set up initial mock before service creation
-global.strapi = {
+global.metrix = {
   config: {
     get: (path: any, defaultValue: any) => _.get(defaultConfig, path, defaultValue),
   },
@@ -32,7 +32,7 @@ global.strapi = {
       },
     },
   },
-  plugin: (name: string) => global.strapi.plugins[name],
+  plugin: (name: string) => global.metrix.plugins[name],
 } as any;
 
 const uploadService = createUploadService({} as any);
@@ -44,8 +44,8 @@ function mockUploadProvider(uploadFunc: any, props?: any) {
   const { responsiveDimensions = false } = props || {};
 
   // Only mutate the parts that depend on the parameters
-  global.strapi.plugins.upload.services.provider.upload = uploadFunc;
-  global.strapi.plugins.upload.services.upload.getSettings = () => ({ responsiveDimensions });
+  global.metrix.plugins.upload.services.provider.upload = uploadFunc;
+  global.metrix.plugins.upload.services.upload.getSettings = () => ({ responsiveDimensions });
 }
 
 const getFileData = (filePath: string) => ({

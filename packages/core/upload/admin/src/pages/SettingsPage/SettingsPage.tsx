@@ -1,7 +1,7 @@
 // TODO: find a better naming convention for the file that was an index file before
 import * as React from 'react';
 
-import { Page, useNotification, useFetchClient, Layouts } from '@metrixlabs/admin/strapi-admin';
+import { Page, useNotification, useFetchClient, Layouts } from '@metrixlabs/admin/metrix-admin';
 import { Box, Button, Flex, Grid, Toggle, Typography, Field } from '@strapi/design-system';
 import { Check } from '@strapi/icons';
 import isEqual from 'lodash/isEqual';

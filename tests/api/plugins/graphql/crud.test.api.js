@@ -4,11 +4,11 @@ const { omit, prop } = require('lodash/fp');
 
 // Helpers.
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 let graphqlQuery;
 
@@ -39,8 +39,8 @@ describe('Test Graphql API End to End', () => {
   beforeAll(async () => {
     await builder.addContentType(postModel).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     graphqlQuery = (body) => {
       return rq({
@@ -52,7 +52,7 @@ describe('Test Graphql API End to End', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

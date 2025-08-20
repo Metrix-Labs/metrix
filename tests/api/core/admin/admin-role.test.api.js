@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 const data = {
@@ -19,15 +19,15 @@ const omitTimestamps = (obj) => _.omit(obj, ['updatedAt', 'createdAt']);
 
 describe('Role CRUD End to End', () => {
   let rq;
-  let strapi;
+  let metrix;
 
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   describe('Default roles', () => {
@@ -35,19 +35,19 @@ describe('Role CRUD End to End', () => {
       const defaultsRoles = [
         {
           name: 'Super Admin',
-          code: 'strapi-super-admin',
+          code: 'metrix-super-admin',
           description: 'Super Admins can access and manage all features and settings.',
           usersCount: 1,
         },
         {
           name: 'Editor',
-          code: 'strapi-editor',
+          code: 'metrix-editor',
           description: 'Editors can manage and publish contents including those of other users.',
           usersCount: 0,
         },
         {
           name: 'Author',
-          code: 'strapi-author',
+          code: 'metrix-author',
           description: 'Authors can manage the content they have created.',
           usersCount: 0,
         },
@@ -67,9 +67,9 @@ describe('Role CRUD End to End', () => {
           expect.objectContaining(defaultsRoles[2]),
         ])
       );
-      data.superAdminRole = res.body.data.find((r) => r.code === 'strapi-super-admin');
-      data.authorRole = res.body.data.find((r) => r.code === 'strapi-author');
-      data.editorRole = res.body.data.find((r) => r.code === 'strapi-editor');
+      data.superAdminRole = res.body.data.find((r) => r.code === 'metrix-super-admin');
+      data.authorRole = res.body.data.find((r) => r.code === 'metrix-author');
+      data.editorRole = res.body.data.find((r) => r.code === 'metrix-editor');
     });
 
     test('Author have admin::is-creator condition for every permission', async () => {
@@ -215,7 +215,7 @@ describe('Role CRUD End to End', () => {
     });
     test('Can create a user with a role', async () => {
       const user = {
-        email: 'new-user@strapi.io',
+        email: 'new-user@metrix.io',
         firstname: 'New',
         lastname: 'User',
         roles: [data.rolesWithoutUsers[5].id],

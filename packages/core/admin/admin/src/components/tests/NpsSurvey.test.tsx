@@ -116,7 +116,7 @@ describe('NPS survey', () => {
     console.error = jest.fn();
 
     server.use(
-      rest.post('https://analytics.strapi.io/submit-nps', (req, res, ctx) => {
+      rest.post('https://analytics.metrix.io/submit-nps', (req, res, ctx) => {
         return res.once(ctx.status(500));
       })
     );

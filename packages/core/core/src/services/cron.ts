@@ -8,7 +8,7 @@ interface JobSpec {
   name: string | null;
 }
 
-type TaskFn = ({ strapi }: { strapi: Core.Strapi }, ...args: unknown[]) => Promise<unknown>;
+type TaskFn = ({ metrix }: { metrix: Core.Strapi }, ...args: unknown[]) => Promise<unknown>;
 
 type Task =
   | TaskFn
@@ -49,7 +49,7 @@ const createCronService = () => {
           );
         }
 
-        const fnWithStrapi = (...args: unknown[]) => fn({ strapi }, ...args);
+        const fnWithStrapi = (...args: unknown[]) => fn({ metrix }, ...args);
 
         // const job = new Job(null, fnWithStrapi);
         const job = new Job(fnWithStrapi);

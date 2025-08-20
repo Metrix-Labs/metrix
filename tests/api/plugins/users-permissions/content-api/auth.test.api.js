@@ -2,17 +2,17 @@
 
 const bcrypt = require('bcryptjs');
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createRequest } = require('api-tests/request');
 const { createAuthenticatedUser } = require('../utils');
 
-let strapi;
+let metrix;
 let rq;
 
 const internals = {
   user: {
     username: 'test',
-    email: 'test@strapi.io',
+    email: 'test@metrix.io',
     password: 'Test1234',
     confirmed: true,
     provider: 'local',
@@ -24,23 +24,23 @@ const data = {};
 
 describe('Auth API', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance({ bypassAuth: false });
+    metrix = await createStrapiInstance({ bypassAuth: false });
 
-    const { jwt, user } = await createAuthenticatedUser({ strapi, userInfo: internals.user });
+    const { jwt, user } = await createAuthenticatedUser({ metrix, userInfo: internals.user });
 
     data.user = user;
 
-    rq = createRequest({ strapi }).setURLPrefix('/api/auth').setToken(jwt);
+    rq = createRequest({ metrix }).setURLPrefix('/api/auth').setToken(jwt);
   });
 
   afterAll(async () => {
-    await strapi.db.query('plugin::users-permissions.user').deleteMany();
-    await strapi.destroy();
+    await metrix.db.query('plugin::users-permissions.user').deleteMany();
+    await metrix.destroy();
   });
 
   describe('Change Password', () => {
     test('Fails on unauthenticated request', async () => {
-      const nonAuthRequest = createRequest({ strapi });
+      const nonAuthRequest = createRequest({ metrix });
 
       const res = await nonAuthRequest({
         method: 'POST',
@@ -115,7 +115,7 @@ describe('Auth API', () => {
       });
 
       // check that password was hashed
-      const user = await strapi.db.query('plugin::users-permissions.user').findOne({
+      const user = await metrix.db.query('plugin::users-permissions.user').findOne({
         where: {
           email: internals.user.email.toLowerCase(),
         },
@@ -135,7 +135,7 @@ describe('Auth API', () => {
     });
 
     test('Can login with new password after success', async () => {
-      const rq = createRequest({ strapi }).setURLPrefix('/api/auth');
+      const rq = createRequest({ metrix }).setURLPrefix('/api/auth');
 
       const res = await rq({
         method: 'POST',
@@ -185,15 +185,15 @@ describe('Auth API', () => {
     const longPassword = 'a'.repeat(100);
     const userInfo = {
       username: 'longPasswordUser',
-      email: 'longpassworduser@strapi.io',
+      email: 'longpassworduser@metrix.io',
       password: longPassword,
       confirmed: true,
       provider: 'local',
     };
 
-    const { user } = await createAuthenticatedUser({ strapi, userInfo });
+    const { user } = await createAuthenticatedUser({ metrix, userInfo });
 
-    const rq = createRequest({ strapi }).setURLPrefix('/api/auth');
+    const rq = createRequest({ metrix }).setURLPrefix('/api/auth');
 
     const res = await rq({
       method: 'POST',

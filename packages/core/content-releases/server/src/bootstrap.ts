@@ -12,29 +12,29 @@ interface DeleteManyParams {
 }
 
 const deleteReleasesActionsAndUpdateReleaseStatus = async (params: DeleteManyParams) => {
-  const releases = await strapi.db.query(RELEASE_MODEL_UID).findMany({
+  const releases = await metrix.db.query(RELEASE_MODEL_UID).findMany({
     where: {
       actions: params,
     },
   });
 
-  await strapi.db.query(RELEASE_ACTION_MODEL_UID).deleteMany({
+  await metrix.db.query(RELEASE_ACTION_MODEL_UID).deleteMany({
     where: params,
   });
 
   // We update the status of each release after delete the actions
   for (const release of releases) {
-    getService('release', { strapi }).updateReleaseStatus(release.id);
+    getService('release', { metrix }).updateReleaseStatus(release.id);
   }
 };
 
-export const bootstrap = async ({ strapi }: { strapi: Core.Strapi }) => {
-  if (strapi.ee.features.isEnabled('cms-content-releases')) {
-    const contentTypesWithDraftAndPublish = Object.keys(strapi.contentTypes).filter(
-      (uid: any) => strapi.contentTypes[uid]?.options?.draftAndPublish
+export const bootstrap = async ({ metrix }: { metrix: Core.Strapi }) => {
+  if (metrix.ee.features.isEnabled('cms-content-releases')) {
+    const contentTypesWithDraftAndPublish = Object.keys(metrix.contentTypes).filter(
+      (uid: any) => metrix.contentTypes[uid]?.options?.draftAndPublish
     );
 
-    strapi.db.lifecycles.subscribe({
+    metrix.db.lifecycles.subscribe({
       models: contentTypesWithDraftAndPublish,
 
       /**
@@ -42,7 +42,7 @@ export const bootstrap = async ({ strapi }: { strapi: Core.Strapi }) => {
        */
       async afterDeleteMany(event) {
         try {
-          const model = strapi.getModel(event.model.uid as UID.Schema);
+          const model = metrix.getModel(event.model.uid as UID.Schema);
           // @ts-expect-error TODO: lifecycles types looks like are not 100% finished
           if (model.kind === 'collectionType' && model.options?.draftAndPublish) {
             const { where } = event.params;
@@ -55,7 +55,7 @@ export const bootstrap = async ({ strapi }: { strapi: Core.Strapi }) => {
           }
         } catch (error) {
           // If an error happens we don't want to block the delete entry flow, but we log the error
-          strapi.log.error('Error while deleting release actions after entry deleteMany', {
+          metrix.log.error('Error while deleting release actions after entry deleteMany', {
             error,
           });
         }
@@ -63,13 +63,13 @@ export const bootstrap = async ({ strapi }: { strapi: Core.Strapi }) => {
     });
 
     // We register middleware to handle ReleaseActions when changes on documents are made
-    strapi.documents.use(deleteActionsOnDelete);
-    strapi.documents.use(updateActionsOnUpdate);
+    metrix.documents.use(deleteActionsOnDelete);
+    metrix.documents.use(updateActionsOnUpdate);
 
-    getService('scheduling', { strapi })
+    getService('scheduling', { metrix })
       .syncFromDatabase()
       .catch((err: Error) => {
-        strapi.log.error(
+        metrix.log.error(
           'Error while syncing scheduled jobs from the database in the content-releases plugin. This could lead to errors in the releases scheduling.'
         );
 
@@ -77,7 +77,7 @@ export const bootstrap = async ({ strapi }: { strapi: Core.Strapi }) => {
       });
 
     Object.entries(ALLOWED_WEBHOOK_EVENTS).forEach(([key, value]) => {
-      strapi.get('webhookStore').addAllowedEvent(key, value);
+      metrix.get('webhookStore').addAllowedEvent(key, value);
     });
   }
 };

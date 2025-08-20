@@ -54,7 +54,7 @@ const sanitizeMainField = (model: any, mainField: any, userAbility: any) => {
  * All relations sent to this function should have the same status or no status
  */
 const addStatusToRelations = async (targetUid: UID.Schema, relations: RelationEntity[]) => {
-  if (!contentTypes.hasDraftAndPublish(strapi.getModel(targetUid))) {
+  if (!contentTypes.hasDraftAndPublish(metrix.getModel(targetUid))) {
     return relations;
   }
 
@@ -72,7 +72,7 @@ const addStatusToRelations = async (targetUid: UID.Schema, relations: RelationEn
     publishedAt: firstRelation.publishedAt !== null ? { $null: true } : { $notNull: true },
   };
 
-  const availableStatus = await strapi.query(targetUid).findMany({
+  const availableStatus = await metrix.query(targetUid).findMany({
     select: ['id', 'documentId', 'locale', 'updatedAt', 'createdAt', 'publishedAt'],
     filters,
   });
@@ -92,7 +92,7 @@ const addStatusToRelations = async (targetUid: UID.Schema, relations: RelationEn
 };
 
 const getPublishedAtClause = (status: string, uid: UID.Schema) => {
-  const model = strapi.getModel(uid);
+  const model = metrix.getModel(uid);
 
   /**
    * If dp is disabled, ignore the filter
@@ -106,10 +106,10 @@ const getPublishedAtClause = (status: string, uid: UID.Schema) => {
 };
 
 const validateLocale = (sourceUid: UID.Schema, targetUid: UID.ContentType, locale?: string) => {
-  const sourceModel = strapi.getModel(sourceUid);
-  const targetModel = strapi.getModel(targetUid);
+  const sourceModel = metrix.getModel(sourceUid);
+  const targetModel = metrix.getModel(targetUid);
 
-  const isLocalized = strapi.plugin('i18n').service('content-types').isLocalizedContentType;
+  const isLocalized = metrix.plugin('i18n').service('content-types').isLocalizedContentType;
   const isSourceLocalized = isLocalized(sourceModel);
   const isTargetLocalized = isLocalized(targetModel);
 
@@ -124,7 +124,7 @@ const validateStatus = (
   sourceUid: UID.Schema,
   status?: Modules.Documents.Params.PublicationStatus.Kind
 ) => {
-  const sourceModel = strapi.getModel(sourceUid);
+  const sourceModel = metrix.getModel(sourceUid);
 
   const isDP = contentTypes.hasDraftAndPublish;
   const isSourceDP = isDP(sourceModel);
@@ -146,7 +146,7 @@ export default {
     const { userAbility } = ctx.state;
     const { model, targetField } = ctx.params;
 
-    const sourceSchema = strapi.getModel(model);
+    const sourceSchema = metrix.getModel(model);
     if (!sourceSchema) {
       throw new errors.ValidationError(`The model ${model} doesn't exist`);
     }
@@ -206,7 +206,7 @@ export default {
         .populateFromQuery(permissionQuery)
         .build();
 
-      const currentEntity = await strapi.db.query(model).findOne({
+      const currentEntity = await metrix.db.query(model).findOne({
         where,
         populate,
       });
@@ -232,7 +232,7 @@ export default {
       ? await getService('components').findConfiguration(sourceSchema)
       : await getService('content-types').findConfiguration(sourceSchema);
 
-    const targetSchema = strapi.getModel(targetUid);
+    const targetSchema = metrix.getModel(targetUid);
 
     const mainField = flow(
       prop(`metadatas.${targetField}.edit.mainField`),
@@ -326,7 +326,7 @@ export default {
        * We also optionally filter the target relations by the requested
        * status and locale if provided.
        */
-      const subQuery = strapi.db.queryBuilder(sourceUid);
+      const subQuery = metrix.db.queryBuilder(sourceUid);
 
       // The alias refers to the DB table of the target content type model
       const alias = subQuery.getAlias();
@@ -397,9 +397,9 @@ export default {
       });
     }
 
-    const dbQuery = strapi.get('query-params').transform(targetUid, queryParams);
+    const dbQuery = metrix.get('query-params').transform(targetUid, queryParams);
 
-    const res = await strapi.db.query(targetUid).findPage(dbQuery);
+    const res = await metrix.db.query(targetUid).findPage(dbQuery);
 
     ctx.body = {
       ...res,
@@ -437,7 +437,7 @@ export default {
      * NOTE: Relations need to be loaded using any db.query method
      *       to ensure the proper ordering is applied
      */
-    const dbQuery = strapi.db.query(sourceUid);
+    const dbQuery = metrix.db.query(sourceUid);
     const loadRelations = relations.isAnyToMany(attribute)
       ? (...args: Parameters<typeof dbQuery.loadPages>) => dbQuery.loadPages(...args)
       : (...args: Parameters<typeof dbQuery.load>) =>
@@ -494,7 +494,7 @@ export default {
      * Pagination is not necessary as the permissionQuery contains the ids to load.
      */
     const sanitizedRes = await loadRelations({ id: entryId }, targetField, {
-      ...strapi.get('query-params').transform(targetUid, permissionQuery),
+      ...metrix.get('query-params').transform(targetUid, permissionQuery),
       ordering: 'desc',
     });
 

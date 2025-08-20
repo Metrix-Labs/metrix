@@ -50,5 +50,5 @@ const operators = {
 };
 
 // Instantiate every operator with the Strapi instance
-export default ({ strapi }: { strapi: Core.Strapi }) =>
-  mapValues((opCtor) => opCtor({ strapi }), operators);
+export default ({ metrix }: { metrix: Core.Strapi }) =>
+  mapValues((opCtor) => opCtor({ metrix }), operators);

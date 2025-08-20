@@ -1,25 +1,25 @@
 'use strict';
 
 // Helpers.
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest, createRequest } = require('api-tests/request');
 
-let strapi;
+let metrix;
 let authReq;
 
 describe('Test Graphql user service', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance({ bypassAuth: false });
-    authReq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance({ bypassAuth: false });
+    authReq = await createAuthRequest({ metrix });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   describe('Check createUser authorizations', () => {
     test('createUser is forbidden to public', async () => {
-      const rq = createRequest({ strapi });
+      const rq = createRequest({ metrix });
       const res = await rq({
         url: '/graphql',
         method: 'POST',
@@ -88,7 +88,7 @@ describe('Test Graphql user service', () => {
 
   describe('Check updateUser authorizations', () => {
     test('updateUser is forbidden to public', async () => {
-      const rq = createRequest({ strapi });
+      const rq = createRequest({ metrix });
       const res = await rq({
         url: '/graphql',
         method: 'POST',
@@ -158,7 +158,7 @@ describe('Test Graphql user service', () => {
 
     describe('Check deleteUser authorizations', () => {
       test('deleteUser is forbidden to public', async () => {
-        const rq = createRequest({ strapi });
+        const rq = createRequest({ metrix });
         const res = await rq({
           url: '/graphql',
           method: 'POST',

@@ -50,9 +50,9 @@ const mockStrapi = {
   getModel: jest.fn(),
 };
 
-jest.mock('@strapi/utils', () => {
+jest.mock('@metrixlabs/utils', () => {
   return {
-    ...jest.requireActual('@strapi/utils'),
+    ...jest.requireActual('@metrixlabs/utils'),
     sanitizeUser: jest.fn((input) => input),
     sanitize: {
       contentAPI: {
@@ -92,7 +92,7 @@ jest.mock('../../../utils', () => {
 
 describe('user-permissions auth', () => {
   beforeAll(() => {
-    global.strapi = mockStrapi;
+    global.metrix = mockStrapi;
   });
 
   describe('register', () => {
@@ -123,13 +123,13 @@ describe('user-permissions auth', () => {
         send: jest.fn(),
       };
 
-      const authorization = auth({ strapi: global.strapi });
+      const authorization = auth({ metrix: global.metrix });
       await authorization.register(ctx);
       expect(ctx.send).toHaveBeenCalledTimes(1);
     });
 
     test('throws ValidationError when passed extra fields when allowedField is undefined', async () => {
-      global.strapi = {
+      global.metrix = {
         ...mockStrapi,
         config: {
           get: jest.fn(() => {
@@ -156,13 +156,13 @@ describe('user-permissions auth', () => {
         },
         send: jest.fn(),
       };
-      const authorization = auth({ strapi: global.strapi });
+      const authorization = auth({ metrix: global.metrix });
       await expect(authorization.register(ctx)).rejects.toThrow(errors.ValidationError);
       expect(ctx.send).toHaveBeenCalledTimes(0);
     });
 
     test('throws ValidationError when passed extra fields when allowedField is []', async () => {
-      global.strapi = {
+      global.metrix = {
         ...mockStrapi,
         config: {
           get: jest.fn(() => {
@@ -189,13 +189,13 @@ describe('user-permissions auth', () => {
         },
         send: jest.fn(),
       };
-      const authorization = auth({ strapi: global.strapi });
+      const authorization = auth({ metrix: global.metrix });
       await expect(authorization.register(ctx)).rejects.toThrow(errors.ValidationError);
       expect(ctx.send).toHaveBeenCalledTimes(0);
     });
 
     test('allows exceptions from config register.allowedFields', async () => {
-      global.strapi = {
+      global.metrix = {
         ...mockStrapi,
         config: {
           get: jest.fn(() => {
@@ -222,13 +222,13 @@ describe('user-permissions auth', () => {
         },
         send: jest.fn(),
       };
-      const authorization = auth({ strapi: global.strapi });
+      const authorization = auth({ metrix: global.metrix });
       await authorization.register(ctx);
       expect(ctx.send).toHaveBeenCalledTimes(1);
     });
 
     test('password does not follow custom validation pattern', async () => {
-      global.strapi = {
+      global.metrix = {
         ...mockStrapi,
         config: {
           get: jest.fn((path) => {
@@ -265,13 +265,13 @@ describe('user-permissions auth', () => {
         },
         send: jest.fn(),
       };
-      const authorization = auth({ strapi: global.strapi });
+      const authorization = auth({ metrix: global.metrix });
       await expect(authorization.register(ctx)).rejects.toThrow(errors.ValidationError);
       expect(ctx.send).toHaveBeenCalledTimes(0);
     });
 
     test('password follows custom validation pattern', async () => {
-      global.strapi = {
+      global.metrix = {
         ...mockStrapi,
         config: {
           get: jest.fn((path) => {
@@ -308,7 +308,7 @@ describe('user-permissions auth', () => {
         },
         send: jest.fn(),
       };
-      const authorization = auth({ strapi: global.strapi });
+      const authorization = auth({ metrix: global.metrix });
       await authorization.register(ctx);
       expect(ctx.send).toHaveBeenCalledTimes(1);
     });
@@ -332,7 +332,7 @@ describe('user-permissions auth', () => {
     ];
 
     test.each(cases)('$description', async ({ password, expectedMessage }) => {
-      global.strapi = {
+      global.metrix = {
         ...mockStrapi,
         config: {
           get: jest.fn(() => {
@@ -359,7 +359,7 @@ describe('user-permissions auth', () => {
         send: jest.fn(),
       };
 
-      const authorization = auth({ strapi: global.strapi });
+      const authorization = auth({ metrix: global.metrix });
 
       await expect(authorization.register(ctx)).rejects.toThrow(errors.ValidationError);
       try {
@@ -430,7 +430,7 @@ describe('user-permissions auth', () => {
     test.each(resetPasswordCases)(
       '$description',
       async ({ body, expectedMessage, expectedResponse }) => {
-        global.strapi = {
+        global.metrix = {
           ...mockStrapi,
           db: {
             query: jest.fn(() => ({
@@ -474,7 +474,7 @@ describe('user-permissions auth', () => {
           send: jest.fn(),
         };
 
-        const authorization = auth({ strapi: global.strapi });
+        const authorization = auth({ metrix: global.metrix });
 
         if (expectedMessage) {
           await expect(authorization.resetPassword(ctx)).rejects.toThrowError(
@@ -550,7 +550,7 @@ describe('user-permissions auth', () => {
     test.each(changePasswordCases)(
       '$description',
       async ({ body, expectedMessage, expectedResponse }) => {
-        global.strapi = {
+        global.metrix = {
           ...mockStrapi,
           db: {
             query: jest.fn(() => ({
@@ -595,7 +595,7 @@ describe('user-permissions auth', () => {
           send: jest.fn(),
         };
 
-        const authorization = auth({ strapi: global.strapi });
+        const authorization = auth({ metrix: global.metrix });
 
         if (expectedMessage) {
           await expect(authorization.changePassword(ctx)).rejects.toThrow(expectedMessage);

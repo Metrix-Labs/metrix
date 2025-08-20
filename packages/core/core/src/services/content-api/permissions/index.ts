@@ -19,7 +19,7 @@ const createValidatePermissionHandler =
 
     // If the action isn't registered into the action provider, then ignore the permission and warn the user
     if (!action) {
-      strapi.log.debug(
+      metrix.log.debug(
         `Unknown action "${permission.action}" supplied when registering a new permission`
       );
 
@@ -33,7 +33,7 @@ const createValidatePermissionHandler =
  * Create instances of providers and permission engine for the core content-API service.
  * Also, expose utilities to get information about available actions and such.
  */
-export default (strapi: Core.Strapi) => {
+export default (metrix: Core.Strapi) => {
   // NOTE: Here we define both an action and condition provider,
   // but at the moment, we're only using the action one.
   const providers = {
@@ -97,8 +97,8 @@ export default (strapi: Core.Strapi) => {
       });
     };
 
-    registerAPIsActions(strapi.apis, 'api');
-    registerAPIsActions(strapi.plugins, 'plugin');
+    registerAPIsActions(metrix.apis, 'api');
+    registerAPIsActions(metrix.plugins, 'plugin');
 
     return actionMap;
   };

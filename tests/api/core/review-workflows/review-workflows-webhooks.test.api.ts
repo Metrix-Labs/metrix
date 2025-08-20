@@ -1,6 +1,6 @@
 import { omit } from 'lodash/fp';
 
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import { createTestBuilder } from 'api-tests/builder';
 import { describeOnCondition, createUtils } from 'api-tests/utils';
@@ -11,7 +11,7 @@ import {
 } from '../../../../packages/core/review-workflows/server/src/constants/workflows';
 import { WORKFLOW_UPDATE_STAGE } from '../../../../packages/core/review-workflows/server/src/constants/webhook-events';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const productUID = 'api::product.product';
 const model = {
@@ -31,7 +31,7 @@ const model = {
 describeOnCondition(edition === 'EE')('Review workflows', () => {
   const builder = createTestBuilder();
   let rq;
-  let strapi;
+  let metrix;
   let stageA;
   let stageB;
   let workflow;
@@ -50,16 +50,16 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
     await builder.addContentTypes([model]).build();
 
     // @ts-expect-error - We don't have the type for this
-    strapi = await createStrapiInstance({ bypassAuth: false });
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance({ bypassAuth: false });
+    rq = await createAuthRequest({ metrix });
 
-    stageA = await strapi.db.query(STAGE_MODEL_UID).create({
+    stageA = await metrix.db.query(STAGE_MODEL_UID).create({
       data: { name: 'Stage A' },
     });
-    stageB = await strapi.db.query(STAGE_MODEL_UID).create({
+    stageB = await metrix.db.query(STAGE_MODEL_UID).create({
       data: { name: 'Stage B' },
     });
-    workflow = await strapi.db.query(WORKFLOW_MODEL_UID).create({
+    workflow = await metrix.db.query(WORKFLOW_MODEL_UID).create({
       data: {
         contentTypes: [],
         name: 'workflow',
@@ -74,7 +74,7 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -83,7 +83,7 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
 
     const entry = await createEntry(productUID, { name: 'Product' });
 
-    strapi.eventHub.on(WORKFLOW_UPDATE_STAGE, (payload) => {
+    metrix.eventHub.on(WORKFLOW_UPDATE_STAGE, (payload) => {
       expect(payload).toMatchObject({
         entity: {
           documentId: entry.documentId,

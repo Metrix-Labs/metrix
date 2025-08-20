@@ -7,9 +7,9 @@ const { isString, has, toLower } = require('lodash/fp');
 const { RateLimitError } = utils.errors;
 
 module.exports =
-  (config, { strapi }) =>
+  (config, { metrix }) =>
   async (ctx, next) => {
-    let rateLimitConfig = strapi.config.get('plugin::users-permissions.ratelimit');
+    let rateLimitConfig = metrix.config.get('plugin::users-permissions.ratelimit');
 
     if (!rateLimitConfig) {
       rateLimitConfig = {

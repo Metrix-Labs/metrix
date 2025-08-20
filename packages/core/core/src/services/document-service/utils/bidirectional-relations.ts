@@ -56,12 +56,12 @@ interface LoadContext {
 const load = async (uid: UID.ContentType, { oldVersions }: LoadContext) => {
   const relationsToUpdate = [] as any;
 
-  await strapi.db.transaction(async ({ trx }) => {
-    const contentTypes = Object.values(strapi.contentTypes) as Schema.ContentType[];
-    const components = Object.values(strapi.components) as Schema.Component[];
+  await metrix.db.transaction(async ({ trx }) => {
+    const contentTypes = Object.values(metrix.contentTypes) as Schema.ContentType[];
+    const components = Object.values(metrix.components) as Schema.Component[];
 
     for (const model of [...contentTypes, ...components]) {
-      const dbModel = strapi.db.metadata.get(model.uid);
+      const dbModel = metrix.db.metadata.get(model.uid);
 
       for (const attribute of Object.values(dbModel.attributes) as any) {
         // Skip if not a bidirectional relation targeting our content type
@@ -89,7 +89,7 @@ const load = async (uid: UID.ContentType, { oldVersions }: LoadContext) => {
         // Load all relations that need their order preserved
         const oldEntryIds = oldVersions.map((entry) => entry.id);
 
-        const existingRelations = await strapi.db
+        const existingRelations = await metrix.db
           .getConnection()
           .select('*')
           .from(joinTable.name)
@@ -151,7 +151,7 @@ const sync = async (
     {} as Record<string, string>
   );
 
-  await strapi.db.transaction(async ({ trx }) => {
+  await metrix.db.transaction(async ({ trx }) => {
     for (const { joinTable, relations } of existingRelations) {
       const sourceColumn = joinTable.inverseJoinColumn.name;
       const targetColumn = joinTable.joinColumn.name;

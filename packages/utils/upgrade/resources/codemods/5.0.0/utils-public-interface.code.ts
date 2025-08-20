@@ -2,7 +2,7 @@ import { Transform, JSCodeshift, Collection } from 'jscodeshift';
 
 /*
 
-This codemod transforms @strapi/utils imports to change method calls to match the new public interface.
+This codemod transforms @metrix/utils imports to change method calls to match the new public interface.
 It will also warn about removed functions to avoid breaking user code.
 
 ESM
@@ -108,7 +108,7 @@ const removed = [
 const transformImports = (root: Collection, j: JSCodeshift) => {
   root
     .find(j.ImportDeclaration, {
-      source: { value: '@strapi/utils' },
+      source: { value: '@metrixlabs/utils' },
     })
     .forEach((path) => {
       if (!j.ImportDeclaration.check(path.value)) {
@@ -152,7 +152,7 @@ const transformImports = (root: Collection, j: JSCodeshift) => {
     });
 
   root.find(j.ImportNamespaceSpecifier).forEach((specifierPath) => {
-    if (specifierPath.parent.value.source.value === '@strapi/utils') {
+    if (specifierPath.parent.value.source.value === '@metrixlabs/utils') {
       for (const primitive of Object.keys(changes)) {
         const functions = Object.keys(changes[primitive]);
         functions.forEach((funcName) => {
@@ -193,7 +193,7 @@ const transformImports = (root: Collection, j: JSCodeshift) => {
         callee: {
           name: 'require',
         },
-        arguments: [{ value: '@strapi/utils' }],
+        arguments: [{ value: '@metrixlabs/utils' }],
       },
     })
     .forEach((path) => {

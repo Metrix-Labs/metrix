@@ -1,10 +1,10 @@
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createContentAPIRequest, transformToRESTResource } = require('api-tests/request');
 const { createTestBuilder } = require('api-tests/builder');
 
-let strapi;
+let metrix;
 let rq;
 
 const categoryModel = {
@@ -102,18 +102,18 @@ describe('i18n - Content API', () => {
       .addFixtures(categoryModel.singularName, categories)
       .build();
 
-    strapi = await createStrapiInstance();
-    rq = await createContentAPIRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createContentAPIRequest({ metrix });
 
-    data.homepages = await builder.sanitizedFixturesFor(homepageModel.singularName, strapi);
-    data.categories = await builder.sanitizedFixturesFor(categoryModel.singularName, strapi);
+    data.homepages = await builder.sanitizedFixturesFor(homepageModel.singularName, metrix);
+    data.categories = await builder.sanitizedFixturesFor(categoryModel.singularName, metrix);
   });
 
   afterAll(async () => {
     // Delete all locales that have been created
-    await strapi.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
+    await metrix.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

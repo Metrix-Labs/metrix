@@ -37,7 +37,7 @@ const AdminLayout = () => {
 
   React.useEffect(() => {
     if (showReleaseNotification) {
-      fetch('https://api.github.com/repos/strapi/strapi/releases/latest')
+      fetch('https://api.github.com/repos/metrix/metrix/releases/latest')
         .then(async (res) => {
           if (!res.ok) {
             return;

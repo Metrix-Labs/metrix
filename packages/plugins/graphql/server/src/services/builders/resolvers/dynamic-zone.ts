@@ -2,7 +2,7 @@ import type { Internal } from '@metrixlabs/types';
 
 import type { Context } from '../../types';
 
-export default ({ strapi }: Context) => ({
+export default ({ metrix }: Context) => ({
   buildDynamicZoneResolver({
     contentTypeUID,
     attributeName,
@@ -11,7 +11,7 @@ export default ({ strapi }: Context) => ({
     attributeName: string;
   }) {
     return async (parent: any) => {
-      return strapi.db?.query(contentTypeUID).load(parent, attributeName);
+      return metrix.db?.query(contentTypeUID).load(parent, attributeName);
     };
   },
 });

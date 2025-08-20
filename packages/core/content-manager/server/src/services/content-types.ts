@@ -15,21 +15,21 @@ const configurationService = createConfigurationService({
   getModels() {
     const { toContentManagerModel } = getService('data-mapper');
 
-    return mapValues(toContentManagerModel, strapi.contentTypes);
+    return mapValues(toContentManagerModel, metrix.contentTypes);
   },
 });
 
-const service = ({ strapi }: { strapi: Core.Strapi }) => ({
+const service = ({ metrix }: { metrix: Core.Strapi }) => ({
   findAllContentTypes() {
     const { toContentManagerModel } = getService('data-mapper');
 
-    return Object.values(strapi.contentTypes).map(toContentManagerModel);
+    return Object.values(metrix.contentTypes).map(toContentManagerModel);
   },
 
   findContentType(uid: UID.ContentType) {
     const { toContentManagerModel } = getService('data-mapper');
 
-    const contentType = strapi.contentTypes[uid];
+    const contentType = metrix.contentTypes[uid];
 
     return isNil(contentType) ? contentType : toContentManagerModel(contentType);
   },

@@ -7,8 +7,8 @@ import { useRBAC } from '../../../../../../../../admin/src/hooks/useRBAC';
 import { selectAdminPermissions } from '../../../../../../../../admin/src/selectors';
 import { useLicenseLimits } from '../../../../../hooks/useLicenseLimits';
 
-const BILLING_SELF_HOSTED_URL = 'https://strapi.io/billing/request-seats';
-const MANAGE_SEATS_URL = 'https://strapi.io/billing/manage-seats';
+const BILLING_SELF_HOSTED_URL = 'https://metrix.io/billing/request-seats';
+const MANAGE_SEATS_URL = 'https://metrix.io/billing/manage-seats';
 
 export const AdminSeatInfoEE = () => {
   const { formatMessage } = useIntl();

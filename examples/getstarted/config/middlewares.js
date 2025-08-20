@@ -3,10 +3,10 @@
 const responseHandlers = require('./src/response-handlers');
 
 module.exports = [
-  'strapi::logger',
-  'strapi::errors',
+  'metrix::logger',
+  'metrix::errors',
   {
-    name: 'strapi::security',
+    name: 'metrix::security',
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
@@ -16,21 +16,21 @@ module.exports = [
       },
     },
   },
-  'strapi::cors',
-  'strapi::poweredBy',
-  'strapi::query',
-  'strapi::body',
-  'strapi::session',
-  // 'strapi::compression',
-  // 'strapi::ip',
+  'metrix::cors',
+  'metrix::poweredBy',
+  'metrix::query',
+  'metrix::body',
+  'metrix::session',
+  // 'metrix::compression',
+  // 'metrix::ip',
   {
-    name: 'strapi::responses',
+    name: 'metrix::responses',
     config: {
       handlers: responseHandlers,
     },
   },
-  'strapi::favicon',
-  'strapi::public',
+  'metrix::favicon',
+  'metrix::public',
   {
     name: 'global::test-middleware',
     config: {

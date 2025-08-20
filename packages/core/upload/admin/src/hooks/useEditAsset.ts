@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useNotification, useFetchClient, FetchClient } from '@metrixlabs/admin/strapi-admin';
+import { useNotification, useFetchClient, FetchClient } from '@metrixlabs/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 import { useMutation, useQueryClient } from 'react-query';
 

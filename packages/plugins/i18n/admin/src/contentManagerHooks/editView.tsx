@@ -8,7 +8,7 @@ import { styled } from 'styled-components';
 
 import { getTranslation } from '../utils/getTranslation';
 
-import type { EditFieldLayout, EditLayout } from '@metrixlabs/content-manager/strapi-admin';
+import type { EditFieldLayout, EditLayout } from '@metrixlabs/content-manager/metrix-admin';
 
 interface MutateEditViewArgs {
   layout: EditLayout;

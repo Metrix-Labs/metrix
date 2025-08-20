@@ -3,7 +3,7 @@
 import { omit } from 'lodash/fp';
 import { async } from '@metrixlabs/utils';
 
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest, createRequest } from 'api-tests/request';
 import { createTestBuilder } from 'api-tests/builder';
 import { describeOnCondition, createUtils } from 'api-tests/utils';
@@ -15,7 +15,7 @@ import {
   ENTITY_ASSIGNEE_ATTRIBUTE,
 } from '../../../../packages/core/review-workflows/server/src/constants/workflows';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const productUID = 'api::product.product';
 const model = {
@@ -39,7 +39,7 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
     public: null,
     admin: null,
   };
-  let strapi;
+  let metrix;
   let hasRW;
   let defaultStage;
   let secondStage;
@@ -112,21 +112,21 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
     await builder.addContentTypes([model]).build();
 
     // @ts-expect-error - We don't have the type for this
-    strapi = await createStrapiInstance({ bypassAuth: false });
+    metrix = await createStrapiInstance({ bypassAuth: false });
 
-    hasRW = strapi.ee.features.isEnabled('review-workflows');
+    hasRW = metrix.ee.features.isEnabled('review-workflows');
 
-    requests.admin = await createAuthRequest({ strapi });
+    requests.admin = await createAuthRequest({ metrix });
     // @ts-expect-error - We don't have the type for this
-    requests.public = createRequest({ strapi }).setToken(await getFullAccessToken());
+    requests.public = createRequest({ metrix }).setToken(await getFullAccessToken());
 
-    defaultStage = await strapi.db.query(STAGE_MODEL_UID).create({
+    defaultStage = await metrix.db.query(STAGE_MODEL_UID).create({
       data: { name: 'Stage' },
     });
-    secondStage = await strapi.db.query(STAGE_MODEL_UID).create({
+    secondStage = await metrix.db.query(STAGE_MODEL_UID).create({
       data: { name: 'Stage 2' },
     });
-    testWorkflow = await strapi.db.query(WORKFLOW_MODEL_UID).create({
+    testWorkflow = await metrix.db.query(WORKFLOW_MODEL_UID).create({
       data: {
         contentTypes: [],
         name: 'workflow',
@@ -136,12 +136,12 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
   beforeEach(async () => {
-    testWorkflow = await strapi.db.query(WORKFLOW_MODEL_UID).update({
+    testWorkflow = await metrix.db.query(WORKFLOW_MODEL_UID).update({
       where: { id: testWorkflow.id },
       data: {
         uid: 'workflow',
@@ -149,11 +149,11 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
         stageRequiredToPublish: { set: [secondStage.id] },
       },
     });
-    defaultStage = await strapi.db.query(STAGE_MODEL_UID).update({
+    defaultStage = await metrix.db.query(STAGE_MODEL_UID).update({
       where: { id: defaultStage.id },
       data: { name: 'Stage' },
     });
-    secondStage = await strapi.db.query(STAGE_MODEL_UID).update({
+    secondStage = await metrix.db.query(STAGE_MODEL_UID).update({
       where: { id: secondStage.id },
       data: { name: 'Stage 2' },
     });
@@ -792,7 +792,7 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
 
         entry = await createEntry(productUID, { name: 'Product' });
 
-        utils = createUtils(strapi);
+        utils = createUtils(metrix);
         const role = await utils.createRole({
           name: 'restricted-role',
           description: '',
@@ -810,7 +810,7 @@ describeOnCondition(edition === 'EE')('Review workflows', () => {
         });
 
         // @ts-expect-error - We don't have the type for this
-        restrictedRequest = await createAuthRequest({ strapi, userInfo: restrictedUserInfo });
+        restrictedRequest = await createAuthRequest({ metrix, userInfo: restrictedUserInfo });
       });
 
       afterAll(async () => {

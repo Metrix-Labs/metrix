@@ -4,7 +4,7 @@ import { errors } from '@metrixlabs/utils';
 import type { GetRecentDocuments, GetCountDocuments } from '../../../../shared/contracts/homepage';
 
 const createHomepageController = () => {
-  const homepageService = strapi.plugin('content-manager').service('homepage');
+  const homepageService = metrix.plugin('content-manager').service('homepage');
 
   const recentDocumentParamsSchema = yup.object().shape({
     action: yup

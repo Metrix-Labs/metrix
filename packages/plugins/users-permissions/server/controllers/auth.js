@@ -26,17 +26,17 @@ const { ApplicationError, ValidationError, ForbiddenError } = utils.errors;
 
 const sanitizeUser = (user, ctx) => {
   const { auth } = ctx.state;
-  const userSchema = strapi.getModel('plugin::users-permissions.user');
+  const userSchema = metrix.getModel('plugin::users-permissions.user');
 
-  return strapi.contentAPI.sanitize.output(user, userSchema, { auth });
+  return metrix.contentAPI.sanitize.output(user, userSchema, { auth });
 };
 
-module.exports = ({ strapi }) => ({
+module.exports = ({ metrix }) => ({
   async callback(ctx) {
     const provider = ctx.params.provider || 'local';
     const params = ctx.request.body;
 
-    const store = strapi.store({ type: 'plugin', name: 'users-permissions' });
+    const store = metrix.store({ type: 'plugin', name: 'users-permissions' });
     const grantSettings = await store.get({ key: 'grant' });
 
     const grantProvider = provider === 'local' ? 'email' : provider;
@@ -51,7 +51,7 @@ module.exports = ({ strapi }) => ({
       const { identifier } = params;
 
       // Check if the user exists.
-      const user = await strapi.db.query('plugin::users-permissions.user').findOne({
+      const user = await metrix.db.query('plugin::users-permissions.user').findOne({
         where: {
           provider,
           $or: [{ email: identifier.toLowerCase() }, { username: identifier }],
@@ -114,14 +114,14 @@ module.exports = ({ strapi }) => ({
       throw new ApplicationError('You must be authenticated to reset your password');
     }
 
-    const validations = strapi.config.get('plugin::users-permissions.validationRules');
+    const validations = metrix.config.get('plugin::users-permissions.validationRules');
 
     const { currentPassword, password } = await validateChangePasswordBody(
       ctx.request.body,
       validations
     );
 
-    const user = await strapi.db
+    const user = await metrix.db
       .query('plugin::users-permissions.user')
       .findOne({ where: { id: ctx.state.user.id } });
 
@@ -144,7 +144,7 @@ module.exports = ({ strapi }) => ({
   },
 
   async resetPassword(ctx) {
-    const validations = strapi.config.get('plugin::users-permissions.validationRules');
+    const validations = metrix.config.get('plugin::users-permissions.validationRules');
 
     const { password, passwordConfirmation, code } = await validateResetPasswordBody(
       ctx.request.body,
@@ -155,7 +155,7 @@ module.exports = ({ strapi }) => ({
       throw new ValidationError('Passwords do not match');
     }
 
-    const user = await strapi.db
+    const user = await metrix.db
       .query('plugin::users-permissions.user')
       .findOne({ where: { resetPasswordToken: code } });
 
@@ -178,11 +178,11 @@ module.exports = ({ strapi }) => ({
   async connect(ctx, next) {
     const grant = require('grant').koa();
 
-    const providers = await strapi
+    const providers = await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'grant' })
       .get();
 
-    const apiPrefix = strapi.config.get('api.rest.prefix');
+    const apiPrefix = metrix.config.get('api.rest.prefix');
     const grantConfig = {
       defaults: {
         prefix: `${apiPrefix}/connect`,
@@ -197,9 +197,9 @@ module.exports = ({ strapi }) => ({
       throw new ApplicationError('This provider is disabled');
     }
 
-    if (!strapi.config.server.url.startsWith('http')) {
-      strapi.log.warn(
-        'You are using a third party provider for login. Make sure to set an absolute url in config/server.js. More info here: https://docs.strapi.io/developer-docs/latest/plugins/users-permissions.html#setting-up-the-server-url'
+    if (!metrix.config.server.url.startsWith('http')) {
+      metrix.log.warn(
+        'You are using a third party provider for login. Make sure to set an absolute url in config/server.js. More info here: https://docs.metrix.io/developer-docs/latest/plugins/users-permissions.html#setting-up-the-server-url'
       );
     }
 
@@ -213,7 +213,7 @@ module.exports = ({ strapi }) => ({
     if (customCallback !== undefined) {
       try {
         // We're extracting the callback validator from the plugin config since it can be user-customized
-        const { validate: validateCallback } = strapi
+        const { validate: validateCallback } = metrix
           .plugin('users-permissions')
           .config('callback');
 
@@ -234,13 +234,13 @@ module.exports = ({ strapi }) => ({
   async forgotPassword(ctx) {
     const { email } = await validateForgotPasswordBody(ctx.request.body);
 
-    const pluginStore = await strapi.store({ type: 'plugin', name: 'users-permissions' });
+    const pluginStore = await metrix.store({ type: 'plugin', name: 'users-permissions' });
 
     const emailSettings = await pluginStore.get({ key: 'email' });
     const advancedSettings = await pluginStore.get({ key: 'advanced' });
 
     // Find the user by email.
-    const user = await strapi.db
+    const user = await metrix.db
       .query('plugin::users-permissions.user')
       .findOne({ where: { email: email.toLowerCase() } });
 
@@ -258,8 +258,8 @@ module.exports = ({ strapi }) => ({
       resetPasswordSettings.message,
       {
         URL: advancedSettings.email_reset_password,
-        SERVER_URL: strapi.config.get('server.absoluteUrl'),
-        ADMIN_URL: strapi.config.get('admin.absoluteUrl'),
+        SERVER_URL: metrix.config.get('server.absoluteUrl'),
+        ADMIN_URL: metrix.config.get('admin.absoluteUrl'),
         USER: userInfo,
         TOKEN: resetPasswordToken,
       }
@@ -288,13 +288,13 @@ module.exports = ({ strapi }) => ({
     await getService('user').edit(user.id, { resetPasswordToken });
 
     // Send an email to the user.
-    await strapi.plugin('email').service('email').send(emailToSend);
+    await metrix.plugin('email').service('email').send(emailToSend);
 
     ctx.send({ ok: true });
   },
 
   async register(ctx) {
-    const pluginStore = await strapi.store({ type: 'plugin', name: 'users-permissions' });
+    const pluginStore = await metrix.store({ type: 'plugin', name: 'users-permissions' });
 
     const settings = await pluginStore.get({ key: 'advanced' });
 
@@ -302,7 +302,7 @@ module.exports = ({ strapi }) => ({
       throw new ApplicationError('Register action is currently disabled');
     }
 
-    const { register } = strapi.config.get('plugin::users-permissions');
+    const { register } = metrix.config.get('plugin::users-permissions');
     const alwaysAllowedKeys = ['username', 'password', 'email'];
 
     // Note that we intentionally do not filter allowedFields to allow a project to explicitly accept private or other Strapi field on registration
@@ -323,11 +323,11 @@ module.exports = ({ strapi }) => ({
       provider: 'local',
     };
 
-    const validations = strapi.config.get('plugin::users-permissions.validationRules');
+    const validations = metrix.config.get('plugin::users-permissions.validationRules');
 
     await validateRegisterBody(params, validations);
 
-    const role = await strapi.db
+    const role = await metrix.db
       .query('plugin::users-permissions.role')
       .findOne({ where: { type: settings.default_role } });
 
@@ -346,7 +346,7 @@ module.exports = ({ strapi }) => ({
       ],
     };
 
-    const conflictingUserCount = await strapi.db.query('plugin::users-permissions.user').count({
+    const conflictingUserCount = await metrix.db.query('plugin::users-permissions.user').count({
       where: { ...identifierFilter, provider },
     });
 
@@ -355,7 +355,7 @@ module.exports = ({ strapi }) => ({
     }
 
     if (settings.unique_email) {
-      const conflictingUserCount = await strapi.db.query('plugin::users-permissions.user').count({
+      const conflictingUserCount = await metrix.db.query('plugin::users-permissions.user').count({
         where: { ...identifierFilter },
       });
 
@@ -380,7 +380,7 @@ module.exports = ({ strapi }) => ({
       try {
         await getService('user').sendConfirmationEmail(sanitizedUser);
       } catch (err) {
-        strapi.log.error(err);
+        metrix.log.error(err);
         throw new ApplicationError('Error sending confirmation email');
       }
 
@@ -415,7 +415,7 @@ module.exports = ({ strapi }) => ({
         user: await sanitizeUser(user, ctx),
       });
     } else {
-      const settings = await strapi
+      const settings = await metrix
         .store({ type: 'plugin', name: 'users-permissions', key: 'advanced' })
         .get();
 
@@ -426,7 +426,7 @@ module.exports = ({ strapi }) => ({
   async sendEmailConfirmation(ctx) {
     const { email } = await validateSendEmailConfirmationBody(ctx.request.body);
 
-    const user = await strapi.db.query('plugin::users-permissions.user').findOne({
+    const user = await metrix.db.query('plugin::users-permissions.user').findOne({
       where: { email: email.toLowerCase() },
     });
 

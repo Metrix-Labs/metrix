@@ -1,7 +1,7 @@
 import { curry } from 'lodash/fp';
 
-import type { UID } from '@strapi/types';
-import { errors, relations } from '@strapi/utils';
+import type { UID } from '@metrixlabs/types';
+import { errors, relations } from '@metrixlabs/utils';
 
 import { ID, LongHandDocument } from '../utils/types';
 import { IdMap } from '../../id-map';
@@ -125,7 +125,7 @@ const transformDataIdsVisitor = (idMap: IdMap, data: Record<string, any>, source
 
       set(key, newRelation as any);
     },
-    { schema: strapi.getModel(source.uid), getModel: strapi.getModel.bind(strapi) },
+    { schema: metrix.getModel(source.uid), getModel: metrix.getModel.bind(metrix) },
     data
   );
 };

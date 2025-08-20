@@ -62,7 +62,7 @@ const sanitizeHelpers = {
 
 describe('Permissions Manager - Sanitize', () => {
   beforeAll(() => {
-    global.strapi = {
+    global.metrix = {
       getModel() {
         return fooModel;
       },

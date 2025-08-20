@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 const DEFAULT_RETENTION_DAYS = 90;
 
@@ -43,11 +43,11 @@ const getEventMap = (defaultEvents: any) => {
   }, {} as any);
 };
 
-const getRetentionDays = (strapi: Core.Strapi) => {
-  const featureConfig = strapi.ee.features.get('audit-logs');
+const getRetentionDays = (metrix: Core.Strapi) => {
+  const featureConfig = metrix.ee.features.get('audit-logs');
   const licenseRetentionDays =
     typeof featureConfig === 'object' && featureConfig?.options.retentionDays;
-  const userRetentionDays = strapi.config.get('admin.auditLogs.retentionDays');
+  const userRetentionDays = metrix.config.get('admin.auditLogs.retentionDays');
 
   // For enterprise plans, use 90 days by default, but allow users to override it
   if (licenseRetentionDays == null) {
@@ -65,18 +65,18 @@ const getRetentionDays = (strapi: Core.Strapi) => {
 
 /**
  * @description
- * Manages the the lifecycle of audit logs. Accessible via strapi.get('audit-logs-lifecycles')
+ * Manages the the lifecycle of audit logs. Accessible via metrix.get('audit-logs-lifecycles')
  */
-const createAuditLogsLifecycleService = (strapi: Core.Strapi) => {
+const createAuditLogsLifecycleService = (metrix: Core.Strapi) => {
   // Manage internal service state privately
   const state = {} as any;
-  const auditLogsService = strapi.get('audit-logs');
+  const auditLogsService = metrix.get('audit-logs');
 
   // NOTE: providers should be able to replace getEventMap to add or remove events
   const eventMap = getEventMap(defaultEvents);
 
   const processEvent = (name: string, ...args: any) => {
-    const requestState = strapi.requestContext.get()?.state;
+    const requestState = metrix.requestContext.get()?.state;
 
     // Ignore events with auth strategies different from admin
     const isUsingAdminAuth = requestState?.route.info.type === 'admin';
@@ -120,7 +120,7 @@ const createAuditLogsLifecycleService = (strapi: Core.Strapi) => {
       // Handle license being enabled
       if (!state.eeEnableUnsubscribe) {
         // @ts-expect-error- update event hub to receive callback argument
-        state.eeEnableUnsubscribe = strapi.eventHub.on('ee.enable', () => {
+        state.eeEnableUnsubscribe = metrix.eventHub.on('ee.enable', () => {
           // Recreate the service to use the new license info
           this.destroy();
           this.register();
@@ -130,7 +130,7 @@ const createAuditLogsLifecycleService = (strapi: Core.Strapi) => {
       // Handle license being updated
       if (!state.eeUpdateUnsubscribe) {
         // @ts-expect-error- update event hub to receive callback argument
-        state.eeUpdateUnsubscribe = strapi.eventHub.on('ee.update', () => {
+        state.eeUpdateUnsubscribe = metrix.eventHub.on('ee.update', () => {
           // Recreate the service to use the new license info
           this.destroy();
           this.register();
@@ -139,24 +139,24 @@ const createAuditLogsLifecycleService = (strapi: Core.Strapi) => {
 
       // Handle license being disabled
       // @ts-expect-error- update event hub to receive callback argument
-      state.eeDisableUnsubscribe = strapi.eventHub.on('ee.disable', () => {
+      state.eeDisableUnsubscribe = metrix.eventHub.on('ee.disable', () => {
         // Turn off service when the license gets disabled
         // Only ee.enable and ee.update listeners remain active to recreate the service
         this.destroy();
       });
 
       // Check current state of license
-      if (!strapi.ee.features.isEnabled('audit-logs')) {
+      if (!metrix.ee.features.isEnabled('audit-logs')) {
         return this;
       }
 
       // Start saving events
-      state.eventHubUnsubscribe = strapi.eventHub.subscribe(handleEvent);
+      state.eventHubUnsubscribe = metrix.eventHub.subscribe(handleEvent);
 
       // Manage audit logs auto deletion
-      const retentionDays = getRetentionDays(strapi);
+      const retentionDays = getRetentionDays(metrix);
 
-      strapi.cron.add({
+      metrix.cron.add({
         deleteExpiredAuditLogs: {
           task: async () => {
             const expirationDate = new Date(Date.now() - retentionDays * 24 * 60 * 60 * 1000);
@@ -178,7 +178,7 @@ const createAuditLogsLifecycleService = (strapi: Core.Strapi) => {
         state.eventHubUnsubscribe();
       }
 
-      strapi.cron.remove('deleteExpiredAuditLogs');
+      metrix.cron.remove('deleteExpiredAuditLogs');
 
       return this;
     },

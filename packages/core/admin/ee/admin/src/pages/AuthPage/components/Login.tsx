@@ -14,11 +14,11 @@ const DividerFull = styled(Divider)`
 const LoginEE = (loginProps: LoginProps) => {
   const { formatMessage } = useIntl();
   const { isLoading, data: providers = [] } = useGetProvidersQuery(undefined, {
-    skip: !window.strapi.features.isEnabled(window.strapi.features.SSO),
+    skip: !window.metrix.features.isEnabled(window.metrix.features.SSO),
   });
 
   if (
-    !window.strapi.features.isEnabled(window.strapi.features.SSO) ||
+    !window.metrix.features.isEnabled(window.metrix.features.SSO) ||
     (!isLoading && providers.length === 0)
   ) {
     return <Login {...loginProps} />;

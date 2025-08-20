@@ -1,4 +1,4 @@
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrixlabs/types';
 import type { OpenAPIV3 } from 'openapi-types';
 
 import getSchemaData from './get-schema-data';
@@ -104,7 +104,7 @@ const cleanSchemaAttributes = (
         break;
       }
       case 'component': {
-        const componentAttributes = strapi.components[attribute.component].attributes;
+        const componentAttributes = metrix.components[attribute.component].attributes;
         const rawComponentSchema: OpenAPIV3.SchemaObject = {
           type: 'object',
           properties: {
@@ -139,7 +139,7 @@ const cleanSchemaAttributes = (
       }
       case 'dynamiczone': {
         const components = attribute.components.map((component) => {
-          const componentAttributes = strapi.components[component].attributes;
+          const componentAttributes = metrix.components[component].attributes;
           const rawComponentSchema: OpenAPIV3.SchemaObject = {
             type: 'object',
             properties: {
@@ -190,7 +190,7 @@ const cleanSchemaAttributes = (
         break;
       }
       case 'media': {
-        const imageAttributes = strapi.contentType('plugin::upload.file').attributes;
+        const imageAttributes = metrix.contentType('plugin::upload.file').attributes;
         const isListOfEntities = attribute.multiple ?? false;
 
         if (isRequest) {
@@ -234,7 +234,7 @@ const cleanSchemaAttributes = (
         }
 
         typeMap.set(attribute.target, true);
-        const targetAttributes = strapi.contentType(attribute.target).attributes;
+        const targetAttributes = metrix.contentType(attribute.target).attributes;
 
         schemaAttributes[prop] = getSchemaData(
           isListOfEntities,

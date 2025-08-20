@@ -1,6 +1,6 @@
-# Strapi contributor documentation
+# Metrix contributor documentation
 
-> If you are looking for the official Strapi documentation, it is available [here](https://docs.strapi.io)
+> If you are looking for the official Metrix documentation, it is available [here](https://docs.metrix.io)
 
 This documentation is a contributor documentation made for anyone that wants to contribute to the project.
 

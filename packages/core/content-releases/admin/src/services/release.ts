@@ -1,4 +1,4 @@
-import { adminApi } from '@strapi/admin/strapi-admin';
+import { adminApi } from '@metrixlabs/admin/metrix-admin';
 
 import {
   CreateReleaseAction,

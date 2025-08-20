@@ -1,8 +1,8 @@
 import { omit, assoc, merge, curry } from 'lodash/fp';
 
-import { async, contentTypes as contentTypesUtils, validate, errors } from '@strapi/utils';
+import { async, contentTypes as contentTypesUtils, validate, errors } from '@metrixlabs/utils';
 
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrixlabs/types';
 import { wrapInTransaction, type RepositoryFactoryMethod } from './common';
 import * as DP from './draft-and-publish';
 import * as i18n from './internationalization';
@@ -24,13 +24,13 @@ import { addFirstPublishedAtToDraft, filterDataFirstPublishedAt } from './first-
 const { validators } = validate;
 
 // we have to typecast to reconcile the differences between validator and database getModel
-const getModel = ((schema: UID.Schema) => strapi.getModel(schema)) as (schema: string) => any;
+const getModel = ((schema: UID.Schema) => metrix.getModel(schema)) as (schema: string) => any;
 
 export const createContentTypeRepository: RepositoryFactoryMethod = (
   uid,
   validator = entityValidator
 ) => {
-  const contentType = strapi.contentType(uid);
+  const contentType = metrix.contentType(uid);
   const hasDraftAndPublish = contentTypesUtils.hasDraftAndPublish(contentType);
 
   // Define the validations that should be performed
@@ -63,7 +63,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
 
   const entries = createEntriesService(uid, validator);
 
-  const eventManager = createEventManager(strapi, uid);
+  const eventManager = createEventManager(metrix, uid);
   const emitEvent = curry(eventManager.emitEvent);
 
   async function findMany(params = {} as any) {
@@ -77,7 +77,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
       transformParamsToQuery(uid)
     )(params || {});
 
-    return strapi.db.query(uid).findMany(query);
+    return metrix.db.query(uid).findMany(query);
   }
 
   async function findFirst(params = {} as any) {
@@ -91,7 +91,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
       transformParamsToQuery(uid)
     )(params);
 
-    return strapi.db.query(uid).findOne(query);
+    return metrix.db.query(uid).findOne(query);
   }
 
   // TODO: do we really want to add filters on the findOne now that we have findFirst ?
@@ -109,7 +109,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
       (query) => assoc('where', { ...query.where, documentId }, query)
     )(params);
 
-    return strapi.db.query(uid).findOne(query);
+    return metrix.db.query(uid).findOne(query);
   }
 
   async function deleteDocument(opts = {} as any) {
@@ -128,7 +128,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
       throw new Error('Cannot delete a draft document');
     }
 
-    const entriesToDelete = await strapi.db.query(uid).findMany(query);
+    const entriesToDelete = await metrix.db.query(uid).findMany(query);
 
     // Delete all matched entries and its components
     const deletedEntries = await async.map(entriesToDelete, (entryToDelete: any) =>
@@ -177,7 +177,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
     )(params);
 
     // Get deep populate
-    const entriesToClone = await strapi.db.query(uid).findMany({
+    const entriesToClone = await metrix.db.query(uid).findMany({
       where: {
         ...queryParams?.lookup,
         documentId,
@@ -227,7 +227,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
 
     // Validation
     // Find if document exists
-    const entryToUpdate = await strapi.db
+    const entryToUpdate = await metrix.db
       .query(uid)
       .findOne({ ...query, where: { ...queryParams?.lookup, ...query?.where, documentId } });
 
@@ -238,7 +238,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
     }
 
     if (!updatedDraft) {
-      const documentExists = await strapi.db
+      const documentExists = await metrix.db
         .query(contentType.uid)
         .findOne({ where: { documentId } });
 
@@ -276,7 +276,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
       transformParamsToQuery(uid)
     )(params);
 
-    return strapi.db.query(uid).count(query);
+    return metrix.db.query(uid).count(query);
   }
 
   async function publish(opts = {} as any) {
@@ -289,7 +289,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
     )(params);
 
     const [draftsToPublish, oldPublishedVersions] = await Promise.all([
-      strapi.db.query(uid).findMany({
+      metrix.db.query(uid).findMany({
         where: {
           ...queryParams?.lookup,
           documentId,
@@ -298,7 +298,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
         // Populate relations, media, compos and dz
         populate: getDeepPopulate(uid, { relationalFields: ['documentId', 'locale'] }),
       }),
-      strapi.db.query(uid).findMany({
+      metrix.db.query(uid).findMany({
         where: {
           ...queryParams?.lookup,
           documentId,
@@ -362,7 +362,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
     )(params);
 
     // Delete all published versions
-    const versionsToDelete = await strapi.db.query(uid).findMany(query);
+    const versionsToDelete = await metrix.db.query(uid).findMany(query);
     await async.map(versionsToDelete, (entry: any) => entries.delete(entry.id));
 
     versionsToDelete.forEach(emitEvent('entry.unpublish'));
@@ -379,7 +379,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
     )(params);
 
     const [versionsToDraft, oldDrafts] = await Promise.all([
-      strapi.db.query(uid).findMany({
+      metrix.db.query(uid).findMany({
         where: {
           ...queryParams?.lookup,
           documentId,
@@ -388,7 +388,7 @@ export const createContentTypeRepository: RepositoryFactoryMethod = (
         // Populate relations, media, compos and dz
         populate: getDeepPopulate(uid, { relationalFields: ['documentId', 'locale'] }),
       }),
-      strapi.db.query(uid).findMany({
+      metrix.db.query(uid).findMany({
         where: {
           ...queryParams?.lookup,
           documentId,

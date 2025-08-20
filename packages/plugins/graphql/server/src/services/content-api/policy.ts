@@ -1,15 +1,15 @@
 import { propOr } from 'lodash/fp';
 import { GraphQLFieldResolver, GraphQLResolveInfo } from 'graphql';
-import { policy as policyUtils, errors } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { policy as policyUtils, errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 const { PolicyError } = errors;
 
 const getPoliciesConfig = propOr([], 'policies');
 
-const createPoliciesMiddleware = (resolverConfig: any, { strapi }: { strapi: Core.Strapi }) => {
+const createPoliciesMiddleware = (resolverConfig: any, { metrix }: { metrix: Core.Strapi }) => {
   const resolverPolicies = getPoliciesConfig(resolverConfig);
-  const policies = strapi.get('policies').resolve(resolverPolicies, {});
+  const policies = metrix.get('policies').resolve(resolverPolicies, {});
 
   return async (
     resolve: GraphQLFieldResolver<any, any>,
@@ -23,7 +23,7 @@ const createPoliciesMiddleware = (resolverConfig: any, { strapi }: { strapi: Cor
 
     // Run policies & throw an error if one of them fails
     for (const { handler, config } of policies) {
-      const result = await handler(policyContext, config, { strapi });
+      const result = await handler(policyContext, config, { metrix });
 
       if (![true, undefined].includes(result)) {
         throw new PolicyError();

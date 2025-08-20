@@ -7,7 +7,7 @@ import {
   useNotification,
   useStrapiApp,
   useQueryParams,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Flex,

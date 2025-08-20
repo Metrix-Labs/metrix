@@ -1,4 +1,4 @@
-import { unstable_useDocumentLayout as useDocumentLayout } from '@strapi/content-manager/strapi-admin';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/metrix-admin';
 import { Flex } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { AssigneeSelect } from './AssigneeSelect';
 import { StageSelect } from './StageSelect';
 
-import type { PanelComponent } from '@strapi/content-manager/strapi-admin';
+import type { PanelComponent } from '@metrixlabs/content-manager/metrix-admin';
 
 const Panel: PanelComponent = () => {
   const {
@@ -25,7 +25,7 @@ const Panel: PanelComponent = () => {
   const { formatMessage } = useIntl();
 
   if (
-    !window.strapi.isEE ||
+    !window.metrix.isEE ||
     !options?.reviewWorkflows ||
     (collectionType !== 'single-types' && !id) ||
     id === 'create'

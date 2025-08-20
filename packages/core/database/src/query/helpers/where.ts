@@ -2,7 +2,7 @@
 import { isArray, castArray, isPlainObject } from 'lodash/fp';
 import type { Knex } from 'knex';
 
-import { isOperator, isOperatorOfType } from '@strapi/utils';
+import { isOperator, isOperatorOfType } from '@metrixlabs/utils';
 import * as types from '../../utils/types';
 import { createField } from '../../fields';
 import { createJoin } from './join';

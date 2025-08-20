@@ -15,7 +15,7 @@ import {
   Layouts,
   useTable,
   tours,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Button,
   Flex,
@@ -55,7 +55,7 @@ import { TableActions } from './components/TableActions';
 import { CellContent } from './components/TableCells/CellContent';
 import { ViewSettingsMenu } from './components/ViewSettingsMenu';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 
 const { INJECT_COLUMN_IN_TABLE } = HOOKS;
 

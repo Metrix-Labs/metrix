@@ -1,4 +1,4 @@
-import type { StrapiApp } from '@strapi/strapi/admin';
+import type { StrapiApp } from '@metrixlabs/metrix/admin';
 
 export default {
   config: {

@@ -70,7 +70,7 @@ describe('Populate', () => {
 
   describe('getQueryPopulate', () => {
     beforeEach(() => {
-      global.strapi = {
+      global.metrix = {
         contentType: jest.fn((uid) => fakeModels[uid]),
         getModel: jest.fn((uid) => fakeModels[uid]),
         db: {

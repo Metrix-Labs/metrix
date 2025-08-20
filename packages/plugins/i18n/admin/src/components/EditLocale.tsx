@@ -6,7 +6,7 @@ import {
   Form,
   FormHelpers,
   useAuth,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Button,

@@ -1426,7 +1426,7 @@ describe('List', () => {
         children: [
           {
             type: 'link',
-            url: 'https://strapi.io',
+            url: 'https://metrix.io',
             children: [
               {
                 type: 'text',
@@ -1456,7 +1456,7 @@ describe('List', () => {
             children: [
               {
                 type: 'link',
-                url: 'https://strapi.io',
+                url: 'https://metrix.io',
                 children: [
                   {
                     type: 'text',

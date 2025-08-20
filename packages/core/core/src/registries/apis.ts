@@ -1,7 +1,7 @@
 import { has } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
-const apisRegistry = (strapi: Core.Strapi) => {
+const apisRegistry = (metrix: Core.Strapi) => {
   const apis: Record<string, unknown> = {};
 
   return {
@@ -16,7 +16,7 @@ const apisRegistry = (strapi: Core.Strapi) => {
         throw new Error(`API ${apiName} has already been registered.`);
       }
 
-      const api = strapi.get('modules').add(`api::${apiName}`, apiConfig);
+      const api = metrix.get('modules').add(`api::${apiName}`, apiConfig);
 
       apis[apiName] = api;
 

@@ -4,7 +4,7 @@ describe('getDocumentDimensions', () => {
   const modelWithDraftAndPublishUID = 'application::model.model';
   const modelWithoutDraftAndPublishUID = 'application::nodraft.nodraft';
 
-  global.strapi = {
+  global.metrix = {
     getModel: jest.fn((uid) => {
       if (uid === modelWithDraftAndPublishUID) {
         return {

@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/generators",
+  "name": "@metrixlabs/generators",
   "version": "5.22.0",
   "description": "Interactive API generator.",
   "keywords": [
@@ -48,9 +48,9 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
+    "@metrixlabs/typescript-utils": "5.22.0",
+    "@metrixlabs/utils": "5.22.0",
     "@sindresorhus/slugify": "1.1.0",
-    "@strapi/typescript-utils": "5.22.0",
-    "@strapi/utils": "5.22.0",
     "chalk": "4.1.2",
     "copyfiles": "2.4.1",
     "fs-extra": "11.2.0",

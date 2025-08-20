@@ -1,5 +1,5 @@
-import type { Core } from '@strapi/types';
-import { AbstractRouteValidator, type QueryParam } from '@strapi/utils';
+import type { Core } from '@metrixlabs/types';
+import { AbstractRouteValidator, type QueryParam } from '@metrixlabs/utils';
 import * as z from 'zod/v4';
 
 export type FileQueryParam = QueryParam;
@@ -13,9 +13,9 @@ export type FileQueryParam = QueryParam;
 export class UploadRouteValidator extends AbstractRouteValidator {
   protected readonly _strapi: Core.Strapi;
 
-  public constructor(strapi: Core.Strapi) {
+  public constructor(metrix: Core.Strapi) {
     super();
-    this._strapi = strapi;
+    this._strapi = metrix;
   }
 
   /**

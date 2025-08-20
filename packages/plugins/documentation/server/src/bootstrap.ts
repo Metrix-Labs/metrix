@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import { getService } from './utils';
 
@@ -31,10 +31,10 @@ const RBAC_ACTIONS = [
   },
 ];
 
-export async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
-  await strapi.service('admin::permission').actionProvider.registerMany(RBAC_ACTIONS);
+export async function bootstrap({ metrix }: { metrix: Core.Strapi }) {
+  await metrix.service('admin::permission').actionProvider.registerMany(RBAC_ACTIONS);
 
-  const pluginStore = strapi.store!({
+  const pluginStore = metrix.store!({
     environment: '',
     type: 'plugin',
     name: 'documentation',

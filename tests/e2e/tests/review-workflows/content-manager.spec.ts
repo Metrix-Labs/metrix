@@ -3,7 +3,7 @@ import { login } from '../../utils/login';
 import { resetDatabaseAndImportDataFromPath } from '../../utils/dts-import';
 import { clickAndWait, describeOnCondition, findAndClose } from '../../utils/shared';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const checkAssignee = async (page) => {
   /**
@@ -98,7 +98,7 @@ describeOnCondition(edition === 'EE')('content-manager', () => {
     await expect(page.getByRole('combobox', { name: 'Review stage' })).toHaveText('In progress');
   });
 
-  describeOnCondition(process.env.STRAPI_FEATURES_UNSTABLE_PREVIEW_SIDE_EDITOR === 'true')(
+  describeOnCondition(process.env.METRIX_FEATURES_UNSTABLE_PREVIEW_SIDE_EDITOR === 'true')(
     'Unstable Preview',
     () => {
       test('I want to change the assignee of a document from preview and see this change in the edit and list views', async ({

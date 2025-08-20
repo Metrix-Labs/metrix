@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { DocumentRBAC, DocumentRBACProps, useDocumentRBAC } from '../DocumentRBAC';
 
-import type { Permission } from '@strapi/admin/strapi-admin';
+import type { Permission } from '@metrixlabs/admin/metrix-admin';
 
 const ALL_PERMISSIONS = [
   {

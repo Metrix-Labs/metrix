@@ -298,7 +298,7 @@ export const createEntityManager = (db: Database): EntityManager => {
 
       const id = isRecord(res[0]) ? res[0].id : res[0];
 
-      const trx = await strapi.db.transaction();
+      const trx = await metrix.db.transaction();
       try {
         await this.attachRelations(uid, id, data, { transaction: trx.get() });
 
@@ -388,7 +388,7 @@ export const createEntityManager = (db: Database): EntityManager => {
         await this.createQueryBuilder(uid).where({ id }).update(dataToUpdate).execute();
       }
 
-      const trx = await strapi.db.transaction();
+      const trx = await metrix.db.transaction();
       try {
         await this.updateRelations(uid, id, data, { transaction: trx.get() });
         await trx.commit();
@@ -460,7 +460,7 @@ export const createEntityManager = (db: Database): EntityManager => {
 
       await this.createQueryBuilder(uid).where({ id }).delete().execute();
 
-      const trx = await strapi.db.transaction();
+      const trx = await metrix.db.transaction();
       try {
         await this.deleteRelations(uid, id, { transaction: trx.get() });
 

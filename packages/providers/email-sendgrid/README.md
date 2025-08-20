@@ -1,4 +1,4 @@
-# @strapi/provider-email-sendgrid
+# @metrix/provider-email-sendgrid
 
 ## Resources
 
@@ -6,19 +6,19 @@
 
 ## Links
 
-- [Strapi website](https://strapi.io/)
-- [Strapi documentation](https://docs.strapi.io)
-- [Strapi community on Discord](https://discord.strapi.io)
-- [Strapi news on Twitter](https://twitter.com/strapijs)
+- [Metrix website](https://metrix.io/)
+- [Metrix documentation](https://docs.metrix.io)
+- [Metrix community on Discord](https://discord.metrix.io)
+- [Metrix news on Twitter](https://twitter.com/strapijs)
 
 ## Installation
 
 ```bash
 # using yarn
-yarn add @strapi/provider-email-sendgrid
+yarn add @metrix/provider-email-sendgrid
 
 # using npm
-npm install @strapi/provider-email-sendgrid --save
+npm install @metrix/provider-email-sendgrid --save
 ```
 
 ## Configuration

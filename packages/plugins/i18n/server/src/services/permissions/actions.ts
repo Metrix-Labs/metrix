@@ -63,7 +63,7 @@ const addLocalesPropertyIfNeeded = ({ value: action }: any) => {
 
 const shouldApplyLocalesPropertyToSubject = ({ property, subject }: any) => {
   if (property === 'locales') {
-    const model = strapi.getModel(subject);
+    const model = metrix.getModel(subject);
 
     return getService('content-types').isLocalizedContentType(model);
   }
@@ -72,7 +72,7 @@ const shouldApplyLocalesPropertyToSubject = ({ property, subject }: any) => {
 };
 
 const addAllLocalesToPermissions = async (permissions: any) => {
-  const { actionProvider } = strapi.service('admin::permission');
+  const { actionProvider } = metrix.service('admin::permission');
   const { find: findAllLocales } = getService('locales');
 
   const allLocales = await findAllLocales();
@@ -100,8 +100,8 @@ const addAllLocalesToPermissions = async (permissions: any) => {
 };
 
 const syncSuperAdminPermissionsWithLocales = async () => {
-  const roleService = strapi.service('admin::role');
-  const permissionService = strapi.service('admin::permission');
+  const roleService = metrix.service('admin::role');
+  const permissionService = metrix.service('admin::permission');
 
   const superAdminRole = await roleService.getSuperAdmin();
 
@@ -123,21 +123,21 @@ const syncSuperAdminPermissionsWithLocales = async () => {
 };
 
 const registerI18nActions = async () => {
-  const { actionProvider } = strapi.service('admin::permission');
+  const { actionProvider } = metrix.service('admin::permission');
 
   await actionProvider.registerMany(actions);
 };
 
 const registerI18nActionsHooks = () => {
-  const { actionProvider } = strapi.service('admin::permission');
-  const { hooks } = strapi.service('admin::role');
+  const { actionProvider } = metrix.service('admin::permission');
+  const { hooks } = metrix.service('admin::role');
 
   actionProvider.hooks.appliesPropertyToSubject.register(shouldApplyLocalesPropertyToSubject);
   hooks.willResetSuperAdminPermissions.register(addAllLocalesToPermissions);
 };
 
 const updateActionsProperties = () => {
-  const { actionProvider } = strapi.service('admin::permission');
+  const { actionProvider } = metrix.service('admin::permission');
 
   // Register the transformation for every new action
   actionProvider.hooks.willRegister.register(addLocalesPropertyIfNeeded);

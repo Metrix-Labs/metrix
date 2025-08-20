@@ -1,7 +1,7 @@
 import path from 'path';
 import fse from 'fs-extra';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 interface StrapiFS {
   writeAppFile(optPath: string | string[], data: string): Promise<void>;
@@ -11,20 +11,20 @@ interface StrapiFS {
 }
 
 /**
- * create strapi fs layer
+ * create metrix fs layer
  */
-export default (strapi: Core.Strapi) => {
+export default (metrix: Core.Strapi) => {
   function normalizePath(optPath: string | string[]) {
     const filePath = Array.isArray(optPath) ? optPath.join('/') : optPath;
 
     const normalizedPath = path.normalize(filePath).replace(/^\/?(\.\/|\.\.\/)+/, '');
 
-    return path.resolve(strapi.dirs.app.root, normalizedPath);
+    return path.resolve(metrix.dirs.app.root, normalizedPath);
   }
 
   const strapiFS: StrapiFS = {
     /**
-     * Writes a file in a strapi app
+     * Writes a file in a metrix app
      * @param {Array|string} optPath - file path
      * @param {string} data - content
      */
@@ -45,7 +45,7 @@ export default (strapi: Core.Strapi) => {
     },
 
     /**
-     * Removes a file in strapi app
+     * Removes a file in metrix app
      */
     removeAppFile(optPath) {
       const removePath = normalizePath(optPath);
@@ -53,7 +53,7 @@ export default (strapi: Core.Strapi) => {
     },
 
     /**
-     * Appends a file in strapi app
+     * Appends a file in metrix app
      */
     appendFile(optPath, data) {
       const writePath = normalizePath(optPath);

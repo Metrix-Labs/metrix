@@ -1,9 +1,9 @@
 /**
  * Strapi telemetry package.
- * You can learn more at https://docs.strapi.io/developer-docs/latest/getting-started/usage-information.html
+ * You can learn more at https://docs.metrix.io/developer-docs/latest/getting-started/usage-information.html
  */
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import wrapWithRateLimit from './rate-limiter';
 import createSender from './sender';
@@ -18,13 +18,13 @@ const LIMITED_EVENTS = [
   'didInitializePluginUpload',
 ];
 
-const createTelemetryInstance = (strapi: Core.Strapi) => {
-  const uuid = strapi.config.get('uuid');
-  const telemetryDisabled = strapi.config.get('packageJsonStrapi.telemetryDisabled');
+const createTelemetryInstance = (metrix: Core.Strapi) => {
+  const uuid = metrix.config.get('uuid');
+  const telemetryDisabled = metrix.config.get('packageJsonStrapi.telemetryDisabled');
   const isDisabled =
-    !uuid || isTruthy(process.env.STRAPI_TELEMETRY_DISABLED) || isTruthy(telemetryDisabled);
+    !uuid || isTruthy(process.env.METRIX_TELEMETRY_DISABLED) || isTruthy(telemetryDisabled);
 
-  const sender = createSender(strapi);
+  const sender = createSender(metrix);
   const sendEvent = wrapWithRateLimit(sender, { limitedEvents: LIMITED_EVENTS });
 
   return {
@@ -34,14 +34,14 @@ const createTelemetryInstance = (strapi: Core.Strapi) => {
 
     register() {
       if (!isDisabled) {
-        strapi.cron.add({
+        metrix.cron.add({
           sendPingEvent: {
             task: () => sendEvent('ping'),
             options: '0 0 12 * * *',
           },
         });
 
-        strapi.server.use(createMiddleware({ sendEvent }));
+        metrix.server.use(createMiddleware({ sendEvent }));
       }
     },
 

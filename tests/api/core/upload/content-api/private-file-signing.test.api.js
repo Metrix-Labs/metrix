@@ -4,11 +4,11 @@ const fs = require('fs');
 const path = require('path');
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createContentAPIRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 
 const modelUID = 'api::model.model';
@@ -96,10 +96,10 @@ const mockProvider = () => ({
         return { url: 'signedUrl' };
       },
       uploadStream(file) {
-        file.url = 'strapi.jpg';
+        file.url = 'metrix.jpg';
       },
       upload(file) {
-        file.url = 'strapi.jpg';
+        file.url = 'metrix.jpg';
       },
       delete() {},
       checkFileSize() {},
@@ -108,7 +108,7 @@ const mockProvider = () => ({
 });
 
 const createModel = async (name = 'name') => {
-  return strapi.entityService.create(modelUID, {
+  return metrix.entityService.create(modelUID, {
     data: {
       name,
       media: singleMedia,
@@ -177,18 +177,18 @@ describe.skip('Upload Plugin url signing', () => {
   };
 
   beforeAll(async () => {
-    const localProviderPath = require.resolve('@strapi/provider-upload-local');
+    const localProviderPath = require.resolve('@metrix/provider-upload-local');
     jest.mock(localProviderPath, () => mockProvider(true));
 
     //  Create builder
     await builder.addComponent(models[componentUID]).addContentType(models[modelUID]).build();
 
     // Create api instance
-    strapi = await createStrapiInstance();
+    metrix = await createStrapiInstance();
 
-    rq = await createContentAPIRequest({ strapi });
+    rq = await createContentAPIRequest({ metrix });
 
-    const imgRes = [await uploadImg('strapi.jpg'), await uploadImg('strapi.jpg')];
+    const imgRes = [await uploadImg('metrix.jpg'), await uploadImg('metrix.jpg')];
 
     repeatable = imgRes.map((img) => img.body[0].id);
     singleMedia = imgRes[0].body[0].id;
@@ -201,7 +201,7 @@ describe.skip('Upload Plugin url signing', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -212,7 +212,7 @@ describe.skip('Upload Plugin url signing', () => {
     });
 
     test('entityService.findOne', async () => {
-      const entity = await strapi.entityService.findOne(modelUID, model.id, {
+      const entity = await metrix.entityService.findOne(modelUID, model.id, {
         populate,
       });
 
@@ -220,7 +220,7 @@ describe.skip('Upload Plugin url signing', () => {
     });
 
     test('entityService.findMany', async () => {
-      const entities = await strapi.entityService.findMany(modelUID, {
+      const entities = await metrix.entityService.findMany(modelUID, {
         populate,
       });
 
@@ -230,7 +230,7 @@ describe.skip('Upload Plugin url signing', () => {
     });
 
     test('entityService.findPage', async () => {
-      const entities = await strapi.entityService.findPage(modelUID, {
+      const entities = await metrix.entityService.findPage(modelUID, {
         populate,
       });
       for (const entity of entities.results) {
@@ -240,7 +240,7 @@ describe.skip('Upload Plugin url signing', () => {
 
     test('entityService.update', async () => {
       const model = await createModel();
-      const entity = await strapi.entityService.update(modelUID, model.id, {
+      const entity = await metrix.entityService.update(modelUID, model.id, {
         data: {
           name: 'model_updated',
         },
@@ -252,7 +252,7 @@ describe.skip('Upload Plugin url signing', () => {
 
     test('entityService.delete', async () => {
       const model = await createModel();
-      const entity = await strapi.entityService.delete(modelUID, model.id, {
+      const entity = await metrix.entityService.delete(modelUID, model.id, {
         populate,
       });
 
@@ -261,7 +261,7 @@ describe.skip('Upload Plugin url signing', () => {
 
     test('entityService.load', async () => {
       const model = await createModel();
-      const media_repeatable = await strapi.entityService.load(
+      const media_repeatable = await metrix.entityService.load(
         modelUID,
         { id: model.id },
         'media_repeatable'
@@ -278,66 +278,66 @@ describe.skip('Upload Plugin url signing', () => {
 
     test('entityService.create', async () => {
       let entity = await createModel();
-      responseExpectations(entity, 'strapi.jpg');
+      responseExpectations(entity, 'metrix.jpg');
     });
 
     test('entityService.findOne', async () => {
-      const entity = await strapi.entityService.findOne(modelUID, model.id, {
+      const entity = await metrix.entityService.findOne(modelUID, model.id, {
         populate,
       });
 
-      responseExpectations(entity, 'strapi.jpg');
+      responseExpectations(entity, 'metrix.jpg');
     });
 
     test('entityService.findMany', async () => {
-      const entities = await strapi.entityService.findMany(modelUID, {
+      const entities = await metrix.entityService.findMany(modelUID, {
         populate,
       });
 
       for (const entity of entities) {
-        responseExpectations(entity, 'strapi.jpg');
+        responseExpectations(entity, 'metrix.jpg');
       }
     });
 
     test('entityService.findPage', async () => {
-      const entities = await strapi.entityService.findPage(modelUID, {
+      const entities = await metrix.entityService.findPage(modelUID, {
         populate,
       });
       for (const entity of entities.results) {
-        responseExpectations(entity, 'strapi.jpg');
+        responseExpectations(entity, 'metrix.jpg');
       }
     });
 
     test('entityService.update', async () => {
       const model = await createModel();
-      const entity = await strapi.entityService.update(modelUID, model.id, {
+      const entity = await metrix.entityService.update(modelUID, model.id, {
         data: {
           name: 'model_updated',
         },
         populate,
       });
 
-      responseExpectations(entity, 'strapi.jpg');
+      responseExpectations(entity, 'metrix.jpg');
     });
 
     test('entityService.delete', async () => {
       const model = await createModel();
-      const entity = await strapi.entityService.delete(modelUID, model.id, {
+      const entity = await metrix.entityService.delete(modelUID, model.id, {
         populate,
       });
 
-      responseExpectations(entity, 'strapi.jpg');
+      responseExpectations(entity, 'metrix.jpg');
     });
 
     test('entityService.load', async () => {
       const model = await createModel();
-      const media_repeatable = await strapi.entityService.load(
+      const media_repeatable = await metrix.entityService.load(
         modelUID,
         { id: model.id },
         'media_repeatable'
       );
 
-      expectRepeatable(media_repeatable, 'strapi.jpg');
+      expectRepeatable(media_repeatable, 'metrix.jpg');
     });
   });
 });

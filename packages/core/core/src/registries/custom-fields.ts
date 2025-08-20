@@ -1,6 +1,6 @@
 import { has, isPlainObject } from 'lodash/fp';
 
-import type { Core, Modules } from '@strapi/types';
+import type { Core, Modules } from '@metrixlabs/types';
 
 const ALLOWED_TYPES = [
   'biginteger',
@@ -21,7 +21,7 @@ const ALLOWED_TYPES = [
   'uid',
 ] as const;
 
-const customFieldsRegistry = (strapi: Core.Strapi) => {
+const customFieldsRegistry = (metrix: Core.Strapi) => {
   const customFields: Record<string, unknown> = {};
 
   return {
@@ -79,7 +79,7 @@ const customFieldsRegistry = (strapi: Core.Strapi) => {
 
         // When no plugin is specified, or it isn't found in Strapi, default to global
         const uid =
-          plugin && strapi.plugin(plugin) ? `plugin::${plugin}.${name}` : `global::${name}`;
+          plugin && metrix.plugin(plugin) ? `plugin::${plugin}.${name}` : `global::${name}`;
 
         if (has(uid, customFields)) {
           throw new Error(`Custom field: '${uid}' has already been registered`);

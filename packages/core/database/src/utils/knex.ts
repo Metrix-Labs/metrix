@@ -14,7 +14,7 @@ export function isKnexQuery(value: unknown): value is Knex.Raw | Knex.QueryBuild
 
 /**
  * Adds the name of the schema to the table name if the schema was defined by the user.
- * Users can set the db schema only for Postgres in strapi database config.
+ * Users can set the db schema only for Postgres in metrix database config.
  */
 export const addSchema = (db: Database, tableName: string): string => {
   const schemaName = db.getSchemaName();

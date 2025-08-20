@@ -4,6 +4,6 @@
  * team router
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { createCoreRouter } = require('@metrix/metrix').factories;
 
 module.exports = createCoreRouter('api::team.team');

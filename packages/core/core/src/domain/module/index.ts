@@ -1,6 +1,6 @@
 import _, { type PropertyPath, flatten } from 'lodash';
-import { yup } from '@strapi/utils';
-import type { Core, UID, Struct } from '@strapi/types';
+import { yup } from '@metrixlabs/utils';
+import type { Core, UID, Struct } from '@metrixlabs/types';
 
 import { removeNamespace } from '../../registries/namespace';
 import { validateModule } from './validation';
@@ -19,9 +19,9 @@ export interface RawModule {
   contentTypes?: Core.Module['contentTypes'];
   policies?: Core.Module['policies'];
   middlewares?: Core.Module['middlewares'];
-  bootstrap?: (params: { strapi: Core.Strapi }) => Promise<void>;
-  register?: (params: { strapi: Core.Strapi }) => Promise<void>;
-  destroy?: (params: { strapi: Core.Strapi }) => Promise<void>;
+  bootstrap?: (params: { metrix: Core.Strapi }) => Promise<void>;
+  register?: (params: { metrix: Core.Strapi }) => Promise<void>;
+  destroy?: (params: { metrix: Core.Strapi }) => Promise<void>;
 }
 
 export interface Module {
@@ -61,7 +61,7 @@ const defaultModule = {
 export const createModule = (
   namespace: string,
   rawModule: RawModule,
-  strapi: Core.Strapi
+  metrix: Core.Strapi
 ): Module => {
   _.defaults(rawModule, defaultModule);
 
@@ -69,7 +69,7 @@ export const createModule = (
     validateModule(rawModule);
   } catch (e) {
     if (e instanceof yup.ValidationError) {
-      throw new Error(`strapi-server.js is invalid for '${namespace}'.\n${e.errors.join('\n')}`);
+      throw new Error(`metrix-server.js is invalid for '${namespace}'.\n${e.errors.join('\n')}`);
     }
   }
 
@@ -80,29 +80,29 @@ export const createModule = (
         throw new Error(`Bootstrap for ${namespace} has already been called`);
       }
       called.bootstrap = true;
-      await (rawModule.bootstrap && rawModule.bootstrap({ strapi }));
+      await (rawModule.bootstrap && rawModule.bootstrap({ metrix }));
     },
     async register() {
       if (called.register) {
         throw new Error(`Register for ${namespace} has already been called`);
       }
       called.register = true;
-      await (rawModule.register && rawModule.register({ strapi }));
+      await (rawModule.register && rawModule.register({ metrix }));
     },
     async destroy() {
       if (called.destroy) {
         throw new Error(`Destroy for ${namespace} has already been called`);
       }
       called.destroy = true;
-      await (rawModule.destroy && rawModule.destroy({ strapi }));
+      await (rawModule.destroy && rawModule.destroy({ metrix }));
     },
     load() {
-      strapi.get('content-types').add(namespace, rawModule.contentTypes);
-      strapi.get('services').add(namespace, rawModule.services);
-      strapi.get('policies').add(namespace, rawModule.policies);
-      strapi.get('middlewares').add(namespace, rawModule.middlewares);
-      strapi.get('controllers').add(namespace, rawModule.controllers);
-      strapi.get('config').set(namespace, rawModule.config);
+      metrix.get('content-types').add(namespace, rawModule.contentTypes);
+      metrix.get('services').add(namespace, rawModule.services);
+      metrix.get('policies').add(namespace, rawModule.policies);
+      metrix.get('middlewares').add(namespace, rawModule.middlewares);
+      metrix.get('controllers').add(namespace, rawModule.controllers);
+      metrix.get('config').set(namespace, rawModule.config);
     },
     get routes() {
       return rawModule.routes ?? {};
@@ -112,41 +112,41 @@ export const createModule = (
     },
     config(path: PropertyPath, defaultValue: unknown) {
       const pathArray = flatten([namespace, path]);
-      return strapi.get('config').get(pathArray, defaultValue);
+      return metrix.get('config').get(pathArray, defaultValue);
     },
     contentType(ctName: UID.ContentType) {
-      return strapi.get('content-types').get(`${namespace}.${ctName}`);
+      return metrix.get('content-types').get(`${namespace}.${ctName}`);
     },
     get contentTypes() {
-      const contentTypes = strapi.get('content-types').getAll(namespace);
+      const contentTypes = metrix.get('content-types').getAll(namespace);
       return removeNamespacedKeys(contentTypes, namespace);
     },
     service(serviceName: UID.Service) {
-      return strapi.get('services').get(`${namespace}.${serviceName}`);
+      return metrix.get('services').get(`${namespace}.${serviceName}`);
     },
     get services() {
-      const services = strapi.get('services').getAll(namespace);
+      const services = metrix.get('services').getAll(namespace);
       return removeNamespacedKeys(services, namespace);
     },
     policy(policyName: UID.Policy) {
-      return strapi.get('policies').get(`${namespace}.${policyName}`);
+      return metrix.get('policies').get(`${namespace}.${policyName}`);
     },
     get policies() {
-      const policies = strapi.get('policies').getAll(namespace);
+      const policies = metrix.get('policies').getAll(namespace);
       return removeNamespacedKeys(policies, namespace);
     },
     middleware(middlewareName: UID.Middleware) {
-      return strapi.get('middlewares').get(`${namespace}.${middlewareName}`);
+      return metrix.get('middlewares').get(`${namespace}.${middlewareName}`);
     },
     get middlewares() {
-      const middlewares = strapi.get('middlewares').getAll(namespace);
+      const middlewares = metrix.get('middlewares').getAll(namespace);
       return removeNamespacedKeys(middlewares, namespace);
     },
     controller(controllerName: UID.Controller) {
-      return strapi.get('controllers').get(`${namespace}.${controllerName}`);
+      return metrix.get('controllers').get(`${namespace}.${controllerName}`);
     },
     get controllers() {
-      const controllers = strapi.get('controllers').getAll(namespace);
+      const controllers = metrix.get('controllers').getAll(namespace);
       return removeNamespacedKeys(controllers, namespace);
     },
   };

@@ -1,8 +1,8 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import type { GetRecentlyAssignedDocuments } from '../../../../shared/contracts/homepage';
 
 const createHomepageController = () => {
-  const homepageService = strapi.plugin('review-workflows').service('homepage');
+  const homepageService = metrix.plugin('review-workflows').service('homepage');
 
   return {
     async getRecentlyAssignedDocuments(): Promise<GetRecentlyAssignedDocuments.Response> {

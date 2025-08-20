@@ -2,11 +2,11 @@
 
 // Helpers.
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 let graphqlQuery;
 const data = {};
@@ -42,8 +42,8 @@ describe('Single type Graphql support', () => {
   beforeAll(async () => {
     await builder.addContentType(homePageModel).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     graphqlQuery = (body) => {
       return rq({
@@ -55,7 +55,7 @@ describe('Single type Graphql support', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

@@ -1,7 +1,7 @@
 import { isNil } from 'lodash/fp';
 
-import { setCreatorFields, async, errors } from '@strapi/utils';
-import type { Modules, UID } from '@strapi/types';
+import { setCreatorFields, async, errors } from '@metrixlabs/utils';
+import type { Modules, UID } from '@metrixlabs/types';
 
 import { getService } from '../utils';
 import { validateBulkActionInput } from './validation';
@@ -237,7 +237,7 @@ export default {
     const permissionChecker = getService('permission-checker').create({ userAbility, model });
 
     const [totalEntries, document] = await Promise.all([
-      strapi.db.query(model).count(),
+      metrix.db.query(model).count(),
       createDocument(ctx),
     ]);
 
@@ -250,7 +250,7 @@ export default {
     });
 
     if (totalEntries === 0) {
-      strapi.telemetry.send('didCreateFirstContentTypeEntry', {
+      metrix.telemetry.send('didCreateFirstContentTypeEntry', {
         eventProperties: { model },
       });
     }
@@ -384,7 +384,7 @@ export default {
       return ctx.forbidden();
     }
 
-    const publishedDocument = await strapi.db.transaction(async () => {
+    const publishedDocument = await metrix.db.transaction(async () => {
       // Create or update document
       const permissionQuery = await permissionChecker.sanitizedQuery.publish(ctx.query);
       const populate = await getService('populate-builder')(model)
@@ -594,7 +594,7 @@ export default {
       throw new errors.ForbiddenError();
     }
 
-    await strapi.db.transaction(async () => {
+    await metrix.db.transaction(async () => {
       if (discardDraft) {
         await documentManager.discardDraft(document.documentId, model, { locale });
       }

@@ -19,7 +19,7 @@ import Admonition from '@theme/Admonition';
 #### Function that Returns Any Entity
 
 ```typescript
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrix/types';
 
 function find(): Data.Entity {}
 ```
@@ -37,7 +37,7 @@ Infer the UID type based on usage and allow passing it to other generic types.
 :::
 
 ```typescript
-import type { Schema, UID } from '@strapi/types';
+import type { Schema, UID } from '@metrix/types';
 
 function getSchema<TSchemaUID extends UID.Schema>(uid: TSchemaUID): Schema.Schema<TSchemaUID> {}
 ```
@@ -52,7 +52,7 @@ Useful when the uid type doesn't need to be re-used by other type.
 :::
 
 ```typescript
-import type { Schema, UID } from '@strapi/types';
+import type { Schema, UID } from '@metrix/types';
 
 function getSchema(uid: UID.Schema): Schema.Schema {}
 ```
@@ -68,7 +68,7 @@ function getSchema(uid: UID.Schema): Schema.Schema {}
 Given a schema such as:
 
 ```typescript
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 declare const schema: Schema.Schema;
 ```
@@ -104,7 +104,7 @@ for (const attributeName in attributes) {
 #### Type Guard
 
 ```typescript
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 function isContentTypeSchema(schema: Schema.Schema): schema is Schema.ContentType {
   return schema.modelType === 'contentType';
@@ -116,7 +116,7 @@ function isContentTypeSchema(schema: Schema.Schema): schema is Schema.ContentTyp
 #### Assertion Function
 
 ```typescript
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrix/types';
 
 function assertIsContentTypeSchema(schema: Schema.Schema): asserts schema is Schema.ContentType {
   if (schema.modelType !== 'contentType') {
@@ -130,7 +130,7 @@ function assertIsContentTypeSchema(schema: Schema.Schema): asserts schema is Sch
 ### Data
 
 ```typescript
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrix/types';
 ```
 
 <Tabs>
@@ -213,7 +213,7 @@ import type { Data } from '@strapi/types';
 ### UID
 
 ```typescript
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrix/types';
 ```
 
 #### Represent any schema UID

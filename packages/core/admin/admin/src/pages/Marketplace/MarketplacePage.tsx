@@ -245,7 +245,7 @@ const MarketplacePage = () => {
             </Pagination.Root>
             <Box paddingTop={8}>
               <a
-                href="https://strapi.canny.io/plugin-requests"
+                href="https://metrix.canny.io/plugin-requests"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 style={{ textDecoration: 'none' }}

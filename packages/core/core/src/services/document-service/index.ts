@@ -1,4 +1,4 @@
-import type { Core, Modules, UID } from '@strapi/types';
+import type { Core, Modules, UID } from '@metrixlabs/types';
 
 import { createMiddlewareManager, databaseErrorsMiddleware } from './middlewares';
 import { createContentTypeRepository } from './repository';
@@ -12,17 +12,17 @@ import entityValidator from '../entity-validator';
  * - Execute middlewares on document actions
  * - Apply default parameters to document actions
  *
- * @param strapi
+ * @param metrix
  * @param validator - validator for database entries
  * @returns DocumentService
  *
  * @example Access documents
- * const article = strapi.documents('api::article.article').create(params)
- * const allArticles = strapi.documents('api::article.article').findMany(params)
+ * const article = metrix.documents('api::article.article').create(params)
+ * const allArticles = metrix.documents('api::article.article').findMany(params)
  *
  */
 export const createDocumentService = (
-  strapi: Core.Strapi,
+  metrix: Core.Strapi,
   validator: Modules.EntityValidator.EntityValidator = entityValidator
 ): Modules.Documents.Service => {
   // Cache the repositories (one per content type)
@@ -37,7 +37,7 @@ export const createDocumentService = (
       return repositories.get(uid)!;
     }
 
-    const contentType = strapi.contentType(uid);
+    const contentType = metrix.contentType(uid);
     const repository = createContentTypeRepository(uid, validator);
 
     const instance = middlewares.wrapObject(

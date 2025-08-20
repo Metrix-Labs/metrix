@@ -4,9 +4,9 @@
  * `test-policy` policy
  */
 
-module.exports = (policyCtx, config, { strapi }) => {
+module.exports = (policyCtx, config, { metrix }) => {
   // Add your own logic here.
-  strapi.log.info('In test-policy policy.');
+  metrix.log.info('In test-policy policy.');
 
   const canDoSomething = true;
 

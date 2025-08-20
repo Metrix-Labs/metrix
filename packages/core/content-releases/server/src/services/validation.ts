@@ -1,5 +1,5 @@
-import { errors, contentTypes } from '@strapi/utils';
-import type { Core, UID } from '@strapi/types';
+import { errors, contentTypes } from '@metrixlabs/utils';
+import type { Core, UID } from '@metrixlabs/types';
 import type { Release, CreateRelease, UpdateRelease } from '../../../shared/contracts/releases';
 import type { CreateReleaseAction } from '../../../shared/contracts/release-actions';
 import { RELEASE_MODEL_UID } from '../constants';
@@ -11,16 +11,16 @@ export class AlreadyOnReleaseError extends errors.ApplicationError<'AlreadyOnRel
   }
 }
 
-const createReleaseValidationService = ({ strapi }: { strapi: Core.Strapi }) => ({
+const createReleaseValidationService = ({ metrix }: { metrix: Core.Strapi }) => ({
   async validateUniqueEntry(
     releaseId: CreateReleaseAction.Request['params']['releaseId'],
     releaseActionArgs: CreateReleaseAction.Request['body']
   ) {
     /**
      * Asserting the type, otherwise TS complains: 'release.actions' is of type 'unknown', even though the types come through for non-populated fields...
-     * Possibly related to the comment on GetValues: https://github.com/strapi/strapi/blob/main/packages/core/types/src/modules/entity-service/result.ts
+     * Possibly related to the comment on GetValues: https://github.com/metrix/metrix/blob/main/packages/core/types/src/modules/entity-service/result.ts
      */
-    const release = (await strapi.db.query(RELEASE_MODEL_UID).findOne({
+    const release = (await metrix.db.query(RELEASE_MODEL_UID).findOne({
       where: {
         id: releaseId,
       },
@@ -50,7 +50,7 @@ const createReleaseValidationService = ({ strapi }: { strapi: Core.Strapi }) => 
     contentTypeUid: CreateReleaseAction.Request['body']['contentType'],
     entryDocumentId: CreateReleaseAction.Request['body']['entryDocumentId']
   ) {
-    const contentType = strapi.contentType(contentTypeUid as UID.ContentType);
+    const contentType = metrix.contentType(contentTypeUid as UID.ContentType);
 
     if (!contentType) {
       throw new errors.NotFoundError(`No content type found for uid ${contentTypeUid}`);
@@ -68,12 +68,12 @@ const createReleaseValidationService = ({ strapi }: { strapi: Core.Strapi }) => 
   },
   async validatePendingReleasesLimit() {
     // Use the maximum releases option if it exists, otherwise default to 3
-    const featureCfg = strapi.ee.features.get('cms-content-releases');
+    const featureCfg = metrix.ee.features.get('cms-content-releases');
 
     const maximumPendingReleases =
       (typeof featureCfg === 'object' && featureCfg?.options?.maximumReleases) || 3;
 
-    const [, pendingReleasesCount] = await strapi.db.query(RELEASE_MODEL_UID).findWithCount({
+    const [, pendingReleasesCount] = await metrix.db.query(RELEASE_MODEL_UID).findWithCount({
       filters: {
         releasedAt: {
           $null: true,
@@ -90,7 +90,7 @@ const createReleaseValidationService = ({ strapi }: { strapi: Core.Strapi }) => 
     name: CreateRelease.Request['body']['name'],
     id?: UpdateRelease.Request['params']['id']
   ) {
-    const pendingReleases = (await strapi.db.query(RELEASE_MODEL_UID).findMany({
+    const pendingReleases = (await metrix.db.query(RELEASE_MODEL_UID).findMany({
       where: {
         releasedAt: {
           $null: true,

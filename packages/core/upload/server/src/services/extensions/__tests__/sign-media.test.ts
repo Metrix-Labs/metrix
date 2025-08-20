@@ -1,4 +1,4 @@
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrixlabs/types';
 import { signEntityMedia } from '../utils';
 import { getService } from '../../../utils';
 
@@ -86,7 +86,7 @@ describe('Upload | extensions | entity-manager', () => {
         registerCron: jest.fn().mockResolvedValue(undefined),
       }));
 
-      global.strapi = {
+      global.metrix = {
         plugins: {
           upload: {},
         },

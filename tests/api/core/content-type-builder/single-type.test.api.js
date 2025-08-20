@@ -4,23 +4,23 @@
 
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const modelsUtils = require('api-tests/models');
 
-let strapi;
+let metrix;
 let rq;
 
 const restart = async () => {
-  await strapi.destroy();
-  strapi = await createStrapiInstance();
-  rq = await createAuthRequest({ strapi });
+  await metrix.destroy();
+  metrix = await createStrapiInstance();
+  rq = await createAuthRequest({ metrix });
 };
 
 describe('Content Type Builder - Content types', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterEach(async () => {
@@ -33,10 +33,10 @@ describe('Content Type Builder - Content types', () => {
       'api::test-single-type.test-single-type',
     ];
 
-    await modelsUtils.cleanupModels(modelsUIDs, { strapi });
-    await modelsUtils.deleteContentTypes(modelsUIDs, { strapi });
+    await modelsUtils.cleanupModels(modelsUIDs, { metrix });
+    await modelsUtils.deleteContentTypes(modelsUIDs, { metrix });
 
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   describe('Single Types', () => {
@@ -158,7 +158,7 @@ describe('Content Type Builder - Content types', () => {
 
       // create data
       for (let i = 0; i < 2; i += 1) {
-        await strapi.db.query(uid).create({ data: { title: 'Test' } });
+        await metrix.db.query(uid).create({ data: { title: 'Test' } });
       }
 
       const updateRes = await rq({

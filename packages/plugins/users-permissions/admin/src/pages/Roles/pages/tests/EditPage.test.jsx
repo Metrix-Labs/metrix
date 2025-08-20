@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { NotificationsProvider } from '@strapi/admin/strapi-admin';
+import { NotificationsProvider } from '@metrixlabs/admin/metrix-admin';
 import { DesignSystemProvider } from '@strapi/design-system';
 import { fireEvent, render as renderRTL, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

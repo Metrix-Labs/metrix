@@ -42,7 +42,7 @@ const setup = () =>
 
 describe('useTracking', () => {
   beforeAll(() => {
-    window.strapi.telemetryDisabled = false;
+    window.metrix.telemetryDisabled = false;
   });
 
   afterEach(() => {
@@ -55,7 +55,7 @@ describe('useTracking', () => {
     const res = await result.current.trackUsage('didSaveContentType');
 
     expect(axios.post).toBeCalledWith(
-      'https://analytics.strapi.io/api/v2/track',
+      'https://analytics.metrix.io/api/v2/track',
       {
         userId: 'someTestUserId',
         event: 'didSaveContentType',
@@ -80,8 +80,8 @@ describe('useTracking', () => {
     });
   });
 
-  it('should not fire axios.post if strapi.telemetryDisabled is true', async () => {
-    window.strapi.telemetryDisabled = true;
+  it('should not fire axios.post if metrix.telemetryDisabled is true', async () => {
+    window.metrix.telemetryDisabled = true;
 
     const { result } = setup();
 
@@ -89,7 +89,7 @@ describe('useTracking', () => {
 
     expect(axios.post).not.toBeCalled();
 
-    window.strapi.telemetryDisabled = false;
+    window.metrix.telemetryDisabled = false;
   });
 
   it('should fail gracefully if the request does not work', async () => {

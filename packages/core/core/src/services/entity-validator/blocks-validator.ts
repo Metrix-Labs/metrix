@@ -1,4 +1,4 @@
-import { yup } from '@strapi/utils';
+import { yup } from '@metrixlabs/utils';
 
 const textNodeValidator = yup.object().shape({
   type: yup.string().equals(['text']).required(),
@@ -21,7 +21,7 @@ const textNodeValidator = yup.object().shape({
 const checkValidLink = (link: string) => {
   try {
     // eslint-disable-next-line no-new
-    new URL(link.startsWith('/') ? `https://strapi.io${link}` : link);
+    new URL(link.startsWith('/') ? `https://metrix.io${link}` : link);
   } catch (error) {
     return false;
   }

@@ -1,7 +1,7 @@
 /* eslint-disable no-continue */
 import { keyBy, omit } from 'lodash/fp';
 
-import type { UID, Schema } from '@strapi/types';
+import type { UID, Schema } from '@metrixlabs/types';
 
 interface LoadContext {
   oldVersions: { id: string; locale: string }[];
@@ -17,12 +17,12 @@ const load = async (uid: UID.ContentType, { oldVersions, newVersions }: LoadCont
   const updates = [] as any;
 
   // Iterate all components and content types to find relations that need to be updated
-  await strapi.db.transaction(async ({ trx }) => {
-    const contentTypes = Object.values(strapi.contentTypes) as Schema.ContentType[];
-    const components = Object.values(strapi.components) as Schema.Component[];
+  await metrix.db.transaction(async ({ trx }) => {
+    const contentTypes = Object.values(metrix.contentTypes) as Schema.ContentType[];
+    const components = Object.values(metrix.components) as Schema.Component[];
 
     for (const model of [...contentTypes, ...components]) {
-      const dbModel = strapi.db.metadata.get(model.uid);
+      const dbModel = metrix.db.metadata.get(model.uid);
 
       for (const attribute of Object.values(dbModel.attributes) as any) {
         /**
@@ -52,7 +52,7 @@ const load = async (uid: UID.ContentType, { oldVersions, newVersions }: LoadCont
         // NOTE: when the model has draft and publish, we can assume relation are only draft to draft & published to published
         const ids = oldVersions.map((entry) => entry.id);
 
-        const oldVersionsRelations = await strapi.db
+        const oldVersionsRelations = await metrix.db
           .getConnection()
           .select('*')
           .from(joinTable.name)
@@ -78,7 +78,7 @@ const load = async (uid: UID.ContentType, { oldVersions, newVersions }: LoadCont
         if (!model.options?.draftAndPublish) {
           const ids = newVersions.map((entry) => entry.id);
 
-          const newVersionsRelations = await strapi.db
+          const newVersionsRelations = await metrix.db
             .getConnection()
             .select('*')
             .from(joinTable.name)
@@ -137,7 +137,7 @@ const sync = async (
     {} as Record<string, string>
   );
 
-  await strapi.db.transaction(async ({ trx }) => {
+  await metrix.db.transaction(async ({ trx }) => {
     // Iterate old relations that are deleted and insert the new ones
     for (const { joinTable, relations } of oldRelations) {
       // Update old ids with the new ones

@@ -26,7 +26,7 @@ import { translatedErrors } from '../../../../../utils/translatedErrors';
 import { MagicLinkCE } from './MagicLinkCE';
 import { SelectRoles } from './SelectRoles';
 
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrixlabs/types';
 
 interface ModalFormProps {
   onToggle: () => void;
@@ -317,7 +317,7 @@ const FORM_LAYOUT = [
       name: 'email',
       placeholder: {
         id: 'Auth.form.email.placeholder',
-        defaultMessage: 'e.g. kai.doe@strapi.io',
+        defaultMessage: 'e.g. kai.doe@metrix.io',
       },
       type: 'email' as const,
       size: 6,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { InputProps, useField } from '@strapi/admin/strapi-admin';
+import { InputProps, useField } from '@metrixlabs/admin/metrix-admin';
 import { Field, Flex, IconButton } from '@strapi/design-system';
 import { Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';

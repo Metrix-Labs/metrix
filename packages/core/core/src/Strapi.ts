@@ -2,12 +2,12 @@ import * as globalAgent from 'global-agent';
 import path from 'path';
 import _ from 'lodash';
 import { isFunction } from 'lodash/fp';
-import { Logger, createLogger } from '@strapi/logger';
-import { Database } from '@strapi/database';
+import { Logger, createLogger } from '@metrixlabs/logger';
+import { Database } from '@metrixlabs/database';
 
-import type { Core, Modules, UID, Schema } from '@strapi/types';
+import type { Core, Modules, UID, Schema } from '@metrixlabs/types';
 
-import tsUtils from '@strapi/typescript-utils';
+import tsUtils from '@metrixlabs/typescript-utils';
 import { loadConfiguration } from './configuration';
 
 import * as factories from './factories';
@@ -92,7 +92,7 @@ class Strapi extends Container implements Core.Strapi {
   }
 
   /**
-   * @deprecated `strapi.entityService` will be removed in the next major version
+   * @deprecated `metrix.entityService` will be removed in the next major version
    */
   get entityService(): Modules.EntityService.EntityService {
     return this.get('entityService');
@@ -269,7 +269,7 @@ class Strapi extends Container implements Core.Strapi {
       .add('requestContext', requestContext)
       .add('customFields', createCustomFields(this))
       .add('entityValidator', entityValidator)
-      .add('entityService', () => createEntityService({ strapi: this, db: this.db }))
+      .add('entityService', () => createEntityService({ metrix: this, db: this.db }))
       .add('documents', () => createDocumentService(this))
       .add('db', () => {
         const tsDir = tsUtils.resolveOutDirSync(this.dirs.app.root);
@@ -430,13 +430,13 @@ class Strapi extends Container implements Core.Strapi {
     let oldContentTypes;
     if (await this.db.getSchemaConnection().hasTable(coreStoreModel.tableName)) {
       oldContentTypes = await this.store.get({
-        type: 'strapi',
+        type: 'metrix',
         name: 'content_types',
         key: 'schema',
       });
     }
 
-    await this.hook('strapi::content-types.beforeSync').call({
+    await this.hook('metrix::content-types.beforeSync').call({
       oldContentTypes,
       contentTypes: this.contentTypes,
     });
@@ -449,16 +449,16 @@ class Strapi extends Container implements Core.Strapi {
     }
 
     if (this.EE) {
-      await utils.ee.checkLicense({ strapi: this });
+      await utils.ee.checkLicense({ metrix: this });
     }
 
-    await this.hook('strapi::content-types.afterSync').call({
+    await this.hook('metrix::content-types.afterSync').call({
       oldContentTypes,
       contentTypes: this.contentTypes,
     });
 
     await this.store.set({
-      type: 'strapi',
+      type: 'metrix',
       name: 'content_types',
       key: 'schema',
       value: this.contentTypes,
@@ -520,8 +520,8 @@ class Strapi extends Container implements Core.Strapi {
 
     process.removeAllListeners();
 
-    // @ts-expect-error: Allow clean delete of global.strapi to allow re-instanciation
-    delete global.strapi;
+    // @ts-expect-error: Allow clean delete of global.metrix to allow re-instanciation
+    delete global.metrix;
 
     this.log.info('Strapi has been shut down');
   }
@@ -535,7 +535,7 @@ class Strapi extends Container implements Core.Strapi {
     // user
     const userLifecycleFunction = this.app && this.app[lifecycleName];
     if (isFunction(userLifecycleFunction)) {
-      await userLifecycleFunction({ strapi: this });
+      await userLifecycleFunction({ metrix: this });
     }
   }
 
@@ -552,7 +552,7 @@ class Strapi extends Container implements Core.Strapi {
   }
 
   /**
-   * @deprecated Use `strapi.db.query` instead
+   * @deprecated Use `metrix.db.query` instead
    */
   query(uid: UID.Schema) {
     return this.db.query(uid);

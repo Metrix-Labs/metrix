@@ -1,6 +1,6 @@
 import { isEmpty, isArray } from 'lodash/fp';
 import koaSession from 'koa-session';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 const defaultConfig = {
   key: 'koa.sess',
@@ -17,9 +17,9 @@ const defaultConfig = {
 
 export const session: Core.MiddlewareFactory<Partial<koaSession.opts>> = (
   userConfig,
-  { strapi }
+  { metrix }
 ) => {
-  const { keys } = strapi.server.app;
+  const { keys } = metrix.server.app;
   if (!isArray(keys) || isEmpty(keys) || keys.some(isEmpty)) {
     throw new Error(
       `App keys are required. Please set app.keys in config/server.js (ex: keys: ['myKeyA', 'myKeyB'])`
@@ -28,5 +28,5 @@ export const session: Core.MiddlewareFactory<Partial<koaSession.opts>> = (
 
   const config: Partial<koaSession.opts> = { ...defaultConfig, ...userConfig };
 
-  strapi.server.use(koaSession(config, strapi.server.app));
+  metrix.server.use(koaSession(config, metrix.server.app));
 };

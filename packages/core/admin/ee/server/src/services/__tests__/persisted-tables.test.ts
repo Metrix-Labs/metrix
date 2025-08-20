@@ -17,7 +17,7 @@ describe('Persist table functions', () => {
         'addresses',
         'not_a_strapi_table',
       ]);
-      const result = await findTables({ strapi: strapiMock }, /^strapi_.*/);
+      const result = await findTables({ metrix: strapiMock }, /^strapi_.*/);
 
       expect(result).toEqual([]);
     });
@@ -29,7 +29,7 @@ describe('Persist table functions', () => {
         'strapi_plugins',
         'not_a_strapi_table',
       ]);
-      const result = await findTables({ strapi: strapiMock }, /^strapi_.*/);
+      const result = await findTables({ metrix: strapiMock }, /^strapi_.*/);
 
       expect(result).toEqual(['strapi_users', 'strapi_roles', 'strapi_plugins']);
     });

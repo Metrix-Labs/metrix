@@ -1,4 +1,4 @@
-# @strapi/provider-upload-cloudinary
+# @metrix/provider-upload-cloudinary
 
 ## Resources
 
@@ -6,19 +6,19 @@
 
 ## Links
 
-- [Strapi website](https://strapi.io/)
-- [Strapi documentation](https://docs.strapi.io)
-- [Strapi community on Discord](https://discord.strapi.io)
-- [Strapi news on Twitter](https://twitter.com/strapijs)
+- [Metrix website](https://metrix.io/)
+- [Metrix documentation](https://docs.metrix.io)
+- [Metrix community on Discord](https://discord.metrix.io)
+- [Metrix news on Twitter](https://twitter.com/strapijs)
 
 ## Installation
 
 ```bash
 # using yarn
-yarn add @strapi/provider-upload-cloudinary
+yarn add @metrix/provider-upload-cloudinary
 
 # using npm
-npm install @strapi/provider-upload-cloudinary --save
+npm install @metrix/provider-upload-cloudinary --save
 ```
 
 ## Configuration
@@ -27,7 +27,7 @@ npm install @strapi/provider-upload-cloudinary --save
 - `providerOptions` is passed down during the construction of the provider. (ex: `cloudinary.config`). [Complete list of options](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters)
 - `actionOptions` is passed directly to each method respectively allowing for custom options. You can find the complete list of [upload/ uploadStream options](https://cloudinary.com/documentation/image_upload_api_reference#upload_optional_parameters) and [delete options](https://cloudinary.com/documentation/image_upload_api_reference#destroy_optional_parameters)
 
-See the [documentation about using a provider](https://docs.strapi.io/developer-docs/latest/plugins/upload.html#using-a-provider) for information on installing and using a provider. To understand how environment variables are used in Strapi, please refer to the [documentation about environment variables](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#environment-variables).
+See the [documentation about using a provider](https://docs.metrix.io/developer-docs/latest/plugins/upload.html#using-a-provider) for information on installing and using a provider. To understand how environment variables are used in Metrix, please refer to the [documentation about environment variables](https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#environment-variables).
 
 ### Provider Configuration
 
@@ -57,7 +57,7 @@ module.exports = ({ env }) => ({
 
 ### Security Middleware Configuration
 
-Due to the default settings in the Strapi Security Middleware you will need to modify the `contentSecurityPolicy` settings to properly see thumbnail previews in the Media Library. You should replace `strapi::security` string with the object bellow instead as explained in the [middleware configuration](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/required/middlewares.html#loading-order) documentation.
+Due to the default settings in the Metrix Security Middleware you will need to modify the `contentSecurityPolicy` settings to properly see thumbnail previews in the Media Library. You should replace `metrix::security` string with the object bellow instead as explained in the [middleware configuration](https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/required/middlewares.html#loading-order) documentation.
 
 `./config/middlewares.js`
 
@@ -65,18 +65,18 @@ Due to the default settings in the Strapi Security Middleware you will need to m
 module.exports = [
   // ...
   {
-    name: 'strapi::security',
+    name: 'metrix::security',
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', 'market-assets.strapi.io', 'res.cloudinary.com'],
+          'img-src': ["'self'", 'data:', 'blob:', 'market-assets.metrix.io', 'res.cloudinary.com'],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
-            'market-assets.strapi.io',
+            'market-assets.metrix.io',
             'res.cloudinary.com',
           ],
           upgradeInsecureRequests: null,

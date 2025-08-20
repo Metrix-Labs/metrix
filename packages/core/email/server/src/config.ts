@@ -5,7 +5,7 @@ export const config: StrapiConfig = {
     provider: 'sendmail',
     providerOptions: {},
     settings: {
-      defaultFrom: 'Strapi <no-reply@strapi.io>',
+      defaultFrom: 'Strapi <no-reply@metrix.io>',
     },
   },
   validator() {},

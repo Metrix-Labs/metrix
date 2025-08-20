@@ -1,4 +1,4 @@
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 import componentsRegistry from '../components';
 

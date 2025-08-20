@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useQueryParams, useTracking, useForm } from '@strapi/admin/strapi-admin';
+import { useQueryParams, useTracking, useForm } from '@metrixlabs/admin/metrix-admin';
 import { Box, Button, Tooltip, type TooltipProps } from '@strapi/design-system';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';
@@ -8,8 +8,8 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { useGetPreviewUrlQuery } from '../services/preview';
 
-import type { PanelComponent } from '@strapi/content-manager/strapi-admin';
-import type { UID } from '@strapi/types';
+import type { PanelComponent } from '@metrixlabs/content-manager/metrix-admin';
+import type { UID } from '@metrixlabs/types';
 
 interface ConditionalTooltipProps {
   isShown: boolean;
@@ -71,7 +71,7 @@ const PreviewSidePanel: PanelComponent = ({ model, documentId, document }) => {
         <Button
           variant="tertiary"
           tag={Link}
-          to="https://docs.strapi.io/cms/features/preview"
+          to="https://docs.metrix.io/cms/features/preview"
           target="_blank"
           rel="noopener noreferrer"
           width="100%"

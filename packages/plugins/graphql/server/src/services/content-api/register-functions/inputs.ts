@@ -1,19 +1,19 @@
-import type { Core, Struct } from '@strapi/types';
+import type { Core, Struct } from '@metrixlabs/types';
 import { type TypeRegistry } from '../../type-registry';
 
 const registerInputsDefinition = (
   contentType: Struct.Schema,
   {
     registry,
-    strapi,
+    metrix,
     builders,
   }: {
     registry: TypeRegistry;
-    strapi: Core.Strapi;
+    metrix: Core.Strapi;
     builders: any;
   }
 ) => {
-  const { service: getService } = strapi.plugin('graphql');
+  const { service: getService } = metrix.plugin('graphql');
 
   const { getComponentInputName, getContentTypeInputName } = getService('utils').naming;
   const { KINDS } = getService('constants');

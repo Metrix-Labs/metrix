@@ -1,37 +1,37 @@
-import '@strapi/types';
+import '@metrixlabs/types';
 
 export const sendDidCreateStage = async () => {
-  strapi.telemetry.send('didCreateStage', {});
+  metrix.telemetry.send('didCreateStage', {});
 };
 
 export const sendDidEditStage = async () => {
-  strapi.telemetry.send('didEditStage', {});
+  metrix.telemetry.send('didEditStage', {});
 };
 
 export const sendDidDeleteStage = async () => {
-  strapi.telemetry.send('didDeleteStage', {});
+  metrix.telemetry.send('didDeleteStage', {});
 };
 
 export const sendDidChangeEntryStage = async () => {
-  strapi.telemetry.send('didChangeEntryStage', {});
+  metrix.telemetry.send('didChangeEntryStage', {});
 };
 
 export const sendDidCreateWorkflow = async (
   workflowId: string,
   hasRequiredStageToPublish: boolean
 ) => {
-  strapi.telemetry.send('didCreateWorkflow', { workflowId, hasRequiredStageToPublish });
+  metrix.telemetry.send('didCreateWorkflow', { workflowId, hasRequiredStageToPublish });
 };
 
 export const sendDidEditWorkflow = async (
   workflowId: string,
   hasRequiredStageToPublish: boolean
 ) => {
-  strapi.telemetry.send('didEditWorkflow', { workflowId, hasRequiredStageToPublish });
+  metrix.telemetry.send('didEditWorkflow', { workflowId, hasRequiredStageToPublish });
 };
 
 export const sendDidEditAssignee = async (fromId: any, toId: any) => {
-  strapi.telemetry.send('didEditAssignee', { from: fromId, to: toId });
+  metrix.telemetry.send('didEditAssignee', { from: fromId, to: toId });
 };
 
 export const sendDidSendReviewWorkflowPropertiesOnceAWeek = async (
@@ -40,7 +40,7 @@ export const sendDidSendReviewWorkflowPropertiesOnceAWeek = async (
   maxStagesCount: number,
   activatedContentTypes: number
 ) => {
-  strapi.telemetry.send('didSendReviewWorkflowPropertiesOnceAWeek', {
+  metrix.telemetry.send('didSendReviewWorkflowPropertiesOnceAWeek', {
     groupProperties: {
       numberOfActiveWorkflows,
       avgStagesCount,

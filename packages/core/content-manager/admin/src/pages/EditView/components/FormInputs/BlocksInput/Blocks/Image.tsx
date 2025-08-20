@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useStrapiApp } from '@strapi/admin/strapi-admin';
+import { useStrapiApp } from '@metrixlabs/admin/metrix-admin';
 import { Box, Flex, FlexComponent } from '@strapi/design-system';
 import { Image as Picture } from '@strapi/icons';
 import { type Element, Transforms, Editor } from 'slate';
@@ -11,7 +11,7 @@ import { prefixFileUrlWithBackendUrl } from '../../../../../../utils/urls';
 import { useBlocksEditorContext, type BlocksStore } from '../BlocksEditor';
 import { type Block } from '../utils/types';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 const ImageWrapper = styled<FlexComponent>(Flex)<{ $isFocused?: boolean }>`
   transition-property: box-shadow;

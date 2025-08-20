@@ -1,5 +1,5 @@
 import { isNil, isPlainObject } from 'lodash/fp';
-import type { UID, Struct, Data } from '@strapi/types';
+import type { UID, Struct, Data } from '@metrixlabs/types';
 
 type TransformedEntry = {
   id: string;
@@ -106,21 +106,21 @@ function transformEntry(
     const attribute = type && type.attributes[key];
 
     if (attribute && attribute.type === 'relation' && isEntry(property) && 'target' in attribute) {
-      const data = transformEntry(property, strapi.contentType(attribute.target));
+      const data = transformEntry(property, metrix.contentType(attribute.target));
 
       attributeValues[key] = { data };
     } else if (attribute && attribute.type === 'component' && isEntry(property)) {
-      attributeValues[key] = transformComponent(property, strapi.components[attribute.component]);
+      attributeValues[key] = transformComponent(property, metrix.components[attribute.component]);
     } else if (attribute && attribute.type === 'dynamiczone' && isDZEntries(property)) {
       if (isNil(property)) {
         attributeValues[key] = property;
       }
 
       attributeValues[key] = property.map((subProperty) => {
-        return transformComponent(subProperty, strapi.components[subProperty.__component]);
+        return transformComponent(subProperty, metrix.components[subProperty.__component]);
       });
     } else if (attribute && attribute.type === 'media' && isEntry(property)) {
-      const data = transformEntry(property, strapi.contentType('plugin::upload.file'));
+      const data = transformEntry(property, metrix.contentType('plugin::upload.file'));
 
       attributeValues[key] = { data };
     } else {

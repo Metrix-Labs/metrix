@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { RequestHandler, rest } from 'msw';
 
 import { COLLECTION_TYPES, SINGLE_TYPES } from '../src/constants/collections';

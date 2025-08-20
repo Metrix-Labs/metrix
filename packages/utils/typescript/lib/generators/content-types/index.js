@@ -15,14 +15,14 @@ const NO_CONTENT_TYPE_PLACEHOLDER_COMMENT = `/*
  * Generate type definitions for Strapi Content-Types
  *
  * @param {object} [options]
- * @param {object} options.strapi
+ * @param {object} options.metrix
  * @param {object} options.logger
  * @param {string} options.pwd
  */
 const generateContentTypesDefinitions = async (options = {}) => {
-  const { strapi } = options;
+  const { metrix } = options;
 
-  const { contentTypes } = strapi;
+  const { contentTypes } = metrix;
 
   const contentTypesDefinitions = pipe(
     values,

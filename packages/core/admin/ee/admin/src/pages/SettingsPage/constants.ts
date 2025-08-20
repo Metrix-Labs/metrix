@@ -5,7 +5,7 @@ import { RouteObject } from 'react-router-dom';
  * as such their path should not start with a `/` or include the `/settings` prefix.
  */
 export const getEERoutes = (): RouteObject[] => [
-  ...(window.strapi.features.isEnabled(window.strapi.features.AUDIT_LOGS)
+  ...(window.metrix.features.isEnabled(window.metrix.features.AUDIT_LOGS)
     ? [
         {
           path: 'audit-logs',
@@ -19,7 +19,7 @@ export const getEERoutes = (): RouteObject[] => [
         },
       ]
     : []),
-  ...(window.strapi.features.isEnabled(window.strapi.features.SSO)
+  ...(window.metrix.features.isEnabled(window.metrix.features.SSO)
     ? [
         {
           path: 'single-sign-on',

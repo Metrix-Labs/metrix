@@ -10,13 +10,13 @@ const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const urlJoin = require('url-join');
 
-const { sanitize } = require('@strapi/utils');
+const { sanitize } = require('@metrixlabs/utils');
 const { toNumber, getOr } = require('lodash/fp');
 const { getService } = require('../utils');
 
 const USER_MODEL_UID = 'plugin::users-permissions.user';
 
-module.exports = ({ strapi }) => ({
+module.exports = ({ metrix }) => ({
   /**
    * Promise to count users
    *
@@ -24,7 +24,7 @@ module.exports = ({ strapi }) => ({
    */
 
   count(params) {
-    return strapi.db.query(USER_MODEL_UID).count({ where: params });
+    return metrix.db.query(USER_MODEL_UID).count({ where: params });
   },
 
   /**
@@ -36,7 +36,7 @@ module.exports = ({ strapi }) => ({
    * @return {object} The values object with hashed password fields if they were present.
    */
   async ensureHashedPasswords(values) {
-    const attributes = strapi.getModel(USER_MODEL_UID).attributes;
+    const attributes = metrix.getModel(USER_MODEL_UID).attributes;
 
     for (const key in values) {
       if (attributes[key] && attributes[key].type === 'password') {
@@ -54,7 +54,7 @@ module.exports = ({ strapi }) => ({
    * @return {Promise}
    */
   async add(values) {
-    return strapi.db.query(USER_MODEL_UID).create({
+    return metrix.db.query(USER_MODEL_UID).create({
       data: await this.ensureHashedPasswords(values),
       populate: ['role'],
     });
@@ -67,7 +67,7 @@ module.exports = ({ strapi }) => ({
    * @return {Promise}
    */
   async edit(userId, params = {}) {
-    return strapi.db.query(USER_MODEL_UID).update({
+    return metrix.db.query(USER_MODEL_UID).update({
       where: { id: userId },
       data: await this.ensureHashedPasswords(params),
       populate: ['role'],
@@ -79,9 +79,9 @@ module.exports = ({ strapi }) => ({
    * @return {Promise}
    */
   fetch(id, params) {
-    const query = strapi.get('query-params').transform(USER_MODEL_UID, params ?? {});
+    const query = metrix.get('query-params').transform(USER_MODEL_UID, params ?? {});
 
-    return strapi.db.query(USER_MODEL_UID).findOne({
+    return metrix.db.query(USER_MODEL_UID).findOne({
       ...query,
       where: {
         $and: [{ id }, query.where || {}],
@@ -94,7 +94,7 @@ module.exports = ({ strapi }) => ({
    * @return {Promise}
    */
   fetchAuthenticatedUser(id) {
-    return strapi.db.query(USER_MODEL_UID).findOne({ where: { id }, populate: ['role'] });
+    return metrix.db.query(USER_MODEL_UID).findOne({ where: { id }, populate: ['role'] });
   },
 
   /**
@@ -102,9 +102,9 @@ module.exports = ({ strapi }) => ({
    * @return {Promise}
    */
   fetchAll(params) {
-    const query = strapi.get('query-params').transform(USER_MODEL_UID, params ?? {});
+    const query = metrix.get('query-params').transform(USER_MODEL_UID, params ?? {});
 
-    return strapi.db.query(USER_MODEL_UID).findMany(query);
+    return metrix.db.query(USER_MODEL_UID).findMany(query);
   },
 
   /**
@@ -112,7 +112,7 @@ module.exports = ({ strapi }) => ({
    * @return {Promise}
    */
   async remove(params) {
-    return strapi.db.query(USER_MODEL_UID).delete({ where: params });
+    return metrix.db.query(USER_MODEL_UID).delete({ where: params });
   },
 
   validatePassword(password, hash) {
@@ -121,8 +121,8 @@ module.exports = ({ strapi }) => ({
 
   async sendConfirmationEmail(user) {
     const userPermissionService = getService('users-permissions');
-    const pluginStore = await strapi.store({ type: 'plugin', name: 'users-permissions' });
-    const userSchema = strapi.getModel(USER_MODEL_UID);
+    const pluginStore = await metrix.store({ type: 'plugin', name: 'users-permissions' });
+    const userSchema = metrix.getModel(USER_MODEL_UID);
 
     const settings = await pluginStore
       .get({ key: 'email' })
@@ -132,7 +132,7 @@ module.exports = ({ strapi }) => ({
     const sanitizedUserInfo = await sanitize.sanitizers.defaultSanitizeOutput(
       {
         schema: userSchema,
-        getModel: strapi.getModel.bind(strapi),
+        getModel: metrix.getModel.bind(metrix),
       },
       user
     );
@@ -141,17 +141,17 @@ module.exports = ({ strapi }) => ({
 
     await this.edit(user.id, { confirmationToken });
 
-    const apiPrefix = strapi.config.get('api.rest.prefix');
+    const apiPrefix = metrix.config.get('api.rest.prefix');
 
     try {
       settings.message = await userPermissionService.template(settings.message, {
         URL: urlJoin(
-          strapi.config.get('server.absoluteUrl'),
+          metrix.config.get('server.absoluteUrl'),
           apiPrefix,
           '/auth/email-confirmation'
         ),
-        SERVER_URL: strapi.config.get('server.absoluteUrl'),
-        ADMIN_URL: strapi.config.get('admin.absoluteUrl'),
+        SERVER_URL: metrix.config.get('server.absoluteUrl'),
+        ADMIN_URL: metrix.config.get('admin.absoluteUrl'),
         USER: sanitizedUserInfo,
         CODE: confirmationToken,
       });
@@ -160,14 +160,14 @@ module.exports = ({ strapi }) => ({
         USER: sanitizedUserInfo,
       });
     } catch {
-      strapi.log.error(
+      metrix.log.error(
         '[plugin::users-permissions.sendConfirmationEmail]: Failed to generate a template for "user confirmation email". Please make sure your email template is valid and does not contain invalid characters or patterns'
       );
       return;
     }
 
     // Send an email to the user.
-    await strapi
+    await metrix
       .plugin('email')
       .service('email')
       .send({

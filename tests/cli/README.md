@@ -24,7 +24,7 @@ Your CLI commands being tested can then be run in that directory.
 
 #### Keeping an app running
 
-As the CLI generally does not require a running Strapi app, this is not managed by the CLI testing tool.
+As the CLI generally does not require a running Metrix app, this is not managed by the CLI testing tool.
 
 After tests for remote data-transfer are implemented, there will be utility functions available to assist in running one or more of the test apps in the background while other tests are run against it.
 

@@ -1,8 +1,8 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import type { GetUpcomingReleases } from '../../../shared/contracts/homepage';
 
 const homepageController = () => {
-  const homepageService = strapi.plugin('content-releases').service('homepage');
+  const homepageService = metrix.plugin('content-releases').service('homepage');
 
   return {
     async getUpcomingReleases(): Promise<GetUpcomingReleases.Response> {

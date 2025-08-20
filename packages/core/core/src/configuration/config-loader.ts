@@ -23,7 +23,7 @@ const RESTRICTED_FILENAMES = [
   'telemetry',
 
   // reserved for future internal use
-  'strapi',
+  'metrix',
   'internal',
 
   // root level config options
@@ -52,7 +52,7 @@ const STRAPI_CONFIG_FILENAMES = [
   'features',
 ];
 
-// Note: we don't have access to strapi logger at this point so we can't use it
+// Note: we don't have access to metrix logger at this point so we can't use it
 const logWarning = (message: string) => {
   console.warn(message);
 };

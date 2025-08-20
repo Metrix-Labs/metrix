@@ -1,9 +1,9 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import createFieldSizesService from '../field-sizes';
 
 const { ApplicationError } = errors;
 
-const strapi = {
+const metrix = {
   // Mock container.get('custom-fields')
   get: jest.fn(() => ({
     // Mock container.get('custom-fields').getAll()
@@ -28,7 +28,7 @@ const strapi = {
 
 describe('field sizes service', () => {
   it('should return the correct field sizes', () => {
-    const { getAllFieldSizes } = createFieldSizesService({ strapi });
+    const { getAllFieldSizes } = createFieldSizesService({ metrix });
     const fieldSizes = getAllFieldSizes();
     Object.values(fieldSizes).forEach((fieldSize: any) => {
       expect(typeof fieldSize.isResizable).toBe('boolean');
@@ -37,14 +37,14 @@ describe('field sizes service', () => {
   });
 
   it('should return the correct field size for a given type', () => {
-    const { getFieldSize } = createFieldSizesService({ strapi });
+    const { getFieldSize } = createFieldSizesService({ metrix });
     const fieldSize = getFieldSize('string');
     expect(fieldSize.isResizable).toBe(true);
     expect(fieldSize.default).toBe(6);
   });
 
   it('should throw an error if the type is not found', () => {
-    const { getFieldSize } = createFieldSizesService({ strapi });
+    const { getFieldSize } = createFieldSizesService({ metrix });
 
     try {
       getFieldSize('not-found');
@@ -55,7 +55,7 @@ describe('field sizes service', () => {
   });
 
   it('should throw an error if the type is not provided', () => {
-    const { getFieldSize } = createFieldSizesService({ strapi });
+    const { getFieldSize } = createFieldSizesService({ metrix });
 
     try {
       getFieldSize();
@@ -66,7 +66,7 @@ describe('field sizes service', () => {
   });
 
   it('should set the custom fields input sizes', () => {
-    const { setCustomFieldInputSizes, getAllFieldSizes } = createFieldSizesService({ strapi });
+    const { setCustomFieldInputSizes, getAllFieldSizes } = createFieldSizesService({ metrix });
     setCustomFieldInputSizes();
     const fieldSizes = getAllFieldSizes();
 

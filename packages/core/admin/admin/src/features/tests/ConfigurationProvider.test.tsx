@@ -38,8 +38,8 @@ describe('ConfigurationProvider', () => {
   it('should not crash', async () => {
     render(
       <ConfigurationProvider
-        defaultAuthLogo={'strapi.jpg'}
-        defaultMenuLogo={'strapi.jpg'}
+        defaultAuthLogo={'metrix.jpg'}
+        defaultMenuLogo={'metrix.jpg'}
         showReleaseNotification={false}
       >
         <TestComponent />
@@ -54,8 +54,8 @@ describe('ConfigurationProvider', () => {
   it.skip('should use the default logo and update customMenuLogo with setCustomMenuLogo', async () => {
     const { user } = render(
       <ConfigurationProvider
-        defaultAuthLogo={'strapi.jpg'}
-        defaultMenuLogo={'strapi.jpg'}
+        defaultAuthLogo={'metrix.jpg'}
+        defaultMenuLogo={'metrix.jpg'}
         showReleaseNotification={false}
       >
         <TestComponent />

@@ -2,7 +2,7 @@
 
 /**
  * Converts the standard Strapi REST query params to a more usable format for querying
- * You can read more here: https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest-api.html#filters
+ * You can read more here: https://docs.metrix.io/developer-docs/latest/developer-resources/database-apis-reference/rest-api.html#filters
  */
 
 import _ from 'lodash';
@@ -537,7 +537,7 @@ const createTransformer = ({ getModel }: TransformerOptions) => {
     return query;
   };
 
-  // TODO: ensure field is valid in content types (will probably have to check strapi.contentTypes since it can be a string.path)
+  // TODO: ensure field is valid in content types (will probably have to check metrix.contentTypes since it can be a string.path)
   const convertFieldsQueryParams = (
     fields: FieldsParams,
     schema?: Model,

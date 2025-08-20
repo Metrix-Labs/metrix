@@ -1,16 +1,16 @@
 'use strict';
 
-const createAuthenticatedUser = async ({ strapi, userInfo }) => {
-  const defaultRole = await strapi.db
+const createAuthenticatedUser = async ({ metrix, userInfo }) => {
+  const defaultRole = await metrix.db
     .query('plugin::users-permissions.role')
     .findOne({ where: { type: 'authenticated' } });
 
-  const user = await strapi.service('plugin::users-permissions.user').add({
+  const user = await metrix.service('plugin::users-permissions.user').add({
     role: defaultRole.id,
     ...userInfo,
   });
 
-  const jwt = strapi.service('plugin::users-permissions.jwt').issue({ id: user.id });
+  const jwt = metrix.service('plugin::users-permissions.jwt').issue({ id: user.id });
 
   return { user, jwt };
 };

@@ -1,9 +1,9 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import * as z from 'zod/v4';
 import { UploadRouteValidator } from './validation';
 
 export const routes = (): Core.RouterInput => {
-  const validator = new UploadRouteValidator(strapi);
+  const validator = new UploadRouteValidator(metrix);
 
   return {
     type: 'content-api',

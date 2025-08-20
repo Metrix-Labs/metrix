@@ -30,7 +30,7 @@ import {
 
 type PackageJson = {
   name: string;
-  strapi?: {
+  metrix?: {
     uuid: string;
   };
 };

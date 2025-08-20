@@ -2,7 +2,7 @@ import execa from 'execa';
 
 import { delay, pollHealthCheck } from './restart';
 
-const gitUser = ['-c', 'user.name=Strapi CLI', '-c', 'user.email=test@strapi.io'];
+const gitUser = ['-c', 'user.name=Strapi CLI', '-c', 'user.email=test@metrix.io'];
 
 export const resetFiles = async () => {
   if (!process.env.TEST_APP_PATH) {

@@ -1,8 +1,8 @@
-import { adminApi } from '@strapi/admin/strapi-admin';
+import { adminApi } from '@metrixlabs/admin/metrix-admin';
 
 import * as Homepage from '../../../shared/contracts/homepage';
 
-import type { Contracts } from '@strapi/content-manager/_internal/shared';
+import type { Contracts } from '@metrixlabs/content-manager/_internal/shared';
 
 type ContentType = Contracts.ContentTypes.ContentType;
 interface ContentTypes {

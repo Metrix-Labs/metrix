@@ -1,14 +1,14 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
-const getProviderName = () => strapi.config.get('plugin::upload.provider', 'local');
-const isProviderPrivate = async () => strapi.plugin('upload').provider.isPrivate();
+const getProviderName = () => metrix.config.get('plugin::upload.provider', 'local');
+const isProviderPrivate = async () => metrix.plugin('upload').provider.isPrivate();
 
-export default ({ strapi }: { strapi: Core.Strapi }) => ({
+export default ({ metrix }: { metrix: Core.Strapi }) => ({
   async sendUploadPluginMetrics() {
     const uploadProvider = getProviderName();
     const privateProvider = await isProviderPrivate();
 
-    strapi.telemetry.send('didInitializePluginUpload', {
+    metrix.telemetry.send('didInitializePluginUpload', {
       groupProperties: {
         uploadProvider,
         privateProvider,

@@ -1,6 +1,6 @@
-import { policy } from '@strapi/utils';
+import { policy } from '@metrixlabs/utils';
 
-// TODO: TS - Try to make { policy: { createPolicy } } from '@strapi/utils'; work
+// TODO: TS - Try to make { policy: { createPolicy } } from '@metrixlabs/utils'; work
 const { createPolicy } = policy;
 
 /**
@@ -9,8 +9,8 @@ const { createPolicy } = policy;
  */
 export default createPolicy({
   name: 'admin::isTelemetryEnabled',
-  handler(_ctx, _config, { strapi }) {
-    if (strapi.telemetry.isDisabled) {
+  handler(_ctx, _config, { metrix }) {
+    if (metrix.telemetry.isDisabled) {
       return false;
     }
   },

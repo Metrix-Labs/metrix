@@ -3,7 +3,7 @@ import qs from 'qs';
 
 import { getCookieValue } from './cookies';
 
-import type { errors } from '@strapi/utils';
+import type { errors } from '@metrixlabs/utils';
 
 export type ApiError =
   | errors.ApplicationError
@@ -105,7 +105,7 @@ type FetchClient = {
  * to the Strapi backend.
  * @example
  * ```tsx
- * import { getFetchClient } from '@strapi/admin/admin';
+ * import { getFetchClient } from '@metrixlabs/admin/admin';
  *
  * const myFunct = () => {
  *   const { get } = getFetchClient();
@@ -118,7 +118,7 @@ type FetchClient = {
  * ```
  */
 const getFetchClient = (defaultOptions: FetchConfig = {}): FetchClient => {
-  const backendURL = window.strapi.backendURL;
+  const backendURL = window.metrix.backendURL;
   const defaultHeader = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
@@ -205,7 +205,7 @@ const getFetchClient = (defaultOptions: FetchConfig = {}): FetchClient => {
       /**
        * this applies all our transformations to the URL
        * - normalizing (making sure it has the correct slash)
-       * - appending our BaseURL which comes from the window.strapi object
+       * - appending our BaseURL which comes from the window.metrix object
        * - serializing our params with QS
        */
       const createRequestUrl = makeCreateRequestUrl(options);

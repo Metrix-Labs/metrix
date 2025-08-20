@@ -1,17 +1,17 @@
-# Strapi plugin Color Picker
+# Metrix plugin Color Picker
 
-A Strapi-maintained color picker custom field.
+A Metrix-maintained color picker custom field.
 
 ## Installation
 
-To install this plugin, you need to add an NPM dependency to your Strapi application:
+To install this plugin, you need to add an NPM dependency to your Metrix application:
 
 ```sh
 # Using Yarn
-yarn add @strapi/plugin-color-picker
+yarn add @metrix/plugin-color-picker
 
 # Or using NPM
-npm install @strapi/plugin-color-picker
+npm install @metrix/plugin-color-picker
 ```
 
 Then, you'll need to build your admin panel:

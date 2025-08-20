@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import { Header, HeaderProps } from '../Header';
 
-jest.mock('@strapi/admin/strapi-admin', () => ({
-  ...jest.requireActual('@strapi/admin/strapi-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   useStrapiApp: jest.fn((name, getter) =>
     getter({
       plugins: {

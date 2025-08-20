@@ -1,14 +1,14 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import { Release } from '../../shared/contracts/releases';
 import { getService } from './utils';
 
-export const destroy = async ({ strapi }: { strapi: Core.Strapi }) => {
+export const destroy = async ({ metrix }: { metrix: Core.Strapi }) => {
   const scheduledJobs: Map<Release['id'], string> = getService('scheduling', {
-    strapi,
+    metrix,
   }).getAll();
 
   for (const [, taskName] of scheduledJobs) {
-    strapi.cron.remove(taskName);
+    metrix.cron.remove(taskName);
   }
 };

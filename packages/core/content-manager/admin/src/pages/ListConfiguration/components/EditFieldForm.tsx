@@ -1,4 +1,4 @@
-import { Form, useField, InputRenderer, useNotification } from '@strapi/admin/strapi-admin';
+import { Form, useField, InputRenderer, useNotification } from '@metrixlabs/admin/metrix-admin';
 import { Button, Flex, FlexComponent, Grid, Modal } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

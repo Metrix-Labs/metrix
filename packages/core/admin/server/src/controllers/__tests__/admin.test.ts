@@ -3,7 +3,7 @@ import adminController from '../admin';
 describe('Admin Controller', () => {
   describe('init', () => {
     beforeAll(() => {
-      global.strapi = {
+      global.metrix = {
         ee: {
           features: {
             isEnabled() {
@@ -33,12 +33,12 @@ describe('Admin Controller', () => {
     test('Returns the uuid and if the app has admins', async () => {
       const result = await adminController.init();
 
-      expect(global.strapi.config.get).toHaveBeenCalledWith('uuid', false);
-      expect(global.strapi.config.get).toHaveBeenCalledWith(
+      expect(global.metrix.config.get).toHaveBeenCalledWith('uuid', false);
+      expect(global.metrix.config.get).toHaveBeenCalledWith(
         'packageJsonStrapi.telemetryDisabled',
         null
       );
-      expect(global.strapi.service('admin::user').exists).toHaveBeenCalled();
+      expect(global.metrix.service('admin::user').exists).toHaveBeenCalled();
       expect(result.data).toBeDefined();
       expect(result.data).toStrictEqual({
         uuid: 'foo',
@@ -51,13 +51,13 @@ describe('Admin Controller', () => {
 
   describe('information', () => {
     beforeAll(() => {
-      global.strapi = {
+      global.metrix = {
         config: {
           get: jest.fn(
             (key: string, value) =>
               ({
                 autoReload: undefined,
-                'info.strapi': '1.0.0',
+                'info.metrix': '1.0.0',
                 'info.dependencies': {
                   dependency: '1.0.0',
                 },
@@ -73,10 +73,10 @@ describe('Admin Controller', () => {
     test('Returns application information', async () => {
       const result = await adminController.information();
 
-      expect((global.strapi.config.get as jest.Mock).mock.calls).toEqual([
+      expect((global.metrix.config.get as jest.Mock).mock.calls).toEqual([
         ['environment'],
         ['autoReload', false],
-        ['info.strapi', null],
+        ['info.metrix', null],
         ['info.dependencies', {}],
         ['uuid', null],
       ]);

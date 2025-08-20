@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { omit, uniq } from 'lodash/fp';
 import {
   create as tokenServiceCreate,
@@ -76,7 +76,7 @@ describe('Transfer Token', () => {
         )
       );
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['push'] as any),
         db: {
           query() {
@@ -153,7 +153,7 @@ describe('Transfer Token', () => {
         )
       );
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['push'] as any),
         db: {
           query() {
@@ -196,7 +196,7 @@ describe('Transfer Token', () => {
       } as any;
 
       const create = jest.fn(({ data }) => Promise.resolve(data));
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['push'] as any),
         db: {
           query() {
@@ -242,7 +242,7 @@ describe('Transfer Token', () => {
         )
       );
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['push'] as any),
         db: {
           query() {
@@ -316,7 +316,7 @@ describe('Transfer Token', () => {
         )
       );
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['push'] as any),
         db: {
           query() {
@@ -365,7 +365,7 @@ describe('Transfer Token', () => {
         )
       );
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['push'] as any),
         db: {
           query() {
@@ -395,7 +395,7 @@ describe('Transfer Token', () => {
       const mockedAppendFile = jest.fn();
       const mockedConfigSet = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -439,7 +439,7 @@ describe('Transfer Token', () => {
     test('It lists all the tokens', async () => {
       const findMany = jest.fn().mockResolvedValue(tokens);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findMany };
@@ -475,7 +475,7 @@ describe('Transfer Token', () => {
     test('It deletes the token', async () => {
       const mockedDelete = jest.fn().mockResolvedValue(token);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { delete: mockedDelete };
@@ -497,7 +497,7 @@ describe('Transfer Token', () => {
     test('It returns `null` if the resource does not exist', async () => {
       const mockedDelete = jest.fn().mockResolvedValue(null);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { delete: mockedDelete };
@@ -528,7 +528,7 @@ describe('Transfer Token', () => {
     test('It retrieves the token', async () => {
       const findOne = jest.fn().mockResolvedValue(token);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -553,7 +553,7 @@ describe('Transfer Token', () => {
     test('It returns `null` if the resource does not exist', async () => {
       const findOne = jest.fn().mockResolvedValue(null);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -576,7 +576,7 @@ describe('Transfer Token', () => {
     test('It regenerates the accessKey', async () => {
       const update = jest.fn(({ data }) => Promise.resolve(data));
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -613,7 +613,7 @@ describe('Transfer Token', () => {
     test('It throws a NotFound if the id is not found', async () => {
       const update = jest.fn(() => Promise.resolve(null));
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -696,7 +696,7 @@ describe('Transfer Token', () => {
           )
         );
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['push'] as any),
         db: {
           query() {
@@ -769,7 +769,7 @@ describe('Transfer Token', () => {
           )
         );
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['push'] as any),
         db: {
           query() {
@@ -822,7 +822,7 @@ describe('Transfer Token', () => {
       const create = jest.fn();
       const load = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['push'] as any),
         db: {
           query() {
@@ -862,7 +862,7 @@ describe('Transfer Token', () => {
     test('It retrieves the token', async () => {
       const findOne = jest.fn().mockResolvedValue(token);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -886,7 +886,7 @@ describe('Transfer Token', () => {
     test('It returns `null` if the resource does not exist', async () => {
       const findOne = jest.fn().mockResolvedValue(null);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };

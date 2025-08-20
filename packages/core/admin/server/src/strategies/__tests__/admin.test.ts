@@ -18,7 +18,7 @@ describe('Admin Auth Strategy', () => {
       const findOne = jest.fn(() => user);
       const generateUserAbility = jest.fn(() => 'ability');
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             token: { decodeJwtToken },
@@ -59,7 +59,7 @@ describe('Admin Auth Strategy', () => {
       const decodeJwtToken = jest.fn(() => ({ isValid: false }));
       const ctx = createContext({}, { request });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             token: { decodeJwtToken },
@@ -78,7 +78,7 @@ describe('Admin Auth Strategy', () => {
       const ctx = createContext({}, { request });
       const findOne = jest.fn(() => ({ isActive: false }));
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             token: { decodeJwtToken },
@@ -99,7 +99,7 @@ describe('Admin Auth Strategy', () => {
       const ctx = createContext({}, { request });
       const findOne = jest.fn(() => null);
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             token: { decodeJwtToken },

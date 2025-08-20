@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { errors, async } from '@strapi/utils';
+import { errors, async } from '@metrixlabs/utils';
 
 import type { Context } from 'koa';
 
@@ -75,7 +75,7 @@ export default {
     } = ctx;
 
     const uploadService = getService('upload');
-    const pm = strapi.service('admin::permission').createPermissionsManager({
+    const pm = metrix.service('admin::permission').createPermissionsManager({
       ability: userAbility,
       action: ACTIONS.create,
       model: FILE_MODEL_UID,

@@ -1,7 +1,7 @@
 import { groupBy, pick, uniq } from 'lodash/fp';
 
-import { async, contentTypes } from '@strapi/utils';
-import type { Core, UID, Modules } from '@strapi/types';
+import { async, contentTypes } from '@metrixlabs/utils';
+import type { Core, UID, Modules } from '@metrixlabs/types';
 
 import type { DocumentMetadata } from '../../../shared/contracts/collection-types';
 import { getPopulateForValidation } from './utils/populate';
@@ -74,7 +74,7 @@ const getIsVersionLatestModification = (
   return versionUpdatedAt > otherUpdatedAt;
 };
 
-export default ({ strapi }: { strapi: Core.Strapi }) => ({
+export default ({ metrix }: { metrix: Core.Strapi }) => ({
   /**
    * Returns available locales of a document for the current status
    */
@@ -94,7 +94,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
     // For each locale, get the ones with the same status
     // There will not be a draft and a version counterpart if the content
     // type does not have draft and publish
-    const model = strapi.getModel(uid);
+    const model = metrix.getModel(uid);
 
     const mappingResult = await async.map(
       Object.values(versionsByLocale),
@@ -170,7 +170,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       where.locale = { $in: locales };
     }
 
-    return strapi.query(uid).findMany({
+    return metrix.query(uid).findMany({
       where,
       select: ['id', 'documentId', 'locale', 'updatedAt', 'createdAt', 'publishedAt'],
     });
@@ -233,8 +233,8 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       },
     };
 
-    const dbParams = strapi.get('query-params').transform(uid, params);
-    const versions = await strapi.db.query(uid).findMany(dbParams);
+    const dbParams = metrix.get('query-params').transform(uid, params);
+    const versions = await metrix.db.query(uid).findMany(dbParams);
 
     // TODO: Remove use of available locales and use localizations instead
     const availableLocalesResult = availableLocales
@@ -271,7 +271,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
       };
     }
 
-    const hasDraftAndPublish = contentTypes.hasDraftAndPublish(strapi.getModel(uid));
+    const hasDraftAndPublish = contentTypes.hasDraftAndPublish(metrix.getModel(uid));
 
     // Ignore available status if the content type does not have draft and publish
     if (!hasDraftAndPublish) {

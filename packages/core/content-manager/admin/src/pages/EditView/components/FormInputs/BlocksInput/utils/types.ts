@@ -1,4 +1,4 @@
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 import type { Element, Node } from 'slate';
 
 type Block<T extends Element['type']> = Extract<Node, { type: T }>;

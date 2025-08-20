@@ -27,7 +27,7 @@ declare module 'knex' {
 const getDocumentSiblingIdsQuery = (tableName: string, id: ID) => {
   // Find if the model is a content type or something else (e.g. component)
   // to only get the documentId if it's a content type
-  const models: Model[] = Array.from(strapi.db.metadata.values());
+  const models: Model[] = Array.from(metrix.db.metadata.values());
 
   const isContentType = models.find((model) => {
     return model.tableName === tableName && model.attributes.documentId;
@@ -284,7 +284,7 @@ const cleanOrderColumns = async ({
         .where(joinColumn.name, id)
         .toSQL();
 
-    switch (strapi.db.dialect.client) {
+    switch (metrix.db.dialect.client) {
       case 'mysql': {
         // Here it's MariaDB and MySQL 8
         const select = selectRowsToOrder(joinTable.name);
@@ -342,7 +342,7 @@ const cleanOrderColumns = async ({
         .where(inverseJoinColumn.name, 'in', inverseRelIds)
         .toSQL();
 
-    switch (strapi.db.dialect.client) {
+    switch (metrix.db.dialect.client) {
       case 'mysql': {
         // Here it's MariaDB and MySQL 8
         const select = selectRowsToOrder(joinTable.name);

@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   extends: [
-    '@strapi/eslint-config/back/typescript' /*'plugin:@typescript-eslint/recommended-requiring-type-checking'*/,
+    '@metrixlabs/eslint-config/back/typescript' /*'plugin:@typescript-eslint/recommended-requiring-type-checking'*/,
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'eslint-plugin-rxjs'],
@@ -9,7 +9,7 @@ module.exports = {
     project: ['./tsconfig.eslint.json'],
   },
   globals: {
-    strapi: false,
+    metrix: false,
   },
   rules: {
     ...require('./index').rules,

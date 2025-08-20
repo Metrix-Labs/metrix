@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { errors, queryParams } from '@strapi/utils';
+import { errors, queryParams } from '@metrixlabs/utils';
 import constants from '../constants';
 import userService from '../user';
 import userContentType from '../../content-types/User';
@@ -24,13 +24,13 @@ const {
 } = userService;
 
 describe('User', () => {
-  global.strapi = {
+  global.metrix = {
     getModel: jest.fn(() => userContentType),
     get(name: string) {
       if (name === 'query-params') {
         const transformer = queryParams.createTransformer({
           getModel(name: string) {
-            return strapi.getModel(name as any);
+            return metrix.getModel(name as any);
           },
         });
 
@@ -70,8 +70,8 @@ describe('User', () => {
       const createToken = jest.fn(() => 'token');
       const hashPassword = jest.fn(() => Promise.resolve('123456789'));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -105,8 +105,8 @@ describe('User', () => {
       const createToken = jest.fn(() => 'token');
       const hashPassword = jest.fn(() => Promise.resolve('123456789'));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -153,8 +153,8 @@ describe('User', () => {
       const createToken = jest.fn(() => 'token');
       const hashPassword = jest.fn(() => Promise.resolve('123456789'));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -192,8 +192,8 @@ describe('User', () => {
   describe('Count users', () => {
     test('Count users without params', async () => {
       const dbCount = jest.fn(() => Promise.resolve(2));
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: { query: () => ({ count: dbCount }) },
       } as any;
 
@@ -205,8 +205,8 @@ describe('User', () => {
 
     test('Count users with params', async () => {
       const dbCount = jest.fn(() => Promise.resolve(2));
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: { query: () => ({ count: dbCount }) },
       } as any;
 
@@ -223,14 +223,14 @@ describe('User', () => {
       const hash = 'aoizdnoaizndoainzodiaz';
 
       const id = 1;
-      const input = { email: 'test@strapi.io', password: '123' };
+      const input = { email: 'test@metrix.io', password: '123' };
 
       const findOne = jest.fn((_, user) => Promise.resolve(user));
       const update = jest.fn(({ data }) => Promise.resolve(data));
       const hashPassword = jest.fn(() => Promise.resolve(hash));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -256,21 +256,21 @@ describe('User', () => {
       });
 
       expect(result).toEqual({
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
         password: 'aoizdnoaizndoainzodiaz',
       });
     });
 
     test('Forwards call to the query layer', async () => {
       const user = {
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
       };
 
       const findOne = jest.fn(() => Promise.resolve(user));
       const update = jest.fn(() => Promise.resolve(user));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -281,7 +281,7 @@ describe('User', () => {
         },
       } as any;
       const id = 1;
-      const input = { email: 'test@strapi.io' };
+      const input = { email: 'test@metrix.io' };
       const result = await updateById(id, input);
 
       expect(update).toHaveBeenCalledWith({ where: { id }, data: input, populate: ['roles'] });
@@ -301,14 +301,14 @@ describe('User', () => {
             id: 3,
             name: 'Author',
             description: 'Authors can manage the content they have created.',
-            code: 'strapi-author',
+            code: 'metrix-author',
           },
         ],
       }));
       const hashPassword = jest.fn(() => hash);
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -348,8 +348,8 @@ describe('User', () => {
 
       const getSuperAdminWithUsersCount = jest.fn(() => Promise.resolve({ id: 1, usersCount: 1 }));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -373,8 +373,8 @@ describe('User', () => {
       const getSuperAdminWithUsersCount = jest.fn(() => Promise.resolve({ id: 1, usersCount: 2 }));
       const deleteFn = jest.fn(() => user);
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -393,8 +393,8 @@ describe('User', () => {
     test('Cannot delete last super admin', async () => {
       const count = jest.fn(() => Promise.resolve(2));
       const getSuperAdminWithUsersCount = jest.fn(() => Promise.resolve({ id: 1, usersCount: 2 }));
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -421,8 +421,8 @@ describe('User', () => {
         .mockImplementationOnce(() => users[0])
         .mockImplementationOnce(() => users[1]);
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         eventHub: {
           emit: jest.fn(),
         },
@@ -443,8 +443,8 @@ describe('User', () => {
     test('Return true if the user already exists', async () => {
       const count = jest.fn(() => Promise.resolve(1));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return { count };
@@ -460,8 +460,8 @@ describe('User', () => {
     test('Return false if the user does not exists', async () => {
       const count = jest.fn(() => Promise.resolve(0));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return { count };
@@ -486,8 +486,8 @@ describe('User', () => {
         };
       });
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return { findPage };
@@ -535,8 +535,8 @@ describe('User', () => {
         return userMap[query.where.id] ?? null;
       });
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return { findOne };
@@ -564,8 +564,8 @@ describe('User', () => {
       const findOne = jest.fn();
       const fakeEmail = 'admin@admin.com';
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query: () => ({ findOne }),
         },
@@ -585,8 +585,8 @@ describe('User', () => {
     test('Returns undefined if not found', async () => {
       const findOne = jest.fn(() => Promise.resolve());
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return { findOne };
@@ -601,7 +601,7 @@ describe('User', () => {
 
     test('Returns correct user registration info', async () => {
       const user = {
-        email: 'test@strapi.io',
+        email: 'test@metrix.io',
         firstname: 'Test',
         lastname: 'Strapi',
         otherField: 'ignored',
@@ -609,8 +609,8 @@ describe('User', () => {
 
       const findOne = jest.fn(() => Promise.resolve(user));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return { findOne };
@@ -632,8 +632,8 @@ describe('User', () => {
     test('Fails if no matching user is found', async () => {
       const findOne = jest.fn(() => Promise.resolve(undefined));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return {
@@ -659,8 +659,8 @@ describe('User', () => {
       const findOne = jest.fn(() => Promise.resolve({ id: 1 }));
       const updateById = jest.fn((user) => Promise.resolve(user));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return {
@@ -696,8 +696,8 @@ describe('User', () => {
       const findOne = jest.fn(() => Promise.resolve({ id: 1 }));
       const updateById = jest.fn((user) => Promise.resolve(user));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return {
@@ -730,8 +730,8 @@ describe('User', () => {
       const findOne = jest.fn(() => Promise.resolve({ id: 1 }));
       const updateById = jest.fn((user) => Promise.resolve(user));
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return {
@@ -771,8 +771,8 @@ describe('User', () => {
       const count = jest.fn(() => Promise.resolve(0));
       const warn = jest.fn();
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: { query: () => ({ model: { orm: 'bookshelf' }, count }) },
         log: { warn },
       } as any;
@@ -786,8 +786,8 @@ describe('User', () => {
       const count = jest.fn(() => Promise.resolve(2));
       const warn = jest.fn();
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: { query: () => ({ model: { orm: 'bookshelf' }, count }) },
         log: { warn },
       } as any;
@@ -807,8 +807,8 @@ describe('User', () => {
         return null;
       });
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return {
@@ -832,8 +832,8 @@ describe('User', () => {
 
         const findOne = jest.fn(() => ({ id: 1 }));
 
-        global.strapi = {
-          ...global.strapi,
+        global.metrix = {
+          ...global.metrix,
           db: {
             query() {
               return {
@@ -873,8 +873,8 @@ describe('User', () => {
         ])
       );
 
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         db: {
           query() {
             return {

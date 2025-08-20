@@ -9,7 +9,7 @@ import localProvider from '../index';
 
 describe('Local provider', () => {
   beforeAll(() => {
-    global.strapi = {
+    global.metrix = {
       dirs: { static: { public: '' } },
     } as any;
 
@@ -17,7 +17,7 @@ describe('Local provider', () => {
   });
 
   afterAll(() => {
-    global.strapi.dirs = undefined as any;
+    global.metrix.dirs = undefined as any;
   });
 
   describe('upload', () => {

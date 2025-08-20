@@ -1,1 +1,1 @@
-# @strapi/openapi
+# @metrix/openapi

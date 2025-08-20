@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { fireEvent } from '@testing-library/react';
 import { render, screen, server } from '@tests/utils';
 import { rest } from 'msw';

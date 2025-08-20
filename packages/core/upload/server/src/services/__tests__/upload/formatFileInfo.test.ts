@@ -2,7 +2,7 @@ import createUploadService from '../../upload';
 import imageManipulation from '../../image-manipulation';
 
 // Set up mock before service creation
-global.strapi = {
+global.metrix = {
   plugins: {
     upload: {
       services: {
@@ -13,7 +13,7 @@ global.strapi = {
       },
     },
   },
-  plugin: (name: string) => global.strapi.plugins[name],
+  plugin: (name: string) => global.metrix.plugins[name],
 } as any;
 
 const uploadService = createUploadService({} as any);

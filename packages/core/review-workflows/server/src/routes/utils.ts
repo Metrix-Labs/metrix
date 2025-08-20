@@ -1,5 +1,5 @@
 export const enableFeatureMiddleware = (featureName: string) => (ctx: any, next: any) => {
-  if (strapi.ee.features.isEnabled(featureName)) {
+  if (metrix.ee.features.isEnabled(featureName)) {
     return next();
   }
 

@@ -15,7 +15,7 @@ describe('Test uid service', () => {
     } as any;
 
     test('Uses modelName if no targetField specified or set', async () => {
-      const strapi = {
+      const metrix = {
         ...baseStrapi,
         contentTypes: {
           'my-model': {
@@ -29,7 +29,7 @@ describe('Test uid service', () => {
           },
         },
       } as any;
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
 
       const uid = await uidService.generateUIDField({
         contentTypeUID: 'my-model',
@@ -41,7 +41,7 @@ describe('Test uid service', () => {
     });
 
     test('Calls findUniqueUID', async () => {
-      const strapi = {
+      const metrix = {
         ...baseStrapi,
         contentTypes: {
           'my-model': {
@@ -58,7 +58,7 @@ describe('Test uid service', () => {
           },
         },
       } as any;
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
       uidService.findUniqueUID = jest.fn(
         (v) =>
           new Promise((resolve) => {
@@ -88,7 +88,7 @@ describe('Test uid service', () => {
         return [{ slug: 'test-title' }];
       });
 
-      let strapi = {
+      let metrix = {
         ...baseStrapi,
         contentTypes: {
           'my-model': {
@@ -111,7 +111,7 @@ describe('Test uid service', () => {
         },
       } as any;
 
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
 
       const uid = await uidService.generateUIDField({
         contentTypeUID: 'my-model',
@@ -123,8 +123,8 @@ describe('Test uid service', () => {
 
       expect(uid).toBe('test-title-1');
 
-      strapi = {
-        ...strapi,
+      metrix = {
+        ...metrix,
         documents: baseStrapi.documents,
       };
 
@@ -140,7 +140,7 @@ describe('Test uid service', () => {
     });
 
     test('Uses options for generation', async () => {
-      const strapi = {
+      const metrix = {
         ...baseStrapi,
         contentTypes: {
           'my-model': {
@@ -158,7 +158,7 @@ describe('Test uid service', () => {
           },
         },
       } as any;
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
 
       const uid = await uidService.generateUIDField({
         contentTypeUID: 'my-model',
@@ -172,7 +172,7 @@ describe('Test uid service', () => {
     });
 
     test('Ignores minLength attribute (should be handle by the user)', async () => {
-      const strapi = {
+      const metrix = {
         ...baseStrapi,
         contentTypes: {
           'my-model': {
@@ -191,7 +191,7 @@ describe('Test uid service', () => {
         },
       } as any;
 
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
 
       const uid = await uidService.generateUIDField({
         contentTypeUID: 'my-model',
@@ -205,7 +205,7 @@ describe('Test uid service', () => {
     });
 
     test('Ignores maxLength attribute (should be handled user side)', async () => {
-      const strapi = {
+      const metrix = {
         ...baseStrapi,
         contentTypes: {
           'my-model': {
@@ -224,7 +224,7 @@ describe('Test uid service', () => {
         },
       } as any;
 
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
 
       const uid = await uidService.generateUIDField({
         contentTypeUID: 'my-model',
@@ -238,7 +238,7 @@ describe('Test uid service', () => {
     });
 
     test('Generates a UID using the default value if necessary', async () => {
-      const strapi = {
+      const metrix = {
         ...baseStrapi,
         contentTypes: {
           'my-model': {
@@ -252,7 +252,7 @@ describe('Test uid service', () => {
           },
         },
       } as any;
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
 
       const uid = await uidService.generateUIDField({
         contentTypeUID: 'my-model',
@@ -291,7 +291,7 @@ describe('Test uid service', () => {
         ];
       });
 
-      const strapi = {
+      const metrix = {
         ...baseStrapi,
         documents() {
           return {
@@ -300,7 +300,7 @@ describe('Test uid service', () => {
         },
       } as any;
 
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
 
       const uid = await uidService.findUniqueUID({
         contentTypeUID: 'my-model',
@@ -316,7 +316,7 @@ describe('Test uid service', () => {
         return [];
       });
 
-      const strapi = {
+      const metrix = {
         ...baseStrapi,
         documents() {
           return {
@@ -325,7 +325,7 @@ describe('Test uid service', () => {
         },
       } as any;
 
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
 
       await uidService.findUniqueUID({
         contentTypeUID: 'my-model',
@@ -348,7 +348,7 @@ describe('Test uid service', () => {
     test('Counts the data in db', async () => {
       const count = jest.fn(async () => 0);
 
-      const strapi = {
+      const metrix = {
         getModel() {
           return {
             modelName: 'myTestModel',
@@ -367,7 +367,7 @@ describe('Test uid service', () => {
         },
       } as any;
 
-      const uidService = uidServiceLoader({ strapi });
+      const uidService = uidServiceLoader({ metrix });
 
       const isAvailable = await uidService.checkUIDAvailability({
         contentTypeUID: 'my-model',

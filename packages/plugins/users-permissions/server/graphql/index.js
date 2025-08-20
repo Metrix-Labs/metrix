@@ -5,9 +5,9 @@ const getQueries = require('./queries');
 const getMutations = require('./mutations');
 const getResolversConfig = require('./resolvers-configs');
 
-module.exports = ({ strapi }) => {
-  const { config: graphQLConfig } = strapi.plugin('graphql');
-  const extensionService = strapi.plugin('graphql').service('extension');
+module.exports = ({ metrix }) => {
+  const { config: graphQLConfig } = metrix.plugin('graphql');
+  const extensionService = metrix.plugin('graphql').service('extension');
 
   const isShadowCRUDEnabled = graphQLConfig('shadowCRUD', true);
 
@@ -30,10 +30,10 @@ module.exports = ({ strapi }) => {
 
   // Register new types & resolvers config
   extensionService.use(({ nexus }) => {
-    const types = getTypes({ strapi, nexus });
-    const queries = getQueries({ strapi, nexus });
-    const mutations = getMutations({ strapi, nexus });
-    const resolversConfig = getResolversConfig({ strapi });
+    const types = getTypes({ metrix, nexus });
+    const queries = getQueries({ metrix, nexus });
+    const mutations = getMutations({ metrix, nexus });
+    const resolversConfig = getResolversConfig({ metrix });
 
     return {
       types: [types, queries, mutations],

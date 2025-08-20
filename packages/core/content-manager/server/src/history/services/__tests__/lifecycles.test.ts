@@ -1,4 +1,4 @@
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrixlabs/types';
 import { HISTORY_VERSION_UID } from '../../constants';
 import { createLifecyclesService } from '../lifecycles';
 
@@ -76,7 +76,7 @@ const mockStrapi = {
 mockStrapi.documents.use = jest.fn();
 
 // @ts-expect-error - we're not mocking the full Strapi object
-const lifecyclesService = createLifecyclesService({ strapi: mockStrapi });
+const lifecyclesService = createLifecyclesService({ metrix: mockStrapi });
 
 describe('history lifecycles service', () => {
   afterEach(() => {

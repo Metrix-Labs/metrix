@@ -1,5 +1,5 @@
 import { intersection, map, isEmpty } from 'lodash/fp';
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 import { FOLDER_MODEL_UID } from '../../../constants';
 import { folderExists } from './utils';
 import { isFolderOrChild } from '../../utils/folders';
@@ -35,12 +35,12 @@ const validateDuplicatesMoveManyFoldersFilesSchema = yup
     const { folderIds, destinationFolderId } = value;
     if (isEmpty(folderIds)) return true;
 
-    const folders = await strapi.db.query(FOLDER_MODEL_UID).findMany({
+    const folders = await metrix.db.query(FOLDER_MODEL_UID).findMany({
       select: ['name'],
       where: { id: { $in: folderIds } },
     });
 
-    const existingFolders = await strapi.db.query(FOLDER_MODEL_UID).findMany({
+    const existingFolders = await metrix.db.query(FOLDER_MODEL_UID).findMany({
       select: ['name'],
       where: { parent: { id: destinationFolderId } },
     });
@@ -64,12 +64,12 @@ const validateMoveFoldersNotInsideThemselvesSchema = yup
       const { folderIds, destinationFolderId } = value;
       if (destinationFolderId === null || isEmpty(folderIds)) return true;
 
-      const destinationFolder = await strapi.db.query(FOLDER_MODEL_UID).findOne({
+      const destinationFolder = await metrix.db.query(FOLDER_MODEL_UID).findOne({
         select: ['path'],
         where: { id: destinationFolderId },
       });
 
-      const folders: Folder[] = await strapi.db.query(FOLDER_MODEL_UID).findMany({
+      const folders: Folder[] = await metrix.db.query(FOLDER_MODEL_UID).findMany({
         select: ['name', 'path'],
         where: { id: { $in: folderIds } },
       });

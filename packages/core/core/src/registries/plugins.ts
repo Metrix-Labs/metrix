@@ -1,10 +1,10 @@
 import { has } from 'lodash/fp';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 type PluginMap = Record<string, Core.Plugin>;
 
-const pluginsRegistry = (strapi: Core.Strapi) => {
+const pluginsRegistry = (metrix: Core.Strapi) => {
   const plugins: PluginMap = {};
 
   return {
@@ -19,7 +19,7 @@ const pluginsRegistry = (strapi: Core.Strapi) => {
         throw new Error(`Plugin ${name} has already been registered.`);
       }
 
-      const pluginModule = strapi.get('modules').add(`plugin::${name}`, pluginConfig);
+      const pluginModule = metrix.get('modules').add(`plugin::${name}`, pluginConfig);
       plugins[name] = pluginModule;
 
       return plugins[name];

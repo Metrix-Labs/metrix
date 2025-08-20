@@ -1,5 +1,5 @@
 import { isNil } from 'lodash/fp';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { getService } from '../utils';
 import constants from './constants';
 import type { AdminRole } from '../../../shared/contracts/shared';

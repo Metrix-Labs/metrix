@@ -7,7 +7,7 @@ tags:
 
 # OpenAPI
 
-This section provides an overview of the OpenAPI package for Strapi.
+This section provides an overview of the OpenAPI package for Metrix.
 
 ---
 
@@ -20,7 +20,7 @@ import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 
 ## Introduction
 
-The Strapi OpenAPI package offers a comprehensive set of utilities for creating and manipulating OpenAPI specifications based on Strapi applications.
+The Metrix OpenAPI package offers a comprehensive set of utilities for creating and manipulating OpenAPI specifications based on Metrix applications.
 
 It features a user-friendly API, a maintainable and extensible codebase, and thorough documentation.
 
@@ -30,11 +30,11 @@ For more information about OpenAPI, please refer to [the official specification]
 
 ## Context
 
-From Strapi `v3-alpha` through `v5` (since its [initial release in December 2018](https://medium.com/strapi/introducing-the-api-documentation-swagger-plugin-29092af2c880)), the [official documentation plugin](https://www.npmjs.com/package/@strapi/plugin-documentation) has been the standard solution for integrating Strapi with OpenAPI.
+From Metrix `v3-alpha` through `v5` (since its [initial release in December 2018](https://medium.com/metrix/introducing-the-api-documentation-swagger-plugin-29092af2c880)), the [official documentation plugin](https://www.npmjs.com/package/@metrix/plugin-documentation) has been the standard solution for integrating Metrix with OpenAPI.
 
 This plugin provided automatic documentation generation, extensive customization options, and a Swagger UI interface.
 
-However, after six years of evolving the CMS, the documentation plugin has become outdated and prone to bugs. Meanwhile, new requirements have emerged from both the community (SDK generation, Swagger support, etc.) and internal tooling needs (Strapi client, API playground, etc.).
+However, after six years of evolving the CMS, the documentation plugin has become outdated and prone to bugs. Meanwhile, new requirements have emerged from both the community (SDK generation, Swagger support, etc.) and internal tooling needs (Metrix client, API playground, etc.).
 
 It's within this context that we've developed this new package, designed to offer specialized features while remaining flexible enough for broad application.
 
@@ -44,14 +44,14 @@ It's within this context that we've developed this new package, designed to offe
 
 This package provides APIs and tools to:
 
-- Programmatically generate OpenAPI documents **specifically** tailored for Strapi applications
+- Programmatically generate OpenAPI documents **specifically** tailored for Metrix applications
 - Validate generated documents for compliance and accuracy
 - Customize the document generation process to suit your needs
 
 **What it's not intended to be ❌**
 
 - A direct replacement for the documentation plugin (including Swagger UI)
-- A generic OpenAPI specification generator for non-Strapi applications
+- A generic OpenAPI specification generator for non-Metrix applications
 - A tool for generating OpenAPI documents as static files
 - A command-line interface (CLI)
 

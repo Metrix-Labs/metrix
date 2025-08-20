@@ -80,7 +80,7 @@ window.console = {
  * Strapi
  * -----------------------------------------------------------------------------------------------*/
 
-window.strapi = {
+window.metrix = {
   backendURL: 'http://localhost:1337',
   isEE: false,
   features: {

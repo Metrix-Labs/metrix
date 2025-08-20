@@ -3,7 +3,7 @@
 const { omit } = require('lodash/fp');
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 const data = {
@@ -34,28 +34,28 @@ const productModel = {
 
 describe('CRUD locales', () => {
   let rq;
-  let strapi;
+  let metrix;
   const builder = createTestBuilder();
   let localeService;
 
   beforeAll(async () => {
     await builder.addContentType(productModel).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
-    localeService = strapi.plugin('i18n').service('locales');
+    localeService = metrix.plugin('i18n').service('locales');
 
     // ensure we don't have any data in the database left over from previous tests that didn't clean up
-    await strapi.db.query('api::product.product').deleteMany();
+    await metrix.db.query('api::product.product').deleteMany();
   });
 
   afterAll(async () => {
     await localeService.setDefaultLocale({ code: 'en' });
 
     // Delete all data that has been created
-    await strapi.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
-    await strapi.destroy();
+    await metrix.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
+    await metrix.destroy();
     await builder.cleanup();
   });
 

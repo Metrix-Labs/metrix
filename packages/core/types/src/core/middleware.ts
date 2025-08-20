@@ -2,11 +2,11 @@ import type Koa from 'koa';
 
 import type * as UID from '../uid';
 
-import type { Strapi } from './strapi';
+import type { Strapi } from './metrix';
 
 export type MiddlewareFactory<T = any> = (
   config: T,
-  ctx: { strapi: Strapi }
+  ctx: { metrix: Strapi }
 ) => MiddlewareHandler | void;
 
 export type MiddlewareName = UID.Middleware | string;

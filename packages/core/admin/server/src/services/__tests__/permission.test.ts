@@ -10,7 +10,7 @@ import { toPermission } from '../../domain/permission';
 
 describe('Permission Service', () => {
   beforeEach(() => {
-    global.strapi = {
+    global.metrix = {
       admin: {
         services: {
           condition: {
@@ -26,7 +26,7 @@ describe('Permission Service', () => {
   describe('Find permissions', () => {
     test('Find calls the right db query', async () => {
       const findMany = jest.fn(() => Promise.resolve([]));
-      global.strapi = merge(global.strapi, {
+      global.metrix = merge(global.metrix, {
         db: {
           query() {
             return { findMany };
@@ -44,7 +44,7 @@ describe('Permission Service', () => {
     test('Find calls the right db query', async () => {
       const findMany = jest.fn(() => Promise.resolve([]));
 
-      global.strapi = merge(global.strapi, {
+      global.metrix = merge(global.metrix, {
         db: {
           query() {
             return { findMany };
@@ -64,7 +64,7 @@ describe('Permission Service', () => {
     test('Removes unwanted properties', () => {
       const isValidCondition = jest.fn((condition) => ['cond'].includes(condition));
 
-      global.strapi = merge(global.strapi, {
+      global.metrix = merge(global.metrix, {
         admin: { services: { condition: { isValidCondition } } },
       });
 
@@ -148,7 +148,7 @@ describe('Permission Service', () => {
       registeredPerms.set('action-1', {});
       registeredPerms.set('action-3', { subjects: ['country'] });
 
-      global.strapi = merge(global.strapi, {
+      global.metrix = merge(global.metrix, {
         db: { query: () => ({ findMany, delete: dbDelete, update, count }) },
         admin: {
           services: {

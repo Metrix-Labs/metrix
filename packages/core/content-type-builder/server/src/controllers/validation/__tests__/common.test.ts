@@ -1,4 +1,4 @@
-import { yup } from '@strapi/utils';
+import { yup } from '@metrixlabs/utils';
 import { isValidName } from '../common';
 import type { CommonTestConfig } from '../common';
 

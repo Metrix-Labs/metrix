@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useField, useNotification, useForm, createRulesEngine } from '@strapi/admin/strapi-admin';
+import { useField, useNotification, useForm, createRulesEngine } from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Flex,
@@ -31,7 +31,7 @@ import { ComponentProvider, useComponent } from '../ComponentContext';
 import { Initializer } from './Initializer';
 
 import type { ComponentInputProps } from './Input';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * RepeatableComponent

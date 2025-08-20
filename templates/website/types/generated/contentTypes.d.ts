@@ -1,4 +1,4 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type { Struct, Schema } from '@metrixlabs/metrix';
 
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
@@ -861,7 +861,7 @@ export interface AdminTransferTokenPermission extends Struct.CollectionTypeSchem
   };
 }
 
-declare module '@strapi/strapi' {
+declare module '@metrixlabs/metrix' {
   export module Public {
     export interface ContentTypeSchemas {
       'plugin::upload.file': PluginUploadFile;

@@ -1,8 +1,8 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { I18nLocaleRouteValidator } from './validation';
 
 export default (): Core.RouterInput => {
-  const validator = new I18nLocaleRouteValidator(strapi);
+  const validator = new I18nLocaleRouteValidator(metrix);
 
   return {
     type: 'content-api',

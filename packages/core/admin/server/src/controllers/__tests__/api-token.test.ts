@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { omit } from 'lodash/fp';
 // @ts-expect-error - types are not generated for this file
 // eslint-disable-next-line import/no-relative-packages
@@ -18,7 +18,7 @@ describe('API Token Controller', () => {
       const exists = jest.fn(() => true);
       const ctx = createContext({ body });
 
-      global.strapi = {
+      global.metrix = {
         contentAPI: {
           permissions: {
             providers: {
@@ -58,7 +58,7 @@ describe('API Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body }, { badRequest, created });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -95,7 +95,7 @@ describe('API Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body: createBody }, { badRequest, created });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -125,7 +125,7 @@ describe('API Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body: createBody }, { created });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -153,7 +153,7 @@ describe('API Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body: createBody }, { created });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -190,7 +190,7 @@ describe('API Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body: createBody }, { badRequest, created });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -231,7 +231,7 @@ describe('API Token Controller', () => {
       const send = jest.fn();
       const ctx = createContext({}, { send });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -261,7 +261,7 @@ describe('API Token Controller', () => {
       const deleted = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { deleted });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -282,7 +282,7 @@ describe('API Token Controller', () => {
       const deleted = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { deleted });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -313,7 +313,7 @@ describe('API Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { created });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -336,7 +336,7 @@ describe('API Token Controller', () => {
       const notFound = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { created, notFound });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -368,7 +368,7 @@ describe('API Token Controller', () => {
       const send = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { send });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -389,7 +389,7 @@ describe('API Token Controller', () => {
       const notFound = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { notFound });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -420,7 +420,7 @@ describe('API Token Controller', () => {
       const getByName = jest.fn(() => ({ id: 2, name: body.name }));
       const ctx = createContext({ body, params: { id } });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -448,7 +448,7 @@ describe('API Token Controller', () => {
       const notFound = jest.fn();
       const ctx = createContext({ body, params: { id } }, { notFound });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {
@@ -472,7 +472,7 @@ describe('API Token Controller', () => {
       const send = jest.fn();
       const ctx = createContext({ body, params: { id } }, { notFound, send });
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             'api-token': {

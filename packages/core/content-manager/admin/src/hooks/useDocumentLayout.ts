@@ -6,7 +6,7 @@ import {
   useStrapiApp,
   useAPIErrorHandler,
   useQueryParams,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 
 import { HOOKS } from '../constants/hooks';
 import { useGetContentTypeConfigurationQuery } from '../services/contentTypes';
@@ -28,8 +28,8 @@ import type {
   FindContentTypeConfiguration,
   Settings,
 } from '../../../shared/contracts/content-types';
-import type { Filters, InputProps, Table } from '@strapi/admin/strapi-admin';
-import type { Schema as SchemaUtils } from '@strapi/types';
+import type { Filters, InputProps, Table } from '@metrixlabs/admin/metrix-admin';
+import type { Schema as SchemaUtils } from '@metrixlabs/types';
 
 type LayoutOptions = Schema['options'] & Schema['pluginOptions'] & object;
 

@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import { yup } from '@strapi/utils';
+import { yup } from '@metrixlabs/utils';
 
 import type { TestContext } from 'yup';
-import type { Schema, Struct } from '@strapi/types';
+import type { Schema, Struct } from '@metrixlabs/types';
 
 import { modelTypes, VALID_UID_TARGETS } from '../../services/constants';
 import {

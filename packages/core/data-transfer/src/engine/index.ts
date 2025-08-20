@@ -7,7 +7,7 @@ import { chain } from 'stream-chain';
 import { isEmpty, uniq, last, isNumber, set, pick } from 'lodash/fp';
 import { diff as semverDiff } from 'semver';
 
-import type { Struct, Utils } from '@strapi/types';
+import type { Struct, Utils } from '@metrixlabs/types';
 
 import type {
   IAsset,
@@ -349,7 +349,7 @@ class TransferEngine<
   }
 
   /**
-   * Run a version check between two strapi version (source and destination) using the strategy given to the engine during initialization.
+   * Run a version check between two metrix version (source and destination) using the strategy given to the engine during initialization.
    *
    * If there is a mismatch, throws a validation error.
    */
@@ -360,7 +360,7 @@ class TransferEngine<
       throw new TransferEngineValidationError(
         `The source and destination provide are targeting incompatible Strapi versions (using the "${strategy}" strategy). The source (${this.sourceProvider.name}) version is ${sourceVersion} and the destination (${this.destinationProvider.name}) version is ${destinationVersion}`,
         {
-          check: 'strapi.version',
+          check: 'metrix.version',
           strategy,
           versions: { source: sourceVersion, destination: destinationVersion },
         }
@@ -680,8 +680,8 @@ class TransferEngine<
 
     if (sourceMetadata && destinationMetadata) {
       this.#assertStrapiVersionIntegrity(
-        sourceMetadata?.strapi?.version,
-        destinationMetadata?.strapi?.version
+        sourceMetadata?.metrix?.version,
+        destinationMetadata?.metrix?.version
       );
     }
 

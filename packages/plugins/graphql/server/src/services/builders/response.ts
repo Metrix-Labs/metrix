@@ -1,10 +1,10 @@
 import { objectType } from 'nexus';
 import { prop } from 'lodash/fp';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 import type { Context } from '../types';
 
-export default ({ strapi }: Context) => {
-  const { naming } = strapi.plugin('graphql').service('utils');
+export default ({ metrix }: Context) => {
+  const { naming } = metrix.plugin('graphql').service('utils');
 
   return {
     /**

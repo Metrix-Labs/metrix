@@ -1,13 +1,13 @@
-import type { Core, Schema, Data } from '@strapi/types';
+import type { Core, Schema, Data } from '@metrixlabs/types';
 
-import { traverseEntity } from '@strapi/utils';
+import { traverseEntity } from '@metrixlabs/utils';
 import { curry } from 'lodash/fp';
 
 import { getService } from '../../utils';
 
 const LOCALIZATION_FIELDS = ['locale', 'localizations'];
 
-const sanitize = ({ strapi }: { strapi: Core.Strapi }) => {
+const sanitize = ({ metrix }: { metrix: Core.Strapi }) => {
   const { isLocalizedContentType } = getService('content-types');
 
   /**
@@ -26,7 +26,7 @@ const sanitize = ({ strapi }: { strapi: Core.Strapi }) => {
           remove(key);
         }
       },
-      { schema, getModel: strapi.getModel.bind(strapi) },
+      { schema, getModel: metrix.getModel.bind(metrix) },
       entity
     )
   );

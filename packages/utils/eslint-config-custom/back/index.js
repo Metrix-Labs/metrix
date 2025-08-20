@@ -1,10 +1,10 @@
 module.exports = {
-  extends: '@strapi/eslint-config/back/javascript',
+  extends: '@metrixlabs/eslint-config/back/javascript',
   parserOptions: {
     ecmaVersion: 2021,
   },
   globals: {
-    strapi: false,
+    metrix: false,
   },
   rules: {
     'prettier/prettier': 'off',

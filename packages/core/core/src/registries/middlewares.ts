@@ -1,5 +1,5 @@
 import { pickBy, has } from 'lodash/fp';
-import type { Core, UID } from '@strapi/types';
+import type { Core, UID } from '@metrixlabs/types';
 import { addNamespace, hasNamespace } from './namespace';
 
 type MiddlewareExtendFn = (middleware: Core.Middleware) => Core.Middleware;

@@ -1,6 +1,6 @@
 import { get } from 'lodash/fp';
-import { errors } from '@strapi/utils';
-import type { Core, Struct } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core, Struct } from '@metrixlabs/types';
 import { getService } from '../utils';
 
 const { ApplicationError } = errors;
@@ -19,7 +19,7 @@ const validateLocaleCreation: Core.MiddlewareHandler = async (ctx, next) => {
 
   const { getValidLocale, isLocalizedContentType } = getService('content-types');
 
-  const modelDef = strapi.getModel(model) as Struct.ContentTypeSchema;
+  const modelDef = metrix.getModel(model) as Struct.ContentTypeSchema;
 
   if (!isLocalizedContentType(modelDef)) {
     return next();
@@ -41,7 +41,7 @@ const validateLocaleCreation: Core.MiddlewareHandler = async (ctx, next) => {
   body.locale = entityLocale;
 
   if (modelDef.kind === 'singleType') {
-    const entity = await strapi.entityService.findMany(modelDef.uid, {
+    const entity = await metrix.entityService.findMany(modelDef.uid, {
       locale: entityLocale,
     } as any); // TODO: add this type to entityService
 

@@ -1,5 +1,5 @@
 import { pickBy, has, castArray } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { addNamespace, hasNamespace } from './namespace';
 
 const PLUGIN_PREFIX = 'plugin::';

@@ -8,7 +8,7 @@ import {
   useNotification,
   InputRenderer as AdminInputRenderer,
   InputProps,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   Box,
   Flex,
@@ -511,7 +511,7 @@ const PermissionsField = ({ disabled, name, placeholder, required }: Permissions
 
   // Super admins always have permissions to do everything and therefore
   // there is no point for this role to show up in the role combobox
-  const filteredRoles = roles?.filter((role) => role.code !== 'strapi-super-admin') ?? [];
+  const filteredRoles = roles?.filter((role) => role.code !== 'metrix-super-admin') ?? [];
 
   React.useEffect(() => {
     if (

@@ -2,22 +2,22 @@ import { defineProvider } from './provider';
 import loadAdmin from '../loaders/admin';
 
 export default defineProvider({
-  init(strapi) {
+  init(metrix) {
     // eslint-disable-next-line node/no-missing-require
-    strapi.add('admin', () => require('@strapi/admin/strapi-server'));
+    metrix.add('admin', () => require('@metrixlabs/admin/metrix-server'));
   },
 
-  async register(strapi) {
-    await loadAdmin(strapi);
+  async register(metrix) {
+    await loadAdmin(metrix);
 
-    await strapi.get('admin')?.register({ strapi });
+    await metrix.get('admin')?.register({ metrix });
   },
 
-  async bootstrap(strapi) {
-    await strapi.get('admin')?.bootstrap({ strapi });
+  async bootstrap(metrix) {
+    await metrix.get('admin')?.bootstrap({ metrix });
   },
 
-  async destroy(strapi) {
-    await strapi.get('admin')?.destroy({ strapi });
+  async destroy(metrix) {
+    await metrix.get('admin')?.destroy({ metrix });
   },
 });

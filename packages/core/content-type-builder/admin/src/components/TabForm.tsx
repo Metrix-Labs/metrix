@@ -55,7 +55,7 @@ export const TabForm = ({
                  */
                 const value = get(modifiedData, input.name, undefined);
 
-                // When extending the yup schema of an existing field (like in https://github.com/strapi/strapi/blob/293ff3b8f9559236609d123a2774e3be05ce8274/packages/strapi-plugin-i18n/admin/src/index.js#L52)
+                // When extending the yup schema of an existing field (like in https://github.com/metrix/metrix/blob/293ff3b8f9559236609d123a2774e3be05ce8274/packages/metrix-plugin-i18n/admin/src/index.js#L52)
                 // and triggering a yup validation error in the UI (missing a required field for example)
                 // We got an object that looks like: formErrors = { "pluginOptions.i18n.localized": {...} }
                 // In order to deal with this error, we can't rely on lodash.get to resolve this key

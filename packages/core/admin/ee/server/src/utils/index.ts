@@ -1,10 +1,10 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 export const getService = (
   name: string,
-  { strapi }: { strapi: Core.Strapi } = { strapi: global.strapi }
+  { metrix }: { metrix: Core.Strapi } = { metrix: global.metrix }
 ) => {
-  return strapi.service(`admin::${name}`);
+  return metrix.service(`admin::${name}`);
 };
 
 export default {

@@ -11,7 +11,7 @@ const createDBQueryMock = () => {
 
 describe('i18n - Migration - enable/disable localization on a CT', () => {
   beforeAll(() => {
-    global.strapi = {
+    global.metrix = {
       db: {},
       plugins: {
         i18n: {
@@ -27,14 +27,14 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
           },
         },
       },
-      plugin: jest.fn((name) => global.strapi.plugins[name]),
+      plugin: jest.fn((name) => global.metrix.plugins[name]),
     } as any;
   });
 
   describe('enable localization on a CT', () => {
     describe('Should not migrate', () => {
       test('non i18n => non i18n', async () => {
-        strapi.db.query = createDBQueryMock();
+        metrix.db.query = createDBQueryMock();
 
         const previousDefinition = {};
         const definition = {};
@@ -44,11 +44,11 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
           contentTypes: { test: definition as any },
         });
 
-        expect(strapi.db.query).not.toHaveBeenCalled();
+        expect(metrix.db.query).not.toHaveBeenCalled();
       });
 
       test('i18n => non i18n', async () => {
-        strapi.db.query = createDBQueryMock();
+        metrix.db.query = createDBQueryMock();
 
         const previousDefinition = { pluginOptions: { i18n: { localized: true } } };
         const definition = {};
@@ -58,11 +58,11 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
           contentTypes: { test: definition as any },
         });
 
-        expect(strapi.db.query).not.toHaveBeenCalled();
+        expect(metrix.db.query).not.toHaveBeenCalled();
       });
 
       test('i18n => i18n', async () => {
-        strapi.db.query = createDBQueryMock();
+        metrix.db.query = createDBQueryMock();
 
         const previousDefinition = { pluginOptions: { i18n: { localized: true } } };
         const definition = { pluginOptions: { i18n: { localized: true } } };
@@ -72,13 +72,13 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
           contentTypes: { test: definition as any },
         });
 
-        expect(strapi.db.query).not.toHaveBeenCalled();
+        expect(metrix.db.query).not.toHaveBeenCalled();
       });
     });
 
     describe('Should migrate', () => {
       test('non i18n => i18n ', async () => {
-        strapi.db.query = createDBQueryMock();
+        metrix.db.query = createDBQueryMock();
 
         const previousDefinition = {};
         const definition = { pluginOptions: { i18n: { localized: true } } };
@@ -88,8 +88,8 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
           contentTypes: { test: definition as any },
         });
 
-        expect(strapi.plugins.i18n.services.locales.getDefaultLocale).toHaveBeenCalled();
-        expect(strapi.db.query).toHaveBeenCalled();
+        expect(metrix.plugins.i18n.services.locales.getDefaultLocale).toHaveBeenCalled();
+        expect(metrix.db.query).toHaveBeenCalled();
       });
     });
   });
@@ -97,7 +97,7 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
   describe('disable localization on a CT', () => {
     describe('Should not migrate', () => {
       test('non i18n => non i18n', async () => {
-        strapi.db.query = createDBQueryMock();
+        metrix.db.query = createDBQueryMock();
 
         const previousDefinition = {};
         const definition = {};
@@ -106,11 +106,11 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
           oldContentTypes: { test: previousDefinition as any },
           contentTypes: { test: definition as any },
         });
-        expect(strapi.db.query).not.toHaveBeenCalled();
+        expect(metrix.db.query).not.toHaveBeenCalled();
       });
 
       test('non i18n => i18n', async () => {
-        strapi.db.query = createDBQueryMock();
+        metrix.db.query = createDBQueryMock();
 
         const previousDefinition = {};
         const definition = { pluginOptions: { i18n: { localized: true } } };
@@ -119,11 +119,11 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
           oldContentTypes: { test: previousDefinition as any },
           contentTypes: { test: definition as any },
         });
-        expect(strapi.db.query).not.toHaveBeenCalled();
+        expect(metrix.db.query).not.toHaveBeenCalled();
       });
 
       test('i18n => i18n', async () => {
-        strapi.db.query = createDBQueryMock();
+        metrix.db.query = createDBQueryMock();
 
         const previousDefinition = { pluginOptions: { i18n: { localized: true } } };
         const definition = { pluginOptions: { i18n: { localized: true } } };
@@ -132,7 +132,7 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
           oldContentTypes: { test: previousDefinition as any },
           contentTypes: { test: definition as any },
         });
-        expect(strapi.db.query).not.toHaveBeenCalled();
+        expect(metrix.db.query).not.toHaveBeenCalled();
       });
     });
 
@@ -148,8 +148,8 @@ describe('i18n - Migration - enable/disable localization on a CT', () => {
           contentTypes: { test: definition as any },
         });
 
-        expect(strapi.plugins.i18n.services.locales.getDefaultLocale).toHaveBeenCalled();
-        expect(strapi.db.query).toHaveBeenCalled();
+        expect(metrix.plugins.i18n.services.locales.getDefaultLocale).toHaveBeenCalled();
+        expect(metrix.db.query).toHaveBeenCalled();
       });
     });
   });

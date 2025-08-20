@@ -3,12 +3,12 @@
 const { prop, omit } = require('lodash/fp');
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createRequest, createAuthRequest } = require('api-tests/request');
 const { createUtils } = require('api-tests/utils');
 
 describe('Admin Permissions - Conditions', () => {
-  let strapi;
+  let metrix;
   let utils;
   const builder = createTestBuilder();
   const requests = {
@@ -110,8 +110,8 @@ describe('Admin Permissions - Conditions', () => {
 
   const createFixtures = async () => {
     // Login with admin and init admin tools
-    requests.admin = await createAuthRequest({ strapi });
-    requests.public = createRequest({ strapi });
+    requests.admin = await createAuthRequest({ metrix });
+    requests.public = createRequest({ metrix });
 
     // Create the foobar role
     const role = await utils.createRole(localTestData.role);
@@ -133,7 +133,7 @@ describe('Admin Permissions - Conditions', () => {
 
       const createdUser = await utils.createUser(userAttributes);
 
-      requests[createdUser.id] = await createAuthRequest({ strapi, userInfo: createdUser });
+      requests[createdUser.id] = await createAuthRequest({ metrix, userInfo: createdUser });
 
       users.push(createdUser);
     }
@@ -170,15 +170,15 @@ describe('Admin Permissions - Conditions', () => {
       .addContentType(localTestData.models.article)
       .build();
 
-    strapi = await createStrapiInstance({
-      bootstrap({ strapi }) {
+    metrix = await createStrapiInstance({
+      bootstrap({ metrix }) {
         // Create custom conditions
-        return strapi
+        return metrix
           .service('admin::permission')
           .conditionProvider.registerMany(localTestData.customConditions);
       },
     });
-    utils = createUtils(strapi);
+    utils = createUtils(metrix);
 
     await createFixtures();
   });
@@ -186,7 +186,7 @@ describe('Admin Permissions - Conditions', () => {
   afterAll(async () => {
     await deleteFixtures();
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

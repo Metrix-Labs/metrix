@@ -1,4 +1,4 @@
-import { server } from '@strapi/admin/strapi-admin/test';
+import { server } from '@metrixlabs/admin/metrix-admin/test';
 
 import { handlers } from './handlers';
 

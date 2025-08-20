@@ -1,5 +1,5 @@
 import { GraphQLScalarType, Kind } from 'graphql';
-import { parseType, errors } from '@strapi/utils';
+import { parseType, errors } from '@metrixlabs/utils';
 
 const { ValidationError } = errors;
 

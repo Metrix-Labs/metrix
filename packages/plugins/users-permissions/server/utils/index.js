@@ -3,7 +3,7 @@
 const sanitize = require('./sanitize');
 
 const getService = (name) => {
-  return strapi.plugin('users-permissions').service(name);
+  return metrix.plugin('users-permissions').service(name);
 };
 
 module.exports = {

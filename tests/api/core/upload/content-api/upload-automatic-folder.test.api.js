@@ -5,7 +5,7 @@ const path = require('path');
 
 // Helpers.
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createContentAPIRequest, createAuthRequest } = require('api-tests/request');
 const { orderBy } = require('lodash/fp');
 
@@ -13,7 +13,7 @@ const builder = createTestBuilder();
 const data = {
   dogs: [],
 };
-let strapi;
+let metrix;
 let rq;
 let rqAdmin;
 let uploadFolder;
@@ -33,9 +33,9 @@ const dogModel = {
 describe('Uploads folder', () => {
   beforeAll(async () => {
     await builder.addContentType(dogModel).build();
-    strapi = await createStrapiInstance();
-    rq = await createContentAPIRequest({ strapi });
-    rqAdmin = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createContentAPIRequest({ metrix });
+    rqAdmin = await createAuthRequest({ metrix });
   });
 
   afterAll(async () => {
@@ -53,7 +53,7 @@ describe('Uploads folder', () => {
       },
     });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -303,7 +303,7 @@ describe('Uploads folder', () => {
         formData: {
           files: [
             fs.createReadStream(path.join(__dirname, '../utils/rec.jpg')),
-            fs.createReadStream(path.join(__dirname, '../utils/strapi.jpg')),
+            fs.createReadStream(path.join(__dirname, '../utils/metrix.jpg')),
           ],
         },
       });
@@ -364,7 +364,7 @@ describe('Uploads folder', () => {
         formData: {
           files: [
             fs.createReadStream(path.join(__dirname, '../utils/rec.jpg')),
-            fs.createReadStream(path.join(__dirname, '../utils/strapi.jpg')),
+            fs.createReadStream(path.join(__dirname, '../utils/metrix.jpg')),
           ],
           fileInfo: fileInfo.map(JSON.stringify),
         },
@@ -420,7 +420,7 @@ describe('Uploads folder', () => {
         formData: {
           files: [
             fs.createReadStream(path.join(__dirname, '../utils/rec.jpg')),
-            fs.createReadStream(path.join(__dirname, '../utils/strapi.jpg')),
+            fs.createReadStream(path.join(__dirname, '../utils/metrix.jpg')),
           ],
         },
       });
@@ -481,7 +481,7 @@ describe('Uploads folder', () => {
         formData: {
           files: [
             fs.createReadStream(path.join(__dirname, '../utils/rec.jpg')),
-            fs.createReadStream(path.join(__dirname, '../utils/strapi.jpg')),
+            fs.createReadStream(path.join(__dirname, '../utils/metrix.jpg')),
           ],
         },
       });

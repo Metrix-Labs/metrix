@@ -2,6 +2,6 @@
  * complex service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@metrix/metrix').factories;
 
 module.exports = createCoreService('api::complex.complex');

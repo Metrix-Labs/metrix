@@ -2,12 +2,12 @@
 
 const { prop, difference, map, uniq } = require('lodash/fp');
 const { createAuthRequest } = require('api-tests/request');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createTestBuilder } = require('api-tests/builder');
 
 const toIds = (arr) => uniq(map(prop('id'))(arr));
 
-let strapi;
+let metrix;
 let rq;
 const builder = createTestBuilder();
 
@@ -122,14 +122,14 @@ describe.skip('x-to-many RF Preview', () => {
       .addFixtures(productModel.singularName, fixtures.product)
       .build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
-    Object.assign(data, await builder.sanitizedFixtures(strapi));
+    Object.assign(data, await builder.sanitizedFixtures(metrix));
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

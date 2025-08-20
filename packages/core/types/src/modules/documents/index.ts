@@ -25,7 +25,7 @@ export type Service = {
 
   /** Add a middleware for all uid's and a specific action
    *  @example - Add a default locale
-   *  strapi.documents.use((ctx, next) => {
+   *  metrix.documents.use((ctx, next) => {
    *    if (!params.locale) params.locale = 'en'
    *    return next()
    *  })

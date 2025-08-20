@@ -1,6 +1,6 @@
 import { pick, isEqual } from 'lodash/fp';
-import type { Logger } from '@strapi/logger';
-import type { Core } from '@strapi/types';
+import type { Logger } from '@metrixlabs/logger';
+import type { Core } from '@metrixlabs/types';
 import { createStrapiFetch } from '../utils/fetch';
 import {
   readLicense,
@@ -47,7 +47,7 @@ const disable = (message: string) => {
 
   if (shouldEmitEvent) {
     // Notify EE features that they should be disabled
-    strapi.eventHub.emit('ee.disable');
+    metrix.eventHub.emit('ee.disable');
   }
 };
 
@@ -59,7 +59,7 @@ const enable = () => {
 
   if (shouldEmitEvent) {
     // Notify EE features that they should be disabled
-    strapi.eventHub.emit('ee.enable');
+    metrix.eventHub.emit('ee.enable');
   }
 };
 
@@ -76,12 +76,12 @@ const init = (licenseDir: string, logger?: Logger) => {
   initialized = true;
   ee.logger = logger;
 
-  if (process.env.STRAPI_DISABLE_EE?.toLowerCase() === 'true') {
+  if (process.env.METRIX_DISABLE_EE?.toLowerCase() === 'true') {
     return;
   }
 
   try {
-    const license = process.env.STRAPI_LICENSE || readLicense(licenseDir);
+    const license = process.env.METRIX_LICENSE || readLicense(licenseDir);
 
     if (license) {
       ee.licenseInfo = verifyLicense(license);
@@ -101,13 +101,13 @@ const init = (licenseDir: string, logger?: Logger) => {
  *
  * Store the result in database to avoid unecessary requests, and will fallback to that in case of a network failure.
  */
-const onlineUpdate = async ({ strapi }: { strapi: Core.Strapi }) => {
-  const { get, commit, rollback } = (await strapi.db?.transaction()) as any;
+const onlineUpdate = async ({ metrix }: { metrix: Core.Strapi }) => {
+  const { get, commit, rollback } = (await metrix.db?.transaction()) as any;
   const transaction = get();
 
   try {
-    const storedInfo = await strapi.db
-      ?.queryBuilder('strapi::core-store')
+    const storedInfo = await metrix.db
+      ?.queryBuilder('metrix::core-store')
       .where({ key: 'ee_information' })
       .select('value')
       .first()
@@ -140,7 +140,7 @@ const onlineUpdate = async ({ strapi }: { strapi: Core.Strapi }) => {
     }
 
     const license = shouldContactRegistry
-      ? await fetchLicense({ strapi }, ee.licenseInfo.licenseKey, strapi.config.get('uuid')).catch(
+      ? await fetchLicense({ metrix }, ee.licenseInfo.licenseKey, metrix.config.get('uuid')).catch(
           fallback
         )
       : storedInfo.license;
@@ -161,7 +161,7 @@ const onlineUpdate = async ({ strapi }: { strapi: Core.Strapi }) => {
 
         // Notify EE features
         if (licenseInfoChanged && wasEnabled) {
-          strapi.eventHub.emit('ee.update');
+          metrix.eventHub.emit('ee.update');
         }
       } catch (error) {
         if (error instanceof Error) {
@@ -176,7 +176,7 @@ const onlineUpdate = async ({ strapi }: { strapi: Core.Strapi }) => {
 
     if (shouldContactRegistry) {
       result.license = license ?? null;
-      const query = strapi.db.queryBuilder('strapi::core-store').transacting(transaction);
+      const query = metrix.db.queryBuilder('metrix::core-store').transacting(transaction);
 
       if (!storedInfo) {
         query.insert({ key: 'ee_information', value: JSON.stringify(result) });
@@ -208,18 +208,18 @@ const validateInfo = () => {
   enable();
 };
 
-const checkLicense = async ({ strapi }: { strapi: Core.Strapi }) => {
+const checkLicense = async ({ metrix }: { metrix: Core.Strapi }) => {
   const shouldStayOffline =
     ee.licenseInfo.type === 'gold' &&
     // This env variable support is temporarily used to ease the migration between online vs offline
-    process.env.STRAPI_DISABLE_LICENSE_PING?.toLowerCase() === 'true';
+    process.env.METRIX_DISABLE_LICENSE_PING?.toLowerCase() === 'true';
 
   if (!shouldStayOffline) {
-    await onlineUpdate({ strapi });
+    await onlineUpdate({ metrix });
 
-    strapi.cron.add({
+    metrix.cron.add({
       onlineUpdate: {
-        task: () => onlineUpdate({ strapi }),
+        task: () => onlineUpdate({ metrix }),
         options: shiftCronExpression('0 0 */12 * * *'),
       },
     });
@@ -233,11 +233,11 @@ const checkLicense = async ({ strapi }: { strapi: Core.Strapi }) => {
 };
 
 const getTrialEndDate = async ({
-  strapi,
+  metrix,
 }: {
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
 }): Promise<{ trialEndsAt: string } | null> => {
-  const silentFetch = createStrapiFetch(strapi, {
+  const silentFetch = createStrapiFetch(metrix, {
     logs: false,
   });
 

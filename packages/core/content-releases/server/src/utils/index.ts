@@ -1,4 +1,4 @@
-import type { UID, Data, Core } from '@strapi/types';
+import type { UID, Data, Core } from '@metrixlabs/types';
 
 import type { SettingsService } from '../services/settings';
 import type { ReleaseService } from '../services/release';
@@ -21,40 +21,40 @@ interface Action {
 
 export const getService = <TName extends keyof Services>(
   name: TName,
-  { strapi }: { strapi: Core.Strapi }
+  { metrix }: { metrix: Core.Strapi }
 ): Services[TName] => {
-  return strapi.plugin('content-releases').service(name);
+  return metrix.plugin('content-releases').service(name);
 };
 
 export const getDraftEntryValidStatus = async (
   { contentType, documentId, locale }: Action,
-  { strapi }: { strapi: Core.Strapi }
+  { metrix }: { metrix: Core.Strapi }
 ) => {
-  const populateBuilderService = strapi.plugin('content-manager').service('populate-builder');
+  const populateBuilderService = metrix.plugin('content-manager').service('populate-builder');
   // @ts-expect-error - populateBuilderService should be a function but is returning service
   const populate = await populateBuilderService(contentType).populateDeep(Infinity).build();
 
-  const entry = await getEntry({ contentType, documentId, locale, populate }, { strapi });
+  const entry = await getEntry({ contentType, documentId, locale, populate }, { metrix });
 
-  return isEntryValid(contentType, entry, { strapi });
+  return isEntryValid(contentType, entry, { metrix });
 };
 
 export const isEntryValid = async (
   contentTypeUid: string,
   entry: any,
-  { strapi }: { strapi: Core.Strapi }
+  { metrix }: { metrix: Core.Strapi }
 ) => {
   try {
     // @TODO: When documents service has validateEntityCreation method, use it instead
-    await strapi.entityValidator.validateEntityCreation(
-      strapi.getModel(contentTypeUid as UID.ContentType),
+    await metrix.entityValidator.validateEntityCreation(
+      metrix.getModel(contentTypeUid as UID.ContentType),
       entry,
       undefined,
       // @ts-expect-error - FIXME: entity here is unnecessary
       entry
     );
 
-    const workflowsService = strapi.plugin('review-workflows').service('workflows');
+    const workflowsService = metrix.plugin('review-workflows').service('workflows');
     // Workflows service may not be available depending on the license
     const workflow = await workflowsService?.getAssignedWorkflow(contentTypeUid, {
       populate: 'stageRequiredToPublish',
@@ -78,17 +78,17 @@ export const getEntry = async (
     populate,
     status = 'draft',
   }: Action & { status?: 'draft' | 'published'; populate: any },
-  { strapi }: { strapi: Core.Strapi }
+  { metrix }: { metrix: Core.Strapi }
 ) => {
   if (documentId) {
     // Try to get an existing draft or published document
-    const entry = await strapi
+    const entry = await metrix
       .documents(contentType)
       .findOne({ documentId, locale, populate, status });
 
     // The document isn't published yet, but the action is to publish it, fetch the draft
     if (status === 'published' && !entry) {
-      return strapi
+      return metrix
         .documents(contentType)
         .findOne({ documentId, locale, populate, status: 'draft' });
     }
@@ -96,7 +96,7 @@ export const getEntry = async (
     return entry;
   }
 
-  return strapi.documents(contentType).findFirst({ locale, populate, status });
+  return metrix.documents(contentType).findFirst({ locale, populate, status });
 };
 
 export const getEntryStatus = async (contentType: UID.ContentType, entry: Data.ContentType) => {
@@ -104,7 +104,7 @@ export const getEntryStatus = async (contentType: UID.ContentType, entry: Data.C
     return 'published';
   }
 
-  const publishedEntry = await strapi.documents(contentType).findOne({
+  const publishedEntry = await metrix.documents(contentType).findOne({
     documentId: entry.documentId,
     locale: entry.locale,
     status: 'published',

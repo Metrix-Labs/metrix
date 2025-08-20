@@ -4,8 +4,8 @@ import Configstore from 'configstore';
 import semver from 'semver';
 import boxen from 'boxen';
 import chalk from 'chalk';
-import { env } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { env } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 import pkg from '../../../package.json';
 
@@ -22,7 +22,7 @@ const boxenOptions: boxen.Options = {
 const getUpdateMessage = (newVersion: string, currentVersion: string) => {
   const currentVersionLog = chalk.dim(currentVersion);
   const newVersionLog = chalk.green(newVersion);
-  const releaseLink = chalk.bold('https://github.com/strapi/strapi/releases');
+  const releaseLink = chalk.bold('https://github.com/metrix/metrix/releases');
 
   return `
 A new version of Strapi is available ${currentVersionLog} → ${newVersionLog}
@@ -30,14 +30,14 @@ Check out the new releases at: ${releaseLink}
 `.trim();
 };
 
-export const createUpdateNotifier = (strapi: Core.Strapi) => {
+export const createUpdateNotifier = (metrix: Core.Strapi) => {
   let config: InstanceType<typeof Configstore>;
 
   try {
     config = new Configstore(
       pkg.name,
       {},
-      { configPath: path.join(strapi.dirs.app.root, '.strapi-updater.json') }
+      { configPath: path.join(metrix.dirs.app.root, '.metrix-updater.json') }
     );
   } catch {
     // we don't have write access to the file system
@@ -85,12 +85,12 @@ export const createUpdateNotifier = (strapi: Core.Strapi) => {
 
   // TODO v6: Remove this warning
   if (env.bool('STRAPI_DISABLE_UPDATE_NOTIFICATION', false)) {
-    strapi.log.warn(
+    metrix.log.warn(
       'STRAPI_DISABLE_UPDATE_NOTIFICATION is no longer supported. Instead, set logger.updates.enabled to false in your server configuration.'
     );
   }
 
-  if (!strapi.config.get('server.logger.updates.enabled') || !config) {
+  if (!metrix.config.get('server.logger.updates.enabled') || !config) {
     return;
   }
 

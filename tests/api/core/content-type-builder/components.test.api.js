@@ -1,25 +1,25 @@
 'use strict';
 
 const { createAuthRequest } = require('api-tests/request');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 
-let strapi;
+let metrix;
 let rq;
 
 const restart = async () => {
-  await strapi.destroy();
-  strapi = await createStrapiInstance();
-  rq = await createAuthRequest({ strapi });
+  await metrix.destroy();
+  metrix = await createStrapiInstance();
+  rq = await createAuthRequest({ metrix });
 };
 
 describe('Content Type Builder - Components', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   describe('POST /components', () => {

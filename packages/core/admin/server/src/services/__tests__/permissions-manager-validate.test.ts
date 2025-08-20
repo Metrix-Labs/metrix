@@ -63,7 +63,7 @@ const validateHelpers = {
 
 describe('Permissions Manager - Validate', () => {
   beforeAll(() => {
-    global.strapi = {
+    global.metrix = {
       getModel() {
         return fooModel;
       },

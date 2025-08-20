@@ -10,7 +10,7 @@ import auditLogsController from './audit-logs/controllers/audit-logs';
 import { createAuditLogsService } from './audit-logs/services/audit-logs';
 import { createAuditLogsLifecycleService } from './audit-logs/services/lifecycles';
 import { auditLog } from './audit-logs/content-types/audit-log';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 const getAdminEE = () => {
   const eeAdmin = {
@@ -29,8 +29,8 @@ const getAdminEE = () => {
 
   // Only add the other audit-logs APIs if the feature is enabled by the user and the license
   if (
-    strapi.config.get('admin.auditLogs.enabled', true) &&
-    strapi.ee.features.isEnabled('audit-logs')
+    metrix.config.get('admin.auditLogs.enabled', true) &&
+    metrix.ee.features.isEnabled('audit-logs')
   ) {
     return {
       ...eeAdmin,
@@ -42,20 +42,20 @@ const getAdminEE = () => {
         ...eeAdmin.routes,
         'audit-logs': auditLogsRoutes,
       },
-      async register({ strapi }: { strapi: Core.Strapi }) {
+      async register({ metrix }: { metrix: Core.Strapi }) {
         // Run the the default registration
-        await eeAdmin.register({ strapi });
+        await eeAdmin.register({ metrix });
         // Register an internal audit logs service
-        strapi.add('audit-logs', createAuditLogsService(strapi));
+        metrix.add('audit-logs', createAuditLogsService(metrix));
         // Register an internal audit logs lifecycle service
-        const auditLogsLifecycle = createAuditLogsLifecycleService(strapi);
-        strapi.add('audit-logs-lifecycle', auditLogsLifecycle);
+        const auditLogsLifecycle = createAuditLogsLifecycleService(metrix);
+        metrix.add('audit-logs-lifecycle', auditLogsLifecycle);
 
         await auditLogsLifecycle.register();
       },
-      async destroy({ strapi }: { strapi: Core.Strapi }) {
-        strapi.get('audit-logs-lifecycle').destroy();
-        await eeAdmin.destroy({ strapi });
+      async destroy({ metrix }: { metrix: Core.Strapi }) {
+        metrix.get('audit-logs-lifecycle').destroy();
+        await eeAdmin.destroy({ metrix });
       },
     };
   }

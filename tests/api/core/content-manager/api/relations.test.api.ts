@@ -1,10 +1,10 @@
 import { createTestBuilder } from 'api-tests/builder';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 
 import modelsUtils from 'api-tests/models';
 
-let strapi;
+let metrix;
 let rq;
 const data = {
   products: [],
@@ -197,8 +197,8 @@ describe('Relations', () => {
 
     await modelsUtils.modifyComponent(compo(true));
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     const createdProduct1 = await createEntry('product', { name: 'Skate' });
     const createdProduct2 = await createEntry('product', { name: 'Candle' });
@@ -218,7 +218,7 @@ describe('Relations', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -817,7 +817,7 @@ describe('Relations', () => {
             ? [{ id: id2 }, { id: id1 }, { id: id3 }]
             : [{ documentId: docid2 }, { documentId: docid1 }, { documentId: docid3 }];
 
-        const updatedShop = await strapi.db
+        const updatedShop = await metrix.db
           .query('api::shop.shop')
           .findOne({ where: { id: updatedEntry.data.id }, populate: populateShop });
 
@@ -873,7 +873,7 @@ describe('Relations', () => {
             ? [{ id: id3 }, { id: id1 }, { id: id2 }]
             : [{ documentId: docid3 }, { documentId: docid1 }, { documentId: docid2 }];
 
-        const updatedShop = await strapi.db
+        const updatedShop = await metrix.db
           .query('api::shop.shop')
           .findOne({ where: { id: updatedEntry.data.id }, populate: populateShop });
 
@@ -921,7 +921,7 @@ describe('Relations', () => {
             ? [{ id: id2 }, { id: id1 }]
             : [{ documentId: docid2 }, { documentId: docid1 }];
 
-        const updatedShop = await strapi.db
+        const updatedShop = await metrix.db
           .query('api::shop.shop')
           .findOne({ where: { id: updatedEntry.data.id }, populate: populateShop });
 
@@ -981,7 +981,7 @@ describe('Relations', () => {
           populateShop
         );
 
-        const updatedShop = await strapi.db
+        const updatedShop = await metrix.db
           .query('api::shop.shop')
           .findOne({ where: { id: updatedEntry.data.id }, populate: populateShop });
 
@@ -1045,7 +1045,7 @@ describe('Relations', () => {
           expect(updatedEntry.error).toBeDefined();
           expect(updatedEntry.error.status).toBe(400);
         } else if (mode === 'docId' || mode === 'idObject') {
-          const updatedShop = await strapi.db
+          const updatedShop = await metrix.db
             .query('api::shop.shop')
             .findOne({ where: { id: updatedEntry.data.id }, populate: populateShop });
 

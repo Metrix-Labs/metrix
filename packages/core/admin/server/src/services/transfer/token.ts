@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 import assert from 'assert';
 import { map, isArray, omit, uniq, isNil, difference, isEmpty, isNumber } from 'lodash/fp';
-import { errors } from '@strapi/utils';
-import '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import '@metrixlabs/types';
 import constants from '../constants';
 import { getService } from '../../utils';
 import {
@@ -36,7 +36,7 @@ const POPULATE_FIELDS = ['permissions'] as const;
  * Return a list of all tokens and their permissions
  */
 const list = async (): Promise<SanitizedTransferToken[]> => {
-  const tokens: DatabaseTransferToken[] = await strapi.db.query(TRANSFER_TOKEN_UID).findMany({
+  const tokens: DatabaseTransferToken[] = await metrix.db.query(TRANSFER_TOKEN_UID).findMany({
     select: SELECT_FIELDS,
     populate: POPULATE_FIELDS,
     orderBy: { name: 'ASC' },
@@ -81,8 +81,8 @@ const create = async (attributes: TokenCreatePayload): Promise<TransferToken> =>
   assertTokenPermissionsValidity(attributes);
   assertValidLifespan(attributes.lifespan);
 
-  const result = (await strapi.db.transaction(async () => {
-    const transferToken = await strapi.db.query(TRANSFER_TOKEN_UID).create({
+  const result = (await metrix.db.transaction(async () => {
+    const transferToken = await metrix.db.query(TRANSFER_TOKEN_UID).create({
       select: SELECT_FIELDS,
       populate: POPULATE_FIELDS,
       data: {
@@ -94,13 +94,13 @@ const create = async (attributes: TokenCreatePayload): Promise<TransferToken> =>
 
     await Promise.all(
       uniq(attributes.permissions).map((action) =>
-        strapi.db
+        metrix.db
           .query(TRANSFER_TOKEN_PERMISSION_UID)
           .create({ data: { action, token: transferToken } })
       )
     );
 
-    const currentPermissions: TransferTokenPermission[] = await strapi.db
+    const currentPermissions: TransferTokenPermission[] = await metrix.db
       .query(TRANSFER_TOKEN_UID)
       .load(transferToken, 'permissions');
 
@@ -122,7 +122,7 @@ const update = async (
   attributes: TokenUpdatePayload
 ): Promise<SanitizedTransferToken> => {
   // retrieve token without permissions
-  const originalToken = await strapi.db.query(TRANSFER_TOKEN_UID).findOne({ where: { id } });
+  const originalToken = await metrix.db.query(TRANSFER_TOKEN_UID).findOne({ where: { id } });
 
   if (!originalToken) {
     throw new NotFoundError('Token not found');
@@ -131,8 +131,8 @@ const update = async (
   assertTokenPermissionsValidity(attributes);
   assertValidLifespan(attributes.lifespan);
 
-  return strapi.db.transaction(async () => {
-    const updatedToken = await strapi.db.query(TRANSFER_TOKEN_UID).update({
+  return metrix.db.transaction(async () => {
+    const updatedToken = await metrix.db.query(TRANSFER_TOKEN_UID).update({
       select: SELECT_FIELDS,
       where: { id },
       data: {
@@ -141,7 +141,7 @@ const update = async (
     });
 
     if (attributes.permissions) {
-      const currentPermissionsResult = await strapi.db
+      const currentPermissionsResult = await metrix.db
         .query(TRANSFER_TOKEN_UID)
         .load(updatedToken, 'permissions');
 
@@ -155,7 +155,7 @@ const update = async (
       // method using a loop -- works but very inefficient
       await Promise.all(
         actionsToDelete.map((action) =>
-          strapi.db.query(TRANSFER_TOKEN_PERMISSION_UID).delete({
+          metrix.db.query(TRANSFER_TOKEN_PERMISSION_UID).delete({
             where: { action, token: id },
           })
         )
@@ -165,7 +165,7 @@ const update = async (
       // using a loop -- works but very inefficient
       await Promise.all(
         actionsToAdd.map((action) =>
-          strapi.db.query(TRANSFER_TOKEN_PERMISSION_UID).create({
+          metrix.db.query(TRANSFER_TOKEN_PERMISSION_UID).create({
             data: { action, token: id },
           })
         )
@@ -173,7 +173,7 @@ const update = async (
     }
 
     // retrieve permissions
-    const permissionsFromDb: TransferTokenPermission[] = await strapi.db
+    const permissionsFromDb: TransferTokenPermission[] = await metrix.db
       .query(TRANSFER_TOKEN_UID)
       .load(updatedToken, 'permissions');
 
@@ -188,8 +188,8 @@ const update = async (
  * Revoke (delete) a token
  */
 const revoke = async (id: string | number): Promise<SanitizedTransferToken> => {
-  return strapi.db.transaction(async () =>
-    strapi.db
+  return metrix.db.transaction(async () =>
+    metrix.db
       .query(TRANSFER_TOKEN_UID)
       .delete({ select: SELECT_FIELDS, populate: POPULATE_FIELDS, where: { id } })
   ) as unknown as Promise<SanitizedTransferToken>;
@@ -211,7 +211,7 @@ const getBy = async (
     return null;
   }
 
-  const token = await strapi.db
+  const token = await metrix.db
     .query(TRANSFER_TOKEN_UID)
     .findOne({ select: SELECT_FIELDS, populate: POPULATE_FIELDS, where: whereParams });
 
@@ -255,8 +255,8 @@ const exists = async (
 
 const regenerate = async (id: string | number): Promise<TransferToken> => {
   const accessKey = crypto.randomBytes(128).toString('hex');
-  const transferToken = (await strapi.db.transaction(async () =>
-    strapi.db.query(TRANSFER_TOKEN_UID).update({
+  const transferToken = (await metrix.db.transaction(async () =>
+    metrix.db.query(TRANSFER_TOKEN_UID).update({
       select: ['id', 'accessKey'],
       where: { id },
       data: {
@@ -299,7 +299,7 @@ const hash = (accessKey: string): string => {
   }
 
   return crypto
-    .createHmac('sha512', strapi.config.get('admin.transfer.token.salt'))
+    .createHmac('sha512', metrix.config.get('admin.transfer.token.salt'))
     .update(accessKey)
     .digest('hex');
 };
@@ -308,7 +308,7 @@ const checkSaltIsDefined = () => {
   const { hasValidTokenSalt } = getService('transfer').utils;
 
   // Ignore the check if the data-transfer feature is manually disabled
-  if (!strapi.config.get('server.transfer.remote.enabled')) {
+  if (!metrix.config.get('server.transfer.remote.enabled')) {
     return;
   }
 
@@ -316,7 +316,7 @@ const checkSaltIsDefined = () => {
     process.emitWarning(
       `Missing transfer.token.salt: Data transfer features have been disabled.
 Please set transfer.token.salt in config/admin.js (ex: you can generate one using Node with \`crypto.randomBytes(16).toString('base64')\`)
-For security reasons, prefer storing the secret in an environment variable and read it in config/admin.js. See https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`
+For security reasons, prefer storing the secret in an environment variable and read it in config/admin.js. See https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`
     );
   }
 };
@@ -341,7 +341,7 @@ const flattenTokenPermissions = (token: DatabaseTransferToken): TransferToken =>
  * Assert that a token's permissions are valid
  */
 const assertTokenPermissionsValidity = (attributes: TokenUpdatePayload) => {
-  const permissionService = strapi.service('admin::transfer').permission;
+  const permissionService = metrix.service('admin::transfer').permission;
   const validPermissions = permissionService.providers.action.keys();
   const invalidPermissions = difference(attributes.permissions, validPermissions);
 

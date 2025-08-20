@@ -1,9 +1,9 @@
 import path from 'path';
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrixlabs/types';
 import _ from 'lodash';
 import pluralize from 'pluralize';
 
-import { strings, errors } from '@strapi/utils';
+import { strings, errors } from '@metrixlabs/utils';
 import { isConfigurable } from '../../utils/attributes';
 import createSchemaHandler from './schema-handler';
 
@@ -45,7 +45,7 @@ export default function createComponentBuilder() {
       }
 
       const handler = createSchemaHandler({
-        dir: path.join(strapi.dirs.app.components, strings.nameToSlug(infos.category)),
+        dir: path.join(metrix.dirs.app.components, strings.nameToSlug(infos.category)),
         filename: `${strings.nameToSlug(infos.displayName)}.json`,
       });
 
@@ -71,9 +71,9 @@ export default function createComponentBuilder() {
         .set('config', infos.config);
 
       if (this.components.size === 0) {
-        strapi.telemetry.send('didCreateFirstComponent');
+        metrix.telemetry.send('didCreateFirstComponent');
       } else {
-        strapi.telemetry.send('didCreateComponent');
+        metrix.telemetry.send('didCreateComponent');
       }
 
       this.components.set(uid, handler);
@@ -104,7 +104,7 @@ export default function createComponentBuilder() {
         throw new errors.ApplicationError('component.edit.alreadyExists');
       }
 
-      const newDir = path.join(strapi.dirs.app.components, newCategory);
+      const newDir = path.join(metrix.dirs.app.components, newCategory);
 
       const oldAttributes = component.schema.attributes;
 

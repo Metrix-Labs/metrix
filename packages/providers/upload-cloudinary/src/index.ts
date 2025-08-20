@@ -1,7 +1,7 @@
 import type { ReadStream } from 'node:fs';
 import { v2 as cloudinary, ConfigOptions, UploadApiOptions } from 'cloudinary';
 import intoStream from 'into-stream';
-import * as utils from '@strapi/utils';
+import * as utils from '@metrixlabs/utils';
 
 interface File {
   name: string;

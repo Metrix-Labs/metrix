@@ -1,20 +1,20 @@
 import { assign } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { getService } from '../utils';
 
 const getSSOProvidersList = async () => {
-  const { providerRegistry } = strapi.service('admin::passport');
+  const { providerRegistry } = metrix.service('admin::passport');
 
   return providerRegistry.getAll().map(({ uid }: { uid: string }) => uid);
 };
 
-const sendUpdateProjectInformation = async (strapi: Core.Strapi) => {
+const sendUpdateProjectInformation = async (metrix: Core.Strapi) => {
   let groupProperties = {};
 
   const numberOfActiveAdminUsers = await getService('user').count({ isActive: true });
   const numberOfAdminUsers = await getService('user').count();
 
-  if (strapi.ee.features.isEnabled('sso')) {
+  if (metrix.ee.features.isEnabled('sso')) {
     const SSOProviders = await getSSOProvidersList();
 
     groupProperties = assign(groupProperties, {
@@ -23,12 +23,12 @@ const sendUpdateProjectInformation = async (strapi: Core.Strapi) => {
     });
   }
 
-  if (strapi.ee.features.isEnabled('cms-content-releases')) {
-    const numberOfContentReleases = await strapi
+  if (metrix.ee.features.isEnabled('cms-content-releases')) {
+    const numberOfContentReleases = await metrix
       .db!.query('plugin::content-releases.release')
       .count();
 
-    const numberOfPublishedContentReleases = await strapi
+    const numberOfPublishedContentReleases = await metrix
       .db!.query('plugin::content-releases.release')
       .count({
         filters: { releasedAt: { $notNull: true } },
@@ -42,15 +42,15 @@ const sendUpdateProjectInformation = async (strapi: Core.Strapi) => {
 
   groupProperties = assign(groupProperties, { numberOfActiveAdminUsers, numberOfAdminUsers });
 
-  strapi.telemetry.send('didUpdateProjectInformation', {
+  metrix.telemetry.send('didUpdateProjectInformation', {
     groupProperties,
   });
 };
 
-const startCron = (strapi: Core.Strapi) => {
-  strapi.cron.add({
+const startCron = (metrix: Core.Strapi) => {
+  metrix.cron.add({
     sendProjectInformation: {
-      task: () => sendUpdateProjectInformation(strapi),
+      task: () => sendUpdateProjectInformation(metrix),
       options: '0 0 0 * * *',
     },
   });

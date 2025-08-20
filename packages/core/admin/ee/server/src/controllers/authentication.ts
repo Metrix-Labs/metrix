@@ -2,7 +2,7 @@ import type { Context, Next } from 'koa';
 
 import { pick } from 'lodash/fp';
 import compose from 'koa-compose';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { validateProviderOptionsUpdate } from '../validation/authentication';
 import { middlewares, utils } from './authentication-utils';
 
@@ -18,7 +18,7 @@ const providerAuthenticationFlow = compose([
 
 export default {
   async getProviders(ctx: Context) {
-    const { providerRegistry } = strapi.service('admin::passport');
+    const { providerRegistry } = metrix.service('admin::passport');
 
     ctx.body = providerRegistry.getAll().map(toProviderDTO);
   },
@@ -44,7 +44,7 @@ export default {
     const newAuthOptions = { ...currentAuthOptions, providers: body };
     await adminStore.set({ key: 'auth', value: newAuthOptions });
 
-    strapi.telemetry.send('didUpdateSSOSettings');
+    metrix.telemetry.send('didUpdateSSOSettings');
 
     ctx.body = {
       data: toProviderLoginOptionsDTO(newAuthOptions.providers),
@@ -56,7 +56,7 @@ export default {
       params: { provider: providerName },
     } = ctx;
 
-    const { providerRegistry } = strapi.service('admin::passport');
+    const { providerRegistry } = metrix.service('admin::passport');
 
     if (!providerRegistry.has(providerName)) {
       throw new ValidationError(`Invalid provider supplied: ${providerName}`);

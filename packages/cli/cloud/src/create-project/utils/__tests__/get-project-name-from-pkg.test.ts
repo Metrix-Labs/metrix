@@ -19,12 +19,12 @@ describe('getProjectNameFromPackageJson', () => {
   it('should return default project name if package.json has no name', async () => {
     (loadPkg as jest.Mock).mockResolvedValue({});
     const projectName = await getProjectNameFromPackageJson(mockCtx);
-    expect(projectName).toEqual('my-strapi-project');
+    expect(projectName).toEqual('my-metrix-project');
   });
 
   it('should return default project name on error', async () => {
     (loadPkg as jest.Mock).mockRejectedValue(new Error('Failed to load package.json'));
     const projectName = await getProjectNameFromPackageJson(mockCtx);
-    expect(projectName).toEqual('my-strapi-project');
+    expect(projectName).toEqual('my-metrix-project');
   });
 });

@@ -1,4 +1,4 @@
-import { useQueryParams, Layouts } from '@strapi/admin/strapi-admin';
+import { useQueryParams, Layouts } from '@metrixlabs/admin/metrix-admin';
 import { Button, Flex, Link } from '@strapi/design-system';
 import { ArrowLeft, Plus } from '@strapi/icons';
 import { stringify } from 'qs';

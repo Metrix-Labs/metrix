@@ -3,7 +3,7 @@ import TodoCard from './components/TodoCard';
 
 const name = 'todo-example';
 
-/** @type import('@strapi/strapi/admin').PluginDefinition */
+/** @type import('@metrixlabs/metrix/admin').PluginDefinition */
 export default {
   register(app) {
     app.registerPlugin({

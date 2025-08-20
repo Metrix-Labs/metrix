@@ -1,11 +1,11 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import { getPluginsThatNeedDocumentation } from './utils/get-plugins-that-need-documentation';
 import type { PluginConfig } from '../types';
 
 export type OverrideService = ReturnType<typeof createService>;
 
-const createService = ({ strapi }: { strapi: Core.Strapi }) => {
+const createService = ({ metrix }: { metrix: Core.Strapi }) => {
   const registeredOverrides: Partial<PluginConfig>[] = [];
   const excludedFromGeneration: string[] = [];
 
@@ -37,7 +37,7 @@ const createService = ({ strapi }: { strapi: Core.Strapi }) => {
       const { pluginOrigin, excludeFromGeneration = [] } = opts ?? {};
 
       const pluginsThatNeedDocumentation = getPluginsThatNeedDocumentation(
-        strapi.config.get('plugin::documentation')
+        metrix.config.get('plugin::documentation')
       );
       // Don't apply the override if the plugin is not in the list of plugins that need documentation
       if (pluginOrigin && !pluginsThatNeedDocumentation.includes(pluginOrigin)) return;

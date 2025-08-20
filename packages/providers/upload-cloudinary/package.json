@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/provider-upload-cloudinary",
+  "name": "@metrixlabs/provider-upload-cloudinary",
   "version": "5.22.0",
   "description": "Cloudinary provider for strapi upload",
   "keywords": [
@@ -44,7 +44,7 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
-    "@strapi/utils": "5.22.0",
+    "@metrixlabs/utils": "5.22.0",
     "cloudinary": "^1.41.0",
     "into-stream": "^5.1.0"
   },

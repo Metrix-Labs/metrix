@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useParams, useLoaderData, useRevalidator } from 'react-router-dom';
 
 // @ts-ignore
-import { Page, Layouts } from '@strapi/admin/strapi-admin';
+import { Page, Layouts } from '@metrixlabs/admin/metrix-admin';
 import { Grid, Flex, Typography, JSONInput, Box } from '@strapi/design-system';
 
 const filterAttributes = (item) => {

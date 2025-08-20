@@ -1,6 +1,6 @@
-import * as utils from '@strapi/utils';
+import * as utils from '@metrixlabs/utils';
 import { pick } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { getService } from '../utils';
 import { validateCreateLocaleInput, validateUpdateLocaleInput } from '../validation/locales';
 import { formatLocale } from '../domain/locale';
@@ -9,9 +9,9 @@ const { setCreatorFields } = utils;
 const { ApplicationError } = utils.errors;
 
 const sanitizeLocale = (locale: any) => {
-  const model = strapi.getModel('plugin::i18n.locale');
+  const model = metrix.getModel('plugin::i18n.locale');
 
-  return strapi.contentAPI.sanitize.output(locale, model);
+  return metrix.contentAPI.sanitize.output(locale, model);
 };
 
 const controller: Core.Controller = {

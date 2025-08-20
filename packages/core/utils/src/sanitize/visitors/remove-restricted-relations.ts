@@ -132,7 +132,7 @@ export default (auth: unknown): Visitor =>
 const hasAccessToSomeScopes = async (scopes: string[], auth: unknown) => {
   for (const scope of scopes) {
     try {
-      await strapi.auth.verify(auth, { scope });
+      await metrix.auth.verify(auth, { scope });
       return true;
     } catch {
       continue;

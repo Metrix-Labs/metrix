@@ -1,13 +1,13 @@
 openapi: 3.0.2
 info:
-  title: Strapi i18n Plugin
+  title: Metrix i18n Plugin
   version: 1.0.0
 servers:
   - url: http://localhost:1337
     description: Local server
 externalDocs:
-  url: https://docs.strapi.io
-  description: Strapi documentation
+  url: https://docs.metrix.io
+  description: Metrix documentation
 paths:
   /i18n/iso-locales:
     get:

@@ -1,5 +1,5 @@
-import strapiUtils, { errors } from '@strapi/utils';
-import type { Schema } from '@strapi/types';
+import strapiUtils, { errors } from '@metrixlabs/utils';
+import type { Schema } from '@metrixlabs/types';
 
 import { Validators } from '../validators';
 import { mockOptions } from './utils';
@@ -7,7 +7,7 @@ import { mockOptions } from './utils';
 describe('UID validator', () => {
   const fakeFindOne = jest.fn();
 
-  global.strapi = {
+  global.metrix = {
     db: {
       query: () => ({
         findOne: fakeFindOne,

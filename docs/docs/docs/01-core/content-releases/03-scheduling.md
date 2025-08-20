@@ -20,17 +20,17 @@ Everytime you create or update a release and add a scheduled date, the server re
 
 When selecting a scheduled date, you have the option to choose a specific timezone; by default, your system timezone is selected. This measure is taken to prevent any potential confusion when selecting the publication time for a release. Consequently, if a user sets a schedule for 16:00 using the "Europe/Paris" timezone (UTC+01:00), another user accessing the same release will see the same time (16:00 (UTC+01:00)), regardless of their system's timezone.
 
-## Scheduling in a architecture with multiple Strapi instances
+## Scheduling in a architecture with multiple Metrix instances
 
-It's possible that your Strapi project runs on multiple instances. In such cases, what happens with the cronjobs? Do they all run simultaneously, attempting to publish the release multiple times? To understand how we address this scenario, it's important to differentiate between two cases when scheduling a release:
+It's possible that your Metrix project runs on multiple instances. In such cases, what happens with the cronjobs? Do they all run simultaneously, attempting to publish the release multiple times? To understand how we address this scenario, it's important to differentiate between two cases when scheduling a release:
 
 ### Release scheduled on runtime
 
-If you have 3 Strapi instances running concurrently, and you distribute traffic among them using any method, there is not a big problem. This is because the server responsible for handling one request to create/update a release and add a schedule will be the only server with the associated cronjob. Then, there's no duplication, and potential race condition problems are avoided.
+If you have 3 Metrix instances running concurrently, and you distribute traffic among them using any method, there is not a big problem. This is because the server responsible for handling one request to create/update a release and add a schedule will be the only server with the associated cronjob. Then, there's no duplication, and potential race condition problems are avoided.
 
-### Starting a strapi instance
+### Starting a metrix instance
 
-The problem is starting a new Strapi instance, because we retrieve all scheduled releases and ensure that cronjobs are created for each one. Consequently, multiple Strapi instances might end up with the same cronjob for a release publish. To address this, we implement the following logic:
+The problem is starting a new Metrix instance, because we retrieve all scheduled releases and ensure that cronjobs are created for each one. Consequently, multiple Metrix instances might end up with the same cronjob for a release publish. To address this, we implement the following logic:
 
 <img
   src="/img/content-manager/content-releases/scheduling-publish.png"

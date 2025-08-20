@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { subject } from '@casl/ability';
-import { providerFactory } from '@strapi/utils';
+import { providerFactory } from '@metrixlabs/utils';
 import * as permissions from '../index';
 import type { HookName } from '../engine/hooks';
 import type { Permission } from '../domain/permission';
@@ -141,7 +141,7 @@ describe('Permissions Engine', () => {
   };
 
   beforeEach(async () => {
-    global.strapi = {
+    global.metrix = {
       isLoaded: false,
     };
   });

@@ -4,8 +4,8 @@ import { IntlProvider } from 'react-intl';
 
 import { FromComputerForm } from '../FromComputerForm';
 
-jest.mock('@strapi/admin/strapi-admin', () => ({
-  ...jest.requireActual('@strapi/admin/strapi-admin'),
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
+  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
   getFetchClient: jest.fn().mockReturnValue({
     get: jest.fn(),
   }),

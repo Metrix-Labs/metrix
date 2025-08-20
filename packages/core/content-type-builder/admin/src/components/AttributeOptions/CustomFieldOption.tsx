@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StrapiAppContextValue } from '@strapi/admin/strapi-admin';
+import { StrapiAppContextValue } from '@metrixlabs/admin/metrix-admin';
 import { Box, Flex, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 

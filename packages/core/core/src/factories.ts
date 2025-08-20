@@ -1,5 +1,5 @@
 import { pipe, omit, pick } from 'lodash/fp';
-import type { Core, UID, Utils } from '@strapi/types';
+import type { Core, UID, Utils } from '@metrixlabs/types';
 
 import { createController } from './core-api/controller';
 import { CoreContentTypeRouteValidator } from './core-api/routes/validation';
@@ -10,7 +10,7 @@ const symbols = {
   CustomController: Symbol('StrapiCustomCoreController'),
 } as const;
 
-type WithStrapiCallback<T> = T | (<S extends { strapi: Core.Strapi }>(params: S) => T);
+type WithStrapiCallback<T> = T | (<S extends { metrix: Core.Strapi }>(params: S) => T);
 
 const createCoreController = <
   TUID extends UID.ContentType,
@@ -22,13 +22,13 @@ const createCoreController = <
   >
 ) => {
   return ({
-    strapi,
+    metrix,
   }: {
-    strapi: Core.Strapi;
+    metrix: Core.Strapi;
   }): TController & Core.CoreAPI.Controller.ContentType<TUID> => {
-    const baseController = createController({ contentType: strapi.contentType(uid) });
+    const baseController = createController({ contentType: metrix.contentType(uid) });
 
-    const userCtrl = typeof cfg === 'function' ? cfg({ strapi }) : (cfg ?? ({} as any));
+    const userCtrl = typeof cfg === 'function' ? cfg({ metrix }) : (cfg ?? ({} as any));
 
     for (const methodName of Object.keys(baseController) as Array<keyof typeof baseController>) {
       if (userCtrl[methodName] === undefined) {
@@ -59,13 +59,13 @@ function createCoreService<
   cfg?: WithStrapiCallback<Utils.PartialWithThis<Core.CoreAPI.Service.Extendable<TUID> & TService>>
 ) {
   return ({
-    strapi,
+    metrix,
   }: {
-    strapi: Core.Strapi;
+    metrix: Core.Strapi;
   }): TService & Core.CoreAPI.Service.ContentType<TUID> => {
-    const baseService = createService({ contentType: strapi.contentType(uid) });
+    const baseService = createService({ contentType: metrix.contentType(uid) });
 
-    const userService = typeof cfg === 'function' ? cfg({ strapi }) : (cfg ?? ({} as any));
+    const userService = typeof cfg === 'function' ? cfg({ metrix }) : (cfg ?? ({} as any));
 
     for (const methodName of Object.keys(baseService) as Array<keyof typeof baseService>) {
       if (userService[methodName] === undefined) {
@@ -90,9 +90,9 @@ function createCoreRouter<T extends UID.ContentType>(
     prefix,
     get routes() {
       if (!routes) {
-        const contentType = strapi.contentType(uid);
+        const contentType = metrix.contentType(uid);
 
-        const defaultRoutes = createRoutes({ contentType, strapi });
+        const defaultRoutes = createRoutes({ contentType, metrix });
         const keys = Object.keys(defaultRoutes) as Array<keyof typeof defaultRoutes>;
 
         keys.forEach((routeName) => {
@@ -116,9 +116,9 @@ function createCoreRouter<T extends UID.ContentType>(
 
 const createCoreValidator = <T extends UID.ContentType>(
   uid: T,
-  strapi: Core.Strapi
+  metrix: Core.Strapi
 ): CoreContentTypeRouteValidator => {
-  return new CoreContentTypeRouteValidator(strapi, uid);
+  return new CoreContentTypeRouteValidator(metrix, uid);
 };
 
 const isCustomController = <T extends Core.Controller>(controller: T): boolean => {

@@ -7,7 +7,7 @@ export default {
     const { query } = ctx.request;
     await validateFindMany(query);
 
-    const auditLogs = strapi.get('audit-logs');
+    const auditLogs = metrix.get('audit-logs');
     const body = await auditLogs.findMany(query);
 
     ctx.body = body;
@@ -16,11 +16,11 @@ export default {
   async findOne(ctx: Context) {
     const { id } = ctx.params;
 
-    const auditLogs = strapi.get('audit-logs');
+    const auditLogs = metrix.get('audit-logs');
     const body = await auditLogs.findOne(id);
 
     ctx.body = body;
 
-    strapi.telemetry.send('didWatchAnAuditLog');
+    metrix.telemetry.send('didWatchAnAuditLog');
   },
 };

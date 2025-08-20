@@ -1,6 +1,6 @@
 import { pick, uniq, prop, getOr, flatten, pipe, map } from 'lodash/fp';
-import { contentTypes as contentTypesUtils, errors } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { contentTypes as contentTypesUtils, errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 import { getService } from '../utils';
 import { validateGetNonLocalizedAttributesInput } from '../validation/content-types';
 
@@ -29,9 +29,9 @@ const controller = {
 
     const {
       default: { READ_ACTION, CREATE_ACTION },
-    } = strapi.service('admin::constants');
+    } = metrix.service('admin::constants');
 
-    const modelDef = strapi.contentType(model);
+    const modelDef = metrix.contentType(model);
     const attributesToPopulate = getNestedPopulateOfNonLocalizedAttributes(model);
 
     if (!isLocalizedContentType(modelDef)) {
@@ -40,7 +40,7 @@ const controller = {
 
     const params = modelDef.kind === 'singleType' ? {} : { id };
 
-    const entity = await strapi.db
+    const entity = await metrix.db
       .query(model)
       .findOne({ where: params, populate: attributesToPopulate });
 
@@ -48,7 +48,7 @@ const controller = {
       return ctx.notFound();
     }
 
-    const permissions = await strapi.admin.services.permission.findMany({
+    const permissions = await metrix.admin.services.permission.findMany({
       where: {
         action: [READ_ACTION, CREATE_ACTION],
         subject: model,
@@ -67,7 +67,7 @@ const controller = {
     const nonLocalizedFields = copyNonLocalizedAttributes(modelDef, entity);
     const sanitizedNonLocalizedFields = pick(permittedFields, nonLocalizedFields);
 
-    const availableLocalesResult = await strapi.plugins['content-manager']
+    const availableLocalesResult = await metrix.plugins['content-manager']
       .service('document-metadata')
       .getMetadata(model, entity, {
         availableLocales: true,

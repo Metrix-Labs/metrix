@@ -1,5 +1,5 @@
 // Add missing keys to non-english languages from `en.json`.
-// This script eases the process of translating strapi to other languages.
+// This script eases the process of translating metrix to other languages.
 // Usage:
 //   node scripts/front/add-missing-keys-to-other-language.js [language]
 // Example:

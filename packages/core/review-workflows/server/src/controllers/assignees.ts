@@ -26,13 +26,13 @@ export default {
     const { model_uid: model, id: documentId } = ctx.params;
     const locale = (await validateLocale(ctx.request.query?.locale)) ?? undefined;
 
-    const { sanitizeOutput } = strapi
+    const { sanitizeOutput } = metrix
       .plugin('content-manager')
       .service('permission-checker')
       .create({ userAbility: ctx.state.userAbility, model });
 
     // Retrieve the entity so we can get its current stage
-    const entity = await strapi.documents(model).findOne({
+    const entity = await metrix.documents(model).findOne({
       documentId,
       locale,
       populate: [ENTITY_STAGE_ATTRIBUTE],

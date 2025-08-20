@@ -1,21 +1,21 @@
 'use strict';
 
 const {
-  strapi: {
+  metrix: {
     providers: { createLocalStrapiSourceProvider },
   },
   file: {
     providers: { createLocalFileDestinationProvider },
   },
   engine: { createTransferEngine },
-} = require('@strapi/data-transfer');
-const { createStrapi, compileStrapi } = require('@strapi/strapi');
+} = require('@metrix/data-transfer');
+const { createStrapi, compileStrapi } = require('@metrix/metrix');
 const path = require('path');
 
 /**
- * Export the data from a strapi project.
+ * Export the data from a metrix project.
  * This script should be run as `node <path-to>/dts-export.js [exportFilePath]` from the
- * root directory of a strapi project e.g. `/examples/kitchensink`.
+ * root directory of a metrix project e.g. `/examples/kitchensink`.
  */
 const createDataset = async () => {
   let args = process.argv.slice(2);
@@ -27,9 +27,9 @@ const createDataset = async () => {
 
   const datasetPath = path.resolve(args[0]);
 
-  const strapi = await createStrapiInstance();
+  const metrix = await createStrapiInstance();
 
-  const source = createSourceProvider(strapi);
+  const source = createSourceProvider(metrix);
   const destination = createDestinationProvider(datasetPath);
 
   const engine = createTransferEngine(source, destination, {
@@ -61,10 +61,10 @@ const createDataset = async () => {
   }
 };
 
-const createSourceProvider = (strapi) =>
+const createSourceProvider = (metrix) =>
   createLocalStrapiSourceProvider({
     async getStrapi() {
-      return strapi;
+      return metrix;
     },
   });
 

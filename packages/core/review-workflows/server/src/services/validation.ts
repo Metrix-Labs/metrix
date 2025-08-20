@@ -1,13 +1,13 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { uniq } from 'lodash/fp';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { getService } from '../utils';
 import { ERRORS, MAX_WORKFLOWS, MAX_STAGES_PER_WORKFLOW } from '../constants/workflows';
 import { clampMaxWorkflows, clampMaxStagesPerWorkflow } from '../utils/review-workflows';
 
 const { ValidationError } = errors;
 
-export default ({ strapi }: { strapi: Core.Strapi }) => {
+export default ({ metrix }: { metrix: Core.Strapi }) => {
   return {
     limits: {
       numberOfWorkflows: MAX_WORKFLOWS,
@@ -44,7 +44,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     },
 
     async validateWorkflowCountStages(workflowId: any, countAddedStages = 0) {
-      const stagesService = getService('stages', { strapi });
+      const stagesService = getService('stages', { metrix });
       const countWorkflowStages = await stagesService.count({ workflowId });
 
       if (countWorkflowStages + countAddedStages > this.limits.stagesPerWorkflow) {
@@ -59,7 +59,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
      * @returns {Promise<void>} - A Promise that resolves when the validation is completed.
      */
     async validateWorkflowCount(countAddedWorkflows = 0) {
-      const workflowsService = getService('workflows', { strapi });
+      const workflowsService = getService('workflows', { metrix });
       const countWorkflows = await workflowsService.count();
       if (countWorkflows + countAddedWorkflows > this.limits.numberOfWorkflows) {
         throw new ValidationError(ERRORS.WORKFLOWS_LIMIT);

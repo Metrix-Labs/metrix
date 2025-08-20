@@ -1,4 +1,4 @@
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrixlabs/types';
 
 import { FOLDER_MODEL_UID, FILE_MODEL_UID } from '../constants';
 

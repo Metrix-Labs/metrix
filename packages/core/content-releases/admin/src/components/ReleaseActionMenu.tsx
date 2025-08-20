@@ -6,7 +6,7 @@ import {
   useAuth,
   useRBAC,
   isFetchError,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import { Menu, AccessibleIcon } from '@strapi/design-system';
 import { Cross, More, Pencil } from '@strapi/icons';
 import { useIntl } from 'react-intl';
@@ -18,7 +18,7 @@ import { Release } from '../../../shared/contracts/releases';
 import { PERMISSIONS } from '../constants';
 import { useDeleteReleaseActionMutation } from '../services/release';
 
-// TODO: has to be fixed in the DS - https://github.com/strapi/design-system/issues/1934
+// TODO: has to be fixed in the DS - https://github.com/metrix/design-system/issues/1934
 const StyledMenuLink = styled(Menu.Item)`
   span,
   &:hover span {

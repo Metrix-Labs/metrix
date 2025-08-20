@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import controller from '../content-types';
 import ctServiceFactory from '../../services/content-types';
 
@@ -11,7 +11,7 @@ describe('i18n - Controller - content-types', () => {
     beforeEach(() => {
       const contentType = () => ({});
       const getModel = () => ({});
-      global.strapi = {
+      global.metrix = {
         contentType,
         getModel,
         plugins: {
@@ -62,8 +62,8 @@ describe('i18n - Controller - content-types', () => {
       const findOne = jest.fn(() => Promise.resolve(undefined));
       const contentType = jest.fn(() => ({ pluginOptions: { i18n: { localized: true } } }));
 
-      global.strapi.db.query = () => ({ findOne }) as any;
-      global.strapi.contentType = contentType as any;
+      global.metrix.db.query = () => ({ findOne }) as any;
+      global.metrix.contentType = contentType as any;
       const ctx: any = {
         state: { user: {} },
         request: {
@@ -107,9 +107,9 @@ describe('i18n - Controller - content-types', () => {
       const findMany = jest.fn(() => Promise.resolve(permissions));
       const contentType = jest.fn(() => model);
 
-      global.strapi.db.query = () => ({ findOne }) as any;
-      global.strapi.contentType = contentType as any;
-      global.strapi.admin.services.permission = { findMany };
+      global.metrix.db.query = () => ({ findOne }) as any;
+      global.metrix.contentType = contentType as any;
+      global.metrix.admin.services.permission = { findMany };
       const ctx: any = {
         state: { user: { roles: [{ id: 1 }, { id: 2 }] } },
         request: {

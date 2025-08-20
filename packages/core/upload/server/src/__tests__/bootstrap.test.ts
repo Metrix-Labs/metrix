@@ -2,7 +2,7 @@ import { join } from 'path';
 
 import { bootstrap } from '../bootstrap';
 
-jest.mock('@strapi/provider-upload-local', () => ({
+jest.mock('@metrixlabs/provider-upload-local', () => ({
   init() {
     return {
       uploadStream: jest.fn(),
@@ -17,7 +17,7 @@ describe('Upload plugin bootstrap function', () => {
     const setStore = jest.fn(() => {});
     const registerMany = jest.fn(() => {});
 
-    global.strapi = {
+    global.metrix = {
       get(name: string) {
         switch (name) {
           case 'webhookStore':
@@ -77,7 +77,7 @@ describe('Upload plugin bootstrap function', () => {
       },
     } as any;
 
-    await bootstrap({ strapi });
+    await bootstrap({ metrix });
 
     expect(setStore).toHaveBeenCalledWith({
       value: {

@@ -9,7 +9,7 @@ import {
   screen,
   type RenderOptions,
   fireEvent,
-} from '@strapi/admin/strapi-admin/test';
+} from '@metrixlabs/admin/metrix-admin/test';
 
 import { PERMISSIONS, PERMISSIONS_SETTINGS } from '../src/constants';
 

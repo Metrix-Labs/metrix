@@ -11,7 +11,7 @@ import {
   useFetchClient,
   useRBAC,
   Layouts,
-} from '@strapi/strapi/admin';
+} from '@metrixlabs/metrix/admin';
 import { useIntl } from 'react-intl';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 

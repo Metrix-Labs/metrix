@@ -5,8 +5,8 @@ import path from 'path';
 import { map, values, sumBy, pipe, flatMap, propEq } from 'lodash/fp';
 import _ from 'lodash';
 import { exists } from 'fs-extra';
-import { env } from '@strapi/utils';
-import tsUtils from '@strapi/typescript-utils';
+import { env } from '@metrixlabs/utils';
+import tsUtils from '@metrixlabs/typescript-utils';
 import {
   validateUpdateProjectSettings,
   validateUpdateProjectSettingsFiles,
@@ -32,21 +32,21 @@ const { isUsingTypeScript } = tsUtils;
 export default {
   // TODO very temporary to check the switch ee/ce
   // When removing this we need to update the /admin/src/index.js file
-  // whe,re we set the strapi.window.isEE value
+  // whe,re we set the metrix.window.isEE value
 
   // NOTE: admin/ee/server overrides this controller, and adds the EE features
   // This returns an empty feature list for CE
   async getProjectType() {
-    const flags = strapi.config.get('admin.flags', {});
+    const flags = metrix.config.get('admin.flags', {});
     return { data: { isEE: false, features: [], flags } };
   },
 
   async init() {
-    let uuid = strapi.config.get('uuid', false);
+    let uuid = metrix.config.get('uuid', false);
     const hasAdmin = await getService('user').exists();
     const { menuLogo, authLogo } = await getService('project-settings').getProjectSettings();
     // set to null if telemetryDisabled flag not avaialble in package.json
-    const telemetryDisabled: boolean | null = strapi.config.get(
+    const telemetryDisabled: boolean | null = metrix.config.get(
       'packageJsonStrapi.telemetryDisabled',
       null
     );
@@ -92,19 +92,19 @@ export default {
 
   async telemetryProperties(ctx: Context) {
     // If the telemetry is disabled, ignore the request and return early
-    if (strapi.telemetry.isDisabled) {
+    if (metrix.telemetry.isDisabled) {
       ctx.status = 204;
       return;
     }
 
-    const useTypescriptOnServer = await isUsingTypeScript(strapi.dirs.app.root);
+    const useTypescriptOnServer = await isUsingTypeScript(metrix.dirs.app.root);
     const useTypescriptOnAdmin = await isUsingTypeScript(
-      path.join(strapi.dirs.app.root, 'src', 'admin')
+      path.join(metrix.dirs.app.root, 'src', 'admin')
     );
-    const isHostedOnStrapiCloud = env('STRAPI_HOSTING', null) === 'strapi.cloud';
+    const isHostedOnStrapiCloud = env('STRAPI_HOSTING', null) === 'metrix.cloud';
 
-    const numberOfAllContentTypes = _.size(strapi.contentTypes);
-    const numberOfComponents = _.size(strapi.components);
+    const numberOfAllContentTypes = _.size(metrix.contentTypes);
+    const numberOfComponents = _.size(metrix.components);
 
     const getNumberOfDynamicZones = () => {
       return pipe(
@@ -112,7 +112,7 @@ export default {
         flatMap(values),
         // @ts-expect-error lodash types
         sumBy(propEq('type', 'dynamiczone'))
-      )(strapi.contentTypes as any);
+      )(metrix.contentTypes as any);
     };
 
     return {
@@ -128,13 +128,13 @@ export default {
   },
 
   async information() {
-    const currentEnvironment: string = strapi.config.get('environment');
-    const autoReload = strapi.config.get('autoReload', false);
-    const strapiVersion = strapi.config.get('info.strapi', null);
-    const dependencies = strapi.config.get('info.dependencies', {});
-    const projectId = strapi.config.get('uuid', null);
+    const currentEnvironment: string = metrix.config.get('environment');
+    const autoReload = metrix.config.get('autoReload', false);
+    const strapiVersion = metrix.config.get('info.metrix', null);
+    const dependencies = metrix.config.get('info.dependencies', {});
+    const projectId = metrix.config.get('uuid', null);
     const nodeVersion = process.version;
-    const communityEdition = !strapi.EE;
+    const communityEdition = !metrix.EE;
     const useYarn: boolean = await exists(path.join(process.cwd(), 'yarn.lock'));
 
     return {
@@ -152,7 +152,7 @@ export default {
   },
 
   async plugins(ctx: Context) {
-    const enabledPlugins = strapi.config.get('enabledPlugins') as any;
+    const enabledPlugins = metrix.config.get('enabledPlugins') as any;
 
     // List of core plugins that are always enabled,
     // and so it's not necessary to display them in the plugins list
@@ -179,8 +179,8 @@ export default {
   },
 
   async licenseTrialTimeLeft() {
-    const data = await strapi.ee.getTrialEndDate({
-      strapi,
+    const data = await metrix.ee.getTrialEndDate({
+      metrix,
     });
 
     return data;

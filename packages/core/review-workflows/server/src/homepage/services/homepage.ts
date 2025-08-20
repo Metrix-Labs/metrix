@@ -1,12 +1,12 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import type { GetRecentlyAssignedDocuments } from '../../../../shared/contracts/homepage';
 
-const createHomepageService = ({ strapi }: { strapi: Core.Strapi }) => {
+const createHomepageService = ({ metrix }: { metrix: Core.Strapi }) => {
   return {
     async getRecentlyAssignedDocuments(): Promise<GetRecentlyAssignedDocuments.Response['data']> {
-      const userId = strapi.requestContext.get()?.state?.user.id;
-      const { queryLastDocuments, addStatusToDocuments } = strapi
+      const userId = metrix.requestContext.get()?.state?.user.id;
+      const { queryLastDocuments, addStatusToDocuments } = metrix
         .plugin('content-manager')
         .service('homepage');
 

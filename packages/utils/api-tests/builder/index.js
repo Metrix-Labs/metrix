@@ -20,21 +20,21 @@ const createTestBuilder = (options = {}) => {
       return ctx.state.fixtures;
     },
 
-    async sanitizedFixtures(strapi) {
+    async sanitizedFixtures(metrix) {
       const { fixtures } = this;
 
       for (const key of Object.keys(fixtures)) {
-        fixtures[key] = await this.sanitizedFixturesFor(key, strapi);
+        fixtures[key] = await this.sanitizedFixturesFor(key, metrix);
       }
 
       return fixtures;
     },
 
-    sanitizedFixturesFor(modelName, strapi) {
-      const model = strapi.getModel(modelsUtils.toContentTypeUID(modelName));
+    sanitizedFixturesFor(modelName, metrix) {
+      const model = metrix.getModel(modelsUtils.toContentTypeUID(modelName));
       const fixtures = this.fixturesFor(modelName);
 
-      return strapi.contentAPI.sanitize.output(fixtures, model);
+      return metrix.contentAPI.sanitize.output(fixtures, model);
     },
 
     fixturesFor(modelName) {

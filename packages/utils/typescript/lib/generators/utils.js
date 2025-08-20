@@ -8,7 +8,7 @@ const chalk = require('chalk');
 
 const { factory } = ts;
 
-const MODULE_DECLARATION = '@strapi/strapi';
+const MODULE_DECLARATION = '@metrixlabs/metrix';
 const PUBLIC_NAMESPACE = 'Public';
 
 /**
@@ -79,7 +79,7 @@ const format = async (content) => {
 };
 
 /**
- * Generate the extension block for a shared component from strapi/strapi
+ * Generate the extension block for a shared component from metrix/metrix
  *
  * @param {string} registry The registry to extend
  * @param {Array<{ uid: string; definition: ts.TypeNode }>} definitions

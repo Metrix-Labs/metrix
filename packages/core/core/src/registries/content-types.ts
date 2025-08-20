@@ -1,5 +1,5 @@
 import { pickBy, has } from 'lodash/fp';
-import type { UID, Struct } from '@strapi/types';
+import type { UID, Struct } from '@metrixlabs/types';
 import { createContentType, ContentTypeDefinition } from '../domain/content-type';
 import { addNamespace, hasNamespace } from './namespace';
 

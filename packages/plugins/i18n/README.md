@@ -1,6 +1,6 @@
-# Strapi plugin i18n
+# Metrix plugin i18n
 
-The Internationalization (i18n) plugin allows Strapi users to create, manage and distribute localized content in different languages, called "locales". For more information about the concept of internationalization, please refer to the [W3C definition](https://www.w3.org/International/questions/qa-i18n.en#i18n).
+The Internationalization (i18n) plugin allows Metrix users to create, manage and distribute localized content in different languages, called "locales". For more information about the concept of internationalization, please refer to the [W3C definition](https://www.w3.org/International/questions/qa-i18n.en#i18n).
 
 ## Features
 
@@ -9,9 +9,9 @@ The Internationalization (i18n) plugin allows Strapi users to create, manage and
 
 ## Installation
 
-This plugin is pre-installed & required with strapi
+This plugin is pre-installed & required with metrix
 
 ## Documentation
 
-- [Developer documentation](https://docs.strapi.io/developer-docs/latest/plugins/i18n.html#installation)
-- [User documentation](https://docs.strapi.io/user-docs/latest/content-manager/translating-content.html)
+- [Developer documentation](https://docs.metrix.io/developer-docs/latest/plugins/i18n.html#installation)
+- [User documentation](https://docs.metrix.io/user-docs/latest/content-manager/translating-content.html)

@@ -43,7 +43,7 @@ export const ALLOWED_CONTENT_TYPES = [
 export const TITLE_LOGIN = 'Strapi Admin';
 export const TITLE_HOME = 'Homepage | Strapi';
 
-// TODO: we should start using @strapi.io addresses to have the chance one day to
+// TODO: we should start using @metrix.io addresses to have the chance one day to
 // actually receive and check the emails; also: it is not nice to spam other peoples
 // websites
 export const ADMIN_EMAIL_ADDRESS = 'test@testing.com';

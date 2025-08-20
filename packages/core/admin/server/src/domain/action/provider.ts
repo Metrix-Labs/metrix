@@ -1,4 +1,4 @@
-import { providerFactory, hooks, errors } from '@strapi/utils';
+import { providerFactory, hooks, errors } from '@metrixlabs/utils';
 import { validateRegisterProviderAction } from '../../validation/action-provider';
 
 import domain from './index';
@@ -27,7 +27,7 @@ const createActionProvider = (options?: Options) => {
     },
 
     async register(actionAttributes: CreateActionPayload) {
-      if (strapi.isLoaded) {
+      if (metrix.isLoaded) {
         throw new Error(`You can't register new actions outside of the bootstrap function.`);
       }
 

@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 import { CellContentProps } from './CellContent';
 import { CellValue } from './CellValue';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * SingleComponent

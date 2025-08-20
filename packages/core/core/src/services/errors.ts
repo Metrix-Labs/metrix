@@ -1,5 +1,5 @@
 import createError from 'http-errors';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 
 const mapErrorsAndStatus = [
   {

@@ -43,7 +43,7 @@ A third kind exists for component UIDs and is defined only by a dynamic category
 
 Scoped namespaces are defined by a base name, followed by a separator (`::`) and any string.
 
-In Strapi there are two of them:
+In Metrix there are two of them:
 
 | Name   |    Definition     | Description                                          |
 | ------ | :---------------: | ---------------------------------------------------- |
@@ -54,12 +54,12 @@ In Strapi there are two of them:
 
 These namespaces are used as a simple prefix and define the origin of a resource.
 
-Strapi uses three of them to create UIDs
+Metrix uses three of them to create UIDs
 
 | Name   | Definition | Description                                                                   |
 | ------ | :--------: | ----------------------------------------------------------------------------- |
-| Strapi |  `strapi`  | Represent a resource present in the core of strapi                            |
-| Admin  |  `admin`   | Represent a resource present in Strapi admin                                  |
+| Metrix |  `metrix`  | Represent a resource present in the core of metrix                            |
+| Admin  |  `admin`   | Represent a resource present in Metrix admin                                  |
 | Global |  `global`  | Rarely used (_e.g. policies or middlewares_), it represents a global resource |
 
 #### 2. Separators
@@ -67,7 +67,7 @@ Strapi uses three of them to create UIDs
 There are only two kind of separators:
 
 - `.` for scoped namespaces (`api::<scope>`, `plugin::<scope>`) and components (`<category>`)
-- `::` for others (`admin`, `strapi`, `global`)
+- `::` for others (`admin`, `metrix`, `global`)
 
 #### 3. Names
 
@@ -94,16 +94,16 @@ ContentType and Component are referring to both the related schema and entity.
 | `api::<scope>.<name>`    | :white_check_mark: |        :x:         | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | `plugin::<scope>.<name>` | :white_check_mark: |        :x:         | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | `<category>.<name>`      |        :x:         | :white_check_mark: |        :x:         |        :x:         |        :x:         |        :x:         |
-| `strapi::<name>`         | :white_check_mark: |        :x:         | :white_check_mark: | :white_check_mark: |        :x:         |        :x:         |
+| `metrix::<name>`         | :white_check_mark: |        :x:         | :white_check_mark: | :white_check_mark: |        :x:         |        :x:         |
 | `admin::<name>`          | :white_check_mark: |        :x:         | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | `global::<name>`         |        :x:         |        :x:         | :white_check_mark: | :white_check_mark: |        :x:         |        :x:         |
 
 ### Usage
 
-When referencing resource by their UID you'll need to use the `UID` namespace exported from `@strapi/types`.
+When referencing resource by their UID you'll need to use the `UID` namespace exported from `@metrix/types`.
 
 ```typescript
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrix/types';
 ```
 
 This namespace contains shortcuts to dynamic UID types built from the public registries so that they always adapt to the current context.
@@ -121,7 +121,7 @@ A common usage is to declare a function that takes a UID as a parameter.
 For our example, let's imagine we want to fetch an entity based on the provided resource UID.
 
 ```typescript
-import type { UID, Data } from '@strapi/types';
+import type { UID, Data } from '@metrix/types';
 
 declare function fetch(uid: UID.ContentType): Data.ContentType;
 ```
@@ -145,7 +145,7 @@ fetch('admin::user');
 To do that, we'll need the function to be able to provide us with the current `uid` type based on usage.
 
 ```typescript
-import type { UID, Data } from '@strapi/types';
+import type { UID, Data } from '@metrix/types';
 
 declare function fetch<T extends UID.ContentType>(uid: T): Data.ContentType<T>;
 ```
@@ -170,7 +170,7 @@ It's completely possible to reference `T` in other generic parameters.
 Let's add the possibility to select which fields we want to return for our entity.
 
 ```typescript
-import type { UID, Data, Schema } from '@strapi/types';
+import type { UID, Data, Schema } from '@metrix/types';
 
 declare function fetch<T extends UID.ContentType, F extends Schema.AttributeNames<T>>(
   uid: T,

@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/plugin-documentation",
+  "name": "@metrixlabs/plugin-documentation",
   "version": "5.22.0",
   "description": "Create an OpenAPI Document and visualize your API with SWAGGER UI.",
   "repository": {
@@ -28,7 +28,21 @@
       "require": "./dist/admin/index.js",
       "default": "./dist/admin/index.js"
     },
+    "./metrix-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
     "./strapi-server": {
+      "types": "./dist/server/src/index.d.ts",
+      "source": "./server/src/index.ts",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    },
+    "./metrix-server": {
       "types": "./dist/server/src/index.d.ts",
       "source": "./server/src/index.ts",
       "import": "./dist/server/index.mjs",
@@ -58,11 +72,11 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
+    "@metrixlabs/admin": "5.22.0",
+    "@metrixlabs/utils": "5.22.0",
     "@reduxjs/toolkit": "1.9.7",
-    "@strapi/admin": "5.22.0",
     "@strapi/design-system": "2.0.0-rc.29",
     "@strapi/icons": "2.0.0-rc.29",
-    "@strapi/utils": "5.22.0",
     "bcryptjs": "2.4.3",
     "cheerio": "^1.0.0",
     "formik": "2.4.5",
@@ -78,9 +92,9 @@
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
-    "@strapi/admin-test-utils": "5.22.0",
-    "@strapi/strapi": "5.22.0",
-    "@strapi/types": "5.22.0",
+    "@metrixlabs/admin-test-utils": "5.22.0",
+    "@metrixlabs/metrix": "5.22.0",
+    "@metrixlabs/types": "5.22.0",
     "@testing-library/react": "15.0.7",
     "@testing-library/user-event": "14.5.2",
     "@types/fs-extra": "11.0.4",
@@ -98,7 +112,7 @@
     "styled-components": "6.1.8"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^5.0.0",
+    "@metrixlabs/metrix": "^5.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",

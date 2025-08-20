@@ -36,7 +36,7 @@ const defineAbility = (register: any) => {
 
 describe('Permissions Manager', () => {
   beforeEach(() => {
-    global.strapi = {
+    global.metrix = {
       getModel() {
         return {};
       },
@@ -104,7 +104,7 @@ describe('Permissions Manager', () => {
   });
 
   describe('toSubject', () => {
-    global.strapi = {
+    global.metrix = {
       getModel() {
         return {};
       },
@@ -139,7 +139,7 @@ describe('Permissions Manager', () => {
   });
 
   describe('pickPermittedFieldsOf', () => {
-    global.strapi = {
+    global.metrix = {
       getModel() {
         return {
           attributes: {

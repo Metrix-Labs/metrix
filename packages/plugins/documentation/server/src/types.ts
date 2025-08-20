@@ -1,4 +1,4 @@
-import type { Core, Struct } from '@strapi/types';
+import type { Core, Struct } from '@metrixlabs/types';
 import type { OpenAPIV3 } from 'openapi-types';
 
 export interface Config {
@@ -10,7 +10,7 @@ export type PluginConfig = OpenAPIV3.Document & {
   info: OpenAPIV3.InfoObject & {
     'x-generation-date'?: string;
   };
-  'x-strapi-config': {
+  'x-metrix-config': {
     plugins: string[] | null;
     mutateDocumentation?: ((state: OpenAPIV3.Document) => OpenAPIV3.Document) | null;
   };

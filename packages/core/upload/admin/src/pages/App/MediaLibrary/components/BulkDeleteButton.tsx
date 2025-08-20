@@ -1,4 +1,4 @@
-import { ConfirmDialog } from '@strapi/admin/strapi-admin';
+import { ConfirmDialog } from '@metrixlabs/admin/metrix-admin';
 import { Button, Dialog } from '@strapi/design-system';
 import { Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';

@@ -1,4 +1,4 @@
-import { tours } from '@strapi/admin/strapi-admin';
+import { tours } from '@metrixlabs/admin/metrix-admin';
 import { Box, Flex, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 

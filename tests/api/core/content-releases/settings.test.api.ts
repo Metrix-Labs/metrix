@@ -1,21 +1,21 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrix/types';
 
 // Helpers
 import { createTestBuilder } from 'api-tests/builder';
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import { createUtils, describeOnCondition } from 'api-tests/utils';
 
 import type { Settings } from '../../../../packages/core/content-releases/shared/contracts/settings';
 
 const builder = createTestBuilder();
-let strapi: Core.Strapi;
+let metrix: Core.Strapi;
 let rq: any;
 let rqUnauth: any;
 let rqReader: any;
 let rqEditor: any;
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const getSettings = async (request = rq) => {
   return request({
@@ -58,15 +58,15 @@ const createUserRequest = async (params: { user; role; permissions }, utils) => 
   });
 
   // Return request
-  return createAuthRequest({ strapi, userInfo: createdUser });
+  return createAuthRequest({ metrix, userInfo: createdUser });
 };
 
 describeOnCondition(edition === 'EE')('Content releases settings', () => {
   beforeAll(async () => {
     await builder.build();
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
-    const utils = createUtils(strapi);
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
+    const utils = createUtils(metrix);
 
     /**
      * Unauthorized role
@@ -117,12 +117,12 @@ describeOnCondition(edition === 'EE')('Content releases settings', () => {
 
   beforeEach(async () => {
     // Reset settings
-    const store = await strapi.store({ type: 'core', name: 'content-releases' });
+    const store = await metrix.store({ type: 'core', name: 'content-releases' });
     await store.set({ key: 'settings', value: null });
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

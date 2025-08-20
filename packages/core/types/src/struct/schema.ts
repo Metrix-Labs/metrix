@@ -87,7 +87,7 @@ export interface SchemaInfo {
 
   /**
    * Specifies the visual identifier - an icon, for the schema inside the admin panel. It eases
-   * recognition and improves navigation. The value should be any valid @strapi/icon name. This
+   * recognition and improves navigation. The value should be any valid @metrix/icon name. This
    * property is optional, and if omitted, a default icon might be used by the interface.
    */
   icon?: string;
@@ -154,7 +154,7 @@ export interface SchemaOptions {
  * Using `SchemaPluginOptions` in the schema definition:
  *
  * ```typescript
- * import type { Struct } from '@strapi/types';
+ * import type { Struct } from '@metrixlabs/types';
  *
  * const strapiPluginOptions: Struct.SchemaPluginOptions = {
  *   'plugin-foo': {

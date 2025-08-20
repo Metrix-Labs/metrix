@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { omit } from 'lodash/fp';
 // @ts-expect-error - types are not generated for this file
 // eslint-disable-next-line import/no-relative-packages
@@ -18,7 +18,7 @@ describe('Transfer Token Controller', () => {
       const exists = jest.fn(() => true);
       const ctx = createContext({ body }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -58,7 +58,7 @@ describe('Transfer Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body }, { badRequest, created }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -96,7 +96,7 @@ describe('Transfer Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body: createBody }, { badRequest, created }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -128,7 +128,7 @@ describe('Transfer Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body: createBody }, { created }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -156,7 +156,7 @@ describe('Transfer Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body: createBody }, { created }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -194,7 +194,7 @@ describe('Transfer Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ body: createBody }, { badRequest, created }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -236,7 +236,7 @@ describe('Transfer Token Controller', () => {
       const list = jest.fn().mockResolvedValue(tokens);
       const ctx = createContext({}) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -268,7 +268,7 @@ describe('Transfer Token Controller', () => {
       const deleted = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { deleted }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -291,7 +291,7 @@ describe('Transfer Token Controller', () => {
       const deleted = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { deleted }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -324,7 +324,7 @@ describe('Transfer Token Controller', () => {
       const created = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { created }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -349,7 +349,7 @@ describe('Transfer Token Controller', () => {
       const notFound = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { created, notFound }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -383,7 +383,7 @@ describe('Transfer Token Controller', () => {
       const send = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { send }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -406,7 +406,7 @@ describe('Transfer Token Controller', () => {
       const notFound = jest.fn();
       const ctx = createContext({ params: { id: token.id } }, { notFound }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -439,7 +439,7 @@ describe('Transfer Token Controller', () => {
       const getByName = jest.fn(() => ({ id: 2, name: body.name }));
       const ctx = createContext({ body, params: { id } }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -470,7 +470,7 @@ describe('Transfer Token Controller', () => {
       const getByName = jest.fn(() => ({ id: 1, name: body.name }));
       const ctx = createContext({ body, params: { id } }, { notFound }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {
@@ -496,7 +496,7 @@ describe('Transfer Token Controller', () => {
       const notFound = jest.fn();
       const ctx = createContext({ body, params: { id } }, { notFound }) as any;
 
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             transfer: {

@@ -1,6 +1,6 @@
 import { defaultsDeep } from 'lodash/fp';
 import koaStatic from 'koa-static';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 type Config = koaStatic.Options;
 
@@ -10,16 +10,16 @@ const defaults = {
 
 export const publicStatic: Core.MiddlewareFactory = (
   config: Config,
-  { strapi }: { strapi: Core.Strapi }
+  { metrix }: { metrix: Core.Strapi }
 ) => {
   const { maxAge } = defaultsDeep(defaults, config);
 
-  strapi.server.routes([
+  metrix.server.routes([
     {
       method: 'GET',
       path: '/',
       handler(ctx) {
-        ctx.redirect(strapi.config.get('admin.url', '/admin'));
+        ctx.redirect(metrix.config.get('admin.url', '/admin'));
       },
       config: { auth: false },
     },
@@ -27,7 +27,7 @@ export const publicStatic: Core.MiddlewareFactory = (
     {
       method: 'GET',
       path: '/((?!uploads/).+)',
-      handler: koaStatic(strapi.dirs.static.public, {
+      handler: koaStatic(metrix.dirs.static.public, {
         maxage: maxAge,
         defer: true,
       }),

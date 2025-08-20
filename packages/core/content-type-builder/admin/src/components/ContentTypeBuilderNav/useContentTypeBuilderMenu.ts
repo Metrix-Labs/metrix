@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useTracking } from '@strapi/admin/strapi-admin';
+import { useTracking } from '@metrixlabs/admin/metrix-admin';
 import { useCollator, useFilter } from '@strapi/design-system';
 import upperFirst from 'lodash/upperFirst';
 import { useIntl } from 'react-intl';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { type Filters, useAdminUsers, useField } from '@strapi/admin/strapi-admin';
+import { type Filters, useAdminUsers, useField } from '@metrixlabs/admin/metrix-admin';
 import { Combobox, ComboboxOption, ComboboxProps } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 

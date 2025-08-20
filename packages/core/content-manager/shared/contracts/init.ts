@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { Component } from './components';
 import { ContentType } from './content-types';
 

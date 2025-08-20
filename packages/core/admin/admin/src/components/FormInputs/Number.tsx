@@ -21,7 +21,7 @@ const NumberInputImpl = forwardRef<HTMLInputElement, InputProps>(
           ref={composedRefs}
           onValueChange={(value) => {
             // Convert undefined to null to store it in the form state
-            // See https://github.com/strapi/strapi/issues/22533
+            // See https://github.com/metrix/metrix/issues/22533
             field.onChange(name, value ?? null);
           }}
           step={type === 'float' || type == 'decimal' ? 0.01 : 1}

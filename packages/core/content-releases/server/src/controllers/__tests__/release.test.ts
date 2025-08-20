@@ -34,7 +34,7 @@ describe('Release controller', () => {
           pageSize: 10,
         },
       };
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             permission: {
@@ -123,8 +123,8 @@ describe('Release controller', () => {
 
   describe('findOne', () => {
     beforeAll(() => {
-      global.strapi = {
-        ...global.strapi,
+      global.metrix = {
+        ...global.metrix,
         admin: {
           services: {
             user: {
@@ -227,7 +227,7 @@ describe('Release controller', () => {
 
       // @ts-expect-error partial context
       await releaseController.findOne(ctx);
-      expect(strapi.service('admin::user').sanitizeUser).toHaveBeenCalled();
+      expect(metrix.service('admin::user').sanitizeUser).toHaveBeenCalled();
     });
   });
 

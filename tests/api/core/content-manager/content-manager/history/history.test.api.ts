@@ -1,11 +1,11 @@
-import { createStrapiInstance } from 'api-tests/strapi';
+import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import { createUtils, describeOnCondition } from 'api-tests/utils';
 import { createTestBuilder } from 'api-tests/builder';
 import fs from 'fs';
 import path from 'path';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 const componentModel = {
   displayName: 'review',
@@ -213,7 +213,7 @@ interface UpdateEntryArgs extends CreateEntryArgs {
 
 describeOnCondition(edition === 'EE')('History API', () => {
   const builder = createTestBuilder();
-  let strapi;
+  let metrix;
   let rq;
   let collectionTypeDocumentId;
   let singleTypeDocumentId;
@@ -252,7 +252,7 @@ describeOnCondition(edition === 'EE')('History API', () => {
       formData: {
         files: [
           fs.createReadStream(path.join(__dirname, 'rec.jpg')),
-          fs.createReadStream(path.join(__dirname, 'strapi.jpg')),
+          fs.createReadStream(path.join(__dirname, 'metrix.jpg')),
         ],
       },
     });
@@ -264,7 +264,7 @@ describeOnCondition(edition === 'EE')('History API', () => {
     userName: string,
     permissions: { action: string; subject: string }[]
   ) => {
-    const utils = createUtils(strapi);
+    const utils = createUtils(metrix);
     const role = await utils.createRole({
       name: `role-${userName}`,
       description: `Role with restricted permissions for ${userName}`,
@@ -276,11 +276,11 @@ describeOnCondition(edition === 'EE')('History API', () => {
     const user = await utils.createUser({
       firstname: userName,
       lastname: 'User',
-      email: `${userName}.user@strapi.io`,
+      email: `${userName}.user@metrix.io`,
       roles: [role.id],
     });
 
-    const rq = await createAuthRequest({ strapi, userInfo: user });
+    const rq = await createAuthRequest({ metrix, userInfo: user });
 
     return rq;
   };
@@ -292,11 +292,11 @@ describeOnCondition(edition === 'EE')('History API', () => {
     builder.addContentTypes([relationModel, collectionTypeModel, singleTypeModel]);
     await builder.build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     // Create another locale
-    const localeService = strapi.plugin('i18n').service('locales');
+    const localeService = metrix.plugin('i18n').service('locales');
     await localeService.create({ code: 'fr', name: 'French' });
 
     // Create the relations to be added to versions
@@ -411,9 +411,9 @@ describeOnCondition(edition === 'EE')('History API', () => {
 
   afterAll(async () => {
     // Delete all locales that have been created
-    await strapi.db.query('plugin::i18n.locale').deleteMany({ where: { code: { $ne: 'en' } } });
+    await metrix.db.query('plugin::i18n.locale').deleteMany({ where: { code: { $ne: 'en' } } });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
@@ -564,7 +564,7 @@ describeOnCondition(edition === 'EE')('History API', () => {
 
     test('Creates a history version when cloning an entry', async () => {
       // Find an entry and clone it
-      const { documentId: currentDocumentId, ...currentDocumentData } = await strapi
+      const { documentId: currentDocumentId, ...currentDocumentData } = await metrix
         .documents(collectionTypeUid)
         .findFirst();
       const cloneRes = await rq({
@@ -649,7 +649,7 @@ describeOnCondition(edition === 'EE')('History API', () => {
           contentType: collectionTypeUid,
         },
       });
-      const restoredDocument = await strapi
+      const restoredDocument = await metrix
         .documents(collectionTypeUid)
         .findOne({ documentId: collectionTypeDocumentId });
 
@@ -669,7 +669,7 @@ describeOnCondition(edition === 'EE')('History API', () => {
           contentType: collectionTypeUid,
         },
       });
-      const restoredDocument = await strapi
+      const restoredDocument = await metrix
         .documents(collectionTypeUid)
         .findOne({ documentId: collectionTypeDocumentId, locale: 'fr' });
 
@@ -685,7 +685,7 @@ describeOnCondition(edition === 'EE')('History API', () => {
       });
 
       // Delete a relation
-      await strapi.documents(relationUid).delete({ documentId: relations[0].data.documentId });
+      await metrix.documents(relationUid).delete({ documentId: relations[0].data.documentId });
 
       // Restore the initial version containing the deleted relation
       const res = await rq({
@@ -696,7 +696,7 @@ describeOnCondition(edition === 'EE')('History API', () => {
         },
       });
       // Get the restored document
-      const restoredDocument = await strapi.documents(collectionTypeUid).findOne({
+      const restoredDocument = await metrix.documents(collectionTypeUid).findOne({
         documentId: collectionTypeDocumentId,
         populate: ['tags_one_to_one', 'tags_one_to_many', 'image'],
       });
@@ -734,7 +734,7 @@ describeOnCondition(edition === 'EE')('History API', () => {
       await expect(res.statusCode).toBe(200);
 
       // Get the restored document
-      const restoredDocument = await strapi.documents(collectionTypeUid).findOne({
+      const restoredDocument = await metrix.documents(collectionTypeUid).findOne({
         documentId: collectionTypeDocumentId,
         populate: {
           image: true,

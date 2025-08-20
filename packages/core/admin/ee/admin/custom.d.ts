@@ -1,6 +1,6 @@
 import { type StrapiTheme } from '@strapi/design-system';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 
 declare module 'styled-components' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -9,7 +9,7 @@ declare module 'styled-components' {
 
 declare global {
   interface Window {
-    strapi: {
+    metrix: {
       backendURL: string;
       isEE: boolean;
       future: {

@@ -1,12 +1,12 @@
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest, createRequest } = require('api-tests/request');
 const { createUtils, describeOnCondition } = require('api-tests/utils');
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
-let strapi;
+let metrix;
 let utils;
 const requests = {
   public: undefined,
@@ -51,21 +51,21 @@ describeOnCondition(edition === 'EE')('Provider Login', () => {
   let hasSSO;
 
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
-    utils = createUtils(strapi);
+    metrix = await createStrapiInstance();
+    utils = createUtils(metrix);
     // eslint-disable-next-line node/no-extraneous-require
-    hasSSO = strapi.ee.features.isEnabled('sso');
+    hasSSO = metrix.ee.features.isEnabled('sso');
 
     await createFixtures();
 
-    requests.public = createRequest({ strapi });
-    requests.admin = await createAuthRequest({ strapi });
-    requests.noPermissions = await createAuthRequest({ strapi, userInfo: restrictedUser });
+    requests.public = createRequest({ metrix });
+    requests.admin = await createAuthRequest({ metrix });
+    requests.noPermissions = await createAuthRequest({ metrix, userInfo: restrictedUser });
   });
 
   afterAll(async () => {
     await deleteFixtures();
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   describe('Get the provider list', () => {

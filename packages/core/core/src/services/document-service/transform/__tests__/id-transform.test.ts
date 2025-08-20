@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import { PRODUCT_UID, CATEGORY_UID, models } from './utils';
 import { transformParamsDocumentId } from '../id-transform';
@@ -12,7 +12,7 @@ const findManyQueries = {
 } as Record<string, jest.Mock>;
 
 describe('Transform relational data', () => {
-  global.strapi = {
+  global.metrix = {
     getModel: (uid: string) => models[uid],
     plugins: {
       i18n: {

@@ -16,7 +16,7 @@ const typesFactories = [
 /**
  * @param {object} context
  * @param {object} context.nexus
- * @param {object} context.strapi
+ * @param {object} context.metrix
  * @return {any[]}
  */
 module.exports = (context) => typesFactories.map((factory) => factory(context));

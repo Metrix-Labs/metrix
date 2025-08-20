@@ -1,5 +1,5 @@
 import { name } from '../../package.json';
 
-const pluginId = name.replace(/^@strapi\/plugin-/i, '');
+const pluginId = name.replace(/^@metrix\/plugin-/i, '');
 
 export default pluginId;

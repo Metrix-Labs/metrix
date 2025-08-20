@@ -14,13 +14,13 @@ export default {
 
     const { name } = ctx.params;
 
-    strapi.reload.isWatching = false;
+    metrix.reload.isWatching = false;
 
     const componentCategoryService = getService('component-categories');
 
     const newName = await componentCategoryService.editCategory(name, body);
 
-    setImmediate(() => strapi.reload());
+    setImmediate(() => metrix.reload());
 
     ctx.send({ name: newName });
   },
@@ -28,13 +28,13 @@ export default {
   async deleteCategory(ctx: Context) {
     const { name } = ctx.params;
 
-    strapi.reload.isWatching = false;
+    metrix.reload.isWatching = false;
 
     const componentCategoryService = getService('component-categories');
 
     await componentCategoryService.deleteCategory(name);
 
-    setImmediate(() => strapi.reload());
+    setImmediate(() => metrix.reload());
 
     ctx.send({ name });
   },

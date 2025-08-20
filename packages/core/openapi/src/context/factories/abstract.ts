@@ -14,7 +14,7 @@ export abstract class AbstractContextFactory<T> implements ContextFactory<T> {
   }
 
   public create(context: PartialContext<T>, defaultValue: T): Context<T> {
-    const { strapi, routes } = context;
+    const { metrix, routes } = context;
 
     // Allow overrides to share registries and timer in case the context is used in sub-assemblers
     const timer = context.timer ?? this._timerFactory.create();
@@ -23,7 +23,7 @@ export abstract class AbstractContextFactory<T> implements ContextFactory<T> {
     // Default output initialized with the given default value
     const output = this.createDefaultOutput(defaultValue);
 
-    return { strapi, routes, timer, registries, output };
+    return { metrix, routes, timer, registries, output };
   }
 
   protected createDefaultOutput(data: T): ContextOutput<T> {

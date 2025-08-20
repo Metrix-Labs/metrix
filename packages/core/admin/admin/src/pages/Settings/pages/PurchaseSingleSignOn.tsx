@@ -92,7 +92,7 @@ const PurchaseSingleSignOn = () => {
                 <Flex gap={2} marginTop={7}>
                   <LinkButton
                     variant="default"
-                    href="https://strapi.io/pricing-self-hosted?utm_campaign=In-Product-CTA&utm_source=Single-sign-on"
+                    href="https://metrix.io/pricing-self-hosted?utm_campaign=In-Product-CTA&utm_source=Single-sign-on"
                   >
                     {formatMessage({
                       id: 'Settings.page.purchase.upgrade.cta',
@@ -102,7 +102,7 @@ const PurchaseSingleSignOn = () => {
                   <LinkButton
                     variant="tertiary"
                     endIcon={<ExternalLink />}
-                    href="https://strapi.io/features/single-sign-on-sso?utm_campaign=In-Product-CTA&utm_source=Single-sign-on"
+                    href="https://metrix.io/features/single-sign-on-sso?utm_campaign=In-Product-CTA&utm_source=Single-sign-on"
                   >
                     {formatMessage({
                       id: 'Settings.page.purchase.learn-more.cta',

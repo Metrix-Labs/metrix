@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { createContext, type FieldValue } from '@strapi/admin/strapi-admin';
+import { createContext, type FieldValue } from '@metrixlabs/admin/metrix-admin';
 import { IconButton, Divider, VisuallyHidden } from '@strapi/design-system';
 import { Expand } from '@strapi/icons';
 import { MessageDescriptor, useIntl } from 'react-intl';
@@ -26,7 +26,7 @@ import { withImages } from './plugins/withImages';
 import { withLinks } from './plugins/withLinks';
 import { withStrapiSchema } from './plugins/withStrapiSchema';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * BlocksEditorProvider

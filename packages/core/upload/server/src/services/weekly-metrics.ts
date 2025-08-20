@@ -1,7 +1,7 @@
 import { defaultTo } from 'lodash/fp';
 import { add } from 'date-fns';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import { getWeeklyCronScheduleAt } from '../utils/cron';
 import { FOLDER_MODEL_UID, FILE_MODEL_UID } from '../constants';
@@ -14,18 +14,18 @@ type MetricStoreValue = {
 const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
 
 const getMetricsStoreValue = async (): Promise<MetricStoreValue> => {
-  const value = await strapi.store.get({ type: 'plugin', name: 'upload', key: 'metrics' });
+  const value = await metrix.store.get({ type: 'plugin', name: 'upload', key: 'metrics' });
   return defaultTo({}, value) as MetricStoreValue;
 };
 const setMetricsStoreValue = (value: MetricStoreValue) =>
-  strapi.store.set({ type: 'plugin', name: 'upload', key: 'metrics', value });
+  metrix.store.set({ type: 'plugin', name: 'upload', key: 'metrics', value });
 
-export default ({ strapi }: { strapi: Core.Strapi }) => ({
+export default ({ metrix }: { metrix: Core.Strapi }) => ({
   async computeMetrics() {
     // Folder metrics
     // @ts-expect-error - no dynamic types for the metadata
-    const pathColName = strapi.db.metadata.get(FOLDER_MODEL_UID).attributes.path.columnName;
-    const folderTable = strapi.getModel(FOLDER_MODEL_UID).collectionName;
+    const pathColName = metrix.db.metadata.get(FOLDER_MODEL_UID).attributes.path.columnName;
+    const folderTable = metrix.getModel(FOLDER_MODEL_UID).collectionName;
 
     let keepOnlySlashesSQLString = '??';
     const queryParams = [pathColName];
@@ -53,10 +53,10 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
         - we group them by their depth and use COUNT(*)
     */
 
-    const res = (await strapi.db
+    const res = (await metrix.db
       .getConnection(folderTable)
       .select(
-        strapi.db.connection.raw(
+        metrix.db.connection.raw(
           `LENGTH(${keepOnlySlashesSQLString}) AS depth, COUNT(*) AS occurence`,
           queryParams
         )
@@ -88,7 +88,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
     const averageDeviationDepth = folderNumber !== 0 ? sumOfDeviation / folderNumber : 0;
 
     // File metrics
-    const assetNumber = await strapi.db.query(FILE_MODEL_UID).count();
+    const assetNumber = await metrix.db.query(FILE_MODEL_UID).count();
 
     return {
       assetNumber,
@@ -101,7 +101,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
 
   async sendMetrics() {
     const metrics = await this.computeMetrics();
-    strapi.telemetry.send('didSendUploadPropertiesOnceAWeek', {
+    metrix.telemetry.send('didSendUploadPropertiesOnceAWeek', {
       groupProperties: { metrics },
     });
 
@@ -129,7 +129,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
   async registerCron() {
     const weeklySchedule = await this.ensureWeeklyStoredCronSchedule();
 
-    strapi.cron.add({
+    metrix.cron.add({
       uploadWeekly: {
         task: this.sendMetrics.bind(this),
         options: weeklySchedule,

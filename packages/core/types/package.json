@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/types",
+  "name": "@metrixlabs/types",
   "version": "5.22.0",
   "description": "Shared typescript types for Strapi internal use",
   "keywords": [
@@ -46,10 +46,10 @@
     "@casl/ability": "6.5.0",
     "@koa/cors": "5.0.0",
     "@koa/router": "12.0.2",
-    "@strapi/database": "5.22.0",
-    "@strapi/logger": "5.22.0",
-    "@strapi/permissions": "5.22.0",
-    "@strapi/utils": "5.22.0",
+    "@metrixlabs/database": "5.22.0",
+    "@metrixlabs/logger": "5.22.0",
+    "@metrixlabs/permissions": "5.22.0",
+    "@metrixlabs/utils": "5.22.0",
     "commander": "8.3.0",
     "json-logic-js": "2.0.5",
     "koa": "2.16.1",

@@ -5,7 +5,7 @@ import type { Answers } from 'inquirer';
 import type { CLIContext } from '../types';
 import type { CloudApiService } from '../services/cli-api';
 
-import { LocalSave } from '../services/strapi-info-save';
+import { LocalSave } from '../services/metrix-info-save';
 import { cloudApiFactory, tokenServiceFactory, local } from '../services';
 import { promptLogin } from '../login/action';
 import { trackEvent } from '../utils/analytics';

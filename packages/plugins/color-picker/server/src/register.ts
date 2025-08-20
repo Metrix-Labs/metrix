@@ -1,5 +1,5 @@
-export const register = ({ strapi }: any) => {
-  strapi.customFields.register({
+export const register = ({ metrix }: any) => {
+  metrix.customFields.register({
     name: 'color',
     plugin: 'color-picker',
     type: 'string',

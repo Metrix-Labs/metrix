@@ -1,10 +1,10 @@
 import { createAuditLogsLifecycleService } from '../lifecycles';
-import '@strapi/types';
+import '@metrixlabs/types';
 
 describe('Audit logs service', () => {
   const mockSubscribe = jest.fn();
 
-  const strapi = {
+  const metrix = {
     requestContext: {
       get() {
         return {
@@ -75,7 +75,7 @@ describe('Audit logs service', () => {
 
   it('should not subscribe to events when the license does not allow it', async () => {
     // Should not subscribe to events at first
-    const lifecycle = createAuditLogsLifecycleService(strapi);
+    const lifecycle = createAuditLogsLifecycleService(metrix);
     await lifecycle.register();
     const destroySpy = jest.spyOn(lifecycle, 'destroy');
     const registerSpy = jest.spyOn(lifecycle, 'register');
@@ -83,32 +83,32 @@ describe('Audit logs service', () => {
     expect(mockSubscribe).not.toHaveBeenCalled();
 
     // Should subscribe to events when license gets enabled
-    jest.mocked(strapi.ee.features.isEnabled).mockImplementationOnce(() => true);
-    await strapi.eventHub.emit('ee.enable');
+    jest.mocked(metrix.ee.features.isEnabled).mockImplementationOnce(() => true);
+    await metrix.eventHub.emit('ee.enable');
     expect(mockSubscribe).toHaveBeenCalled();
 
     // Should unsubscribe to events when license gets disabled
     mockSubscribe.mockClear();
-    jest.mocked(strapi.ee.features.isEnabled).mockImplementationOnce(() => false);
-    await strapi.eventHub.emit('ee.disable');
+    jest.mocked(metrix.ee.features.isEnabled).mockImplementationOnce(() => false);
+    await metrix.eventHub.emit('ee.disable');
     expect(mockSubscribe).not.toHaveBeenCalled();
     expect(destroySpy).toHaveBeenCalled();
 
     // Should recreate the service when license updates
-    await strapi.eventHub.emit('ee.update');
+    await metrix.eventHub.emit('ee.update');
     expect(destroySpy).toHaveBeenCalled();
     expect(registerSpy).toHaveBeenCalled();
   });
 
   it('should create a cron job that executed one time a day', async () => {
     // Mock Strapi EE feature to be enabled for this test
-    jest.mocked(strapi.ee.features.isEnabled).mockReturnValueOnce(true);
+    jest.mocked(metrix.ee.features.isEnabled).mockReturnValueOnce(true);
 
-    const lifecycle = createAuditLogsLifecycleService(strapi);
+    const lifecycle = createAuditLogsLifecycleService(metrix);
     await lifecycle.register();
 
-    // Verify that strapi.cron.add was called with the correct job configuration
-    expect(strapi.cron.add).toHaveBeenCalledWith({
+    // Verify that metrix.cron.add was called with the correct job configuration
+    expect(metrix.cron.add).toHaveBeenCalledWith({
       deleteExpiredAuditLogs: {
         task: expect.any(Function),
         options: '0 0 * * *',

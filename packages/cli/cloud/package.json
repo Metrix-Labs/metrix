@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/cloud-cli",
+  "name": "@metrixlabs/cloud-cli",
   "version": "5.22.0",
   "description": "Commands to interact with the Strapi Cloud",
   "keywords": [
@@ -47,7 +47,7 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
-    "@strapi/utils": "5.22.0",
+    "@metrixlabs/utils": "5.22.0",
     "axios": "1.8.4",
     "boxen": "5.1.2",
     "chalk": "4.1.2",

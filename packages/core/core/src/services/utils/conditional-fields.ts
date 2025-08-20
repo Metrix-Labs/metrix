@@ -1,9 +1,9 @@
 import { map, values, sumBy, pipe, flatMap } from 'lodash/fp';
-import type { Schema, UID } from '@strapi/types';
+import type { Schema, UID } from '@metrixlabs/types';
 
 const getNumberOfConditionalFields = () => {
-  const contentTypes: Record<UID.ContentType, Schema.ContentType> = strapi.contentTypes;
-  const components: Record<UID.Component, Schema.Component> = strapi.components;
+  const contentTypes: Record<UID.ContentType, Schema.ContentType> = metrix.contentTypes;
+  const components: Record<UID.Component, Schema.Component> = metrix.components;
 
   const countConditionalFieldsInSchema = (
     schema: Record<string, Schema.ContentType | Schema.Component>

@@ -10,17 +10,17 @@ async function migrateReviewWorkflowStagesRoles({ oldContentTypes, contentTypes 
 
   // If the stage content type did not have permissions in the previous version
   // then we set the permissions of every stage to be every current role in the app.
-  // This ensures consistent behaviour when upgrading to a strapi version with review workflows RBAC.
+  // This ensures consistent behaviour when upgrading to a metrix version with review workflows RBAC.
   if (!hadRolePermissions && hasRolePermissions) {
     const roleUID = 'admin::role';
-    strapi.log.info(
+    metrix.log.info(
       `Migrating all existing review workflow stages to have RBAC permissions for all ${roleUID}.`
     );
 
     const stagePermissionsService = getService('stage-permissions');
 
-    const stages = await strapi.db.query(STAGE_MODEL_UID).findMany();
-    const roles = await strapi.db.query(roleUID).findMany();
+    const stages = await metrix.db.query(STAGE_MODEL_UID).findMany();
+    const roles = await metrix.db.query(roleUID).findMany();
 
     // Collect the permissions to add and group them by stage id.
     const groupedPermissions = {} as any;
@@ -46,7 +46,7 @@ async function migrateReviewWorkflowStagesRoles({ oldContentTypes, contentTypes 
       const numericalStageId = Number(stageId);
 
       if (Number.isNaN(numericalStageId)) {
-        strapi.log.warn(
+        metrix.log.warn(
           `Unable to apply ${roleUID} migration for ${STAGE_MODEL_UID} with id ${stageId}. The stage does not have a numerical id.`
         );
         continue;
@@ -56,7 +56,7 @@ async function migrateReviewWorkflowStagesRoles({ oldContentTypes, contentTypes 
       const stagePermissions = await stagePermissionsService.registerMany(permissions);
 
       // Update the stage with its new permissions
-      await strapi.db.query(STAGE_MODEL_UID).update({
+      await metrix.db.query(STAGE_MODEL_UID).update({
         where: { id: numericalStageId },
         data: {
           permissions: stagePermissions.flat().map((permission: any) => permission.id),

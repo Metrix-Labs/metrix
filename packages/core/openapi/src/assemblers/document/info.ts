@@ -15,7 +15,7 @@ const debug = createDebugger('assembler:info');
 
 export class DocumentInfoAssembler implements Assembler.Document {
   assemble(context: DocumentContext): void {
-    const { name, version } = context.strapi.config.get<StrapiInfoConfig>('info');
+    const { name, version } = context.metrix.config.get<StrapiInfoConfig>('info');
 
     debug(`assembling document's info for %O...`, { name, version });
 

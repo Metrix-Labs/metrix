@@ -6,7 +6,7 @@ import { getChildrenMaxDepth, getComponentDepth } from '../utils/getMaxDepth';
 
 import { useDataManager } from './DataManager/useDataManager';
 
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrixlabs/types';
 interface Option {
   uid: string;
   label: string;

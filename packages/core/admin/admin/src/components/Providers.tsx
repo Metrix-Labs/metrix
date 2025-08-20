@@ -27,42 +27,42 @@ const queryClient = new QueryClient({
 
 interface ProvidersProps {
   children: React.ReactNode;
-  strapi: StrapiApp;
+  metrix: StrapiApp;
   store: Store;
 }
 
-const Providers = ({ children, strapi, store }: ProvidersProps) => {
+const Providers = ({ children, metrix, store }: ProvidersProps) => {
   const isGuidedTourEnabled = process.env.NODE_ENV !== 'test';
 
   return (
     <StrapiAppProvider
-      components={strapi.library.components}
-      customFields={strapi.customFields}
-      widgets={strapi.widgets}
-      fields={strapi.library.fields}
-      menu={strapi.router.menu}
-      getAdminInjectedComponents={strapi.getAdminInjectedComponents}
-      getPlugin={strapi.getPlugin}
-      plugins={strapi.plugins}
-      rbac={strapi.rbac}
-      runHookParallel={strapi.runHookParallel}
-      runHookWaterfall={(name, initialValue) => strapi.runHookWaterfall(name, initialValue, store)}
-      runHookSeries={strapi.runHookSeries}
-      settings={strapi.router.settings}
+      components={metrix.library.components}
+      customFields={metrix.customFields}
+      widgets={metrix.widgets}
+      fields={metrix.library.fields}
+      menu={metrix.router.menu}
+      getAdminInjectedComponents={metrix.getAdminInjectedComponents}
+      getPlugin={metrix.getPlugin}
+      plugins={metrix.plugins}
+      rbac={metrix.rbac}
+      runHookParallel={metrix.runHookParallel}
+      runHookWaterfall={(name, initialValue) => metrix.runHookWaterfall(name, initialValue, store)}
+      runHookSeries={metrix.runHookSeries}
+      settings={metrix.router.settings}
     >
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
             <HistoryProvider>
-              <LanguageProvider messages={strapi.configurations.translations}>
-                <Theme themes={strapi.configurations.themes}>
+              <LanguageProvider messages={metrix.configurations.translations}>
+                <Theme themes={metrix.configurations.themes}>
                   <NotificationsProvider>
                     <TrackingProvider>
                       <GuidedTourContext enabled={isGuidedTourEnabled}>
                         <ConfigurationProvider
-                          defaultAuthLogo={strapi.configurations.authLogo}
-                          defaultMenuLogo={strapi.configurations.menuLogo}
-                          showReleaseNotification={strapi.configurations.notifications.releases}
+                          defaultAuthLogo={metrix.configurations.authLogo}
+                          defaultMenuLogo={metrix.configurations.menuLogo}
+                          showReleaseNotification={metrix.configurations.notifications.releases}
                         >
                           {children}
                         </ConfigurationProvider>

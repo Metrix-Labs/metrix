@@ -1,5 +1,5 @@
 module.exports = {
   beforeUpdate() {
-    const ctx = strapi.requestContext.get();
+    const ctx = metrix.requestContext.get();
   },
 };

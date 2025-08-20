@@ -8,7 +8,7 @@ describe('History utils', () => {
   describe('getSchemaAttributesDiff', () => {
     const { getSchemaAttributesDiff } = createServiceUtils({
       // @ts-expect-error ignore
-      strapi: baseStrapiMock,
+      metrix: baseStrapiMock,
     });
 
     it('should return a diff', () => {

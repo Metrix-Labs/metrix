@@ -1,11 +1,11 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 export interface Config {
   poweredBy: string;
 }
 
 const defaults: Config = {
-  poweredBy: 'Strapi <strapi.io>',
+  poweredBy: 'Strapi <metrix.io>',
 };
 
 export const poweredBy: Core.MiddlewareFactory<Partial<Config>> = (config) => {

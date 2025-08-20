@@ -17,15 +17,15 @@ import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 
 # Promoting EE features in CE projects
 
-Everytime a new EE feature is added in Strapi, in the settings menu, you should add the following condition to ensure that the feature promotes itself in CE:
+Everytime a new EE feature is added in Metrix, in the settings menu, you should add the following condition to ensure that the feature promotes itself in CE:
 
 `packages/core/admin/admin/src/hooks/useSettingsMenu/index.js`
 
 ```js
 ...
 
- ...(!window.strapi.features.isEnabled(window.strapi.features.NEW_EE_FEATURE) &&
-    window.strapi?.flags?.promoteEE
+ ...(!window.metrix.features.isEnabled(window.metrix.features.NEW_EE_FEATURE) &&
+    window.metrix?.flags?.promoteEE
       ? [
           {
             intlLabel: {

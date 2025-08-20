@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { objects, template } from '@strapi/utils';
+import { objects, template } from '@metrixlabs/utils';
 
 import type {
   EmailConfig,
@@ -11,9 +11,9 @@ import type {
 
 const { createStrictInterpolationRegExp } = template;
 
-const getProviderSettings = (): EmailConfig => strapi.config.get('plugin::email');
+const getProviderSettings = (): EmailConfig => metrix.config.get('plugin::email');
 
-const send = async (options: SendOptions) => strapi.plugin('email').provider.send(options);
+const send = async (options: SendOptions) => metrix.plugin('email').provider.send(options);
 
 /**
  * fill subject, text and html using lodash template
@@ -51,7 +51,7 @@ const sendTemplatedEmail = (
     {}
   );
 
-  return strapi.plugin('email').provider.send({ ...emailOptions, ...templatedAttributes });
+  return metrix.plugin('email').provider.send({ ...emailOptions, ...templatedAttributes });
 };
 
 const emailService = () => ({

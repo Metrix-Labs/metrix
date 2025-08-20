@@ -25,7 +25,7 @@ module.exports = ({ env }) => ({
     enabled: env.bool('PREVIEW_ENABLED', true),
     config: {
       handler: (uid, { documentId, locale, status }) => {
-        const contentType = strapi.contentType(uid);
+        const contentType = metrix.contentType(uid);
         const kind = contentType.kind === 'collectionType' ? 'collection-types' : 'single-types';
         const apiName =
           contentType.kind === 'collectionType'

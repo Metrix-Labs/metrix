@@ -1,5 +1,5 @@
 import { isUndefined, get, isNil } from 'lodash/fp';
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 import { getService } from '../../../utils';
 import { FOLDER_MODEL_UID } from '../../../constants';
 import { folderExists } from './utils';
@@ -16,7 +16,7 @@ const isNameUniqueInFolder = (id?: number): yup.TestFunction<string | undefined>
       filters.id = { $ne: id };
 
       if (isUndefined(name)) {
-        const existingFolder = await strapi.db.query(FOLDER_MODEL_UID).findOne({ where: { id } });
+        const existingFolder = await metrix.db.query(FOLDER_MODEL_UID).findOne({ where: { id } });
         filters.name = get('name', existingFolder);
       }
     }
@@ -68,12 +68,12 @@ const validateUpdateFolderSchema = (id: number) =>
           async function test(parent) {
             if (isNil(parent)) return true;
 
-            const destinationFolder = await strapi.db.query(FOLDER_MODEL_UID).findOne({
+            const destinationFolder = await metrix.db.query(FOLDER_MODEL_UID).findOne({
               select: ['path'],
               where: { id: parent },
             });
 
-            const currentFolder = await strapi.db.query(FOLDER_MODEL_UID).findOne({
+            const currentFolder = await metrix.db.query(FOLDER_MODEL_UID).findOne({
               select: ['path'],
               where: { id },
             });

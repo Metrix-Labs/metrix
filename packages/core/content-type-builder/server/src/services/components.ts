@@ -1,4 +1,4 @@
-import type { Internal, Struct } from '@strapi/types';
+import type { Internal, Struct } from '@metrixlabs/types';
 import { get, has } from 'lodash';
 
 import { formatAttributes, replaceTemporaryUIDs } from '../utils/attributes';
@@ -47,7 +47,7 @@ export const createComponent = async ({ component, components = [] }: any) => {
 
   await builder.writeFiles();
 
-  strapi.eventHub.emit('component.create', { component: newComponent });
+  metrix.eventHub.emit('component.create', { component: newComponent });
 
   return newComponent;
 };
@@ -81,7 +81,7 @@ export const editComponent = async (
 
   await builder.writeFiles();
 
-  strapi.eventHub.emit('component.update', { component: updatedComponent });
+  metrix.eventHub.emit('component.update', { component: updatedComponent });
 
   return updatedComponent;
 };
@@ -93,7 +93,7 @@ export const deleteComponent = async (uid: Internal.UID.Component) => {
 
   await builder.writeFiles();
 
-  strapi.eventHub.emit('component.delete', { component: deletedComponent });
+  metrix.eventHub.emit('component.delete', { component: deletedComponent });
 
   return deletedComponent;
 };

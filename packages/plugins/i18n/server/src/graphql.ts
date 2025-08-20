@@ -1,16 +1,16 @@
 import { propEq, identity } from 'lodash/fp';
-import { errors } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 const { ValidationError } = errors;
 
 const LOCALE_SCALAR_TYPENAME = 'I18NLocaleCode';
 const LOCALE_ARG_PLUGIN_NAME = 'I18NLocaleArg';
 
-export default ({ strapi }: { strapi: Core.Strapi }) => ({
+export default ({ metrix }: { metrix: Core.Strapi }) => ({
   register() {
-    const { service: getGraphQLService } = strapi.plugin('graphql');
-    const { service: getI18NService } = strapi.plugin('i18n');
+    const { service: getGraphQLService } = metrix.plugin('graphql');
+    const { service: getI18NService } = metrix.plugin('i18n');
 
     const { isLocalizedContentType } = getI18NService('content-types');
 
@@ -19,7 +19,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
     extensionService.shadowCRUD('plugin::i18n.locale').disableMutations();
 
     // Disable unwanted fields for localized content types
-    Object.entries(strapi.contentTypes).forEach(([uid, ct]) => {
+    Object.entries(metrix.contentTypes).forEach(([uid, ct]) => {
       if (isLocalizedContentType(ct)) {
         // Disable locale field in localized inputs
         extensionService.shadowCRUD(uid).field('locale').disableInput();
@@ -47,7 +47,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
 });
 
 const getLocaleScalar = ({ nexus }: any) => {
-  const { service: getI18NService } = strapi.plugin('i18n');
+  const { service: getI18NService } = metrix.plugin('i18n');
 
   const locales = getI18NService('iso-locales').getIsoLocales();
 
@@ -76,7 +76,7 @@ const getLocaleScalar = ({ nexus }: any) => {
 };
 
 const getI18nLocaleArgPlugin = ({ nexus, typeRegistry }: any) => {
-  const { service: getI18NService } = strapi.plugin('i18n');
+  const { service: getI18NService } = metrix.plugin('i18n');
 
   const { isLocalizedContentType } = getI18NService('content-types');
 
@@ -95,8 +95,8 @@ const getI18nLocaleArgPlugin = ({ nexus, typeRegistry }: any) => {
 
       let contentType;
 
-      if (config?.extensions?.strapi?.contentType) {
-        contentType = config.extensions.strapi.contentType;
+      if (config?.extensions?.metrix?.contentType) {
+        contentType = config.extensions.metrix.contentType;
       } else {
         const registryType = typeRegistry.get(config.type);
 

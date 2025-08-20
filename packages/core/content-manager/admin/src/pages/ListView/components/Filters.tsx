@@ -7,7 +7,7 @@ import {
   useTracking,
   useQueryParams,
   useAdminUsers,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import { Combobox, ComboboxOption, useCollator } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 

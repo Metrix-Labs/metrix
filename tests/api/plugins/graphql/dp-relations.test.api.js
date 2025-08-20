@@ -3,11 +3,11 @@
 // Helpers.
 const { pick } = require('lodash/fp');
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 let graphqlQuery;
 
@@ -126,11 +126,11 @@ describe('Test Graphql Relations with Draft and Publish enabled', () => {
       .addFixtures(articleModel.singularName, articles)
       .build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     // Add dynamic zones to test data
-    await strapi.documents('api::label.label').update({
+    await metrix.documents('api::label.label').update({
       documentId: 'label-1',
       data: {
         dz: [
@@ -142,7 +142,7 @@ describe('Test Graphql Relations with Draft and Publish enabled', () => {
         ],
       },
     });
-    await strapi.documents('api::label.label').update({
+    await metrix.documents('api::label.label').update({
       documentId: 'label-2',
       data: {
         dz: [
@@ -154,10 +154,10 @@ describe('Test Graphql Relations with Draft and Publish enabled', () => {
         ],
       },
     });
-    await strapi.documents('api::label.label').publish({
+    await metrix.documents('api::label.label').publish({
       documentId: 'label-1',
     });
-    await strapi.documents('api::label.label').publish({
+    await metrix.documents('api::label.label').publish({
       documentId: 'label-2',
     });
 
@@ -171,7 +171,7 @@ describe('Test Graphql Relations with Draft and Publish enabled', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

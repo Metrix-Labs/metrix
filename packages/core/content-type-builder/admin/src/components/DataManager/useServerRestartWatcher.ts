@@ -1,4 +1,4 @@
-import { useFetchClient } from '@strapi/admin/strapi-admin';
+import { useFetchClient } from '@metrixlabs/admin/metrix-admin';
 
 const TIMEOUT = 'timeout';
 

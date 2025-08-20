@@ -4,7 +4,7 @@ import { Flex, FlexProps } from '@strapi/design-system';
 import * as Icons from '@strapi/icons';
 import * as Symbols from '@strapi/icons/symbols';
 
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrixlabs/types';
 
 interface ComponentIconProps extends FlexProps {
   showBackground?: boolean;

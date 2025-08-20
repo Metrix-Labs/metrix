@@ -1,5 +1,5 @@
 import { isFunction } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 export interface Config {
   handlers?: Record<number, Core.MiddlewareHandler>;

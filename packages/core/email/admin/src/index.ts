@@ -1,10 +1,10 @@
 import { PERMISSIONS } from './constants';
 import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 
-import type { Plugin } from '@strapi/types';
+import type { Plugin } from '@metrixlabs/types';
 
 const admin: Plugin.Config.AdminInput = {
-  // TODO typing app in strapi/types as every plugin needs it
+  // TODO typing app in metrix/types as every plugin needs it
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register(app: any) {
     // Create the email settings section

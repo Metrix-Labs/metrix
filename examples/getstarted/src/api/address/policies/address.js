@@ -1,3 +1,3 @@
-module.exports = (policyCtx, config, { strapi }) => {
+module.exports = (policyCtx, config, { metrix }) => {
   return true;
 };

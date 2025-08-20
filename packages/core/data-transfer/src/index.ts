@@ -1,4 +1,4 @@
 export * as engine from './engine';
-export * as strapi from './strapi';
+export * as metrix from './metrix';
 export * as file from './file';
 export * as utils from './utils';

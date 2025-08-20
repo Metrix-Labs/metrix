@@ -1,6 +1,6 @@
 import { defaultsDeep, filter, pipe, map } from 'lodash/fp';
 
-import type { Core, UID } from '@strapi/types';
+import type { Core, UID } from '@metrixlabs/types';
 
 import { getService, getAdminService } from './utils';
 import migrateStageAttribute from './migrations/shorten-stage-attribute';
@@ -41,11 +41,11 @@ const setRelation = (attributeName: any, target: any, contentType: any) => {
 /**
  * Add the stage and assignee attributes to content types
  */
-function extendReviewWorkflowContentTypes({ strapi }: { strapi: Core.Strapi }) {
-  const contentTypeToExtend = getVisibleContentTypesUID(strapi.contentTypes);
+function extendReviewWorkflowContentTypes({ metrix }: { metrix: Core.Strapi }) {
+  const contentTypeToExtend = getVisibleContentTypesUID(metrix.contentTypes);
 
   for (const contentTypeUID of contentTypeToExtend) {
-    strapi.get('content-types').extend(contentTypeUID, (contentType: any) => {
+    metrix.get('content-types').extend(contentTypeUID, (contentType: any) => {
       // Set Stage attribute
       setRelation(ENTITY_STAGE_ATTRIBUTE, STAGE_MODEL_UID, contentType);
       // Set Assignee attribute
@@ -60,13 +60,13 @@ function extendReviewWorkflowContentTypes({ strapi }: { strapi: Core.Strapi }) {
  * TODO: V6 - Instead of persisting the join tables, always create the stage & assignee attributes, even in CE mode
  *            It was decided in V4 & V5 to not expose them in CE (as they pollute the CTs) but it's not worth given the complexity this needs
  */
-function persistRWOnDowngrade({ strapi }: { strapi: Core.Strapi }) {
+function persistRWOnDowngrade({ metrix }: { metrix: Core.Strapi }) {
   const { removePersistedTablesWithSuffix, persistTables } = getAdminService('persist-tables');
 
   return async ({ contentTypes }: { contentTypes: Record<UID.ContentType, any> }) => {
     const getStageTableToPersist = (contentTypeUID: UID.ContentType) => {
       // Persist the stage join table
-      const { attributes, tableName } = strapi.db.metadata.get(contentTypeUID) as any;
+      const { attributes, tableName } = metrix.db.metadata.get(contentTypeUID) as any;
       const joinTableName = attributes[ENTITY_STAGE_ATTRIBUTE].joinTable.name;
       return {
         name: joinTableName,
@@ -76,7 +76,7 @@ function persistRWOnDowngrade({ strapi }: { strapi: Core.Strapi }) {
 
     const getAssigneeTableToPersist = (contentTypeUID: UID.ContentType) => {
       // Persist the assignee join table
-      const { attributes, tableName } = strapi.db.metadata.get(contentTypeUID) as any;
+      const { attributes, tableName } = metrix.db.metadata.get(contentTypeUID) as any;
       const joinTableName = attributes[ENTITY_ASSIGNEE_ATTRIBUTE].joinTable.name;
       return {
         name: joinTableName,
@@ -101,12 +101,12 @@ function persistRWOnDowngrade({ strapi }: { strapi: Core.Strapi }) {
   };
 }
 
-export default async ({ strapi }: { strapi: Core.Strapi }) => {
+export default async ({ metrix }: { metrix: Core.Strapi }) => {
   // Data Migrations
-  strapi.hook('strapi::content-types.beforeSync').register(migrateStageAttribute);
-  strapi.hook('strapi::content-types.afterSync').register(persistRWOnDowngrade({ strapi }));
-  strapi
-    .hook('strapi::content-types.afterSync')
+  metrix.hook('metrix::content-types.beforeSync').register(migrateStageAttribute);
+  metrix.hook('metrix::content-types.afterSync').register(persistRWOnDowngrade({ metrix }));
+  metrix
+    .hook('metrix::content-types.afterSync')
     .register(migrateReviewWorkflowStagesColor)
     .register(migrateReviewWorkflowStagesRoles)
     .register(migrateReviewWorkflowName)
@@ -114,10 +114,10 @@ export default async ({ strapi }: { strapi: Core.Strapi }) => {
     .register(migrateDeletedCTInWorkflows);
 
   // Middlewares
-  reviewWorkflowsMiddlewares.contentTypeMiddleware(strapi);
+  reviewWorkflowsMiddlewares.contentTypeMiddleware(metrix);
 
   // Schema customization
-  extendReviewWorkflowContentTypes({ strapi });
+  extendReviewWorkflowContentTypes({ metrix });
 
   // License limits
   const reviewWorkflowsOptions = defaultsDeep(
@@ -125,8 +125,8 @@ export default async ({ strapi }: { strapi: Core.Strapi }) => {
       numberOfWorkflows: MAX_WORKFLOWS,
       stagesPerWorkflow: MAX_STAGES_PER_WORKFLOW,
     },
-    strapi.ee.features.get('review-workflows')
+    metrix.ee.features.get('review-workflows')
   );
-  const workflowsValidationService = getService('validation', { strapi });
+  const workflowsValidationService = getService('validation', { metrix });
   workflowsValidationService.register(reviewWorkflowsOptions);
 };

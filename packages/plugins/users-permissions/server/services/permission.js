@@ -2,7 +2,7 @@
 
 const PUBLIC_ROLE_FILTER = { role: { type: 'public' } };
 
-module.exports = ({ strapi }) => ({
+module.exports = ({ metrix }) => ({
   /**
    * Find permissions associated to a specific role ID
    *
@@ -11,7 +11,7 @@ module.exports = ({ strapi }) => ({
    * @return {object[]}
    */
   async findRolePermissions(roleID) {
-    return strapi.db.query('plugin::users-permissions.role').load({ id: roleID }, 'permissions');
+    return metrix.db.query('plugin::users-permissions.role').load({ id: roleID }, 'permissions');
   },
 
   /**
@@ -20,7 +20,7 @@ module.exports = ({ strapi }) => ({
    * @return {object[]}
    */
   async findPublicPermissions() {
-    return strapi.db.query('plugin::users-permissions.permission').findMany({
+    return metrix.db.query('plugin::users-permissions.permission').findMany({
       where: PUBLIC_ROLE_FILTER,
     });
   },

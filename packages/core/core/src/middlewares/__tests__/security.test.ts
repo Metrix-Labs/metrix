@@ -25,7 +25,7 @@ describe('Security middleware', () => {
         },
       },
       {
-        strapi: {
+        metrix: {
           plugin: () => null,
           config: {
             get(key: string) {
@@ -66,7 +66,7 @@ describe('Security middleware', () => {
         const csp = parseCspHeader(req.header['content-security-policy']);
         expect(csp['script-src']).toContain("'unsafe-inline'");
         expect(csp['script-src']).toContain('cdn.jsdelivr.net');
-        expect(csp['img-src']).toContain('strapi.io');
+        expect(csp['img-src']).toContain('metrix.io');
         expect(csp['img-src']).toContain('cdn.jsdelivr.net');
       });
     });

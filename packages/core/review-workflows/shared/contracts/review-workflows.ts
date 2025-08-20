@@ -1,6 +1,6 @@
-import type { UID, Modules } from '@strapi/types';
-import type { Permission } from '@strapi/admin/strapi-admin';
-import type { errors } from '@strapi/utils';
+import type { UID, Modules } from '@metrixlabs/types';
+import type { Permission } from '@metrixlabs/admin/metrix-admin';
+import type { errors } from '@metrixlabs/utils';
 
 type Entity = Modules.EntityService.Result<UID.Schema>;
 

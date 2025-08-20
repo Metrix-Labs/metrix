@@ -1,5 +1,5 @@
-import strapiScalarToGraphQLScalar from './strapi-scalar-to-graphql-scalar';
-import graphQLFiltersToStrapiQuery from './graphql-filters-to-strapi-query';
+import strapiScalarToGraphQLScalar from './metrix-scalar-to-graphql-scalar';
+import graphQLFiltersToStrapiQuery from './graphql-filters-to-metrix-query';
 import graphqlScalarToOperators from './graphql-scalar-to-operators';
 import entityToResponseEntity from './entity-to-response-entity';
 

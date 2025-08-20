@@ -1,13 +1,13 @@
 'use strict';
 
 const _ = require('lodash');
-const { ValidationError } = require('@strapi/utils').errors;
+const { ValidationError } = require('@metrixlabs/utils').errors;
 const { getService } = require('../utils');
 const { isValidEmailTemplate } = require('./validation/email-template');
 
 module.exports = {
   async getEmailTemplate(ctx) {
-    ctx.send(await strapi.store({ type: 'plugin', name: 'users-permissions', key: 'email' }).get());
+    ctx.send(await metrix.store({ type: 'plugin', name: 'users-permissions', key: 'email' }).get());
   },
 
   async updateEmailTemplate(ctx) {
@@ -25,7 +25,7 @@ module.exports = {
       }
     }
 
-    await strapi
+    await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'email' })
       .set({ value: emailTemplates });
 
@@ -33,7 +33,7 @@ module.exports = {
   },
 
   async getAdvancedSettings(ctx) {
-    const settings = await strapi
+    const settings = await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'advanced' })
       .get();
 
@@ -47,7 +47,7 @@ module.exports = {
       throw new ValidationError('Request body cannot be empty');
     }
 
-    await strapi
+    await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'advanced' })
       .set({ value: ctx.request.body });
 
@@ -55,13 +55,13 @@ module.exports = {
   },
 
   async getProviders(ctx) {
-    const providers = await strapi
+    const providers = await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'grant' })
       .get();
 
     for (const provider in providers) {
       if (provider !== 'email') {
-        providers[provider].redirectUri = strapi
+        providers[provider].redirectUri = metrix
           .plugin('users-permissions')
           .service('providers')
           .buildRedirectUri(provider);
@@ -76,7 +76,7 @@ module.exports = {
       throw new ValidationError('Request body cannot be empty');
     }
 
-    await strapi
+    await metrix
       .store({ type: 'plugin', name: 'users-permissions', key: 'grant' })
       .set({ value: ctx.request.body.providers });
 

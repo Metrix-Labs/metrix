@@ -1,1 +1,1 @@
-# strapi-plugin-upload
+# metrix-plugin-upload

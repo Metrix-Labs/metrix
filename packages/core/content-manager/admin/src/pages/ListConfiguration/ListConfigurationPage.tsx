@@ -8,7 +8,7 @@ import {
   useAPIErrorHandler,
   Page,
   Layouts,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import { Divider, Flex, Main } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { Navigate } from 'react-router-dom';

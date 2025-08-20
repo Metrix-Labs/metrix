@@ -14,7 +14,7 @@ import { AttributeIcon, IconByType } from './AttributeIcon';
 import { useDataManager } from './DataManager/useDataManager';
 import { useFormModalNavigation } from './FormModalNavigation/useFormModalNavigation';
 
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrixlabs/types';
 
 interface Header {
   label: string;

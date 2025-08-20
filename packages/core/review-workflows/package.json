@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/review-workflows",
+  "name": "@metrixlabs/review-workflows",
   "version": "5.22.0",
   "description": "Review workflows for your content",
   "repository": {
@@ -21,6 +21,13 @@
   ],
   "exports": {
     "./strapi-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./metrix-admin": {
       "types": "./dist/admin/src/index.d.ts",
       "source": "./admin/src/index.ts",
       "import": "./dist/admin/index.mjs",
@@ -56,10 +63,10 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
+    "@metrixlabs/utils": "5.22.0",
     "@reduxjs/toolkit": "1.9.7",
     "@strapi/design-system": "2.0.0-rc.29",
     "@strapi/icons": "2.0.0-rc.29",
-    "@strapi/utils": "5.22.0",
     "fractional-indexing": "3.2.0",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
@@ -69,9 +76,9 @@
     "yup": "0.32.9"
   },
   "devDependencies": {
-    "@strapi/admin": "5.22.0",
-    "@strapi/content-manager": "5.22.0",
-    "@strapi/types": "5.22.0",
+    "@metrixlabs/admin": "5.22.0",
+    "@metrixlabs/content-manager": "5.22.0",
+    "@metrixlabs/types": "5.22.0",
     "@testing-library/react": "15.0.7",
     "msw": "1.3.0",
     "react": "18.3.1",
@@ -80,8 +87,8 @@
     "styled-components": "6.1.8"
   },
   "peerDependencies": {
-    "@strapi/admin": "^5.0.0",
-    "@strapi/content-manager": "^5.0.0",
+    "@metrixlabs/admin": "^5.0.0",
+    "@metrixlabs/content-manager": "^5.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",

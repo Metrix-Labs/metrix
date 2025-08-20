@@ -1,5 +1,5 @@
-import type { Data, Modules } from '@strapi/types';
-import type { errors } from '@strapi/utils';
+import type { Data, Modules } from '@metrixlabs/types';
+import type { errors } from '@metrixlabs/utils';
 import { AdminRole, Permission, SanitizedAdminRole } from './shared';
 
 export type SanitizedPermission = Pick<

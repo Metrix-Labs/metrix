@@ -61,9 +61,9 @@ const configConnectionObject: DatabaseConfig = {
   connection: {
     client: 'postgres',
     connection: {
-      database: 'strapi',
-      user: 'strapi',
-      password: 'strapi',
+      database: 'metrix',
+      user: 'metrix',
+      password: 'metrix',
       port: 5432,
       host: 'localhost',
     },
@@ -79,9 +79,9 @@ const configConnectionFunction: DatabaseConfig = {
     client: 'sqlite',
     connection() {
       return {
-        database: 'strapi',
-        user: 'strapi',
-        password: 'strapi',
+        database: 'metrix',
+        user: 'metrix',
+        password: 'metrix',
         port: 5432,
         host: 'localhost',
       };

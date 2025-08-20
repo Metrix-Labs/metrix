@@ -17,11 +17,11 @@ describe('useEnterprise (CE)', () => {
 
 describe('useEnterprise (EE)', () => {
   beforeAll(() => {
-    window.strapi.isEE = true;
+    window.metrix.isEE = true;
   });
 
   afterAll(() => {
-    window.strapi.isEE = false;
+    window.metrix.isEE = false;
   });
 
   test('Returns default data on first render and EE data on second', async () => {

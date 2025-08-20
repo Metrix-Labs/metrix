@@ -1,5 +1,5 @@
 import type { ComponentsDictionary, Schema } from '../hooks/useDocument';
-import type { Schema as SchemaUtils } from '@strapi/types';
+import type { Schema as SchemaUtils } from '@metrixlabs/types';
 
 const checkIfAttributeIsDisplayable = (attribute: SchemaUtils.Attribute.AnyAttribute) => {
   const { type } = attribute;

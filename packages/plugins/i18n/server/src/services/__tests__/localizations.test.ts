@@ -55,7 +55,7 @@ const allLocalizedModel = {
   },
 };
 
-global.strapi = {
+global.metrix = {
   plugins: {
     i18n: {
       services: {
@@ -84,7 +84,7 @@ global.strapi = {
 
 const findMany = jest.fn(() => [{ id: 1, locale: 'fr' }]);
 const update = jest.fn();
-global.strapi.db.query = () => {
+global.metrix.db.query = () => {
   return { findMany, update } as any;
 };
 

@@ -8,14 +8,14 @@
     "name": "A Strapi developer"
   },
   "scripts": {
-    "build": "strapi build",
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "strapi": "strapi"
+    "build": "metrix build",
+    "develop": "metrix develop",
+    "start": "metrix start",
+    "strapi": "metrix"
   },
   "dependencies": {
-    "@strapi/plugin-users-permissions": "workspace:*",
-    "@strapi/strapi": "workspace:*",
+    "@metrixlabs/metrix": "workspace:*",
+    "@metrixlabs/plugin-users-permissions": "workspace:*",
     "better-sqlite3": "11.3.0",
     "react": "rc",
     "react-dom": "rc",

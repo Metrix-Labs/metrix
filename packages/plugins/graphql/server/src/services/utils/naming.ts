@@ -1,12 +1,12 @@
 import { camelCase, upperFirst, lowerFirst, pipe, get } from 'lodash/fp';
 import { singular } from 'pluralize';
-import { errors } from '@strapi/utils';
-import type { Struct, Schema } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Struct, Schema } from '@metrixlabs/types';
 import type { Context } from '../types';
 
 const { ApplicationError } = errors;
 
-export default ({ strapi }: Context) => {
+export default ({ metrix }: Context) => {
   /**
    * Build a type name for a enum based on a content type & an attribute name
    */
@@ -93,7 +93,7 @@ export default ({ strapi }: Context) => {
    * Build a component type name based on a content type's attribute
    */
   const getComponentNameFromAttribute = (attribute: Schema.Attribute.Component) => {
-    return strapi.components[attribute.component].globalId;
+    return metrix.components[attribute.component].globalId;
   };
 
   /**

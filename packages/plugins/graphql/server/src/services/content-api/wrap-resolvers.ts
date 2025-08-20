@@ -5,8 +5,8 @@ import {
   GraphQLSchema,
   GraphQLFieldResolver,
 } from 'graphql';
-import { errors } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 import { createPoliciesMiddleware } from './policy';
 
@@ -32,10 +32,10 @@ type GraphQLMiddleware = (
 /**
  * Get & parse middlewares definitions from the resolver's config
  * @param {object} resolverConfig
- * @param {object} strapi
+ * @param {object} metrix
  * @return {function[]}
  */
-const parseMiddlewares = (resolverConfig: any, strapi: Core.Strapi): GraphQLMiddleware[] => {
+const parseMiddlewares = (resolverConfig: any, metrix: Core.Strapi): GraphQLMiddleware[] => {
   const resolverMiddlewares = getOr([], 'middlewares', resolverConfig);
 
   // TODO: [v4] to factorize with compose endpoints (routes)
@@ -46,13 +46,13 @@ const parseMiddlewares = (resolverConfig: any, strapi: Core.Strapi): GraphQLMidd
       }
 
       if (typeof middleware === 'string') {
-        return strapi.middleware(middleware);
+        return metrix.middleware(middleware);
       }
 
       if (typeof middleware === 'object') {
         const { name, options = {} } = middleware;
 
-        return strapi.middleware(name)(options, { strapi });
+        return metrix.middleware(name)(options, { metrix });
       }
 
       throw new Error(
@@ -67,17 +67,17 @@ const parseMiddlewares = (resolverConfig: any, strapi: Core.Strapi): GraphQLMidd
  * customized using the GraphQL extension service
  * @param {object} options
  * @param {GraphQLSchema} options.schema
- * @param {object} options.strapi
+ * @param {object} options.metrix
  * @param {object} options.extension
  * @return {GraphQLSchema}
  */
 const wrapResolvers = ({
   schema,
-  strapi,
+  metrix,
   extension = {},
 }: {
   schema: GraphQLSchema;
-  strapi: Core.Strapi;
+  metrix: Core.Strapi;
   extension: any;
 }) => {
   // Get all the registered resolvers configuration
@@ -108,10 +108,10 @@ const wrapResolvers = ({
       const { resolve: baseResolver = defaultResolver } = fieldDefinition;
 
       // Parse & initialize the middlewares
-      const middlewares = parseMiddlewares(resolverConfig, strapi);
+      const middlewares = parseMiddlewares(resolverConfig, metrix);
 
       // Generate the policy middleware
-      const policyMiddleware = createPoliciesMiddleware(resolverConfig, { strapi });
+      const policyMiddleware = createPoliciesMiddleware(resolverConfig, { metrix });
 
       // Add the policyMiddleware at the end of the middlewares collection
       middlewares.push(policyMiddleware);
@@ -145,7 +145,7 @@ const wrapResolvers = ({
 
         if ((isValidType || hasConfig) && !isAuthDisabled) {
           try {
-            await strapi.auth.verify(authContext, authConfig);
+            await metrix.auth.verify(authContext, authConfig);
           } catch (error) {
             throw new ForbiddenError();
           }

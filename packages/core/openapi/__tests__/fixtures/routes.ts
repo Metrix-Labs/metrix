@@ -1,4 +1,4 @@
-import { Core } from '@strapi/types';
+import { Core } from '@metrixlabs/types';
 
 export const test = [
   { info: { type: 'content-api' }, method: 'GET', path: '/api/test1', handler: '' },

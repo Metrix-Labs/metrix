@@ -1,6 +1,6 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
-export const destroyOnSignal = (strapi: Core.Strapi) => {
+export const destroyOnSignal = (metrix: Core.Strapi) => {
   let signalReceived = false;
 
   // For unknown reasons, we receive signals 2 times.
@@ -9,7 +9,7 @@ export const destroyOnSignal = (strapi: Core.Strapi) => {
   const terminateStrapi = async () => {
     if (!signalReceived) {
       signalReceived = true;
-      await strapi.destroy();
+      await metrix.destroy();
       process.exit();
     }
   };

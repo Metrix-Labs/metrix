@@ -1,5 +1,5 @@
 import { cloneDeep, has, isArray } from 'lodash/fp';
-import { hooks } from '@strapi/utils';
+import { hooks } from '@metrixlabs/utils';
 
 import * as domain from '../domain';
 import type { Permission } from '../domain/permission';

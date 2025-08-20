@@ -3,7 +3,7 @@ import pluginPkg from '../../package.json';
 import { pluginId } from './pluginId';
 import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 
-const name = pluginPkg.strapi.name;
+const name = (pluginPkg as any).metrix?.name ?? pluginPkg.strapi?.name ?? pluginPkg.name;
 
 // eslint-disable-next-line import/no-default-export
 export default {

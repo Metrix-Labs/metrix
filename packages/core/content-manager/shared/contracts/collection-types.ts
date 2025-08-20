@@ -1,5 +1,5 @@
-import { errors } from '@strapi/utils';
-import type { Modules, Struct, UID } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Modules, Struct, UID } from '@metrixlabs/types';
 
 type PaginatedDocuments = Modules.Documents.PaginatedResult<UID.Schema>;
 type PaginationQuery = Modules.Documents.Params.Pagination.PageNotation;

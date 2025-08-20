@@ -1,27 +1,27 @@
 'use strict';
 
-const { createStrapiInstance } = require('api-tests/strapi');
-const { isKnexQuery } = require('@strapi/database');
+const { createStrapiInstance } = require('api-tests/metrix');
+const { isKnexQuery } = require('@metrix/database');
 
-let strapi;
+let metrix;
 
 describe('knex', () => {
   beforeAll(async () => {
-    strapi = await createStrapiInstance();
+    metrix = await createStrapiInstance();
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
   });
 
   describe('isKnexQuery', () => {
     test('knex query: true', () => {
-      const res = isKnexQuery(strapi.db.connection('strapi_core_store_settings'));
+      const res = isKnexQuery(metrix.db.connection('strapi_core_store_settings'));
       expect(res).toBe(true);
     });
 
     test('knex raw: true', () => {
-      const res = isKnexQuery(strapi.db.connection.raw('SELECT * FROM strapi_core_store_settings'));
+      const res = isKnexQuery(metrix.db.connection.raw('SELECT * FROM strapi_core_store_settings'));
       expect(res).toBe(true);
     });
 

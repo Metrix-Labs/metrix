@@ -3,9 +3,9 @@ import { prop } from 'lodash/fp';
 
 import type { Context } from '../types';
 
-export default ({ strapi, registry }: Context) => {
-  const { naming } = strapi.plugin('graphql').service('utils');
-  const { KINDS, GENERIC_MORPH_TYPENAME } = strapi.plugin('graphql').service('constants');
+export default ({ metrix, registry }: Context) => {
+  const { naming } = metrix.plugin('graphql').service('utils');
+  const { KINDS, GENERIC_MORPH_TYPENAME } = metrix.plugin('graphql').service('constants');
 
   return {
     buildGenericMorphDefinition() {
@@ -13,7 +13,7 @@ export default ({ strapi, registry }: Context) => {
         name: GENERIC_MORPH_TYPENAME,
 
         resolveType(obj: any) {
-          const contentType = strapi.getModel(obj.__type);
+          const contentType = metrix.getModel(obj.__type);
 
           if (!contentType) {
             return null;

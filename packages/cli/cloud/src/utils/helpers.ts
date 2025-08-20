@@ -7,7 +7,7 @@ const assertCwdContainsStrapiProject = (name: string) => {
   const logErrorAndExit = () => {
     console.log(
       `You need to run ${chalk.yellow(
-        `strapi ${name}`
+        `metrix ${name}`
       )} in a Strapi project. Make sure you are in the right directory.`
     );
     process.exit(1);
@@ -17,8 +17,8 @@ const assertCwdContainsStrapiProject = (name: string) => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const pkgJSON = require(`${process.cwd()}/package.json`);
     if (
-      !has('dependencies.@strapi/strapi', pkgJSON) &&
-      !has('devDependencies.@strapi/strapi', pkgJSON)
+      !has('dependencies.@metrix/metrix', pkgJSON) &&
+      !has('devDependencies.@metrix/metrix', pkgJSON)
     ) {
       logErrorAndExit();
     }

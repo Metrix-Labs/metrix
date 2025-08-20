@@ -1,10 +1,10 @@
 import { objectType, nonNull } from 'nexus';
 import { defaultTo, prop, pipe, identity } from 'lodash/fp';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 import type { Context } from '../types';
 
-export default ({ strapi }: Context) => {
-  const { service: getService } = strapi.plugin('graphql');
+export default ({ metrix }: Context) => {
+  const { service: getService } = metrix.plugin('graphql');
 
   const { naming } = getService('utils');
   const { RESPONSE_COLLECTION_META_TYPE_NAME, PAGINATION_TYPE_NAME } = getService('constants');
@@ -35,7 +35,7 @@ export default ({ strapi }: Context) => {
             resolve: resolvePagination,
           });
 
-          if (strapi.plugin('graphql').config('v4CompatibilityMode', false)) {
+          if (metrix.plugin('graphql').config('v4CompatibilityMode', false)) {
             t.nonNull.list.field('data', {
               deprecation: 'Use `nodes` field instead',
               type: nonNull(typeName),

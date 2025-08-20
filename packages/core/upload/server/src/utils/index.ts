@@ -21,5 +21,5 @@ type Services = {
 };
 
 export const getService = <TName extends keyof Services>(name: TName): Services[TName] => {
-  return strapi.plugin('upload').service<Services[TName]>(name);
+  return metrix.plugin('upload').service<Services[TName]>(name);
 };

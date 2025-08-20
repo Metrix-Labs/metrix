@@ -1,5 +1,5 @@
-import type { Core, Data, Modules, Schema } from '@strapi/types';
-import { errors, traverseEntity } from '@strapi/utils';
+import type { Core, Data, Modules, Schema } from '@metrixlabs/types';
+import { errors, traverseEntity } from '@metrixlabs/utils';
 import { omit } from 'lodash/fp';
 
 import { FIELDS_TO_IGNORE, HISTORY_VERSION_UID } from '../constants';
@@ -15,9 +15,9 @@ import { getService as getContentManagerService } from '../../utils';
 type HistoryVersionQueryResult = Omit<HistoryVersionDataResponse, 'locale'> &
   Pick<CreateHistoryVersion, 'locale'>;
 
-const createHistoryService = ({ strapi }: { strapi: Core.Strapi }) => {
-  const query = strapi.db.query(HISTORY_VERSION_UID);
-  const serviceUtils = createServiceUtils({ strapi });
+const createHistoryService = ({ metrix }: { metrix: Core.Strapi }) => {
+  const query = metrix.db.query(HISTORY_VERSION_UID);
+  const serviceUtils = createServiceUtils({ metrix });
 
   return {
     async createVersion(historyVersionData: HistoryVersions.CreateHistoryVersion) {
@@ -25,7 +25,7 @@ const createHistoryService = ({ strapi }: { strapi: Core.Strapi }) => {
         data: {
           ...historyVersionData,
           createdAt: new Date(),
-          createdBy: strapi.requestContext.get()?.state?.user.id,
+          createdBy: metrix.requestContext.get()?.state?.user.id,
         },
       });
     },
@@ -34,7 +34,7 @@ const createHistoryService = ({ strapi }: { strapi: Core.Strapi }) => {
       results: HistoryVersions.HistoryVersionDataResponse[];
       pagination: HistoryVersions.Pagination;
     }> {
-      const schema = strapi.getModel(params.query.contentType);
+      const schema = metrix.getModel(params.query.contentType);
       const isLocalizedContentType = serviceUtils.isLocalizedContentType(schema);
       const defaultLocale = await serviceUtils.getDefaultLocale();
 
@@ -87,7 +87,7 @@ const createHistoryService = ({ strapi }: { strapi: Core.Strapi }) => {
                       return null;
                     }
 
-                    return strapi.query('admin::user').findOne({
+                    return metrix.query('admin::user').findOne({
                       where: {
                         ...(userToPopulate.id ? { id: userToPopulate.id } : {}),
                         ...(userToPopulate.documentId
@@ -139,7 +139,7 @@ const createHistoryService = ({ strapi }: { strapi: Core.Strapi }) => {
           },
           {
             schema,
-            getModel: strapi.getModel.bind(strapi),
+            getModel: metrix.getModel.bind(metrix),
           },
           entry.data
         );
@@ -153,7 +153,7 @@ const createHistoryService = ({ strapi }: { strapi: Core.Strapi }) => {
             meta: {
               unknownAttributes: serviceUtils.getSchemaAttributesDiff(
                 result.schema,
-                strapi.getModel(params.query.contentType).attributes
+                metrix.getModel(params.query.contentType).attributes
               ),
             },
             locale: result.locale ? localeDictionary[result.locale] : null,
@@ -169,7 +169,7 @@ const createHistoryService = ({ strapi }: { strapi: Core.Strapi }) => {
 
     async restoreVersion(versionId: Data.ID) {
       const version = await query.findOne({ where: { id: versionId } });
-      const contentTypeSchemaAttributes = strapi.getModel(version.contentType).attributes;
+      const contentTypeSchemaAttributes = metrix.getModel(version.contentType).attributes;
       const schemaDiff = serviceUtils.getSchemaAttributesDiff(
         version.schema,
         contentTypeSchemaAttributes
@@ -238,13 +238,13 @@ const createHistoryService = ({ strapi }: { strapi: Core.Strapi }) => {
         },
         {
           schema,
-          getModel: strapi.getModel.bind(strapi),
+          getModel: metrix.getModel.bind(metrix),
         },
         dataWithoutAddedAttributes
       );
 
       const data = omit(['id', ...Object.keys(schemaDiff.removed)], dataWithoutMissingRelations);
-      const restoredDocument = await strapi.documents(version.contentType).update({
+      const restoredDocument = await metrix.documents(version.contentType).update({
         documentId: version.relatedDocumentId,
         locale: version.locale,
         data,

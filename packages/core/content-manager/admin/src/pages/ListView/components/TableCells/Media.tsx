@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 
 import { prefixFileUrlWithBackendUrl } from '../../../../utils/urls';
 
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrixlabs/types';
 
 interface MediaFile {
   id?: Data.ID;

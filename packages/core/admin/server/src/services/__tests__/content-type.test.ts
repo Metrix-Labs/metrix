@@ -57,7 +57,7 @@ describe('Content-Type', () => {
     },
   };
 
-  global.strapi = {
+  global.metrix = {
     components,
     contentTypes,
     admin: { services: { condition: { isValidCondition: () => true } } },
@@ -119,7 +119,7 @@ describe('Content-Type', () => {
     test.each(testsA)('%p level(s)', async (nestingLevel: any, expectedResult: any) => {
       const res = getNestedFields(contentTypes.user as any, {
         nestingLevel,
-        components: strapi.components,
+        components: metrix.components,
       });
       expect(res).toEqual(expectedResult);
     });
@@ -143,7 +143,7 @@ describe('Content-Type', () => {
     // @ts-expect-error
     test.each(testsB)('requiredOnly : %p -> %p', (existingFields: any, expectedResult: any) => {
       const res = getNestedFields(contentTypes.user as any, {
-        components: strapi.components,
+        components: metrix.components,
         requiredOnly: true,
         existingFields,
       });
@@ -224,7 +224,7 @@ describe('Content-Type', () => {
           contentTypes.user as any,
           {
             nestingLevel,
-            components: strapi.components,
+            components: metrix.components,
             withIntermediate: true,
           } as any
         );
@@ -356,7 +356,7 @@ describe('Content-Type', () => {
 
   describe('cleanPermissionFields', () => {
     beforeAll(() => {
-      global.strapi = merge(global.strapi, {
+      global.metrix = merge(global.metrix, {
         admin: {
           services: {
             permission: {

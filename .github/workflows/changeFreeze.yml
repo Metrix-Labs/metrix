@@ -8,7 +8,7 @@ permissions: read-all
 
 jobs:
   check-ownership:
-    name: 'Check if PR was created by a Strapi Team Member'
+    name: 'Check if PR was created by a Metrix Team Member'
     runs-on: ubuntu-latest
     outputs:
       isTeamMember: ${{ steps.get-user-teams-membership.outputs.isTeamMember }}

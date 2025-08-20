@@ -1,13 +1,13 @@
 import { get, merge } from 'lodash/fp';
-import { async, contentTypes, errors } from '@strapi/utils';
-import type { Internal } from '@strapi/types';
+import { async, contentTypes, errors } from '@metrixlabs/utils';
+import type { Internal } from '@metrixlabs/types';
 
 import type { Context } from '../../types';
 
 const { ApplicationError } = errors;
 
-export default ({ strapi }: Context) => {
-  const { service: getGraphQLService } = strapi.plugin('graphql');
+export default ({ metrix }: Context) => {
+  const { service: getGraphQLService } = metrix.plugin('graphql');
 
   const { isMorphRelation, isMedia } = getGraphQLService('utils').attributes;
   const { transformArgs } = getGraphQLService('builders').utils;
@@ -21,7 +21,7 @@ export default ({ strapi }: Context) => {
       contentTypeUID: Internal.UID.ContentType;
       attributeName: string;
     }) {
-      const contentType = strapi.getModel(contentTypeUID);
+      const contentType = metrix.getModel(contentTypeUID);
       const attribute: any = contentType.attributes[attributeName];
 
       if (!attribute) {
@@ -36,7 +36,7 @@ export default ({ strapi }: Context) => {
       const targetUID = isMediaAttribute ? 'plugin::upload.file' : attribute.target;
       const isToMany = isMediaAttribute ? attribute.multiple : attribute.relation.endsWith('Many');
 
-      const targetContentType = strapi.getModel(targetUID);
+      const targetContentType = metrix.getModel(targetUID);
 
       return async (parent: any, args: any = {}, context: any = {}) => {
         const { auth } = context.state;
@@ -46,18 +46,18 @@ export default ({ strapi }: Context) => {
           usePagination: true,
         });
 
-        await strapi.contentAPI.validate.query(transformedArgs, targetContentType, {
+        await metrix.contentAPI.validate.query(transformedArgs, targetContentType, {
           auth,
         });
 
-        const sanitizedQuery = await strapi.contentAPI.sanitize.query(
+        const sanitizedQuery = await metrix.contentAPI.sanitize.query(
           transformedArgs,
           targetContentType,
           {
             auth,
           }
         );
-        const transformedQuery = strapi.get('query-params').transform(targetUID, sanitizedQuery);
+        const transformedQuery = metrix.get('query-params').transform(targetUID, sanitizedQuery);
 
         const isTargetDraftAndPublishContentType =
           contentTypes.hasDraftAndPublish(targetContentType);
@@ -79,11 +79,11 @@ export default ({ strapi }: Context) => {
 
         // Sign media URLs if upload plugin is available and using private provider
         const data = await (async () => {
-          const rawData = await strapi.db
+          const rawData = await metrix.db
             .query(contentTypeUID)
             .load(parent, attributeName, dbQuery);
-          if (isMediaAttribute && strapi.plugin('upload')) {
-            const { signFileUrls } = strapi.plugin('upload').service('file');
+          if (isMediaAttribute && metrix.plugin('upload')) {
+            const { signFileUrls } = metrix.plugin('upload').service('file');
 
             if (Array.isArray(rawData)) {
               return async.map(rawData, (item: any) => signFileUrls(item));
@@ -109,7 +109,7 @@ export default ({ strapi }: Context) => {
           // Helpers used for the data cleanup
           const wrapData = (dataToWrap: any) => ({ [attributeName]: dataToWrap });
           const sanitizeData = (dataToSanitize: any) => {
-            return strapi.contentAPI.sanitize.output(dataToSanitize, contentType, { auth });
+            return metrix.contentAPI.sanitize.output(dataToSanitize, contentType, { auth });
           };
           const unwrapData = get(attributeName);
 

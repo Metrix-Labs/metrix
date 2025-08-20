@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { useNotification, useAPIErrorHandler } from '@strapi/admin/strapi-admin';
+import { useNotification, useAPIErrorHandler } from '@metrixlabs/admin/metrix-admin';
 
 import { useGetInitialDataQuery } from '../services/init';
 
 import type { Component } from '../../../shared/contracts/components';
 import type { ContentType } from '../../../shared/contracts/content-types';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * useContentTypeSchema

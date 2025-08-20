@@ -1,4 +1,4 @@
-import { ConfirmDialog } from '@strapi/admin/strapi-admin';
+import { ConfirmDialog } from '@metrixlabs/admin/metrix-admin';
 import { Dialog } from '@strapi/design-system';
 
 interface RemoveFolderDialogProps {

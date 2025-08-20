@@ -1,5 +1,5 @@
 // TODO: find a better naming convention for the file that was an index file before
-import { useNotification, useClipboard } from '@strapi/admin/strapi-admin';
+import { useNotification, useClipboard } from '@metrixlabs/admin/metrix-admin';
 import { IconButton } from '@strapi/design-system';
 import { Link as LinkIcon } from '@strapi/icons';
 import { useIntl } from 'react-intl';

@@ -3,7 +3,7 @@
 // TODO: move to utils
 export const wrapInTransaction = (test) => {
   return async (...args) => {
-    await strapi.db.transaction(async ({ trx, rollback }) => {
+    await metrix.db.transaction(async ({ trx, rollback }) => {
       await test(trx, ...args);
       await rollback();
     });

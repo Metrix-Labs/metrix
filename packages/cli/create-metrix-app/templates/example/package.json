@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "build": "metrix build",
+    "deploy": "metrix deploy",
+    "develop": "metrix develop",
+    "dev": "metrix develop",
+    "console": "metrix console",
+    "start": "metrix start",
+    "strapi": "metrix",
+    "upgrade": "npx @metrix/upgrade latest",
+    "upgrade:dry": "npx @metrix/upgrade latest --dry",
+    "seed:example": "node ./scripts/seed.js"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "mime-types": "^2.1.27"
+  }
+}

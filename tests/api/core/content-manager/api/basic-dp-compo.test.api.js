@@ -3,12 +3,12 @@
 // Test a simple default API with no relations
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
-const { async } = require('@strapi/utils');
+const { async } = require('@metrix/utils');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 let rq;
 const data = {
   productsWithCompoAndDP: [],
@@ -62,8 +62,8 @@ describe('CM API - Basic + compo', () => {
   beforeAll(async () => {
     await builder.addComponent(compo).addContentType(productWithCompoAndDP).build();
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     // Create new locales
     for (const extraLocale of extraLocales) {
@@ -80,7 +80,7 @@ describe('CM API - Basic + compo', () => {
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

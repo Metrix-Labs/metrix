@@ -82,7 +82,7 @@ module.exports = async () => {
       subCategory: 'options',
     },
   ];
-  await strapi.service('admin::permission').actionProvider.registerMany(actions);
+  await metrix.service('admin::permission').actionProvider.registerMany(actions);
 };
 ```
 
@@ -108,7 +108,7 @@ A condition contains the following information:
 | **name**        | A name that has to be unique within the plugin                                                                                                                                                     | string | required | -             | `'is-creator'` |
 | **plugin**      | Name of the plugin that register the condition                                                                                                                                                     | string | -        | `'api'`       | `'admin'`      |
 | **category**    | Name of the category. Conditions can be grouped into categories available in the admin panel                                                                                                       | string | -        | `'Default'`   | `'admin'`      |
-| **handler**     | A function used to verify the condition (see [docs.strapi.io](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/rbac.html#using-the-condition-handler)) | string | required | -             | `'admin'`      |
+| **handler**     | A function used to verify the condition (see [docs.metrix.io](https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/optional/rbac.html#using-the-condition-handler)) | string | required | -             | `'admin'`      |
 
 :::note
 Currently the user can choose to apply a condition on any action. There is no way to define a list of actions on which the condition can be applied to. This is why it is possible to set the condition `isCreator` on a the action `plugin::content-manager.explorer.create` even if it doesn't make sense.
@@ -136,11 +136,11 @@ module.exports = async () => {
       handler: (user) => ({ 'createdBy.id': user.id }),
     },
   ];
-  await strapi.service('admin::permission').conditionProvider.registerMany(conditions);
+  await metrix.service('admin::permission').conditionProvider.registerMany(conditions);
 };
 ```
 
-More information on how the handler works [here](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/rbac.html#using-the-condition-handler).
+More information on how the handler works [here](https://docs.metrix.io/developer-docs/latest/setup-deployment-guides/configurations/optional/rbac.html#using-the-condition-handler).
 
 ## Permissions
 

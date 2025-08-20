@@ -1,6 +1,6 @@
 import type Koa from 'koa';
-import { errors } from '@strapi/utils';
-import type { Schema } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Schema } from '@metrixlabs/types';
 import { RELEASE_MODEL_UID } from '../constants';
 import { validateRelease, validatefindByDocumentAttachedParams } from './validation/release';
 import type {
@@ -25,20 +25,20 @@ const releaseController = {
    * If `hasEntryAttached` is false, it will return all releases that don't have the entry attached.
    */
   async findByDocumentAttached(ctx: Koa.Context) {
-    const permissionsManager = strapi.service('admin::permission').createPermissionsManager({
+    const permissionsManager = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: RELEASE_MODEL_UID,
     });
     await permissionsManager.validateQuery(ctx.query);
-    const releaseService = getService('release', { strapi });
+    const releaseService = getService('release', { metrix });
     const query = await permissionsManager.sanitizeQuery(ctx.query);
 
     await validatefindByDocumentAttachedParams(query);
 
     // If entry is a singleType, we need to manually add the entryDocumentId to the query
-    const model = strapi.getModel(query.contentType) as Schema.ContentType;
+    const model = metrix.getModel(query.contentType) as Schema.ContentType;
     if (model.kind && model.kind === 'singleType') {
-      const document = await strapi.db.query(model.uid).findOne({ select: ['documentId'] });
+      const document = await metrix.db.query(model.uid).findOne({ select: ['documentId'] });
 
       if (!document) {
         throw new errors.NotFoundError(`No entry found for contentType ${query.contentType}`);
@@ -106,14 +106,14 @@ const releaseController = {
   },
 
   async findPage(ctx: Koa.Context) {
-    const permissionsManager = strapi.service('admin::permission').createPermissionsManager({
+    const permissionsManager = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: RELEASE_MODEL_UID,
     });
 
     await permissionsManager.validateQuery(ctx.query);
 
-    const releaseService = getService('release', { strapi });
+    const releaseService = getService('release', { metrix });
 
     const query: GetReleases.Request['query'] = await permissionsManager.sanitizeQuery(ctx.query);
     const { results, pagination } = await releaseService.findPage(query);
@@ -131,7 +131,7 @@ const releaseController = {
       };
     });
 
-    const pendingReleasesCount = await strapi.db.query(RELEASE_MODEL_UID).count({
+    const pendingReleasesCount = await metrix.db.query(RELEASE_MODEL_UID).count({
       where: {
         releasedAt: null,
       },
@@ -143,8 +143,8 @@ const releaseController = {
   async findOne(ctx: Koa.Context) {
     const id: GetRelease.Request['params']['id'] = ctx.params.id;
 
-    const releaseService = getService('release', { strapi });
-    const releaseActionService = getService('release-action', { strapi });
+    const releaseService = getService('release', { metrix });
+    const releaseActionService = getService('release-action', { metrix });
     const release = await releaseService.findOne(id, { populate: ['createdBy'] });
     if (!release) {
       throw new errors.NotFoundError(`Release not found for id: ${id}`);
@@ -158,7 +158,7 @@ const releaseController = {
     const sanitizedRelease = {
       ...release,
       createdBy: release.createdBy
-        ? strapi.service('admin::user').sanitizeUser(release.createdBy)
+        ? metrix.service('admin::user').sanitizeUser(release.createdBy)
         : null,
     };
 
@@ -182,7 +182,7 @@ const releaseController = {
       throw new errors.ValidationError('Missing required query parameters');
     }
 
-    const releaseService = getService('release', { strapi });
+    const releaseService = getService('release', { metrix });
 
     const releasesWithActions = await releaseService.findMany({
       where: {
@@ -234,10 +234,10 @@ const releaseController = {
 
     await validateRelease(releaseArgs);
 
-    const releaseService = getService('release', { strapi });
+    const releaseService = getService('release', { metrix });
     const release = await releaseService.create(releaseArgs, { user });
 
-    const permissionsManager = strapi.service('admin::permission').createPermissionsManager({
+    const permissionsManager = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: RELEASE_MODEL_UID,
     });
@@ -254,10 +254,10 @@ const releaseController = {
 
     await validateRelease(releaseArgs);
 
-    const releaseService = getService('release', { strapi });
+    const releaseService = getService('release', { metrix });
     const release = await releaseService.update(id, releaseArgs, { user });
 
-    const permissionsManager = strapi.service('admin::permission').createPermissionsManager({
+    const permissionsManager = metrix.service('admin::permission').createPermissionsManager({
       ability: ctx.state.userAbility,
       model: RELEASE_MODEL_UID,
     });
@@ -270,7 +270,7 @@ const releaseController = {
   async delete(ctx: Koa.Context) {
     const id: DeleteRelease.Request['params']['id'] = ctx.params.id;
 
-    const releaseService = getService('release', { strapi });
+    const releaseService = getService('release', { metrix });
     const release = await releaseService.delete(id);
 
     ctx.body = {
@@ -281,8 +281,8 @@ const releaseController = {
   async publish(ctx: Koa.Context) {
     const id: PublishRelease.Request['params']['id'] = ctx.params.id;
 
-    const releaseService = getService('release', { strapi });
-    const releaseActionService = getService('release-action', { strapi });
+    const releaseService = getService('release', { metrix });
+    const releaseActionService = getService('release-action', { metrix });
     const release = await releaseService.publish(id);
 
     const [countPublishActions, countUnpublishActions] = await Promise.all([

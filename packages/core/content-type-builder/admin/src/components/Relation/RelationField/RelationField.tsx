@@ -5,7 +5,7 @@ import { GenericInput } from '../../GenericInputs';
 
 import { RelationTargetPicker } from './RelationTargetPicker/RelationTargetPicker';
 
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrixlabs/types';
 
 interface RelationFormBoxProps {
   disabled?: boolean;

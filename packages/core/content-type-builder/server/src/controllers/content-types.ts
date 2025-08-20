@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import type { Context } from 'koa';
 import type {} from 'koa-body';
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrixlabs/types';
 import { getService } from '../utils';
 import {
   validateContentTypeInput,
@@ -21,15 +21,15 @@ export default {
 
     const contentTypeService = getService('content-types');
 
-    const contentTypes = Object.keys(strapi.contentTypes)
+    const contentTypes = Object.keys(metrix.contentTypes)
       .filter(
         (uid) =>
           !kind ||
-          _.get(strapi.contentTypes[uid as Internal.UID.ContentType], 'kind', 'collectionType') ===
+          _.get(metrix.contentTypes[uid as Internal.UID.ContentType], 'kind', 'collectionType') ===
             kind
       )
       .map((uid) =>
-        contentTypeService.formatContentType(strapi.contentTypes[uid as Internal.UID.ContentType])
+        contentTypeService.formatContentType(metrix.contentTypes[uid as Internal.UID.ContentType])
       );
 
     ctx.send({
@@ -40,7 +40,7 @@ export default {
   getContentType(ctx: Context) {
     const { uid } = ctx.params;
 
-    const contentType = strapi.contentTypes[uid];
+    const contentType = metrix.contentTypes[uid];
 
     if (!contentType) {
       return ctx.send({ error: 'contentType.notFound' }, 404);
@@ -61,7 +61,7 @@ export default {
     }
 
     try {
-      strapi.reload.isWatching = false;
+      metrix.reload.isWatching = false;
 
       const contentTypeService = getService('content-types');
 
@@ -76,18 +76,18 @@ export default {
         },
       };
 
-      if (_.isEmpty(strapi.apis)) {
-        await strapi.telemetry.send('didCreateFirstContentType', metricsPayload);
+      if (_.isEmpty(metrix.apis)) {
+        await metrix.telemetry.send('didCreateFirstContentType', metricsPayload);
       } else {
-        await strapi.telemetry.send('didCreateContentType', metricsPayload);
+        await metrix.telemetry.send('didCreateContentType', metricsPayload);
       }
 
-      setImmediate(() => strapi.reload());
+      setImmediate(() => metrix.reload());
 
       ctx.send({ data: { uid: contentType.uid } }, 201);
     } catch (err) {
-      strapi.log.error(err);
-      await strapi.telemetry.send('didNotCreateContentType', {
+      metrix.log.error(err);
+      await metrix.telemetry.send('didNotCreateContentType', {
         eventProperties: { error: (err as Error).message || err },
       });
       ctx.send({ error: (err as Error).message || 'Unknown error' }, 400);
@@ -98,7 +98,7 @@ export default {
     const { uid } = ctx.params;
     const body = ctx.request.body as any;
 
-    if (!_.has(strapi.contentTypes, uid)) {
+    if (!_.has(metrix.contentTypes, uid)) {
       return ctx.send({ error: 'contentType.notFound' }, 404);
     }
 
@@ -109,7 +109,7 @@ export default {
     }
 
     try {
-      strapi.reload.isWatching = false;
+      metrix.reload.isWatching = false;
 
       const contentTypeService = getService('content-types');
 
@@ -118,11 +118,11 @@ export default {
         components: body.components,
       });
 
-      setImmediate(() => strapi.reload());
+      setImmediate(() => metrix.reload());
 
       ctx.send({ data: { uid: component.uid } }, 201);
     } catch (error) {
-      strapi.log.error(error);
+      metrix.log.error(error);
       ctx.send({ error: (error as Error)?.message || 'Unknown error' }, 400);
     }
   },
@@ -130,22 +130,22 @@ export default {
   async deleteContentType(ctx: Context) {
     const { uid } = ctx.params;
 
-    if (!_.has(strapi.contentTypes, uid)) {
+    if (!_.has(metrix.contentTypes, uid)) {
       return ctx.send({ error: 'contentType.notFound' }, 404);
     }
 
     try {
-      strapi.reload.isWatching = false;
+      metrix.reload.isWatching = false;
 
       const contentTypeService = getService('content-types');
 
       const component = await contentTypeService.deleteContentType(uid);
 
-      setImmediate(() => strapi.reload());
+      setImmediate(() => metrix.reload());
 
       ctx.send({ data: { uid: component.uid } });
     } catch (error) {
-      strapi.log.error(error);
+      metrix.log.error(error);
       ctx.send({ error: (error as Error)?.message || 'Unknown error' }, 400);
     }
   },

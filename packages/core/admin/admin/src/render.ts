@@ -5,7 +5,7 @@ import { StrapiApp, StrapiAppConstructorArgs } from './StrapiApp';
 import { getFetchClient } from './utils/getFetchClient';
 import { createAbsoluteUrl } from './utils/urls';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 
 interface RenderAdminArgs {
   customisations: {
@@ -22,20 +22,20 @@ const renderAdmin = async (
   { plugins, customisations, features }: RenderAdminArgs
 ) => {
   if (!mountNode) {
-    throw new Error('[@strapi/admin]: Could not find the root element to mount the admin app');
+    throw new Error('[@metrix/admin]: Could not find the root element to mount the admin app');
   }
 
-  window.strapi = {
+  window.metrix = {
     /**
-     * This ENV variable is passed from the strapi instance, by default no url is set
+     * This ENV variable is passed from the metrix instance, by default no url is set
      * in the config and therefore the instance returns you an empty string so URLs are relative.
      *
      * To ensure that the backendURL is always set, we use the window.location.origin as a fallback.
      */
-    backendURL: createAbsoluteUrl(process.env.STRAPI_ADMIN_BACKEND_URL),
+    backendURL: createAbsoluteUrl(process.env.METRIX_ADMIN_BACKEND_URL),
     isEE: false,
     isTrial: false,
-    telemetryDisabled: process.env.STRAPI_TELEMETRY_DISABLED === 'true',
+    telemetryDisabled: process.env.METRIX_TELEMETRY_DISABLED === 'true',
     future: {
       isEnabled: (name: keyof NonNullable<Modules.Features.FeaturesConfig['future']>) => {
         return features?.future?.[name] === true;
@@ -61,7 +61,7 @@ const renderAdmin = async (
 
   const { get } = getFetchClient();
 
-  interface ProjectType extends Pick<Window['strapi'], 'flags'> {
+  interface ProjectType extends Pick<Window['metrix'], 'flags'> {
     isEE: boolean;
     isTrial: boolean;
     features: {
@@ -76,14 +76,14 @@ const renderAdmin = async (
       },
     } = await get<{ data: ProjectType }>('/admin/project-type');
 
-    window.strapi.isEE = isEE;
-    window.strapi.isTrialLicense = isTrial;
-    window.strapi.flags = flags;
-    window.strapi.features = {
-      ...window.strapi.features,
+    window.metrix.isEE = isEE;
+    window.metrix.isTrialLicense = isTrial;
+    window.metrix.flags = flags;
+    window.metrix.features = {
+      ...window.metrix.features,
       isEnabled: (featureName) => features.some((feature) => feature.name === featureName),
     };
-    window.strapi.projectType = isEE ? 'Enterprise' : 'Community';
+    window.metrix.projectType = isEE ? 'Enterprise' : 'Community';
   } catch (err) {
     /**
      * If this fails, we simply don't activate any EE features.

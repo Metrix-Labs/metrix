@@ -5,7 +5,7 @@ import type { Knex } from 'knex';
 import type { Database } from '..';
 import type { Schema, Table, SchemaDiff, TableDiff, ForeignKey, Index, Column } from './types';
 
-const debug = createDebug('strapi::database');
+const debug = createDebug('metrix::database');
 
 export default (db: Database) => {
   const helpers = createHelpers(db);

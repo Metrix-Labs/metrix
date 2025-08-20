@@ -4,10 +4,10 @@ const fs = require('fs');
 const path = require('path');
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 
-let strapi;
+let metrix;
 let rq;
 let baseRq;
 
@@ -77,18 +77,18 @@ describe('Not required dynamiczone', () => {
       .addContentType(ct)
       .build();
 
-    strapi = await createStrapiInstance();
+    metrix = await createStrapiInstance();
 
-    baseRq = await createAuthRequest({ strapi });
+    baseRq = await createAuthRequest({ metrix });
 
-    rq = await createAuthRequest({ strapi });
+    rq = await createAuthRequest({ metrix });
     rq.setURLPrefix(
       '/content-manager/collection-types/api::withdynamiczonemedia.withdynamiczonemedia'
     );
   });
 
   afterAll(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

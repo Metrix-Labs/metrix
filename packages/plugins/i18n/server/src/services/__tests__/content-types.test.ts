@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import contentTypesServiceFactory from '../content-types';
 
 const {
@@ -142,7 +142,7 @@ describe('content-types service', () => {
   describe('getValidLocale', () => {
     test('set default locale if the provided one is nil', async () => {
       const getDefaultLocale = jest.fn(() => Promise.resolve('en'));
-      global.strapi = {
+      global.metrix = {
         plugins: {
           i18n: {
             services: {
@@ -160,7 +160,7 @@ describe('content-types service', () => {
 
     test('set locale to the provided one if it exists', async () => {
       const findByCode = jest.fn(() => Promise.resolve('en'));
-      global.strapi = {
+      global.metrix = {
         plugins: {
           i18n: {
             services: {
@@ -178,7 +178,7 @@ describe('content-types service', () => {
 
     test("throw if provided locale doesn't exist", async () => {
       const findByCode = jest.fn(() => Promise.resolve(undefined));
-      global.strapi = {
+      global.metrix = {
         plugins: {
           i18n: {
             services: {
@@ -296,7 +296,7 @@ describe('content-types service', () => {
         },
       };
 
-      global.strapi = {
+      global.metrix = {
         components: {
           compo: compoModel,
         },
@@ -388,7 +388,7 @@ describe('content-types service', () => {
       };
 
       const getModel = jest.fn(() => modelDef);
-      global.strapi = { getModel } as any;
+      global.metrix = { getModel } as any;
 
       fillNonLocalizedAttributes(entry, relatedEntry, { model: 'model' });
 
@@ -475,7 +475,7 @@ describe('content-types service', () => {
           },
         })[model];
 
-      global.strapi = { getModel } as any;
+      global.metrix = { getModel } as any;
     });
 
     test('Populate component, dz and media and not relations', () => {

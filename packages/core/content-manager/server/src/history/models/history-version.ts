@@ -1,4 +1,4 @@
-import type { Model } from '@strapi/database';
+import type { Model } from '@metrixlabs/database';
 import { HISTORY_VERSION_UID } from '../constants';
 
 const historyVersion: Model = {

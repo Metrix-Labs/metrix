@@ -38,7 +38,7 @@ const BaseHeaderLayout = React.forwardRef<HTMLDivElement, BaseHeaderLayoutProps>
           shadow="tableShadow"
           width={`${width}px`}
           zIndex={3}
-          data-strapi-header-sticky
+          data-metrix-header-sticky
         >
           <Flex justifyContent="space-between">
             <Flex>
@@ -71,7 +71,7 @@ const BaseHeaderLayout = React.forwardRef<HTMLDivElement, BaseHeaderLayoutProps>
         paddingBottom={8}
         paddingTop={navigationAction ? 6 : 8}
         background="neutral100"
-        data-strapi-header
+        data-metrix-header
       >
         {navigationAction ? <Box paddingBottom={2}>{navigationAction}</Box> : null}
         <Flex justifyContent="space-between">

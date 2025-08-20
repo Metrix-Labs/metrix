@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import type { OpenAPIV3_1 } from 'openapi-types';
 
 import type { Assembler } from '../assemblers';
@@ -41,7 +41,7 @@ export class OpenAPIGenerator {
     config: OpenAPIGeneratorConfig,
 
     // Dependencies
-    strapi: Core.Strapi,
+    metrix: Core.Strapi,
     routeCollector: RouteCollector,
 
     // Factories
@@ -53,7 +53,7 @@ export class OpenAPIGenerator {
     this._postProcessors = config.postProcessors ?? [];
 
     // Dependencies
-    this._strapi = strapi;
+    this._strapi = metrix;
     this._routeCollector = routeCollector;
 
     // Factories
@@ -82,12 +82,12 @@ export class OpenAPIGenerator {
     return { document: data as OpenAPIV3_1.Document, durationMs: stats.time.elapsedTime };
   }
 
-  private _initContext(strapi: Core.Strapi): DocumentContext {
+  private _initContext(metrix: Core.Strapi): DocumentContext {
     debug('collecting registered routes...');
     const routes = this._routeCollector.collect();
 
     debug('creating the initial document generation context...');
-    return this._contextFactory.create({ strapi, routes });
+    return this._contextFactory.create({ metrix, routes });
   }
 
   private _bootstrap(context: DocumentContext) {

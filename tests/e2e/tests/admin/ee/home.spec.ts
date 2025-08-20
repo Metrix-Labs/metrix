@@ -8,7 +8,7 @@ import {
   navToHeader,
 } from '../../../utils/shared';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 
 describeOnCondition(edition === 'EE')('Home (EE)', () => {
   test.beforeEach(async ({ page }) => {

@@ -44,9 +44,9 @@ describe('schema', () => {
         options: {
           from: {
             name: 'example-name',
-            email: 'hi@strapi.io',
+            email: 'hi@metrix.io',
           },
-          response_email: 'hi@strapi.io',
+          response_email: 'hi@metrix.io',
           object: 'example-object',
           message: 'example-message',
         },
@@ -58,7 +58,7 @@ describe('schema', () => {
         options: {
           from: {
             name: 'example-name',
-            email: 'hi@strapi.io',
+            email: 'hi@metrix.io',
           },
           response_email: '',
           object: 'example-object',

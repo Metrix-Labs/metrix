@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { intersection } from 'lodash/fp';
-import { contentTypes as contentTypesUtils } from '@strapi/utils';
+import { contentTypes as contentTypesUtils } from '@metrixlabs/utils';
 
 const { getNonVisibleAttributes, getWritableAttributes } = contentTypesUtils;
 const { PUBLISHED_AT_ATTRIBUTE, CREATED_BY_ATTRIBUTE, UPDATED_BY_ATTRIBUTE } =
@@ -178,7 +178,7 @@ const getDefaultMainField = (schema: any) => findFirstStringAttribute(schema) ||
 const getSortableAttributes = (schema: any) => {
   const validAttributes = Object.keys(schema.attributes).filter((key) => isListable(schema, key));
 
-  const model = strapi.getModel(schema.uid);
+  const model = metrix.getModel(schema.uid);
   const nonVisibleWritableAttributes = intersection(
     getNonVisibleAttributes(model),
     getWritableAttributes(model)

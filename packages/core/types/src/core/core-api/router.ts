@@ -5,7 +5,7 @@ import type * as UID from '../../uid';
 
 import type { Strapi } from '..';
 
-export type MiddlewareFactory = (config: any, ctx: { strapi: Strapi }) => Middleware | null;
+export type MiddlewareFactory = (config: any, ctx: { metrix: Strapi }) => Middleware | null;
 
 export type Middleware = KoaMiddleware | MiddlewareFactory;
 
@@ -16,7 +16,7 @@ export interface PolicyContext extends ExtendableContext {
 export type PolicyImplementation<TCfg = unknown> = (
   ctx: PolicyContext,
   cfg: TCfg,
-  { strapi }: { strapi: Strapi }
+  { metrix }: { metrix: Strapi }
 ) => boolean | undefined;
 
 type HandlerConfig = {

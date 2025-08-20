@@ -7,7 +7,7 @@ import { useDataManager } from '../DataManager/useDataManager';
 
 import { ComponentIcon } from './ComponentIcon';
 
-import type { Internal, Struct } from '@strapi/types';
+import type { Internal, Struct } from '@metrixlabs/types';
 
 interface ComponentCardProps {
   component: string;

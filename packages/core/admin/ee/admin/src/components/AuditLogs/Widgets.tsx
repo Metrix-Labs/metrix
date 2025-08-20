@@ -1,4 +1,4 @@
-import { useTracking, Widget } from '@strapi/admin/strapi-admin';
+import { useTracking, Widget } from '@metrixlabs/admin/metrix-admin';
 import { Box, IconButton, Table, Tbody, Td, Tr, Typography } from '@strapi/design-system';
 import { Eye } from '@strapi/icons';
 import { useIntl } from 'react-intl';

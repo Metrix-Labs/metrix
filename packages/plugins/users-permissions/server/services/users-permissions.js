@@ -7,7 +7,7 @@ const {
   template: { createStrictInterpolationRegExp },
   errors,
   objects,
-} = require('@strapi/utils');
+} = require('@metrixlabs/utils');
 
 const { getService } = require('../utils');
 
@@ -33,7 +33,7 @@ const transformRoutePrefixFor = (pluginName) => (route) => {
   };
 };
 
-module.exports = ({ strapi }) => ({
+module.exports = ({ metrix }) => ({
   getActions({ defaultEnable = false } = {}) {
     const actionMap = {};
 
@@ -45,7 +45,7 @@ module.exports = ({ strapi }) => ({
       return action[Symbol.for('__type__')].includes('content-api');
     };
 
-    _.forEach(strapi.apis, (api, apiName) => {
+    _.forEach(metrix.apis, (api, apiName) => {
       const controllers = _.reduce(
         api.controllers,
         (acc, controller, controllerName) => {
@@ -72,7 +72,7 @@ module.exports = ({ strapi }) => ({
       }
     });
 
-    _.forEach(strapi.plugins, (plugin, pluginName) => {
+    _.forEach(metrix.plugins, (plugin, pluginName) => {
       const controllers = _.reduce(
         plugin.controllers,
         (acc, controller, controllerName) => {
@@ -105,7 +105,7 @@ module.exports = ({ strapi }) => ({
   async getRoutes() {
     const routesMap = {};
 
-    _.forEach(strapi.apis, (api, apiName) => {
+    _.forEach(metrix.apis, (api, apiName) => {
       const routes = _.flatMap(api.routes, (route) => {
         if (_.has(route, 'routes')) {
           return route.routes;
@@ -118,14 +118,14 @@ module.exports = ({ strapi }) => ({
         return;
       }
 
-      const apiPrefix = strapi.config.get('api.rest.prefix');
+      const apiPrefix = metrix.config.get('api.rest.prefix');
       routesMap[`api::${apiName}`] = routes.map((route) => ({
         ...route,
         path: urlJoin(apiPrefix, route.path),
       }));
     });
 
-    _.forEach(strapi.plugins, (plugin, pluginName) => {
+    _.forEach(metrix.plugins, (plugin, pluginName) => {
       const transformPrefix = transformRoutePrefixFor(pluginName);
 
       const routes = _.flatMap(plugin.routes, (route) => {
@@ -140,7 +140,7 @@ module.exports = ({ strapi }) => ({
         return;
       }
 
-      const apiPrefix = strapi.config.get('api.rest.prefix');
+      const apiPrefix = metrix.config.get('api.rest.prefix');
       routesMap[`plugin::${pluginName}`] = routes.map((route) => ({
         ...route,
         path: urlJoin(apiPrefix, route.path),
@@ -151,12 +151,12 @@ module.exports = ({ strapi }) => ({
   },
 
   async syncPermissions() {
-    const roles = await strapi.db.query('plugin::users-permissions.role').findMany();
-    const dbPermissions = await strapi.db.query('plugin::users-permissions.permission').findMany();
+    const roles = await metrix.db.query('plugin::users-permissions.role').findMany();
+    const dbPermissions = await metrix.db.query('plugin::users-permissions.permission').findMany();
 
     const permissionsFoundInDB = _.uniq(_.map(dbPermissions, 'action'));
 
-    const appActions = _.flatMap(strapi.apis, (api, apiName) => {
+    const appActions = _.flatMap(metrix.apis, (api, apiName) => {
       return _.flatMap(api.controllers, (controller, controllerName) => {
         return _.keys(controller).map((actionName) => {
           return `api::${apiName}.${controllerName}.${actionName}`;
@@ -164,7 +164,7 @@ module.exports = ({ strapi }) => ({
       });
     });
 
-    const pluginsActions = _.flatMap(strapi.plugins, (plugin, pluginName) => {
+    const pluginsActions = _.flatMap(metrix.plugins, (plugin, pluginName) => {
       return _.flatMap(plugin.controllers, (controller, controllerName) => {
         return _.keys(controller).map((actionName) => {
           return `plugin::${pluginName}.${controllerName}.${actionName}`;
@@ -178,7 +178,7 @@ module.exports = ({ strapi }) => ({
 
     await Promise.all(
       toDelete.map((action) => {
-        return strapi.db
+        return metrix.db
           .query('plugin::users-permissions.permission')
           .delete({ where: { action } });
       })
@@ -194,7 +194,7 @@ module.exports = ({ strapi }) => ({
 
         await Promise.all(
           toCreate.map((action) => {
-            return strapi.db.query('plugin::users-permissions.permission').create({
+            return metrix.db.query('plugin::users-permissions.permission').create({
               data: {
                 action,
                 role: role.id,
@@ -207,10 +207,10 @@ module.exports = ({ strapi }) => ({
   },
 
   async initialize() {
-    const roleCount = await strapi.db.query('plugin::users-permissions.role').count();
+    const roleCount = await metrix.db.query('plugin::users-permissions.role').count();
 
     if (roleCount === 0) {
-      await strapi.db.query('plugin::users-permissions.role').create({
+      await metrix.db.query('plugin::users-permissions.role').create({
         data: {
           name: 'Authenticated',
           description: 'Default role given to authenticated user.',
@@ -218,7 +218,7 @@ module.exports = ({ strapi }) => ({
         },
       });
 
-      await strapi.db.query('plugin::users-permissions.role').create({
+      await metrix.db.query('plugin::users-permissions.role').create({
         data: {
           name: 'Public',
           description: 'Default role given to unauthenticated user.',
@@ -231,7 +231,7 @@ module.exports = ({ strapi }) => ({
   },
 
   async updateUserRole(user, role) {
-    return strapi.db
+    return metrix.db
       .query('plugin::users-permissions.user')
       .update({ where: { id: user.id }, data: { role } });
   },

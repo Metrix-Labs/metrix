@@ -1,4 +1,4 @@
-import { unstable_useDocumentLayout as useDocumentLayout } from '@strapi/content-manager/strapi-admin';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/metrix-admin';
 import { Flex } from '@strapi/design-system';
 import { useParams } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ const Header = () => {
   } = useDocumentLayout(slug);
 
   if (
-    !window.strapi.isEE ||
+    !window.metrix.isEE ||
     !options?.reviewWorkflows ||
     (collectionType !== 'single-types' && !id) ||
     id === 'create'

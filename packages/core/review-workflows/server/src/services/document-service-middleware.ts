@@ -1,5 +1,5 @@
-import type { Modules } from '@strapi/types';
-import { errors } from '@strapi/utils';
+import type { Modules } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 
 import { isNil } from 'lodash/fp';
 import { ENTITY_STAGE_ATTRIBUTE } from '../constants/workflows';
@@ -15,7 +15,7 @@ type Middleware = Modules.Documents.Middleware.Middleware;
  * @returns {Object}
  */
 const getEntityStage = async (uid: any, id: any, params: any) => {
-  const entity = await strapi.documents(uid).findOne({
+  const entity = await metrix.documents(uid).findOne({
     ...params,
     documentId: id,
     status: 'draft',
@@ -90,9 +90,9 @@ const handleStageOnUpdate: Middleware = async (ctx, next) => {
 
   // Stage might be null if field is not populated
   if (updatedStage && previousStage?.id && previousStage.id !== updatedStage.id) {
-    const model = strapi.getModel(ctx.contentType.uid);
+    const model = metrix.getModel(ctx.contentType.uid);
 
-    strapi.eventHub.emit(WORKFLOW_UPDATE_STAGE, {
+    metrix.eventHub.emit(WORKFLOW_UPDATE_STAGE, {
       model: model.modelName,
       uid: model.uid,
       // TODO v6: Rename to "entry", which is what is used for regular CRUD updates

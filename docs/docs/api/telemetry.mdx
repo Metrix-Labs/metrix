@@ -19,19 +19,19 @@ Current state: **Stable**
 
 :::
 
-The telemetry service is responsible for collecting and sending anonymous usage data to Strapi. This service is disabled by default, but can be enabled or disabled via configuration.
+The telemetry service is responsible for collecting and sending anonymous usage data to Metrix. This service is disabled by default, but can be enabled or disabled via configuration.
 
 ## Usage Information
 
-The collected usage data is used to help Strapi improve the product by identifying areas of improvement, tracking feature adoption, and measuring performance. You can learn more about the usage data that is collected by visiting the following link:
+The collected usage data is used to help Metrix improve the product by identifying areas of improvement, tracking feature adoption, and measuring performance. You can learn more about the usage data that is collected by visiting the following link:
 
-https://docs.strapi.io/developer-docs/latest/getting-started/usage-information.html
+https://docs.metrix.io/developer-docs/latest/getting-started/usage-information.html
 
 ## Module: Telemetry Service
 
 ### createTelemetryInstance()
 
-- strapi: [<Type>Strapi</Type>](Strapi) - A strapi instance.
+- metrix: [<Type>Metrix</Type>](Metrix) - A metrix instance.
 
 The `createTelemetryInstance()` function returns an instance of the Telemetry service.
 
@@ -40,7 +40,7 @@ The `createTelemetryInstance()` function returns an instance of the Telemetry se
 ```javascript
 const createTelemetryInstance = require('path/to/telemetry');
 
-const telemetry = createTelemetryInstance(strapi);
+const telemetry = createTelemetryInstance(metrix);
 ```
 
 ## Methods
@@ -99,7 +99,7 @@ telemetry.send('event_name', { key: 'value' });
   - `userProperties`: <Type>Object</Type> An object that defines the identity of the user who triggered the event.
   - `groupProperties`: <Type>Object</Type> An object that defines properties of the application or environment in which the event occurred.
 
-Examples of event properties in Strapi include model, containsRelationalFields, displayedFields, kind. These properties are specific to the event and are used to provide additional context about what happened.
+Examples of event properties in Metrix include model, containsRelationalFields, displayedFields, kind. These properties are specific to the event and are used to provide additional context about what happened.
 
 User properties can include information such as the user's operating system, node version, and hostname. These properties are typically used to group events by user or to filter events based on certain user characteristics.
 

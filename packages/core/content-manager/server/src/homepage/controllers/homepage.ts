@@ -1,10 +1,10 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import * as yup from 'yup';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import type { GetRecentDocuments, GetCountDocuments } from '../../../../shared/contracts/homepage';
 
 const createHomepageController = () => {
-  const homepageService = strapi.plugin('content-manager').service('homepage');
+  const homepageService = metrix.plugin('content-manager').service('homepage');
 
   const recentDocumentParamsSchema = yup.object().shape({
     action: yup

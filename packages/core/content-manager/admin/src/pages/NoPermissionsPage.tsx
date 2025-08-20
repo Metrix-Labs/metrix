@@ -1,4 +1,4 @@
-import { Page, Layouts } from '@strapi/admin/strapi-admin';
+import { Page, Layouts } from '@metrixlabs/admin/metrix-admin';
 import { useIntl } from 'react-intl';
 
 import { getTranslation } from '../utils/translations';

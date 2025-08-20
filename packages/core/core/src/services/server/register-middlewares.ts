@@ -1,30 +1,30 @@
-import { yup } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { yup } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 import { resolveMiddlewares } from './middleware';
 
 type MiddlewareConfig = (string | { name?: string; resolve?: string; config?: unknown })[];
 
 const defaultConfig = [
-  'strapi::logger',
-  'strapi::errors',
-  'strapi::security',
-  'strapi::cors',
-  'strapi::poweredBy',
-  'strapi::session',
-  'strapi::query',
-  'strapi::body',
-  'strapi::favicon',
-  'strapi::public',
+  'metrix::logger',
+  'metrix::errors',
+  'metrix::security',
+  'metrix::cors',
+  'metrix::poweredBy',
+  'metrix::session',
+  'metrix::query',
+  'metrix::body',
+  'metrix::favicon',
+  'metrix::public',
 ];
 
 const requiredMiddlewares = [
-  'strapi::errors',
-  'strapi::security',
-  'strapi::cors',
-  'strapi::query',
-  'strapi::body',
-  'strapi::public',
-  'strapi::favicon',
+  'metrix::errors',
+  'metrix::security',
+  'metrix::cors',
+  'metrix::query',
+  'metrix::body',
+  'metrix::public',
+  'metrix::favicon',
 ];
 
 const middlewareConfigSchema = yup.array().of(
@@ -51,19 +51,19 @@ const middlewareConfigSchema = yup.array().of(
 /**
  * Register middlewares in router
  */
-const registerApplicationMiddlewares = async (strapi: Core.Strapi) => {
-  const middlewareConfig: MiddlewareConfig = strapi.config.get('middlewares', defaultConfig);
+const registerApplicationMiddlewares = async (metrix: Core.Strapi) => {
+  const middlewareConfig: MiddlewareConfig = metrix.config.get('middlewares', defaultConfig);
 
   await validateMiddlewareConfig(middlewareConfig);
 
-  const middlewares = await resolveMiddlewares(middlewareConfig, strapi);
+  const middlewares = await resolveMiddlewares(middlewareConfig, metrix);
 
   checkRequiredMiddlewares(middlewares);
 
   // NOTE: exclude middlewares that return nothing.
   // this is used for middlewares that only extend the app only need to be added in certain conditions
   for (const middleware of middlewares) {
-    strapi.server.use(middleware.handler);
+    metrix.server.use(middleware.handler);
   }
 };
 

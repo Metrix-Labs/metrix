@@ -3,13 +3,13 @@ tags:
     description: 'Authentication endpoints'
     externalDocs:
       description: 'Find out more'
-      url: 'https://docs.strapi.io/developer-docs/latest/plugins/users-permissions.html'
+      url: 'https://docs.metrix.io/developer-docs/latest/plugins/users-permissions.html'
 
   - name: 'Users-Permissions - Users & Roles'
     description: 'Users, roles, and permissions endpoints'
     externalDocs:
       description: 'Find out more'
-      url: 'https://docs.strapi.io/developer-docs/latest/plugins/users-permissions.html'
+      url: 'https://docs.metrix.io/developer-docs/latest/plugins/users-permissions.html'
 
 paths:
   /connect/{provider}:
@@ -88,7 +88,7 @@ paths:
                   type: string
             example:
               username: foobar
-              email: foo.bar@strapi.io
+              email: foo.bar@metrix.io
               password: Test1234
         required: true
       responses:
@@ -146,7 +146,7 @@ paths:
                 email:
                   type: string
             example:
-              email: foo.bar@strapi.io
+              email: foo.bar@metrix.io
       responses:
         200:
           description: Returns ok
@@ -518,8 +518,8 @@ paths:
                   $ref: '#/components/schemas/Users-Permissions-User'
               example:
                 - id: 9
-                  username: foao@strapi.io
-                  email: foao@strapi.io
+                  username: foao@metrix.io
+                  email: foao@metrix.io
                   provider: local
                   confirmed: false
                   blocked: false
@@ -555,7 +555,7 @@ paths:
                   type: string
             example:
               username: foo
-              email: foo@strapi.io
+              email: foo@metrix.io
               password: foo-password
       responses:
         201:
@@ -572,7 +572,7 @@ paths:
               example:
                 id: 1
                 username: foo
-                email: foo@strapi.io
+                email: foo@metrix.io
                 provider: local
                 confirmed: false
                 blocked: false
@@ -613,7 +613,7 @@ paths:
               example:
                 id: 1
                 username: foo
-                email: foo@strapi.io
+                email: foo@metrix.io
                 provider: local
                 confirmed: false
                 blocked: false
@@ -655,7 +655,7 @@ paths:
                   type: string
             example:
               username: foo
-              email: foo@strapi.io
+              email: foo@metrix.io
               password: foo-password
       responses:
         200:
@@ -672,7 +672,7 @@ paths:
               example:
                 id: 1
                 username: foo
-                email: foo@strapi.io
+                email: foo@metrix.io
                 provider: local
                 confirmed: false
                 blocked: false
@@ -713,7 +713,7 @@ paths:
               example:
                 id: 1
                 username: foo
-                email: foo@strapi.io
+                email: foo@metrix.io
                 provider: local
                 confirmed: false
                 blocked: false
@@ -740,7 +740,7 @@ paths:
               example:
                 id: 1
                 username: foo
-                email: foo@strapi.io
+                email: foo@metrix.io
                 provider: local
                 confirmed: false
                 blocked: false
@@ -804,7 +804,7 @@ components:
           example: 'foo.bar'
         email:
           type: string
-          example: 'foo.bar@strapi.io'
+          example: 'foo.bar@metrix.io'
         provider:
           type: string
           example: 'local'

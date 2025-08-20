@@ -8,7 +8,7 @@ import {
   useAPIErrorHandler,
   FormErrors,
   useForm,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/metrix-admin';
 import {
   type DocumentActionComponent,
   type DocumentActionProps,
@@ -16,7 +16,7 @@ import {
   unstable_useDocumentActions as useDocumentActions,
   buildValidParams,
   HeaderActionProps,
-} from '@strapi/content-manager/strapi-admin';
+} from '@metrixlabs/content-manager/metrix-admin';
 import {
   Flex,
   Status,
@@ -45,7 +45,7 @@ import { BulkLocaleActionModal } from './BulkLocaleActionModal';
 
 import type { Locale } from '../../../shared/contracts/locales';
 import type { I18nBaseQuery } from '../types';
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * LocalePickerAction
@@ -596,7 +596,7 @@ const BulkLocaleAction: DocumentActionComponent = ({
   }, []);
 
   // TODO skipping this for now as there is a bug with the draft relation count that will be worked on separately
-  // see https://www.notion.so/strapi/Count-draft-relations-56901b492efb45ab90d42fe975b32bd8?pvs=4
+  // see https://www.notion.so/metrix/Count-draft-relations-56901b492efb45ab90d42fe975b32bd8?pvs=4
   const enableDraftRelationsCount = false;
   const {
     data: draftRelationsCount = 0,

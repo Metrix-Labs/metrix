@@ -1,11 +1,11 @@
 'use strict';
 
 const { createTestBuilder } = require('api-tests/builder');
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
 const modelsUtils = require('api-tests/models');
 
-let strapi;
+let metrix;
 let rq;
 
 const productUid = 'api::product.product';
@@ -218,8 +218,8 @@ describe('Find Relations', () => {
 
     await modelsUtils.modifyComponent(compo(true));
 
-    strapi = await createStrapiInstance();
-    rq = await createAuthRequest({ strapi });
+    metrix = await createStrapiInstance();
+    rq = await createAuthRequest({ metrix });
 
     await rq({
       method: 'POST',
@@ -233,14 +233,14 @@ describe('Find Relations', () => {
 
     // Create draft products
     const [skate, chair, candle, table, porte, fenetre] = await Promise.all([
-      strapi.documents(productUid).create({ data: { name: 'Skate' } }),
-      strapi.documents(productUid).create({ data: { name: 'Chair' } }),
-      strapi.documents(productUid).create({ data: { name: 'Candle' } }),
-      strapi.documents(productUid).create({ data: { name: 'Table' } }),
+      metrix.documents(productUid).create({ data: { name: 'Skate' } }),
+      metrix.documents(productUid).create({ data: { name: 'Chair' } }),
+      metrix.documents(productUid).create({ data: { name: 'Candle' } }),
+      metrix.documents(productUid).create({ data: { name: 'Table' } }),
       // We create products in French in order to test that we can cant find
       // available relations in a different locale
-      strapi.documents(productUid).create({ data: { name: 'Porte' }, locale: extraLocale }),
-      strapi.documents(productUid).create({ data: { name: 'Fenetre' }, locale: extraLocale }),
+      metrix.documents(productUid).create({ data: { name: 'Porte' }, locale: extraLocale }),
+      metrix.documents(productUid).create({ data: { name: 'Fenetre' }, locale: extraLocale }),
     ]);
     data[productUid].draft.push(skate, chair, candle, table, porte, fenetre);
 
@@ -255,12 +255,12 @@ describe('Find Relations', () => {
 
     // Publish Skate and Chair
     const [publishedSkate, publishedChair] = await Promise.all([
-      strapi.documents(productUid).publish({ documentId: productMapping.skate.documentId }),
-      strapi.documents(productUid).publish({ documentId: productMapping.chair.documentId }),
+      metrix.documents(productUid).publish({ documentId: productMapping.skate.documentId }),
+      metrix.documents(productUid).publish({ documentId: productMapping.chair.documentId }),
     ]);
     data[productUid].published.push(publishedSkate.entries[0], publishedChair.entries[0]);
 
-    const stan = await strapi.documents(employeeUid).create({ data: { name: 'Stan' } });
+    const stan = await metrix.documents(employeeUid).create({ data: { name: 'Stan' } });
     data[employeeUid].draft.push(stan);
 
     // Define the relations between the shops and the products
@@ -279,7 +279,7 @@ describe('Find Relations', () => {
 
     // Create 2 draft shops
     const [draftShop, draftEmptyShop] = await Promise.all([
-      strapi.documents(shopUid).create({
+      metrix.documents(shopUid).create({
         data: {
           name: 'Cazotte Shop',
           products_ow: draftRelations.products_ow.documentId,
@@ -297,7 +297,7 @@ describe('Find Relations', () => {
         },
         populate: Object.keys(allRelations),
       }),
-      strapi.documents(shopUid).create({
+      metrix.documents(shopUid).create({
         data: {
           myCompo: {
             compo_products_ow: null,
@@ -311,11 +311,11 @@ describe('Find Relations', () => {
 
     // Publish both shops
     const [publishedShop, publishedEmptyShop] = await Promise.all([
-      strapi.documents(shopUid).publish({
+      metrix.documents(shopUid).publish({
         documentId: draftShop.documentId,
         populate: Object.keys(allRelations),
       }),
-      strapi.documents(shopUid).publish({ documentId: draftEmptyShop.documentId }),
+      metrix.documents(shopUid).publish({ documentId: draftEmptyShop.documentId }),
     ]);
     data[shopUid].published.push(publishedShop.entries[0], publishedEmptyShop.entries[0]);
 
@@ -354,9 +354,9 @@ describe('Find Relations', () => {
   });
 
   afterAll(async () => {
-    await strapi.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
+    await metrix.db.query('plugin::i18n.locale').deleteMany({ code: { $ne: 'en' } });
 
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 

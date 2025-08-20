@@ -1,6 +1,6 @@
 import qs from 'qs';
 import type Koa from 'koa';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 type Config = Parameters<typeof qs.parse>[1];
 
@@ -46,7 +46,7 @@ const addQsParser = (app: Koa, settings: Config) => {
 
 export const query: Core.MiddlewareFactory = (
   config: Partial<Config>,
-  { strapi }: { strapi: Core.Strapi }
+  { metrix }: { metrix: Core.Strapi }
 ) => {
-  addQsParser(strapi.server.app, { ...defaults, ...config } as Config);
+  addQsParser(metrix.server.app, { ...defaults, ...config } as Config);
 };

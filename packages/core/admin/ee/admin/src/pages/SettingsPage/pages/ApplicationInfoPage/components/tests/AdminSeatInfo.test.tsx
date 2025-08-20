@@ -60,7 +60,7 @@ describe('<AdminSeatInfo />', () => {
     expect(getByTextWithMarkup('10/100')).toBeInTheDocument();
   });
 
-  test('Render billing link (not on strapi cloud)', () => {
+  test('Render billing link (not on metrix cloud)', () => {
     // @ts-expect-error – mocked
     useLicenseLimits.mockReturnValue(LICENSE_MOCK);
 
@@ -70,7 +70,7 @@ describe('<AdminSeatInfo />', () => {
     // eslint-disable-next-line testing-library/no-node-access
     expect(getByText('Manage seats').closest('a')).toHaveAttribute(
       'href',
-      'https://strapi.io/billing/manage-seats'
+      'https://metrix.io/billing/manage-seats'
     );
   });
 
@@ -90,6 +90,6 @@ describe('<AdminSeatInfo />', () => {
     expect(
       // eslint-disable-next-line testing-library/no-node-access
       getByText('Contact sales').closest('a')
-    ).toHaveAttribute('href', 'https://strapi.io/billing/request-seats');
+    ).toHaveAttribute('href', 'https://metrix.io/billing/request-seats');
   });
 });

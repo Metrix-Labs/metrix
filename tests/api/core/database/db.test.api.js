@@ -1,11 +1,11 @@
 'use strict';
 
 // Test an API with all the possible filed types and simple filterings (no deep filtering, no relations)
-const { createStrapiInstance } = require('api-tests/strapi');
+const { createStrapiInstance } = require('api-tests/metrix');
 const { createTestBuilder } = require('api-tests/builder');
 
 const builder = createTestBuilder();
-let strapi;
+let metrix;
 
 const testCT = {
   displayName: 'test',
@@ -71,16 +71,16 @@ describe('Deep Filtering API', () => {
       .addFixtures(testCT.singularName, fixtures.test)
       .build();
 
-    strapi = await createStrapiInstance();
+    metrix = await createStrapiInstance();
   });
 
   afterEach(async () => {
-    await strapi.destroy();
+    await metrix.destroy();
     await builder.cleanup();
   });
 
   test('Return an array of ids on createMany', async () => {
-    const res = await strapi.db
+    const res = await metrix.db
       .query('api::test.test')
       .createMany({ data: [{ name: 'foo' }, { name: 'bar' }] });
 
@@ -90,7 +90,7 @@ describe('Deep Filtering API', () => {
   });
 
   test('Delete multiple entries with deep filtering', async () => {
-    const deleteRes = await strapi.db.query('api::test.test').deleteMany({
+    const deleteRes = await metrix.db.query('api::test.test').deleteMany({
       where: {
         related: { title: 'Category A' },
       },
@@ -98,7 +98,7 @@ describe('Deep Filtering API', () => {
 
     expect(deleteRes.count).toBe(2);
 
-    const remainingEntries = await strapi.db.query('api::test.test').findMany();
+    const remainingEntries = await metrix.db.query('api::test.test').findMany();
     expect(remainingEntries.length).toBe(1);
     expect(remainingEntries[0].name).toBe('Samuel UMTITI');
   });

@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@babel/eslint-parser',
-  extends: ['@strapi/eslint-config/front/javascript'],
+  extends: ['@metrixlabs/eslint-config/front/javascript'],
   env: {
     browser: true,
     commonjs: true,
@@ -61,8 +61,8 @@ module.exports = {
     'no-restricted-globals': [
       'error',
       {
-        name: 'strapi',
-        message: 'Use window.strapi instead.',
+        name: 'metrix',
+        message: 'Use window.metrix instead.',
       },
     ],
   },

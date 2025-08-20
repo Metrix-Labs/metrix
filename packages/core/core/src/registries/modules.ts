@@ -1,10 +1,10 @@
 import { pickBy, has } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { createModule, RawModule, Module } from '../domain/module';
 
 type ModuleMap = { [namespace: string]: Module };
 
-const modulesRegistry = (strapi: Core.Strapi) => {
+const modulesRegistry = (metrix: Core.Strapi) => {
   const modules: ModuleMap = {};
 
   return {
@@ -19,7 +19,7 @@ const modulesRegistry = (strapi: Core.Strapi) => {
         throw new Error(`Module ${namespace} has already been registered.`);
       }
 
-      modules[namespace] = createModule(namespace, rawModule, strapi);
+      modules[namespace] = createModule(namespace, rawModule, metrix);
       modules[namespace].load();
 
       return modules[namespace];

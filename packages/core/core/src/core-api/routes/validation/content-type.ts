@@ -1,6 +1,6 @@
-import type { Schema, UID } from '@strapi/types';
+import type { Schema, UID } from '@metrixlabs/types';
 
-import { contentTypes } from '@strapi/utils';
+import { contentTypes } from '@metrixlabs/utils';
 import * as z from 'zod/v4';
 
 // eslint-disable-next-line import/no-cycle
@@ -25,9 +25,9 @@ export type QueryParam =
  *
  * @example
  * ```ts
- * const strapi = // ... strapi instance
+ * const metrix = // ... metrix instance
  * const uid = 'api::article.article'
- * const validator = new CoreContentTypeRouteValidator(strapi, uid);
+ * const validator = new CoreContentTypeRouteValidator(metrix, uid);
  *
  * // Get validation schema for document
  * const documentSchema = validator.document;
@@ -44,7 +44,7 @@ export class CoreContentTypeRouteValidator extends AbstractCoreRouteValidator<UI
    *
    * @example
    * ```ts
-   * const validator = new CoreContentTypeRouteValidator(strapi, uid);
+   * const validator = new CoreContentTypeRouteValidator(metrix, uid);
    * const idSchema = validator.documentID;
    * ```
    */
@@ -61,7 +61,7 @@ export class CoreContentTypeRouteValidator extends AbstractCoreRouteValidator<UI
    *
    * @example
    * ```ts
-   * const validator = new CoreContentTypeRouteValidator(strapi, uid);
+   * const validator = new CoreContentTypeRouteValidator(metrix, uid);
    * const docSchema = validator.document;
    * ```
    */
@@ -90,7 +90,7 @@ export class CoreContentTypeRouteValidator extends AbstractCoreRouteValidator<UI
    *
    * @example
    * ```ts
-   * const validator = new CoreContentTypeRouteValidator(strapi, uid);
+   * const validator = new CoreContentTypeRouteValidator(metrix, uid);
    * const docsSchema = validator.documents;
    * ```
    */
@@ -199,7 +199,7 @@ export class CoreContentTypeRouteValidator extends AbstractCoreRouteValidator<UI
    *
    * @example
    * ```ts
-   * const validator = new CoreContentTypeRouteValidator(strapi, uid);
+   * const validator = new CoreContentTypeRouteValidator(metrix, uid);
    * const querySchemas = validator.queryParams(['fields', 'populate']);
    * ```
    */

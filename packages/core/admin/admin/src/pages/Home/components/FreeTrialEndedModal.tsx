@@ -47,7 +47,7 @@ export const FreeTrialEndedModal = () => {
   // We show the banner to encourage the user to upgrade (for 7 days after the trial ends)
   const isTrialEndedRecently = Boolean(
     !license?.isTrial &&
-      !window.strapi.isEE &&
+      !window.metrix.isEE &&
       cachedTrialEndsAt &&
       isAfter(new Date(cachedTrialEndsAt), sevenDaysAgo)
   );
@@ -148,7 +148,7 @@ export const FreeTrialEndedModal = () => {
                 </ul>
               </Box>
               <Flex marginTop={4} gap={2}>
-                <LinkButton href="https://strapi.chargebeeportal.com/" target="_blank">
+                <LinkButton href="https://metrix.chargebeeportal.com/" target="_blank">
                   {formatMessage({
                     id: 'app.components.FreeTrialEndedModal.button.upgrade',
                     defaultMessage: 'Stay on the Growth plan',

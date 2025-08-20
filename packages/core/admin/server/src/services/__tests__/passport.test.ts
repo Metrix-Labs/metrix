@@ -29,7 +29,7 @@ describe('Passport', () => {
     test('It should register the local provider in passport and init it', () => {
       const getPassportStrategiesSpy = jest.fn(getPassportStrategies);
 
-      global.strapi = {
+      global.metrix = {
         config: { get: jest.fn(() => ({})) },
         admin: {
           services: {
@@ -48,7 +48,7 @@ describe('Passport', () => {
 
   describe('Local Strategy', () => {
     test('It should call the callback with the error if the credentials check fails', async () => {
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             auth: {
@@ -60,7 +60,7 @@ describe('Passport', () => {
         },
       } as any;
 
-      const strategy = createLocalStrategy(strapi);
+      const strategy = createLocalStrategy(metrix);
       const done = jest.fn();
 
       // @ts-expect-error
@@ -71,7 +71,7 @@ describe('Passport', () => {
 
     test('It should call the callback with the profile if the credentials check succeed', async () => {
       const args = [null, { id: 'foo' }, 'bar'];
-      global.strapi = {
+      global.metrix = {
         admin: {
           services: {
             auth: {
@@ -83,7 +83,7 @@ describe('Passport', () => {
         },
       } as any;
 
-      const strategy = createLocalStrategy(strapi);
+      const strategy = createLocalStrategy(metrix);
       const done = jest.fn();
 
       // @ts-expect-error

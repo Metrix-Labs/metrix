@@ -3,18 +3,18 @@ import override from '../override';
 const strapiMock = {
   config: {
     get: () => ({
-      'x-strapi-config': {
+      'x-metrix-config': {
         plugins: null,
       },
     }),
   },
 } as any;
 
-let strapi = strapiMock;
+let metrix = strapiMock;
 describe('Documentation plugin | Override service', () => {
   afterEach(() => {
-    // Reset strapi after each test
-    strapi = strapiMock;
+    // Reset metrix after each test
+    metrix = strapiMock;
   });
 
   it('should register an override', () => {
@@ -26,7 +26,7 @@ describe('Documentation plugin | Override service', () => {
       },
     } as any;
 
-    const overrideService = override({ strapi });
+    const overrideService = override({ metrix });
     overrideService.registerOverride(mockOverride);
 
     expect(overrideService.registeredOverrides).toEqual([mockOverride]);
@@ -41,7 +41,7 @@ describe('Documentation plugin | Override service', () => {
       },
     } as any;
 
-    const overrideService = override({ strapi });
+    const overrideService = override({ metrix });
     overrideService.registerOverride(mockOverride, { pluginOrigin: 'test' });
 
     expect(overrideService.registeredOverrides).toEqual([]);
@@ -56,13 +56,13 @@ describe('Documentation plugin | Override service', () => {
       },
     } as any;
 
-    strapi.config.get = () => ({
-      'x-strapi-config': {
+    metrix.config.get = () => ({
+      'x-metrix-config': {
         plugins: ['test'],
       },
     });
 
-    const overrideService = override({ strapi });
+    const overrideService = override({ metrix });
     overrideService.registerOverride(mockOverride, {
       pluginOrigin: 'test',
       excludeFromGeneration: ['test', 'some-other-api-to-exclude'],
@@ -73,7 +73,7 @@ describe('Documentation plugin | Override service', () => {
   });
 
   it('should register an api or plugin to exclude from generation', () => {
-    const overrideService = override({ strapi });
+    const overrideService = override({ metrix });
     overrideService.excludeFromGeneration('my-api');
     overrideService.excludeFromGeneration(['my-other-api', 'my-plugin', 'my-other-plugin']);
 

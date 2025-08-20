@@ -15,14 +15,14 @@ const NO_COMPONENT_PLACEHOLDER_COMMENT = `/*
  * Generate type definitions for Strapi Components
  *
  * @param {object} [options]
- * @param {object} options.strapi
+ * @param {object} options.metrix
  * @param {object} options.logger
  * @param {string} options.pwd
  */
 const generateComponentsDefinitions = async (options = {}) => {
-  const { strapi } = options;
+  const { metrix } = options;
 
-  const { components } = strapi;
+  const { components } = metrix;
 
   const componentsDefinitions = pipe(
     values,

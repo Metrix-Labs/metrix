@@ -106,7 +106,7 @@ sequenceDiagram
     rect rgb(230, 240, 250)
         Note over Client,DP: 2️⃣ Integrity Check Phase
         TE->>TE: Version Strategy Check
-        Note right of TE: Compare Strapi versions
+        Note right of TE: Compare Metrix versions
         alt Version Mismatch
             TE->>Client: Version Validation Error
         end
@@ -173,11 +173,11 @@ Note: Schema differences during this stage can be resolved programmatically by a
 
 Once the integrity check has passed, the transfer begins by opening streams from the source to the destination one stage at a time. The following is a list of the stages in the order they are run:
 
-1. schemas - content type schemas. Note: with all built-in Strapi destination providers, only the Strapi file provider makes use of this data
+1. schemas - content type schemas. Note: with all built-in Metrix destination providers, only the Metrix file provider makes use of this data
 2. entities - all entities (including components, dynamic zones, and media data but not media files) _without their relations_
 3. assets - the files from the /uploads folder
 4. links - the relations between entities
-5. configuration - the Strapi project configuration data
+5. configuration - the Metrix project configuration data
 
 Once all stages have been completed, the transfer waits for all providers to close and then emits a finish event and the transfer completes.
 
@@ -185,7 +185,7 @@ Once all stages have been completed, the transfer waits for all providers to clo
 
 A transfer engine object is created by using `createTransferEngine`, which accepts a [source provider](./02-providers/01-source-providers.md), a [destination provider](./02-providers/02-destination-providers.md), and an options object.
 
-Note: By default, a transfer engine will transfer ALL data, including admin data, api tokens, etc. Transform filters must be used if you wish to exclude, as seen in the example below. An array called `DEFAULT_IGNORED_CONTENT_TYPES` is available from @strapi/data-transfer containing the uids that are excluded by default from the import, export, and transfer commands. If you intend to transfer admin data, be aware that this behavior will likely change in the future to automatically exclude the entire `admin::` uid namespace and will instead require them to be explicitly included.
+Note: By default, a transfer engine will transfer ALL data, including admin data, api tokens, etc. Transform filters must be used if you wish to exclude, as seen in the example below. An array called `DEFAULT_IGNORED_CONTENT_TYPES` is available from @metrix/data-transfer containing the uids that are excluded by default from the import, export, and transfer commands. If you intend to transfer admin data, be aware that this behavior will likely change in the future to automatically exclude the entire `admin::` uid namespace and will instead require them to be explicitly included.
 
 ```typescript
 const engine = createTransferEngine(source, destination, options);
@@ -243,7 +243,7 @@ const options = {
 
 The following `versionStrategy` values may be used:
 
-`'ignore'` - allow transfer between any versions of Strapi
+`'ignore'` - allow transfer between any versions of Metrix
 `'exact'` - require an exact version match (including tags such as -alpha and -beta)
 `'major'` - require only the semver major version to match (but allow minor, patch, and tag to differ)
 `'minor'` - require only the semver major and minor versions to match (but allow patch to differ)
@@ -259,7 +259,7 @@ The follow `schemaStrategy` values may be used:
 `'strict'` - disallow mismatches that are expected to cause errors in the transfer, but allow certain non-data fields in the schema to differ
 `'exact'` - schema must be identical with no changes
 
-Note: The "strict" schema strategy is defined as "anything expected to cause errors in the transfer" and is the default method for the import, export, and transfer CLI commands. Therefore, the technical functionality will always be subject to change. If you need to find the definition for the current version of Strapi, see `packages/core/data-transfer/src/engine/validation/schemas/index.ts`
+Note: The "strict" schema strategy is defined as "anything expected to cause errors in the transfer" and is the default method for the import, export, and transfer CLI commands. Therefore, the technical functionality will always be subject to change. If you need to find the definition for the current version of Metrix, see `packages/core/data-transfer/src/engine/validation/schemas/index.ts`
 
 The default `schemaStrategy` used when one is not provided is `'strict'`.
 

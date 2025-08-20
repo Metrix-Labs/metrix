@@ -6,12 +6,12 @@ import { Panel } from './routes/content-manager/model/id/components/Panel';
 import { addColumnToTableHook } from './utils/cm-hooks';
 import { prefixPluginTranslations } from './utils/translations';
 
-import type { StrapiApp, WidgetArgs } from '@strapi/admin/strapi-admin';
-import type { Plugin } from '@strapi/types';
+import type { StrapiApp, WidgetArgs } from '@metrixlabs/admin/metrix-admin';
+import type { Plugin } from '@metrixlabs/types';
 
 const admin: Plugin.Config.AdminInput = {
   register(app: StrapiApp) {
-    if (window.strapi.features.isEnabled(FEATURE_ID)) {
+    if (window.metrix.features.isEnabled(FEATURE_ID)) {
       app.registerHook('Admin/CM/pages/ListView/inject-column-in-table', addColumnToTableHook);
 
       const contentManagerPluginApis = app.getPlugin('content-manager').apis;
@@ -56,7 +56,7 @@ const admin: Plugin.Config.AdminInput = {
           permissions: [{ action: 'plugin::content-manager.explorer.read' }],
         },
       ]);
-    } else if (!window.strapi.features.isEnabled(FEATURE_ID) && window.strapi?.flags?.promoteEE) {
+    } else if (!window.metrix.features.isEnabled(FEATURE_ID) && window.metrix?.flags?.promoteEE) {
       app.addSettingsLink('global', {
         id: PLUGIN_ID,
         to: `purchase-review-workflows`,
@@ -74,7 +74,7 @@ const admin: Plugin.Config.AdminInput = {
     }
   },
   bootstrap(app: StrapiApp) {
-    if (window.strapi.features.isEnabled(FEATURE_ID)) {
+    if (window.metrix.features.isEnabled(FEATURE_ID)) {
       app.getPlugin('content-manager').injectComponent('preview', 'actions', {
         name: 'review-workflows-assignee',
         Component: Header,

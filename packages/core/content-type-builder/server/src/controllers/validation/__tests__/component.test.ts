@@ -7,7 +7,7 @@ const componentValidation = {
 } as const;
 
 describe('Component validator', () => {
-  global.strapi = {
+  global.metrix = {
     contentTypes: {},
     plugins: {
       'content-type-builder': {

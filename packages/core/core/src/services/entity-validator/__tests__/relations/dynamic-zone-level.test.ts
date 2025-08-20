@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 
 import entityValidator from '../..';
 import { models, existentIDs, nonExistentIds } from './utils/relations.testdata';
@@ -8,7 +8,7 @@ import { models, existentIDs, nonExistentIds } from './utils/relations.testdata'
  * can be detected at the Dynamic Zone level.
  */
 describe('Entity validator | Relations | Dynamic Zone', () => {
-  global.strapi = {
+  global.metrix = {
     components: {
       'basic.dev-compo': {},
     },

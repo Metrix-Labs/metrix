@@ -1,5 +1,5 @@
-import { errors } from '@strapi/utils';
-import type { Modules } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Modules } from '@metrixlabs/types';
 
 /**
  * /webhooks - GET all webhooks

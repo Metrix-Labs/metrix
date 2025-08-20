@@ -1,6 +1,6 @@
 ---
 title: Transactions
-description: Conceptual guide to transactions in Strapi
+description: Conceptual guide to transactions in Metrix
 tags:
   - database
   - experimental
@@ -18,20 +18,20 @@ Transactions are a set of operations that are executed together as a single unit
 
 ## Usage
 
-Transactions are handled by passing a handler function into `strapi.db.transaction`:
+Transactions are handled by passing a handler function into `metrix.db.transaction`:
 
 ```js
-await strapi.db.transaction(async ({ trx, rollback, commit, onCommit, onRollback }) => {
+await metrix.db.transaction(async ({ trx, rollback, commit, onCommit, onRollback }) => {
   // It will implicitly use the transaction
-  await strapi.db.create();
-  await strapi.db.create();
+  await metrix.db.create();
+  await metrix.db.create();
 });
 ```
 
 After the transaction handler is executed, the transaction is committed if all operations succeed. If any of the operations throws, the transaction is rolled back and the data is restored to its previous state.
 
 :::note
-Every `strapi.db.query` operation performed in a transaction block will implicitly use the transaction.
+Every `metrix.db.query` operation performed in a transaction block will implicitly use the transaction.
 :::
 
 ### Transaction handler properties
@@ -51,13 +51,13 @@ The handler function receives an object with the following properties:
 Transactions can be nested. When a transaction is nested, the inner transaction is committed or rolled back when the outer transaction is committed or rolled back.
 
 ```js
-await strapi.db.transaction(async () => {
+await metrix.db.transaction(async () => {
   // It will implicitly use the transaction
-  await strapi.db.create();
+  await metrix.db.create();
 
   // Nested transactions will implicitly use the outer transaction
-  await strapi.db.transaction(async ({}) => {
-    await strapi.db.create();
+  await metrix.db.transaction(async ({}) => {
+    await metrix.db.create();
   });
 });
 ```
@@ -67,10 +67,10 @@ await strapi.db.transaction(async () => {
 The `onCommit` and `onRollback` hooks can be used to execute code after the transaction is committed or rolled back.
 
 ```js
-await strapi.db.transaction(async ({ onCommit, onRollback }) => {
+await metrix.db.transaction(async ({ onCommit, onRollback }) => {
   // It will implicitly use the transaction
-  await strapi.db.create();
-  await strapi.db.create();
+  await metrix.db.create();
+  await metrix.db.create();
 
   onCommit(() => {
     // This will be executed after the transaction is committed
@@ -87,7 +87,7 @@ await strapi.db.transaction(async ({ onCommit, onRollback }) => {
 Transactions can also be used with knex queries, but in those cases `.transacting(trx)` must be explicitly called.
 
 ```js
-await strapi.db.transaction(async ({ trx, rollback, commit }) => {
+await metrix.db.transaction(async ({ trx, rollback, commit }) => {
   await knex('users').where('id', 1).update({ name: 'foo' }).transacting(trx);
 });
 ```

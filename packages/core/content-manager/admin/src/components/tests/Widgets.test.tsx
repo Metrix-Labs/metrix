@@ -1,9 +1,9 @@
-import { useGetCountDocumentsQuery } from '@strapi/admin/strapi-admin';
+import { useGetCountDocumentsQuery } from '@metrixlabs/admin/metrix-admin';
 import { render, screen } from '@tests/utils';
 
 import { ChartEntriesWidget } from '../Widgets';
 
-jest.mock('@strapi/admin/strapi-admin', () => ({
+jest.mock('@metrixlabs/admin/metrix-admin', () => ({
   useGetCountDocumentsQuery: jest.fn(),
   adminApi: {
     enhanceEndpoints: jest.fn(() => ({

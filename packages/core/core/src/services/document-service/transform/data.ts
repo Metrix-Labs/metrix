@@ -7,7 +7,7 @@ import { setDefaultLocaleToRelations } from './relations/transform/default-local
  * Transforms input data, containing relation document ids, to entity ids.
  */
 export const transformData = async (data: any, opts: any) => {
-  const idMap = createIdMap({ strapi });
+  const idMap = createIdMap({ metrix });
 
   // Assign default locales
   const transformedData = await setDefaultLocaleToRelations(data, opts.uid);

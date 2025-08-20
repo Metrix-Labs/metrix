@@ -1,5 +1,5 @@
-import { errors } from '@strapi/utils';
-import type { Common, EntityService } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Common, EntityService } from '@metrixlabs/types';
 
 import entityValidator from '../..';
 import { models, existentIDs, nonExistentIds } from './utils/relations.testdata';
@@ -9,7 +9,7 @@ import { models, existentIDs, nonExistentIds } from './utils/relations.testdata'
  * can be detected at the Attribute level.
  */
 describe('Entity validator | Relations | Attribute', () => {
-  global.strapi = {
+  global.metrix = {
     components: {
       'basic.dev-compo': {},
     },

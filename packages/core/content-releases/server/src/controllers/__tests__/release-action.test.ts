@@ -34,7 +34,7 @@ jest.mock('../../utils', () => ({
 describe('Release Action controller', () => {
   describe('create', () => {
     beforeEach(() => {
-      global.strapi = {
+      global.metrix = {
         utils: {
           errors: {
             ApplicationError: jest.fn(),
@@ -54,7 +54,7 @@ describe('Release Action controller', () => {
 
     it('throws an error given bad request arguments', () => {
       // Mock content type
-      global.strapi.contentType = jest.fn().mockReturnValue({
+      global.metrix.contentType = jest.fn().mockReturnValue({
         options: {
           draftAndPublish: true,
         },
@@ -83,7 +83,7 @@ describe('Release Action controller', () => {
 
   describe('createMany', () => {
     beforeEach(() => {
-      global.strapi = {
+      global.metrix = {
         db: {
           transaction: jest.fn((cb) => cb()),
         },

@@ -29,7 +29,7 @@ import { getTranslation } from './utils/getTranslation';
 import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 import { mutateCTBContentTypeSchema } from './utils/schemas';
 
-import type { DocumentActionComponent } from '@strapi/content-manager/strapi-admin';
+import type { DocumentActionComponent } from '@metrixlabs/content-manager/metrix-admin';
 
 // eslint-disable-next-line import/no-default-export
 export default {

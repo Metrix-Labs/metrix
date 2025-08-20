@@ -12,7 +12,7 @@ on when is best to use them. It's advised that you've read [how they work](../01
 ## Components
 
 There are two different wrapper components available to use. They are very similar but have different use cases. They are both
-available in the `@strapi/strapi/admin`.
+available in the `@metrix/metrix/admin`.
 
 ### CheckPagePermissions
 
@@ -22,7 +22,7 @@ be redirect to the homepage.
 #### Usage
 
 ```tsx
-import { Page } from '@strapi/strapi/admin';
+import { Page } from '@metrix/metrix/admin';
 
 const permissions = [{ action: 'plugins::my-plugin.access', subject: null }];
 
@@ -69,7 +69,7 @@ If the hook is unmouted before the fetch request completes, the request will be 
 In the below example, we're checking if a user can "create" a post from the content-manager list view. If they can't, the button is `disabled`.
 
 ```tsx
-import { useRBAC } from '@strapi/strapi/admin';
+import { useRBAC } from '@metrix/metrix/admin';
 
 const MyComponent = () => {
   const { isLoading, allowedActions } = useRBAC({

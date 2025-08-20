@@ -11,8 +11,8 @@ import {
   isFetchError,
   Layouts,
   GradientBadge,
-} from '@strapi/admin/strapi-admin';
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
+} from '@metrixlabs/admin/metrix-admin';
+import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
 import {
   Alert,
   Badge,
@@ -317,7 +317,7 @@ const ReleasesPage = () => {
             <StyledAlert
               marginBottom={6}
               action={
-                <Link href="https://strapi.io/pricing-cloud" isExternal>
+                <Link href="https://metrix.io/pricing-cloud" isExternal>
                   {formatMessage({
                     id: 'content-releases.pages.Releases.max-limit-reached.action',
                     defaultMessage: 'Explore plans',

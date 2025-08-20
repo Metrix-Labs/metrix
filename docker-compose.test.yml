@@ -7,8 +7,8 @@ services:
     volumes:
       - pgdata_test:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: strapi
-      POSTGRES_PASSWORD: strapi
+      POSTGRES_USER: metrix
+      POSTGRES_PASSWORD: metrix
       POSTGRES_DB: strapi_test
     ports:
       - '5432:5432'
@@ -18,10 +18,10 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: strapi_test
-      MYSQL_USER: strapi
-      MYSQL_PASSWORD: strapi
+      MYSQL_USER: metrix
+      MYSQL_PASSWORD: metrix
       MYSQL_ROOT_HOST: '%'
-      MYSQL_ROOT_PASSWORD: strapi
+      MYSQL_ROOT_PASSWORD: metrix
     volumes:
       - mysqldata_test:/var/lib/mysql
     ports:

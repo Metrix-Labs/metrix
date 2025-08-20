@@ -4,7 +4,7 @@ import { resetDatabaseAndImportDataFromPath } from '../../utils/dts-import';
 import { login } from '../../utils/login';
 import { findAndClose } from '../../utils/shared';
 
-const edition = process.env.STRAPI_DISABLE_EE === 'true' ? 'CE' : 'EE';
+const edition = process.env.METRIX_DISABLE_EE === 'true' ? 'CE' : 'EE';
 const releaseName = 'Trent Crimm: The Independent';
 
 const addEntryToRelease = async ({ page, releaseName }: { page: Page; releaseName: string }) => {

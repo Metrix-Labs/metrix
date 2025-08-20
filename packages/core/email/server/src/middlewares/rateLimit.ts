@@ -1,13 +1,13 @@
 import type { Context, Next } from 'koa';
-import utils from '@strapi/utils';
+import utils from '@metrixlabs/utils';
 import { isString, get } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 const { RateLimitError } = utils.errors;
 
-export default (config: any, { strapi }: { strapi: Core.Strapi }) =>
+export default (config: any, { metrix }: { metrix: Core.Strapi }) =>
   async (ctx: Context, next: Next) => {
-    const pluginConfig = strapi.config.get('plugin::email') as any;
+    const pluginConfig = metrix.config.get('plugin::email') as any;
     const rateLimitConfig = {
       enabled: true,
       ...(pluginConfig.ratelimit || {}),

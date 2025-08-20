@@ -2,7 +2,7 @@ import fs from 'fs';
 import { join } from 'path';
 import sharp from 'sharp';
 import crypto from 'crypto';
-import { strings, file as fileUtils } from '@strapi/utils';
+import { strings, file as fileUtils } from '@metrixlabs/utils';
 
 import { getService } from '../utils';
 
@@ -190,7 +190,7 @@ const DEFAULT_BREAKPOINTS = {
 };
 
 const getBreakpoints = () =>
-  strapi.config.get<Record<string, number>>('plugin::upload.breakpoints', DEFAULT_BREAKPOINTS);
+  metrix.config.get<Record<string, number>>('plugin::upload.breakpoints', DEFAULT_BREAKPOINTS);
 
 const generateResponsiveFormats = async (file: UploadableFile) => {
   const { responsiveDimensions = false } = (await getService('upload').getSettings()) ?? {};

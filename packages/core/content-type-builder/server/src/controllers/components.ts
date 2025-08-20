@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import type { Context } from 'koa';
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrixlabs/types';
 import { getService } from '../utils';
 import { validateComponentInput, validateUpdateComponentInput } from './validation/component';
 
@@ -16,10 +16,10 @@ export default {
    */
   async getComponents(ctx: Context) {
     const componentService = getService('components');
-    const componentUIDs = Object.keys(strapi.components) as UID.Component[];
+    const componentUIDs = Object.keys(metrix.components) as UID.Component[];
 
     const data = componentUIDs.map((uid) => {
-      return componentService.formatComponent(strapi.components[uid]);
+      return componentService.formatComponent(metrix.components[uid]);
     });
 
     ctx.send({ data });
@@ -33,7 +33,7 @@ export default {
   async getComponent(ctx: Context) {
     const { uid } = ctx.params;
 
-    const component = strapi.components[uid];
+    const component = metrix.components[uid];
 
     if (!component) {
       return ctx.send({ error: 'component.notFound' }, 404);
@@ -59,7 +59,7 @@ export default {
     }
 
     try {
-      strapi.reload.isWatching = false;
+      metrix.reload.isWatching = false;
 
       const componentService = getService('components');
 
@@ -68,11 +68,11 @@ export default {
         components: body.components,
       });
 
-      setImmediate(() => strapi.reload());
+      setImmediate(() => metrix.reload());
 
       ctx.send({ data: { uid: component.uid } }, 201);
     } catch (error) {
-      strapi.log.error(error);
+      metrix.log.error(error);
       ctx.send({ error: (error as any)?.message || 'Unknown error' }, 400);
     }
   },
@@ -86,7 +86,7 @@ export default {
     const { uid } = ctx.params;
     const body = ctx.request.body as any;
 
-    if (!_.has(strapi.components, uid)) {
+    if (!_.has(metrix.components, uid)) {
       return ctx.send({ error: 'component.notFound' }, 404);
     }
 
@@ -97,7 +97,7 @@ export default {
     }
 
     try {
-      strapi.reload.isWatching = false;
+      metrix.reload.isWatching = false;
 
       const componentService = getService('components');
 
@@ -106,11 +106,11 @@ export default {
         components: body.components,
       })) as any;
 
-      setImmediate(() => strapi.reload());
+      setImmediate(() => metrix.reload());
 
       ctx.send({ data: { uid: component.uid } });
     } catch (error) {
-      strapi.log.error(error);
+      metrix.log.error(error);
 
       ctx.send({ error: (error as any)?.message || 'Unknown error' }, 400);
     }
@@ -124,22 +124,22 @@ export default {
   async deleteComponent(ctx: Context) {
     const { uid } = ctx.params;
 
-    if (!_.has(strapi.components, uid)) {
+    if (!_.has(metrix.components, uid)) {
       return ctx.send({ error: 'component.notFound' }, 404);
     }
 
     try {
-      strapi.reload.isWatching = false;
+      metrix.reload.isWatching = false;
 
       const componentService = getService('components');
 
       const component = await componentService.deleteComponent(uid);
 
-      setImmediate(() => strapi.reload());
+      setImmediate(() => metrix.reload());
 
       ctx.send({ data: { uid: component.uid } });
     } catch (error) {
-      strapi.log.error(error);
+      metrix.log.error(error);
       ctx.send({ error: (error as any)?.message || 'Unknown error' }, 400);
     }
   },

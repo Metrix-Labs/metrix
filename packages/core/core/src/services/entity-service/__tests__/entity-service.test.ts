@@ -1,10 +1,10 @@
-import type { Utils } from '@strapi/types';
+import type { Utils } from '@metrixlabs/types';
 import createEntityService from '../index';
 
 jest.mock('bcryptjs', () => ({ hashSync: () => 'secret-password' }));
 
 describe('Entity service', () => {
-  global.strapi = {
+  global.metrix = {
     getModel: jest.fn(() => ({})),
     config: {
       get() {
@@ -23,7 +23,7 @@ describe('Entity service', () => {
       'Can decorate',
       async (method) => {
         const instance = createEntityService({
-          strapi: global.strapi,
+          metrix: global.metrix,
           db: {} as any,
         });
 
@@ -53,7 +53,7 @@ describe('Entity service', () => {
       };
 
       const fakeStrapi = {
-        ...global.strapi,
+        ...global.metrix,
         documents: jest.fn(() => fakeDocumentService),
         getModel: jest.fn(() => {
           return { kind: 'singleType' };
@@ -61,7 +61,7 @@ describe('Entity service', () => {
       };
 
       const instance = createEntityService({
-        strapi: fakeStrapi as any,
+        metrix: fakeStrapi as any,
         db: {} as any,
       });
 

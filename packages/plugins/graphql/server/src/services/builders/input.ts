@@ -1,13 +1,13 @@
 import { inputObjectType, nonNull } from 'nexus';
-import { contentTypes } from '@strapi/utils';
-import type { Struct } from '@strapi/types';
+import { contentTypes } from '@metrixlabs/utils';
+import type { Struct } from '@metrixlabs/types';
 import type { Context } from '../types';
 
 const { isWritableAttribute } = contentTypes;
 
-export default ({ strapi }: Context) => {
-  const { naming, mappers, attributes } = strapi.plugin('graphql').service('utils');
-  const extension = strapi.plugin('graphql').service('extension');
+export default ({ metrix }: Context) => {
+  const { naming, mappers, attributes } = metrix.plugin('graphql').service('utils');
+  const extension = metrix.plugin('graphql').service('extension');
 
   const { getComponentInputName, getContentTypeInputName, getEnumName, getDynamicZoneInputName } =
     naming;
@@ -101,7 +101,7 @@ export default ({ strapi }: Context) => {
             // Components
             else if (isComponent(attribute)) {
               const isRepeatable = attribute.repeatable === true;
-              const component = strapi.components[attribute.component];
+              const component = metrix.components[attribute.component];
               const componentInputType = getComponentInputName(component);
 
               if (isRepeatable) {

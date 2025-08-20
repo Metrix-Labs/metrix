@@ -5,7 +5,7 @@ const getPluginsThatNeedDocumentation = (config: PluginConfig) => {
   const defaultPlugins = ['upload', 'users-permissions'];
 
   // User specified plugins that need documentation generated
-  const userPluginsConfig = config['x-strapi-config'].plugins;
+  const userPluginsConfig = config['x-metrix-config'].plugins;
 
   if (userPluginsConfig === null) {
     // The user hasn't specified any plugins to document, use the defaults

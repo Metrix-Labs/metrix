@@ -1,7 +1,7 @@
 import { cloneDeep, isEmpty } from 'lodash/fp';
 
-import type { Schema } from '@strapi/types';
-import { async } from '@strapi/utils';
+import type { Schema } from '@metrixlabs/types';
+import { async } from '@metrixlabs/utils';
 import { getService } from '../utils';
 
 /**
@@ -22,7 +22,7 @@ const syncNonLocalizedAttributes = async (sourceEntry: any, model: Schema.Conten
 
   // Find all the entries that need to be updated
   // this is every other entry of the document in the same status but a different locale
-  const localeEntriesToUpdate = await strapi.db.query(uid).findMany({
+  const localeEntriesToUpdate = await metrix.db.query(uid).findMany({
     where: {
       documentId,
       publishedAt: status === 'published' ? { $ne: null } : null,
@@ -31,10 +31,10 @@ const syncNonLocalizedAttributes = async (sourceEntry: any, model: Schema.Conten
     select: ['locale', 'id'],
   });
 
-  const entryData = await strapi.documents(uid).omitComponentData(nonLocalizedAttributes);
+  const entryData = await metrix.documents(uid).omitComponentData(nonLocalizedAttributes);
 
   await async.map(localeEntriesToUpdate, async (entry: any) => {
-    const transformedData = await strapi.documents.utils.transformData(
+    const transformedData = await metrix.documents.utils.transformData(
       cloneDeep(nonLocalizedAttributes),
       {
         uid,
@@ -45,12 +45,12 @@ const syncNonLocalizedAttributes = async (sourceEntry: any, model: Schema.Conten
     );
 
     // Update or create non localized components for the entry
-    const componentData = await strapi
+    const componentData = await metrix
       .documents(uid)
       .updateComponents(entry, transformedData as any);
 
     // Update every other locale entry of this documentId in the same status
-    await strapi.db.query(uid).update({
+    await metrix.db.query(uid).update({
       where: {
         documentId,
         publishedAt: status === 'published' ? { $ne: null } : null,

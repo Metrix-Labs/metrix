@@ -10,7 +10,7 @@ import {
   useComposedRefs,
 } from '@strapi/design-system';
 import { CaretDown } from '@strapi/icons';
-import { type InputProps, useField } from '@strapi/strapi/admin';
+import { type InputProps, useField } from '@metrixlabs/metrix/admin';
 import { HexColorPicker } from 'react-colorful';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

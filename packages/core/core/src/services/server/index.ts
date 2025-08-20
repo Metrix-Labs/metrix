@@ -1,5 +1,5 @@
 import Router from '@koa/router';
-import type { Core, Modules } from '@strapi/types';
+import type { Core, Modules } from '@metrixlabs/types';
 
 import { createHTTPServer } from './http-server';
 import { createRouteManager } from './routing';
@@ -11,27 +11,27 @@ import createKoaApp from './koa';
 import requestCtx from '../request-context';
 
 const healthCheck: Core.MiddlewareHandler = async (ctx) => {
-  ctx.set('strapi', 'You are so French!');
+  ctx.set('metrix', 'You are so French!');
   ctx.status = 204;
 };
 
-const createServer = (strapi: Core.Strapi): Modules.Server.Server => {
+const createServer = (metrix: Core.Strapi): Modules.Server.Server => {
   const app = createKoaApp({
-    proxy: strapi.config.get('server.proxy.koa'),
-    keys: strapi.config.get('server.app.keys'),
+    proxy: metrix.config.get('server.proxy.koa'),
+    keys: metrix.config.get('server.app.keys'),
   });
 
   app.use((ctx, next) => requestCtx.run(ctx, () => next()));
 
   const router = new Router();
 
-  const routeManager = createRouteManager(strapi);
+  const routeManager = createRouteManager(metrix);
 
-  const httpServer = createHTTPServer(strapi, app);
+  const httpServer = createHTTPServer(metrix, app);
 
   const apis = {
-    'content-api': createContentAPI(strapi),
-    admin: createAdminAPI(strapi),
+    'content-api': createContentAPI(metrix),
+    admin: createAdminAPI(metrix),
   };
 
   // init health check
@@ -80,13 +80,13 @@ const createServer = (strapi: Core.Strapi): Modules.Server.Server => {
     },
 
     initRouting() {
-      registerAllRoutes(strapi);
+      registerAllRoutes(metrix);
 
       return this;
     },
 
     async initMiddlewares() {
-      await registerApplicationMiddlewares(strapi);
+      await registerApplicationMiddlewares(metrix);
 
       return this;
     },

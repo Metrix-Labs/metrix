@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { omit, uniq } from 'lodash/fp';
 import constants from '../constants';
 import {
@@ -30,7 +30,7 @@ describe('API Token', () => {
   const ENCRYPTION_KEY = crypto.randomBytes(32).toString('hex');
 
   const setupStrapiMock = (overrides = {}) => {
-    global.strapi = {
+    global.metrix = {
       db: {
         query: jest.fn(() => ({})),
       },
@@ -427,7 +427,7 @@ describe('API Token', () => {
       const mockedAppendFile = jest.fn();
       const mockedConfigSet = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         config: {
           get: jest.fn(() => ({
             admin: { apiToken: { salt: 'api-token_tests-salt' } },
@@ -471,7 +471,7 @@ describe('API Token', () => {
       expect.assertions(1);
       process.env.API_TOKEN_SALT = 'api-token_tests-salt';
 
-      global.strapi = {
+      global.metrix = {
         config: {
           get: jest.fn(() => null),
         },
@@ -504,7 +504,7 @@ describe('API Token', () => {
     test('It lists all the tokens', async () => {
       const findMany = jest.fn().mockResolvedValue(tokens);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findMany };
@@ -534,7 +534,7 @@ describe('API Token', () => {
     test('It deletes the token', async () => {
       const mockedDelete = jest.fn().mockResolvedValue(token);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { delete: mockedDelete };
@@ -555,7 +555,7 @@ describe('API Token', () => {
     test('It returns `null` if the resource does not exist', async () => {
       const mockedDelete = jest.fn().mockResolvedValue(null);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { delete: mockedDelete };
@@ -586,7 +586,7 @@ describe('API Token', () => {
     test('It retrieves the token', async () => {
       const findOne = jest.fn().mockResolvedValue(token);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -607,7 +607,7 @@ describe('API Token', () => {
     test('It returns `null` if the resource does not exist', async () => {
       const findOne = jest.fn().mockResolvedValue(null);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -695,7 +695,7 @@ describe('API Token', () => {
       const findOne = jest.fn().mockResolvedValue(token);
       const load = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return {
@@ -754,7 +754,7 @@ describe('API Token', () => {
       const create = jest.fn();
       const load = jest.fn();
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider(['valid-permission-A'] as any),
         db: {
           query() {
@@ -825,7 +825,7 @@ describe('API Token', () => {
           )
         );
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return {
@@ -908,7 +908,7 @@ describe('API Token', () => {
           )
         );
 
-      global.strapi = {
+      global.metrix = {
         ...getActionProvider([
           'admin::subject.keepThisAction',
           'admin::subject.newAction',
@@ -988,7 +988,7 @@ describe('API Token', () => {
     test('It retrieves the token', async () => {
       const findOne = jest.fn().mockResolvedValue(token);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };
@@ -1009,7 +1009,7 @@ describe('API Token', () => {
     test('It returns `null` if the resource does not exist', async () => {
       const findOne = jest.fn().mockResolvedValue(null);
 
-      global.strapi = {
+      global.metrix = {
         db: {
           query() {
             return { findOne };

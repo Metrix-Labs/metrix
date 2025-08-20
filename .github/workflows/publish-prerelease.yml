@@ -34,6 +34,6 @@ jobs:
         run: ./scripts/pre-publish.sh
         env:
           # Unique but short prerelease version, e.g. 0.0.0-experimental.1234
-          VERSION: "0.0.0-${{ github.event.inputs.dist-tag }}.${{ github.run_number }}"
+          VERSION: '0.0.0-${{ github.event.inputs.dist-tag }}.${{ github.run_number }}'
           DIST_TAG: ${{ github.event.inputs.dist-tag }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

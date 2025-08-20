@@ -27,11 +27,14 @@ const updateConditionsToFalse = (obj: Record<string, any>): Record<string, any> 
       );
 
       if (!isActionEnabled) {
-        const updatedConditions = Object.keys((currentValue as ConditionObject).conditions).reduce((acc1: Record<string, boolean>, current) => {
-          acc1[current] = false;
+        const updatedConditions = Object.keys((currentValue as ConditionObject).conditions).reduce(
+          (acc1: Record<string, boolean>, current) => {
+            acc1[current] = false;
 
-          return acc1;
-        }, {});
+            return acc1;
+          },
+          {}
+        );
 
         return { ...acc, [current]: { ...currentValue, conditions: updatedConditions } };
       }

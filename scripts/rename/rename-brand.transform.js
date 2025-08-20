@@ -95,5 +95,3 @@ module.exports = function transform(file, api) {
 };
 
 module.exports.parser = 'tsx';
-
-

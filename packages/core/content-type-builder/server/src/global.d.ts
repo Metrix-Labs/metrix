@@ -1,3 +1,1 @@
 declare const strapi: any;
-
-

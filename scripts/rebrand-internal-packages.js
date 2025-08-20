@@ -105,9 +105,8 @@ async function main() {
     if (nameMapping.has(depName)) return true;
     // Fallback: if a corresponding @metrixlabs/<pkg> exists, remap it
     const parts = depName.split('/');
-    const candidate = depName === '@strapi/strapi'
-      ? '@metrixlabs/metrix'
-      : `@metrixlabs/${parts[1]}`;
+    const candidate =
+      depName === '@strapi/strapi' ? '@metrixlabs/metrix' : `@metrixlabs/${parts[1]}`;
     return internalMetrixNames.has(candidate);
   }
 
@@ -246,5 +245,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
-

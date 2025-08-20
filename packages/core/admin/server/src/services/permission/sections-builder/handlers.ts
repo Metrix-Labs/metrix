@@ -1,20 +1,20 @@
 import type { Internal } from '@metrixlabs/types';
 import { contentTypes } from '@metrixlabs/utils';
 import {
-	toSubjectTemplate,
-	getValidOptions,
-	hasProperty,
-	isNotInSubjects,
-	resolveContentType,
-	isOfKind,
+  toSubjectTemplate,
+  getValidOptions,
+  hasProperty,
+  isNotInSubjects,
+  resolveContentType,
+  isOfKind,
 } from './utils';
 import type { Action } from '../../../domain/action';
 
 const { isVisibleAttribute } = contentTypes;
 
 export type ContentTypesSection = {
-	actions: Action[];
-	subjects: any[];
+  actions: Action[];
+  subjects: any[];
 };
 
 export type ActionArraySection = Action[];
@@ -27,16 +27,16 @@ export type ActionArraySection = Action[];
  * @param section
  */
 const settings = ({ action, section }: { action: Action; section: ActionArraySection }) => {
-	const { category, subCategory, displayName, actionId } = action;
+  const { category, subCategory, displayName, actionId } = action;
 
-	section.push({
-		displayName,
-		category,
-		subCategory,
-		// TODO: Investigate at which point the action property is transformed to actionId
-		// @ts-expect-error - action should be actionID
-		action: actionId,
-	});
+  section.push({
+    displayName,
+    category,
+    subCategory,
+    // TODO: Investigate at which point the action property is transformed to actionId
+    // @ts-expect-error - action should be actionID
+    action: actionId,
+  });
 };
 
 /**
@@ -47,15 +47,15 @@ const settings = ({ action, section }: { action: Action; section: ActionArraySec
  * @param {ActionArraySection} section
  */
 const plugins = ({ action, section }: { action: Action; section: ActionArraySection }) => {
-	const { pluginName, subCategory, displayName, actionId } = action;
+  const { pluginName, subCategory, displayName, actionId } = action;
 
-	section.push({
-		displayName,
-		// @ts-expect-error - plugin should be pluginName, TODO: Investigate at which point the plugin property
-		plugin: pluginName,
-		subCategory,
-		action: actionId,
-	});
+  section.push({
+    displayName,
+    // @ts-expect-error - plugin should be pluginName, TODO: Investigate at which point the plugin property
+    plugin: pluginName,
+    subCategory,
+    action: actionId,
+  });
 };
 
 /**
@@ -66,95 +66,95 @@ const plugins = ({ action, section }: { action: Action; section: ActionArraySect
  * @param {ContentTypesSection} section
  */
 const contentTypesBase = ({
-	action,
-	section,
+  action,
+  section,
 }: {
-	action: Action;
-	section: ContentTypesSection;
+  action: Action;
+  section: ContentTypesSection;
 }) => {
-	const { displayName, actionId, subjects, options } = action;
+  const { displayName, actionId, subjects, options } = action;
 
-	section.actions.push({
-		// @ts-expect-error - label should be displayName, TODO: Investigate at which point the label property
-		label: displayName,
-		actionId,
-		subjects,
-		...getValidOptions(options),
-	});
+  section.actions.push({
+    // @ts-expect-error - label should be displayName, TODO: Investigate at which point the label property
+    label: displayName,
+    actionId,
+    subjects,
+    ...getValidOptions(options),
+  });
 };
 
 /**
  * Initialize the subjects array of a section based on the action's subjects
  */
 const subjectsHandlerFor =
-	(kind: string) =>
-	({ action, section: contentTypesSection }: { action: Action; section: ContentTypesSection }) => {
-		// TODO: add a type guard for UID.ContentType
-		const subjects = action.subjects as Internal.UID.ContentType[];
+  (kind: string) =>
+  ({ action, section: contentTypesSection }: { action: Action; section: ContentTypesSection }) => {
+    // TODO: add a type guard for UID.ContentType
+    const subjects = action.subjects as Internal.UID.ContentType[];
 
-		if (!subjects?.length) {
-			return;
-		}
+    if (!subjects?.length) {
+      return;
+    }
 
-		const newSubjects = subjects
-			// Ignore already added subjects
-			.filter(isNotInSubjects(contentTypesSection.subjects))
-			// Transform UIDs into content-types
-			.map(resolveContentType)
-			// Only keep specific kind of content-types
-			.filter(isOfKind(kind))
-			// Transform the content-types into section's subjects
-			.map(toSubjectTemplate);
+    const newSubjects = subjects
+      // Ignore already added subjects
+      .filter(isNotInSubjects(contentTypesSection.subjects))
+      // Transform UIDs into content-types
+      .map(resolveContentType)
+      // Only keep specific kind of content-types
+      .filter(isOfKind(kind))
+      // Transform the content-types into section's subjects
+      .map(toSubjectTemplate);
 
-		contentTypesSection.subjects.push(...newSubjects);
-	};
+    contentTypesSection.subjects.push(...newSubjects);
+  };
 
 const buildNode = (model: any, attributeName: string, attribute: any) => {
-	if (!isVisibleAttribute(model, attributeName)) {
-		return null;
-	}
+  if (!isVisibleAttribute(model, attributeName)) {
+    return null;
+  }
 
-	const node = { label: attributeName, value: attributeName };
+  const node = { label: attributeName, value: attributeName };
 
-	if (attribute.required) {
-		Object.assign(node, { required: true });
-	}
+  if (attribute.required) {
+    Object.assign(node, { required: true });
+  }
 
-	if (attribute.type === 'component') {
-		const component = strapi.components[attribute.component];
-		return { ...node, children: buildDeepAttributesCollection(component) };
-	}
+  if (attribute.type === 'component') {
+    const component = strapi.components[attribute.component];
+    return { ...node, children: buildDeepAttributesCollection(component) };
+  }
 
-	return node;
+  return node;
 };
 
 const buildDeepAttributesCollection = (model: any): unknown => {
-	return Object.entries(model.attributes)
-		.map(([attributeName, attribute]) => buildNode(model, attributeName, attribute))
-		.filter((node) => node !== null);
+  return Object.entries(model.attributes)
+    .map(([attributeName, attribute]) => buildNode(model, attributeName, attribute))
+    .filter((node) => node !== null);
 };
 
 /**
  * Create and populate the fields property for section's subjects based on the action's subjects list
  */
 const fieldsProperty = ({ action, section }: { action: Action; section: ContentTypesSection }) => {
-	const { subjects } = action;
+  const { subjects } = action;
 
-	section.subjects
-		.filter((subject) => subjects?.includes(subject.uid))
-		.forEach((subject) => {
-			const { uid } = subject;
-			const contentType = resolveContentType(uid);
+  section.subjects
+    .filter((subject) => subjects?.includes(subject.uid))
+    .forEach((subject) => {
+      const { uid } = subject;
+      const contentType = resolveContentType(uid);
 
-			if (hasProperty('fields', subject)) {
-				return;
-			}
+      if (hasProperty('fields', subject)) {
+        return;
+      }
 
-			const fields = buildDeepAttributesCollection(contentType);
-			const fieldsProp = { label: 'Fields', value: 'fields', children: fields };
+      const fields = buildDeepAttributesCollection(contentType);
+      const fieldsProp = { label: 'Fields', value: 'fields', children: fields };
 
-			subject.properties.push(fieldsProp);
-		});
+      subject.properties.push(fieldsProp);
+    });
 };
 
 export { plugins, settings, subjectsHandlerFor, contentTypesBase, fieldsProperty };

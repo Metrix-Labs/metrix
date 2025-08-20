@@ -66,7 +66,10 @@ function createSchemaBuilder({ components, contentTypes }: SchemaBuilderOptions)
 
   // init temporary ContentTypes
   Object.keys(contentTypes).forEach((key) => {
-    tmpContentTypes.set((contentTypes as any)[key].uid, createSchemaHandler((contentTypes as any)[key]));
+    tmpContentTypes.set(
+      (contentTypes as any)[key].uid,
+      createSchemaHandler((contentTypes as any)[key])
+    );
   });
 
   // init temporary components
@@ -106,7 +109,8 @@ function createSchemaBuilder({ components, contentTypes }: SchemaBuilderOptions)
       } as any;
 
       if ((attribute as any).type === 'relation') {
-        const { target, relation, targetAttribute, dominant, ...restOfProperties } = attribute as any;
+        const { target, relation, targetAttribute, dominant, ...restOfProperties } =
+          attribute as any;
 
         const attr: any = {
           type: 'relation',

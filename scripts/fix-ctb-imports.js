@@ -9,7 +9,8 @@ async function* walk(dir) {
   for (const entry of entries) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      if (entry.name === 'node_modules' || entry.name === 'dist' || entry.name === 'build') continue;
+      if (entry.name === 'node_modules' || entry.name === 'dist' || entry.name === 'build')
+        continue;
       yield* walk(full);
     } else if (/[.](ts|tsx|js|jsx|mjs|cjs)$/.test(entry.name)) {
       yield full;
@@ -51,7 +52,3 @@ run().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
-
-
-

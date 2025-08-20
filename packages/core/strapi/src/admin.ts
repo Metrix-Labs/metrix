@@ -11,13 +11,13 @@ const render = (mountNode: HTMLElement | null, { plugins, ...restArgs }: RenderA
   return renderAdmin(mountNode, {
     ...restArgs,
     plugins: {
-      'content-manager': (contentManager as any),
-      'content-type-builder': (contentTypeBuilder as any),
-      email: (email as any),
-      upload: (upload as any),
-      contentReleases: (contentReleases as any),
-      i18n: (i18n as any),
-      reviewWorkflows: (reviewWorkflows as any),
+      'content-manager': contentManager as any,
+      'content-type-builder': contentTypeBuilder as any,
+      email: email as any,
+      upload: upload as any,
+      contentReleases: contentReleases as any,
+      i18n: i18n as any,
+      reviewWorkflows: reviewWorkflows as any,
       ...plugins,
     },
   });

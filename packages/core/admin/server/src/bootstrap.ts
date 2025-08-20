@@ -62,10 +62,10 @@ const syncAPITokensPermissions = async () => {
   )();
 
   const unknownPermissions = uniq(
-    (difference as unknown as (
-      a: ReadonlyArray<unknown>,
-      b: ReadonlyArray<unknown>
-    ) => unknown[])(permissionsInDB as unknown[], validPermissions as unknown[])
+    (difference as unknown as (a: ReadonlyArray<unknown>, b: ReadonlyArray<unknown>) => unknown[])(
+      permissionsInDB as unknown[],
+      validPermissions as unknown[]
+    )
   ) as unknown[];
 
   if (unknownPermissions.length > 0) {

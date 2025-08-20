@@ -6,7 +6,10 @@ import { createStrapi, compileStrapi } from '@metrixlabs/core';
 import ora from 'ora';
 import { merge } from 'lodash/fp';
 import type { Core } from '@metrixlabs/types';
-import { engine as engineDataTransfer, metrix as metrixDataTransfer } from '@metrixlabs/data-transfer';
+import {
+  engine as engineDataTransfer,
+  metrix as metrixDataTransfer,
+} from '@metrixlabs/data-transfer';
 
 import { readableBytes, exitWith } from './helpers';
 import { getParseListWithChoices, parseInteger, confirmMessage } from './commander';

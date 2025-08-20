@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-import { useNotification, useAPIErrorHandler, useQueryParams } from '@metrixlabs/admin/strapi-admin';
+import {
+  useNotification,
+  useAPIErrorHandler,
+  useQueryParams,
+} from '@metrixlabs/admin/strapi-admin';
 import { useLicenseLimits } from '@metrixlabs/admin/strapi-admin/ee';
 import { unstable_useDocument } from '@metrixlabs/content-manager/strapi-admin';
 import {

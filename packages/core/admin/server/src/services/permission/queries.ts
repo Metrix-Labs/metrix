@@ -49,7 +49,9 @@ export const createMany = async (permissions: CreatePermissionPayload[]): Promis
     createdPermissions.push(newPerm);
   }
 
-  const permissionsToReturn = permissionDomain.toPermission(createdPermissions) as unknown as Permission[];
+  const permissionsToReturn = permissionDomain.toPermission(
+    createdPermissions
+  ) as unknown as Permission[];
   strapi.eventHub.emit('permission.create', { permissions: permissionsToReturn });
 
   return permissionsToReturn;
@@ -155,11 +157,13 @@ export const cleanPermissionsInDatabase = async (): Promise<void> => {
     ) as Permission[];
 
     // Update only the ones that need to be updated
-    const permissionsNeedingToBeUpdated = (differenceWith as unknown as (
-      comparator: (a: Permission, b: Permission) => boolean,
-      arr1: Permission[],
-      arr2: Permission[]
-    ) => Permission[])(
+    const permissionsNeedingToBeUpdated = (
+      differenceWith as unknown as (
+        comparator: (a: Permission, b: Permission) => boolean,
+        arr1: Permission[],
+        arr2: Permission[]
+      ) => Permission[]
+    )(
       (a, b) => a.id === b.id && xor(a.properties.fields, b.properties.fields).length === 0,
       permissionsWithCleanFields,
       remainingPermissions

@@ -99,7 +99,8 @@ export const getEnabledPlugins = async (metrix: Core.Strapi, { client } = { clie
 
     const packageInfo = require(packageModulePath);
 
-    const pluginName = (packageInfo as any).metrix?.name ?? (packageInfo as any).strapi?.name ?? packageInfo.name;
+    const pluginName =
+      (packageInfo as any).metrix?.name ?? (packageInfo as any).strapi?.name ?? packageInfo.name;
     validatePluginName(pluginName);
     internalPlugins[pluginName] = {
       ...toDetailedDeclaration({ enabled: true, resolve: packageModulePath, isModule: client }),
@@ -121,7 +122,8 @@ export const getEnabledPlugins = async (metrix: Core.Strapi, { client } = { clie
     }
 
     if (isStrapiPlugin(packageInfo)) {
-      const name = (packageInfo as any).metrix?.name ?? (packageInfo as any).strapi?.name ?? packageInfo.name;
+      const name =
+        (packageInfo as any).metrix?.name ?? (packageInfo as any).strapi?.name ?? packageInfo.name;
       validatePluginName(name);
       installedPlugins[name] = {
         ...toDetailedDeclaration({ enabled: true, resolve: packagePath, isModule: client }),

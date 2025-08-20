@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-import { useField, useNotification, useForm, createRulesEngine } from '@metrixlabs/admin/strapi-admin';
+import {
+  useField,
+  useNotification,
+  useForm,
+  createRulesEngine,
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Box,
   Flex,

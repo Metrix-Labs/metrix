@@ -132,40 +132,42 @@ const Blocker = ({ displayedIcon, description, title, isOpen }: BlockerProps): R
   const { formatMessage } = useIntl();
 
   // eslint-disable-next-line no-undef
-  return (isOpen && globalThis?.document?.body
-    ? createPortal(
-        <Overlay id="autoReloadOverlayBlocker" direction="column" alignItems="center" gap={6}>
-          <Flex direction="column" alignItems="center" gap={2}>
-            <Typography tag="h1" variant="alpha">
-              {formatMessage(title)}
-            </Typography>
-            <Typography tag="h2" textColor="neutral600" fontSize={4} fontWeight="regular">
-              {formatMessage(description)}
-            </Typography>
-          </Flex>
-          {displayedIcon === 'reload' && (
-            <IconBox padding={6} background="primary100" borderColor="primary200">
-              <LoaderReload width="4rem" height="4rem" />
-            </IconBox>
-          )}
-          {displayedIcon === 'time' && (
-            <IconBox padding={6} background="primary100" borderColor="primary200">
-              <Clock width="4rem" height="4rem" />
-            </IconBox>
-          )}
-          <Box marginTop={2}>
-            <Link href="https://docs.metrix.io" isExternal>
-              {formatMessage({
-                id: 'global.documentation',
-                defaultMessage: 'Read the documentation',
-              })}
-            </Link>
-          </Box>
-        </Overlay>,
-        // eslint-disable-next-line no-undef
-        globalThis.document.body
-      )
-    : null) as React.ReactNode;
+  return (
+    isOpen && globalThis?.document?.body
+      ? createPortal(
+          <Overlay id="autoReloadOverlayBlocker" direction="column" alignItems="center" gap={6}>
+            <Flex direction="column" alignItems="center" gap={2}>
+              <Typography tag="h1" variant="alpha">
+                {formatMessage(title)}
+              </Typography>
+              <Typography tag="h2" textColor="neutral600" fontSize={4} fontWeight="regular">
+                {formatMessage(description)}
+              </Typography>
+            </Flex>
+            {displayedIcon === 'reload' && (
+              <IconBox padding={6} background="primary100" borderColor="primary200">
+                <LoaderReload width="4rem" height="4rem" />
+              </IconBox>
+            )}
+            {displayedIcon === 'time' && (
+              <IconBox padding={6} background="primary100" borderColor="primary200">
+                <Clock width="4rem" height="4rem" />
+              </IconBox>
+            )}
+            <Box marginTop={2}>
+              <Link href="https://docs.metrix.io" isExternal>
+                {formatMessage({
+                  id: 'global.documentation',
+                  defaultMessage: 'Read the documentation',
+                })}
+              </Link>
+            </Box>
+          </Overlay>,
+          // eslint-disable-next-line no-undef
+          globalThis.document.body
+        )
+      : null
+  ) as React.ReactNode;
 };
 
 const rotation = keyframes`

@@ -59,7 +59,6 @@ jobs:
       - name: Monorepo build
         uses: ./.github/actions/run-build
 
-
   pretty:
     name: 'pretty (node: ${{ matrix.node }})'
     runs-on: ubuntu-latest
@@ -505,16 +504,7 @@ jobs:
     if: ${{ always() }}
     runs-on: ubuntu-latest
     name: aggregate_test_result
-    needs:
-      [
-        pretty,
-        lint,
-        build,
-        typescript,
-        unit_back,
-        unit_front,
-        
-      ]
+    needs: [pretty, lint, build, typescript, unit_back, unit_front]
     steps:
       - run: exit 1
         if: >-

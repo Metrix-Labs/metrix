@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { SerializedError } from '@reduxjs/toolkit';
 import {
   useNotification,
   useTracking,
   type TrackingEvent,
   useAPIErrorHandler,
 } from '@metrixlabs/admin/strapi-admin';
+import { SerializedError } from '@reduxjs/toolkit';
 import { useIntl, type MessageDescriptor } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Main } from '@strapi/design-system';
 import { useAPIErrorHandler, Page, useNotification } from '@metrixlabs/metrix/admin';
+import { Main } from '@strapi/design-system';
 import { FormikHelpers } from 'formik';
 import { useIntl } from 'react-intl';
 

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { SerializedError } from '@reduxjs/toolkit';
 import {
   useNotification,
   useStrapiApp,
   useAPIErrorHandler,
   useQueryParams,
 } from '@metrixlabs/admin/strapi-admin';
+import { SerializedError } from '@reduxjs/toolkit';
 
 import { HOOKS } from '../constants/hooks';
 import { useGetContentTypeConfigurationQuery } from '../services/contentTypes';

@@ -1,5 +1,5 @@
-import { SerializedError } from '@reduxjs/toolkit';
 import { type UnknownApiError, type ApiError } from '@metrixlabs/metrix/admin';
+import { SerializedError } from '@reduxjs/toolkit';
 
 type BaseQueryError = ApiError | UnknownApiError | SerializedError;
 

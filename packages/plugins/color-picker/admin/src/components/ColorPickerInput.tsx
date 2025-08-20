@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { type InputProps, useField } from '@metrixlabs/metrix/admin';
 import {
   Button,
   Box,
@@ -10,7 +11,6 @@ import {
   useComposedRefs,
 } from '@strapi/design-system';
 import { CaretDown } from '@strapi/icons';
-import { type InputProps, useField } from '@metrixlabs/metrix/admin';
 import { HexColorPicker } from 'react-colorful';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

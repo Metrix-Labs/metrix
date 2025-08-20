@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { skipToken } from '@reduxjs/toolkit/query';
 import {
   useNotification,
   useQueryParams,
@@ -17,6 +16,7 @@ import {
   buildValidParams,
   HeaderActionProps,
 } from '@metrixlabs/content-manager/metrix-admin';
+import { skipToken } from '@reduxjs/toolkit/query';
 import {
   Flex,
   Status,

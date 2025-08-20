@@ -1,5 +1,5 @@
-import type { Middleware } from '@reduxjs/toolkit';
 import type { Store } from '@metrixlabs/admin/metrix-admin';
+import type { Middleware } from '@reduxjs/toolkit';
 
 const extendCTBInitialDataMiddleware: () => Middleware<
   object,

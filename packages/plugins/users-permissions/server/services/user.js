@@ -10,7 +10,7 @@ const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const urlJoin = require('url-join');
 
-const { sanitize } = require('@strapi/utils');
+const { sanitize } = require('@metrixlabs/utils');
 const { toNumber, getOr } = require('lodash/fp');
 const { getService } = require('../utils');
 

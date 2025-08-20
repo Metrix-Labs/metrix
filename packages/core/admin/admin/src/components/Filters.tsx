@@ -20,7 +20,7 @@ import { createContext } from './Context';
 import { Form, InputProps } from './Form';
 import { InputRenderer } from './FormInputs/Renderer';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * Root

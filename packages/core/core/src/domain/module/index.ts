@@ -1,6 +1,6 @@
 import _, { type PropertyPath, flatten } from 'lodash';
-import { yup } from '@strapi/utils';
-import type { Core, UID, Struct } from '@strapi/types';
+import { yup } from '@metrixlabs/utils';
+import type { Core, UID, Struct } from '@metrixlabs/types';
 
 import { removeNamespace } from '../../registries/namespace';
 import { validateModule } from './validation';

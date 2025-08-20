@@ -79,7 +79,7 @@ that has been thrown.
  * @example
  * ```tsx
  * import * as React from 'react';
- * import { useFetchClient, useAPIErrorHandler, useNotification } from '@strapi/admin/admin';
+ * import { useFetchClient, useAPIErrorHandler, useNotification } from '@metrixlabs/admin/admin';
  *
  * const MyComponent = () => {
  *   const { get } = useFetchClient();

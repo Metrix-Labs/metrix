@@ -1,4 +1,4 @@
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
+import { useLicenseLimits } from '@metrixlabs/admin/strapi-admin/ee';
 import { screen, render } from '@tests/utils';
 
 import { TrialCountdown } from '../TrialCountdown';

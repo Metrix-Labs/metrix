@@ -1,7 +1,7 @@
 import { PERMISSIONS } from './constants';
 import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 
-import type { Plugin } from '@strapi/types';
+import type { Plugin } from '@metrixlabs/types';
 
 const admin: Plugin.Config.AdminInput = {
   // TODO typing app in strapi/types as every plugin needs it

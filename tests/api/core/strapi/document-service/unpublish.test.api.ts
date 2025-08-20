@@ -1,4 +1,4 @@
-import type { Core, Modules } from '@strapi/types';
+import type { Core, Modules } from '@metrixlabs/types';
 
 import { createTestSetup, destroyTestSetup } from '../../../utils/builder-helper';
 import { testInTransaction } from '../../../utils/index';

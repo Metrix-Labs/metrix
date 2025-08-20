@@ -1,5 +1,5 @@
-import type { Core, Modules, Schema } from '@strapi/types';
-import { contentTypes } from '@strapi/utils';
+import type { Core, Modules, Schema } from '@metrixlabs/types';
+import { contentTypes } from '@metrixlabs/utils';
 
 import type {
   GetCountDocuments,

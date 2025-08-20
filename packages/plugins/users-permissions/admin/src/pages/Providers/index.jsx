@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useTracking, Layouts } from '@strapi/admin/strapi-admin';
+import { useTracking, Layouts } from '@metrixlabs/admin/strapi-admin';
 import {
   IconButton,
   Table,
@@ -20,7 +20,7 @@ import {
   useNotification,
   useFetchClient,
   useRBAC,
-} from '@strapi/strapi/admin';
+} from '@metrixlabs/metrix/admin';
 import upperFirst from 'lodash/upperFirst';
 import { useIntl } from 'react-intl';
 import { useMutation, useQuery, useQueryClient } from 'react-query';

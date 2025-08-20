@@ -1,6 +1,6 @@
 'use strict';
 
-const { AbstractRouteValidator } = require('@strapi/utils');
+const { AbstractRouteValidator } = require('@metrixlabs/utils');
 const z = require('zod/v4');
 
 class UsersPermissionsRouteValidator extends AbstractRouteValidator {

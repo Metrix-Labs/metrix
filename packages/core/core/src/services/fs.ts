@@ -1,7 +1,7 @@
 import path from 'path';
 import fse from 'fs-extra';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 interface StrapiFS {
   writeAppFile(optPath: string | string[], data: string): Promise<void>;

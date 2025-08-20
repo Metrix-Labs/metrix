@@ -1,4 +1,4 @@
-import { FetchError } from '@strapi/admin/strapi-admin';
+import { FetchError } from '@metrixlabs/admin/strapi-admin';
 
 import { normalizeAPIError } from '../normalizeAPIError';
 

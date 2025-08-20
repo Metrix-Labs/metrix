@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/utils",
+  "name": "@metrixlabs/utils",
   "version": "5.22.0",
   "description": "Shared utilities for the Strapi packages",
   "keywords": [
@@ -69,5 +69,8 @@
   "engines": {
     "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

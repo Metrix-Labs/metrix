@@ -1,8 +1,8 @@
 import { Kind, valueFromASTUntyped } from 'graphql';
 import { omit } from 'lodash/fp';
 import { unionType, scalarType } from 'nexus';
-import { errors } from '@strapi/utils';
-import type { Internal, Schema } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Internal, Schema } from '@metrixlabs/types';
 
 import type { Context } from '../types';
 

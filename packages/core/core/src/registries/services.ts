@@ -1,5 +1,5 @@
 import { pickBy, has } from 'lodash/fp';
-import type { Core, UID } from '@strapi/types';
+import type { Core, UID } from '@metrixlabs/types';
 import { addNamespace, hasNamespace } from './namespace';
 
 export type ServiceFactory = (params: { strapi: Core.Strapi }) => Core.Service | Core.Service;

@@ -1,7 +1,7 @@
 /* eslint-disable no-continue */
 import { keyBy } from 'lodash/fp';
-import { async } from '@strapi/utils';
-import type { UID, Schema } from '@strapi/types';
+import { async } from '@metrixlabs/utils';
+import type { UID, Schema } from '@metrixlabs/types';
 
 interface LoadContext {
   oldVersions: { id: string; locale: string }[];

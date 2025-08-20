@@ -4,7 +4,7 @@
  * which are enabled and disabled.
  */
 
-import type { Core, Modules } from '@strapi/types';
+import type { Core, Modules } from '@metrixlabs/types';
 
 type FeatureName = keyof Modules.Features.FeaturesConfig['future'];
 

@@ -1,5 +1,5 @@
-import type { Data, Modules, Struct, UID } from '@strapi/types';
-import { type errors } from '@strapi/utils';
+import type { Data, Modules, Struct, UID } from '@metrixlabs/types';
+import { type errors } from '@metrixlabs/utils';
 
 /**
  * Unlike other Content Manager contracts, history versions can't be created via

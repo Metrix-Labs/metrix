@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { uniq, startsWith } from 'lodash/fp';
-import { contentTypes as contentTypesUtils } from '@strapi/utils';
-import type { Modules, Struct } from '@strapi/types';
+import { contentTypes as contentTypesUtils } from '@metrixlabs/utils';
+import type { Modules, Struct } from '@metrixlabs/types';
 import { getService } from '../utils';
 import actionDomain from '../domain/action';
 import permissionDomain from '../domain/permission';

@@ -1,7 +1,7 @@
 import { cloneDeep, isEmpty } from 'lodash/fp';
 
-import type { Schema } from '@strapi/types';
-import { async } from '@strapi/utils';
+import type { Schema } from '@metrixlabs/types';
+import { async } from '@metrixlabs/utils';
 import { getService } from '../utils';
 
 /**

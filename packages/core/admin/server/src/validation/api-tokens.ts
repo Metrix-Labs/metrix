@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 import constants from '../services/constants';
 
 const apiTokenCreationSchema = yup

@@ -12,7 +12,7 @@ import { ComponentList } from './ComponentList';
 import { ComponentRow } from './ComponentRow';
 import { useDataManager } from './DataManager/useDataManager';
 
-import type { Internal, Struct } from '@strapi/types';
+import type { Internal, Struct } from '@metrixlabs/types';
 
 interface DynamicZoneListProps {
   addComponent: (name?: string) => void;

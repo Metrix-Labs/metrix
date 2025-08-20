@@ -1,4 +1,4 @@
-import { type Logger, createLogger } from '@strapi/logger';
+import { type Logger, createLogger } from '@metrixlabs/logger';
 import { formatDiagnostic } from '../data-transfer';
 
 jest.mock('@strapi/logger', () => {

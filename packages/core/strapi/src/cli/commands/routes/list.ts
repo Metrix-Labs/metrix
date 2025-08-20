@@ -3,7 +3,7 @@ import CLITable from 'cli-table3';
 import chalk from 'chalk';
 import { toUpper } from 'lodash/fp';
 
-import { createStrapi, compileStrapi } from '@strapi/core';
+import { createStrapi, compileStrapi } from '@metrixlabs/core';
 
 import type { StrapiCommand } from '../../types';
 import { runAction } from '../../utils/helpers';

@@ -2,7 +2,7 @@ import type { Context, Next } from 'koa';
 
 import { pick } from 'lodash/fp';
 import compose from 'koa-compose';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { validateProviderOptionsUpdate } from '../validation/authentication';
 import { middlewares, utils } from './authentication-utils';
 

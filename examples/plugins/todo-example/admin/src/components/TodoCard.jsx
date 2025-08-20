@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Divider, Flex, TextButton, Typography } from '@strapi/design-system';
 import { Plus } from '@strapi/icons';
-import { unstable_useContentManagerContext as useContentManagerContext } from '@strapi/strapi/admin';
+import { unstable_useContentManagerContext as useContentManagerContext } from '@metrixlabs/metrix/admin';
 import TaskModal from './TaskModal';
 import useRelatedTasks from '../hooks/useRelatedTasks';
 import TasksList from './TasksList';

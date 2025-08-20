@@ -1,4 +1,4 @@
-import { validateYupSchema } from '@strapi/utils';
+import { validateYupSchema } from '@metrixlabs/utils';
 import * as yup from 'yup';
 
 export const SETTINGS_SCHEMA = yup

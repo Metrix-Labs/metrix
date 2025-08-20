@@ -1,7 +1,7 @@
 import range from 'koa-range';
 import koaStatic from 'koa-static';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 /**
  * Programmatic upload middleware. We do not want to expose it in the plugin

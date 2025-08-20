@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { adminApi, NotificationsProvider } from '@strapi/admin/strapi-admin';
+import { adminApi, NotificationsProvider } from '@metrixlabs/admin/strapi-admin';
 import { DesignSystemProvider } from '@strapi/design-system';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';

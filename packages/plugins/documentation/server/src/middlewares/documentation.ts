@@ -2,7 +2,7 @@ import path from 'path';
 import koaStatic from 'koa-static';
 import swaggerUi from 'swagger-ui-dist';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 export const addDocumentMiddlewares = async ({ strapi }: { strapi: Core.Strapi }) => {
   strapi.server.routes([

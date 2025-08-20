@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 export const logger: Core.MiddlewareFactory = (_, { strapi }) => {
   return async (ctx, next) => {

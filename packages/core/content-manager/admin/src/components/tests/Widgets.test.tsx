@@ -1,4 +1,4 @@
-import { useGetCountDocumentsQuery } from '@strapi/admin/strapi-admin';
+import { useGetCountDocumentsQuery } from '@metrixlabs/admin/strapi-admin';
 import { render, screen } from '@tests/utils';
 
 import { ChartEntriesWidget } from '../Widgets';

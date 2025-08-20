@@ -7,7 +7,7 @@ const {
   template: { createStrictInterpolationRegExp },
   errors,
   objects,
-} = require('@strapi/utils');
+} = require('@metrixlabs/utils');
 
 const { getService } = require('../utils');
 

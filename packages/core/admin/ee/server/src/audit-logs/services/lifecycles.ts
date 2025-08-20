@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 const DEFAULT_RETENTION_DAYS = 90;
 

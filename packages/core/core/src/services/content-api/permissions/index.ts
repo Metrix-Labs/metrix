@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { createActionProvider, createConditionProvider } from './providers';
 import createPermissionEngine from './engine';
 

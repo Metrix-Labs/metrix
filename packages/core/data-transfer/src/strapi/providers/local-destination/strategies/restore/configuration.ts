@@ -1,7 +1,7 @@
 import { Writable } from 'stream';
 import { omit } from 'lodash/fp';
 import chalk from 'chalk';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { ProviderTransferError } from '../../../../../errors/providers';
 import { IConfiguration, Transaction } from '../../../../../../types';
 

@@ -1,4 +1,4 @@
-import { providerFactory } from '@strapi/utils';
+import { providerFactory } from '@metrixlabs/utils';
 
 export default (options = {}) => {
   const provider = providerFactory(options);

@@ -15,7 +15,7 @@ import {
   isObject,
 } from 'lodash/fp';
 
-import { contentTypes, traverseEntity, traverse, validate, async, errors } from '@strapi/utils';
+import { contentTypes, traverseEntity, traverse, validate, async, errors } from '@metrixlabs/utils';
 import { ADMIN_USER_ALLOWED_FIELDS } from '../../../domain/user';
 
 const { ValidationError } = errors;

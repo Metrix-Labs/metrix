@@ -2,6 +2,6 @@
  * global service.
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from '@metrixlabs/metrix';
 
 export default factories.createCoreService('api::global.global');

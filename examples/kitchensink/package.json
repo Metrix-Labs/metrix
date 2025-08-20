@@ -13,10 +13,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/provider-email-mailgun": "workspace:*",
-    "@strapi/provider-upload-aws-s3": "workspace:*",
-    "@strapi/provider-upload-cloudinary": "workspace:*",
-    "@strapi/strapi": "workspace:*",
+    "@metrixlabs/metrix": "workspace:*",
+    "@metrixlabs/provider-email-mailgun": "workspace:*",
+    "@metrixlabs/provider-upload-aws-s3": "workspace:*",
+    "@metrixlabs/provider-upload-cloudinary": "workspace:*",
     "better-sqlite3": "11.3.0",
     "lodash": "4.17.21",
     "mysql2": "3.9.8",

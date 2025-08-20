@@ -20,10 +20,7 @@ export type AdminAuthConfig = {
 };
 
 const getTokenOptions = () => {
-  const { options, secret } = strapi.config.get<AdminAuthConfig>(
-    'admin.auth',
-    {} as AdminAuthConfig
-  );
+  const { options, secret } = strapi.config.get('admin.auth') as AdminAuthConfig;
 
   return {
     secret,

@@ -1,5 +1,5 @@
 import { set } from 'lodash/fp';
-import strapiUtils from '@strapi/utils';
+import strapiUtils from '@metrixlabs/utils';
 import { ProhibitedCloningField } from '../../../../shared/contracts/collection-types';
 
 const { isVisibleAttribute } = strapiUtils.contentTypes;

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
+import { useLicenseLimits } from '@metrixlabs/admin/strapi-admin/ee';
 import { Box, Flex, LinkButton, Typography } from '@strapi/design-system';
 import { isAfter, subDays } from 'date-fns';
 import { useIntl } from 'react-intl';

@@ -1,4 +1,4 @@
-import { Page, Layouts } from '@strapi/admin/strapi-admin';
+import { Page, Layouts } from '@metrixlabs/admin/strapi-admin';
 import { EmptyStateLayout, LinkButton } from '@strapi/design-system';
 import { Plus } from '@strapi/icons';
 import { EmptyDocuments } from '@strapi/icons/symbols';

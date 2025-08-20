@@ -1,4 +1,4 @@
-import { Layouts } from '@strapi/admin/strapi-admin';
+import { Layouts } from '@metrixlabs/admin/strapi-admin';
 import { Box } from '@strapi/design-system';
 import { styled } from 'styled-components';
 

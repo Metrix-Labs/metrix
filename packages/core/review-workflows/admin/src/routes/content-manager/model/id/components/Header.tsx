@@ -1,4 +1,4 @@
-import { unstable_useDocumentLayout as useDocumentLayout } from '@strapi/content-manager/strapi-admin';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/strapi-admin';
 import { Flex } from '@strapi/design-system';
 import { useParams } from 'react-router-dom';
 

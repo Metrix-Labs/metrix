@@ -9,7 +9,7 @@ import {
   useField,
   useRBAC,
   FormHelpers,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Button,
   Combobox,

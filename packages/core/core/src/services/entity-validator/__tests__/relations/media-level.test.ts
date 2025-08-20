@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 
 import entityValidator from '../..';
 import { models, existentIDs, nonExistentIds } from './utils/relations.testdata';

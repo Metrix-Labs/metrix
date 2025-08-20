@@ -1,6 +1,6 @@
 import { inputObjectType, nonNull } from 'nexus';
-import { contentTypes } from '@strapi/utils';
-import type { Struct } from '@strapi/types';
+import { contentTypes } from '@metrixlabs/utils';
+import type { Struct } from '@metrixlabs/types';
 import type { Context } from '../types';
 
 const { isWritableAttribute } = contentTypes;
@@ -63,14 +63,14 @@ export default ({ strapi }: Context) => {
 
             // Scalars
             else if (isStrapiScalar(attribute)) {
-              const gqlScalar = mappers.strapiScalarToGraphQLScalar(attribute.type);
+              const gqlScalar = mappers.strapiScalarToGraphQLScalar((attribute as any).type);
 
               t.field(attributeName, { type: gqlScalar });
             }
 
             // Media
             else if (isMedia(attribute)) {
-              const isMultiple = attribute.multiple === true;
+              const isMultiple = (attribute as any).multiple === true;
 
               if (extension.shadowCRUD('plugin::upload.file').isDisabled()) {
                 return;
@@ -85,11 +85,11 @@ export default ({ strapi }: Context) => {
 
             // Regular Relations (ignore polymorphic relations)
             else if (isRelation(attribute) && !isMorphRelation(attribute)) {
-              if (extension.shadowCRUD(attribute.target).isDisabled()) {
+              if (extension.shadowCRUD((attribute as any).target).isDisabled()) {
                 return;
               }
 
-              const isToManyRelation = attribute.relation.endsWith('Many');
+              const isToManyRelation = (attribute as any).relation.endsWith('Many');
 
               if (isToManyRelation) {
                 t.list.id(attributeName);
@@ -100,9 +100,9 @@ export default ({ strapi }: Context) => {
 
             // Components
             else if (isComponent(attribute)) {
-              const isRepeatable = attribute.repeatable === true;
-              const component = strapi.components[attribute.component];
-              const componentInputType = getComponentInputName(component);
+              const isRepeatable = (attribute as any).repeatable === true;
+              const component = strapi.components[(attribute as any).component];
+              const componentInputType = getComponentInputName(component as any);
 
               if (isRepeatable) {
                 t.list.field(attributeName, { type: componentInputType });

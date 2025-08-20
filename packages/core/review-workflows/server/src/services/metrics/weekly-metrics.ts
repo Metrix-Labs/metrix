@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { flow, map, sum, size, mean, max, defaultTo } from 'lodash/fp';
 import { add } from 'date-fns';
 import { getService } from '../../utils';

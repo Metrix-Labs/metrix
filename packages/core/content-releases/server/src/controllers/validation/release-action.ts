@@ -1,4 +1,4 @@
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 
 const RELEASE_ACTION_SCHEMA = yup.object().shape({
   contentType: yup.string().required(),

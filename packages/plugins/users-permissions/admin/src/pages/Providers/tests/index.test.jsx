@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { render, waitFor } from '@strapi/strapi/admin/test';
+import { render, waitFor } from '@metrixlabs/metrix/admin/test';
 
 import { ProvidersPage } from '../index';
 

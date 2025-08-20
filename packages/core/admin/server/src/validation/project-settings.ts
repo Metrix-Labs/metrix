@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { validateZod } from '@strapi/utils';
+import { validateZod } from '@metrixlabs/utils';
 
 const MAX_IMAGE_WIDTH = 750;
 const MAX_IMAGE_HEIGHT = MAX_IMAGE_WIDTH;

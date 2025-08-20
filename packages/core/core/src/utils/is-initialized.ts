@@ -1,6 +1,6 @@
 import { isEmpty, isNil } from 'lodash/fp';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 /**
  * Test if the strapi application is considered as initialized (1st user has been created)

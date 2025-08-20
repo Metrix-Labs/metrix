@@ -1,6 +1,6 @@
 'use strict';
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { createCoreRouter } = require('@metrixlabs/metrix').factories;
 
 module.exports = createCoreRouter('api::address.address', {
   config: {

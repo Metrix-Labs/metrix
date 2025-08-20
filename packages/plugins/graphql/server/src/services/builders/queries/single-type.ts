@@ -1,6 +1,6 @@
 import { extendType } from 'nexus';
 import type * as Nexus from 'nexus';
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrixlabs/types';
 import type { Context } from '../../types';
 
 export default ({ strapi }: Context) => {

@@ -3,8 +3,8 @@ import { dirname, join, resolve } from 'path';
 import { statSync, existsSync } from 'fs';
 import _ from 'lodash';
 import { get, pickBy, defaultsDeep, map, prop, pipe } from 'lodash/fp';
-import { strings } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { strings } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 import { getUserPluginsConfig } from './get-user-plugins-config';
 
 interface PluginMeta {

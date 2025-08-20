@@ -1,4 +1,4 @@
-import { useNotification, useFetchClient, adminApi } from '@strapi/admin/strapi-admin';
+import { useNotification, useFetchClient, adminApi } from '@metrixlabs/admin/strapi-admin';
 import { useIntl } from 'react-intl';
 import { useMutation, useQueryClient } from 'react-query';
 import { useDispatch } from 'react-redux';

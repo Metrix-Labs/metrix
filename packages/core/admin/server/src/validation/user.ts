@@ -1,5 +1,5 @@
 import { isUndefined } from 'lodash/fp';
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 import validators from './common-validators';
 
 const userCreationSchema = yup

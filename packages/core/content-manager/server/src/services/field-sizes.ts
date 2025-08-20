@@ -1,5 +1,5 @@
-import { errors } from '@strapi/utils';
-import type { Core, Modules } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core, Modules } from '@metrixlabs/types';
 
 const { ApplicationError } = errors;
 

@@ -1,4 +1,4 @@
-// import type { Common } from '@strapi/types';
+// import type { Common } from '@metrixlabs/types';
 
 import documentation, { type DocumentationService } from './documentation';
 import override, { type OverrideService } from './override';

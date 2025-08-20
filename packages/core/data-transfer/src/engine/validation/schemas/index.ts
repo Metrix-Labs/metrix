@@ -1,4 +1,4 @@
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrixlabs/types';
 import { isArray, isObject, reject } from 'lodash/fp';
 import type { Diff } from '../../../utils/json';
 import * as utils from '../../../utils';

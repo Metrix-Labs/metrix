@@ -1,9 +1,9 @@
 import fs from 'fs';
 import { join, resolve } from 'path';
 import crypto from 'crypto';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
-import { generateInstallId } from '@strapi/utils';
+import { generateInstallId } from '@metrixlabs/utils';
 
 interface LicenseInfo {
   type: 'bronze' | 'silver' | 'gold';

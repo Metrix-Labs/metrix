@@ -1,5 +1,5 @@
-import type { Logger } from '@strapi/logger';
-import type { Database } from '@strapi/database';
+import type { Logger } from '@metrixlabs/logger';
+import type { Database } from '@metrixlabs/database';
 
 import type { PropertyPath } from 'lodash';
 import type * as Core from '.';

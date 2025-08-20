@@ -1,5 +1,5 @@
 import { isNil, isPlainObject } from 'lodash/fp';
-import type { UID, Struct, Data } from '@strapi/types';
+import type { UID, Struct, Data } from '@metrixlabs/types';
 
 type TransformedEntry = {
   id: string;

@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import execa from 'execa';
 import fse from 'fs-extra';
 
-import { createGrowthSsoTrial } from '@strapi/cloud-cli';
+import { createGrowthSsoTrial } from '@metrixlabs/cloud-cli';
 
 import { copyTemplate } from './utils/template';
 import { tryGitInit } from './utils/git';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { render, screen, waitFor } from '@strapi/strapi/admin/test';
+import { render, screen, waitFor } from '@metrixlabs/metrix/admin/test';
 
 import { EmailTemplatesPage } from '../index';
 

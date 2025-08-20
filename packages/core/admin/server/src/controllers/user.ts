@@ -1,7 +1,7 @@
 import type { Context } from 'koa';
 
 import * as _ from 'lodash';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import {
   validateUserCreationInput,
   validateUserUpdateInput,

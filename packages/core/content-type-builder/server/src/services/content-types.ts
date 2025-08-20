@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { getOr } from 'lodash/fp';
-import { contentTypes as contentTypesUtils, errors } from '@strapi/utils';
-import type { UID, Struct } from '@strapi/types';
+import { contentTypes as contentTypesUtils, errors } from '@metrixlabs/utils';
+import type { UID, Struct } from '@metrixlabs/types';
 import { formatAttributes, replaceTemporaryUIDs } from '../utils/attributes';
 import createBuilder from './schema-builder';
 import { coreUids, pluginsUids } from './constants';
@@ -135,7 +135,7 @@ export const generateAPI = ({
   displayName,
 }: any) => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const strapiGenerators = require('@strapi/generators');
+  const strapiGenerators = require('@metrixlabs/generators');
   return strapiGenerators.generate(
     'content-type',
     {

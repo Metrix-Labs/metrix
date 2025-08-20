@@ -1,4 +1,4 @@
-import { useLicenseLimits } from '@strapi/admin/strapi-admin/ee';
+import { useLicenseLimits } from '@metrixlabs/admin/strapi-admin/ee';
 import { render, screen } from '@tests/utils';
 
 import { useGetLicenseTrialTimeLeftQuery } from '../../../src/services/admin';

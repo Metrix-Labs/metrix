@@ -1,5 +1,5 @@
-import { Table, useQueryParams } from '@strapi/admin/strapi-admin';
-import { errors } from '@strapi/utils';
+import { Table, useQueryParams } from '@metrixlabs/admin/strapi-admin';
+import { errors } from '@metrixlabs/utils';
 import { within } from '@testing-library/react';
 import { render as renderRTL, waitFor, server } from '@tests/utils';
 import { rest } from 'msw';

@@ -22,7 +22,7 @@ import {
 import { TRANSFER_TOKEN_TYPE } from '../../components/Tokens/constants';
 import { Table } from '../../components/Tokens/Table';
 
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrixlabs/types';
 
 const tableHeaders = [
   {

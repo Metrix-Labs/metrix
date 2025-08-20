@@ -1,7 +1,7 @@
 import { entries, mapValues, omit } from 'lodash/fp';
 import { idArg, nonNull } from 'nexus';
-import { pagination } from '@strapi/utils';
-import type { Core, Struct } from '@strapi/types';
+import { pagination } from '@metrixlabs/utils';
+import type { Core, Struct } from '@metrixlabs/types';
 
 const { withDefaultPagination } = pagination;
 

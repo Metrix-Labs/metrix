@@ -5,7 +5,7 @@ import { StrapiApp, StrapiAppConstructorArgs } from './StrapiApp';
 import { getFetchClient } from './utils/getFetchClient';
 import { createAbsoluteUrl } from './utils/urls';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 
 interface RenderAdminArgs {
   customisations: {

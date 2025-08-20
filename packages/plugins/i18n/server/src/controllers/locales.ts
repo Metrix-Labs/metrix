@@ -1,6 +1,6 @@
-import * as utils from '@strapi/utils';
+import * as utils from '@metrixlabs/utils';
 import { pick } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { getService } from '../utils';
 import { validateCreateLocaleInput, validateUpdateLocaleInput } from '../validation/locales';
 import { formatLocale } from '../domain/locale';

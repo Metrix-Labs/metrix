@@ -1,6 +1,6 @@
 import { createCommand } from 'commander';
 import { EOL } from 'os';
-import { createStrapi, compileStrapi } from '@strapi/core';
+import { createStrapi, compileStrapi } from '@metrixlabs/core';
 import type { StrapiCommand } from '../types';
 import { runAction } from '../utils/helpers';
 

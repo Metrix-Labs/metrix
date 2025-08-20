@@ -2,9 +2,9 @@
  * Webhook store is the implementation of webhook storage over the core_store
  */
 
-import { errors } from '@strapi/utils';
-import type { Model, Database } from '@strapi/database';
-import type { Modules } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Model, Database } from '@metrixlabs/database';
+import type { Modules } from '@metrixlabs/types';
 
 const { ValidationError } = errors;
 

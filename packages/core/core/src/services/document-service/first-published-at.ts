@@ -1,6 +1,6 @@
-import { contentTypes } from '@strapi/utils';
+import { contentTypes } from '@metrixlabs/utils';
 import { assoc } from 'lodash/fp';
-import type { Modules, Schema } from '@strapi/types';
+import type { Modules, Schema } from '@metrixlabs/types';
 
 type EntriesUpdate = (entryToUpdate: any, param?: any) => Promise<any>;
 type ParamsTransform = (params: Modules.Documents.Params.All) => Modules.Documents.Params.All;

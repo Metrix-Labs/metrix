@@ -1,5 +1,5 @@
-import type { errors } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import type { errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 /**
  * GET /content-api/permissions - Get the permissions of all content types

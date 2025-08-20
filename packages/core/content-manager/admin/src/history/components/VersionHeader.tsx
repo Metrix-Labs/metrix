@@ -8,7 +8,7 @@ import {
   useRBAC,
   Layouts,
   GradientBadge,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { Button, Typography, Flex, Link, Dialog } from '@strapi/design-system';
 import { ArrowLeft, WarningCircle } from '@strapi/icons';
 import { stringify } from 'qs';
@@ -19,7 +19,7 @@ import { PERMISSIONS } from '../../constants/plugin';
 import { useHistoryContext } from '../pages/History';
 import { useRestoreVersionMutation } from '../services/historyVersion';
 
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrixlabs/types';
 
 interface VersionHeaderProps {
   headerId: string;

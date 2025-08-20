@@ -1,4 +1,4 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import createFieldSizesService from '../field-sizes';
 
 const { ApplicationError } = errors;

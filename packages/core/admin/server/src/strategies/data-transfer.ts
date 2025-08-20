@@ -1,6 +1,6 @@
 import type { Context } from 'koa';
 import { differenceInHours, parseISO } from 'date-fns';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { castArray, isNil } from 'lodash/fp';
 
 import { getService } from '../utils';

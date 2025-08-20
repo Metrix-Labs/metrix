@@ -2,6 +2,6 @@
  *  article controller
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from '@metrixlabs/metrix';
 
 export default factories.createCoreController('api::article.article');

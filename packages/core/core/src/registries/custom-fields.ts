@@ -1,6 +1,6 @@
 import { has, isPlainObject } from 'lodash/fp';
 
-import type { Core, Modules } from '@strapi/types';
+import type { Core, Modules } from '@metrixlabs/types';
 
 const ALLOWED_TYPES = [
   'biginteger',

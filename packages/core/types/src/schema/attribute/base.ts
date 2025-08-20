@@ -107,7 +107,7 @@ export interface Column {
  *
  * @example
  * ```typescript
- * import type { Schema } from '@strapi/types';
+ * import type { Schema } from '@metrixlabs/types';
  *
  * // An attribute of type 'boolean'
  * type BooleanAttribute = Schema.Attribute.OfType<'boolean'>;

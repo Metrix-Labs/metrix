@@ -1,5 +1,5 @@
 import { assign } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { getService } from '../utils';
 
 const getSSOProvidersList = async () => {

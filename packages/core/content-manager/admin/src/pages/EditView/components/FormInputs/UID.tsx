@@ -8,7 +8,7 @@ import {
   useAPIErrorHandler,
   useQueryParams,
   useFocusInputField,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Field,
   Flex,
@@ -33,7 +33,7 @@ import {
 import { buildValidParams } from '../../../../utils/api';
 
 import type { CheckUIDAvailability } from '../../../../../../shared/contracts/uid';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * InputUID

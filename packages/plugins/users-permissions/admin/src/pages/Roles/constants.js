@@ -1,4 +1,4 @@
-import { translatedErrors } from '@strapi/strapi/admin';
+import { translatedErrors } from '@metrixlabs/metrix/admin';
 import * as yup from 'yup';
 
 export const createRoleSchema = yup.object().shape({

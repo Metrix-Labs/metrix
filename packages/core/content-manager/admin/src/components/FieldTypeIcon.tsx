@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useStrapiApp } from '@strapi/admin/strapi-admin';
+import { useStrapiApp } from '@metrixlabs/admin/strapi-admin';
 import { Box } from '@strapi/design-system';
 import {
   BlocksField,
@@ -19,7 +19,7 @@ import {
   UidField,
 } from '@strapi/icons/symbols';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 const iconByTypes: Record<Schema.Attribute.Kind, React.ReactElement> = {
   biginteger: <NumberField />,

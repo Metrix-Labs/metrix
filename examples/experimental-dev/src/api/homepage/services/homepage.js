@@ -4,6 +4,6 @@
  * homepage service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@metrixlabs/metrix').factories;
 
 module.exports = createCoreService('api::homepage.homepage');

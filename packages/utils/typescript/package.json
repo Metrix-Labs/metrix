@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/typescript-utils",
+  "name": "@metrixlabs/typescript-utils",
   "version": "5.22.0",
   "description": "Typescript support for Strapi",
   "keywords": [
@@ -48,5 +48,8 @@
   "engines": {
     "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

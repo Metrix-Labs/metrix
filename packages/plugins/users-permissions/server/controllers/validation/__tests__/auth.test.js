@@ -1,6 +1,6 @@
 'use strict';
 
-const errors = require('@strapi/utils');
+const errors = require('@metrixlabs/utils');
 const auth = require('../../auth');
 
 const mockStrapi = {

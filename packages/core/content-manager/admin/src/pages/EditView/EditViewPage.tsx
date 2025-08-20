@@ -9,7 +9,7 @@ import {
   useNotification,
   useQueryParams,
   tours,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { Grid, Main, Tabs, Box } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { useLocation, useParams } from 'react-router-dom';

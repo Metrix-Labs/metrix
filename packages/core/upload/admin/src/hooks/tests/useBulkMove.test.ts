@@ -1,4 +1,4 @@
-import { useFetchClient } from '@strapi/admin/strapi-admin';
+import { useFetchClient } from '@metrixlabs/admin/strapi-admin';
 import { act, renderHook, screen } from '@tests/utils';
 
 import { useBulkMove, FileWithType, FolderWithType } from '../useBulkMove';

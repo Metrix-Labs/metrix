@@ -12,7 +12,7 @@ import { getFetchClient } from '../utils/getFetchClient';
  * @example
  * ```tsx
  * import * as React from 'react';
- * import { useFetchClient } from '@strapi/admin/admin';
+ * import { useFetchClient } from '@metrixlabs/admin/admin';
  *
  * const MyComponent = () => {
  *   const [items, setItems] = React.useState([]);

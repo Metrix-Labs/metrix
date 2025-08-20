@@ -1,4 +1,4 @@
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 import type { MessageDescriptor } from 'react-intl';
 
 /**

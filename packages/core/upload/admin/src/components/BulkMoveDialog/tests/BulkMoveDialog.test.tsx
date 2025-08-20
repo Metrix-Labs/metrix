@@ -1,4 +1,4 @@
-import { NotificationsProvider } from '@strapi/admin/strapi-admin';
+import { NotificationsProvider } from '@metrixlabs/admin/strapi-admin';
 import { DesignSystemProvider, Modal } from '@strapi/design-system';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';

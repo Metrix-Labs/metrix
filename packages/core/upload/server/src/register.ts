@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
-import { errors, file } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { errors, file } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 import registerUploadMiddleware from './middlewares/upload';
 import spec from '../../documentation/content-api.json';

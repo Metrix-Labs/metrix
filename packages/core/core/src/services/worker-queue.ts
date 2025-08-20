@@ -2,8 +2,8 @@
  * Simple worker queue in memory
  */
 import createDebugger from 'debug';
-import type { Logger } from '@strapi/logger';
-import type { Utils } from '@strapi/types';
+import type { Logger } from '@metrixlabs/logger';
+import type { Utils } from '@metrixlabs/types';
 
 const debug = createDebugger('strapi:worker-queue');
 

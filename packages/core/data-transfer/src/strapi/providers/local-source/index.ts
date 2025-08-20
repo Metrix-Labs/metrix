@@ -1,6 +1,6 @@
 import { Readable } from 'stream';
 import { chain } from 'stream-chain';
-import type { Core, Struct } from '@strapi/types';
+import type { Core, Struct } from '@metrixlabs/types';
 
 import type { IMetadata, ISourceProvider, ProviderType } from '../../../../types';
 import type { IDiagnosticReporter } from '../../../utils/diagnostic';

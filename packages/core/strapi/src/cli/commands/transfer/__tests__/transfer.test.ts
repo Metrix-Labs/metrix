@@ -1,4 +1,4 @@
-import * as mockDataTransfer from '@strapi/data-transfer';
+import * as mockDataTransfer from '@metrixlabs/data-transfer';
 
 import transferAction from '../action';
 import { expectExit } from '../../__tests__/commands.test.utils';

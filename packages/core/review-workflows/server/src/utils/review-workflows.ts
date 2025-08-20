@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { getOr, keys, pickBy, pipe, has, clamp } from 'lodash/fp';
 import {
   ENTITY_STAGE_ATTRIBUTE,

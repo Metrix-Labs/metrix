@@ -1,6 +1,6 @@
 'use strict';
 
-const { yup, validateYupSchema } = require('@strapi/utils');
+const { yup, validateYupSchema } = require('@metrixlabs/utils');
 
 const callbackSchema = yup.object({
   identifier: yup.string().required(),

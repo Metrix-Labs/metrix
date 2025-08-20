@@ -1,4 +1,4 @@
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 /**
  * Internal relation attribute type that includes the dominant property

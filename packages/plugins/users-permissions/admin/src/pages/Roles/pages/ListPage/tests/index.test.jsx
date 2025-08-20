@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { render as renderAdmin } from '@strapi/strapi/admin/test';
+import { render as renderAdmin } from '@metrixlabs/metrix/admin/test';
 import { waitForElementToBeRemoved } from '@testing-library/react';
 import { useLocation } from 'react-router-dom';
 

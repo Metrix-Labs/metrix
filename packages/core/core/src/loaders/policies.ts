@@ -1,8 +1,8 @@
 import { join, extname, basename } from 'path';
 import fse from 'fs-extra';
-import { importDefault } from '@strapi/utils';
+import { importDefault } from '@metrixlabs/utils';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 // TODO:: allow folders with index.js inside for bigger policies
 export default async function loadPolicies(strapi: Core.Strapi) {

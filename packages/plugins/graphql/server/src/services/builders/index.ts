@@ -1,5 +1,5 @@
 import { merge, map, pipe, reduce } from 'lodash/fp';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 // Builders Factories
 

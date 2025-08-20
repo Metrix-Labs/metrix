@@ -1,5 +1,5 @@
-import type { Core } from '@strapi/types';
-import { AbstractRouteValidator, type QueryParam } from '@strapi/utils';
+import type { Core } from '@metrixlabs/types';
+import { AbstractRouteValidator, type QueryParam } from '@metrixlabs/utils';
 import * as z from 'zod/v4';
 
 export type FileQueryParam = QueryParam;

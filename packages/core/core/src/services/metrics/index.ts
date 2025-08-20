@@ -3,7 +3,7 @@
  * You can learn more at https://docs.strapi.io/developer-docs/latest/getting-started/usage-information.html
  */
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import wrapWithRateLimit from './rate-limiter';
 import createSender from './sender';

@@ -24,7 +24,7 @@
     "lint": "eslint ."
   },
   "peerDependencies": {
-    "@strapi/strapi": "workspace:*"
+    "@metrixlabs/metrix": "workspace:*"
   },
   "dependencies": {
     "@strapi/design-system": "2.0.0-rc.29",
@@ -36,8 +36,8 @@
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
-    "@strapi/sdk-plugin": "^5.2.0",
-    "@strapi/strapi": "workspace:*"
+    "@metrixlabs/metrix": "workspace:*",
+    "@strapi/sdk-plugin": "^5.2.0"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

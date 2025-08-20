@@ -1,7 +1,7 @@
 import { Dispatch } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
-import type { Store } from '@strapi/admin/strapi-admin';
+import type { Store } from '@metrixlabs/admin/strapi-admin';
 
 type RootState = ReturnType<Store['getState']>;
 

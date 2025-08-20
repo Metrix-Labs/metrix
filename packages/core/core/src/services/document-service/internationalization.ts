@@ -1,5 +1,5 @@
-import type { Struct, Modules } from '@strapi/types';
-import { errors } from '@strapi/utils';
+import type { Struct, Modules } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 import { curry, assoc } from 'lodash/fp';
 
 type Transform = (

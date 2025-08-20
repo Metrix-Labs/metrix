@@ -1,4 +1,4 @@
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrixlabs/types';
 
 // eslint-disable-next-line import/no-cycle
 import { createAttributesSchema } from './mappers';

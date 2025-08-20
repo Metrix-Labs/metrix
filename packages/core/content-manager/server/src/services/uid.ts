@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import slugify from '@sindresorhus/slugify';
 
-import type { Core, Schema, UID } from '@strapi/types';
+import type { Core, Schema, UID } from '@metrixlabs/types';
 
 export default ({ strapi }: { strapi: Core.Strapi }) => ({
   async generateUIDField({

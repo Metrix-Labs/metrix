@@ -1,4 +1,4 @@
-import type { Plugin } from '@strapi/types';
+import type { Plugin } from '@metrixlabs/types';
 import history from './history';
 
 const destroy: Plugin.LoadedPlugin['destroy'] = async ({ strapi }) => {

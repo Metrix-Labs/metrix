@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 interface EnumerationProps extends Omit<InputProps, 'options' | 'type'> {
   options: Array<{ disabled?: boolean; hidden?: boolean; label?: string; value: string }>;

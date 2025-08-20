@@ -7,7 +7,7 @@ import { chain } from 'stream-chain';
 import { isEmpty, uniq, last, isNumber, set, pick } from 'lodash/fp';
 import { diff as semverDiff } from 'semver';
 
-import type { Struct, Utils } from '@strapi/types';
+import type { Struct, Utils } from '@metrixlabs/types';
 
 import type {
   IAsset,

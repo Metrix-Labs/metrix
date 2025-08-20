@@ -7,7 +7,7 @@ import {
   createContext,
   Form as FormContext,
   Blocker,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Box,
   Flex,
@@ -36,7 +36,7 @@ import { useGetPreviewUrlQuery } from '../services/preview';
 import { INTERNAL_EVENTS, PUBLIC_EVENTS } from '../utils/constants';
 import { previewScript } from '../utils/previewScript';
 
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * Constants

@@ -1,5 +1,5 @@
-import type { Core, Data, UID } from '@strapi/types';
-import { async, contentTypes } from '@strapi/utils';
+import type { Core, Data, UID } from '@metrixlabs/types';
+import { async, contentTypes } from '@metrixlabs/utils';
 
 const hasDraftAndPublish = (uid: UID.CollectionType) => {
   const model = strapi.getModel(uid);

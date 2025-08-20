@@ -5,7 +5,7 @@ import { To } from 'react-router-dom';
 
 import { Permission } from '../../../../shared/contracts/shared';
 
-import type { Internal, Utils } from '@strapi/types';
+import type { Internal, Utils } from '@metrixlabs/types';
 import type { MessageDescriptor } from 'react-intl';
 
 type WidgetUID = Utils.String.Suffix<

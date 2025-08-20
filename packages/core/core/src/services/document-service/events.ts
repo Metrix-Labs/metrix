@@ -1,5 +1,5 @@
-import type { UID, Utils, Modules, Core } from '@strapi/types';
-import { sanitize } from '@strapi/utils';
+import type { UID, Utils, Modules, Core } from '@metrixlabs/types';
+import { sanitize } from '@metrixlabs/utils';
 
 import { getDeepPopulate } from './utils/populate';
 

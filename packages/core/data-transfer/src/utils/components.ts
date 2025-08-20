@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import { get, has, omit, pipe, assign } from 'lodash/fp';
 
-import { contentTypes as contentTypesUtils, async, errors } from '@strapi/utils';
-import type { Modules, UID, Data, Utils, Schema, Core } from '@strapi/types';
+import { contentTypes as contentTypesUtils, async, errors } from '@metrixlabs/utils';
+import type { Modules, UID, Data, Utils, Schema, Core } from '@metrixlabs/types';
 
 type LoadedComponents<TUID extends UID.Schema> = Data.Entity<
   TUID,

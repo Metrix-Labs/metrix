@@ -1,9 +1,9 @@
 /* eslint-disable no-template-curly-in-string */ // yup templates need to be in this format
 
 import { flatMap, getOr, has, snakeCase } from 'lodash/fp';
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 
-import type { Struct, Internal, UID } from '@strapi/types';
+import type { Struct, Internal, UID } from '@metrixlabs/types';
 
 import { getService } from '../../utils';
 import { modelTypes, DEFAULT_TYPES, typeKinds } from '../../services/constants';

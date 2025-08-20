@@ -1,4 +1,4 @@
-import { env } from '@strapi/utils';
+import { env } from '@metrixlabs/utils';
 import { getService } from '../../utils';
 
 /**

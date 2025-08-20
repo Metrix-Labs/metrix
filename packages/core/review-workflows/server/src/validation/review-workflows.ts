@@ -1,5 +1,5 @@
 /* eslint-disable func-names */
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 import { hasStageAttribute } from '../utils/review-workflows';
 import { STAGE_TRANSITION_UID } from '../constants/workflows';
 

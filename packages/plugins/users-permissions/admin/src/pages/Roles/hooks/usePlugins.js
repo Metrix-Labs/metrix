@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useAPIErrorHandler, useNotification, useFetchClient } from '@strapi/strapi/admin';
+import { useAPIErrorHandler, useNotification, useFetchClient } from '@metrixlabs/metrix/admin';
 import { useQueries } from 'react-query';
 
 import { cleanPermissions, getTrad } from '../../../utils';

@@ -1,6 +1,6 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { uniq } from 'lodash/fp';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { getService } from '../utils';
 import { ERRORS, MAX_WORKFLOWS, MAX_STAGES_PER_WORKFLOW } from '../constants/workflows';
 import { clampMaxWorkflows, clampMaxStagesPerWorkflow } from '../utils/review-workflows';

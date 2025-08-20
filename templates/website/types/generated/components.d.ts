@@ -1,4 +1,4 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type { Struct, Schema } from '@metrixlabs/metrix';
 
 export interface MetaMetadata extends Struct.ComponentSchema {
   collectionName: 'components_meta_metadata';

@@ -1,4 +1,4 @@
-import { providerFactory } from '@strapi/utils';
+import { providerFactory } from '@metrixlabs/utils';
 import domain from '.';
 import type { CreateConditionPayload } from '.';
 

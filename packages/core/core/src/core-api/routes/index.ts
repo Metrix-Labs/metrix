@@ -1,6 +1,6 @@
-import type { Core, Schema } from '@strapi/types';
+import type { Core, Schema } from '@metrixlabs/types';
 
-import { contentTypes, contentTypes as contentTypeUtils } from '@strapi/utils';
+import { contentTypes, contentTypes as contentTypeUtils } from '@metrixlabs/utils';
 import * as z from 'zod/v4';
 import type { QueryParam } from './validation/content-type';
 

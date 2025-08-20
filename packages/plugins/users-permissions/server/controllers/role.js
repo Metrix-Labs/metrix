@@ -1,7 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
-const { async, errors } = require('@strapi/utils');
+const { async, errors } = require('@metrixlabs/utils');
 const { getService } = require('../utils');
 const { validateDeleteRoleBody } = require('./validation/user');
 

@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 export class Container implements Core.Container {
   private registerMap = new Map<string, unknown>();

@@ -19,7 +19,7 @@ import { DEFAULT_TABLE_ROW_ACTIONS } from './pages/ListView/components/TableActi
 
 import type { Document } from './hooks/useDocument';
 import type { DocumentMetadata } from '../../shared/contracts/collection-types';
-import type { DescriptionComponent, PluginConfig } from '@strapi/admin/strapi-admin';
+import type { DescriptionComponent, PluginConfig } from '@metrixlabs/admin/strapi-admin';
 
 /* -------------------------------------------------------------------------------------------------
  * Configuration Types

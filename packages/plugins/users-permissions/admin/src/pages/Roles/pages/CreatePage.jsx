@@ -11,7 +11,7 @@ import {
   Field,
 } from '@strapi/design-system';
 import { Check } from '@strapi/icons';
-import { Page, useTracking, useNotification, useFetchClient, Layouts } from '@strapi/strapi/admin';
+import { Page, useTracking, useNotification, useFetchClient, Layouts } from '@metrixlabs/metrix/admin';
 import { Formik, Form } from 'formik';
 import { useIntl } from 'react-intl';
 import { useMutation } from 'react-query';

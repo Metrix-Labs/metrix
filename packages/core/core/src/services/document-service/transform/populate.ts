@@ -1,5 +1,5 @@
-import { traverse } from '@strapi/utils';
-import type { UID } from '@strapi/types';
+import { traverse } from '@metrixlabs/utils';
+import type { UID } from '@metrixlabs/types';
 
 import { type Data } from './types';
 import { transformFields } from './fields';

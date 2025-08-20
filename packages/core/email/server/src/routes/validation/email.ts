@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import * as z from 'zod/v4';
 
 export class EmailRouteValidator {

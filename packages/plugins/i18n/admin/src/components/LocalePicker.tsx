@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useQueryParams } from '@strapi/admin/strapi-admin';
+import { useQueryParams } from '@metrixlabs/admin/strapi-admin';
 import { SingleSelect, SingleSelectOption } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 

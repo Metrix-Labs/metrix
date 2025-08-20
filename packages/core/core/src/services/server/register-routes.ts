@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 const createRouteScopeGenerator = (namespace: string) => (route: Core.RouteInput) => {
   const prefix = namespace.endsWith('::') ? namespace : `${namespace}.`;

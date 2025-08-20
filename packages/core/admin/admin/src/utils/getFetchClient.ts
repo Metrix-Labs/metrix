@@ -3,7 +3,7 @@ import qs from 'qs';
 
 import { getCookieValue } from './cookies';
 
-import type { errors } from '@strapi/utils';
+import type { errors } from '@metrixlabs/utils';
 
 export type ApiError =
   | errors.ApplicationError
@@ -105,7 +105,7 @@ type FetchClient = {
  * to the Strapi backend.
  * @example
  * ```tsx
- * import { getFetchClient } from '@strapi/admin/admin';
+ * import { getFetchClient } from '@metrixlabs/admin/admin';
  *
  * const myFunct = () => {
  *   const { get } = getFetchClient();

@@ -1,5 +1,5 @@
-import type { Core, UID, Struct } from '@strapi/types';
-import type { Model } from '@strapi/database';
+import type { Core, UID, Struct } from '@metrixlabs/types';
+import type { Model } from '@metrixlabs/database';
 import { ProviderTransferError } from '../../../../../errors/providers';
 import * as queries from '../../../../queries';
 

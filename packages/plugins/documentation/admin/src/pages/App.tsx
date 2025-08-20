@@ -23,7 +23,7 @@ import {
   useAPIErrorHandler,
   useNotification,
   Layouts,
-} from '@strapi/strapi/admin';
+} from '@metrixlabs/metrix/admin';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

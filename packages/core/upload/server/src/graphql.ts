@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import { FILE_MODEL_UID } from './constants';
 

@@ -1,4 +1,4 @@
-import type { UID } from '@strapi/types';
+import type { UID } from '@metrixlabs/types';
 import { signEntityMedia } from '../utils';
 import { getService } from '../../../utils';
 

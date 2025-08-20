@@ -1,5 +1,5 @@
-import type { UID } from '@strapi/types';
-import { contentTypes } from '@strapi/utils';
+import type { UID } from '@metrixlabs/types';
+import { contentTypes } from '@metrixlabs/utils';
 
 interface Options {
   /**

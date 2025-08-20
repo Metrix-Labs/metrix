@@ -1,7 +1,7 @@
 import { join } from 'path';
 import _ from 'lodash';
 
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import createSchemaHandler from './schema-handler';
 import createComponentBuilder from './component-builder';
 import createContentTypeBuilder from './content-type-builder';
@@ -10,18 +10,20 @@ import createContentTypeBuilder from './content-type-builder';
  * Creates a content type schema builder instance
  */
 export default function createBuilder() {
-  const components = Object.values(strapi.components).map((componentInput) => ({
-    category: componentInput.category,
-    modelName: componentInput.modelName,
-    plugin: componentInput.modelName,
-    uid: componentInput.uid,
-    filename: componentInput.__filename__,
-    dir: join(strapi.dirs.app.components, componentInput.category),
-    schema: componentInput.__schema__,
-    config: componentInput.config,
-  }));
+  const components = Object.values(strapi.components as Record<string, any>).map(
+    (componentInput: any) => ({
+      category: componentInput.category,
+      modelName: componentInput.modelName,
+      plugin: componentInput.modelName,
+      uid: componentInput.uid,
+      filename: componentInput.__filename__,
+      dir: join(strapi.dirs.app.components, componentInput.category),
+      schema: componentInput.__schema__,
+      config: componentInput.config,
+    })
+  );
 
-  const contentTypes = Object.values<any>(strapi.contentTypes).map((contentTypeInput) => {
+  const contentTypes = Object.values<any>(strapi.contentTypes).map((contentTypeInput: any) => {
     const dir = contentTypeInput.plugin
       ? join(
           strapi.dirs.app.extensions,
@@ -64,12 +66,12 @@ function createSchemaBuilder({ components, contentTypes }: SchemaBuilderOptions)
 
   // init temporary ContentTypes
   Object.keys(contentTypes).forEach((key) => {
-    tmpContentTypes.set(contentTypes[key].uid, createSchemaHandler(contentTypes[key]));
+    tmpContentTypes.set((contentTypes as any)[key].uid, createSchemaHandler((contentTypes as any)[key]));
   });
 
   // init temporary components
   Object.keys(components).forEach((key) => {
-    tmpComponents.set(components[key].uid, createSchemaHandler(components[key]));
+    tmpComponents.set((components as any)[key].uid, createSchemaHandler((components as any)[key]));
   });
 
   return {
@@ -86,7 +88,7 @@ function createSchemaBuilder({ components, contentTypes }: SchemaBuilderOptions)
     convertAttributes(attributes: any) {
       return Object.keys(attributes).reduce(
         (acc, key) => {
-          acc[key] = this.convertAttribute(attributes[key]);
+          (acc as any)[key] = this.convertAttribute((attributes as any)[key]);
           return acc;
         },
         {} as Record<string, unknown>
@@ -94,19 +96,19 @@ function createSchemaBuilder({ components, contentTypes }: SchemaBuilderOptions)
     },
 
     convertAttribute(attribute: any) {
-      const { configurable, private: isPrivate, conditions } = attribute;
+      const { configurable, private: isPrivate, conditions } = attribute as any;
 
       const baseProperties = {
         private: isPrivate === true ? true : undefined,
         configurable: configurable === false ? false : undefined,
         // IMPORTANT: Preserve conditions only if they exist and are not undefined/null
         ...(conditions !== undefined && conditions !== null && { conditions }),
-      };
+      } as any;
 
-      if (attribute.type === 'relation') {
-        const { target, relation, targetAttribute, dominant, ...restOfProperties } = attribute;
+      if ((attribute as any).type === 'relation') {
+        const { target, relation, targetAttribute, dominant, ...restOfProperties } = attribute as any;
 
-        const attr = {
+        const attr: any = {
           type: 'relation',
           relation,
           target,
@@ -137,7 +139,7 @@ function createSchemaBuilder({ components, contentTypes }: SchemaBuilderOptions)
       }
 
       return {
-        ...attribute,
+        ...(attribute as any),
         ...baseProperties,
       };
     },
@@ -154,13 +156,13 @@ function createSchemaBuilder({ components, contentTypes }: SchemaBuilderOptions)
         ...Array.from(tmpContentTypes.values()),
       ];
 
-      return Promise.all(schemas.map((schema) => schema.flush()))
-        .catch((error) => {
+      return Promise.all(schemas.map((schema: any) => schema.flush()))
+        .catch((error: any) => {
           strapi.log.error('Error writing schema files');
           strapi.log.error(error);
           return this.rollback();
         })
-        .catch((error) => {
+        .catch((error: any) => {
           strapi.log.error(
             'Error rolling back schema files. You might need to fix your files manually'
           );
@@ -176,7 +178,7 @@ function createSchemaBuilder({ components, contentTypes }: SchemaBuilderOptions)
     rollback() {
       return Promise.all(
         [...Array.from(tmpComponents.values()), ...Array.from(tmpContentTypes.values())].map(
-          (schema) => schema.rollback()
+          (schema: any) => schema.rollback()
         )
       );
     },

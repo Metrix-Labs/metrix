@@ -1,4 +1,4 @@
-import { useField, createRulesEngine } from '@strapi/admin/strapi-admin';
+import { useField, createRulesEngine } from '@metrixlabs/admin/strapi-admin';
 import { Box, Flex } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 

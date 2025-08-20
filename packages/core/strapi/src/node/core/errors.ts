@@ -1,7 +1,7 @@
 import boxen from 'boxen';
 import chalk from 'chalk';
 import os from 'node:os';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 
 const isError = (err: unknown): err is Error => err instanceof Error;
 

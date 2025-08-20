@@ -1,6 +1,6 @@
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 
 type Document = Modules.Documents.Document<any>;
 type AT_FIELDS = 'updatedAt' | 'createdAt' | 'publishedAt';

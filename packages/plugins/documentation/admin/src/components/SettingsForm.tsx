@@ -12,7 +12,7 @@ import {
 } from '@strapi/design-system';
 // Strapi Icons
 import { Check, Eye as Show, EyeStriked as Hide } from '@strapi/icons';
-import { translatedErrors, useRBAC, Layouts } from '@strapi/strapi/admin';
+import { translatedErrors, useRBAC, Layouts } from '@metrixlabs/metrix/admin';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';

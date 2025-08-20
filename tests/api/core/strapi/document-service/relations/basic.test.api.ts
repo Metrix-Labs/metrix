@@ -1,7 +1,7 @@
 /**
  * Create and get relations using the document service.
  */
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import { createTestSetup, destroyTestSetup } from '../../../../utils/builder-helper';
 import resources from '../resources/index';

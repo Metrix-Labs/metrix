@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useQueryParams, SubNav } from '@strapi/admin/strapi-admin';
+import { useQueryParams, SubNav } from '@metrixlabs/admin/strapi-admin';
 import { Divider, Flex, TextInput, useCollator, useFilter } from '@strapi/design-system';
 import { Cross, Search } from '@strapi/icons';
 import { parse, stringify } from 'qs';

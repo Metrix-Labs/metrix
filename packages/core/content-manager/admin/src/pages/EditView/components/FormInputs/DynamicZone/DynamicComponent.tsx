@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useForm, useField, createRulesEngine } from '@strapi/admin/strapi-admin';
+import { useForm, useField, createRulesEngine } from '@metrixlabs/admin/strapi-admin';
 import {
   Accordion,
   Box,

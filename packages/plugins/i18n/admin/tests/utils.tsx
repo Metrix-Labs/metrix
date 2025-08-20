@@ -8,7 +8,7 @@ import {
   act,
   screen,
   type RenderOptions,
-} from '@strapi/admin/strapi-admin/test';
+} from '@metrixlabs/admin/strapi-admin/test';
 
 import { PERMISSIONS } from '../src/constants';
 

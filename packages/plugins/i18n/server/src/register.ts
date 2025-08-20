@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import validateLocaleCreation from './controllers/validate-locale-creation';
 import graphqlProvider from './graphql';

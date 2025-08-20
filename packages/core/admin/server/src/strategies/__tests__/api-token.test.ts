@@ -1,5 +1,5 @@
 /* eslint-disable import/no-relative-packages */
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 // @ts-expect-error - test purposes
 import createContext from '../../../../../../../tests/helpers/create-context';
 import apiTokenStrategy from '../api-token';

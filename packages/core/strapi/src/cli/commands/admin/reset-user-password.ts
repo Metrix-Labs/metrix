@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import inquirer from 'inquirer';
 import { createCommand } from 'commander';
-import { createStrapi, compileStrapi } from '@strapi/core';
+import { createStrapi, compileStrapi } from '@metrixlabs/core';
 
 import type { StrapiCommand } from '../../types';
 import { runAction } from '../../utils/helpers';

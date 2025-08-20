@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import semver from 'semver';
-import { packageManager } from '@strapi/utils';
+import { packageManager } from '@metrixlabs/utils';
 
 import { createJSONTransformAPI, saveJSON } from '../json';
 import { constants as projectConstants } from '../project';

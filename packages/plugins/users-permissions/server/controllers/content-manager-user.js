@@ -1,8 +1,8 @@
 'use strict';
 
 const _ = require('lodash');
-const { contentTypes: contentTypesUtils } = require('@strapi/utils');
-const { ApplicationError, NotFoundError, ForbiddenError } = require('@strapi/utils').errors;
+const { contentTypes: contentTypesUtils } = require('@metrixlabs/utils');
+const { ApplicationError, NotFoundError, ForbiddenError } = require('@metrixlabs/utils').errors;
 const { validateCreateUserBody, validateUpdateUserBody } = require('./validation/user');
 
 const { UPDATED_BY_ATTRIBUTE, CREATED_BY_ATTRIBUTE } = contentTypesUtils.constants;

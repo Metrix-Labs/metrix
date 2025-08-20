@@ -3,7 +3,7 @@ import path from 'node:path';
 import outdent from 'outdent';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { DefaultDocument } from '@strapi/admin/_internal';
+import { DefaultDocument } from '@metrixlabs/admin/_internal';
 
 import type { BuildContext } from './create-build-context';
 
@@ -22,7 +22,7 @@ const getEntryModule = (ctx: BuildContext): string => {
          * Any modifications made will be discarded.
          */
         ${pluginsImport}
-        import { renderAdmin } from "@strapi/strapi/admin"
+        import { renderAdmin } from "@metrixlabs/metrix/admin"
 
         ${
           ctx.customisations?.modulePath

@@ -1,4 +1,4 @@
-import { useRBAC } from '@strapi/admin/strapi-admin';
+import { useRBAC } from '@metrixlabs/admin/strapi-admin';
 import { render, server, screen, waitFor, fireEvent } from '@tests/utils';
 import { rest } from 'msw';
 

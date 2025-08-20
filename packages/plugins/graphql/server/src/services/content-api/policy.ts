@@ -1,7 +1,7 @@
 import { propOr } from 'lodash/fp';
 import { GraphQLFieldResolver, GraphQLResolveInfo } from 'graphql';
-import { policy as policyUtils, errors } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { policy as policyUtils, errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 const { PolicyError } = errors;
 

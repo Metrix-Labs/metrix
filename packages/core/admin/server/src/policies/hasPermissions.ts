@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { policy } from '@strapi/utils';
+import { policy } from '@metrixlabs/utils';
 import { validateHasPermissionsInput } from '../validation/policies/hasPermissions';
 
 const { createPolicy } = policy;

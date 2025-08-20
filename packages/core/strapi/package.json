@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/strapi",
+  "name": "@metrixlabs/metrix",
   "version": "5.22.0",
   "description": "An open source headless CMS solution to create and manage your own API. It provides a powerful dashboard and features to make your life easier. Databases supported: MySQL, MariaDB, PostgreSQL, SQLite",
   "keywords": [
@@ -109,26 +109,26 @@
     "watch": "run -T rollup -c -w"
   },
   "dependencies": {
+    "@metrixlabs/admin": "5.22.0",
+    "@metrixlabs/cloud-cli": "5.22.0",
+    "@metrixlabs/content-manager": "5.22.0",
+    "@metrixlabs/content-releases": "5.22.0",
+    "@metrixlabs/content-type-builder": "5.22.0",
+    "@metrixlabs/core": "5.22.0",
+    "@metrixlabs/data-transfer": "5.22.0",
+    "@metrixlabs/database": "5.22.0",
+    "@metrixlabs/email": "5.22.0",
+    "@metrixlabs/generators": "5.22.0",
+    "@metrixlabs/i18n": "5.22.0",
+    "@metrixlabs/logger": "5.22.0",
+    "@metrixlabs/openapi": "5.22.0",
+    "@metrixlabs/permissions": "5.22.0",
+    "@metrixlabs/review-workflows": "5.22.0",
+    "@metrixlabs/types": "5.22.0",
+    "@metrixlabs/typescript-utils": "5.22.0",
+    "@metrixlabs/upload": "5.22.0",
+    "@metrixlabs/utils": "5.22.0",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.15",
-    "@strapi/admin": "5.22.0",
-    "@strapi/cloud-cli": "5.22.0",
-    "@strapi/content-manager": "5.22.0",
-    "@strapi/content-releases": "5.22.0",
-    "@strapi/content-type-builder": "5.22.0",
-    "@strapi/core": "5.22.0",
-    "@strapi/data-transfer": "5.22.0",
-    "@strapi/database": "5.22.0",
-    "@strapi/email": "5.22.0",
-    "@strapi/generators": "5.22.0",
-    "@strapi/i18n": "5.22.0",
-    "@strapi/logger": "5.22.0",
-    "@strapi/openapi": "5.22.0",
-    "@strapi/permissions": "5.22.0",
-    "@strapi/review-workflows": "5.22.0",
-    "@strapi/types": "5.22.0",
-    "@strapi/typescript-utils": "5.22.0",
-    "@strapi/upload": "5.22.0",
-    "@strapi/utils": "5.22.0",
     "@types/nodemon": "1.19.6",
     "@vitejs/plugin-react-swc": "3.6.0",
     "boxen": "5.1.2",
@@ -197,5 +197,8 @@
   "engines": {
     "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import packageInfo from '@strapi/admin/package.json';
+import packageInfo from '@metrixlabs/admin/package.json';
 import { Box, Flex, SkipToContent } from '@strapi/design-system';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';

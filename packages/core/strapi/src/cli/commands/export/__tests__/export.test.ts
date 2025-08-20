@@ -1,4 +1,4 @@
-import { file as fileDataTransfer } from '@strapi/data-transfer';
+import { file as fileDataTransfer } from '@metrixlabs/data-transfer';
 
 import exportAction from '../action';
 import * as mockUtils from '../../../utils/data-transfer';

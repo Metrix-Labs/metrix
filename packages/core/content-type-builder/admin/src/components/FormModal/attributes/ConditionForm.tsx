@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import { createRulesEngine, ConfirmDialog, type Condition } from '@strapi/admin/strapi-admin';
+import { createRulesEngine, ConfirmDialog, type Condition } from '@metrixlabs/admin/strapi-admin';
 import {
   Box,
   Flex,

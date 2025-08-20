@@ -6,12 +6,12 @@ This codemod transforms @strapi/strapi imports to use the new public interface.
 ESM
 Before:
 
-import strapi from '@strapi/strapi';
+import strapi from '@metrixlabs/metrix';
 strapi();
 
 After:
 
-import { createStrapi } from '@strapi/strapi'; // keeps the default import
+import { createStrapi } from '@metrixlabs/metrix'; // keeps the default import
 createStrapi();
 
 ---
@@ -19,12 +19,12 @@ createStrapi();
 Common JS
 Before:
 
-const strapi = require('@strapi/strapi');
+const strapi = require('@metrixlabs/metrix');
 strapi();
 
 After:
 
-const strapi = require('@strapi/strapi');
+const strapi = require('@metrixlabs/metrix');
 strapi.createStrapi();
 
 */
@@ -102,12 +102,12 @@ const transformFunctionCalls = (identifier: string, root: Collection, j: JSCodes
  *
  * With ESM imports
  *
- * import strapi from '@strapi/strapi'; => import strapi, { createStrapi } from '@strapi/strapi';
+ * import strapi from '@metrixlabs/metrix'; => import strapi, { createStrapi } from '@metrixlabs/metrix';
  * strapi() => createStrapi()
  *
  * With CJS imports
  *
- * const strapi = require('@strapi/strapi'); => no transform
+ * const strapi = require('@metrixlabs/metrix'); => no transform
  * strapi() => strapi.createStrapi()
  */
 const transform: Transform = (file, api) => {

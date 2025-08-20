@@ -1,0 +1,3 @@
+declare const strapi: any;
+
+

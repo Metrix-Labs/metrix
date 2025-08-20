@@ -1,4 +1,4 @@
-import { unstable_useDocument } from '@strapi/content-manager/strapi-admin';
+import { unstable_useDocument } from '@metrixlabs/content-manager/strapi-admin';
 import { render, screen, waitFor } from '@tests/utils';
 import { IntlProvider } from 'react-intl';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { FormErrors, FormValues } from '@strapi/admin/strapi-admin';
-import { unstable_useDocument } from '@strapi/content-manager/strapi-admin';
+import { FormErrors, FormValues } from '@metrixlabs/admin/strapi-admin';
+import { unstable_useDocument } from '@metrixlabs/content-manager/strapi-admin';
 import { Button, LinkButton, Flex, Typography, Popover } from '@strapi/design-system';
 import { CheckCircle, CrossCircle, ArrowsCounterClockwise, CaretDown } from '@strapi/icons';
 import { stringify } from 'qs';
@@ -14,7 +14,7 @@ import type {
   ReleaseActionEntry,
   Stage,
 } from '../../../shared/contracts/release-actions';
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrixlabs/types';
 
 const StyledPopoverFlex = styled(Flex)`
   width: 100%;

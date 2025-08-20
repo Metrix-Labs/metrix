@@ -2,7 +2,7 @@ import {
   engine as engineDataTransfer,
   strapi as strapiDataTransfer,
   file as fileDataTransfer,
-} from '@strapi/data-transfer';
+} from '@metrixlabs/data-transfer';
 
 import importAction from '../action';
 import { expectExit } from '../../__tests__/commands.test.utils';

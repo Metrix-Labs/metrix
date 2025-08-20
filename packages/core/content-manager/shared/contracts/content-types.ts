@@ -1,5 +1,5 @@
-import type { Struct } from '@strapi/types';
-import { errors } from '@strapi/utils';
+import type { Struct } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 import { ComponentConfiguration } from './components';
 
 export type Settings = {

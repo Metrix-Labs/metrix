@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
 import _ from 'lodash';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { getService } from '../utils';
 import type { AdminUser } from '../../../shared/contracts/shared';
-import '@strapi/types';
+import '@metrixlabs/types';
 
 const { ApplicationError } = errors;
 

@@ -1,7 +1,7 @@
 import path from 'path';
 import { isArray } from 'lodash/fp';
-import { importDefault } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { importDefault } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 
 const instantiateMiddleware = (
   middlewareFactory: Core.MiddlewareFactory,

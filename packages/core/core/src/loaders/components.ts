@@ -1,7 +1,7 @@
 import { join } from 'path';
 import _ from 'lodash';
 import { pathExists } from 'fs-extra';
-import type { Core, Struct, UID } from '@strapi/types';
+import type { Core, Struct, UID } from '@metrixlabs/types';
 import { loadFiles } from '../utils/load-files';
 
 type LoadedComponent = {

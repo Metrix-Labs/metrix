@@ -1,5 +1,5 @@
 import { merge } from 'lodash/fp';
-import { async } from '@strapi/utils';
+import { async } from '@metrixlabs/utils';
 
 import type { Context } from 'koa';
 

@@ -1,5 +1,5 @@
-import type { UID, Schema } from '@strapi/types';
-import { contentTypes } from '@strapi/utils';
+import type { UID, Schema } from '@metrixlabs/types';
+import { contentTypes } from '@metrixlabs/utils';
 import type { Document } from '../document-manager';
 
 const { isVisibleAttribute } = contentTypes;

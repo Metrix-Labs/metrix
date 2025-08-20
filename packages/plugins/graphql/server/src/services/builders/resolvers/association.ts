@@ -1,6 +1,6 @@
 import { get, merge } from 'lodash/fp';
-import { async, contentTypes, errors } from '@strapi/utils';
-import type { Internal } from '@strapi/types';
+import { async, contentTypes, errors } from '@metrixlabs/utils';
+import type { Internal } from '@metrixlabs/types';
 
 import type { Context } from '../../types';
 

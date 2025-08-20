@@ -1,5 +1,5 @@
-import { async, errors } from '@strapi/utils';
-import type { Core, UID } from '@strapi/types';
+import { async, errors } from '@metrixlabs/utils';
+import type { Core, UID } from '@metrixlabs/types';
 import { pick } from 'lodash/fp';
 import { getService as getContentManagerService } from '../../utils';
 import { getService } from '../utils';

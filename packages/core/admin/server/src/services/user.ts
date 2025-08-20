@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import _ from 'lodash';
 import { defaults } from 'lodash/fp';
-import { arrays, errors } from '@strapi/utils';
-import type { Data } from '@strapi/types';
+import { arrays, errors } from '@metrixlabs/utils';
+import type { Data } from '@metrixlabs/types';
 import { createUser, hasSuperAdminRole } from '../domain/user';
 import type {
   AdminUser,
@@ -370,7 +370,7 @@ const assignARoleToAll = async (roleId: Data.ID): Promise<void> => {
   });
 
   await Promise.all(
-    users.map((user) => {
+    users.map((user: { id: Data.ID }) => {
       return strapi.db.query('admin::user').update({
         where: { id: user.id },
         data: { roles: [roleId] },
@@ -394,7 +394,7 @@ const displayWarningIfUsersDontHaveRole = async (): Promise<void> => {
 const getLanguagesInUse = async (): Promise<string[]> => {
   const users = await strapi.db.query('admin::user').findMany({ select: ['preferedLanguage'] });
 
-  return users.map((user) => user.preferedLanguage || 'en');
+  return users.map((user: { preferedLanguage?: string | null }) => user.preferedLanguage || 'en');
 };
 
 export default {

@@ -1,6 +1,6 @@
 import { pick, uniq, prop, getOr, flatten, pipe, map } from 'lodash/fp';
-import { contentTypes as contentTypesUtils, errors } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { contentTypes as contentTypesUtils, errors } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 import { getService } from '../utils';
 import { validateGetNonLocalizedAttributesInput } from '../validation/content-types';
 

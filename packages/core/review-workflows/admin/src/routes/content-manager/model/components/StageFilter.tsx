@@ -1,4 +1,4 @@
-import { type Filters, useField } from '@strapi/admin/strapi-admin';
+import { type Filters, useField } from '@metrixlabs/admin/strapi-admin';
 import {
   Flex,
   Loader,

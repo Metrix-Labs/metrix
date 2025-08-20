@@ -6,7 +6,7 @@
 
 import { useState } from 'react';
 
-import { ConfirmDialog } from '@strapi/admin/strapi-admin';
+import { ConfirmDialog } from '@metrixlabs/admin/strapi-admin';
 import { Button, Checkbox, CheckboxProps, Dialog, Field } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 

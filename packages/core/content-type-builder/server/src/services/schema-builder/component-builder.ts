@@ -1,9 +1,9 @@
 import path from 'path';
-import type { Internal } from '@strapi/types';
+import type { Internal } from '@metrixlabs/types';
 import _ from 'lodash';
 import pluralize from 'pluralize';
 
-import { strings, errors } from '@strapi/utils';
+import { strings, errors } from '@metrixlabs/utils';
 import { isConfigurable } from '../../utils/attributes';
 import createSchemaHandler from './schema-handler';
 

@@ -6,7 +6,7 @@ import {
   useField,
   useForm,
   useNotification,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { Box, Flex, VisuallyHidden } from '@strapi/design-system';
 import pipe from 'lodash/fp/pipe';
 import { useIntl } from 'react-intl';
@@ -24,7 +24,7 @@ import { DynamicComponent, DynamicComponentProps } from './DynamicComponent';
 import { DynamicZoneLabel, DynamicZoneLabelProps } from './DynamicZoneLabel';
 
 import type { InputRendererProps } from '../../InputRenderer';
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 interface DynamicZoneContextValue {
   isInDynamicZone: boolean;

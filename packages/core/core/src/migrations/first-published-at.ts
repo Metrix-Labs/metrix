@@ -1,4 +1,4 @@
-import { contentTypes as contentTypesUtils } from '@strapi/utils';
+import { contentTypes as contentTypesUtils } from '@metrixlabs/utils';
 import _ from 'lodash';
 import { Input } from './draft-publish';
 

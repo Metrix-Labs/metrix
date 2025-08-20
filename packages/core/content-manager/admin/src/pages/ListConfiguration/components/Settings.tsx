@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useForm, InputRenderer, type InputProps } from '@strapi/admin/strapi-admin';
+import { useForm, InputRenderer, type InputProps } from '@metrixlabs/admin/strapi-admin';
 import { Flex, Grid, Typography, useCollator } from '@strapi/design-system';
 import { type MessageDescriptor, useIntl } from 'react-intl';
 

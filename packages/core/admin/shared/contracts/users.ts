@@ -1,4 +1,4 @@
-import type { errors } from '@strapi/utils';
+import type { errors } from '@metrixlabs/utils';
 import type { SanitizedAdminUser, Permission } from './shared';
 
 /**

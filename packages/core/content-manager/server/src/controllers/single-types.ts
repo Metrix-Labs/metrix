@@ -1,5 +1,5 @@
-import type { UID, Modules } from '@strapi/types';
-import { setCreatorFields, async, errors } from '@strapi/utils';
+import type { UID, Modules } from '@metrixlabs/types';
+import { setCreatorFields, async, errors } from '@metrixlabs/utils';
 
 import { getDocumentLocaleAndStatus } from './validation/dimensions';
 import { getService } from '../utils';

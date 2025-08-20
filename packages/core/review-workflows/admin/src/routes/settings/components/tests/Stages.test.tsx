@@ -1,4 +1,4 @@
-import { Form } from '@strapi/admin/strapi-admin';
+import { Form } from '@metrixlabs/admin/strapi-admin';
 import { render, screen, server, waitFor } from '@tests/utils';
 import { rest } from 'msw';
 

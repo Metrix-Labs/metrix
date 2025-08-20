@@ -6,8 +6,8 @@ import {
   useQueryParams,
   useRBAC,
   isFetchError,
-} from '@strapi/admin/strapi-admin';
-import { unstable_useDocumentLayout as useDocumentLayout } from '@strapi/content-manager/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/strapi-admin';
 import {
   Box,
   Button,
@@ -35,8 +35,8 @@ import { ReleaseActionOptions } from './ReleaseActionOptions';
 import type {
   DocumentActionComponent,
   DocumentActionProps,
-} from '@strapi/content-manager/strapi-admin';
-import type { UID } from '@strapi/types';
+} from '@metrixlabs/content-manager/strapi-admin';
+import type { UID } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * AddActionToReleaseModal

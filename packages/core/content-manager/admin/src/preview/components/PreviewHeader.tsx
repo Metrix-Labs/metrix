@@ -7,7 +7,7 @@ import {
   useNotification,
   useQueryParams,
   useStrapiApp,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { IconButton, Tabs, Typography, Flex } from '@strapi/design-system';
 import { Cross, Link as LinkIcon } from '@strapi/icons';
 import { stringify } from 'qs';

@@ -1,5 +1,5 @@
 import { difference, keys } from 'lodash/fp';
-import { async } from '@strapi/utils';
+import { async } from '@metrixlabs/utils';
 import { WORKFLOW_MODEL_UID } from '../constants/workflows';
 import { getWorkflowContentTypeFilter } from '../utils/review-workflows';
 

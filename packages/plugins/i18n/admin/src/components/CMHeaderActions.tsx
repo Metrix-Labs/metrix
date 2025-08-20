@@ -8,7 +8,7 @@ import {
   useAPIErrorHandler,
   FormErrors,
   useForm,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   type DocumentActionComponent,
   type DocumentActionProps,
@@ -16,7 +16,7 @@ import {
   unstable_useDocumentActions as useDocumentActions,
   buildValidParams,
   HeaderActionProps,
-} from '@strapi/content-manager/strapi-admin';
+} from '@metrixlabs/content-manager/strapi-admin';
 import {
   Flex,
   Status,
@@ -45,7 +45,7 @@ import { BulkLocaleActionModal } from './BulkLocaleActionModal';
 
 import type { Locale } from '../../../shared/contracts/locales';
 import type { I18nBaseQuery } from '../types';
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * LocalePickerAction

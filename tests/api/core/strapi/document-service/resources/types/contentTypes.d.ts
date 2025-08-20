@@ -1,4 +1,4 @@
-import type { Internal, Schema } from '@strapi/types';
+import type { Internal, Schema } from '@metrixlabs/types';
 
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';

@@ -1,5 +1,5 @@
-import type { Schema, UID } from '@strapi/types';
-import { contentTypes as contentTypesUtils, async } from '@strapi/utils';
+import type { Schema, UID } from '@metrixlabs/types';
+import { contentTypes as contentTypesUtils, async } from '@metrixlabs/utils';
 import isEqual from 'lodash/isEqual';
 
 import { difference, keys } from 'lodash';

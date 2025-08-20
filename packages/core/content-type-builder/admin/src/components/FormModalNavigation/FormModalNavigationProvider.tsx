@@ -1,10 +1,10 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { useTracking } from '@strapi/admin/strapi-admin';
+import { useTracking } from '@metrixlabs/admin/strapi-admin';
 
 import { FormModalNavigationContext } from './FormModalNavigationContext';
 
-import type { Internal, Struct } from '@strapi/types';
+import type { Internal, Struct } from '@metrixlabs/types';
 
 type FormModalNavigationProviderProps = {
   children: React.ReactNode;

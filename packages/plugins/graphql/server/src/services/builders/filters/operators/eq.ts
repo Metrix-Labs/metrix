@@ -1,6 +1,6 @@
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import type * as Nexus from 'nexus';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 const { ValidationError } = errors;
 

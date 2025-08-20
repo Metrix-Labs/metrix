@@ -1,5 +1,5 @@
 import { intersection, map, isEmpty } from 'lodash/fp';
-import { yup, validateYupSchema } from '@strapi/utils';
+import { yup, validateYupSchema } from '@metrixlabs/utils';
 import { FOLDER_MODEL_UID } from '../../../constants';
 import { folderExists } from './utils';
 import { isFolderOrChild } from '../../utils/folders';

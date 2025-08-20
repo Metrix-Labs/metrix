@@ -1,6 +1,6 @@
 import { toLower } from 'lodash/fp';
 import { Strategy as LocalStrategy } from 'passport-local';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { getService } from '../../utils';
 
 const createLocalStrategy = (strapi: Core.Strapi, middleware?: any) => {

@@ -1,4 +1,4 @@
-import type { errors } from '@strapi/utils';
+import type { errors } from '@metrixlabs/utils';
 import { Release } from './releases';
 
 // Export required to avoid "cannot be named" TS build error

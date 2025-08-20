@@ -1,5 +1,5 @@
-import { async } from '@strapi/utils';
-import type { Core, UID, Modules } from '@strapi/types';
+import { async } from '@metrixlabs/utils';
+import type { Core, UID, Modules } from '@metrixlabs/types';
 
 const ACTIONS = {
   read: 'plugin::content-manager.explorer.read',

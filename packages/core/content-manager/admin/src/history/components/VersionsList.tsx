@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useQueryParams } from '@strapi/admin/strapi-admin';
+import { useQueryParams } from '@metrixlabs/admin/strapi-admin';
 import { Box, Flex, Typography } from '@strapi/design-system';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';

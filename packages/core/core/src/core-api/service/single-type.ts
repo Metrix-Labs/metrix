@@ -1,4 +1,4 @@
-import type { Struct, Core } from '@strapi/types';
+import type { Struct, Core } from '@metrixlabs/types';
 import { CoreService } from './core-service';
 
 export class SingleTypeService extends CoreService implements Core.CoreAPI.Service.SingleType {

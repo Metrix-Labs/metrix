@@ -1,4 +1,4 @@
-import type { Core, Struct, Modules } from '@strapi/types';
+import type { Core, Struct, Modules } from '@metrixlabs/types';
 
 import {
   getPaginationInfo,

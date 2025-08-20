@@ -6,7 +6,7 @@ import {
   useAuth,
   useRBAC,
   isFetchError,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { Menu, AccessibleIcon } from '@strapi/design-system';
 import { Cross, More, Pencil } from '@strapi/icons';
 import { useIntl } from 'react-intl';

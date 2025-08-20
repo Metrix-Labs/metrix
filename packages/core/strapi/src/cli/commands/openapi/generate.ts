@@ -1,7 +1,7 @@
-import { compileStrapi, createStrapi } from '@strapi/core';
-import * as openapi from '@strapi/openapi';
+import { compileStrapi, createStrapi } from '@metrixlabs/core';
+import * as openapi from '@metrixlabs/openapi';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import chalk from 'chalk';
 import fse from 'fs-extra';
@@ -21,7 +21,7 @@ interface StrapiInfoConfig {
 const EXPERIMENTAL_MSG = chalk.yellow(`
 ⚠️  The OpenAPI generation feature is currently experimental.
     Its behavior and output might change in future releases without following semver.
-    Please report any issues you encounter on https://github.com/strapi/strapi/issues/new?template=BUG_REPORT.yml.
+    Please report any issues you encounter on https://github.com/metrixlabs/metrix/issues/new.
 `);
 
 /**

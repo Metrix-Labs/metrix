@@ -1,6 +1,6 @@
 import type Koa from 'koa';
-import { errors } from '@strapi/utils';
-import type { Schema } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Schema } from '@metrixlabs/types';
 import { RELEASE_MODEL_UID } from '../constants';
 import { validateRelease, validatefindByDocumentAttachedParams } from './validation/release';
 import type {

@@ -1,6 +1,6 @@
-import { async, traverseEntity } from '@strapi/utils';
+import { async, traverseEntity } from '@metrixlabs/utils';
 
-import type { Schema, UID } from '@strapi/types';
+import type { Schema, UID } from '@metrixlabs/types';
 
 import { getService } from '../../utils';
 import { FILE_MODEL_UID } from '../../constants';

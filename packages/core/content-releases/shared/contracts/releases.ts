@@ -1,8 +1,8 @@
 import type { Entity } from '../types';
 import type { ReleaseAction } from './release-actions';
 import type { UserInfo } from '../types';
-import { errors } from '@strapi/utils';
-import type { SanitizedAdminUser } from '@strapi/admin/strapi-admin';
+import { errors } from '@metrixlabs/utils';
+import type { SanitizedAdminUser } from '@metrixlabs/admin/strapi-admin';
 
 export interface Release extends Entity {
   name: string;

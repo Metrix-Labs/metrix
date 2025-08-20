@@ -1,7 +1,7 @@
 import { defaultsDeep, mergeWith } from 'lodash/fp';
 import helmet, { KoaHelmet } from 'koa-helmet';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 export type Config = NonNullable<Parameters<KoaHelmet>[0]>;
 

@@ -1,4 +1,4 @@
-import { unstable_useDocument } from '@strapi/content-manager/strapi-admin';
+import { unstable_useDocument } from '@metrixlabs/content-manager/strapi-admin';
 import { render as renderRTL, waitFor, server, screen, act } from '@tests/utils';
 import { rest } from 'msw';
 import { Route, Routes } from 'react-router-dom';

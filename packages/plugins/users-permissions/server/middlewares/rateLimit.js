@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const utils = require('@strapi/utils');
+const utils = require('@metrixlabs/utils');
 const { isString, has, toLower } = require('lodash/fp');
 
 const { RateLimitError } = utils.errors;

@@ -1,5 +1,5 @@
-import { yup } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import { yup } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 import { resolveMiddlewares } from './middleware';
 
 type MiddlewareConfig = (string | { name?: string; resolve?: string; config?: unknown })[];

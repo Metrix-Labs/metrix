@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 import { PluginRoutesProvider } from '../../src/routes';
 import { routes as routesFixtures } from '../fixtures';

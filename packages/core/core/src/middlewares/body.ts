@@ -3,7 +3,7 @@ import { defaultsDeep } from 'lodash/fp';
 import { koaBody, KoaBodyMiddlewareOptions } from 'koa-body';
 import mime from 'mime-types';
 import type Koa from 'koa';
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 export type Config = KoaBodyMiddlewareOptions;
 

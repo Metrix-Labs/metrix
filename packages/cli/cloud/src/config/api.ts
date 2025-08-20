@@ -1,4 +1,4 @@
-import { env } from '@strapi/utils';
+import { env } from '@metrixlabs/utils';
 
 export const apiConfig = {
   apiBaseUrl: env('STRAPI_CLI_CLOUD_API', 'https://cloud-cli-api.strapi.io'),

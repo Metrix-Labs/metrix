@@ -1,4 +1,4 @@
-import { useForm, BackButton, Layouts } from '@strapi/admin/strapi-admin';
+import { useForm, BackButton, Layouts } from '@metrixlabs/admin/strapi-admin';
 import { Button } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';

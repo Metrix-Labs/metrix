@@ -1,4 +1,4 @@
-import type { Core, UID } from '@strapi/types';
+import type { Core, UID } from '@metrixlabs/types';
 
 import { Preview } from '../../../../shared/contracts';
 

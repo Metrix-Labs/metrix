@@ -4,7 +4,7 @@
  * TODO: Move to i18n tests
  * TODO: Test for every relation type
  */
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { testInTransaction } from '../../../../utils';
 
 const { createTestBuilder } = require('api-tests/builder');

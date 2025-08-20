@@ -1,7 +1,7 @@
 import { posix, win32 } from 'path';
 import { cloneDeep, get, set } from 'lodash/fp';
 import { Readable, Writable } from 'stream-chain';
-import type { Struct } from '@strapi/types';
+import type { Struct } from '@metrixlabs/types';
 import { createTransferEngine, TRANSFER_STAGES } from '..';
 
 import type {

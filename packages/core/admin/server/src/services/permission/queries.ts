@@ -1,6 +1,6 @@
 import { isNil, isArray, prop, xor, eq, map, differenceWith } from 'lodash/fp';
 import pmap from 'p-map';
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrixlabs/types';
 import { getService } from '../../utils';
 import permissionDomain, { CreatePermissionPayload } from '../../domain/permission';
 import type { AdminUser, Permission } from '../../../../shared/contracts/shared';
@@ -19,7 +19,7 @@ export const deleteByRolesIds = async (rolesIds: Data.ID[]): Promise<void> => {
   });
 
   if (permissionsToDelete.length > 0) {
-    await deleteByIds(permissionsToDelete.map(prop('id')));
+    await deleteByIds(permissionsToDelete.map(prop('id')) as Data.ID[]);
   }
 };
 
@@ -43,11 +43,13 @@ export const deleteByIds = async (ids: Data.ID[]): Promise<void> => {
 export const createMany = async (permissions: CreatePermissionPayload[]): Promise<Permission[]> => {
   const createdPermissions: CreatePermissionPayload[] = [];
   for (const permission of permissions) {
-    const newPerm = await strapi.db.query('admin::permission').create({ data: permission });
+    const newPerm = (await strapi.db
+      .query('admin::permission')
+      .create({ data: permission })) as Permission;
     createdPermissions.push(newPerm);
   }
 
-  const permissionsToReturn = permissionDomain.toPermission(createdPermissions);
+  const permissionsToReturn = permissionDomain.toPermission(createdPermissions) as unknown as Permission[];
   strapi.eventHub.emit('permission.create', { permissions: permissionsToReturn });
 
   return permissionsToReturn;
@@ -61,9 +63,9 @@ export const createMany = async (permissions: CreatePermissionPayload[]): Promis
 const update = async (params: unknown, attributes: Partial<Permission>) => {
   const updatedPermission = (await strapi.db
     .query('admin::permission')
-    .update({ where: params, data: attributes })) as Permission;
+    .update({ where: params as any, data: attributes })) as Permission;
 
-  const permissionToReturn = permissionDomain.toPermission(updatedPermission);
+  const permissionToReturn = permissionDomain.toPermission(updatedPermission) as Permission;
   strapi.eventHub.emit('permission.update', { permissions: permissionToReturn });
 
   return permissionToReturn;
@@ -74,9 +76,9 @@ const update = async (params: unknown, attributes: Partial<Permission>) => {
  * @param params query params to find the permissions
  */
 export const findMany = async (params = {}): Promise<Permission[]> => {
-  const rawPermissions = await strapi.db.query('admin::permission').findMany(params);
+  const rawPermissions = await strapi.db.query('admin::permission').findMany(params as any);
 
-  return permissionDomain.toPermission(rawPermissions);
+  return permissionDomain.toPermission(rawPermissions) as unknown as Permission[];
 };
 
 /**
@@ -84,7 +86,7 @@ export const findMany = async (params = {}): Promise<Permission[]> => {
  * @param user - user
  */
 export const findUserPermissions = async (user: AdminUser): Promise<Permission[]> => {
-  return findMany({ where: { role: { users: { id: user.id } } } });
+  return findMany({ where: { role: { users: { id: user.id } } } } as any);
 };
 
 const filterPermissionsToRemove = async (permissions: Permission[]) => {
@@ -94,7 +96,7 @@ const filterPermissionsToRemove = async (permissions: Permission[]) => {
 
   for (const permission of permissions) {
     const { subjects, options = {} as Action['options'] } =
-      (actionProvider.get(permission.action) as Action) || {};
+      (actionProvider.get(permission.action) as Action) || ({} as Action);
     const { applyToProperties } = options;
 
     const invalidProperties = await Promise.all(
@@ -102,7 +104,7 @@ const filterPermissionsToRemove = async (permissions: Permission[]) => {
         const applies = await actionProvider.appliesToProperty(
           property,
           permission.action,
-          permission.subject
+          permission.subject as string
         );
 
         return applies && isNil(permissionDomain.getProperty(property, permission));
@@ -139,9 +141,9 @@ export const cleanPermissionsInDatabase = async (): Promise<void> => {
       .query('admin::permission')
       .findMany({ limit: pageSize, offset: page * pageSize })) as Permission[];
 
-    const permissions = permissionDomain.toPermission(results);
+    const permissions = permissionDomain.toPermission(results) as unknown as Permission[];
     const permissionsToRemove = await filterPermissionsToRemove(permissions);
-    const permissionsIdToRemove = map(prop('id'), permissionsToRemove);
+    const permissionsIdToRemove = map(prop('id'), permissionsToRemove) as Data.ID[];
 
     // 2. Clean permissions' fields (add required ones, remove the non-existing ones)
     const remainingPermissions = permissions.filter(
@@ -153,10 +155,12 @@ export const cleanPermissionsInDatabase = async (): Promise<void> => {
     ) as Permission[];
 
     // Update only the ones that need to be updated
-    const permissionsNeedingToBeUpdated = differenceWith(
-      (a: Permission, b: Permission) => {
-        return a.id === b.id && xor(a.properties.fields, b.properties.fields).length === 0;
-      },
+    const permissionsNeedingToBeUpdated = (differenceWith as unknown as (
+      comparator: (a: Permission, b: Permission) => boolean,
+      arr1: Permission[],
+      arr2: Permission[]
+    ) => Permission[])(
+      (a, b) => a.id === b.id && xor(a.properties.fields, b.properties.fields).length === 0,
       permissionsWithCleanFields,
       remainingPermissions
     );

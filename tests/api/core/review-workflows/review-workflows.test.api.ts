@@ -1,7 +1,7 @@
 'use strict';
 
 import { omit } from 'lodash/fp';
-import { async } from '@strapi/utils';
+import { async } from '@metrixlabs/utils';
 
 import { createStrapiInstance } from 'api-tests/strapi';
 import { createAuthRequest, createRequest } from 'api-tests/request';

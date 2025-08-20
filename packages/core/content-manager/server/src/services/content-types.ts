@@ -1,7 +1,7 @@
 import { isNil, mapValues } from 'lodash/fp';
-import { contentTypes as contentTypesUtils } from '@strapi/utils';
+import { contentTypes as contentTypesUtils } from '@metrixlabs/utils';
 
-import type { UID, Struct, Core } from '@strapi/types';
+import type { UID, Struct, Core } from '@metrixlabs/types';
 
 import type { ConfigurationUpdate } from './configuration';
 

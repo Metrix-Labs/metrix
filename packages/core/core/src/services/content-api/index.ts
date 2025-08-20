@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import { sanitize, validate } from '@strapi/utils';
+import { sanitize, validate } from '@metrixlabs/utils';
 
-import type { Core, UID } from '@strapi/types';
+import type { Core, UID } from '@metrixlabs/types';
 
 import instantiatePermissionsUtilities from './permissions';
 

@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 
-import { ConfirmDialog, SubNav } from '@strapi/admin/strapi-admin';
+import { ConfirmDialog, SubNav } from '@metrixlabs/admin/strapi-admin';
 import {
   Box,
   TextInput,

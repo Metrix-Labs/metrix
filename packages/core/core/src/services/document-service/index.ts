@@ -1,4 +1,4 @@
-import type { Core, Modules, UID } from '@strapi/types';
+import type { Core, Modules, UID } from '@metrixlabs/types';
 
 import { createMiddlewareManager, databaseErrorsMiddleware } from './middlewares';
 import { createContentTypeRepository } from './repository';

@@ -1,7 +1,7 @@
 import { inputObjectType } from 'nexus';
-import { contentTypes } from '@strapi/utils';
+import { contentTypes } from '@metrixlabs/utils';
 import type * as Nexus from 'nexus';
-import type { Struct, Schema } from '@strapi/types';
+import type { Struct, Schema } from '@metrixlabs/types';
 import type { Context } from '../../types';
 
 export default ({ strapi }: Context) => {

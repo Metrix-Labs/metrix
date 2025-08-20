@@ -1,7 +1,7 @@
 import { isNil } from 'lodash/fp';
 
-import { setCreatorFields, async, errors } from '@strapi/utils';
-import type { Modules, UID } from '@strapi/types';
+import { setCreatorFields, async, errors } from '@metrixlabs/utils';
+import type { Modules, UID } from '@metrixlabs/types';
 
 import { getService } from '../utils';
 import { validateBulkActionInput } from './validation';

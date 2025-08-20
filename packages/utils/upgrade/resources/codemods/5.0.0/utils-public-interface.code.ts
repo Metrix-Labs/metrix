@@ -9,13 +9,13 @@ ESM
 
 Before:
 
-import * as utils from '@strapi/utils';
+import * as utils from '@metrixlabs/utils';
 
 utils.nameToSlug();
 
 After:
 
-import { strings } from '@strapi/utils';
+import { strings } from '@metrixlabs/utils';
 
 strings.nameToSlug();
 
@@ -24,13 +24,13 @@ ESM
 
 Before:
 
-import { nameToSlug } from '@strapi/utils';
+import { nameToSlug } from '@metrixlabs/utils';
 
 nameToSlug();
 
 After:
 
-import { strings } from '@strapi/utils';
+import { strings } from '@metrixlabs/utils';
 
 strings.nameToSlug();
 
@@ -40,13 +40,13 @@ Common JS
 
 Before:
 
-const utils = require('@strapi/utils');
+const utils = require('@metrixlabs/utils');
 
 utils.nameToSlug();
 
 After:
 
-const { strings } = require('@strapi/utils');
+const { strings } = require('@metrixlabs/utils');
 
 strings.nameToSlug();
 
@@ -55,13 +55,13 @@ Common JS
 
 Before:
 
-const { nameToSlug } = require('@strapi/utils');
+const { nameToSlug } = require('@metrixlabs/utils');
 
 nameToSlug();
 
 After:
 
-const { strings } = require('@strapi/utils');
+const { strings } = require('@metrixlabs/utils');
 
 strings.nameToSlug();
 

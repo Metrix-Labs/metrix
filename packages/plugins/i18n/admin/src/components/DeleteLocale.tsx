@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ConfirmDialog, useAPIErrorHandler, useNotification } from '@strapi/admin/strapi-admin';
+import { ConfirmDialog, useAPIErrorHandler, useNotification } from '@metrixlabs/admin/strapi-admin';
 import { Dialog, IconButton } from '@strapi/design-system';
 import { Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';

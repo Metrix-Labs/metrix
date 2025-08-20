@@ -1,4 +1,4 @@
-import { Layouts } from '@strapi/admin/strapi-admin';
+import { Layouts } from '@metrixlabs/admin/strapi-admin';
 import { Box, Main, Flex, Typography, Grid, LinkButton } from '@strapi/design-system';
 import { ExternalLink, Check, PaperPlane } from '@strapi/icons';
 import { useIntl } from 'react-intl';

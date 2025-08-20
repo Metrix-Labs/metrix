@@ -28,7 +28,7 @@ import { type MessageDescriptor, type PrimitiveType, useIntl } from 'react-intl'
 import { parseDateValue } from '../utils/parseDateValue';
 import { handleTimeChange, handleTimeChangeEvent } from '../utils/timeFormat';
 
-import type { Schema } from '@strapi/types';
+import type { Schema } from '@metrixlabs/types';
 
 interface TranslationMessage extends MessageDescriptor {
   values?: Record<string, PrimitiveType>;

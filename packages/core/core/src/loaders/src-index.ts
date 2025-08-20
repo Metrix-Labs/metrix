@@ -1,8 +1,8 @@
 import { resolve } from 'path';
 import { statSync, existsSync } from 'fs';
-import { yup, importDefault } from '@strapi/utils';
+import { yup, importDefault } from '@metrixlabs/utils';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 const srcSchema = yup
   .object()

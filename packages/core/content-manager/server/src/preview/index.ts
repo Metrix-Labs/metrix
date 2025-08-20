@@ -1,4 +1,4 @@
-import type { Plugin } from '@strapi/types';
+import type { Plugin } from '@metrixlabs/types';
 
 import { routes } from './routes';
 import { controllers } from './controllers';

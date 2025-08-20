@@ -1,11 +1,11 @@
-import { createRulesEngine } from '@strapi/admin/strapi-admin';
+import { createRulesEngine } from '@metrixlabs/admin/strapi-admin';
 import { generateNKeysBetween } from 'fractional-indexing';
 import pipe from 'lodash/fp/pipe';
 
 import { DOCUMENT_META_FIELDS } from '../../../constants/attributes';
 
 import type { ComponentsDictionary, Document } from '../../../hooks/useDocument';
-import type { Schema, UID } from '@strapi/types';
+import type { Schema, UID } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * traverseData

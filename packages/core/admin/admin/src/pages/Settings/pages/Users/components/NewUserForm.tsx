@@ -26,7 +26,7 @@ import { translatedErrors } from '../../../../../utils/translatedErrors';
 import { MagicLinkCE } from './MagicLinkCE';
 import { SelectRoles } from './SelectRoles';
 
-import type { Data } from '@strapi/types';
+import type { Data } from '@metrixlabs/types';
 
 interface ModalFormProps {
   onToggle: () => void;

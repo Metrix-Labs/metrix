@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useNotification, useFetchClient } from '@strapi/admin/strapi-admin';
+import { useNotification, useFetchClient } from '@metrixlabs/admin/strapi-admin';
 import { useNotifyAT } from '@strapi/design-system';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';

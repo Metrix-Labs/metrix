@@ -7,7 +7,7 @@ import {
   useAPIErrorHandler,
   useQueryParams,
   tours,
-} from '@strapi/admin/strapi-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Button,
   Dialog,

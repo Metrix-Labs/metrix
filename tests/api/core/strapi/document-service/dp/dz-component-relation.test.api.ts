@@ -1,6 +1,6 @@
 'use strict';
 
-import { Core } from '@strapi/types';
+import { Core } from '@metrixlabs/types';
 import { createTestBuilder } from 'api-tests/builder';
 import { createStrapiInstance } from 'api-tests/strapi';
 import { createContentAPIRequest } from 'api-tests/request';

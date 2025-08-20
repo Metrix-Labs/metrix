@@ -1,6 +1,6 @@
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 import { set, isString, map, get } from 'lodash/fp';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { WORKFLOW_MODEL_UID, WORKFLOW_POPULATE } from '../constants/workflows';
 import { getService } from '../utils';
 import { getWorkflowContentTypeFilter } from '../utils/review-workflows';

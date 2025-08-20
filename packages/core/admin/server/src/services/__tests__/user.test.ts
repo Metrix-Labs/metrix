@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { errors, queryParams } from '@strapi/utils';
+import { errors, queryParams } from '@metrixlabs/utils';
 import constants from '../constants';
 import userService from '../user';
 import userContentType from '../../content-types/User';

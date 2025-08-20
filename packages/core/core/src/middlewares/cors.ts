@@ -1,6 +1,6 @@
 import koaCors from '@koa/cors';
 
-import type { Core } from '@strapi/types';
+import type { Core } from '@metrixlabs/types';
 
 export type Config = {
   enabled?: boolean;

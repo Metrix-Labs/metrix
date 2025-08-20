@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/plugin-cloud",
+  "name": "@metrixlabs/plugin-cloud",
   "version": "5.22.0",
   "description": "Instructions to deploy your local project to Strapi Cloud",
   "license": "MIT",
@@ -45,8 +45,8 @@
     "react-intl": "6.6.2"
   },
   "devDependencies": {
-    "@strapi/admin": "5.22.0",
-    "@strapi/strapi": "5.22.0",
+    "@metrixlabs/admin": "5.22.0",
+    "@metrixlabs/metrix": "5.22.0",
     "eslint-config-custom": "5.22.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -56,8 +56,8 @@
     "typescript": "5.4.4"
   },
   "peerDependencies": {
-    "@strapi/admin": "^5.0.0",
-    "@strapi/strapi": "^5.0.0",
+    "@metrixlabs/admin": "^5.0.0",
+    "@metrixlabs/metrix": "^5.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -72,5 +72,8 @@
     "description": "Instructions to deploy your local project to Strapi Cloud",
     "kind": "plugin",
     "displayName": "Strapi Cloud"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,4 +1,4 @@
-import { useFetchClient } from '@strapi/admin/strapi-admin';
+import { useFetchClient } from '@metrixlabs/admin/strapi-admin';
 import { renderHook, waitFor, screen } from '@tests/utils';
 
 import { useAssets } from '../useAssets';

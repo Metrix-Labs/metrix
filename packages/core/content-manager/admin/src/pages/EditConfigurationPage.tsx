@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Page, useNotification, useTracking, useAPIErrorHandler } from '@strapi/admin/strapi-admin';
+import { Page, useNotification, useTracking, useAPIErrorHandler } from '@metrixlabs/admin/strapi-admin';
 import { useIntl } from 'react-intl';
 
 import { TEMP_FIELD_NAME } from '../components/ConfigurationForm/Fields';

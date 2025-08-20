@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useFetchClient, FetchClient, adminApi } from '@strapi/admin/strapi-admin';
+import { useFetchClient, FetchClient, adminApi } from '@metrixlabs/admin/strapi-admin';
 import { useMutation, useQueryClient } from 'react-query';
 import { useDispatch } from 'react-redux';
 

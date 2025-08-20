@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { queryParams } from '@strapi/utils';
+import { queryParams } from '@metrixlabs/utils';
 import constants from '../constants';
 import { create as createPermission, toPermission } from '../../domain/permission';
 import roleContentType from '../../content-types/Role';

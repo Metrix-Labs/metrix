@@ -15,7 +15,7 @@ import { isBaseQueryError } from '../../../../utils/baseQuery';
 import { WebhookForm, WebhookFormProps, WebhookFormValues } from './components/WebhookForm';
 import { useWebhooks } from './hooks/useWebhooks';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------
  * EditView

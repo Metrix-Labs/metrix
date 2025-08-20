@@ -1,5 +1,5 @@
 import type { NodePlopAPI } from 'plop';
-import tsUtils from '@strapi/typescript-utils';
+import tsUtils from '@metrixlabs/typescript-utils';
 
 import getDestinationPrompts from './prompts/get-destination-prompts';
 import getFilePath from './utils/get-file-path';

@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { errors } from '@strapi/utils';
+import { errors } from '@metrixlabs/utils';
 import { omit, uniq } from 'lodash/fp';
 import {
   create as tokenServiceCreate,

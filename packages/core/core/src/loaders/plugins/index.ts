@@ -3,8 +3,8 @@ import fse from 'fs-extra';
 import { defaultsDeep, defaults, getOr, get } from 'lodash/fp';
 import * as resolve from 'resolve.exports';
 
-import { env } from '@strapi/utils';
-import type { Core, Plugin, Struct } from '@strapi/types';
+import { env } from '@metrixlabs/utils';
+import type { Core, Plugin, Struct } from '@metrixlabs/types';
 import { loadConfigFile } from '../../utils/load-config-file';
 import { loadFiles } from '../../utils/load-files';
 import { getEnabledPlugins } from './get-enabled-plugins';

@@ -1,4 +1,4 @@
-import { yup } from '@strapi/utils';
+import { yup } from '@metrixlabs/utils';
 
 const strapiServerSchema = yup
   .object()

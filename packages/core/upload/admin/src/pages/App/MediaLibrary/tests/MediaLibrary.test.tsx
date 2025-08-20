@@ -1,4 +1,4 @@
-import { useQueryParams, NotificationsProvider } from '@strapi/admin/strapi-admin';
+import { useQueryParams, NotificationsProvider } from '@metrixlabs/admin/strapi-admin';
 import { DesignSystemProvider } from '@strapi/design-system';
 import { render as renderRTL, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';

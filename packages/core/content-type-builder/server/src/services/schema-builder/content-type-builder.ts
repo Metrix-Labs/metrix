@@ -1,8 +1,8 @@
 import path from 'path';
 import _ from 'lodash';
 
-import { strings, errors } from '@strapi/utils';
-import type { Schema, Internal } from '@strapi/types';
+import { strings, errors } from '@metrixlabs/utils';
+import type { Schema, Internal } from '@metrixlabs/types';
 import { isRelation, isConfigurable } from '../../utils/attributes';
 import { typeKinds } from '../constants';
 import createSchemaHandler from './schema-handler';

@@ -3,9 +3,9 @@ import path from 'path';
 import _ from 'lodash';
 import isDocker from 'is-docker';
 import ciEnv from 'ci-info';
-import tsUtils from '@strapi/typescript-utils';
-import { env, generateInstallId } from '@strapi/utils';
-import type { Core } from '@strapi/types';
+import tsUtils from '@metrixlabs/typescript-utils';
+import { env, generateInstallId } from '@metrixlabs/utils';
+import type { Core } from '@metrixlabs/types';
 import { generateAdminUserHash } from './admin-user-hash';
 
 export interface Payload {

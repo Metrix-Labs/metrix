@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/content-type-builder",
+  "name": "@metrixlabs/content-type-builder",
   "version": "5.22.0",
   "description": "Create and manage content types",
   "repository": {
@@ -64,12 +64,12 @@
     "@dnd-kit/modifiers": "9.0.0",
     "@dnd-kit/sortable": "10.0.0",
     "@dnd-kit/utilities": "3.2.2",
+    "@metrixlabs/generators": "5.22.0",
+    "@metrixlabs/utils": "5.22.0",
     "@reduxjs/toolkit": "1.9.7",
     "@sindresorhus/slugify": "1.1.0",
     "@strapi/design-system": "2.0.0-rc.29",
-    "@strapi/generators": "5.22.0",
     "@strapi/icons": "2.0.0-rc.29",
-    "@strapi/utils": "5.22.0",
     "date-fns": "2.30.0",
     "fs-extra": "11.2.0",
     "immer": "9.0.21",
@@ -82,8 +82,8 @@
     "zod": "3.25.67"
   },
   "devDependencies": {
-    "@strapi/admin": "5.22.0",
-    "@strapi/types": "5.22.0",
+    "@metrixlabs/admin": "5.22.0",
+    "@metrixlabs/types": "5.22.0",
     "@testing-library/dom": "10.1.0",
     "@testing-library/react": "15.0.7",
     "@testing-library/user-event": "14.5.2",
@@ -98,7 +98,7 @@
     "styled-components": "6.1.8"
   },
   "peerDependencies": {
-    "@strapi/admin": "^5.0.0",
+    "@metrixlabs/admin": "^5.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -114,5 +114,8 @@
     "description": "Modelize the data structure of your API. Create new fields and relations in just a minute. The files are automatically created and updated in your project.",
     "kind": "plugin",
     "required": true
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

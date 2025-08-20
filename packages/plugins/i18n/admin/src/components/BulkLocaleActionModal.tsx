@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FormErrors, Table, useTable } from '@strapi/admin/strapi-admin';
+import { FormErrors, Table, useTable } from '@metrixlabs/admin/strapi-admin';
 import { Box, Typography, IconButton, Flex, Tooltip, Status, Modal } from '@strapi/design-system';
 import { Pencil, CheckCircle, CrossCircle, ArrowsCounterClockwise } from '@strapi/icons';
 import { stringify } from 'qs';
@@ -13,7 +13,7 @@ import { capitalize } from '../utils/strings';
 
 import { LocaleStatus } from './CMHeaderActions';
 
-import type { Modules } from '@strapi/types';
+import type { Modules } from '@metrixlabs/types';
 
 type Status = Modules.Documents.Params.PublicationStatus.Kind | 'modified';
 

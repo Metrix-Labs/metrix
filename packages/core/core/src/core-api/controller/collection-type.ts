@@ -1,6 +1,6 @@
 import { isObject } from 'lodash/fp';
-import { errors } from '@strapi/utils';
-import type { Core, Struct, Utils, UID } from '@strapi/types';
+import { errors } from '@metrixlabs/utils';
+import type { Core, Struct, Utils, UID } from '@metrixlabs/types';
 import type Koa from 'koa';
 
 interface Options {

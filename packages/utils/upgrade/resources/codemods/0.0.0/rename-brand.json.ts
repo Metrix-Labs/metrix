@@ -77,7 +77,7 @@ export default transform;
 
 const renamePackageScope = (name: string): string => {
   if (name === '@metrixlabs/metrix') return '@metrixlabs/metrix';
-  if (name.startsWith('@metrixlabs/')) return `@metrixlabs/${  name.slice('@metrixlabs/'.length)}`;
+  if (name.startsWith('@metrixlabs/')) return `@metrixlabs/${name.slice('@metrixlabs/'.length)}`;
   return name;
 };
 

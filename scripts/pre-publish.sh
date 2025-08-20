@@ -1,22 +1,17 @@
 #!/bin/bash
-
-# Force start from root folder
+set -e
 cd "$(dirname "$0")/.."
 
-set -e
-
 version=$VERSION
-distTag=$DIST_TAG
+distTag=${DIST_TAG:-experimental}
 
 if [[ -z "$version" ]]; then
-  echo "Please enter the version you want to publish"
-  read -r version
+  echo "❌ VERSION not provided"; exit 1
 fi
 
-if [[ -z "$distTag" ]]; then
-  echo "Please enter the dist-tag you want to publish with"
-  read -r distTag
-fi
+echo "🚀 Publishing prerelease $version (dist-tag: '$distTag')"
 
-## publish packages
-yarn release --version "$version" --tag "$distTag" --git-commit false --git-tag false --changelog false --dry-run false "$@"
+# Publish all packages with the moving dist-tag.
+# 'yarn release' should publish each changed package with `--tag $distTag`.
+yarn release --version "$version" --tag "$distTag" \
+  --git-commit false --git-tag false --changelog false

@@ -4,7 +4,7 @@ import {
   Form,
   InputProps,
   useField,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { Button, Flex, Grid, Modal } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import * as yup from 'yup';

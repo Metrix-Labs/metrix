@@ -29,7 +29,7 @@ const registerModelHooks = () => {
     models: ['admin::user'],
     afterCreate: sendDidChangeInterfaceLanguage,
     afterDelete: sendDidChangeInterfaceLanguage,
-    afterUpdate({ params }) {
+    afterUpdate({ params }: any) {
       if (params.data.preferedLanguage) {
         sendDidChangeInterfaceLanguage();
       }
@@ -61,7 +61,12 @@ const syncAPITokensPermissions = async () => {
     map('action')
   )();
 
-  const unknownPermissions = uniq(difference(permissionsInDB, validPermissions));
+  const unknownPermissions = uniq(
+    (difference as unknown as (a: ReadonlyArray<unknown>, b: ReadonlyArray<unknown>) => unknown[])(
+      permissionsInDB as unknown[],
+      validPermissions as unknown[]
+    )
+  ) as unknown[];
 
   if (unknownPermissions.length > 0) {
     await metrix.db

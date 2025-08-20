@@ -1,4 +1,4 @@
-import type { Schema, Data } from '@metrix/metrix';
+import type { Schema, Data } from '@metrixlabs/metrix';
 
 export const AUTHOR_UID = 'api::author.author' as const;
 export type Author = Data.ContentType<typeof AUTHOR_UID>;

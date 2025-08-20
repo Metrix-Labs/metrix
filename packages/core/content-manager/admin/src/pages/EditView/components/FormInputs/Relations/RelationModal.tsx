@@ -9,7 +9,7 @@ import {
   createContext,
   useForm,
   useQueryParams,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Box,
   Dialog,

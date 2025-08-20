@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useQueryParams, Page, createContext, useRBAC } from '@metrixlabs/admin/metrix-admin';
+import { useQueryParams, Page, createContext, useRBAC } from '@metrixlabs/admin/strapi-admin';
 import { Box, Flex, FocusTrap, Main, Portal, Link } from '@strapi/design-system';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';

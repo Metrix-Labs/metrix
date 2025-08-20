@@ -3,7 +3,7 @@
 /* eslint-disable check-file/no-index */
 import { lazy, Suspense, useEffect, useRef } from 'react';
 
-import { Page, Layouts, useAppInfo } from '@metrixlabs/admin/metrix-admin';
+import { Page, Layouts, useAppInfo } from '@metrixlabs/admin/strapi-admin';
 import { useIntl } from 'react-intl';
 import { Route, Routes } from 'react-router-dom';
 

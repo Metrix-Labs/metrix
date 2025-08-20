@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useForm, useField, createRulesEngine } from '@metrixlabs/admin/metrix-admin';
+import { useForm, useField, createRulesEngine } from '@metrixlabs/admin/strapi-admin';
 import {
   Accordion,
   Box,
@@ -315,7 +315,7 @@ const DynamicComponent = ({
   );
 };
 
-// TODO: Delete once https://github.com/metrix/design-system/pull/858
+// TODO: Delete once https://github.com/strapi/design-system/pull/858
 // is merged and released.
 const StyledBox = styled<BoxComponent>(Box)`
   > div:first-child {

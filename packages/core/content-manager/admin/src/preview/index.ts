@@ -3,7 +3,7 @@
 import { PreviewSidePanel } from './components/PreviewSidePanel';
 
 import type { ContentManagerPlugin } from '../content-manager';
-import type { PluginDefinition } from '@metrixlabs/admin/metrix-admin';
+import type { PluginDefinition } from '@metrixlabs/admin/strapi-admin';
 
 const previewAdmin: Partial<PluginDefinition> = {
   bootstrap(app) {

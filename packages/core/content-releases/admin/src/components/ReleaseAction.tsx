@@ -6,8 +6,8 @@ import {
   useQueryParams,
   useRBAC,
   isFetchError,
-} from '@metrixlabs/admin/metrix-admin';
-import { unstable_useContentManagerContext as useContentManagerContext } from '@metrixlabs/content-manager/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
+import { unstable_useContentManagerContext as useContentManagerContext } from '@metrixlabs/content-manager/strapi-admin';
 import {
   Box,
   Button,
@@ -32,7 +32,7 @@ import {
 } from './ReleaseActionModal';
 import { ReleaseActionOptions } from './ReleaseActionOptions';
 
-import type { BulkActionComponent } from '@metrixlabs/content-manager/metrix-admin';
+import type { BulkActionComponent } from '@metrixlabs/content-manager/strapi-admin';
 import type { UID } from '@metrixlabs/types';
 
 const getContentPermissions = (subject: string) => {

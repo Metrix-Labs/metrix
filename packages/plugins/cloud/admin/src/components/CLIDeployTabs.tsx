@@ -1,4 +1,4 @@
-import { useClipboard } from '@metrixlabs/admin/metrix-admin';
+import { useClipboard } from '@metrixlabs/admin/strapi-admin';
 import { Box, Typography, Tabs, IconButton, Flex, Tooltip } from '@strapi/design-system';
 import { Duplicate } from '@strapi/icons';
 import { useIntl } from 'react-intl';

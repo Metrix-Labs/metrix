@@ -8,7 +8,7 @@ import {
   useFetchClient,
   useAuth,
   adminApi,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import groupBy from 'lodash/groupBy';
 import isEqual from 'lodash/isEqual';
 import mapValues from 'lodash/mapValues';

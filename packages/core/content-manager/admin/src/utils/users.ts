@@ -1,4 +1,4 @@
-import type { SanitizedAdminUser } from '@metrixlabs/admin/metrix-admin';
+import type { SanitizedAdminUser } from '@metrixlabs/admin/strapi-admin';
 
 /**
  * Retrieves the display name of an admin panel user

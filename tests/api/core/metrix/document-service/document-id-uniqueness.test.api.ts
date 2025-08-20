@@ -1,5 +1,5 @@
-import type { Core } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Core } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 import { createTestSetup, destroyTestSetup } from '../../../utils/builder-helper';
 import resources from './resources/index';
 

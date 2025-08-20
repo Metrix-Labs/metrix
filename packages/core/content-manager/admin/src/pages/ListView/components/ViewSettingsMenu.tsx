@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useTracking, useRBAC, useQueryParams } from '@metrixlabs/admin/metrix-admin';
+import { useTracking, useRBAC, useQueryParams } from '@metrixlabs/admin/strapi-admin';
 import {
   Flex,
   IconButton,

@@ -7,7 +7,7 @@ import {
   createContext,
   Form as FormContext,
   Blocker,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Box,
   Flex,

@@ -5,7 +5,7 @@ import {
   DescriptionComponentRenderer,
   useTable,
   useQueryParams,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { Box, ButtonProps, Flex, Typography } from '@strapi/design-system';
 import { WarningCircle } from '@strapi/icons';
 import { useIntl } from 'react-intl';

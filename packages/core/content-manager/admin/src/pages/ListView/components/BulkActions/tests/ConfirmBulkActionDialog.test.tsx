@@ -1,4 +1,4 @@
-import { Table, useQueryParams } from '@metrixlabs/admin/metrix-admin';
+import { Table, useQueryParams } from '@metrixlabs/admin/strapi-admin';
 import { errors } from '@metrixlabs/utils';
 import { within } from '@testing-library/react';
 import { render as renderRTL, waitFor, server } from '@tests/utils';
@@ -11,8 +11,8 @@ import {
   ConfirmDialogPublishAll,
 } from '../ConfirmBulkActionDialog';
 
-jest.mock('@metrixlabs/admin/metrix-admin', () => ({
-  ...jest.requireActual('@metrixlabs/admin/metrix-admin'),
+jest.mock('@strapi/admin/strapi-admin', () => ({
+  ...jest.requireActual('@strapi/admin/strapi-admin'),
   /**
    * TODO: can we remove this mock by instead passing a value to `initialEntries`?
    */

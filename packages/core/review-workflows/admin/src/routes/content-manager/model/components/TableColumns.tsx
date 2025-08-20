@@ -1,4 +1,4 @@
-import { SanitizedAdminUser } from '@metrixlabs/admin/metrix-admin';
+import { SanitizedAdminUser } from '@metrixlabs/admin/strapi-admin';
 import { Box, Flex, Typography } from '@strapi/design-system';
 
 import { STAGE_COLOR_DEFAULT } from '../../../../constants';

@@ -6,7 +6,10 @@ import { createStrapi, compileStrapi } from '@metrixlabs/core';
 import ora from 'ora';
 import { merge } from 'lodash/fp';
 import type { Core } from '@metrixlabs/types';
-import { engine as engineDataTransfer, metrix as strapiDataTransfer } from '@metrixlabs/data-transfer';
+import {
+  engine as engineDataTransfer,
+  metrix as metrixDataTransfer,
+} from '@metrixlabs/data-transfer';
 
 import { readableBytes, exitWith } from './helpers';
 import { getParseListWithChoices, parseInteger, confirmMessage } from './commander';
@@ -326,6 +329,7 @@ const getTransferTelemetryPayload = (engine: engineDataTransfer.TransferEngine) 
  */
 const getDiffHandler = (
   engine: engineDataTransfer.TransferEngine,
+  metrix: Core.Strapi,
   {
     force,
     action,
@@ -340,7 +344,7 @@ const getDiffHandler = (
   ) => {
     // if we abort here, we need to actually exit the process because of conflict with inquirer prompt
     setSignalHandler(async () => {
-      await abortTransfer({ engine, metrix: metrix as Core.Strapi });
+      await abortTransfer({ engine, metrix });
       exitWith(1, exitMessageText(action, true));
     });
 
@@ -397,7 +401,7 @@ const getDiffHandler = (
     );
 
     // reset handler back to normal
-    setSignalHandler(() => abortTransfer({ engine, metrix: metrix as Core.Strapi }));
+    setSignalHandler(() => abortTransfer({ engine, metrix }));
 
     if (confirmed) {
       context.ignoredDiffs = merge(context.diffs, context.ignoredDiffs);
@@ -423,7 +427,7 @@ const getAssetsBackupHandler = (
   ) => {
     // if we abort here, we need to actually exit the process because of conflict with inquirer prompt
     setSignalHandler(async () => {
-      await abortTransfer({ engine, metrix: metrix as Core.Strapi });
+      await abortTransfer({ engine, metrix });
       exitWith(1, exitMessageText(action, true));
     });
 
@@ -442,7 +446,7 @@ const getAssetsBackupHandler = (
     }
 
     // reset handler back to normal
-    setSignalHandler(() => abortTransfer({ engine, metrix: metrix as Core.Strapi }));
+    setSignalHandler(() => abortTransfer({ engine, metrix }));
     return next(context);
   };
 };
@@ -462,7 +466,7 @@ const shouldSkipStage = (
 };
 
 type RestoreConfig = NonNullable<
-  strapiDataTransfer.providers.ILocalStrapiDestinationProviderOptions['restore']
+  metrixDataTransfer.providers.ILocalStrapiDestinationProviderOptions['restore']
 >;
 
 // Based on exclude/only from options, create the restore object to match
@@ -477,7 +481,7 @@ const parseRestoreFromOptions = (opts: Partial<engineDataTransfer.ITransferEngin
     entitiesOptions.include = [];
   }
 
-  const restoreConfig: strapiDataTransfer.providers.ILocalStrapiDestinationProviderOptions['restore'] =
+  const restoreConfig: metrixDataTransfer.providers.ILocalStrapiDestinationProviderOptions['restore'] =
     {
       entities: entitiesOptions,
       assets: !shouldSkipStage(opts, 'files'),

@@ -21,6 +21,10 @@ const watch = async (ctx: BuildContext): Promise<WebpackWatcher> => {
   return new Promise<WebpackWatcher>((res) => {
     const compiler = webpack(finalConfig);
 
+    if (!compiler) {
+      throw new Error('Failed to create webpack compiler');
+    }
+
     const devMiddleware = webpackDevMiddleware(compiler);
 
     const hotMiddleware = webpackHotMiddleware(compiler, {
@@ -101,7 +105,7 @@ const watch = async (ctx: BuildContext): Promise<WebpackWatcher> => {
           await Promise.all([
             promisify(devMiddleware.close.bind(devMiddleware))(),
             hotMiddleware.close(),
-            promisify(compiler.close.bind(compiler))(),
+            compiler ? promisify(compiler.close.bind(compiler))() : Promise.resolve(),
           ]);
         },
       });

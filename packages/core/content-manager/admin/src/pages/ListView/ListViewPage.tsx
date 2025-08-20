@@ -15,7 +15,7 @@ import {
   Layouts,
   useTable,
   tours,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Button,
   Flex,

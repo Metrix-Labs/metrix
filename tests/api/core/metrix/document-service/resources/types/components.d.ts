@@ -1,4 +1,4 @@
-import type { Schema, Attribute } from '@metrix/metrix';
+import type { Schema, Attribute } from '@metrixlabs/metrix';
 
 export interface ArticleComp extends Schema.Component {
   collectionName: 'components_article_comments';

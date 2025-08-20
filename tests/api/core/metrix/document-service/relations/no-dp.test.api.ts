@@ -1,7 +1,7 @@
 /**
  * Relations interactions with non DP content types.
  */
-import type { Core, UID } from '@metrix/types';
+import type { Core, UID } from '@metrixlabs/types';
 
 import { testInTransaction } from '../../../../utils';
 

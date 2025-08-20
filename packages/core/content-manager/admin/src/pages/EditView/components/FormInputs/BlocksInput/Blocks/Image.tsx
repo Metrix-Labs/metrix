@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useStrapiApp } from '@metrixlabs/admin/metrix-admin';
+import { useStrapiApp } from '@metrixlabs/admin/strapi-admin';
 import { Box, Flex, FlexComponent } from '@strapi/design-system';
 import { Image as Picture } from '@strapi/icons';
 import { type Element, Transforms, Editor } from 'slate';

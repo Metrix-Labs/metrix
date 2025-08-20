@@ -11,7 +11,7 @@ import { SelectTree } from '../SelectTree/SelectTree';
 
 import type { Folder } from '../../../../shared/contracts/folders';
 import type { OptionSelectTree } from '../SelectTree/SelectTree';
-import type { FetchError } from '@metrixlabs/admin/metrix-admin';
+import type { FetchError } from '@metrixlabs/admin/strapi-admin';
 
 type InitialFormData = {
   destination:

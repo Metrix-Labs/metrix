@@ -1,7 +1,7 @@
-import type { Core } from '@metrix/metrix';
+import type { Core } from '@metrixlabs/metrix';
 
-import dts from '@metrix/data-transfer';
-import { createStrapi } from '@metrix/metrix';
+import dts from '@metrixlabs/data-transfer';
+import { createStrapi } from '@metrixlabs/metrix';
 import { ALLOWED_CONTENT_TYPES } from '../constants';
 
 const {

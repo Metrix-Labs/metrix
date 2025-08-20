@@ -7,7 +7,7 @@ import {
   createContext,
   Page,
   useQueryParams,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { useParams } from 'react-router-dom';
 
 import type { Schema } from '@metrixlabs/types';

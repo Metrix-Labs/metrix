@@ -8,7 +8,7 @@ import {
   useAPIErrorHandler,
   useQueryParams,
   useFocusInputField,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Field,
   Flex,

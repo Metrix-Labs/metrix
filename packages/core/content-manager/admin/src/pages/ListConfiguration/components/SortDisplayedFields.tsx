@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useForm } from '@metrixlabs/admin/metrix-admin';
+import { useForm } from '@metrixlabs/admin/strapi-admin';
 import { Box, Flex, VisuallyHidden, Typography, Menu } from '@strapi/design-system';
 import { Plus } from '@strapi/icons';
 import { useIntl } from 'react-intl';

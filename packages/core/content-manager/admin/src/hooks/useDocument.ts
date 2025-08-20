@@ -13,7 +13,7 @@ import {
   FormErrors,
   getYupValidationErrors,
   useForm,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 import { ValidationError } from 'yup';
@@ -104,7 +104,7 @@ type UseDocument = (
  * }
  * ```
  *
- * @see {@link https://contributor.metrix.io/docs/core/content-manager/hooks/use-document} for more information
+ * @see {@link https://contributor.strapi.io/docs/core/content-manager/hooks/use-document} for more information
  */
 const useDocument: UseDocument = (args, opts) => {
   const { toggleNotification } = useNotification();

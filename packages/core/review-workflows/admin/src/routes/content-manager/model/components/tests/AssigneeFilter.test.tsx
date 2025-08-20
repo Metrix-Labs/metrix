@@ -1,4 +1,4 @@
-import { Form } from '@metrixlabs/admin/metrix-admin';
+import { Form } from '@metrixlabs/admin/strapi-admin';
 import { render as renderRTL, screen } from '@tests/utils';
 
 import { AssigneeFilter, AssigneeFilterProps } from '../AssigneeFilter';

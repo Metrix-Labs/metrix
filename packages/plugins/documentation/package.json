@@ -127,5 +127,8 @@
     "name": "documentation",
     "description": "Create an OpenAPI Document and visualize your API with SWAGGER UI.",
     "kind": "plugin"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

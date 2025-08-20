@@ -95,5 +95,8 @@
     "description": "Color picker custom field",
     "kind": "plugin",
     "displayName": "Color Picker"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

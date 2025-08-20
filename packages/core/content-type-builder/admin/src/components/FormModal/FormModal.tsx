@@ -6,7 +6,7 @@ import {
   useTracking,
   useNotification,
   ConfirmDialog,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { Button, Divider, Flex, Modal, Tabs, Box, Typography, Dialog } from '@strapi/design-system';
 import get from 'lodash/get';
 import has from 'lodash/has';

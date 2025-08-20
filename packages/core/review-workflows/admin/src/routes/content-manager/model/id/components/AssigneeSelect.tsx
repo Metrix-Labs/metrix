@@ -6,8 +6,8 @@ import {
   useRBAC,
   useAdminUsers,
   useQueryParams,
-} from '@metrixlabs/admin/metrix-admin';
-import { unstable_useDocument } from '@metrixlabs/content-manager/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
+import { unstable_useDocument } from '@metrixlabs/content-manager/strapi-admin';
 import { Combobox, ComboboxOption, Field, VisuallyHidden } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';

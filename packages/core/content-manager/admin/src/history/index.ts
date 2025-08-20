@@ -4,7 +4,7 @@ import { type ContentManagerPlugin } from '../content-manager';
 
 import { HistoryAction } from './components/HistoryAction';
 
-import type { StrapiApp } from '@metrixlabs/admin/metrix-admin';
+import type { StrapiApp } from '@metrixlabs/admin/strapi-admin';
 import type { Plugin } from '@metrixlabs/types';
 
 const historyAdmin: Partial<Plugin.Config.AdminInput> = {

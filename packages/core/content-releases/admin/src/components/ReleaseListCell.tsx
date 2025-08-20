@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { useTable, useQueryParams } from '@metrixlabs/admin/metrix-admin';
-import { ListFieldLayout, ListLayout } from '@metrixlabs/content-manager/metrix-admin';
+import { useTable, useQueryParams } from '@metrixlabs/admin/strapi-admin';
+import { ListFieldLayout, ListLayout } from '@metrixlabs/content-manager/strapi-admin';
 import { Box, Popover, Typography, Button, Link } from '@strapi/design-system';
 import { CaretDown } from '@strapi/icons';
 import { useIntl } from 'react-intl';

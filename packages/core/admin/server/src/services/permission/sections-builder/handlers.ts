@@ -121,7 +121,7 @@ const buildNode = (model: any, attributeName: string, attribute: any) => {
   }
 
   if (attribute.type === 'component') {
-    const component = metrix.components[attribute.component];
+    const component = strapi.components[attribute.component];
     return { ...node, children: buildDeepAttributesCollection(component) };
   }
 

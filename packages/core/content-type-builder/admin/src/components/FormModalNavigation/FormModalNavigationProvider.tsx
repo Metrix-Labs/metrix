@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { useTracking } from '@metrixlabs/admin/metrix-admin';
+import { useTracking } from '@metrixlabs/admin/strapi-admin';
 
 import { FormModalNavigationContext } from './FormModalNavigationContext';
 

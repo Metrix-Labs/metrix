@@ -1,6 +1,6 @@
 import { forwardRef, memo, useState } from 'react';
 
-import { ConfirmDialog } from '@metrixlabs/admin/metrix-admin';
+import { ConfirmDialog } from '@metrixlabs/admin/strapi-admin';
 import { Box, Flex, IconButton, Typography, Link, Badge, Dialog } from '@strapi/design-system';
 import { ChevronDown, Drag, Lock, Pencil, Trash } from '@strapi/icons';
 import get from 'lodash/get';

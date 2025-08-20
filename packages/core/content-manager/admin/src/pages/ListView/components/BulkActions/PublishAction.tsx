@@ -6,7 +6,7 @@ import {
   Table,
   useQueryParams,
   useTable,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import {
   Box,
   Button,

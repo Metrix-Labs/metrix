@@ -6,7 +6,7 @@ import {
   useTracking,
   type TrackingEvent,
   useAPIErrorHandler,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { useIntl, type MessageDescriptor } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 
@@ -192,7 +192,7 @@ type IUseDocumentActs = ReturnType<UseDocumentActions>;
  * return <Form method="PUT" onSubmit={handleSubmit} />
  * ```
  *
- * @see {@link https://contributor.metrix.io/docs/core/content-manager/hooks/use-document-operations} for more information
+ * @see {@link https://contributor.strapi.io/docs/core/content-manager/hooks/use-document-operations} for more information
  */
 const useDocumentActions: UseDocumentActions = () => {
   const { toggleNotification } = useNotification();

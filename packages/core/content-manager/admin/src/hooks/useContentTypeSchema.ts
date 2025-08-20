@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useNotification, useAPIErrorHandler } from '@metrixlabs/admin/metrix-admin';
+import { useNotification, useAPIErrorHandler } from '@metrixlabs/admin/strapi-admin';
 
 import { useGetInitialDataQuery } from '../services/init';
 

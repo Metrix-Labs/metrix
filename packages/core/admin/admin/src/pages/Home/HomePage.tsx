@@ -17,7 +17,7 @@ import { FreeTrialEndedModal } from './components/FreeTrialEndedModal';
 import { FreeTrialWelcomeModal } from './components/FreeTrialWelcomeModal';
 
 import type { WidgetWithUID } from '../../core/apis/Widgets';
-import type { WidgetType } from '@metrixlabs/admin/metrix-admin';
+import type { WidgetType } from '@metrixlabs/admin/strapi-admin';
 
 /* -------------------------------------------------------------------------------------------------
  * WidgetRoot

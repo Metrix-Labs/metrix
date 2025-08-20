@@ -2,8 +2,8 @@
 /* eslint-disable check-file/filename-naming-convention */
 import * as React from 'react';
 
-import { Page, useTracking, ConfirmDialog, useRBAC, Table } from '@metrixlabs/admin/metrix-admin';
-import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
+import { Page, useTracking, ConfirmDialog, useRBAC, Table } from '@metrixlabs/admin/strapi-admin';
+import { useLicenseLimits } from '@metrixlabs/admin/strapi-admin/ee';
 import { Flex, IconButton, TFooter, Typography, LinkButton, Dialog } from '@strapi/design-system';
 import { Pencil, Plus, Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';

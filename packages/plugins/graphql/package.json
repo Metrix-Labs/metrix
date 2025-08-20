@@ -118,5 +118,8 @@
     "name": "graphql",
     "description": "Adds GraphQL endpoint with default API methods.",
     "kind": "plugin"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

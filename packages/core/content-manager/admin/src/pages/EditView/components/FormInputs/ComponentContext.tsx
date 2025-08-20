@@ -1,4 +1,4 @@
-import { createContext } from '@metrixlabs/admin/metrix-admin';
+import { createContext } from '@metrixlabs/admin/strapi-admin';
 
 interface ComponentContextValue {
   /**

@@ -1,4 +1,4 @@
-import { InputRenderer, useField, useForm } from '@metrixlabs/admin/metrix-admin';
+import { InputRenderer, useField, useForm } from '@metrixlabs/admin/strapi-admin';
 import {
   Field,
   Grid,

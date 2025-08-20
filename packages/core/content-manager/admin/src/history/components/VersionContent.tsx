@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Form, Layouts, useForm, createRulesEngine } from '@metrixlabs/admin/metrix-admin';
+import { Form, Layouts, useForm, createRulesEngine } from '@metrixlabs/admin/strapi-admin';
 import { Box, Divider, Flex, Grid, Typography } from '@strapi/design-system';
 import pipe from 'lodash/fp/pipe';
 import { useIntl } from 'react-intl';

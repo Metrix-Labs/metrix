@@ -1,5 +1,5 @@
-import type { Core, Modules } from '@metrix/types';
-import { errors } from '@metrix/utils';
+import type { Core, Modules } from '@metrixlabs/types';
+import { errors } from '@metrixlabs/utils';
 import { createTestSetup, destroyTestSetup } from '../../../../utils/builder-helper';
 import resources from '../resources/index';
 import { ARTICLE_UID } from '../utils';

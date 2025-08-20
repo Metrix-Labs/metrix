@@ -1,4 +1,4 @@
-import { useStrapiApp, InjectionZoneComponent } from '@metrixlabs/admin/metrix-admin';
+import { useStrapiApp, InjectionZoneComponent } from '@metrixlabs/admin/strapi-admin';
 
 import { PLUGIN_ID } from '../constants/plugin';
 

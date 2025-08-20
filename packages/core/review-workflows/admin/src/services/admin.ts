@@ -1,4 +1,4 @@
-import { SanitizedAdminUser } from '@metrixlabs/admin/metrix-admin';
+import { SanitizedAdminUser } from '@metrixlabs/admin/strapi-admin';
 
 import { reviewWorkflowsApi } from './api';
 

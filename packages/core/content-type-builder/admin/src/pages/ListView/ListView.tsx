@@ -1,5 +1,5 @@
 /* eslint-disable import/no-default-export */
-import { useTracking, Layouts, tours } from '@metrixlabs/admin/metrix-admin';
+import { useTracking, Layouts, tours } from '@metrixlabs/admin/strapi-admin';
 import { Box, Button, Flex, Typography } from '@strapi/design-system';
 import { Information, Pencil, Plus } from '@strapi/icons';
 import upperFirst from 'lodash/upperFirst';

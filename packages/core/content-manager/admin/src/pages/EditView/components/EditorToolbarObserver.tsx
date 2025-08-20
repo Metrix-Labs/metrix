@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useElementOnScreen } from '@metrixlabs/admin/metrix-admin';
+import { useElementOnScreen } from '@metrixlabs/admin/strapi-admin';
 import { IconButton, Menu } from '@strapi/design-system';
 import { More } from '@strapi/icons';
 import { useIntl } from 'react-intl';

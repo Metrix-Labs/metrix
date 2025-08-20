@@ -1,4 +1,4 @@
-import { createRulesEngine } from '@metrixlabs/admin/metrix-admin';
+import { createRulesEngine } from '@metrixlabs/admin/strapi-admin';
 import { generateNKeysBetween } from 'fractional-indexing';
 import pipe from 'lodash/fp/pipe';
 

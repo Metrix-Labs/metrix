@@ -11,13 +11,13 @@
     "strapi": "metrix"
   },
   "dependencies": {
+    "@metrixlabs/metrix": "latest",
+    "@metrixlabs/plugin-users-permissions": "latest",
     "better-sqlite3": "11.3.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.21.1",
-    "styled-components": "6.1.8",
-    "@metrix/plugin-users-permissions": "latest",
-    "@metrix/metrix": "latest"
+    "styled-components": "6.1.8"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

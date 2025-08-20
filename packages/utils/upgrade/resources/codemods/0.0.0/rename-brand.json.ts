@@ -24,7 +24,12 @@ const transform: modules.runner.json.JSONTransform = (file, params) => {
     }
 
     // Dependencies/devDependencies/peerDependencies
-    for (const section of ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies']) {
+    for (const section of [
+      'dependencies',
+      'devDependencies',
+      'peerDependencies',
+      'optionalDependencies',
+    ]) {
       if (j.has(section)) {
         const deps = j.get(section);
         if (deps && typeof deps === 'object') {
@@ -83,5 +88,3 @@ const renameCli = (value: string): string => {
     .replaceAll('@metrixlabs/', '@metrixlabs/')
     .replace(/\bstrapi\b/g, 'metrix');
 };
-
-

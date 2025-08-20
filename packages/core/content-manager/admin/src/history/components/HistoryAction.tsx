@@ -1,4 +1,4 @@
-import { useQueryParams, useTracking } from '@metrixlabs/admin/metrix-admin';
+import { useQueryParams, useTracking } from '@metrixlabs/admin/strapi-admin';
 import { ClockCounterClockwise } from '@strapi/icons';
 import { stringify } from 'qs';
 import { useIntl } from 'react-intl';

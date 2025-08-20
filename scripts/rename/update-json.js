@@ -43,7 +43,12 @@ async function processPackageJson(filePath) {
 
   if (src.name) src.name = renamePackageScope(src.name);
 
-  for (const section of ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies']) {
+  for (const section of [
+    'dependencies',
+    'devDependencies',
+    'peerDependencies',
+    'optionalDependencies',
+  ]) {
     const deps = src[section];
     if (deps && typeof deps === 'object') {
       for (const key of Object.keys({ ...deps })) {
@@ -73,7 +78,8 @@ async function processPackageJson(filePath) {
     else if (typeof src.bin === 'object') {
       const bin = src.bin;
       for (const key of Object.keys({ ...bin })) {
-        const newKey = key === 'metrix' ? 'metrix' : key === 'create-metrix' ? 'create-metrix' : key;
+        const newKey =
+          key === 'metrix' ? 'metrix' : key === 'create-metrix' ? 'create-metrix' : key;
         const val = renameCli(bin[key]);
         delete bin[key];
         bin[newKey] = val;
@@ -114,5 +120,3 @@ main().catch((err) => {
   console.error(err);
   process.exitCode = 1;
 });
-
-

@@ -115,5 +115,8 @@
     "kind": "plugin",
     "displayName": "Releases",
     "required": true
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

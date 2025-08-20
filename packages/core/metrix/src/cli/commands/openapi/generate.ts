@@ -21,7 +21,7 @@ interface StrapiInfoConfig {
 const EXPERIMENTAL_MSG = chalk.yellow(`
 ⚠️  The OpenAPI generation feature is currently experimental.
     Its behavior and output might change in future releases without following semver.
-    Please report any issues you encounter on https://github.com/metrix/metrix/issues/new?template=BUG_REPORT.yml.
+    Please report any issues you encounter on https://github.com/metrixlabs/metrix/issues/new.
 `);
 
 /**

@@ -138,5 +138,8 @@
     "description": "Media file management.",
     "required": true,
     "kind": "plugin"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

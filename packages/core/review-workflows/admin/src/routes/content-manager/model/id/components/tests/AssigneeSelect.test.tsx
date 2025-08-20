@@ -1,4 +1,4 @@
-import { unstable_useDocument } from '@metrixlabs/content-manager/metrix-admin';
+import { unstable_useDocument } from '@metrixlabs/content-manager/strapi-admin';
 import { render as renderRTL, waitFor, server, screen, act } from '@tests/utils';
 import { rest } from 'msw';
 import { Route, Routes } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AssigneeSelect } from '../AssigneeSelect';
 
 // Mock the content manager hook more comprehensively
-jest.mock('@metrixlabs/content-manager/metrix-admin', () => ({
+jest.mock('@strapi/content-manager/strapi-admin', () => ({
   unstable_useDocument: jest.fn(),
 }));
 

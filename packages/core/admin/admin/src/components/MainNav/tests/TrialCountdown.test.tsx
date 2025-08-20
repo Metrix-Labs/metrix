@@ -1,9 +1,9 @@
-import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
+import { useLicenseLimits } from '@metrixlabs/admin/strapi-admin/ee';
 import { screen, render } from '@tests/utils';
 
 import { TrialCountdown } from '../TrialCountdown';
 
-jest.mock('@metrixlabs/admin/metrix-admin/ee', () => ({
+jest.mock('@strapi/admin/strapi-admin/ee', () => ({
   useLicenseLimits: jest.fn(() => ({
     license: {
       isTrial: true,

@@ -1,7 +1,7 @@
 import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';
 import { createTestBuilder } from 'api-tests/builder';
-import { Core } from '@metrix/types';
+import { Core } from '@metrixlabs/types';
 
 const articleContentType = {
   displayName: 'article',

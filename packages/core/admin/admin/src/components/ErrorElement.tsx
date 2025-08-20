@@ -68,7 +68,7 @@ ${error.stack}
                         isExternal
                         // hack to get rid of the current endIcon, which should be removable by using `null`.
                         endIcon
-                        href="https://github.com/metrix/metrix/issues/new?assignees=&labels=&projects=&template=BUG_REPORT.md"
+                        href="https://github.com/metrixlabs/metrix/issues/new"
                       >{`Strapi's GitHub`}</Link>
                     ),
                   }

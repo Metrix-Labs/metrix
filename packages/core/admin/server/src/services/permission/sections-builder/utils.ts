@@ -4,7 +4,7 @@ import type { Internal, Struct } from '@metrixlabs/types';
 const isOfKind = (kind: unknown) => matchesProperty('kind', kind);
 
 const resolveContentType = (uid: Internal.UID.ContentType): Struct.ContentTypeSchema => {
-  return metrix.contentTypes[uid];
+  return strapi.contentTypes[uid];
 };
 
 const isNotInSubjects = (subjects: any) => (uid: unknown) =>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useAPIErrorHandler, useNotification } from '@metrixlabs/admin/metrix-admin';
+import { useAPIErrorHandler, useNotification } from '@metrixlabs/admin/strapi-admin';
 import { type MessageDescriptor, useIntl } from 'react-intl';
 
 import {

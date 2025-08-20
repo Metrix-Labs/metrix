@@ -58,21 +58,21 @@ export const authenticate = async (ctx: Context) => {
     // update lastUsedAt if the token has not been used in the last hour
     const hoursSinceLastUsed = differenceInHours(currentDate, parseISO(apiToken.lastUsedAt));
     if (hoursSinceLastUsed >= 1) {
-      await metrix.db.query('admin::api-token').update({
+      await strapi.db.query('admin::api-token').update({
         where: { id: apiToken.id },
         data: { lastUsedAt: currentDate },
       });
     }
   } else {
     // If lastUsedAt is not set, initialize it to the current date
-    await metrix.db.query('admin::api-token').update({
+    await strapi.db.query('admin::api-token').update({
       where: { id: apiToken.id },
       data: { lastUsedAt: currentDate },
     });
   }
 
   if (apiToken.type === constants.API_TOKEN_TYPE.CUSTOM) {
-    const ability = await metrix.contentAPI.permissions.engine.generateAbility(
+    const ability = await strapi.contentAPI.permissions.engine.generateAbility(
       apiToken.permissions.map((action: any) => ({ action }))
     );
 

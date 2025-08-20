@@ -10,8 +10,8 @@ import {
   Page,
   FormProps,
   FormHelpers,
-} from '@metrixlabs/admin/metrix-admin';
-import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
+} from '@metrixlabs/admin/strapi-admin';
+import { useLicenseLimits } from '@metrixlabs/admin/strapi-admin/ee';
 import { Button, Dialog, Flex, Typography } from '@strapi/design-system';
 import { Check } from '@strapi/icons';
 import { generateNKeysBetween } from 'fractional-indexing';

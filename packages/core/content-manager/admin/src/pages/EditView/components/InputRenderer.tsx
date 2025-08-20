@@ -5,7 +5,7 @@ import {
   useForm,
   InputRenderer as FormInputRenderer,
   useField,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { useIntl } from 'react-intl';
 
 import { SINGLE_TYPES } from '../../../constants/collections';

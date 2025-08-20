@@ -2,9 +2,9 @@ import type { Core } from '@metrixlabs/types';
 
 export const getService = (
   name: string,
-  { metrix }: { metrix: Core.Strapi } = { metrix: global.metrix }
+  { strapi }: { strapi: Core.Strapi } = { strapi: (globalThis as any).strapi }
 ) => {
-  return metrix.service(`admin::${name}`);
+  return strapi.service(`admin::${name}`);
 };
 
 export default {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { createContext, type FieldValue } from '@metrixlabs/admin/metrix-admin';
+import { createContext, type FieldValue } from '@metrixlabs/admin/strapi-admin';
 import { IconButton, Divider, VisuallyHidden } from '@strapi/design-system';
 import { Expand } from '@strapi/icons';
 import { MessageDescriptor, useIntl } from 'react-intl';

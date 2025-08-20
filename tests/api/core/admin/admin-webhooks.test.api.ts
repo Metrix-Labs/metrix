@@ -1,4 +1,4 @@
-import type { Webhook, LoadedStrapi } from '@metrix/types';
+import type { Webhook, LoadedStrapi } from '@metrixlabs/types';
 
 import { createStrapiInstance } from 'api-tests/metrix';
 import { createAuthRequest } from 'api-tests/request';

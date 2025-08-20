@@ -63,5 +63,8 @@
   "devDependencies": {
     "@metrixlabs/types": "5.22.0",
     "@types/debug": "^4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

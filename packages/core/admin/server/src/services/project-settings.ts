@@ -38,7 +38,7 @@ const parseFilesData = async (files: UpdateProjectSettings.Request['files']) => 
       const getStream = () => fs.createReadStream(file.filepath);
 
       // Add formated data for the upload provider
-      formatedFilesData[inputName] = await metrix
+      formatedFilesData[inputName] = await strapi
         .plugin('upload')
         .service('upload')
         .formatFileInfo({
@@ -50,16 +50,14 @@ const parseFilesData = async (files: UpdateProjectSettings.Request['files']) => 
       // Add image dimensions
       Object.assign(
         formatedFilesData[inputName]!,
-        await metrix.plugin('upload').service('image-manipulation').getDimensions({ getStream })
+        await strapi.plugin('upload').service('image-manipulation').getDimensions({ getStream })
       );
 
       // Add file path, and stream
       Object.assign(formatedFilesData[inputName]!, {
         stream: getStream(),
         tmpPath: file.filepath,
-        // TODO
-        // @ts-expect-error define the correct return type
-        provider: metrix.config.get('plugin::upload').provider,
+        provider: (strapi.config.get('plugin::upload') as any).provider,
       });
     })
   );
@@ -68,7 +66,7 @@ const parseFilesData = async (files: UpdateProjectSettings.Request['files']) => 
 };
 
 const getProjectSettings = async (): Promise<GetProjectSettings.Response> => {
-  const store = metrix.store({ type: 'core', name: 'admin' });
+  const store = strapi.store({ type: 'core', name: 'admin' });
 
   // Returns an object with file inputs names as key and null as value
   const defaultProjectSettings = PROJECT_SETTINGS_FILE_INPUTS.reduce((prev: any, cur: any) => {
@@ -78,7 +76,6 @@ const getProjectSettings = async (): Promise<GetProjectSettings.Response> => {
 
   const projectSettings = {
     ...defaultProjectSettings,
-    // @ts-expect-error spread can be applied to return value
     ...(await store.get({ key: 'project-settings' })),
   };
 
@@ -106,7 +103,7 @@ const uploadFiles = async (files: LogoFiles = {}) => {
   return Promise.all(
     Object.values(files)
       .filter((file) => file?.stream instanceof fs.ReadStream)
-      .map((file) => metrix.plugin('upload').provider.uploadStream(file))
+      .map((file) => strapi.plugin('upload').provider.uploadStream(file as any))
   );
 };
 
@@ -132,15 +129,16 @@ const deleteOldFiles = async ({ previousSettings, newSettings }: any) => {
       }
 
       // Skip if the file was not uploaded with the current provider
-      // TODO
-      // @ts-expect-error define the correct return type
-      if (metrix.config.get('plugin::upload').provider !== previousSettings[inputName].provider) {
+      if (
+        (strapi.config.get('plugin::upload') as any).provider !==
+        previousSettings[inputName].provider
+      ) {
         return;
       }
 
       // There was a previous file and an new file was uploaded
       // Remove the previous file
-      metrix.plugin('upload').provider.delete(previousSettings[inputName]);
+      strapi.plugin('upload').provider.delete(previousSettings[inputName]);
     })
   );
 };
@@ -150,11 +148,11 @@ type LogoFiles = { [K in keyof FormattedFiles]: FormattedFiles[K] | null };
 const updateProjectSettings = async (
   newSettings: Omit<UpdateProjectSettings.Request['body'], 'menuLogo' | 'authLogo'> & LogoFiles
 ) => {
-  const store = metrix.store({ type: 'core', name: 'admin' });
+  const store = strapi.store({ type: 'core', name: 'admin' });
   const previousSettings = (await store.get({ key: 'project-settings' })) as any;
   const files = pick(newSettings, PROJECT_SETTINGS_FILE_INPUTS);
 
-  await uploadFiles(files);
+  await uploadFiles(files as any);
 
   PROJECT_SETTINGS_FILE_INPUTS.forEach((inputName) => {
     // If the user input exists but is not a formdata "file" remove it

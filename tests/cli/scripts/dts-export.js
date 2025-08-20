@@ -8,8 +8,8 @@ const {
     providers: { createLocalFileDestinationProvider },
   },
   engine: { createTransferEngine },
-} = require('@metrix/data-transfer');
-const { createStrapi, compileStrapi } = require('@metrix/metrix');
+} = require('@metrixlabs/data-transfer');
+const { createStrapi, compileStrapi } = require('@metrixlabs/metrix');
 const path = require('path');
 
 /**

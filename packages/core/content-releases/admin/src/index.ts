@@ -8,11 +8,11 @@ import { PERMISSIONS, PLUGIN_ID } from './constants';
 import { pluginId } from './pluginId';
 import { prefixPluginTranslations } from './utils/prefixPluginTranslations';
 
-import type { StrapiApp } from '@metrixlabs/admin/metrix-admin';
+import type { StrapiApp } from '@metrixlabs/admin/strapi-admin';
 import type {
   DocumentActionComponent,
   BulkActionComponent,
-} from '@metrixlabs/content-manager/metrix-admin';
+} from '@metrixlabs/content-manager/strapi-admin';
 import type { Plugin } from '@metrixlabs/types';
 
 // eslint-disable-next-line import/no-default-export

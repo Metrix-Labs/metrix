@@ -1,4 +1,4 @@
-import { StrapiAppContextValue } from '@metrixlabs/admin/metrix-admin';
+import { StrapiAppContextValue } from '@metrixlabs/admin/strapi-admin';
 import { Flex, Typography } from '@strapi/design-system';
 import upperFirst from 'lodash/upperFirst';
 import { useIntl } from 'react-intl';

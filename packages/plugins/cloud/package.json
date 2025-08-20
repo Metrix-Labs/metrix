@@ -79,5 +79,8 @@
     "description": "Instructions to deploy your local project to Strapi Cloud",
     "kind": "plugin",
     "displayName": "Strapi Cloud"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

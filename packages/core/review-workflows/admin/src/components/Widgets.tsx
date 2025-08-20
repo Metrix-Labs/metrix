@@ -1,5 +1,5 @@
-import { Widget, useTracking } from '@metrixlabs/admin/metrix-admin';
-import { DocumentStatus, RelativeTime } from '@metrixlabs/content-manager/metrix-admin';
+import { Widget, useTracking } from '@metrixlabs/admin/strapi-admin';
+import { DocumentStatus, RelativeTime } from '@metrixlabs/content-manager/strapi-admin';
 import { Box, IconButton, Table, Tbody, Td, Tr, Typography } from '@strapi/design-system';
 import { Pencil } from '@strapi/icons';
 import { useIntl } from 'react-intl';

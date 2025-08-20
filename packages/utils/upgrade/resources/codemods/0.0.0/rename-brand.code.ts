@@ -125,5 +125,3 @@ const transform: Transform = (file, api) => {
 export const parser = 'tsx';
 
 export default transform;
-
-

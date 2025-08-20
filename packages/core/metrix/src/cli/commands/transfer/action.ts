@@ -1,5 +1,8 @@
 import { isObject } from 'lodash/fp';
-import { engine as engineDataTransfer, metrix as strapiDataTransfer } from '@metrixlabs/data-transfer';
+import {
+  engine as engineDataTransfer,
+  metrix as metrixDataTransfer,
+} from '@metrixlabs/data-transfer';
 
 import {
   buildTransferTable,
@@ -25,7 +28,7 @@ const {
     createLocalStrapiDestinationProvider,
     createRemoteStrapiSourceProvider,
   },
-} = strapiDataTransfer;
+} = metrixDataTransfer;
 
 interface CmdOptions {
   from?: URL;
@@ -53,14 +56,14 @@ export default async (opts: CmdOptions) => {
     exitWith(1, 'Exactly one source (from) or destination (to) option must be provided');
   }
 
-  const metrix = await createStrapiInstance();
+  const strapi = await createStrapiInstance();
   let source;
   let destination;
 
   // if no URL provided, use local Strapi
   if (!opts.from) {
     source = createLocalStrapiSourceProvider({
-      getStrapi: () => metrix,
+      getStrapi: () => strapi,
     });
   }
   // if URL provided, set up a remote source provider
@@ -70,7 +73,7 @@ export default async (opts: CmdOptions) => {
     }
 
     source = createRemoteStrapiSourceProvider({
-      getStrapi: () => metrix,
+      getStrapi: () => strapi,
       url: opts.from,
       auth: {
         type: 'token',
@@ -82,7 +85,7 @@ export default async (opts: CmdOptions) => {
   // if no URL provided, use local Strapi
   if (!opts.to) {
     destination = createLocalStrapiDestinationProvider({
-      getStrapi: () => metrix,
+      getStrapi: () => strapi,
       strategy: 'restore',
       restore: parseRestoreFromOptions(opts),
     });
@@ -141,7 +144,7 @@ export default async (opts: CmdOptions) => {
 
   const { updateLoader } = loadersFactory();
 
-  engine.onSchemaDiff(getDiffHandler(engine, { force: opts.force, action: 'transfer' }));
+  engine.onSchemaDiff(getDiffHandler(engine, strapi, { force: opts.force, action: 'transfer' }));
 
   engine.addErrorHandler(
     'ASSETS_DIRECTORY_ERR',
@@ -167,18 +170,18 @@ export default async (opts: CmdOptions) => {
   progress.on('transfer::start', async () => {
     console.log(`Starting transfer...`);
 
-    await metrix.telemetry.send('didDEITSProcessStart', getTransferTelemetryPayload(engine));
+    await strapi.telemetry.send('didDEITSProcessStart', getTransferTelemetryPayload(engine));
   });
 
   let results: Awaited<ReturnType<typeof engine.transfer>>;
   try {
     // Abort transfer if user interrupts process
-    setSignalHandler(() => abortTransfer({ engine, metrix }));
+    setSignalHandler(() => abortTransfer({ engine, metrix: strapi }));
 
     results = await engine.transfer();
 
     // Note: we need to await telemetry or else the process ends before it is sent
-    await metrix.telemetry.send('didDEITSProcessFinish', getTransferTelemetryPayload(engine));
+    await strapi.telemetry.send('didDEITSProcessFinish', getTransferTelemetryPayload(engine));
 
     try {
       const table = buildTransferTable(results.engine);
@@ -189,7 +192,7 @@ export default async (opts: CmdOptions) => {
 
     exitWith(0, exitMessageText('transfer'));
   } catch (e) {
-    await metrix.telemetry.send('didDEITSProcessFail', getTransferTelemetryPayload(engine));
+    await strapi.telemetry.send('didDEITSProcessFail', getTransferTelemetryPayload(engine));
     exitWith(1, exitMessageText('transfer', true));
   }
 };

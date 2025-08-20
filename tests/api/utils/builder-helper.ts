@@ -1,3 +1,4 @@
+import type { Core } from '@metrixlabs/types';
 import type { Core } from '@metrix/types';
 
 import { values } from 'lodash/fp';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Page, useNotification, useFetchClient, Layouts } from '@metrixlabs/admin/metrix-admin';
+import { Page, useNotification, useFetchClient, Layouts } from '@metrixlabs/admin/strapi-admin';
 import {
   Box,
   Button,
@@ -178,7 +178,7 @@ const SettingsPage = () => {
                           file: './config/plugins.js',
                           link: (
                             <DocumentationLink
-                              href="https://docs.metrix.io/developer-docs/latest/plugins/email.html"
+                              href="https://docs.strapi.io/developer-docs/latest/plugins/email.html"
                               target="_blank"
                               rel="noopener noreferrer"
                             >
@@ -205,7 +205,7 @@ const SettingsPage = () => {
                         <TextInput
                           placeholder={formatMessage({
                             id: 'email.Settings.email.plugin.placeholder.defaultFrom',
-                            defaultMessage: "ex: Strapi No-Reply '<'no-reply@metrix.io'>'",
+                            defaultMessage: "ex: Strapi No-Reply '<'no-reply@strapi.io'>'",
                           })}
                           disabled
                           value={data.settings.defaultFrom}
@@ -224,7 +224,7 @@ const SettingsPage = () => {
                         <TextInput
                           placeholder={formatMessage({
                             id: 'email.Settings.email.plugin.placeholder.defaultReplyTo',
-                            defaultMessage: `ex: Strapi '<'example@metrix.io'>'`,
+                            defaultMessage: `ex: Strapi '<'example@strapi.io'>'`,
                           })}
                           disabled
                           value={data.settings.defaultReplyTo}

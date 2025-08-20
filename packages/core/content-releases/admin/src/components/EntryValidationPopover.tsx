@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { FormErrors, FormValues } from '@metrixlabs/admin/metrix-admin';
-import { unstable_useDocument } from '@metrixlabs/content-manager/metrix-admin';
+import { FormErrors, FormValues } from '@metrixlabs/admin/strapi-admin';
+import { unstable_useDocument } from '@metrixlabs/content-manager/strapi-admin';
 import { Button, LinkButton, Flex, Typography, Popover } from '@strapi/design-system';
 import { CheckCircle, CrossCircle, ArrowsCounterClockwise, CaretDown } from '@strapi/icons';
 import { stringify } from 'qs';

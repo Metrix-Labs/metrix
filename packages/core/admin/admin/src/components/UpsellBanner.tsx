@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
+import { useLicenseLimits } from '@metrixlabs/admin/strapi-admin/ee';
 import { Box, Flex, LinkButton, Typography } from '@strapi/design-system';
 import { isAfter, subDays } from 'date-fns';
 import { useIntl } from 'react-intl';
@@ -77,7 +77,7 @@ const Banner = ({ isTrialEndedRecently }: { isTrialEndedRecently: boolean }) => 
           <LinkButton
             width="max-content"
             variant="tertiary"
-            href="https://metrix.chargebeeportal.com"
+            href="https://strapi.chargebeeportal.com"
             target="_blank"
           >
             {formatMessage(

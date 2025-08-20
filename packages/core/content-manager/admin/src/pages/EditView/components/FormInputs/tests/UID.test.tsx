@@ -1,4 +1,4 @@
-import { Form } from '@metrixlabs/admin/metrix-admin';
+import { Form } from '@metrixlabs/admin/strapi-admin';
 import { render as renderRTL, waitFor, act, screen } from '@tests/utils';
 import { Route, Routes } from 'react-router-dom';
 

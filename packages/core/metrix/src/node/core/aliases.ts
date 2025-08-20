@@ -22,7 +22,8 @@ const devAliases: Record<string, string> = {
   '@metrixlabs/plugin-graphql/metrix-admin': './packages/plugins/graphql/admin/src',
   '@metrixlabs/i18n/metrix-admin': './packages/plugins/i18n/admin/src',
   '@metrixlabs/plugin-sentry/metrix-admin': './packages/plugins/sentry/admin/src',
-  '@metrixlabs/plugin-users-permissions/metrix-admin': './packages/plugins/users-permissions/admin/src',
+  '@metrixlabs/plugin-users-permissions/metrix-admin':
+    './packages/plugins/users-permissions/admin/src',
   '@metrixlabs/review-workflows/metrix-admin': './packages/core/review-workflows/admin/src',
 };
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useField, type InputProps } from '@metrixlabs/admin/metrix-admin';
+import { useField, type InputProps } from '@metrixlabs/admin/strapi-admin';
 import { Field, Flex } from '@strapi/design-system';
 
 import { BlocksEditor } from './BlocksEditor';

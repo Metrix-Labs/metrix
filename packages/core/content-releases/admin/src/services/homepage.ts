@@ -1,4 +1,4 @@
-import { adminApi } from '@metrixlabs/admin/metrix-admin';
+import { adminApi } from '@metrixlabs/admin/strapi-admin';
 
 import * as Homepage from '../../../shared/contracts/homepage';
 

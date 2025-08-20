@@ -16,7 +16,17 @@ const isDry = args.has('--dry') || args.has('-n');
 const cwd = process.cwd();
 
 const IGNORED_DIRS = new Set(['node_modules', '.git', '.yarn', 'dist', 'build', 'coverage']);
-const IGNORED_EXTS = new Set(['.png', '.jpg', '.jpeg', '.gif', '.pdf', '.zip', '.tgz', '.ico', '.lock']);
+const IGNORED_EXTS = new Set([
+  '.png',
+  '.jpg',
+  '.jpeg',
+  '.gif',
+  '.pdf',
+  '.zip',
+  '.tgz',
+  '.ico',
+  '.lock',
+]);
 
 const log = (...a) => console.log('[rename]', ...a);
 const warn = (...a) => console.warn('[rename][warn]', ...a);
@@ -101,5 +111,3 @@ main().catch((err) => {
   console.error(err);
   process.exitCode = 1;
 });
-
-

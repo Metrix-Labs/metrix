@@ -6,8 +6,8 @@ import {
   useQueryParams,
   useRBAC,
   isFetchError,
-} from '@metrixlabs/admin/metrix-admin';
-import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
+import { unstable_useDocumentLayout as useDocumentLayout } from '@metrixlabs/content-manager/strapi-admin';
 import {
   Box,
   Button,
@@ -35,7 +35,7 @@ import { ReleaseActionOptions } from './ReleaseActionOptions';
 import type {
   DocumentActionComponent,
   DocumentActionProps,
-} from '@metrixlabs/content-manager/metrix-admin';
+} from '@metrixlabs/content-manager/strapi-admin';
 import type { UID } from '@metrixlabs/types';
 
 /* -------------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 import { Context } from 'koa';
 
-import { metrix as dataTransferStrapi } from '@metrixlabs/data-transfer';
+import { metrix as dataTransferMetrix } from '@metrixlabs/data-transfer';
 import { errors } from '@metrixlabs/utils';
 import dataTransferAuthStrategy from '../../strategies/data-transfer';
 
@@ -8,7 +8,7 @@ const {
   remote: {
     handlers: { createPushController, createPullController },
   },
-} = dataTransferStrapi;
+} = dataTransferMetrix;
 
 const { UnauthorizedError } = errors;
 
@@ -16,7 +16,7 @@ const { UnauthorizedError } = errors;
  * @param ctx the koa context
  * @param scope the scope to verify
  */
-const verify = async (ctx: Context, scope?: dataTransferStrapi.remote.constants.TransferMethod) => {
+const verify = async (ctx: Context, scope?: dataTransferMetrix.remote.constants.TransferMethod) => {
   const { auth } = ctx.state;
 
   if (!auth) {

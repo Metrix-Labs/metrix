@@ -33,13 +33,13 @@ export const editCategory = async (name: string, infos: Infos) => {
   const builder = createBuilder();
 
   builder.components.forEach((component: WorkingComponent) => {
-    const oldUID = component.uid;
-    const newUID = `${newName}.${component.modelName}`;
+    const oldUID = (component as any).uid as string;
+    const newUID = `${newName}.${(component as any).modelName as string}`;
 
     // only edit the components in this specific category
-    if (component.category !== name) return;
+    if ((component as any).category !== name) return;
 
-    component.setUID(newUID).setDir(join(metrix.dirs.app.components, newName));
+    component.setUID(newUID).setDir(join(strapi.dirs.app.components, newName));
 
     builder.components.forEach((compo: WorkingComponent) => {
       compo.updateComponent(oldUID, newUID);
@@ -66,8 +66,8 @@ export const deleteCategory = async (name: string) => {
   const builder = createBuilder();
 
   builder.components.forEach((component) => {
-    if (component.category === name) {
-      builder.deleteComponent(component.uid);
+    if ((component as any).category === name) {
+      builder.deleteComponent((component as any).uid as unknown as any);
     }
   });
 
@@ -78,7 +78,7 @@ export const deleteCategory = async (name: string) => {
  * Checks if a category exists
  */
 const categoryExists = (name: string) => {
-  const matchingIndex = Object.values(metrix.components).findIndex(
+  const matchingIndex = Object.values(strapi.components as Record<string, any>).findIndex(
     (component) => component.category === name
   );
 

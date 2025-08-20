@@ -87,5 +87,8 @@
     "displayName": "Sentry",
     "description": "Send Strapi error events to Sentry.",
     "kind": "plugin"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,4 +1,4 @@
-import { useLicenseLimits } from '@metrixlabs/admin/metrix-admin/ee';
+import { useLicenseLimits } from '@metrixlabs/admin/strapi-admin/ee';
 import { Flex, Tooltip } from '@strapi/design-system';
 import { format, isBefore, startOfToday } from 'date-fns';
 import { useIntl } from 'react-intl';

@@ -1,4 +1,4 @@
-import type { Core, Modules } from '@metrix/types';
+import type { Core, Modules } from '@metrixlabs/types';
 
 import { createTestSetup, destroyTestSetup } from '../../../utils/builder-helper';
 import resources from './resources/index';

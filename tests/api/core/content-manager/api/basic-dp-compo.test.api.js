@@ -5,7 +5,7 @@
 const { createTestBuilder } = require('api-tests/builder');
 const { createStrapiInstance } = require('api-tests/metrix');
 const { createAuthRequest } = require('api-tests/request');
-const { async } = require('@metrix/utils');
+const { async } = require('@metrixlabs/utils');
 
 const builder = createTestBuilder();
 let metrix;

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { type Permission, useRBAC } from '@metrixlabs/admin/metrix-admin';
+import { type Permission, useRBAC } from '@metrixlabs/admin/strapi-admin';
 import { Button } from '@strapi/design-system';
 import { ListPlus } from '@strapi/icons';
 import { useIntl } from 'react-intl';

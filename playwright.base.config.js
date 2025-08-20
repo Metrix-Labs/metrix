@@ -1,7 +1,7 @@
 // @ts-check
 const path = require('path');
 const { devices } = require('@playwright/test');
-const { parseType } = require('@metrix/utils');
+const { parseType } = require('@metrixlabs/utils');
 
 const getEnvNum = (envVar, defaultValue) => {
   if (envVar !== undefined && envVar !== null) {

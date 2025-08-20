@@ -6,7 +6,7 @@ import {
   InputRenderer as FormInputRenderer,
   useField,
   Form,
-} from '@metrixlabs/admin/metrix-admin';
+} from '@metrixlabs/admin/strapi-admin';
 import { Alert, Box, Field, Flex, Link, Tooltip, Typography } from '@strapi/design-system';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';

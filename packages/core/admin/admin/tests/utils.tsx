@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 
-import { ConfigureStoreOptions, configureStore } from '@reduxjs/toolkit';
 import { fixtures } from '@metrixlabs/admin-test-utils';
+import { ConfigureStoreOptions, configureStore } from '@reduxjs/toolkit';
 import { darkTheme, lightTheme } from '@strapi/design-system';
 import {
   fireEvent,

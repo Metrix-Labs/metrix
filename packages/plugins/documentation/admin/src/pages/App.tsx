@@ -2,6 +2,14 @@
 import * as React from 'react';
 
 import {
+  ConfirmDialog,
+  useRBAC,
+  Page,
+  useAPIErrorHandler,
+  useNotification,
+  Layouts,
+} from '@metrixlabs/metrix/admin';
+import {
   LinkButton,
   Flex,
   IconButton,
@@ -16,14 +24,6 @@ import {
   Dialog,
 } from '@strapi/design-system';
 import { Eye as Show, ArrowClockwise as Reload, Trash } from '@strapi/icons';
-import {
-  ConfirmDialog,
-  useRBAC,
-  Page,
-  useAPIErrorHandler,
-  useNotification,
-  Layouts,
-} from '@metrixlabs/metrix/admin';
 import { useIntl } from 'react-intl';
 import { styled } from 'styled-components';
 

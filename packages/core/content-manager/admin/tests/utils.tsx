@@ -1,7 +1,6 @@
 /* eslint-disable check-file/filename-naming-convention */
 import * as React from 'react';
 
-import { ConfigureStoreOptions } from '@reduxjs/toolkit';
 import {
   defaultTestStoreConfig,
   render as renderAdmin,
@@ -13,6 +12,7 @@ import {
   type RenderOptions,
   fireEvent,
 } from '@metrixlabs/admin/strapi-admin/test';
+import { ConfigureStoreOptions } from '@reduxjs/toolkit';
 
 import { reducer } from '../src/modules/reducers';
 

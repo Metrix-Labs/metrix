@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['@metrixlabs/eslint-config/front/typescript'],
+  extends: ['@strapi/eslint-config/front/typescript'],
   overrides: [
     {
       files: ['**/*.test.[j|t]s', '**/*.test.[j|t]sx', '**/__mocks__/**/*'],

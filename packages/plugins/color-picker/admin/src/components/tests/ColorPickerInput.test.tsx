@@ -1,5 +1,5 @@
-import { DesignSystemProvider } from '@strapi/design-system';
 import { Form } from '@metrixlabs/metrix/admin';
+import { DesignSystemProvider } from '@strapi/design-system';
 import { render as renderRTL } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';

@@ -1,5 +1,5 @@
 module.exports = {
-  extends: '@metrixlabs/eslint-config/back/javascript',
+  extends: '@strapi/eslint-config/back/javascript',
   parserOptions: {
     ecmaVersion: 2021,
   },

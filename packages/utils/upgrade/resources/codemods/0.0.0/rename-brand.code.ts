@@ -73,7 +73,7 @@ const shouldSkipPropertyKey = (p: any) => {
 
 const renameIdentifier = (name: string): string => {
   if (name.startsWith('metrix')) {
-    return 'metrix' + name.slice('metrix'.length);
+    return `metrix${  name.slice('metrix'.length)}`;
   }
   if (name.includes('Strapi')) {
     return name.replaceAll('Strapi', 'Metrix');
@@ -106,7 +106,7 @@ const transformEnvVars = (root: Collection, j: JSCodeshift) => {
     .forEach((p) => {
       const prop = p.value.property;
       if (prop.type === 'Identifier' && prop.name.startsWith('STRAPI_')) {
-        prop.name = 'METRIX_' + prop.name.slice('STRAPI_'.length);
+        prop.name = `METRIX_${  prop.name.slice('STRAPI_'.length)}`;
       }
     });
 };

@@ -119,7 +119,7 @@ yarn-error.log
 coverage
 
 ############################
-# Strapi
+# Metrix
 ############################
 
 .env

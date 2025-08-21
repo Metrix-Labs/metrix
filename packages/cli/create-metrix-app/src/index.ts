@@ -72,7 +72,7 @@ async function run(args: string[]): Promise<void> {
   const directory = command.args[0];
 
   logger.title(
-    'Strapi',
+    'Metrix',
     `${chalk.green(chalk.bold(`v${version}`))} ${chalk.bold("🚀 Let's create your new project")}\n`
   );
 

@@ -14,14 +14,14 @@ export async function checkInstallPath(directory: string): Promise<string> {
       logger.fatal(
         `${chalk.green(
           rootPath
-        )} is not a directory. Make sure to create a Strapi application in an empty directory.`
+        )} is not a directory. Make sure to create a Metrix application in an empty directory.`
       );
     }
 
     const files = await fse.readdir(rootPath);
     if (files.length > 1) {
       logger.fatal([
-        'You can only create a Strapi app in an empty directory',
+        'You can only create a Metrix app in an empty directory',
         `Make sure ${chalk.green(rootPath)} is empty.`,
       ]);
     }

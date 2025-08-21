@@ -1,7 +1,6 @@
 {
   "name": "metrix",
   "version": "5.22.0",
-  "private": false,
   "bugs": {
     "url": "https://github.com/strapi/strapi/issues"
   },
